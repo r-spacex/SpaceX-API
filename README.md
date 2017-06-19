@@ -5,8 +5,8 @@ GET https://api.spacex.com/info
 ```
 ```http
 GET https://api.spacex.com/vehicles/falcon9
-                                   /falcon+heavy
-                                   /dragon
+GET https://api.spacex.com/vehicles/falcon+heavy
+GET https://api.spacex.com/vehicles/dragon
 ```
 ```http
 GET https://api.spacex.com/sites
