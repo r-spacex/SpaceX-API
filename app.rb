@@ -57,6 +57,6 @@ disable :protection
     dragon = {
       test3: 'suhh'
     }
-    JSON.neat_generate( falcon9, falcon_heavy, dragon )
+    JSON.neat_generate( falcon9 )
   end
 #end
