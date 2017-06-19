@@ -29,7 +29,7 @@ end
 
 get '/info' do
   content_type :json
-  JSON.neat_generate( company_info, wrap:60 )
+  JSON.neat_generate( $company_info, wrap:60 )
 end
 
 get '/vehicles/falcon9' do
