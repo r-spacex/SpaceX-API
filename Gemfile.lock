@@ -2,14 +2,16 @@ GEM
   remote: https://rubygems.org/
   specs:
     json (2.1.0)
+    mustermann (1.0.0)
     neatjson (0.8.3)
-    rack (1.6.8)
-    rack-protection (1.5.3)
+    rack (2.0.3)
+    rack-protection (2.0.0)
       rack
-    sinatra (1.4.8)
-      rack (~> 1.5)
-      rack-protection (~> 1.4)
-      tilt (>= 1.3, < 3)
+    sinatra (2.0.0)
+      mustermann (~> 1.0)
+      rack (~> 2.0)
+      rack-protection (= 2.0.0)
+      tilt (~> 2.0)
     sinatra-subdomain (0.3.0)
       sinatra
     tilt (2.0.7)
