@@ -43,7 +43,7 @@ get '/vehicles/falcon9' do
   JSON.neat_generate( $falcon9 )
 end
 
-get '/vehicles/falcon heavy' do
+get '/vehicles/falconheavy' do
   content_type :json
   JSON.neat_generate( $falcon_heavy )
 end
@@ -53,8 +53,8 @@ get '/vehicles/dragon' do
   JSON.neat_generate( $dragon )
 end
 
-get '/vehicles/dragon' do
+get '/sites' do
   content_type :json
-  JSON.neat_generate( $dragon )
+  JSON.neat_generate( $sites )
 end
 #end
