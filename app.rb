@@ -24,7 +24,7 @@ disable :protection
 
 get '/' do
   content_type :json
-  JSON.neat_generate( home_info, wrap:60 )
+  JSON.neat_generate( $home_info, wrap:60 )
 end
 
 get '/info' do
@@ -34,6 +34,6 @@ end
 
 get '/vehicles/falcon9' do
   content_type :json
-  JSON.neat_generate( falcon9 )
+  JSON.neat_generate( $falcon9 )
 end
 #end
