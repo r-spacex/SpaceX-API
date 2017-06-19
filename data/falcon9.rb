@@ -35,11 +35,11 @@ $falcon9 = {
     reusable: "true",
     burn_time_sec: "162",
     sea_level_thrust: {
-      kN: "7,607"
+      kN: "7,607",
       lbf: "1,710,000"
     },
     vacuum_thrust: {
-      kN: "8,227"
+      kN: "8,227",
       lbf: "1,849,500"
     }
   },
@@ -47,13 +47,13 @@ $falcon9 = {
     engines: "1",
     burn_time_sec: "397",
     sea_level_thrust: {
-      kN: "934"
+      kN: "934",
       lbf: "210,000"
     }
   },
-  payload: {
-
+  payload_containers: {
+    option_1: "Dragon",
+    option_2: "Dragon Trunk",
+    option_3: "Composite Fairing"
   }
-
-
 }
