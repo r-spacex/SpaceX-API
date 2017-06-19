@@ -4,7 +4,7 @@ require 'sinatra'
 require 'sinatra/subdomain'
 require 'json'
 require 'neatjson'
-require './data/all'
+require './data/*.rb'
 
 
 # Disables rack protection because of false positives
