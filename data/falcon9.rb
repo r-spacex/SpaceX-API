@@ -1,5 +1,6 @@
 $falcon9 = {
   name: "Falcon 9",
+  stages: "2",
   height: {
     meters: "70",
     feet: "229.6"
@@ -12,7 +13,6 @@ $falcon9 = {
     kg: "549,054",
     lb: "1,207,920"
   },
-  stages: "2",
   payload_weight: {
     leo: {
       name: "Low Earth Orbit",
@@ -55,5 +55,6 @@ $falcon9 = {
     option_1: "Dragon",
     option_2: "Dragon Trunk",
     option_3: "Composite Fairing"
-  }
+  },
+  description: "Falcon 9 is a two-stage rocket designed and manufactured by SpaceX for the reliable and safe transport of satellites and the Dragon spacecraft into orbit."
 }
