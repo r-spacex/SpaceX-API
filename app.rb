@@ -42,7 +42,7 @@ get '/vehicles/falcon9' do
   JSON.neat_generate( $falcon9 )
 end
 
-get '/vehicles/falcon+heavy' do
+get '/vehicles/falcon heavy' do
   content_type :json
   JSON.neat_generate( $falcon_heavy )
 end
