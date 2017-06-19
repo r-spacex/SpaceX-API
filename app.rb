@@ -5,6 +5,11 @@ require 'sinatra/subdomain'
 require 'json'
 require 'neatjson'
 require './data/info.rb'
+require './data/falcon9.rb'
+require './data/falcon_heavy.rb'
+require './data/dragon.rb'
+require './data/sites.rb'
+require './data/launches.rb'
 
 
 # Disables rack protection because of false positives
