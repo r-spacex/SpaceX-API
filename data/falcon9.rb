@@ -56,5 +56,20 @@ $falcon9 = {
     option_2: "Dragon Trunk",
     option_3: "Composite Fairing"
   },
+  launch_site_1: {
+    name: "Launch Complex 40",
+    location: "Cape Canavaral",
+    state: "Florida"
+  },
+  launch_site_2: {
+    name: "Space Launch Center 4",
+    location: "Vanderberg Air Force Base",
+    state: "California"
+  },
+  launch_site_3: {
+    name: "Launch Complex 39",
+    location: "Kennedy Space Center",
+    state: "Florida"
+  },
   description: "Falcon 9 is a two-stage rocket designed and manufactured by SpaceX for the reliable and safe transport of satellites and the Dragon spacecraft into orbit."
 }
