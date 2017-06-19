@@ -41,4 +41,19 @@ get '/vehicles/falcon9' do
   content_type :json
   JSON.neat_generate( $falcon9 )
 end
+
+get '/vehicles/falcon+heavy' do
+  content_type :json
+  JSON.neat_generate( $falcon_heavy )
+end
+
+get '/vehicles/dragon' do
+  content_type :json
+  JSON.neat_generate( $dragon )
+end
+
+get '/vehicles/dragon' do
+  content_type :json
+  JSON.neat_generate( $dragon )
+end
 #end
