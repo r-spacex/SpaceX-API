@@ -3,7 +3,6 @@
 require 'sinatra'
 require 'sinatra/subdomain'
 require 'json'
-require 'neatjson'
 require './data/home_info.rb'
 require './data/company_info.rb'
 require './data/falcon9.rb'
@@ -30,31 +29,31 @@ disable :protection
 
 get '/' do
   content_type :json
-  JSON.neat_generate( $home_info, wrap:false )
+  JSON.pretty_generate($home_info)
 end
 
 get '/info' do
   content_type :json
-  JSON.neat_generate( $company_info, wrap:false )
+  JSON.pretty_generate($company_info)
 end
 
 get '/vehicles/falcon9' do
   content_type :json
-  JSON.neat_generate( $falcon9, wrap:false )
+  JSON.pretty_generate($falcon9)
 end
 
 get '/vehicles/falconheavy' do
   content_type :json
-  JSON.neat_generate( $falcon_heavy )
+  JSON.pretty_generate($falcon_heavy)
 end
 
 get '/vehicles/dragon' do
   content_type :json
-  JSON.neat_generate( $dragon )
+  JSON.pretty_generate($dragon)
 end
 
 get '/sites' do
   content_type :json
-  JSON.neat_generate( $sites )
+  JSON.pretty_generate($sites)
 end
 #end

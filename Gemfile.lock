@@ -3,7 +3,6 @@ GEM
   specs:
     json (2.1.0)
     mustermann (1.0.0)
-    neatjson (0.8.3)
     rack (2.0.3)
     rack-protection (2.0.0)
       rack
@@ -21,7 +20,6 @@ PLATFORMS
 
 DEPENDENCIES
   json
-  neatjson
   sinatra
   sinatra-subdomain
 
