@@ -35,8 +35,16 @@ disable :protection
       state: 'California'
     },
     vehicles: '3',
+    launch_sites: '3',
+    test_sites: '1',
     ceo: 'Elon Musk',
-    valuation: '$15,000,000,000'
+    cto: 'Elon Musk',
+    coo: 'Gwynne Shotwell',
+    cto_propulsion: 'Tom Mueller',
+    valuation: '$15,000,000,000',
+    summary: 'SpaceX designs, manufactures and launches advanced rockets and spacecraft.
+    The company was founded in 2002 to revolutionize space technology, with the ultimate
+    goal of enabling people to live on other planets.'
   }
   JSON.pretty_generate(home_response)
   end
