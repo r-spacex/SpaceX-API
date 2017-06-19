@@ -21,43 +21,18 @@ disable :protection
 # Uses subdomain api.exaample.com to route traffic
 #subdomain :api do
 
-  # Home page for the API
-  get '/' do
-    content_type :json
-    home_response = {
-      founder: 'Elon Musk',
-      founded: '2002',
-      employees: '6000',
-      headquarters: {
-        address: 'Rocket Road',
-        city: 'Hawthorne',
-        state: 'California'
-      },
-      vehicles: '3',
-      launch_sites: '3',
-      test_sites: '1',
-      ceo: 'Elon Musk',
-      cto: 'Elon Musk',
-      coo: 'Gwynne Shotwell',
-      cto_propulsion: 'Tom Mueller',
-      valuation: '$15,000,000,000',
-      summary: 'SpaceX designs, manufactures and launches advanced rockets and spacecraft. The company was founded in 2002 to revolutionize space technology, with the ultimate goal of enabling people to live on other planets.'
-    }
-    JSON.neat_generate( home_response, wrap:60 )
-  end
+get '/' do
+  content_type :json
+  JSON.neat_generate( home_info, wrap:60 )
+end
 
-  get '/vehicles' do
-    content_type :json
-    falcon9 = {
-      test1: 'hello'
-    }
-    falcon_heavy = {
-      test2: 'sup'
-    }
-    dragon = {
-      test3: 'suhh'
-    }
-    JSON.neat_generate( falcon9 )
-    JSON.neat_generate( falcon_heavy )
-  end
+get '/info' do
+  content_type :json
+  JSON.neat_generate( company_info, wrap:60 )
+end
+
+get '/vehicles/falcon9' do
+  content_type :json
+  JSON.neat_generate( falcon9 )
+end
 #end
