@@ -1,0 +1,6 @@
+source 'https://rubygems.org'
+gem 'sinatra'
+gem 'sinatra-subdomain'
+gem 'json'
+gem 'rest-client'
+gem 'sinatra-json'
