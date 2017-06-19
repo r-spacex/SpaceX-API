@@ -3,8 +3,7 @@
 require 'sinatra'
 require 'sinatra/subdomain'
 require 'json'
-require 'rest-client'
-require 'sinatra/json'
+require 'neatjson'
 
 
 # Disables rack protection because of false positives
