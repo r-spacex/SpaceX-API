@@ -24,26 +24,43 @@ disable :protection
 
   # Home page for the API
   get '/' do
-  content_type :json
-  home_response = {
-    founder: 'Elon Musk',
-    founded: '2002',
-    employees: '6000',
-    headquarters: {
-      address: 'Rocket Road',
-      city: 'Hawthorne',
-      state: 'California'
-    },
-    vehicles: '3',
-    launch_sites: '3',
-    test_sites: '1',
-    ceo: 'Elon Musk',
-    cto: 'Elon Musk',
-    coo: 'Gwynne Shotwell',
-    cto_propulsion: 'Tom Mueller',
-    valuation: '$15,000,000,000',
-    summary: 'SpaceX designs, manufactures and launches advanced rockets and spacecraft. The company was founded in 2002 to revolutionize space technology, with the ultimate goal of enabling people to live on other planets.'
-  }
-  JSON.pretty_generate(home_response)
+    content_type :json
+    home_response = {
+      founder: 'Elon Musk',
+      founded: '2002',
+      employees: '6000',
+      headquarters: {
+        address: 'Rocket Road',
+        city: 'Hawthorne',
+        state: 'California'
+      },
+      vehicles: '3',
+      launch_sites: '3',
+      test_sites: '1',
+      ceo: 'Elon Musk',
+      cto: 'Elon Musk',
+      coo: 'Gwynne Shotwell',
+      cto_propulsion: 'Tom Mueller',
+      valuation: '$15,000,000,000',
+      summary: 'SpaceX designs, manufactures and launches advanced rockets and spacecraft. The company was founded in 2002 to revolutionize space technology, with the ultimate goal of enabling people to live on other planets.'
+    }
+    JSON.pretty_generate(home_response)
+  end
+
+  get '/vehicles' do
+    content_type :json
+    falcon9 = {
+      test1: 'hello'
+    }
+    falcon_heavy = {
+      test2: 'sup'
+    }
+    dragon = {
+      test3: 'suhh'
+    }
+    JSON.pretty_generate(falcon9)
+    JSON.pretty_generate(falcon_heavy)
+    JSON.pretty_generate(dragon)
+
   end
 #end
