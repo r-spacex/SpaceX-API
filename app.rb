@@ -20,7 +20,7 @@ disable :protection
 
 
 # Uses subdomain api.exaample.com to route traffic
-subdomain :api do
+#subdomain :api do
 
   # Home page for the API
   get '/' do
@@ -28,4 +28,4 @@ subdomain :api do
   home_response = { :Details => 'https://github.com/jakewmeyer/Helixbase-API', :Version => 'v1.000' }
   JSON.pretty_generate(home_response)
   end
-end
+#end
