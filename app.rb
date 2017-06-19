@@ -25,7 +25,19 @@ disable :protection
   # Home page for the API
   get '/' do
   content_type :json
-  home_response = { :Details => 'https://github.com/jakewmeyer/Helixbase-API', :Version => 'v1.000' }
+  home_response = {
+    founder: 'Elon Musk',
+    founded: '2002',
+    employees: '6000',
+    headquarters: {
+      address: 'Rocket Road',
+      city: 'Hawthorne',
+      state: 'California'
+    },
+    vehicles: '3',
+    ceo: 'Elon Musk',
+    valuation: '$15,000,000,000'
+  }
   JSON.pretty_generate(home_response)
   end
 #end
