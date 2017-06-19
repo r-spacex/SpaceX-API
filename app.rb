@@ -58,9 +58,6 @@ disable :protection
     dragon = {
       test3: 'suhh'
     }
-    JSON.pretty_generate(falcon9)
-    JSON.pretty_generate(falcon_heavy)
-    JSON.pretty_generate(dragon)
-
+    JSON.pretty_generate(falcon9, falcon_heavy, dragon)
   end
 #end
