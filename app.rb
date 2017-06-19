@@ -58,5 +58,6 @@ disable :protection
       test3: 'suhh'
     }
     JSON.neat_generate( falcon9 )
+    JSON.neat_generate( falcon_heavy )
   end
 #end
