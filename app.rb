@@ -54,7 +54,7 @@ end
 
 get '/launches/:year' do
   year = params[:year]
-  puts year
+  year
   content_type :json
   JSON.pretty_generate($launches)
 end
