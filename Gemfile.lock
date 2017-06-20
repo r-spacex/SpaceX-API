@@ -6,6 +6,7 @@ GEM
     rack (1.6.8)
     rack-protection (1.5.3)
       rack
+    sequel (4.47.0)
     sinatra (1.4.8)
       rack (~> 1.5)
       rack-protection (~> 1.4)
@@ -20,6 +21,7 @@ PLATFORMS
 DEPENDENCIES
   json
   neatjson
+  sequel
   sinatra
   sinatra-subdomain
 

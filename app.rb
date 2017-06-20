@@ -5,6 +5,7 @@ require 'sinatra/subdomain'
 require 'json'
 require './data/company_info.rb'
 require './data/falcon9.rb'
+require 'sequel'
 
 
 # Disables rack protection because of false positives
@@ -21,6 +22,15 @@ disable :protection
 
 # Uses subdomain api.exaample.com to route traffic
 subdomain :api do
+
+DB = Sequel.connect(ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
+
+DB.create_table :items do
+  primary_key :id
+  String :name
+end
+
+
 
 get '/' do
   content_type :json
