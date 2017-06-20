@@ -1,3 +1,0 @@
-$dragon = {
-  name: "Dragon"
-}

@@ -25,7 +25,7 @@ disable :protection
 
 
 # Uses subdomain api.exaample.com to route traffic
-#subdomain :api do
+subdomain :api do
 
 get '/' do
   content_type :json
@@ -56,4 +56,4 @@ get '/sites' do
   content_type :json
   JSON.pretty_generate($sites)
 end
-#end
+end
