@@ -31,17 +31,17 @@ get '/info' do
   JSON.pretty_generate($company_info)
 end
 
-get '/vehicle/falcon9' do
+get '/vehicles/falcon9' do
   content_type :json
   JSON.pretty_generate($falcon9)
 end
 
-get '/vehicle/falconheavy' do
+get '/vehicles/falconheavy' do
   content_type :json
   JSON.pretty_generate($falcon_heavy)
 end
 
-get '/vehicle/dragon' do
+get '/vehicles/dragon' do
   content_type :json
   JSON.pretty_generate($dragon)
 end
