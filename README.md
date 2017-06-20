@@ -44,6 +44,6 @@ GET https://api.spacex.com/launches/from=01-20-2011/to=01-20-2017
 
 ## FAQ's / Contact
 * If you have any questions or corrections, please open an issue and we'll get it merged ASAP
-* All data and photos are all property of Space Exploration Technologies Corporation (SpaceX)
+* All data and photos are property of Space Exploration Technologies Corporation (SpaceX)
 * I am not affiliated with SpaceX in any way, shape, form, or fashion. Just a fun side project for me.
 * For any other questions or concerns, just shoot me an email.
