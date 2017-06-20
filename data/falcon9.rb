@@ -1,5 +1,6 @@
 $falcon9 = {
   name: 'falcon 9',
+  active: 'true',
   stages: '2',
   cost_per_launch: '62 million',
   first_flight: '06-04-2010',
