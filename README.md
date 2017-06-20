@@ -32,6 +32,10 @@ GET http://api.spacexdata.com/vehicles/falcon9
 GET http://api.spacexdata.com/vehicles/falconheavy
 GET http://api.spacexdata.com/vehicles/dragon
 ```
+Get launch site information
+```http
+http://api.spacexdata.com/sites
+```
 Get launches by year
 ```http
 GET http://api.spacexdata.com/launches/2017

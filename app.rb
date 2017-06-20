@@ -6,6 +6,7 @@ require 'json'
 require './data/company_info.rb'
 require './data/falcon9.rb'
 require './data/home_info.rb'
+require './data/launches.rb'
 
 
 # Disables rack protection because of false positives
