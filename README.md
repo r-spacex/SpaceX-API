@@ -28,9 +28,9 @@ GET http://api.spacexdata.com/info
 
 Get vehicle information
 ```http
-GET http://api.spacexdata.com/vehicle/falcon9
-GET http://api.spacexdata.com/vehicle/falconheavy
-GET http://api.spacexdata.com/vehicle/dragon
+GET http://api.spacexdata.com/vehicles/falcon9
+GET http://api.spacexdata.com/vehicles/falconheavy
+GET http://api.spacexdata.com/vehicles/dragon
 ```
 Get launches by year
 ```http
