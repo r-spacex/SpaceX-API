@@ -22,16 +22,7 @@ disable :protection
 
 # Uses subdomain api.exaample.com to route traffic
 subdomain :api do
-
-DB = Sequel.connect(ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
-
-DB.create_table :items do
-  primary_key :id
-  String :name
-end
-
-
-
+  
 get '/' do
   content_type :json
   JSON.pretty_generate($home_info)
