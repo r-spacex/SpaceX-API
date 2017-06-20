@@ -5,6 +5,34 @@
 ![Imgur](http://i.imgur.com/EdfIdgC.jpg)
 
 # SpaceX Public JSON API
-### Public API for data about company info, vehicles, launch sites, and launch data.
+### JSON API for data about company info, vehicles, launch sites, and launch data.
 
 </div>
+
+## Usage / Endpoints
+Get API info
+```http
+GET https://api.spacex.com
+```
+
+Get company info
+```http
+GET https://api.spacex.com/info
+```
+
+Get vehicle information
+```http
+GET https://api.spacex.com/falcon9
+                          /falconheavy
+                          /dragon
+```
+
+Get launches by year
+```http
+GET https://api.spacex.com/launches/2017
+```
+
+Get launches in a date range
+```http
+GET https://api.spacex.com/launches/from=01-20-2011/to=01-20-2017
+```
