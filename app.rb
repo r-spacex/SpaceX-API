@@ -5,7 +5,7 @@ require 'sinatra/subdomain'
 require 'json'
 require './data/company_info.rb'
 require './data/falcon9.rb'
-require 'sequel'
+require 'mongo'
 
 
 # Disables rack protection because of false positives

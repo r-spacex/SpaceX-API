@@ -1,12 +1,14 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    bson (4.2.1)
     json (2.1.0)
+    mongo (2.4.2)
+      bson (>= 4.2.1, < 5.0.0)
     neatjson (0.8.3)
     rack (1.6.8)
     rack-protection (1.5.3)
       rack
-    sequel (4.47.0)
     sinatra (1.4.8)
       rack (~> 1.5)
       rack-protection (~> 1.4)
@@ -20,8 +22,8 @@ PLATFORMS
 
 DEPENDENCIES
   json
+  mongo
   neatjson
-  sequel
   sinatra
   sinatra-subdomain
 
