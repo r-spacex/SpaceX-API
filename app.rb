@@ -3,6 +3,7 @@
 require 'sinatra'
 require 'sinatra/subdomain'
 require 'json'
+require 'date'
 require './data/company_info.rb'
 require './data/falcon9.rb'
 require './data/home_info.rb'
@@ -56,7 +57,8 @@ get '/launches/from=:date1/to=:date2' do
   date1 = params[:date1]
   date2 = params[:date2]
 
-  "dates are #{date1} and #{date2}"
+  main = Date.parse(date1)
+  "Parsed date is #{main}"
   #content_type :json
   #JSON.pretty_generate($launches)
 end
