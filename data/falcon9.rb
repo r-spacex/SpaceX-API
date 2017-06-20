@@ -1,4 +1,4 @@
-$falcon9 = { 
+$falcon9 = {
   name: 'falcon 9',
   stages: '2',
   cost_per_launch: '62 million',
@@ -57,7 +57,7 @@ $falcon9 = {
     payloads: {
       option_1: 'dragon',
       option_2: 'composite fairing',
-      composite: {
+      composite_fairing: {
         height: {
           meters: '13.1',
           feet: '43'
