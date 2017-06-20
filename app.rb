@@ -18,7 +18,6 @@ disable :protection
 #  redirect request.url.sub('http', 'https') unless request.secure?
 #end
 
-
 # Uses subdomain api.exaample.com to route traffic
 subdomain :api do
 
