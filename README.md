@@ -28,9 +28,9 @@ GET https://api.spacex.com/info
 
 Get vehicle information
 ```http
-GET https://api.spacex.com/falcon9
-                          /falconheavy
-                          /dragon
+GET https://api.spacex.com/vehicle/falcon9
+                                  /falconheavy
+                                  /dragon
 ```
 
 Get launches by year
