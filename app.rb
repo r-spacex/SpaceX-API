@@ -4,10 +4,10 @@ require 'sinatra'
 require 'sinatra/subdomain'
 require 'json'
 require 'date'
+require 'sequel'
 require './data/company_info.rb'
 require './data/falcon9.rb'
 require './data/home_info.rb'
-require './data/launches.rb'
 
 
 # Disables rack protection because of false positives
@@ -55,6 +55,6 @@ end
 
 get '/launches/from=:date1/to=:date2' do
   content_type :json
-  JSON.pretty_generate($launches)
+  JSON.pretty_generate()
 end
 end

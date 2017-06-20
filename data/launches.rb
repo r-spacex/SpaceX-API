@@ -1,3 +1,0 @@
-$launches = {
-  name: 'Jake'
-}
