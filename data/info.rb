@@ -1,4 +1,4 @@
-company_info = {
+$company_info = {
   name: 'SpaceX',
   founder: 'Elon Musk',
   founded: '2002',
