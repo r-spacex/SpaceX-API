@@ -55,9 +55,8 @@ end
 get '/launches/from=:date1/to=:date2' do
   date1 = params[:date1]
   date2 = params[:date2]
-  
-  "First date is #{date1}"
-  "Second date is #{date2}"
+
+  "dates are #{date1} and #{date2}"
   #content_type :json
   #JSON.pretty_generate($launches)
 end
