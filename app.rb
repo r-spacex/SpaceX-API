@@ -12,7 +12,6 @@ require 'sequel'
 # that were blocking connections to home page
 disable :protection
 
-
 # No longer necessary
 # Forces the use of HTTPS for the API
 #before do
@@ -22,7 +21,7 @@ disable :protection
 
 # Uses subdomain api.exaample.com to route traffic
 subdomain :api do
-  
+
 get '/' do
   content_type :json
   JSON.pretty_generate($home_info)
