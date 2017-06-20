@@ -54,12 +54,7 @@ get '/sites' do
 end
 
 get '/launches/from=:date1/to=:date2' do
-  date1 = params[:date1]
-  date2 = params[:date2]
-
-  main = Date.parse(date1)
-  "Parsed date is #{main.year}"
-  #content_type :json
-  #JSON.pretty_generate($launches)
+  content_type :json
+  JSON.pretty_generate($launches)
 end
 end
