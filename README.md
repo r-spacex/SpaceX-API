@@ -34,7 +34,7 @@ GET http://api.spacexdata.com/vehicles/dragon
 ```
 Get launch site information
 ```http
-http://api.spacexdata.com/sites
+GET http://api.spacexdata.com/sites
 ```
 Get launches by year
 ```http
