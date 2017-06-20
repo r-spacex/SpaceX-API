@@ -18,28 +18,28 @@
 ## Usage / Endpoints
 Get API info
 ```http
-GET https://api.spacexdata.com
+GET http://api.spacexdata.com
 ```
 
 Get company info
 ```http
-GET https://api.spacexdata.com/info
+GET http://api.spacexdata.com/info
 ```
 
 Get vehicle information
 ```http
-GET https://api.spacexdata.com/vehicle/falcon9
-GET https://api.spacexdata.com/vehicle/falconheavy
-GET https://api.spacexdata.com/vehicle/dragon
+GET http://api.spacexdata.com/vehicle/falcon9
+GET http://api.spacexdata.com/vehicle/falconheavy
+GET http://api.spacexdata.com/vehicle/dragon
 ```
 Get launches by year
 ```http
-GET https://api.spacexdata.com/launches/2017
+GET http://api.spacexdata.com/launches/2017
 ```
 
 Get launches in a date range
 ```http
-GET https://api.spacexdata.com/launches/from=01-20-2011/to=01-20-2017
+GET http://api.spacexdata.com/launches/from=01-20-2011/to=01-20-2017
 ```
 
 ## FAQ's / Contact
