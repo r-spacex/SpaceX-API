@@ -1,1 +1,3 @@
-$launches =
+$launches = {
+  name: 'Jake'
+}
