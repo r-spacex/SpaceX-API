@@ -12,6 +12,8 @@ require './data/falcon_heavy.rb'
 require './data/sites.rb'
 require './data/dragon.rb'
 
+# DB Connection initiated
+DB = Sequel.connect('mysql://ofyslai9g5zjznpq:tvgm1fkpfh8iq5gp@wvulqmhjj9tbtc1w.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/vew7rq9f0fviu36f')
 
 # Disables rack protection because of false positives
 # that were blocking connections to home page
@@ -25,9 +27,6 @@ disable :protection
 
 # Uses subdomain api.exaample.com to route traffic
 subdomain :api do
-
-DB = Sequel.connect('mysql://ofyslai9g5zjznpq:tvgm1fkpfh8iq5gp@wvulqmhjj9tbtc1w.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/vew7rq9f0fviu36f')
-
 
 get '/' do
   DB.fetch("SELECT * FROM launches") do |row|
