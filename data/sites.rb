@@ -15,6 +15,7 @@ $sites = {
   launch_locations: {
     CCAFS: {
       name: 'Cape Canaveral Air Force Station',
+      active: 'False',
       launchpad: 'Space Launch Complex 40',
       state: 'Florida',
       orbits_avaliable: '[LEO, GTO, ISS]',
@@ -22,6 +23,7 @@ $sites = {
     },
     VAFB: {
       name: 'Vandenberg Air Force Base',
+      active: 'True',
       launchpad: 'Space Launch Complex 4 East',
       state: 'California',
       orbits_avaliable: '[Polar, HIO]',
@@ -29,6 +31,7 @@ $sites = {
     },
     KSC: {
       name: 'Kennedy Space Center',
+      active: 'True',
       launchpad: 'Launch Complex 39A',
       state: 'Florida',
       orbits_avaliable: '[LEO, GTO, ISS]',
@@ -36,6 +39,7 @@ $sites = {
     },
     STLS: {
       name: 'South Texas Launch Site',
+      active: 'False',
       launchpad: 'custom pad',
       state: 'Texas',
       orbits_avaliable: '[LEO, GTO, ISS]'

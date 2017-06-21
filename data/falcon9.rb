@@ -3,6 +3,7 @@ $falcon9 = {
   active: 'true',
   stages: '2',
   cost_per_launch: '62 million',
+  success_rate: '94 percent',
   first_flight: '06-04-2010',
   country: 'United States',
   company: 'SpaceX',
@@ -38,7 +39,8 @@ $falcon9 = {
   first_stage: {
     reusable: 'true',
     engines: '9',
-    burn_time_sec: '162',
+    fuel_amount_tons: '385',
+    burn_time_sec: '180',
     thrust_sea_level: {
       kN: '7607',
       lbf: '1710000'
@@ -50,6 +52,7 @@ $falcon9 = {
   },
   second_stage: {
     engines: '1',
+    fuel_amount_tons: '90',
     burn_sec_sec: '397',
     thrust: {
       kN: '934',

@@ -1,5 +1,5 @@
 $dragon = {
-  name: 'Dragon',
+  name: 'Dragon 1',
   active: 'true',
   sidewall_angle_deg: '15',
   orbit_duration_yr: '2',
