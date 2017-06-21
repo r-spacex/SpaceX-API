@@ -31,7 +31,8 @@ subdomain :api do
 
 get '/' do
   DB.fetch("SELECT * FROM launches") do |row|
-  puts row[:name]
+  row = row[:name]
+  JSON.pretty_generate(row)
   end
 end
 
