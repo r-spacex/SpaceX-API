@@ -85,7 +85,7 @@ get '/launches/from=:start/to=:final' do
   content_type :json
   start = params['start']
   final = params['final']
-  results = DB.query("SELECT * FROM launches BETWEEN #{start} AND #{final}")
+  results = DB.query("SELECT * FROM launches WHERE launch_date BETWEEN '#{start}' AND '#{final}';")
     hash = results.each do |row|
     end
   JSON.pretty_generate(hash)
