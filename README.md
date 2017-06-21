@@ -4,7 +4,7 @@
 
 ![Imgur](http://i.imgur.com/EdfIdgC.jpg)
 
-# SpaceX json data API
+# SpaceX JSON data API
 
 [![GitHub (pre-)release](https://img.shields.io/github/release/jakewmeyer/SpaceX-API/all.svg)]()
 [![Language](https://img.shields.io/badge/language-Ruby-red.svg)]()
