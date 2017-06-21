@@ -36,12 +36,12 @@ Get launch site information
 ```http
 GET https://api.spacexdata.com/sites
 ```
-Get launches by year
+Get past launches by year
 ```http
 GET https://api.spacexdata.com/launches/2017
 ```
 
-Get launches in a date range
+Get past launches in a date range
 ```http
 GET https://api.spacexdata.com/launches/from=2011-01-20/to=2017-05-25
 ```
