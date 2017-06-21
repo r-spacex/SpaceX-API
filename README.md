@@ -45,6 +45,7 @@ Get launches in a date range
 ```http
 GET http://api.spacexdata.com/launches/from=01-20-2011/to=01-20-2017
 ```
+<br></br>
 
 ## FAQ's / Contact
 * If you have any questions or corrections, please open an issue and we'll get it merged ASAP
