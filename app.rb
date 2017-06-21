@@ -5,7 +5,6 @@ require 'sinatra/subdomain'
 require 'json'
 require 'date'
 require 'mysql2'
-require 'sequel'
 require './data/company_info.rb'
 require './data/falcon9.rb'
 require './data/home_info.rb'
@@ -14,7 +13,7 @@ require './data/sites.rb'
 require './data/dragon.rb'
 
 # DB Connection initiated
-DB = Sequel.connect('mysql2://ofyslai9g5zjznpq:tvgm1fkpfh8iq5gp@wvulqmhjj9tbtc1w.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/vew7rq9f0fviu36f')
+
 
 # Disables rack protection because of false positives
 # that were blocking connections to home page
@@ -30,11 +29,6 @@ disable :protection
 subdomain :api do
 
 get '/' do
-  content_type :json
-  DB.fetch("SELECT * FROM launches") do |row|
-  row = row[:name]
-  JSON.pretty_generate(row)
-  end
 end
 
 get '/info' do
