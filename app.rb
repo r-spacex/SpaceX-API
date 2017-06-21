@@ -8,6 +8,9 @@ require 'sequel'
 require './data/company_info.rb'
 require './data/falcon9.rb'
 require './data/home_info.rb'
+require './data/falcon_heavy.rb'
+require './data/sites.rb'
+require './data/dragon.rb'
 
 
 # Disables rack protection because of false positives
