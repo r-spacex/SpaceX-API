@@ -1,4 +1,4 @@
-{
+$dragon = {
   name: 'Dragon',
   active: 'true',
   sidewall_angle_deg: '15',

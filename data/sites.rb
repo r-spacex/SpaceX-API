@@ -1,4 +1,4 @@
-{
+$sites = {
   test_locations: {
     name: 'Rocket Development Facility',
     city: 'McGregor',
