@@ -32,11 +32,11 @@ disable :protection
 #end
 
 # Uses subdomain api.exaample.com to route traffic
-subdomain :api do
+#subdomain :api do
 
 get '/' do
-  results = DB.query("SELECT * FROM launches")
-  results.count
+  content_type :json
+  JSON.pretty_generate($home_info)
 end
 
 get '/info' do
@@ -63,4 +63,31 @@ get '/sites' do
   content_type :json
   JSON.pretty_generate($sites)
 end
+
+get '/launches' do
+  content_type :json
+  results = DB.query("SELECT * FROM launches")
+    hash = results.each do |row|
+    end
+  JSON.pretty_generate(hash)
 end
+
+get '/launches/:year' do
+  content_type :json
+  year = params['year']
+  results = DB.query("SELECT * FROM launches WHERE launch_year = #{year}")
+    hash = results.each do |row|
+    end
+  JSON.pretty_generate(hash)
+end
+
+get '/launches/from=:start/to=:final' do
+  content_type :json
+  start = params['start']
+  final = params['final']
+  results = DB.query("SELECT * FROM launches BETWEEN #{start} AND #{final}")
+    hash = results.each do |row|
+    end
+  JSON.pretty_generate(hash)
+end
+#end

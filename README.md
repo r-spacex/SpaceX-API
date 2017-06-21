@@ -43,7 +43,7 @@ GET http://api.spacexdata.com/launches/2017
 
 Get launches in a date range
 ```http
-GET http://api.spacexdata.com/launches/from=01-20-2011/to=01-20-2017
+GET http://api.spacexdata.com/launches/from=2011-01-20/to=2017-05-25
 ```
 <br></br>
 
