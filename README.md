@@ -36,6 +36,10 @@ Get launch site information
 ```http
 GET https://api.spacexdata.com/sites
 ```
+Get all past launches
+```http
+GET https://api.spacexdata.com/launches
+```
 Get past launches by year
 ```http
 GET https://api.spacexdata.com/launches/2017
