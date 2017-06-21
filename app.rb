@@ -69,7 +69,12 @@ get '/launches' do
   results = DB.query("SELECT * FROM launches")
     hash = results.each do |row|
     end
-  JSON.pretty_generate(hash)
+    if hash.empty?
+      error = {error: 'No Matches Found'}
+      JSON.pretty_generate(error)
+    else
+      JSON.pretty_generate(hash)
+    end
 end
 
 get '/launches/:year' do
@@ -78,7 +83,12 @@ get '/launches/:year' do
   results = DB.query("SELECT * FROM launches WHERE launch_year = #{year}")
     hash = results.each do |row|
     end
-  JSON.pretty_generate(hash)
+    if hash.empty?
+      error = {error: 'No Matches Found'}
+      JSON.pretty_generate(error)
+    else
+      JSON.pretty_generate(hash)
+    end
 end
 
 get '/launches/from=:start/to=:final' do
