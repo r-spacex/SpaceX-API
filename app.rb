@@ -27,12 +27,12 @@ disable :protection
 
 # No longer necessary
 # Forces the use of HTTPS for the API
-#before do
-#  redirect request.url.sub('http', 'https') unless request.secure?
-#end
+before do
+  redirect request.url.sub('http', 'https') unless request.secure?
+end
 
 # Uses subdomain api.exaample.com to route traffic
-#subdomain :api do
+subdomain :api do
 
 get '/' do
   content_type :json
@@ -90,4 +90,4 @@ get '/launches/from=:start/to=:final' do
     end
   JSON.pretty_generate(hash)
 end
-#end
+end
