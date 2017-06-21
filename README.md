@@ -51,3 +51,9 @@ GET http://api.spacexdata.com/launches/from=01-20-2011/to=01-20-2017
 * All data and photos are property of Space Exploration Technologies Corporation (SpaceX)
 * I am not affiliated with SpaceX in any way, shape, form, or fashion. Just a fun side project for me.
 * For any other questions or concerns, just shoot me an email.
+
+## Technical Details
+* API is using [Sinatra](http://www.sinatrarb.com/) as a framework in Ruby
+* Launch data is implemented in MySQL
+* Static data is stored as JSON
+* API is deployed on [Heroku](https://www.heroku.com/)

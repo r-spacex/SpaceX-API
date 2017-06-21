@@ -52,9 +52,4 @@ get '/sites' do
   content_type :json
   JSON.pretty_generate($sites)
 end
-
-get '/launches/from=:date1/to=:date2' do
-  content_type :json
-  JSON.pretty_generate()
-end
 end
