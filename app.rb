@@ -30,6 +30,7 @@ disable :protection
 subdomain :api do
 
 get '/' do
+  content_type :json
   DB.fetch("SELECT * FROM launches") do |row|
   row = row[:name]
   JSON.pretty_generate(row)
