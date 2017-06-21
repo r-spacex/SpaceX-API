@@ -26,9 +26,13 @@ disable :protection
 # Uses subdomain api.exaample.com to route traffic
 subdomain :api do
 
+DB = Sequel.connect('mysql://ofyslai9g5zjznpq:tvgm1fkpfh8iq5gp@wvulqmhjj9tbtc1w.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/vew7rq9f0fviu36f')
+
+
 get '/' do
-  content_type :json
-  JSON.pretty_generate($home_info)
+  DB.fetch("SELECT * FROM launches") do |row|
+  puts row[:name]
+  end
 end
 
 get '/info' do
