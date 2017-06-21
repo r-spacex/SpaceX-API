@@ -29,7 +29,7 @@ disable :protection
 subdomain :api do
 
 get '/' do
-  results = client.query("SELECT * FROM launches")
+  results = DB.query("SELECT * FROM launches")
   results.count
 end
 
