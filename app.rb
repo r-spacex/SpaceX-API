@@ -13,7 +13,7 @@ require './data/sites.rb'
 require './data/dragon.rb'
 
 # DB Connection initiated
-DB = Mysql2::Client.new(:host => "wvulqmhjj9tbtc1w.cbetxkdyhwsb.us-east-1.rds.amazonaws.com", :username => "ofyslai9g5zjznpq")
+DB = Mysql2::Client.new(:host => "wvulqmhjj9tbtc1w.cbetxkdyhwsb.us-east-1.rds.amazonaws.com", :username => "ofyslai9g5zjznpq", :password => "tvgm1fkpfh8iq5gp")
 
 # Disables rack protection because of false positives
 # that were blocking connections to home page
