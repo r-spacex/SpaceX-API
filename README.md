@@ -20,12 +20,10 @@ Get API info
 ```http
 GET https://api.spacexdata.com
 ```
-
 Get company info
 ```http
 GET https://api.spacexdata.com/info
 ```
-
 Get vehicle information
 ```http
 GET https://api.spacexdata.com/vehicles/falcon9
@@ -48,11 +46,18 @@ Get launches by capsule serial #
 ```http
 GET https://api.spacexdata.com/launches/cap=C106
 ```
+Get detailed capsule information by serial #
+```http
+https://api.spacexdata.com/parts/cap=C106
+```
+Get detailed info on all capsules
+```http
+https://api.spacexdata.com/parts/cap
+```
 Get past launches by year
 ```http
 GET https://api.spacexdata.com/launches/year=2017
 ```
-
 Get past launches in a date range
 ```http
 GET https://api.spacexdata.com/launches/from=2011-01-20/to=2017-05-25
