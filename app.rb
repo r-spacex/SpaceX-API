@@ -66,10 +66,11 @@ get '/launches' do
   JSON.pretty_generate(hash)
 end
 
-get '/launches/:year' do
+get '/launches/year=:year' do
   content_type :json
   year = params['year']
-  results = DB.query("SELECT * FROM launches WHERE launch_year = #{year}")
+  statement = DB.prepare("SELECT * FROM launches WHERE launch_year = ?")
+  results = statement.execute(year)
     hash = results.each do |row|
     end
     if hash.empty?

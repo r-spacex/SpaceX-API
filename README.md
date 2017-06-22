@@ -42,7 +42,7 @@ GET https://api.spacexdata.com/launches
 ```
 Get past launches by year
 ```http
-GET https://api.spacexdata.com/launches/2017
+GET https://api.spacexdata.com/launches/year=2017
 ```
 
 Get past launches in a date range
