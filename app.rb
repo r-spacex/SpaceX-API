@@ -85,7 +85,7 @@ get '/launches/from=:start/to=:final' do
   content_type :json
   start = params['start']
   final = params['final']
-  statement = DB.prepare("SELECT * FROM launches WHERE launch_date BETWEEN '?' AND '?';")
+  statement = DB.prepare("SELECT * FROM launches WHERE launch_date BETWEEN ? AND ?;")
   results = statement.execute(start, final)
     hash = results.each do |row|
     end
