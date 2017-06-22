@@ -69,7 +69,7 @@ get '/launches' do
   results = DB.query("SELECT * FROM launches")
     hash = results.each do |row|
     end
-    JSON.pretty_generate(hash)
+  JSON.pretty_generate(hash)
 end
 
 get '/launches/:year' do
