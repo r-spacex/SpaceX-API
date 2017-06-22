@@ -115,6 +115,20 @@ get '/parts/cap=:cap' do
     end
 end
 
+# Get all Dragon Capsule information
+get '/parts/cap' do
+  content_type :json
+  results = DB.query("SELECT * FROM capsule")
+    hash = results.each do |row|
+    end
+    if hash.empty?
+      error = {error: 'No Matches Found'}
+      JSON.pretty_generate(error)
+    else
+      JSON.pretty_generate(hash)
+    end
+end
+
 # Get all launches with capsule serial #
 get '/launches/cap=:cap' do
   content_type :json
