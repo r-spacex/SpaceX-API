@@ -18,8 +18,7 @@ require './data/dragon.rb'
 @password = "tvgm1fkpfh8iq5gp"
 @db = "vew7rq9f0fviu36f"
 
-# DB Connection initiated
-DB = Mysql2::Client.new(:host => @host, :username => @username, :password => @password, :database => @db)
+
 
 # Disables rack protection because of false positives
 # that were blocking connections to home page
@@ -29,6 +28,7 @@ disable :protection
 # Forces the use of HTTPS for the API
 before do
   redirect request.url.sub('http', 'https') unless request.secure?
+  DB = Mysql2::Client.new(:host => @host, :username => @username, :password => @password, :database => @db)
 end
 
 # Uses subdomain api.exaample.com to route traffic
