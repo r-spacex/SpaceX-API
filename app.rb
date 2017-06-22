@@ -12,12 +12,6 @@ require './data/falcon_heavy.rb'
 require './data/sites.rb'
 require './data/dragon.rb'
 
-# Database details
-#@host = "wvulqmhjj9tbtc1w.cbetxkdyhwsb.us-east-1.rds.amazonaws.com"
-#@username = "ofyslai9g5zjznpq"
-#@password = "tvgm1fkpfh8iq5gp"
-#@db = "vew7rq9f0fviu36f"
-
 # DB Connection initiated
 DB = Mysql2::Client.new(:host => ENV["SPACEX_HOST"], :username => ENV["SPACEX_USER"], :password => ENV["SPACEX_PASS"], :database => ENV["SPACEX_DB"], :reconnect => true)
 
