@@ -83,12 +83,28 @@ get '/launches/year=:year' do
     end
 end
 
-
+# Get all launches with a serial number
 get '/launches/core=:core' do
   content_type :json
   core = params['core']
   statement = DB.prepare("SELECT * FROM launches WHERE core_serial = ?")
   results = statement.execute(core)
+    hash = results.each do |row|
+    end
+    if hash.empty?
+      error = {error: 'No Matches Found'}
+      JSON.pretty_generate(error)
+    else
+      JSON.pretty_generate(hash)
+    end
+end
+
+# Get all launches with capsule serial #
+get '/launches/cap=:cap' do
+  content_type :json
+  cap = params['cap']
+  statement = DB.prepare("SELECT * FROM launches WHERE cap_serial = ?")
+  results = statement.execute(cap)
     hash = results.each do |row|
     end
     if hash.empty?

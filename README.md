@@ -40,6 +40,14 @@ Get all past launches
 ```http
 GET https://api.spacexdata.com/launches
 ```
+Get launches by core serial #
+```http
+GET https://api.spacexdata.com/launches/core=B1021
+```
+Get launches by capsule serial #
+```http
+GET https://api.spacexdata.com/launches/cap=C106
+```
 Get past launches by year
 ```http
 GET https://api.spacexdata.com/launches/year=2017
