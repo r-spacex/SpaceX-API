@@ -99,6 +99,22 @@ get '/launches/core=:core' do
     end
 end
 
+# Get info on a specific Dragon capsule
+get '/parts/cap=:cap' do
+  content_type :json
+  cap = params['cap']
+  statement = DB.prepare("SELECT * FROM capsules WHERE capsule_serial = ?")
+  results = statement.execute(cap)
+    hash = results.each do |row|
+    end
+    if hash.empty?
+      error = {error: 'No Matches Found'}
+      JSON.pretty_generate(error)
+    else
+      JSON.pretty_generate(hash)
+    end
+end
+
 # Get all launches with capsule serial #
 get '/launches/cap=:cap' do
   content_type :json
