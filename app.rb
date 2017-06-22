@@ -58,6 +58,7 @@ get '/sites' do
   JSON.pretty_generate($sites)
 end
 
+# Returns all launches
 get '/launches' do
   content_type :json
   results = DB.query("SELECT * FROM launches")
@@ -66,6 +67,7 @@ get '/launches' do
   JSON.pretty_generate(hash)
 end
 
+# Gets launches sorted by year
 get '/launches/year=:year' do
   content_type :json
   year = params['year']
@@ -81,6 +83,23 @@ get '/launches/year=:year' do
     end
 end
 
+
+get '/launches/core=:core' do
+  content_type :json
+  core = params['core']
+  statement = DB.prepare("SELECT * FROM launches WHERE core_serial = ?")
+  results = statement.execute(core)
+    hash = results.each do |row|
+    end
+    if hash.empty?
+      error = {error: 'No Matches Found'}
+      JSON.pretty_generate(error)
+    else
+      JSON.pretty_generate(hash)
+    end
+end
+
+# Gets all launches in a date range
 get '/launches/from=:start/to=:final' do
   content_type :json
   start = params['start']
