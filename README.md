@@ -50,7 +50,7 @@ Get past launches in a date range
 GET https://api.spacexdata.com/launches/from=2011-01-20/to=2017-05-25
 ```
 
-Example JSON Response
+Example JSON Response for a launch
 ```json
 {
     "flight_number": 28,
