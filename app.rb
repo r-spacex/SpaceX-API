@@ -19,7 +19,7 @@ require './data/dragon.rb'
 @db = "vew7rq9f0fviu36f"
 
 # DB Connection initiated
-DB = Mysql2::Client.new(:host => @host, :username => @username, :password => @password, :database => @db)
+DB = Mysql2::Client.new(:host => @host, :username => @username, :password => @password, :database => @db, :reconnect => true)
 
 # Disables rack protection because of false positives
 # that were blocking connections to home page
