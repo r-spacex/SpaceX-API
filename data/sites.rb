@@ -18,7 +18,7 @@ $sites = {
       active: 'False',
       launchpad: 'Space Launch Complex 40',
       state: 'Florida',
-      orbits_avaliable: '[LEO, GTO, ISS]',
+      orbits_avaliable: '["LEO", "GTO", "ISS"]',
       vehicles: 'Falcon 9'
     },
     VAFB: {
@@ -26,7 +26,7 @@ $sites = {
       active: 'True',
       launchpad: 'Space Launch Complex 4 East',
       state: 'California',
-      orbits_avaliable: '[Polar, HIO]',
+      orbits_avaliable: '["Polar", "HIO"]',
       vehicles: 'Falcon 9'
     },
     KSC: {
@@ -34,7 +34,7 @@ $sites = {
       active: 'True',
       launchpad: 'Launch Complex 39A',
       state: 'Florida',
-      orbits_avaliable: '[LEO, GTO, ISS]',
+      orbits_avaliable: '["LEO", "GTO", "ISS"]',
       vehicles: 'Falcon 9'
     },
     STLS: {
@@ -42,7 +42,7 @@ $sites = {
       active: 'False',
       launchpad: 'custom pad',
       state: 'Texas',
-      orbits_avaliable: '[LEO, GTO, ISS]'
+      orbits_avaliable: '["LEO", "GTO", "ISS"]'
     }
   }
  }
