@@ -103,7 +103,7 @@ end
 get '/parts/cap=:cap' do
   content_type :json
   cap = params['cap']
-  statement = DB.prepare("SELECT * FROM capsules WHERE capsule_serial = ?")
+  statement = DB.prepare("SELECT * FROM capsule WHERE capsule_serial = ?")
   results = statement.execute(cap)
     hash = results.each do |row|
     end
