@@ -49,7 +49,36 @@ Get past launches in a date range
 ```http
 GET https://api.spacexdata.com/launches/from=2011-01-20/to=2017-05-25
 ```
+
+Example JSON Response
+```json
+{
+    "flight_number": 28,
+    "launch_year": 2016,
+    "launch_date": "2016-04-08",
+    "time_utc": "20:43",
+    "rocket": "Falcon 9",
+    "rocket_type": "FT",
+    "launch_site": "CCAFS LC-40",
+    "payload_1": "SpaceX CRS-8",
+    "payload_2": "",
+    "payload_type": "Dragon 1.1",
+    "payload_mass_kg": "3136",
+    "payload_mass_lbs": "6914",
+    "orbit": "LEO",
+    "customer_1": "NASA (CRS)",
+    "customer_2": "",
+    "launch_success": "Success",
+    "reused": "FALSE",
+    "land_success": "Success",
+    "landing_type": "ASDS",
+    "article_link": "https://en.wikipedia.org/wiki/SpaceX_CRS-8",
+    "video_link": "https://www.youtube.com/watch?v=7pUAydjne5M",
+    "Details": "Dragon carried over 1500 kg of supplies and delivered (stowed in its trunk) the inflatable Bigelow Expandable Activity Module (BEAM) to the ISS for two years of in-orbit tests. The rocket's first stage landed smoothly on SpaceX's autonomous spaceport drone ship 9 minutes after liftoff, making this the first ever successful landing of a rocket booster on a ship at sea as part of an orbital launch. The first stage B1021 was later also the first orbital booster to be used again, when launching SES-10 on March 30, 2017."
+  }
+```  
 <br></br>
+
 
 ## FAQ's / Contact
 * If you have any questions or corrections, please open an issue and we'll get it merged ASAP
