@@ -122,6 +122,6 @@ GET https://api.spacexdata.com/parts/core=B1021
 
 ## Technical Details
 * API is using [Sinatra](http://www.sinatrarb.com/) as a framework in Ruby
-* Launch data is implemented in MySQL
+* Launch data is implemented in MariaDB
 * Static data is stored as JSON
 * API is deployed on [Heroku](https://www.heroku.com/)

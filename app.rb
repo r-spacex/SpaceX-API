@@ -12,8 +12,8 @@ require './data/falcon_heavy.rb'
 require './data/sites.rb'
 require './data/dragon.rb'
 
-# DB Connection initiated
-DB = Mysql2::Client.new(:host => ENV["SPACEX_HOST"], :username => ENV["SPACEX_USER"], :password => ENV["SPACEX_PASS"], :database => ENV["SPACEX_DB"], :reconnect => true)
+# DB connection to MariaDB
+DB = Mysql2::Client.new(:host => ENV["MARIA_HOST"], :username => ENV["MARIA_USER"], :password => ENV["MARIA_PASS"], :database => ENV["MARIA_DB"], :reconnect => true)
 
 # Disables rack protection because of false positives
 # that were blocking connections to home page
