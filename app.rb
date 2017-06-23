@@ -145,6 +145,36 @@ get '/launches/cap=:cap' do
     end
 end
 
+# Get all Dragon core information
+get '/parts/cores' do
+  content_type :json
+  results = DB.query("SELECT * FROM core")
+    hash = results.each do |row|
+    end
+    if hash.empty?
+      error = {error: 'No Matches Found'}
+      JSON.pretty_generate(error)
+    else
+      JSON.pretty_generate(hash)
+    end
+end
+
+# Get core information by serial #
+get '/parts/core=:core' do
+  content_type :json
+  core = params['core']
+  statement = DB.prepare("SELECT * FROM core WHERE core_serial = ?")
+  results = statement.execute(core)
+    hash = results.each do |row|
+    end
+    if hash.empty?
+      error = {error: 'No Matches Found'}
+      JSON.pretty_generate(error)
+    else
+      JSON.pretty_generate(hash)
+    end
+end
+
 # Gets all launches in a date range
 get '/launches/from=:start/to=:final' do
   content_type :json
