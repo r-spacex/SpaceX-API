@@ -1,5 +1,6 @@
 $sites = {
-  test_locations: {
+  test_locations: [
+    RDF: {
     name: 'Rocket Development Facility',
     city: 'McGregor',
     state: 'Texas',
@@ -11,7 +12,8 @@ $sites = {
     },
     yearly_tests: 400,
     daily_tests: 2
-  },
+    }
+  ],
   launch_locations: [
     CCAFS: {
       name: 'Cape Canaveral Air Force Station',
