@@ -61,7 +61,7 @@ end
 # Returns all launches
 get '/launches' do
   content_type :json
-  results = DB.query("SELECT * FROM launch")
+  results = DB.query("SELECT * FROM launch", :cast_booleans => true)
     hash = results.each do |row|
     end
   JSON.pretty_generate(hash)
@@ -71,7 +71,7 @@ end
 get '/launches/upcoming' do
   content_type :json
   year = "upcoming"
-  statement = DB.prepare("SELECT * FROM launch WHERE launch_year = ?")
+  statement = DB.prepare("SELECT * FROM launch WHERE launch_year = ?", :cast_booleans => true)
   results = statement.execute(year)
     hash = results.each do |row|
     end
@@ -87,7 +87,7 @@ end
 get '/launches/year=:year' do
   content_type :json
   year = params['year']
-  statement = DB.prepare("SELECT * FROM launch WHERE launch_year = ?")
+  statement = DB.prepare("SELECT * FROM launch WHERE launch_year = ?", :cast_booleans => true)
   results = statement.execute(year)
     hash = results.each do |row|
     end
@@ -103,7 +103,7 @@ end
 get '/launches/core=:core' do
   content_type :json
   core = params['core']
-  statement = DB.prepare("SELECT * FROM launch WHERE core_serial = ?")
+  statement = DB.prepare("SELECT * FROM launch WHERE core_serial = ?", :cast_booleans => true)
   results = statement.execute(core)
     hash = results.each do |row|
     end
@@ -119,7 +119,7 @@ end
 get '/parts/cap=:cap' do
   content_type :json
   cap = params['cap']
-  statement = DB.prepare("SELECT * FROM capsule WHERE capsule_serial = ?")
+  statement = DB.prepare("SELECT * FROM capsule WHERE capsule_serial = ?", :cast_booleans => true)
   results = statement.execute(cap)
     hash = results.each do |row|
     end
@@ -134,7 +134,7 @@ end
 # Get all Dragon Capsule information
 get '/parts/caps' do
   content_type :json
-  results = DB.query("SELECT * FROM capsule")
+  results = DB.query("SELECT * FROM capsule", :cast_booleans => true)
     hash = results.each do |row|
     end
     if hash.empty?
@@ -149,7 +149,7 @@ end
 get '/launches/cap=:cap' do
   content_type :json
   cap = params['cap']
-  statement = DB.prepare("SELECT * FROM launch WHERE cap_serial = ?")
+  statement = DB.prepare("SELECT * FROM launch WHERE cap_serial = ?", :cast_booleans => true)
   results = statement.execute(cap)
     hash = results.each do |row|
     end
@@ -164,7 +164,7 @@ end
 # Get all Dragon core information
 get '/parts/cores' do
   content_type :json
-  results = DB.query("SELECT * FROM core")
+  results = DB.query("SELECT * FROM core", :cast_booleans => true)
     hash = results.each do |row|
     end
     if hash.empty?
@@ -179,7 +179,7 @@ end
 get '/parts/core=:core' do
   content_type :json
   core = params['core']
-  statement = DB.prepare("SELECT * FROM core WHERE core_serial = ?")
+  statement = DB.prepare("SELECT * FROM core WHERE core_serial = ?", :cast_booleans => true)
   results = statement.execute(core)
     hash = results.each do |row|
     end
@@ -196,7 +196,7 @@ get '/launches/from=:start/to=:final' do
   content_type :json
   start = params['start']
   final = params['final']
-  statement = DB.prepare("SELECT * FROM launch WHERE launch_date BETWEEN ? AND ?;")
+  statement = DB.prepare("SELECT * FROM launch WHERE launch_date BETWEEN ? AND ?;", :cast_booleans => true)
   results = statement.execute(start, final)
     hash = results.each do |row|
     end
