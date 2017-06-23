@@ -8,7 +8,7 @@ $falcon9 = {
   country: 'United States',
   company: 'SpaceX',
   height: {
-    meters: '70',
+    meters: 70,
     feet: '229.6'
   },
   diameter: {
@@ -79,7 +79,7 @@ $falcon9 = {
     version: '1D+',
     layout: 'octaweb',
     engine_loss: '2',
-    propellent_1: 'oxygen',
+    propellant_1: 'oxygen',
     propellant_2: 'kerosene',
     thrust_sea_level: {
       kN: '845',

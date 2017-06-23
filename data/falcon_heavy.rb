@@ -83,7 +83,7 @@ $falcon_heavy = {
     version: '1D+',
     layout: 'octaweb',
     engine_loss: '6',
-    propellent_1: 'oxygen',
+    propellant_1: 'oxygen',
     propellant_2: 'kerosene',
     thrust_sea_level: {
       kN: '845',
