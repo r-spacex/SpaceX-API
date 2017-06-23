@@ -57,7 +57,7 @@ $falcon_heavy = {
   },
   second_stage: {
     engines: '1',
-    burn_sec_sec: '397',
+    burn_time_sec: '397',
     thrust: {
       kN: '934',
       lbf: '210000'
@@ -82,7 +82,7 @@ $falcon_heavy = {
     type: 'merlin',
     version: '1D+',
     layout: 'octaweb',
-    engine_loss: '6',
+    engine_loss_max: '6',
     propellant_1: 'oxygen',
     propellant_2: 'kerosene',
     thrust_sea_level: {
