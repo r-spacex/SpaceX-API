@@ -116,7 +116,7 @@ get '/parts/cap=:cap' do
 end
 
 # Get all Dragon Capsule information
-get '/parts/cap' do
+get '/parts/caps' do
   content_type :json
   results = DB.query("SELECT * FROM capsule")
     hash = results.each do |row|
