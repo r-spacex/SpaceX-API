@@ -80,6 +80,7 @@ Get detailed core information by serial #
 GET https://api.spacexdata.com/parts/core=B1021
 ```
 
+
 Example JSON Response for a launch
 ```json
 {
