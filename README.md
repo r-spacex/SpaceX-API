@@ -74,29 +74,32 @@ GET https://api.spacexdata.com/launches/from=2011-01-20/to=2017-05-25
 Example JSON Response for a launch
 ```json
 {
-    "flight_number": 28,
-    "launch_year": 2016,
-    "launch_date": "2016-04-08",
-    "time_utc": "20:43",
-    "rocket": "Falcon 9",
-    "rocket_type": "FT",
-    "launch_site": "CCAFS LC-40",
-    "payload_1": "SpaceX CRS-8",
-    "payload_2": "",
-    "payload_type": "Dragon 1.1",
-    "payload_mass_kg": "3136",
-    "payload_mass_lbs": "6914",
-    "orbit": "LEO",
-    "customer_1": "NASA (CRS)",
-    "customer_2": "",
-    "launch_success": "Success",
-    "reused": "FALSE",
-    "land_success": "Success",
-    "landing_type": "ASDS",
-    "article_link": "https://en.wikipedia.org/wiki/SpaceX_CRS-8",
-    "video_link": "https://www.youtube.com/watch?v=7pUAydjne5M",
-    "Details": "Dragon carried over 1500 kg of supplies and delivered (stowed in its trunk) the inflatable Bigelow Expandable Activity Module (BEAM) to the ISS for two years of in-orbit tests. The rocket's first stage landed smoothly on SpaceX's autonomous spaceport drone ship 9 minutes after liftoff, making this the first ever successful landing of a rocket booster on a ship at sea as part of an orbital launch. The first stage B1021 was later also the first orbital booster to be used again, when launching SES-10 on March 30, 2017."
-  }
+  "flight_number": 38,
+  "launch_year": 2017,
+  "launch_date": "2017-03-30",
+  "time_utc": "22:27",
+  "time_local": "",
+  "rocket": "Falcon 9",
+  "rocket_type": "FT",
+  "core_serial": "B1021",
+  "cap_serial": "",
+  "launch_site": "KSC LC39A",
+  "payload_1": "SES-10",
+  "payload_2": "",
+  "payload_type": "Satelite",
+  "payload_mass_kg": "5300",
+  "payload_mass_lbs": "11700",
+  "orbit": "GTO",
+  "customer_1": "SES",
+  "customer_2": "",
+  "launch_success": "Success",
+  "reused": "FALSE",
+  "land_success": "Success",
+  "landing_type": "ASDS",
+  "article_link": "https://en.wikipedia.org/wiki/SES-10",
+  "video_link": "https://www.youtube.com/watch?v=xsZSXav4wI8",
+  "details": "First payload to fly on a reused first stage, B1021, previously launched with CRS-8, which also landed a second time. In what is also a first, the payload fairing remained intact after a successful splashdown achieved with thrusters and a steerable parachute."
+}
 ```  
 <br></br>
 
