@@ -67,6 +67,22 @@ get '/launches' do
   JSON.pretty_generate(hash)
 end
 
+# Gets upcoming launches
+get '/launches/upcoming' do
+  content_type :json
+  year = "upcoming"
+  statement = DB.prepare("SELECT * FROM launch WHERE launch_year = ?")
+  results = statement.execute(year)
+    hash = results.each do |row|
+    end
+    if hash.empty?
+      error = {error: 'No Matches Found'}
+      JSON.pretty_generate(error)
+    else
+      JSON.pretty_generate(hash)
+    end
+end
+
 # Gets launches sorted by year
 get '/launches/year=:year' do
   content_type :json
