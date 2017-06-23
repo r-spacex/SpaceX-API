@@ -87,7 +87,7 @@ end
 get '/launches/year=:year' do
   content_type :json
   year = params['year']
-  statement = DB.prepare("SELECT * FROM launch WHERE launch_year = ?", :cast_booleans => true)
+  statement = DB.prepare("SELECT * FROM launch WHERE launch_year = ?")
   results = statement.execute(year)
     hash = results.each do |row|
     end
@@ -103,7 +103,7 @@ end
 get '/launches/core=:core' do
   content_type :json
   core = params['core']
-  statement = DB.prepare("SELECT * FROM launch WHERE core_serial = ?", :cast_booleans => true)
+  statement = DB.prepare("SELECT * FROM launch WHERE core_serial = ?")
   results = statement.execute(core)
     hash = results.each do |row|
     end
@@ -119,7 +119,7 @@ end
 get '/parts/cap=:cap' do
   content_type :json
   cap = params['cap']
-  statement = DB.prepare("SELECT * FROM capsule WHERE capsule_serial = ?", :cast_booleans => true)
+  statement = DB.prepare("SELECT * FROM capsule WHERE capsule_serial = ?")
   results = statement.execute(cap)
     hash = results.each do |row|
     end
@@ -149,7 +149,7 @@ end
 get '/launches/cap=:cap' do
   content_type :json
   cap = params['cap']
-  statement = DB.prepare("SELECT * FROM launch WHERE cap_serial = ?", :cast_booleans => true)
+  statement = DB.prepare("SELECT * FROM launch WHERE cap_serial = ?")
   results = statement.execute(cap)
     hash = results.each do |row|
     end
@@ -179,7 +179,7 @@ end
 get '/parts/core=:core' do
   content_type :json
   core = params['core']
-  statement = DB.prepare("SELECT * FROM core WHERE core_serial = ?", :cast_booleans => true)
+  statement = DB.prepare("SELECT * FROM core WHERE core_serial = ?")
   results = statement.execute(core)
     hash = results.each do |row|
     end
@@ -196,7 +196,7 @@ get '/launches/from=:start/to=:final' do
   content_type :json
   start = params['start']
   final = params['final']
-  statement = DB.prepare("SELECT * FROM launch WHERE launch_date BETWEEN ? AND ?;", :cast_booleans => true)
+  statement = DB.prepare("SELECT * FROM launch WHERE launch_date BETWEEN ? AND ?;",)
   results = statement.execute(start, final)
     hash = results.each do |row|
     end
