@@ -12,7 +12,7 @@ $sites = {
     yearly_tests: 400,
     daily_tests: 2
   },
-  launch_locations: {
+  launch_locations: [
     CCAFS: {
       name: 'Cape Canaveral Air Force Station',
       active: false,
@@ -44,5 +44,5 @@ $sites = {
       state: 'Texas',
       orbits_avaliable: '["LEO", "GTO", "ISS"]'
     }
-  }
+  ]
  }
