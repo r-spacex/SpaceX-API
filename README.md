@@ -37,9 +37,13 @@ Get launch site information
 GET https://api.spacexdata.com/sites
 ```
 ## Launch information by dates
-Get all past launches
+Get all launches
 ```http
 GET https://api.spacexdata.com/launches
+```
+Get all future launches
+```http
+GET https://api.spacexdata.com/launches/upcoming
 ```
 Get past launches by year
 ```http
@@ -84,32 +88,33 @@ GET https://api.spacexdata.com/parts/core=B1021
 
 ```json
 {
-  "flight_number": 38,
-  "launch_year": 2017,
-  "launch_date": "2017-03-30",
-  "time_utc": "22:27",
-  "time_local": "",
+  "flight_number": 42,
+  "launch_year": "2017",
+  "launch_date": "2017-06-23",
+  "time_utc": "19:10",
+  "time_local": "03:10 pm EDT",
   "rocket": "Falcon 9",
   "rocket_type": "FT",
-  "core_serial": "B1021",
+  "core_serial": "B1029",
   "cap_serial": "",
   "launch_site": "KSC LC39A",
-  "payload_1": "SES-10",
+  "payload_1": "BulgariaSat-1",
   "payload_2": "",
   "payload_type": "Satelite",
-  "payload_mass_kg": "5300",
-  "payload_mass_lbs": "11700",
+  "payload_mass_kg": 3669,
+  "payload_mass_lbs": 8089,
   "orbit": "GTO",
-  "customer_1": "SES",
+  "customer_1": "Bulgaria Sat",
   "customer_2": "",
   "launch_success": "Success",
-  "reused": "FALSE",
+  "reused": "TRUE",
   "land_success": "Success",
   "landing_type": "ASDS",
-  "article_link": "https://en.wikipedia.org/wiki/SES-10",
-  "video_link": "https://www.youtube.com/watch?v=xsZSXav4wI8",
-  "details": "First payload to fly on a reused first stage, B1021, previously launched with CRS-8, which also landed a second time. In what is also a first, the payload fairing remained intact after a successful splashdown achieved with thrusters and a steerable parachute."
-}
+  "mission_patch": "http://i.imgur.com/VAvulaO.png",
+  "article_link": "https://en.wikipedia.org/wiki/BulgariaSat-1",
+  "video_link": "https://www.youtube.com/watch?v=Y8mLi-rRTh8",
+  "details": "Second time a booster will be reused: Second flight of B1029 after the Iridium mission of January 2017. The satellite will be the first commercial Bulgarian-owned communications satellite and it will provide television broadcasts and other communications services over southeast Europe."
+},
 ```  
 <br></br>
 
