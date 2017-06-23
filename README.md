@@ -13,9 +13,9 @@
 
 ### JSON API for data regarding company info, vehicles, launch sites, and launch data.
 <br></br>
+# Usage / Endpoints
 </div>
 
-# Usage / Endpoints
 
 ## Basic Info
 Get API info
