@@ -15,7 +15,7 @@ $dragon = {
     }
   },
   heat_shield: {
-    material: PICA-X,
+    material: 'PICA-X',
     size_meters: 3.6,
     temp_degrees: 3000,
     dev_partner: NASA
