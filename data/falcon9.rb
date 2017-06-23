@@ -37,7 +37,7 @@ $falcon9 = {
     }
   },
   first_stage: {
-    reusable: 'true',
+    reusable: true,
     engines: 9,
     fuel_amount_tons: 385,
     burn_time_sec: 180,
