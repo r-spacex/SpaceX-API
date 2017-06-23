@@ -80,7 +80,8 @@ Get detailed core information by serial #
 GET https://api.spacexdata.com/parts/core=B1021
 ```
 <br></br>
-Example JSON Response for a launch
+## JSON response example
+
 ```json
 {
   "flight_number": 38,
