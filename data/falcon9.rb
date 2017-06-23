@@ -79,8 +79,8 @@ $falcon9 = {
     version: '1D+',
     layout: 'octaweb',
     engine_loss_max: 2,
-    propellant_1: 'oxygen',
-    propellant_2: 'kerosene',
+    propellant_1: 'liquid oxygen',
+    propellant_2: 'RP-1 kerosene',
     thrust_sea_level: {
       kN: 845,
       lbf: 190000
