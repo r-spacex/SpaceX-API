@@ -25,7 +25,7 @@ before do
   redirect request.url.sub('http', 'https') unless request.secure?
 end
 
-# Uses subdomain api.exaample.com to route traffic
+# Uses subdomain api.example.com to route traffic
 subdomain :api do
 
 get '/' do
@@ -71,8 +71,8 @@ end
 get '/launches/upcoming' do
   content_type :json
   year = "upcoming"
-  statement = DB.prepare("SELECT * FROM launch WHERE launch_year = ?")
-  results = statement.execute(year)
+  statement = DB.prepare("SELECT * FROM launch WHERE launch_year = ?", :cast_booleans => true)
+  results = statement.execute(year, :cast_booleans => true)
     hash = results.each do |row|
     end
     if hash.empty?
