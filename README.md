@@ -79,7 +79,7 @@ Get detailed core information by serial #
 ```http
 GET https://api.spacexdata.com/parts/core=B1021
 ```
-<br></br>
+
 ## JSON response example
 
 ```json
