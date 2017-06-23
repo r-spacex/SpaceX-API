@@ -74,22 +74,38 @@ $falcon9 = {
     }
   },
   engines: {
-    number: 9,
-    type: 'merlin',
-    version: '1D+',
-    layout: 'octaweb',
-    engine_loss_max: 2,
-    propellant_1: 'liquid oxygen',
-    propellant_2: 'RP-1 kerosene',
-    thrust_sea_level: {
-      kN: 845,
-      lbf: 190000
+    first_stage: {
+      number: 9,
+      type: 'merlin',
+      version: '1D+',
+      layout: 'octaweb',
+      engine_loss_max: 2,
+      propellant_1: 'supercooled LOX',
+      propellant_2: 'RP-1 kerosene',
+      thrust_sea_level: {
+        kN: 845,
+        lbf: 190000
+      },
+      thrust_vacuum: {
+        kN: 914,
+        lbf: 205500
+      },
+      thrust_to_weight: 180.1
     },
-    thrust_vacuum: {
-      kN: 914,
-      lbf: 205500
-    },
-    thrust_to_weight: 180.1
+    second_stage: {
+      number: 1,
+      type: 'merlin',
+      version: '1D Vaccum',
+      layout: 'Gimballed',
+      engine_loss_max: 0,
+      propellant_1: 'supercooled LOX',
+      propellant_2: 'RP-1 kerosene',
+      thrust_vacuum: {
+        kN: 934,
+        lbf: 210,000
+      },
+      min_throttle: 39%
+    }
   },
   landing_legs: {
     number: 4,
