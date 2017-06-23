@@ -48,19 +48,19 @@ GET https://api.spacexdata.com/launches/cap=C106
 ```
 Get detailed capsule information by serial #
 ```http
-https://api.spacexdata.com/parts/cap=C106
+GET https://api.spacexdata.com/parts/cap=C106
 ```
 Get detailed info on all capsules
 ```http
-https://api.spacexdata.com/parts/caps
+GET https://api.spacexdata.com/parts/caps
 ```
 Get detailed core information by serial #
 ```http
-https://api.spacexdata.com/parts/core=B1021
+GET https://api.spacexdata.com/parts/core=B1021
 ```
 Get detailed info on all cores
 ```http
-https://api.spacexdata.com/parts/cores
+GET https://api.spacexdata.com/parts/cores
 ```
 Get past launches by year
 ```http
