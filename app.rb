@@ -21,9 +21,9 @@ disable :protection
 
 # No longer necessary
 # Forces the use of HTTPS for the API
-before do
-  redirect request.url.sub('http', 'https') unless request.secure?
-end
+#before do
+#  redirect request.url.sub('http', 'https') unless request.secure?
+#end
 
 # Uses subdomain api.example.com to route traffic
 subdomain :api do
