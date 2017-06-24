@@ -90,7 +90,7 @@ get '/launches/year=:year' do
   content_type :json
   year = params['year']
   statement = DB.prepare("SELECT * FROM launch WHERE launch_year = ?")
-  results = statement.execute(year)
+  results = statement.execute(year, :cast_booleans => true)
     hash = results.each do |row|
     end
     if hash.empty?
@@ -106,7 +106,7 @@ get '/launches/core=:core' do
   content_type :json
   core = params['core']
   statement = DB.prepare("SELECT * FROM launch WHERE core_serial = ?")
-  results = statement.execute(core)
+  results = statement.execute(core, :cast_booleans => true)
     hash = results.each do |row|
     end
     if hash.empty?
@@ -122,7 +122,7 @@ get '/parts/cap=:cap' do
   content_type :json
   cap = params['cap']
   statement = DB.prepare("SELECT * FROM capsule WHERE capsule_serial = ?")
-  results = statement.execute(cap)
+  results = statement.execute(cap, :cast_booleans => true)
     hash = results.each do |row|
     end
     if hash.empty?
@@ -152,7 +152,7 @@ get '/launches/cap=:cap' do
   content_type :json
   cap = params['cap']
   statement = DB.prepare("SELECT * FROM launch WHERE cap_serial = ?")
-  results = statement.execute(cap)
+  results = statement.execute(cap, :cast_booleans => true)
     hash = results.each do |row|
     end
     if hash.empty?
@@ -182,7 +182,7 @@ get '/parts/core=:core' do
   content_type :json
   core = params['core']
   statement = DB.prepare("SELECT * FROM core WHERE core_serial = ?")
-  results = statement.execute(core)
+  results = statement.execute(core, :cast_booleans => true)
     hash = results.each do |row|
     end
     if hash.empty?
@@ -199,7 +199,7 @@ get '/launches/from=:start/to=:final' do
   start = params['start']
   final = params['final']
   statement = DB.prepare("SELECT * FROM launch WHERE launch_date BETWEEN ? AND ?;",)
-  results = statement.execute(start, final)
+  results = statement.execute(start, final, :cast_booleans => true)
     hash = results.each do |row|
     end
     if hash.empty?
