@@ -74,7 +74,7 @@ get '/launches/upcoming' do
   content_type :json
   year = "upcoming"
   statement = DB.prepare("SELECT * FROM launch WHERE launch_year = ?")
-  results = statement.execute(year)
+  results = statement.execute(year, :cast_booleans => true)
     hash = results.each do |row|
     end
     if hash.empty?
