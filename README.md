@@ -130,3 +130,5 @@ GET https://api.spacexdata.com/parts/core=B1021
 * Launch data is implemented in MariaDB
 * Static data is stored as JSON
 * API is deployed on [Heroku](https://www.heroku.com/)
+* This repo deploys to a staging server first, so the production server might
+be a few commits behind, to preserve stability.
