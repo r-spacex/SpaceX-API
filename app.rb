@@ -1,4 +1,6 @@
-# SpaceX API for searching company info
+# SpaceX API for searching company info,
+# vehicle info, launch sites, and
+# launch data.
 
 require 'sinatra'
 require 'sinatra/subdomain'
