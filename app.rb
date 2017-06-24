@@ -90,7 +90,7 @@ get '/launches/year=:year' do
   content_type :json
   year = params['year']
   statement = DB.prepare("SELECT * FROM launch WHERE launch_year = ?")
-  results = statement.execute(year)
+  results = statement.execute(year, :cast_booleans => true)
     hash = results.each do |row|
     end
     if hash.empty?
