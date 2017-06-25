@@ -127,8 +127,8 @@ GET https://api.spacexdata.com/parts/core=B1021
 
 ## Technical Details
 * API is using [Sinatra](http://www.sinatrarb.com/) as a framework in Ruby
-* Launch, Capsule, and Core data implemented in MariaDB
+* Launch, Capsule, and Core data implemented in [MariaDB](https://mariadb.org/)
 * Vehicle, Launchpad, and Company data is stored directly in JSON
 * API is deployed on [Heroku](https://www.heroku.com/)
 * This repo deploys to a staging server first, so the production server might
-be a few commits behind, this allows testing, and preserves stability
+be a few commits behind, this allows for testing, and preserves stability
