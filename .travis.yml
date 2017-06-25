@@ -1,4 +1,11 @@
 language: ruby
 
-sudo: false
- dist: trusty
+rvm:
+  - 2.2
+
+sudo: true
+dist: trusty
+
+before_install:
+  - gem update --system
+  - gem --version
