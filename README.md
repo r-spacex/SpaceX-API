@@ -32,9 +32,9 @@ GET https://api.spacexdata.com/vehicles/falcon9
 GET https://api.spacexdata.com/vehicles/falconheavy
 GET https://api.spacexdata.com/vehicles/dragon
 ```
-Get launch site information
+Get launchpad information
 ```http
-GET https://api.spacexdata.com/sites
+GET https://api.spacexdata.com/launchpads
 ```
 ## Launch information by dates
 Get all launches
