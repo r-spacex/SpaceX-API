@@ -11,7 +11,7 @@ require './data/company_info.rb'
 require './data/falcon9.rb'
 require './data/home_info.rb'
 require './data/falcon_heavy.rb'
-require './data/sites.rb'
+require './data/launchpads.rb'
 require './data/dragon.rb'
 
 # DB connection to MariaDB
@@ -55,9 +55,9 @@ get '/vehicles/dragon' do
   JSON.pretty_generate($dragon)
 end
 
-get '/sites' do
+get '/launchpads' do
   content_type :json
-  JSON.pretty_generate($sites)
+  JSON.pretty_generate($launchpads)
 end
 
 # Returns all launches
