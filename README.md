@@ -119,7 +119,7 @@ GET https://api.spacexdata.com/parts/core=B1021
 <br></br>
 
 
-## FAQ's / Contact
+## FAQ's
 * If you have any questions or corrections, please open an issue and we'll get it merged ASAP
 * All data and photos are property of Space Exploration Technologies Corporation (SpaceX)
 * I am not affiliated with SpaceX in any way, shape, form, or fashion. Just a fun side project for me
