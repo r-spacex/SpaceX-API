@@ -1,1 +1,4 @@
 language: ruby
+
+sudo: false
+ dist: trusty
