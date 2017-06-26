@@ -40,6 +40,11 @@ get '/info' do
   JSON.pretty_generate($company_info)
 end
 
+get '/vehicles' do
+  content_type :json
+  JSON.pretty_generate($falcon9, $falcon_heavy, $dragon)
+end
+
 get '/vehicles/falcon9' do
   content_type :json
   JSON.pretty_generate($falcon9)
