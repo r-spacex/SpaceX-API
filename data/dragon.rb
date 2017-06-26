@@ -1,4 +1,5 @@
 $dragon = {
+dragon: {
   name: 'Dragon 1',
   active: true,
   sidewall_angle_deg: 15,
@@ -72,3 +73,4 @@ $dragon = {
     feet: 12
   }
  }
+}
