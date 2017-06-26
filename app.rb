@@ -17,7 +17,12 @@ require './data/dragon.rb'
 
 
 # DB connection to MariaDB
-DB = Mysql2::Client.new(:host => ENV["MARIA_HOST"], :username => ENV["MARIA_USER"], :password => ENV["MARIA_PASS"], :database => ENV["MARIA_DB"], :reconnect => true)
+DB = Mysql2::Client.new(
+  :host => ENV["MARIA_HOST"],
+  :username => ENV["MARIA_USER"],
+  :password => ENV["MARIA_PASS"],
+  :database => ENV["MARIA_DB"],
+  :reconnect => true)
 
 
 # Disables rack protection because of false positives
