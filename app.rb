@@ -81,7 +81,7 @@ end
 # Returns all launches
 get '/launches' do
   content_type :json
-  results = DB.query("SELECT * FROM launch", :cast_booleans => true)
+  results = DB.query("SELECT * FROM launch WHERE * IS NOT NULL", :cast_booleans => true)
     hash = results.each do |row|
     end
   JSON.pretty_generate(hash)
