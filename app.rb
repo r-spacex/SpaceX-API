@@ -8,6 +8,7 @@ require 'sinatra/subdomain'
 require 'json'
 require 'date'
 require 'mysql2'
+require 'active_support/core_ext/object/blank'
 require './data/company_info.rb'
 require './data/falcon9.rb'
 require './data/home_info.rb'
@@ -89,7 +90,7 @@ get '/launches' do
   results = DB.query("SELECT * FROM launch", :cast_booleans => true)
     hash = results.each do |row|
     end
-  JSON.pretty_generate(hash.compact)
+  JSON.pretty_generate(hash)
 end
 
 # Gets upcoming launches
