@@ -31,19 +31,16 @@ disable :protection
 #  redirect request.url.sub('http', 'https') unless request.secure?
 #end
 
+
 # Method for merging hashes of static data
 def hash_merge *hashes
   hashes.inject :merge
 end
 
+
 # Uses subdomain api.example.com to route traffic
 subdomain :api do
 
-# 404 Error!
-not_found do
-  status 404
-  erb :error
-end
 
 get '/' do
   content_type :json
