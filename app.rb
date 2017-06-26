@@ -123,7 +123,7 @@ get '/launches/year=:year' do
 end
 
 # Get all launches with a serial number
-get '/launches/core=:core' do
+get '/launches/cores/:core' do
   content_type :json
   core = params['core']
   statement = DB.prepare("SELECT * FROM launch WHERE core_serial = ?")
@@ -139,7 +139,7 @@ get '/launches/core=:core' do
 end
 
 # Get info on a specific Dragon capsule
-get '/parts/cap=:cap' do
+get '/parts/caps/:cap' do
   content_type :json
   cap = params['cap']
   statement = DB.prepare("SELECT * FROM capsule WHERE capsule_serial = ?")
@@ -169,7 +169,7 @@ get '/parts/caps' do
 end
 
 # Get all launches with capsule serial #
-get '/launches/cap=:cap' do
+get '/launches/caps/:cap' do
   content_type :json
   cap = params['cap']
   statement = DB.prepare("SELECT * FROM launch WHERE cap_serial = ?")
@@ -199,7 +199,7 @@ get '/parts/cores' do
 end
 
 # Get core information by serial #
-get '/parts/core=:core' do
+get '/parts/cores/:core' do
   content_type :json
   core = params['core']
   statement = DB.prepare("SELECT * FROM core WHERE core_serial = ?")
