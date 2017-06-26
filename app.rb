@@ -8,7 +8,6 @@ require 'sinatra/subdomain'
 require 'json'
 require 'date'
 require 'mysql2'
-require 'active_support/core_ext/object/blank'
 require './data/company_info.rb'
 require './data/falcon9.rb'
 require './data/home_info.rb'
@@ -96,9 +95,7 @@ end
 # Gets upcoming launches
 get '/launches/upcoming' do
   content_type :json
-  year = "upcoming"
-  statement = DB.prepare("SELECT * FROM launch WHERE launch_year = ?")
-  results = statement.execute(year)
+  results = DB.query("SELECT * FROM launch WHERE launch_year = 'upcoming'", :cast_booleans => true)
     hash = results.each do |row|
     end
     if hash.empty?
