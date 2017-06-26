@@ -51,7 +51,7 @@ end
 
 get '/vehicles' do
   content_type :json
-  merge = [$falcon9, $falcon_heavy, $dragon]
+  merge = hash_merge($falcon9, $falcon_heavy, $dragon)
   JSON.pretty_generate(merge)
 end
 
