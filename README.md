@@ -60,11 +60,11 @@ GET https://api.spacexdata.com/launches/from=2011-01-20/to=2017-05-25
 ## Launch info by serial #'s
 Get launches by core serial #
 ```http
-GET https://api.spacexdata.com/launches/core=B1021
+GET https://api.spacexdata.com/launches/cores/B1021
 ```
 Get launches by capsule serial #
 ```http
-GET https://api.spacexdata.com/launches/cap=C106
+GET https://api.spacexdata.com/launches/caps/C106
 ```
 
 ## Detailed info about each capsule
@@ -74,7 +74,7 @@ GET https://api.spacexdata.com/parts/caps
 ```
 Get detailed capsule information by serial #
 ```http
-GET https://api.spacexdata.com/parts/cap=C106
+GET https://api.spacexdata.com/parts/caps/C106
 ```
 
 ## Detailed info about each core
@@ -84,7 +84,7 @@ GET https://api.spacexdata.com/parts/cores
 ```
 Get detailed core information by serial #
 ```http
-GET https://api.spacexdata.com/parts/core=B1021
+GET https://api.spacexdata.com/parts/cores/B1021
 ```
 
 ## JSON launch response example
