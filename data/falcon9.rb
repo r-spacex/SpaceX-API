@@ -1,4 +1,5 @@
 $falcon9 = {
+falcon9: {
   name: 'Falcon 9',
   active: true,
   stages: 2,
@@ -97,3 +98,4 @@ $falcon9 = {
   },
   description: 'Falcon 9 is a two-stage rocket designed and manufactured by SpaceX for the reliable and safe transport of satellites and the Dragon spacecraft into orbit.'
  }
+}
