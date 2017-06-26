@@ -89,7 +89,7 @@ get '/launches' do
   results = DB.query("SELECT * FROM launch", :cast_booleans => true)
     hash = results.each do |row|
     end
-  JSON.pretty_generate(hash)
+  JSON.pretty_generate(hash.compact)
 end
 
 # Gets upcoming launches
