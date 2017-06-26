@@ -2,6 +2,7 @@
 # vehicle info, launch sites, and
 # launch data.
 
+
 require 'sinatra'
 require 'sinatra/subdomain'
 require 'json'
@@ -14,18 +15,26 @@ require './data/falcon_heavy.rb'
 require './data/launchpads.rb'
 require './data/dragon.rb'
 
+
 # DB connection to MariaDB
 DB = Mysql2::Client.new(:host => ENV["MARIA_HOST"], :username => ENV["MARIA_USER"], :password => ENV["MARIA_PASS"], :database => ENV["MARIA_DB"], :reconnect => true)
+
 
 # Disables rack protection because of false positives
 # that were blocking connections to home page
 disable :protection
+
 
 # No longer necessary
 # Forces the use of HTTPS for the API
 #before do
 #  redirect request.url.sub('http', 'https') unless request.secure?
 #end
+
+# Method for merging hashes of static data
+def hash_merge *hashes
+  hashes.inject :merge
+end
 
 # Uses subdomain api.example.com to route traffic
 subdomain :api do
@@ -42,7 +51,8 @@ end
 
 get '/vehicles' do
   content_type :json
-  JSON.pretty_generate($falcon9, $falcon_heavy, $dragon)
+  merge = hash_merge($falcon9, $falcon_heavy, $dragon)
+  JSON.pretty_generate(merge)
 end
 
 get '/vehicles/falcon9' do
