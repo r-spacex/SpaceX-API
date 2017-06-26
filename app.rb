@@ -39,6 +39,12 @@ end
 # Uses subdomain api.example.com to route traffic
 subdomain :api do
 
+# 404 Error!
+not_found do
+  status 404
+  erb :oops
+end
+
 get '/' do
   content_type :json
   JSON.pretty_generate($home_info)
