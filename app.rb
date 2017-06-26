@@ -42,7 +42,7 @@ subdomain :api do
 # 404 Error!
 not_found do
   status 404
-  erb :oops
+  erb :error
 end
 
 get '/' do
