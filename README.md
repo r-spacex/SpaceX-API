@@ -28,7 +28,7 @@ GET https://api.spacexdata.com/info
 ```
 Get vehicle information
 ```http
-https://api.spacexdata.com/vehicles
+GET https://api.spacexdata.com/vehicles
 ```
 ```http
 GET https://api.spacexdata.com/vehicles/falcon9
