@@ -1,5 +1,5 @@
 $dragon = {
-dragon: {
+    id: 'dragon',
   name: 'Dragon 1',
   active: true,
   sidewall_angle_deg: 15,
@@ -72,5 +72,4 @@ dragon: {
     meters: 3.7,
     feet: 12
   }
- }
 }
