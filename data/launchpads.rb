@@ -18,7 +18,7 @@ $launchpads = {
   launchpads: [
       {
         id: 'kwajalein_atoll',
-        full_name: 'unknown',
+        full_name: 'Kwajalein Atoll',
         status: 'retired',
         location: {
             name: 'Omelek Island',
