@@ -2,7 +2,6 @@
 # vehicle info, launch sites, and
 # launch data.
 
-
 require 'sinatra'
 require 'sinatra/subdomain'
 require 'json'
@@ -15,37 +14,32 @@ require './data/falcon_heavy.rb'
 require './data/launchpads.rb'
 require './data/dragon.rb'
 
-
 # DB connection to MariaDB
 DB = Mysql2::Client.new(
-  :host => ENV["MARIA_HOST"],
-  :username => ENV["MARIA_USER"],
-  :password => ENV["MARIA_PASS"],
-  :database => ENV["MARIA_DB"],
-  :reconnect => true)
-
+  :host => ENV['MARIA_HOST'],
+  :username => ENV['MARIA_USER'],
+  :password => ENV['MARIA_PASS'],
+  :database => ENV['MARIA_DB'],
+  :reconnect => true
+  )
 
 # Disables rack protection because of false positives
 # that were blocking connections to home page
 disable :protection
 
-
 # No longer necessary
 # Forces the use of HTTPS for the API
-#before do
+# before do
 #  redirect request.url.sub('http', 'https') unless request.secure?
-#end
-
+# end
 
 # Method for merging hashes of static data
-def hash_merge *hashes
+def hash_merge(*hashes)
   hashes.inject :merge
 end
 
-
 # Uses subdomain api.example.com to route traffic
 subdomain :api do
-
 
 get '/' do
   content_type :json
@@ -59,8 +53,7 @@ end
 
 get '/vehicles' do
   content_type :json
-  merge = hash_merge($falcon9, $falcon_heavy, $dragon)
-  JSON.pretty_generate(merge)
+  JSON.pretty_generate([$falcon9, $falcon_heavy, $dragon])
 end
 
 get '/vehicles/falcon9' do
@@ -86,7 +79,7 @@ end
 # Returns all launches
 get '/launches' do
   content_type :json
-  results = DB.query("SELECT * FROM launch", :cast_booleans => true)
+  results = DB.query('SELECT * FROM launch', :cast_booleans => true)
     hash = results.each do |row|
     end
   JSON.pretty_generate(hash)
@@ -99,7 +92,7 @@ get '/launches/upcoming' do
     hash = results.each do |row|
     end
     if hash.empty?
-      error = {error: 'No Matches Found'}
+      error = { error: 'No Matches Found' }
       JSON.pretty_generate(error)
     else
       JSON.pretty_generate(hash)
@@ -110,12 +103,12 @@ end
 get '/launches/year=:year' do
   content_type :json
   year = params['year']
-  statement = DB.prepare("SELECT * FROM launch WHERE launch_year = ?")
+  statement = DB.prepare('SELECT * FROM launch WHERE launch_year = ?')
   results = statement.execute(year)
     hash = results.each do |row|
     end
     if hash.empty?
-      error = {error: 'No Matches Found'}
+      error = { error: 'No Matches Found' }
       JSON.pretty_generate(error)
     else
       JSON.pretty_generate(hash)
@@ -126,12 +119,12 @@ end
 get '/launches/cores/:core' do
   content_type :json
   core = params['core']
-  statement = DB.prepare("SELECT * FROM launch WHERE core_serial = ?")
+  statement = DB.prepare('SELECT * FROM launch WHERE core_serial = ?')
   results = statement.execute(core)
     hash = results.each do |row|
     end
     if hash.empty?
-      error = {error: 'No Matches Found'}
+      error = { error: 'No Matches Found' }
       JSON.pretty_generate(error)
     else
       JSON.pretty_generate(hash)
@@ -142,12 +135,12 @@ end
 get '/parts/caps/:cap' do
   content_type :json
   cap = params['cap']
-  statement = DB.prepare("SELECT * FROM capsule WHERE capsule_serial = ?")
+  statement = DB.prepare('SELECT * FROM capsule WHERE capsule_serial = ?')
   results = statement.execute(cap)
     hash = results.each do |row|
     end
     if hash.empty?
-      error = {error: 'No Matches Found'}
+      error = { error: 'No Matches Found' }
       JSON.pretty_generate(error)
     else
       JSON.pretty_generate(hash)
@@ -157,11 +150,11 @@ end
 # Get all Dragon Capsule information
 get '/parts/caps' do
   content_type :json
-  results = DB.query("SELECT * FROM capsule", :cast_booleans => true)
+  results = DB.query('SELECT * FROM capsule', :cast_booleans => true)
     hash = results.each do |row|
     end
     if hash.empty?
-      error = {error: 'No Matches Found'}
+      error = { error: 'No Matches Found' }
       JSON.pretty_generate(error)
     else
       JSON.pretty_generate(hash)
@@ -172,12 +165,12 @@ end
 get '/launches/caps/:cap' do
   content_type :json
   cap = params['cap']
-  statement = DB.prepare("SELECT * FROM launch WHERE cap_serial = ?")
+  statement = DB.prepare('SELECT * FROM launch WHERE cap_serial = ?')
   results = statement.execute(cap)
     hash = results.each do |row|
     end
     if hash.empty?
-      error = {error: 'No Matches Found'}
+      error = { error: 'No Matches Found' }
       JSON.pretty_generate(error)
     else
       JSON.pretty_generate(hash)
@@ -187,11 +180,11 @@ end
 # Get all Dragon core information
 get '/parts/cores' do
   content_type :json
-  results = DB.query("SELECT * FROM core", :cast_booleans => true)
+  results = DB.query('SELECT * FROM core', :cast_booleans => true)
     hash = results.each do |row|
     end
     if hash.empty?
-      error = {error: 'No Matches Found'}
+      error = { error: 'No Matches Found' }
       JSON.pretty_generate(error)
     else
       JSON.pretty_generate(hash)
@@ -202,12 +195,12 @@ end
 get '/parts/cores/:core' do
   content_type :json
   core = params['core']
-  statement = DB.prepare("SELECT * FROM core WHERE core_serial = ?")
+  statement = DB.prepare('SELECT * FROM core WHERE core_serial = ?')
   results = statement.execute(core)
     hash = results.each do |row|
     end
     if hash.empty?
-      error = {error: 'No Matches Found'}
+      error = { error: 'No Matches Found' }
       JSON.pretty_generate(error)
     else
       JSON.pretty_generate(hash)
@@ -215,16 +208,16 @@ get '/parts/cores/:core' do
 end
 
 # Gets all launches in a date range
-get '/launches/from=:start/to=:final' do
+get '/launches/from=:start&to=:final' do
   content_type :json
   start = params['start']
   final = params['final']
-  statement = DB.prepare("SELECT * FROM launch WHERE launch_date BETWEEN ? AND ?;",)
+  statement = DB.prepare('SELECT * FROM launch WHERE launch_date BETWEEN ? AND ?;',)
   results = statement.execute(start, final)
     hash = results.each do |row|
     end
     if hash.empty?
-      error = {error: 'No Matches Found'}
+      error = { error: 'No Matches Found' }
       JSON.pretty_generate(error)
     else
       JSON.pretty_generate(hash)
