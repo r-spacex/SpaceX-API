@@ -20,23 +20,27 @@ $falcon_heavy = {
     kg: 1420788,
     lb: 3125735
   },
-  payload_weights: {
-    leo: {
+  payload_weights: [
+    {
+      id: 'leo',
       name: 'low earth orbit',
       kg: 63800,
       lb: 140660
     },
-    gto: {
+    {
+      id: 'gto',
       name: 'geosynchronous transfer orbit',
       kg: 26700,
       lb: 58860
     },
-    mars: {
+    {
+      id: 'mars',
       name: 'mars orbit',
       kg: 16800,
       lb: 37040
     },
-    pluto: {
+    {
+      id: 'pluto',
       name: 'pluto orbit',
       kg: 3500,
       lb: 7720
