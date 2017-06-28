@@ -20,26 +20,26 @@ $falcon9 = {
     kg: 549054,
     lb: 1207920
   },
-  payload_weights: {
-      leo: {
+  payload_weights: [
+      {
         id: 'leo',
         name: 'low earth orbit',
         kg: 22800,
         lb: 50265
       },
-      gto: {
-        id: 'gto',
-        name: 'geosynchronous transfer orbit',
-        kg: 8300,
-        lb: 18300
+      {
+      id: 'gto',
+      name: 'geosynchronous transfer orbit',
+      kg: 8300,
+      lb: 18300
       },
-      mars: {
-        id: 'mars',
-        name: 'mars orbit',
-        kg: 4020,
-        lb: 8860
+      {
+      id: 'mars',
+      name: 'mars orbit',
+      kg: 4020,
+      lb: 8860
       }
-  },
+  ],
   first_stage: {
     reusable: true,
     engines: 9,
