@@ -5,7 +5,7 @@ $falcon9 = {
   stages: 2,
   cost_per_launch: 62000000,
   success_rate_pct: 94,
-  first_flight: '06-04-2010',
+  first_flight: '2010-06-04',
   country: 'United States',
   company: 'SpaceX',
   height: {
