@@ -5,7 +5,7 @@ $falcon9 = {
   stages: 2,
   cost_per_launch: 62000000,
   success_rate_pct: 94,
-  first_flight: '06-04-2010',
+  first_flight: '2010-06-04',
   country: 'United States',
   company: 'SpaceX',
   height: {
@@ -21,17 +21,20 @@ $falcon9 = {
     lb: 1207920
   },
   payload_weights: {
-    leo: {
+    {
+      id: 'leo',
       name: 'low earth orbit',
       kg: 22800,
       lb: 50265
     },
-    gto: {
+    {
+      id: 'gto',
       name: 'geosynchronous transfer orbit',
       kg: 8300,
       lb: 18300
     },
-    mars: {
+    {
+      id: 'mars',
       name: 'mars orbit',
       kg: 4020,
       lb: 8860
