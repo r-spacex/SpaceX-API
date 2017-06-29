@@ -45,7 +45,7 @@ $falcon_heavy = {
       kg: 3500,
       lb: 7720
     }
-  },
+  ],
   first_stage: {
     reusable: 'true',
     engines: 27,
