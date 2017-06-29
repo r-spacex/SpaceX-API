@@ -7,10 +7,10 @@ $launchpads = {
         state: 'Texas',
         size_acres: 4000,
         year_built: 2003,
-        engines_tested: {
-          engine_1: 'Merlin',
-          engine_2: 'Draco'
-        },
+        engines_tested: [
+            'Merlin",
+            'Draco'
+        ],
         yearly_tests: 400,
         daily_tests: 2
     }
