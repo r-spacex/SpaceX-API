@@ -3,10 +3,14 @@ $launchpads = {
     {
         id: 'RDF',
         name: 'Rocket Development Facility',
-        city: 'McGregor',
-        state: 'Texas',
         size_acres: 4000,
         year_built: 2003,
+        location: {
+            name: 'McGregor',
+            region: 'Texas',
+            latitude: 31.399045,
+            longitude: -97.462644
+        }
         engines_tested: [
             'Merlin',
             'Draco'
