@@ -6,7 +6,7 @@
 
 # SpaceX JSON Data API
 
-[![Travis](https://travis-ci.org/r-spacex/SpaceX-API.svg?branch=master)]()
+[![Build Status](https://travis-ci.org/r-spacex/SpaceX-API.svg?branch=master)](https://travis-ci.org/r-spacex/SpaceX-API)
 [![GitHub release](https://img.shields.io/github/release/jakewmeyer/SpaceX-API.svg)]()
 [![Language](https://img.shields.io/badge/language-Ruby-red.svg)]()
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)]()
