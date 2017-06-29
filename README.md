@@ -134,9 +134,7 @@ See [CONTRIBUTING.md](https://github.com/r-spacex/SpaceX-API/blob/master/CONTRIB
 * For any other questions or concerns, just shoot me an email
 
 ## Technical Details
-* API is using [Sinatra](http://www.sinatrarb.com/) as a framework in Ruby
-* Launch, Capsule, and Core data implemented in [MariaDB](https://mariadb.org/)
-* Vehicle, Launchpad, and Company data is stored directly in JSON
+* API is using [Sinatra](http://www.sinatrarb.com/) framework
+* Launch, Capsule, and Core data stored in [MariaDB](https://mariadb.org/)
+* Vehicle, Launchpad, and Company data is stored in Ruby hashes.
 * API is deployed on [Heroku](https://www.heroku.com/)
-* This repo deploys to a staging server first, so the production server might
-be a few commits behind, this allows for testing, and preserves stability
