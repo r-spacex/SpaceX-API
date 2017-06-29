@@ -8,7 +8,7 @@ $launchpads = {
         size_acres: 4000,
         year_built: 2003,
         engines_tested: [
-            'Merlin",
+            'Merlin',
             'Draco'
         ],
         yearly_tests: 400,
