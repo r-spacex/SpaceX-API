@@ -4,9 +4,13 @@ GEM
     json (2.1.0)
     mustermann (1.0.0)
     mysql2 (0.4.6)
+    power_assert (1.0.2)
     rack (2.0.3)
     rack-protection (2.0.0)
       rack
+    rack-test (0.6.3)
+      rack (>= 1.0)
+    rake (12.0.0)
     sinatra (2.0.0)
       mustermann (~> 1.0)
       rack (~> 2.0)
@@ -14,6 +18,8 @@ GEM
       tilt (~> 2.0)
     sinatra-subdomain (0.3.0)
       sinatra
+    test-unit (3.2.5)
+      power_assert
     tilt (2.0.7)
 
 PLATFORMS
@@ -22,8 +28,11 @@ PLATFORMS
 DEPENDENCIES
   json
   mysql2
+  rack-test
+  rake
   sinatra
   sinatra-subdomain
+  test-unit
 
 BUNDLED WITH
    1.15.1
