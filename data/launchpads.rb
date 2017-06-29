@@ -88,8 +88,8 @@ $launchpads = {
       location: {
         name: 'Vandenberg Air Force Base',
         region: 'California',
-        latitude: 34.6440904,
-        longitude: -120.5931438
+        latitude: 34.632093,
+        longitude: -120.610829
       },
       vehicles_launched: 'falcon 9',
       details: 'SpaceX primary west coast launch pad for polar orbits and sun synchronous orbits, primarily used for Iridium. Also intended to be capable of launching Falcon Heavy.'
