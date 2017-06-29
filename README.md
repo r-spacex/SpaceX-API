@@ -124,7 +124,7 @@ GET https://api.spacexdata.com/parts/cores/B1021
 
 ## Contributions
 
-See CONTRIBUTING.md for detailed steps
+See [CONTRIBUTING.md](https://github.com/r-spacex/SpaceX-API/blob/master/CONTRIBUTING.md) for detailed steps
 
 
 ## FAQ's
