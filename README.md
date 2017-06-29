@@ -122,6 +122,10 @@ GET https://api.spacexdata.com/parts/cores/B1021
 ```  
 <br></br>
 
+## Contributions
+
+See CONTRIBUTING.md for detailed steps
+
 
 ## FAQ's
 * If you have any questions or corrections, please open an issue and we'll get it merged ASAP
