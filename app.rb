@@ -43,6 +43,9 @@ end
 # Uses subdomain api.example.com to route traffic
 subdomain :api do
 
+#
+# Basic Info Endpoints
+#
 get '/' do
   content_type :json
   JSON.pretty_generate($home_info)
@@ -87,7 +90,10 @@ get '/launches' do
   JSON.pretty_generate(hash)
 end
 
-# Gets upcoming launches
+
+#
+# Upcoming launch endpoints
+#
 get '/launches/upcoming' do
   content_type :json
   results = DB.query("SELECT * FROM upcoming", :cast_booleans => true)
@@ -100,6 +106,44 @@ get '/launches/upcoming' do
       JSON.pretty_generate(hash)
     end
 end
+
+# Gets upcoming launches sorted by year
+get '/launches/upcoming/year=:year' do
+  content_type :json
+  year = params['year']
+  statement = DB.prepare('SELECT * FROM upcoming WHERE launch_year = ?')
+  results = statement.execute(year)
+    hash = results.each do |row|
+    end
+    if hash.empty?
+      error = { error: 'No Matches Found' }
+      JSON.pretty_generate(error)
+    else
+      JSON.pretty_generate(hash)
+    end
+end
+
+# Gets upcoming launches in a date range
+get '/launches/upcoming/from=:start&to=:final' do
+  content_type :json
+  start = params['start']
+  final = params['final']
+  statement = DB.prepare('SELECT * FROM upcoming WHERE launch_date BETWEEN ? AND ?;',)
+  results = statement.execute(start, final)
+    hash = results.each do |row|
+    end
+    if hash.empty?
+      error = { error: 'No Matches Found' }
+      JSON.pretty_generate(error)
+    else
+      JSON.pretty_generate(hash)
+    end
+end
+
+
+#
+# Launches by year endpoints
+#
 
 # Gets launches sorted by year
 get '/launches/year=:year' do
@@ -117,7 +161,29 @@ get '/launches/year=:year' do
     end
 end
 
-# Get all launches with a serial number
+# Gets all launches in a date range
+get '/launches/from=:start&to=:final' do
+  content_type :json
+  start = params['start']
+  final = params['final']
+  statement = DB.prepare('SELECT * FROM launch WHERE launch_date BETWEEN ? AND ?;',)
+  results = statement.execute(start, final)
+    hash = results.each do |row|
+    end
+    if hash.empty?
+      error = { error: 'No Matches Found' }
+      JSON.pretty_generate(error)
+    else
+      JSON.pretty_generate(hash)
+    end
+end
+
+
+#
+# Launches by part serial #'s'
+#
+
+# Get all launches with a core serial number
 get '/launches/cores/:core' do
   content_type :json
   core = params['core']
@@ -199,23 +265,6 @@ get '/parts/cores/:core' do
   core = params['core']
   statement = DB.prepare('SELECT * FROM core WHERE core_serial = ?')
   results = statement.execute(core)
-    hash = results.each do |row|
-    end
-    if hash.empty?
-      error = { error: 'No Matches Found' }
-      JSON.pretty_generate(error)
-    else
-      JSON.pretty_generate(hash)
-    end
-end
-
-# Gets all launches in a date range
-get '/launches/from=:start&to=:final' do
-  content_type :json
-  start = params['start']
-  final = params['final']
-  statement = DB.prepare('SELECT * FROM launch WHERE launch_date BETWEEN ? AND ?;',)
-  results = statement.execute(start, final)
     hash = results.each do |row|
     end
     if hash.empty?
