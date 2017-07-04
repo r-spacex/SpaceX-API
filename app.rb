@@ -90,7 +90,7 @@ end
 # Gets upcoming launches
 get '/launches/upcoming' do
   content_type :json
-  results = DB.query("SELECT * FROM launch WHERE launch_year = 'upcoming'", :cast_booleans => true)
+  results = DB.query("SELECT * FROM upcoming", :cast_booleans => true)
     hash = results.each do |row|
     end
     if hash.empty?
