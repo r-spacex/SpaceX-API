@@ -48,17 +48,17 @@ GET https://api.spacexdata.com/launches
 ```
 Get past launches by year
 ```http
-GET https://api.spacexdata.com/launches?year=2017
+GET https://api.spacexdata.com/launches/year=2017
 ```
 Get past launches in a date range
 ```http
-GET https://api.spacexdata.com/launches?from=2011-01-20&to=2017-05-25
+GET https://api.spacexdata.com/launches/from=2011-01-20&to=2017-05-25
 ```
 Get data on upcoming launches
 ```http
 GET https://api.spacexdata.com/launches/upcoming
-GET https://api.spacexdata.com/launches/upcoming?year=2017
-GET https://api.spacexdata.com/launches/upcoming?from=2011-01-20&to=2017-05-25
+GET https://api.spacexdata.com/launches/upcoming/year=2017
+GET https://api.spacexdata.com/launches/upcoming/from=2011-01-20&to=2017-05-25
 ```
 
 ## Launch info by serial #'s
