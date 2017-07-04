@@ -162,7 +162,7 @@ get '/launches/year=:year' do
 end
 
 # Gets all launches in a date range
-get '/launches/from=:start&to=:final' do
+get '/launches?from=:start&to=:final' do
   content_type :json
   start = params['start']
   final = params['final']
