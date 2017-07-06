@@ -4,6 +4,7 @@
 # launch data.
 #
 
+require 'bundler/setup'
 require 'sinatra'
 require 'sinatra/subdomain'
 require 'json'
@@ -15,6 +16,10 @@ require './data/home_info.rb'
 require './data/falcon_heavy.rb'
 require './data/launchpads.rb'
 require './data/dragon.rb'
+
+# Uses the modular version of Sinatra
+class SpacexAPI < Sinatra::Base
+  register Sinatra::Subdomain
 
 # DB connection to MariaDB
 DB = Mysql2::Client.new(
@@ -273,5 +278,6 @@ get '/parts/cores/:core' do
     else
       JSON.pretty_generate(hash)
     end
+end
 end
 end

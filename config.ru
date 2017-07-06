@@ -5,4 +5,4 @@ require './app'
 
 Bundler.require
 
-run Sinatra::Application
+run SpacexAPI

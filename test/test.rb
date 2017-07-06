@@ -1,27 +1,23 @@
-require "./app.rb"
 require "test/unit"
 require "rack/test"
+require_relative '../app'
+
+module Rack
+  module Test
+    DEFAULT_HOST = "api.example.org"
+  end
+end
 
 class AppTest < Test::Unit::TestCase
   include Rack::Test::Methods
 
   def app
-    Sinatra::Application
+    @app = SpacexAPI
   end
 
   def test_response_is_ok
     get "/"
-  end
-
-  def test_response_is_ok_for_vehicles
-    get "/vehicles"
-  end
-
-  def test_response_is_ok_for_launches_up
-    get "/launches/upcoming"
-  end
-
-  def test_response_is_ok_for_launchpads
-    get '/launchpads'
+    assert last_response.ok?
+    puts last_response.body
   end
 end
