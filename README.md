@@ -4,7 +4,7 @@
 
 ![Imgur](http://i.imgur.com/EdfIdgC.jpg)
 
-# SpaceX JSON Data API
+# SpaceX Data REST API
 
 [![Build Status](https://travis-ci.org/r-spacex/SpaceX-API.svg?branch=master)](https://travis-ci.org/r-spacex/SpaceX-API)
 [![GitHub release](https://img.shields.io/github/release/jakewmeyer/SpaceX-API.svg)]()
@@ -12,7 +12,7 @@
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)]()
 [![Platform](https://img.shields.io/badge/platform-REST--API-brightgreen.svg)]()
 
-### JSON API for data regarding company info, vehicles, launch sites, and launch data.
+### REST API for data regarding company info, vehicles, launch sites, and launch data.
 <br></br>
 
 </div>
