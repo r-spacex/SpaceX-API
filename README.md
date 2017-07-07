@@ -22,7 +22,7 @@ See the [Wiki](https://github.com/r-spacex/SpaceX-API/wiki) for API Documentatio
 
 ## Contributions
 
-See [CONTRIBUTING.md](https://github.com/r-spacex/SpaceX-API/blob/master/CONTRIBUTING.md) for detailed steps
+See the [contribution](https://github.com/r-spacex/SpaceX-API/blob/master/CONTRIBUTING.md) guide for detailed steps
 
 
 ## FAQ's
