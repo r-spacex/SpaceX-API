@@ -1,0 +1,8 @@
+language: ruby
+
+sudo: required
+dist: trusty
+
+before_install:
+  - gem update --system
+  - gem --version
