@@ -21,9 +21,7 @@
 See the [Wiki](https://github.com/r-spacex/SpaceX-API/wiki) for API Documentation
 
 ## Contributions
-
-See the [contribution](https://github.com/r-spacex/SpaceX-API/blob/master/CONTRIBUTING.md) guide for detailed steps
-
+See the [Contribution](https://github.com/r-spacex/SpaceX-API/blob/master/CONTRIBUTING.md) guide for detailed steps
 
 ## FAQ's
 * If you have any questions or corrections, please open an issue and we'll get it merged ASAP
