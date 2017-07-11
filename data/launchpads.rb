@@ -10,11 +10,7 @@ $launchpads = {
             region: 'Texas',
             latitude: 31.399045,
             longitude: -97.462644
-<<<<<<< HEAD
-        }
-=======
         },
->>>>>>> r-spacex/master
         engines_tested: [
             'Merlin',
             'Draco'
