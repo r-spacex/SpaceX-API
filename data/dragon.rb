@@ -28,7 +28,7 @@ $dragon = {
     fuel_1: 'nitrogen tetroxide',
     fuel_2: 'monomethylhydrazine',
     thrust: {
-      N: 400,
+      kN: 0.4,
       lbf: 90
     }
   },
