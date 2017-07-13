@@ -23,10 +23,10 @@ class SpacexAPI < Sinatra::Base
 
 # DB connection to MariaDB
 DB = Mysql2::Client.new(
-  :host => ENV['MARIA_HOST'],
-  :username => ENV['MARIA_USER'],
-  :password => ENV['MARIA_PASS'],
-  :database => ENV['MARIA_DB'],
+  :host => ENV['SPACEX_HOST'],
+  :username => ENV['SPACEX_USER'],
+  :password => ENV['SPACEX_PASS'],
+  :database => ENV['SPACEX_DB'],
   :reconnect => true
   )
 
