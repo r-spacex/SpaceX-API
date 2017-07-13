@@ -133,7 +133,7 @@ get '/launches/upcoming/from=:start&to=:final' do
   content_type :json
   start = params['start']
   final = params['final']
-  statement = DB.prepare('SELECT * FROM upcoming WHERE launch_date BETWEEN ? AND ?;',)
+  statement = DB.prepare('SELECT * FROM upcoming WHERE launch_date_utc BETWEEN ? AND ?;',)
   results = statement.execute(start, final)
     hash = results.each do |row|
     end
@@ -171,7 +171,7 @@ get '/launches/from=:start&to=:final' do
   content_type :json
   start = params['start']
   final = params['final']
-  statement = DB.prepare('SELECT * FROM launch WHERE launch_date BETWEEN ? AND ?;',)
+  statement = DB.prepare('SELECT * FROM launch WHERE launch_date_utc BETWEEN ? AND ?;',)
   results = statement.execute(start, final)
     hash = results.each do |row|
     end
