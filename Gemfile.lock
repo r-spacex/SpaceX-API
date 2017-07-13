@@ -4,6 +4,7 @@ GEM
     json (2.1.0)
     mustermann (1.0.0)
     mysql2 (0.4.6)
+    mysql2 (0.4.6-x64-mingw32)
     power_assert (1.0.2)
     rack (2.0.3)
     rack-protection (2.0.0)
@@ -24,6 +25,7 @@ GEM
 
 PLATFORMS
   ruby
+  x64-mingw32
 
 DEPENDENCIES
   json
