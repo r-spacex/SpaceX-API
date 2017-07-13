@@ -31,6 +31,6 @@ See the [Contribution](https://github.com/r-spacex/SpaceX-API/blob/master/CONTRI
 
 ## Technical Details
 * API is using [Sinatra](http://www.sinatrarb.com/) framework
-* Launch, Capsule, and Core data stored in [MariaDB](https://mariadb.org/)
+* Launch, Capsule, and Core data stored in MySQL
 * Vehicle, Launchpad, and Company data is stored in Ruby hashes.
 * API is deployed on [Heroku](https://www.heroku.com/)
