@@ -16,15 +16,17 @@ class AppTest < Test::Unit::TestCase
     @app = SpacexAPI
   end
 
-  def test_response_is_ok
+  def test_home_response
     get "/"
     assert last_response.ok?
+    data = JSON.parse(last_response.body)
+    assert data.count > 0
   end
 
   def test_info_response
     get "/info"
     assert last_response.ok?
-	data = JSON.parse(last_response.body)
+	  data = JSON.parse(last_response.body)
     #test out some data that is unlikely to ever change
     assert data["name"] == "SpaceX"
   end
@@ -35,6 +37,34 @@ class AppTest < Test::Unit::TestCase
     data = JSON.parse(last_response.body)
     #make sure we got at least one launchpad back
     assert data["launchpads"].count > 0
+  end
+
+  def test_vehicle_response
+    get "/vehicles"
+    assert last_response.ok?
+    data = JSON.parse(last_response.body)
+    assert data.count > 0
+  end
+
+  def test_falcon9_response
+    get "/vehicles/falcon9"
+    assert last_response.ok?
+    data = JSON.parse(last_response.body)
+    assert data.count > 0
+  end
+
+  def test_falconheavy_response
+    get "/vehicles/falconheavy"
+    assert last_response.ok?
+    data = JSON.parse(last_response.body)
+    assert data.count > 0
+  end
+
+  def test_dragon_response
+    get "/vehicles/dragon"
+    assert last_response.ok?
+    data = JSON.parse(last_response.body)
+    assert data.count > 0
   end
 
   def test_launches_response
