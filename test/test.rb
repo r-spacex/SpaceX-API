@@ -96,4 +96,18 @@ class AppTest < Test::Unit::TestCase
     assert data.count == 3
   end
 
+  def test_caps_response
+    get "/parts/caps"
+    assert last_response.ok?
+    data = JSON.parse(last_response.body)
+    assert data.count > 0
+  end
+
+  def test_cores_response
+    get "/parts/cores"
+    assert last_response.ok?
+    data = JSON.parse(last_response.body)
+    assert data.count > 0
+  end
+
 end
