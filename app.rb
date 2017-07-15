@@ -1,8 +1,8 @@
-#
+#########################################
 # SpaceX API for searching company info,
 # vehicle info, launch sites, and
 # launch data.
-#
+#########################################
 
 require 'bundler/setup'
 require 'sinatra'
@@ -48,9 +48,10 @@ end
 # Uses subdomain api.example.com to route traffic
 subdomain :api do
 
-#
+##########################################
 # Basic Info Endpoints
-#
+##########################################
+
 get '/' do
   content_type :json
   JSON.pretty_generate($home_info)
@@ -95,10 +96,10 @@ get '/launches' do
   JSON.pretty_generate(hash)
 end
 
-
-#
+##########################################
 # Upcoming launch endpoints
-#
+##########################################
+
 get '/launches/upcoming' do
   content_type :json
   results = DB.query("SELECT * FROM upcoming", :cast_booleans => true)
@@ -145,10 +146,9 @@ get '/launches/upcoming/from=:start&to=:final' do
     end
 end
 
-
-#
+##########################################
 # Launches by year endpoints
-#
+##########################################
 
 # Gets launches sorted by year
 get '/launches/year=:year' do
@@ -183,10 +183,9 @@ get '/launches/from=:start&to=:final' do
     end
 end
 
-
-#
+##########################################
 # Launches by part serial #'s'
-#
+##########################################
 
 # Get all launches with a core serial number
 get '/launches/cores/:core' do
