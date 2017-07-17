@@ -22,7 +22,7 @@ require './data/dragon.rb'
 class SpacexAPI < Sinatra::Base
   register Sinatra::Subdomain
 
-# DB connection to MariaDB
+# DB connection to MySQL
 DB = Mysql2::Client.new(
   :host => ENV['SPACEX_HOST'],
   :username => ENV['SPACEX_USER'],
