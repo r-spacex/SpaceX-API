@@ -46,6 +46,13 @@ class AppTest < Test::Unit::TestCase
     assert data.count > 0
   end
 
+  def test_falcon1_response
+    get "/vehicles/falcon1"
+    assert last_response.ok?
+    data = JSON.parse(last_response.body)
+    assert data.count > 0
+  end
+
   def test_falcon9_response
     get "/vehicles/falcon9"
     assert last_response.ok?

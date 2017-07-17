@@ -11,6 +11,7 @@ require 'json'
 require 'date'
 require 'mysql2'
 require './data/company_info.rb'
+require './data/falcon1.rb'
 require './data/falcon9.rb'
 require './data/home_info.rb'
 require './data/falcon_heavy.rb'
@@ -64,7 +65,12 @@ end
 
 get '/vehicles' do
   content_type :json
-  JSON.pretty_generate([$falcon9, $falcon_heavy, $dragon])
+  JSON.pretty_generate([$falcon1, $falcon9, $falcon_heavy, $dragon])
+end
+
+get '/vehicles/falcon1' do
+  content_type :json
+  JSON.pretty_generate($falcon1)
 end
 
 get '/vehicles/falcon9' do
