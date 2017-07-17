@@ -87,13 +87,41 @@ get '/launchpads' do
   JSON.pretty_generate($launchpads)
 end
 
+##########################################
+# Launches endpoints
+##########################################
+
 # Returns all launches
 get '/launches' do
   content_type :json
-  results = DB.query('SELECT * FROM launch', :cast_booleans => true)
-    hash = results.each do |row|
-    end
-  JSON.pretty_generate(hash)
+
+  # Gets launches sorted by year
+  if params['year']
+    year = params['year']
+    statement = DB.prepare('SELECT * FROM launch WHERE launch_year = ?')
+    results = statement.execute(year)
+
+  # Gets all launches in a date range
+  elsif params['from'] and params['to']
+    start = params['from']
+    final = params['to']
+    statement = DB.prepare('SELECT * FROM launch WHERE launch_date_utc BETWEEN ? AND ?;',)
+    results = statement.execute(start, final)
+
+  # Gets all launches
+  else
+    results = DB.query('SELECT * FROM launch', :cast_booleans => true)
+  end
+
+  # parse and return results
+  hash = results.each do |row|
+  end
+  if hash.empty?
+    error = { error: 'No matches found' }
+    JSON.pretty_generate(error)
+  else
+    JSON.pretty_generate(hash)
+  end
 end
 
 ##########################################
@@ -102,85 +130,34 @@ end
 
 get '/launches/upcoming' do
   content_type :json
-  results = DB.query("SELECT * FROM upcoming", :cast_booleans => true)
-    hash = results.each do |row|
-    end
-    if hash.empty?
-      error = { error: 'No Matches Found' }
-      JSON.pretty_generate(error)
-    else
-      JSON.pretty_generate(hash)
-    end
-end
 
-# Gets upcoming launches sorted by year
-get '/launches/upcoming/year=:year' do
-  content_type :json
-  year = params['year']
-  statement = DB.prepare('SELECT * FROM upcoming WHERE launch_year = ?')
-  results = statement.execute(year)
-    hash = results.each do |row|
-    end
-    if hash.empty?
-      error = { error: 'No Matches Found' }
-      JSON.pretty_generate(error)
-    else
-      JSON.pretty_generate(hash)
-    end
-end
+  # Gets upcoming launches sorted by year
+  if params['year']
+    year = params['year']
+    statement = DB.prepare('SELECT * FROM upcoming WHERE launch_year = ?')
+    results = statement.execute(year)
 
-# Gets upcoming launches in a date range
-get '/launches/upcoming/from=:start&to=:final' do
-  content_type :json
-  start = params['start']
-  final = params['final']
-  statement = DB.prepare('SELECT * FROM upcoming WHERE launch_date_utc BETWEEN ? AND ?;',)
-  results = statement.execute(start, final)
-    hash = results.each do |row|
-    end
-    if hash.empty?
-      error = { error: 'No Matches Found' }
-      JSON.pretty_generate(error)
-    else
-      JSON.pretty_generate(hash)
-    end
-end
+  # Gets upcoming launches in a date range
+  elsif params['start'] and params['final']
+    start = params['start']
+    final = params['final']
+    statement = DB.prepare('SELECT * FROM upcoming WHERE launch_date_utc BETWEEN ? AND ?;',)
+    results = statement.execute(start, final)
 
-##########################################
-# Launches by year endpoints
-##########################################
+  # Gets all future launches
+  else
+    results = DB.query("SELECT * FROM upcoming", :cast_booleans => true)
+  end
 
-# Gets launches sorted by year
-get '/launches/year=:year' do
-  content_type :json
-  year = params['year']
-  statement = DB.prepare('SELECT * FROM launch WHERE launch_year = ?')
-  results = statement.execute(year)
-    hash = results.each do |row|
-    end
-    if hash.empty?
-      error = { error: 'No Matches Found' }
-      JSON.pretty_generate(error)
-    else
-      JSON.pretty_generate(hash)
-    end
-end
-
-# Gets all launches in a date range
-get '/launches/from=:start&to=:final' do
-  content_type :json
-  start = params['start']
-  final = params['final']
-  statement = DB.prepare('SELECT * FROM launch WHERE launch_date_utc BETWEEN ? AND ?;',)
-  results = statement.execute(start, final)
-    hash = results.each do |row|
-    end
-    if hash.empty?
-      error = { error: 'No Matches Found' }
-      JSON.pretty_generate(error)
-    else
-      JSON.pretty_generate(hash)
-    end
+  # parse and return results
+  hash = results.each do |row|
+  end
+  if hash.empty?
+    error = { error: 'No Matches Found' }
+    JSON.pretty_generate(error)
+  else
+    JSON.pretty_generate(hash)
+  end
 end
 
 ##########################################
