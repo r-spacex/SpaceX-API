@@ -3,7 +3,7 @@ gem 'sinatra'
 gem 'sinatra-subdomain'
 gem 'json' 
 gem 'mysql2'
-gem 'puma'
+gem "passenger"
 gem 'foreman'
 gem 'rack-test'
 gem 'test-unit'

@@ -1,1 +1,1 @@
-web: bundle exec rackup config.ru -p $PORT
+web: bundle exec passenger start -p $PORT --max-pool-size 3
