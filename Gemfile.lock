@@ -6,10 +6,8 @@ GEM
     json (2.1.0)
     mustermann (1.0.0)
     mysql2 (0.4.6)
-    passenger (5.1.5)
-      rack
-      rake (>= 0.8.1)
     power_assert (1.0.2)
+    puma (3.9.1)
     rack (2.0.3)
     rack-protection (2.0.0)
       rack
@@ -35,7 +33,7 @@ DEPENDENCIES
   foreman
   json
   mysql2
-  passenger
+  puma
   rack-test
   rake
   sinatra
