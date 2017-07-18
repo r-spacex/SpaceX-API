@@ -7,15 +7,10 @@
 require 'bundler/setup'
 require 'sinatra'
 require 'sinatra/subdomain'
+require 'require_all'
 require 'json'
 require 'mysql2'
-require './data/company_info.rb'
-require './data/falcon1.rb'
-require './data/falcon9.rb'
-require './data/home_info.rb'
-require './data/falcon_heavy.rb'
-require './data/launchpads.rb'
-require './data/dragon.rb'
+require_all 'data'
 
 # Uses the modular version of Sinatra
 class SpacexAPI < Sinatra::Base

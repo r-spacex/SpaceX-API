@@ -14,6 +14,7 @@ GEM
     rack-test (0.6.3)
       rack (>= 1.0)
     rake (12.0.0)
+    require_all (1.4.0)
     sinatra (2.0.0)
       mustermann (~> 1.0)
       rack (~> 2.0)
@@ -36,6 +37,7 @@ DEPENDENCIES
   puma
   rack-test
   rake
+  require_all
   sinatra
   sinatra-subdomain
   test-unit
