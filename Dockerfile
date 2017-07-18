@@ -2,10 +2,10 @@ FROM ruby:2.2
 
 MAINTAINER Jake Meyer <jakewmeyer@gmail.com>
 
-ENV SPACEX_HOST=example
-ENV SPACEX_USER=example
-ENV SPACEX_PASS=example
-ENV SPACEX_DB=example
+ENV SPACEX_HOST=
+ENV SPACEX_USER=
+ENV SPACEX_PASS=
+ENV SPACEX_DB=
 
 WORKDIR /app
 ADD Gemfile /app/Gemfile
