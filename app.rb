@@ -89,33 +89,31 @@ end
 # Returns all launches
 get '/launches' do
   content_type :json
+  collection = client[:launch]
 
   # Gets launches sorted by year
   if params['year']
     year = params['year']
-    statement = DB.prepare('SELECT * FROM launch WHERE launch_year = ?')
-    results = statement.execute(year)
+    hash = collection.find({"launch_year": "#{year}"}, projection: {_id: 0})
 
-  # Gets all launches in a date range
-  elsif params['from'] and params['to']
-    start = params['from']
-    final = params['to']
-    statement = DB.prepare('SELECT * FROM launch WHERE launch_date_utc BETWEEN ? AND ?;',)
-    results = statement.execute(start, final)
+  # Gets upcoming launches in a date range
+  elsif params['start'] and params['final']
+    start = params['start']
+    final = params['final']
+    hash = collection.find({}, projection: {_id: 0})
 
-  # Gets all launches
+  # Gets all future launches
   else
-    results = DB.query('SELECT * FROM launch', :cast_booleans => true)
+    hash = collection.find({}, projection: {_id: 0})
   end
 
   # parse and return results
-  hash = results.each do |row|
-  end
-  if hash.empty?
-    error = { error: 'No matches found' }
+  array = hash.to_a
+  if array.empty?
+    error = { error: 'No Matches Found' }
     JSON.pretty_generate(error)
   else
-    JSON.pretty_generate(hash)
+    JSON.pretty_generate(array)
   end
 end
 
@@ -125,33 +123,31 @@ end
 
 get '/launches/upcoming' do
   content_type :json
+  collection = client[:upcoming]
 
   # Gets upcoming launches sorted by year
   if params['year']
     year = params['year']
-    statement = DB.prepare('SELECT * FROM upcoming WHERE launch_year = ?')
-    results = statement.execute(year)
+    hash = collection.find({"launch_year": "#{year}"}, projection: {_id: 0})
 
   # Gets upcoming launches in a date range
   elsif params['start'] and params['final']
     start = params['start']
     final = params['final']
-    statement = DB.prepare('SELECT * FROM upcoming WHERE launch_date_utc BETWEEN ? AND ?;',)
-    results = statement.execute(start, final)
+    hash = collection.find({}, projection: {_id: 0})
 
   # Gets all future launches
   else
-    results = DB.query("SELECT * FROM upcoming", :cast_booleans => true)
+    hash = collection.find({}, projection: {_id: 0})
   end
 
   # parse and return results
-  hash = results.each do |row|
-  end
-  if hash.empty?
+  array = hash.to_a
+  if array.empty?
     error = { error: 'No Matches Found' }
     JSON.pretty_generate(error)
   else
-    JSON.pretty_generate(hash)
+    JSON.pretty_generate(array)
   end
 end
 
