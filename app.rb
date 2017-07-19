@@ -9,21 +9,21 @@ require 'sinatra'
 require 'sinatra/subdomain'
 require 'require_all'
 require 'json'
-require 'mysql2'
+require 'mongo'
 require_all 'data'
 
 # Uses the modular version of Sinatra
 class SpacexAPI < Sinatra::Base
   register Sinatra::Subdomain
 
-# DB connection to MySQL
-DB = Mysql2::Client.new(
-  :host => ENV['SPACEX_HOST'],
-  :username => ENV['SPACEX_USER'],
-  :password => ENV['SPACEX_PASS'],
-  :database => ENV['SPACEX_DB'],
-  :reconnect => true
-  )
+# DB credentials
+  host = ENV['MONGO_HOST']
+  user = ENV['MONGO_USER']
+  password = ENV['MONGO_PASS']
+  database = ENV['MONGO_DB']
+
+# Creates connection for mongo client  
+ client = Mongo::Client.new("mongodb://#{user}:#{password}@#{host}:63892/#{database}")
 
 # Disables rack protection because of false positives
 # that were blocking connections to home page
@@ -41,6 +41,19 @@ subdomain :api do
 ##########################################
 # Basic Info Endpoints
 ##########################################
+
+get '/test' do
+  content_type :json
+  collection = client[:launch]
+  hash = collection.find({}, projection: {_id: 0})
+  array = hash.to_a
+  if array.empty?
+    error = { error: 'No matches found' }
+    JSON.pretty_generate(error)
+  else
+    JSON.pretty_generate(array)
+  end
+end
 
 get '/' do
   content_type :json
