@@ -2,11 +2,6 @@ FROM ruby:2.2
 
 MAINTAINER Jake Meyer <jakewmeyer@gmail.com>
 
-ENV SPACEX_HOST=
-ENV SPACEX_USER=
-ENV SPACEX_PASS=
-ENV SPACEX_DB=
-
 WORKDIR /app
 ADD Gemfile /app/Gemfile
 ADD Gemfile.lock /app/Gemfile.lock
