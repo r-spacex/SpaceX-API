@@ -35,11 +35,6 @@ disable :protection
 #  redirect request.url.sub('http', 'https') unless request.secure?
 # end
 
-# Method for merging hashes of static data
-def hash_merge(*hashes)
-  hashes.inject :merge
-end
-
 # Uses subdomain api.example.com to route traffic
 subdomain :api do
 
