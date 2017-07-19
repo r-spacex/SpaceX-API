@@ -7,10 +7,8 @@
 require 'bundler/setup'
 require 'sinatra'
 require 'sinatra/subdomain'
-require 'require_all'
 require 'json'
 require 'mongo'
-require_all 'data'
 
 # Uses the modular version of Sinatra
 class SpacexAPI < Sinatra::Base
@@ -44,42 +42,58 @@ subdomain :api do
 
 get '/' do
   content_type :json
-  JSON.pretty_generate($home_info)
+  collection = client[:home]
+  hash = collection.find({}, projection: {_id: 0})
+  JSON.pretty_generate(hash.to_a)
 end
 
 get '/info' do
   content_type :json
-  JSON.pretty_generate($company_info)
+  collection = client[:info]
+  hash = collection.find({}, projection: {_id: 0})
+  JSON.pretty_generate(hash.to_a)
 end
 
 get '/vehicles' do
   content_type :json
-  JSON.pretty_generate([$falcon1, $falcon9, $falcon_heavy, $dragon])
+  collection = client[:vehicle]
+  hash = collection.find({}, projection: {_id: 0})
+  JSON.pretty_generate(hash.to_a)
 end
 
 get '/vehicles/falcon1' do
   content_type :json
-  JSON.pretty_generate($falcon1)
+  collection = client[:vehicle]
+  hash = collection.find({"id": "falcon1"}, projection: {_id: 0})
+  JSON.pretty_generate(hash.to_a)
 end
 
 get '/vehicles/falcon9' do
   content_type :json
-  JSON.pretty_generate($falcon9)
+  collection = client[:vehicle]
+  hash = collection.find({"id": "falcon9"}, projection: {_id: 0})
+  JSON.pretty_generate(hash.to_a)
 end
 
 get '/vehicles/falconheavy' do
   content_type :json
-  JSON.pretty_generate($falcon_heavy)
+  collection = client[:vehicle]
+  hash = collection.find({"id": "falcon_heavy"}, projection: {_id: 0})
+  JSON.pretty_generate(hash.to_a)
 end
 
 get '/vehicles/dragon' do
   content_type :json
-  JSON.pretty_generate($dragon)
+  collection = client[:vehicle]
+  hash = collection.find({"id": "dragon"}, projection: {_id: 0})
+  JSON.pretty_generate(hash.to_a)
 end
 
 get '/launchpads' do
   content_type :json
-  JSON.pretty_generate($launchpads)
+  collection = client[:launchpad]
+  hash = collection.find({}, projection: {_id: 0})
+  JSON.pretty_generate(hash.to_a)
 end
 
 ##########################################
