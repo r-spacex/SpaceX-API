@@ -96,13 +96,13 @@ get '/launches' do
     year = params['year']
     hash = collection.find({"launch_year": "#{year}"}, projection: {_id: 0})
 
-  # Gets upcoming launches in a date range
-  elsif params['start'] and params['final']
-    start = params['start']
-    final = params['final']
-    hash = collection.find({}, projection: {_id: 0})
+  # Gets launches in a date range
+  elsif params['from'] and params['to']
+    start = params['from']
+    final = params['to']
+    hash = collection.find({ "launch_date_utc": {"$gte": "#{start}T00:00:00Z", "$lte": "#{final}T00:00:00Z"}}, projection: {_id: 0})
 
-  # Gets all future launches
+  # Gets all past launches
   else
     hash = collection.find({}, projection: {_id: 0})
   end
@@ -131,10 +131,10 @@ get '/launches/upcoming' do
     hash = collection.find({"launch_year": "#{year}"}, projection: {_id: 0})
 
   # Gets upcoming launches in a date range
-  elsif params['start'] and params['final']
-    start = params['start']
-    final = params['final']
-    hash = collection.find({}, projection: {_id: 0})
+  elsif params['from'] and params['to']
+    start = params['from']
+    final = params['to']
+    hash = collection.find({ "launch_date_utc": {"$gte": "#{start}T00:00:00Z", "$lte": "#{final}T00:00:00Z"}}, projection: {_id: 0})
 
   # Gets all future launches
   else
