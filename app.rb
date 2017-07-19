@@ -42,19 +42,6 @@ subdomain :api do
 # Basic Info Endpoints
 ##########################################
 
-get '/test' do
-  content_type :json
-  collection = client[:launch]
-  hash = collection.find({}, projection: {_id: 0})
-  array = hash.to_a
-  if array.empty?
-    error = { error: 'No matches found' }
-    JSON.pretty_generate(error)
-  else
-    JSON.pretty_generate(array)
-  end
-end
-
 get '/' do
   content_type :json
   JSON.pretty_generate($home_info)
@@ -176,92 +163,88 @@ end
 get '/launches/cores/:core' do
   content_type :json
   core = params['core']
-  statement = DB.prepare('SELECT * FROM launch WHERE core_serial = ?')
-  results = statement.execute(core)
-    hash = results.each do |row|
-    end
-    if hash.empty?
-      error = { error: 'No Matches Found' }
-      JSON.pretty_generate(error)
-    else
-      JSON.pretty_generate(hash)
-    end
+  collection = client[:launch]
+  hash = collection.find({"core_serial": "#{core}"}, projection: {_id: 0})
+  array = hash.to_a
+  if array.empty?
+    error = { error: 'No Matches Found' }
+    JSON.pretty_generate(error)
+  else
+    JSON.pretty_generate(array)
+  end
 end
 
 # Get info on a specific Dragon capsule
 get '/parts/caps/:cap' do
   content_type :json
   cap = params['cap']
-  statement = DB.prepare('SELECT * FROM capsule WHERE capsule_serial = ?')
-  results = statement.execute(cap)
-    hash = results.each do |row|
-    end
-    if hash.empty?
-      error = { error: 'No Matches Found' }
-      JSON.pretty_generate(error)
-    else
-      JSON.pretty_generate(hash)
-    end
+  collection = client[:capsule]
+  hash = collection.find({"capsule_serial": "#{cap}"}, projection: {_id: 0})
+  array = hash.to_a
+  if array.empty?
+    error = { error: 'No Matches Found' }
+    JSON.pretty_generate(error)
+  else
+    JSON.pretty_generate(array)
+  end
 end
 
 # Get all Dragon Capsule information
 get '/parts/caps' do
   content_type :json
-  results = DB.query('SELECT * FROM capsule', :cast_booleans => true)
-    hash = results.each do |row|
-    end
-    if hash.empty?
-      error = { error: 'No Matches Found' }
-      JSON.pretty_generate(error)
-    else
-      JSON.pretty_generate(hash)
-    end
+  collection = client[:capsule]
+  hash = collection.find({}, projection: {_id: 0})
+  array = hash.to_a
+  if array.empty?
+    error = { error: 'No Matches Found' }
+    JSON.pretty_generate(error)
+  else
+    JSON.pretty_generate(array)
+  end
 end
 
 # Get all launches with capsule serial #
 get '/launches/caps/:cap' do
   content_type :json
   cap = params['cap']
-  statement = DB.prepare('SELECT * FROM launch WHERE cap_serial = ?')
-  results = statement.execute(cap)
-    hash = results.each do |row|
-    end
-    if hash.empty?
-      error = { error: 'No Matches Found' }
-      JSON.pretty_generate(error)
-    else
-      JSON.pretty_generate(hash)
-    end
+  collection = client[:launch]
+  hash = collection.find({"cap_serial": "#{cap}"}, projection: {_id: 0})
+  array = hash.to_a
+  if array.empty?
+    error = { error: 'No Matches Found' }
+    JSON.pretty_generate(error)
+  else
+    JSON.pretty_generate(array)
+  end
 end
 
 # Get all Dragon core information
 get '/parts/cores' do
   content_type :json
-  results = DB.query('SELECT * FROM core', :cast_booleans => true)
-    hash = results.each do |row|
-    end
-    if hash.empty?
-      error = { error: 'No Matches Found' }
-      JSON.pretty_generate(error)
-    else
-      JSON.pretty_generate(hash)
-    end
+  collection = client[:core]
+  hash = collection.find({}, projection: {_id: 0})
+  array = hash.to_a
+  if array.empty?
+    error = { error: 'No Matches Found' }
+    JSON.pretty_generate(error)
+  else
+    JSON.pretty_generate(array)
+  end
 end
 
 # Get core information by serial #
 get '/parts/cores/:core' do
   content_type :json
   core = params['core']
-  statement = DB.prepare('SELECT * FROM core WHERE core_serial = ?')
-  results = statement.execute(core)
-    hash = results.each do |row|
-    end
-    if hash.empty?
-      error = { error: 'No Matches Found' }
-      JSON.pretty_generate(error)
-    else
-      JSON.pretty_generate(hash)
-    end
+  collection = client[:core]
+  hash = collection.find({"core_serial": "#{core}"}, projection: {_id: 0})
+  array = hash.to_a
+  if array.empty?
+    error = { error: 'No Matches Found' }
+    JSON.pretty_generate(error)
+  else
+    JSON.pretty_generate(array)
+  end
 end
 end
 end
