@@ -99,6 +99,13 @@ get '/launchpads' do
   JSON.pretty_generate(hash.to_a[0])
 end
 
+get '/launches/latest' do
+  content_type :json
+  collection = client[:launch]
+  hash = collection.find({}, projection: {_id: 0}).sort({"flight_number": -1}).limit(1)
+  JSON.pretty_generate(hash.to_a[0])
+end
+
 ##########################################
 # Launches endpoints
 ##########################################

@@ -18,9 +18,13 @@
 </div>
 
 ## Usage / Endpoints
-See the [Wiki](https://github.com/r-spacex/SpaceX-API/wiki) for API Documentation
+#### See the [Wiki](https://github.com/r-spacex/SpaceX-API/wiki) for full API Documentation
 
 **Example Response**
+
+```http
+GET https://api.spacexdata.com/launches/latest
+```
 
 ```json
 {
