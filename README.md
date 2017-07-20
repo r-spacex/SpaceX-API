@@ -20,6 +20,45 @@
 ## Usage / Endpoints
 See the [Wiki](https://github.com/r-spacex/SpaceX-API/wiki) for API Documentation
 
+**Example Response**
+```json
+{
+    "flight_number": 44,
+    "launch_year": "2017",
+    "launch_date_utc": "2017-07-05T23:35:00Z",
+    "launch_date_local": "2017-07-05T19:35:00-04:00",
+    "rocket": "Falcon 9",
+    "rocket_type": "FT",
+    "core_serial": "B1037",
+    "cap_serial": null,
+    "launch_site": {
+      "site_id": "ksc_lc_39a",
+      "site_name": "KSC LC 39A"
+    },
+    "payloads": [
+      {
+        "payload_id": "Intelsat 35e",
+        "customer": "Intelsat",
+        "payload_type": "Satelite",
+        "payload_mass_kg": 6000.0,
+        "payload_mass_lbs": 13227.0,
+        "orbit": "GTO"
+      }
+    ],
+    "launch_success": true,
+    "reused": false,
+    "land_success": false,
+    "landing_type": null,
+    "landing_vehicle": null,
+    "links": {
+      "mission_patch": "http://i.imgur.com/8URp6ea.png",
+      "article_link": "https://en.wikipedia.org/wiki/Intelsat_35e",
+      "video_link": "https://www.youtube.com/watch?v=MIHVPCj25Z0"
+    },
+    "details": "Due to the constraints of sending a heavy satellite (~6,000 kg) to GTO, the rocket will fly in its expendable configuration and the first-stage booster will not be recovered."
+  }
+  ```
+
 ## Contributions
 See the [Contribution](https://github.com/r-spacex/SpaceX-API/blob/master/CONTRIBUTING.md) guide for detailed steps
 
