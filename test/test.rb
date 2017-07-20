@@ -31,6 +31,14 @@ class AppTest < Test::Unit::TestCase
     assert data.count > 0
   end
 
+  def test_latest_response
+    get "/launches/latest"
+    assert last_response.ok?
+	  data = JSON.parse(last_response.body)
+    # Test out some data that is unlikely to ever change
+    assert data.count > 0
+  end
+
   def test_launchpads_response
     get "/launchpads"
     assert last_response.ok?
