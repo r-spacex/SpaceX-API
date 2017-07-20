@@ -21,6 +21,7 @@
 See the [Wiki](https://github.com/r-spacex/SpaceX-API/wiki) for API Documentation
 
 **Example Response**
+
 ```json
 {
     "flight_number": 44,
@@ -70,6 +71,6 @@ See the [Contribution](https://github.com/r-spacex/SpaceX-API/blob/master/CONTRI
 
 ## Technical Details
 * API is using [Sinatra](http://www.sinatrarb.com/) framework
-* Launch, Capsule, and Core data stored in MySQL
-* Vehicle, Launchpad, and Company data is stored in Ruby hashes.
+* Uses [Travis CI](https://travis-ci.org/) for testing + deployment
+* All data stored in [MongoDB](https://www.mongodb.com/)
 * API is deployed on [Heroku](https://www.heroku.com/)
