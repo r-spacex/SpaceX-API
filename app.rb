@@ -23,7 +23,10 @@ class SpacexAPI < Sinatra::Base
 # Creates connection for mongo client  
  client = Mongo::Client.new("mongodb://#{user}:#{password}@#{host}:63892/#{database}")
 
-# Disables rack protection because of false positives
+# Error for no results
+ error = { error: 'No Matches Found' }
+
+ # Disables rack protection because of false positives
 # that were blocking connections to home page
 disable :protection
 
@@ -124,8 +127,9 @@ get '/launches' do
   # parse and return results
   array = hash.to_a
   if array.empty?
-    error = { error: 'No Matches Found' }
     JSON.pretty_generate(error)
+  elsif array.count == 1
+    JSON.pretty_generate(array[0])
   else
     JSON.pretty_generate(array)
   end
@@ -158,8 +162,9 @@ get '/launches/upcoming' do
   # parse and return results
   array = hash.to_a
   if array.empty?
-    error = { error: 'No Matches Found' }
     JSON.pretty_generate(error)
+  elsif array.count == 1
+    JSON.pretty_generate(array[0])
   else
     JSON.pretty_generate(array)
   end
@@ -177,8 +182,9 @@ get '/launches/cores/:core' do
   hash = collection.find({"core_serial": "#{core}"}, projection: {_id: 0}).sort({"core_serial": 1})
   array = hash.to_a
   if array.empty?
-    error = { error: 'No Matches Found' }
     JSON.pretty_generate(error)
+  elsif array.count == 1
+    JSON.pretty_generate(array[0])
   else
     JSON.pretty_generate(array)
   end
@@ -192,8 +198,9 @@ get '/parts/caps/:cap' do
   hash = collection.find({"capsule_serial": "#{cap}"}, projection: {_id: 0}).sort({"capsule_serial": 1})
   array = hash.to_a
   if array.empty?
-    error = { error: 'No Matches Found' }
     JSON.pretty_generate(error)
+  elsif array.count == 1
+    JSON.pretty_generate(array[0])
   else
     JSON.pretty_generate(array)
   end
@@ -206,7 +213,6 @@ get '/parts/caps' do
   hash = collection.find({}, projection: {_id: 0}).sort({"capsule_serial": 1})
   array = hash.to_a
   if array.empty?
-    error = { error: 'No Matches Found' }
     JSON.pretty_generate(error)
   else
     JSON.pretty_generate(array)
@@ -221,8 +227,9 @@ get '/launches/caps/:cap' do
   hash = collection.find({"cap_serial": "#{cap}"}, projection: {_id: 0}).sort({"capsule_serial": 1})
   array = hash.to_a
   if array.empty?
-    error = { error: 'No Matches Found' }
     JSON.pretty_generate(error)
+  elsif array.count == 1
+    JSON.pretty_generate(array[0])
   else
     JSON.pretty_generate(array)
   end
@@ -235,7 +242,6 @@ get '/parts/cores' do
   hash = collection.find({}, projection: {_id: 0}).sort({"core_serial": 1})
   array = hash.to_a
   if array.empty?
-    error = { error: 'No Matches Found' }
     JSON.pretty_generate(error)
   else
     JSON.pretty_generate(array)
@@ -250,8 +256,9 @@ get '/parts/cores/:core' do
   hash = collection.find({"core_serial": "#{core}"}, projection: {_id: 0}).sort({"core_serial": 1})
   array = hash.to_a
   if array.empty?
-    error = { error: 'No Matches Found' }
     JSON.pretty_generate(error)
+  elsif array.count == 1
+    JSON.pretty_generate(array[0])  
   else
     JSON.pretty_generate(array)
   end
