@@ -44,14 +44,14 @@ get '/' do
   content_type :json
   collection = client[:home]
   hash = collection.find({}, projection: {_id: 0})
-  JSON.pretty_generate(hash.to_a)
+  JSON.pretty_generate(hash.to_a[0])
 end
 
 get '/info' do
   content_type :json
   collection = client[:info]
   hash = collection.find({}, projection: {_id: 0})
-  JSON.pretty_generate(hash.to_a)
+  JSON.pretty_generate(hash.to_a[0])
 end
 
 get '/vehicles' do
@@ -65,35 +65,35 @@ get '/vehicles/falcon1' do
   content_type :json
   collection = client[:vehicle]
   hash = collection.find({"id": "falcon1"}, projection: {_id: 0})
-  JSON.pretty_generate(hash.to_a)
+  JSON.pretty_generate(hash.to_a[0])
 end
 
 get '/vehicles/falcon9' do
   content_type :json
   collection = client[:vehicle]
   hash = collection.find({"id": "falcon9"}, projection: {_id: 0})
-  JSON.pretty_generate(hash.to_a)
+  JSON.pretty_generate(hash.to_a[0])
 end
 
 get '/vehicles/falconheavy' do
   content_type :json
   collection = client[:vehicle]
   hash = collection.find({"id": "falcon_heavy"}, projection: {_id: 0})
-  JSON.pretty_generate(hash.to_a)
+  JSON.pretty_generate(hash.to_a[0])
 end
 
 get '/vehicles/dragon' do
   content_type :json
   collection = client[:vehicle]
   hash = collection.find({"id": "dragon"}, projection: {_id: 0})
-  JSON.pretty_generate(hash.to_a)
+  JSON.pretty_generate(hash.to_a[0])
 end
 
 get '/launchpads' do
   content_type :json
   collection = client[:launchpad]
   hash = collection.find({}, projection: {_id: 0})
-  JSON.pretty_generate(hash.to_a)
+  JSON.pretty_generate(hash.to_a[0])
 end
 
 ##########################################
