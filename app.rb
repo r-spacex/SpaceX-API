@@ -156,7 +156,7 @@ get '/launches/upcoming' do
 
   # Gets all future launches
   else
-    hash = collection.find({}, projection: {_id: 0}).sort({"flight_number": 1})
+    hash = collection.find({}, projection: {_id: 0}).sort({"launch_date_utc": 1})
   end
 
   # parse and return results
