@@ -103,7 +103,7 @@ get '/launches/latest' do
   content_type :json
   collection = client[:launch]
   hash = collection.find({}, projection: {_id: 0}).sort({"flight_number": -1}).limit(1)
-  JSON.pretty_generate(hash.to_a[0])
+  JSON.pretty_generate(hash.to_a)
 end
 
 ##########################################
@@ -135,8 +135,6 @@ get '/launches' do
   array = hash.to_a
   if array.empty?
     JSON.pretty_generate(error)
-  elsif array.count == 1
-    JSON.pretty_generate(array[0])
   else
     JSON.pretty_generate(array)
   end
@@ -170,8 +168,6 @@ get '/launches/upcoming' do
   array = hash.to_a
   if array.empty?
     JSON.pretty_generate(error)
-  elsif array.count == 1
-    JSON.pretty_generate(array[0])
   else
     JSON.pretty_generate(array)
   end
@@ -190,8 +186,6 @@ get '/launches/cores/:core' do
   array = hash.to_a
   if array.empty?
     JSON.pretty_generate(error)
-  elsif array.count == 1
-    JSON.pretty_generate(array[0])
   else
     JSON.pretty_generate(array)
   end
@@ -206,8 +200,6 @@ get '/parts/caps/:cap' do
   array = hash.to_a
   if array.empty?
     JSON.pretty_generate(error)
-  elsif array.count == 1
-    JSON.pretty_generate(array[0])
   else
     JSON.pretty_generate(array)
   end
@@ -235,8 +227,6 @@ get '/launches/caps/:cap' do
   array = hash.to_a
   if array.empty?
     JSON.pretty_generate(error)
-  elsif array.count == 1
-    JSON.pretty_generate(array[0])
   else
     JSON.pretty_generate(array)
   end
@@ -264,8 +254,6 @@ get '/parts/cores/:core' do
   array = hash.to_a
   if array.empty?
     JSON.pretty_generate(error)
-  elsif array.count == 1
-    JSON.pretty_generate(array[0])  
   else
     JSON.pretty_generate(array)
   end
