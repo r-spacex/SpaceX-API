@@ -1,11 +1,13 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    bson (4.2.2)
     foreman (0.84.0)
       thor (~> 0.19.1)
     json (2.1.0)
+    mongo (2.4.2)
+      bson (>= 4.2.1, < 5.0.0)
     mustermann (1.0.0)
-    mysql2 (0.4.6)
     power_assert (1.0.2)
     puma (3.9.1)
     rack (2.0.3)
@@ -14,7 +16,6 @@ GEM
     rack-test (0.6.3)
       rack (>= 1.0)
     rake (12.0.0)
-    require_all (1.4.0)
     sinatra (2.0.0)
       mustermann (~> 1.0)
       rack (~> 2.0)
@@ -33,17 +34,13 @@ PLATFORMS
 DEPENDENCIES
   foreman
   json
-  mysql2
+  mongo (~> 2.4)
   puma
   rack-test
   rake
-  require_all
   sinatra
   sinatra-subdomain
   test-unit
-
-RUBY VERSION
-   ruby 2.4.1p111
 
 BUNDLED WITH
    1.15.2

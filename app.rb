@@ -7,23 +7,21 @@
 require 'bundler/setup'
 require 'sinatra'
 require 'sinatra/subdomain'
-require 'require_all'
 require 'json'
-require 'mysql2'
-require_all 'data'
+require 'mongo'
 
 # Uses the modular version of Sinatra
 class SpacexAPI < Sinatra::Base
   register Sinatra::Subdomain
 
-# DB connection to MySQL
-DB = Mysql2::Client.new(
-  :host => ENV['SPACEX_HOST'],
-  :username => ENV['SPACEX_USER'],
-  :password => ENV['SPACEX_PASS'],
-  :database => ENV['SPACEX_DB'],
-  :reconnect => true
-  )
+# DB credentials
+  host = ENV['MONGO_HOST']
+  user = ENV['MONGO_USER']
+  password = ENV['MONGO_PASS']
+  database = ENV['MONGO_DB']
+
+# Creates connection for mongo client  
+ client = Mongo::Client.new("mongodb://#{user}:#{password}@#{host}:63892/#{database}")
 
 # Disables rack protection because of false positives
 # that were blocking connections to home page
@@ -35,11 +33,6 @@ disable :protection
 #  redirect request.url.sub('http', 'https') unless request.secure?
 # end
 
-# Method for merging hashes of static data
-def hash_merge(*hashes)
-  hashes.inject :merge
-end
-
 # Uses subdomain api.example.com to route traffic
 subdomain :api do
 
@@ -49,42 +42,58 @@ subdomain :api do
 
 get '/' do
   content_type :json
-  JSON.pretty_generate($home_info)
+  collection = client[:home]
+  hash = collection.find({}, projection: {_id: 0})
+  JSON.pretty_generate(hash.to_a)
 end
 
 get '/info' do
   content_type :json
-  JSON.pretty_generate($company_info)
+  collection = client[:info]
+  hash = collection.find({}, projection: {_id: 0})
+  JSON.pretty_generate(hash.to_a)
 end
 
 get '/vehicles' do
   content_type :json
-  JSON.pretty_generate([$falcon1, $falcon9, $falcon_heavy, $dragon])
+  collection = client[:vehicle]
+  hash = collection.find({}, projection: {_id: 0})
+  JSON.pretty_generate(hash.to_a)
 end
 
 get '/vehicles/falcon1' do
   content_type :json
-  JSON.pretty_generate($falcon1)
+  collection = client[:vehicle]
+  hash = collection.find({"id": "falcon1"}, projection: {_id: 0})
+  JSON.pretty_generate(hash.to_a)
 end
 
 get '/vehicles/falcon9' do
   content_type :json
-  JSON.pretty_generate($falcon9)
+  collection = client[:vehicle]
+  hash = collection.find({"id": "falcon9"}, projection: {_id: 0})
+  JSON.pretty_generate(hash.to_a)
 end
 
 get '/vehicles/falconheavy' do
   content_type :json
-  JSON.pretty_generate($falcon_heavy)
+  collection = client[:vehicle]
+  hash = collection.find({"id": "falcon_heavy"}, projection: {_id: 0})
+  JSON.pretty_generate(hash.to_a)
 end
 
 get '/vehicles/dragon' do
   content_type :json
-  JSON.pretty_generate($dragon)
+  collection = client[:vehicle]
+  hash = collection.find({"id": "dragon"}, projection: {_id: 0})
+  JSON.pretty_generate(hash.to_a)
 end
 
 get '/launchpads' do
   content_type :json
-  JSON.pretty_generate($launchpads)
+  collection = client[:launchpad]
+  hash = collection.find({}, projection: {_id: 0})
+  JSON.pretty_generate(hash.to_a)
 end
 
 ##########################################
@@ -94,33 +103,31 @@ end
 # Returns all launches
 get '/launches' do
   content_type :json
+  collection = client[:launch]
 
   # Gets launches sorted by year
   if params['year']
     year = params['year']
-    statement = DB.prepare('SELECT * FROM launch WHERE launch_year = ?')
-    results = statement.execute(year)
+    hash = collection.find({"launch_year": "#{year}"}, projection: {_id: 0})
 
-  # Gets all launches in a date range
+  # Gets launches in a date range
   elsif params['from'] and params['to']
     start = params['from']
     final = params['to']
-    statement = DB.prepare('SELECT * FROM launch WHERE launch_date_utc BETWEEN ? AND ?;',)
-    results = statement.execute(start, final)
+    hash = collection.find({ "launch_date_utc": {"$gte": "#{start}T00:00:00Z", "$lte": "#{final}T00:00:00Z"}}, projection: {_id: 0})
 
-  # Gets all launches
+  # Gets all past launches
   else
-    results = DB.query('SELECT * FROM launch', :cast_booleans => true)
+    hash = collection.find({}, projection: {_id: 0})
   end
 
   # parse and return results
-  hash = results.each do |row|
-  end
-  if hash.empty?
-    error = { error: 'No matches found' }
+  array = hash.to_a
+  if array.empty?
+    error = { error: 'No Matches Found' }
     JSON.pretty_generate(error)
   else
-    JSON.pretty_generate(hash)
+    JSON.pretty_generate(array)
   end
 end
 
@@ -130,33 +137,31 @@ end
 
 get '/launches/upcoming' do
   content_type :json
+  collection = client[:upcoming]
 
   # Gets upcoming launches sorted by year
   if params['year']
     year = params['year']
-    statement = DB.prepare('SELECT * FROM upcoming WHERE launch_year = ?')
-    results = statement.execute(year)
+    hash = collection.find({"launch_year": "#{year}"}, projection: {_id: 0})
 
   # Gets upcoming launches in a date range
-  elsif params['start'] and params['final']
-    start = params['start']
-    final = params['final']
-    statement = DB.prepare('SELECT * FROM upcoming WHERE launch_date_utc BETWEEN ? AND ?;',)
-    results = statement.execute(start, final)
+  elsif params['from'] and params['to']
+    start = params['from']
+    final = params['to']
+    hash = collection.find({ "launch_date_utc": {"$gte": "#{start}T00:00:00Z", "$lte": "#{final}T00:00:00Z"}}, projection: {_id: 0})
 
   # Gets all future launches
   else
-    results = DB.query("SELECT * FROM upcoming", :cast_booleans => true)
+    hash = collection.find({}, projection: {_id: 0})
   end
 
   # parse and return results
-  hash = results.each do |row|
-  end
-  if hash.empty?
+  array = hash.to_a
+  if array.empty?
     error = { error: 'No Matches Found' }
     JSON.pretty_generate(error)
   else
-    JSON.pretty_generate(hash)
+    JSON.pretty_generate(array)
   end
 end
 
@@ -168,92 +173,88 @@ end
 get '/launches/cores/:core' do
   content_type :json
   core = params['core']
-  statement = DB.prepare('SELECT * FROM launch WHERE core_serial = ?')
-  results = statement.execute(core)
-    hash = results.each do |row|
-    end
-    if hash.empty?
-      error = { error: 'No Matches Found' }
-      JSON.pretty_generate(error)
-    else
-      JSON.pretty_generate(hash)
-    end
+  collection = client[:launch]
+  hash = collection.find({"core_serial": "#{core}"}, projection: {_id: 0})
+  array = hash.to_a
+  if array.empty?
+    error = { error: 'No Matches Found' }
+    JSON.pretty_generate(error)
+  else
+    JSON.pretty_generate(array)
+  end
 end
 
 # Get info on a specific Dragon capsule
 get '/parts/caps/:cap' do
   content_type :json
   cap = params['cap']
-  statement = DB.prepare('SELECT * FROM capsule WHERE capsule_serial = ?')
-  results = statement.execute(cap)
-    hash = results.each do |row|
-    end
-    if hash.empty?
-      error = { error: 'No Matches Found' }
-      JSON.pretty_generate(error)
-    else
-      JSON.pretty_generate(hash)
-    end
+  collection = client[:capsule]
+  hash = collection.find({"capsule_serial": "#{cap}"}, projection: {_id: 0})
+  array = hash.to_a
+  if array.empty?
+    error = { error: 'No Matches Found' }
+    JSON.pretty_generate(error)
+  else
+    JSON.pretty_generate(array)
+  end
 end
 
 # Get all Dragon Capsule information
 get '/parts/caps' do
   content_type :json
-  results = DB.query('SELECT * FROM capsule', :cast_booleans => true)
-    hash = results.each do |row|
-    end
-    if hash.empty?
-      error = { error: 'No Matches Found' }
-      JSON.pretty_generate(error)
-    else
-      JSON.pretty_generate(hash)
-    end
+  collection = client[:capsule]
+  hash = collection.find({}, projection: {_id: 0})
+  array = hash.to_a
+  if array.empty?
+    error = { error: 'No Matches Found' }
+    JSON.pretty_generate(error)
+  else
+    JSON.pretty_generate(array)
+  end
 end
 
 # Get all launches with capsule serial #
 get '/launches/caps/:cap' do
   content_type :json
   cap = params['cap']
-  statement = DB.prepare('SELECT * FROM launch WHERE cap_serial = ?')
-  results = statement.execute(cap)
-    hash = results.each do |row|
-    end
-    if hash.empty?
-      error = { error: 'No Matches Found' }
-      JSON.pretty_generate(error)
-    else
-      JSON.pretty_generate(hash)
-    end
+  collection = client[:launch]
+  hash = collection.find({"cap_serial": "#{cap}"}, projection: {_id: 0})
+  array = hash.to_a
+  if array.empty?
+    error = { error: 'No Matches Found' }
+    JSON.pretty_generate(error)
+  else
+    JSON.pretty_generate(array)
+  end
 end
 
 # Get all Dragon core information
 get '/parts/cores' do
   content_type :json
-  results = DB.query('SELECT * FROM core', :cast_booleans => true)
-    hash = results.each do |row|
-    end
-    if hash.empty?
-      error = { error: 'No Matches Found' }
-      JSON.pretty_generate(error)
-    else
-      JSON.pretty_generate(hash)
-    end
+  collection = client[:core]
+  hash = collection.find({}, projection: {_id: 0})
+  array = hash.to_a
+  if array.empty?
+    error = { error: 'No Matches Found' }
+    JSON.pretty_generate(error)
+  else
+    JSON.pretty_generate(array)
+  end
 end
 
 # Get core information by serial #
 get '/parts/cores/:core' do
   content_type :json
   core = params['core']
-  statement = DB.prepare('SELECT * FROM core WHERE core_serial = ?')
-  results = statement.execute(core)
-    hash = results.each do |row|
-    end
-    if hash.empty?
-      error = { error: 'No Matches Found' }
-      JSON.pretty_generate(error)
-    else
-      JSON.pretty_generate(hash)
-    end
+  collection = client[:core]
+  hash = collection.find({"core_serial": "#{core}"}, projection: {_id: 0})
+  array = hash.to_a
+  if array.empty?
+    error = { error: 'No Matches Found' }
+    JSON.pretty_generate(error)
+  else
+    JSON.pretty_generate(array)
+  end
 end
 end
 end
