@@ -108,17 +108,17 @@ get '/launches' do
   # Gets launches sorted by year
   if params['year']
     year = params['year']
-    hash = collection.find({"launch_year": "#{year}"}, projection: {_id: 0})
+    hash = collection.find({"launch_year": "#{year}"}, projection: {_id: 0}).sort({"flight_number": 1})
 
   # Gets launches in a date range
   elsif params['from'] and params['to']
     start = params['from']
     final = params['to']
-    hash = collection.find({ "launch_date_utc": {"$gte": "#{start}T00:00:00Z", "$lte": "#{final}T00:00:00Z"}}, projection: {_id: 0})
+    hash = collection.find({ "launch_date_utc": {"$gte": "#{start}T00:00:00Z", "$lte": "#{final}T00:00:00Z"}}, projection: {_id: 0}).sort({"flight_number": 1})
 
   # Gets all past launches
   else
-    hash = collection.find({}, projection: {_id: 0})
+    hash = collection.find({}, projection: {_id: 0}).sort({"flight_number": 1})
   end
 
   # parse and return results
@@ -142,17 +142,17 @@ get '/launches/upcoming' do
   # Gets upcoming launches sorted by year
   if params['year']
     year = params['year']
-    hash = collection.find({"launch_year": "#{year}"}, projection: {_id: 0})
+    hash = collection.find({"launch_year": "#{year}"}, projection: {_id: 0}).sort({"flight_number": 1})
 
   # Gets upcoming launches in a date range
   elsif params['from'] and params['to']
     start = params['from']
     final = params['to']
-    hash = collection.find({ "launch_date_utc": {"$gte": "#{start}T00:00:00Z", "$lte": "#{final}T00:00:00Z"}}, projection: {_id: 0})
+    hash = collection.find({ "launch_date_utc": {"$gte": "#{start}T00:00:00Z", "$lte": "#{final}T00:00:00Z"}}, projection: {_id: 0}).sort({"flight_number": 1})
 
   # Gets all future launches
   else
-    hash = collection.find({}, projection: {_id: 0})
+    hash = collection.find({}, projection: {_id: 0}).sort({"flight_number": 1})
   end
 
   # parse and return results
@@ -174,7 +174,7 @@ get '/launches/cores/:core' do
   content_type :json
   core = params['core']
   collection = client[:launch]
-  hash = collection.find({"core_serial": "#{core}"}, projection: {_id: 0})
+  hash = collection.find({"core_serial": "#{core}"}, projection: {_id: 0}).sort({"core_serial": 1})
   array = hash.to_a
   if array.empty?
     error = { error: 'No Matches Found' }
@@ -189,7 +189,7 @@ get '/parts/caps/:cap' do
   content_type :json
   cap = params['cap']
   collection = client[:capsule]
-  hash = collection.find({"capsule_serial": "#{cap}"}, projection: {_id: 0})
+  hash = collection.find({"capsule_serial": "#{cap}"}, projection: {_id: 0}).sort({"capsule_serial": 1})
   array = hash.to_a
   if array.empty?
     error = { error: 'No Matches Found' }
@@ -203,7 +203,7 @@ end
 get '/parts/caps' do
   content_type :json
   collection = client[:capsule]
-  hash = collection.find({}, projection: {_id: 0})
+  hash = collection.find({}, projection: {_id: 0}).sort({"capsule_serial": 1})
   array = hash.to_a
   if array.empty?
     error = { error: 'No Matches Found' }
@@ -218,7 +218,7 @@ get '/launches/caps/:cap' do
   content_type :json
   cap = params['cap']
   collection = client[:launch]
-  hash = collection.find({"cap_serial": "#{cap}"}, projection: {_id: 0})
+  hash = collection.find({"cap_serial": "#{cap}"}, projection: {_id: 0}).sort({"capsule_serial": 1})
   array = hash.to_a
   if array.empty?
     error = { error: 'No Matches Found' }
@@ -232,7 +232,7 @@ end
 get '/parts/cores' do
   content_type :json
   collection = client[:core]
-  hash = collection.find({}, projection: {_id: 0})
+  hash = collection.find({}, projection: {_id: 0}).sort({"core_serial": 1})
   array = hash.to_a
   if array.empty?
     error = { error: 'No Matches Found' }
@@ -247,7 +247,7 @@ get '/parts/cores/:core' do
   content_type :json
   core = params['core']
   collection = client[:core]
-  hash = collection.find({"core_serial": "#{core}"}, projection: {_id: 0})
+  hash = collection.find({"core_serial": "#{core}"}, projection: {_id: 0}).sort({"core_serial": 1})
   array = hash.to_a
   if array.empty?
     error = { error: 'No Matches Found' }
