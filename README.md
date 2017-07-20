@@ -17,8 +17,11 @@
 
 </div>
 
+## Documentation
+
+**See the [Wiki](https://github.com/r-spacex/SpaceX-API/wiki) for full API Documentation**
+
 ## Usage / Endpoints
-#### See the [Wiki](https://github.com/r-spacex/SpaceX-API/wiki) for full API Documentation
 
 **Example Response**
 
