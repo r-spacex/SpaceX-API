@@ -53,6 +53,11 @@ See the [Wiki](https://github.com/r-spacex/SpaceX-API/wiki) for API Documentatio
     "landing_vehicle": null,
     "links": {
       "mission_patch": "http://i.imgur.com/8URp6ea.png",
+      "reddit_campaign": "https://www.reddit.com/r/spacex/comments/6fw4yy/",
+      "reddit_launch": "https://www.reddit.com/r/spacex/comments/6kt2re/",
+      "reddit_recovery": null,
+      "reddit_media": "https://www.reddit.com/r/spacex/comments/6kt3fe/",
+      "presskit": "http://www.spacex.com/sites/spacex/files/intelsat35epresskit.pdf",
       "article_link": "https://en.wikipedia.org/wiki/Intelsat_35e",
       "video_link": "https://www.youtube.com/watch?v=MIHVPCj25Z0"
     },
