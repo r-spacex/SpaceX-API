@@ -16,6 +16,12 @@ class AppTest < Test::Unit::TestCase
     @app = SpacexAPI
   end
 
+##########################################
+# Tests all endpoints for correct number
+# of JSON responses with predefined
+# data + predictible responses
+##########################################
+
   def test_home_response
     get "/"
     assert last_response.ok?
@@ -27,7 +33,6 @@ class AppTest < Test::Unit::TestCase
     get "/info"
     assert last_response.ok?
 	  data = JSON.parse(last_response.body)
-    # Test out some data that is unlikely to ever change
     assert data.count > 0
   end
 
@@ -35,15 +40,13 @@ class AppTest < Test::Unit::TestCase
     get "/launches/latest"
     assert last_response.ok?
 	  data = JSON.parse(last_response.body)
-    # Test out some data that is unlikely to ever change
-    assert data.count > 0
+    assert data.count == 1
   end
 
   def test_launchpads_response
     get "/launchpads"
     assert last_response.ok?
     data = JSON.parse(last_response.body)
-    # Make sure we got at least one launchpad back
     assert data.count > 0
   end
 
@@ -86,7 +89,6 @@ class AppTest < Test::Unit::TestCase
     get "/launches"
     assert last_response.ok?
     data = JSON.parse(last_response.body)
-    #make sure at least 1 launch is returned
     assert data.count > 0
   end
 
@@ -107,8 +109,8 @@ class AppTest < Test::Unit::TestCase
   def test_launches_date_response
     get "/launches?from=2011-01-20&to=2013-05-25"
     assert last_response.ok?
-    #data = JSON.parse(last_response.body)
-    #assert data.count == 3
+    data = JSON.parse(last_response.body)
+    assert data.count == 3
   end
 
   def test_caps_response
