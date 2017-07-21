@@ -82,7 +82,7 @@ See the [Contribution](https://github.com/r-spacex/SpaceX-API/blob/master/CONTRI
 * For any other questions or concerns, just shoot me an email
 
 ## Technical Details
-* API is using [Sinatra](http://www.sinatrarb.com/) framework
+* API is using [Sinatra](http://www.sinatrarb.com/) web framework
 * Uses [Travis CI](https://travis-ci.org/) for testing + deployment
-* All data stored in [MongoDB](https://www.mongodb.com/)
-* API is deployed on [Heroku](https://www.heroku.com/)
+* All data stored in [MongoDB](https://www.mongodb.com/) documents
+* API is deployed on a [Heroku](https://www.heroku.com/) pipeline with staging and production servers
