@@ -102,8 +102,7 @@ class AppTest < Test::Unit::TestCase
   def test_launches_year_response
     get "/launches?year=2010"
     assert last_response.ok?
-    data = JSON.parse(last_response.body)
-    assert data.count == 2
+    assert last_response.body.include?('2010')
   end
 
   def test_launches_date_response
