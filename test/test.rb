@@ -1,11 +1,11 @@
-require "test/unit"
-require "rack/test"
+require 'test/unit'
+require 'rack/test'
 require_relative '../app'
 require 'json'
 
 module Rack
   module Test
-    DEFAULT_HOST = "api.example.org"
+    DEFAULT_HOST = 'api.example.org'.freeze
   end
 end
 
@@ -16,114 +16,113 @@ class AppTest < Test::Unit::TestCase
     @app = SpacexAPI
   end
 
-##########################################
-# Tests all endpoints for correct number
-# of JSON responses with predefined
-# data + predictible responses
-##########################################
+  ##########################################
+  # Tests all endpoints for correct number
+  # of JSON responses with predefined
+  # data + predictible responses
+  ##########################################
 
-  def test_home_response
-    get "/"
+  def test_home
+    get '/'
     assert last_response.ok?
     data = JSON.parse(last_response.body)
     assert data.count > 0
   end
 
-  def test_info_response
-    get "/info"
+  def test_info
+    get '/info'
     assert last_response.ok?
-	  data = JSON.parse(last_response.body)
+    data = JSON.parse(last_response.body)
     assert data.count > 0
   end
 
-  def test_latest_response
-    get "/launches/latest"
+  def test_latest
+    get '/launches/latest'
     assert last_response.ok?
-	  data = JSON.parse(last_response.body)
+    data = JSON.parse(last_response.body)
     assert data.count == 1
   end
 
-  def test_launchpads_response
-    get "/launchpads"
+  def test_launchpads
+    get '/launchpads'
     assert last_response.ok?
     data = JSON.parse(last_response.body)
     assert data.count > 0
   end
 
-  def test_vehicle_response
-    get "/vehicles"
+  def test_vehicle
+    get '/vehicles'
     assert last_response.ok?
     data = JSON.parse(last_response.body)
     assert data.count > 0
   end
 
-  def test_falcon1_response
-    get "/vehicles/falcon1"
+  def test_falcon1
+    get '/vehicles/falcon1'
     assert last_response.ok?
     data = JSON.parse(last_response.body)
     assert data.count > 0
   end
 
-  def test_falcon9_response
-    get "/vehicles/falcon9"
+  def test_falcon9
+    get '/vehicles/falcon9'
     assert last_response.ok?
     data = JSON.parse(last_response.body)
     assert data.count > 0
   end
 
-  def test_falconheavy_response
-    get "/vehicles/falconheavy"
+  def test_falconheavy
+    get '/vehicles/falconheavy'
     assert last_response.ok?
     data = JSON.parse(last_response.body)
     assert data.count > 0
   end
 
-  def test_dragon_response
-    get "/vehicles/dragon"
+  def test_dragon
+    get '/vehicles/dragon'
     assert last_response.ok?
     data = JSON.parse(last_response.body)
     assert data.count > 0
   end
 
-  def test_launches_response
-    get "/launches"
+  def test_launches
+    get '/launches'
     assert last_response.ok?
     data = JSON.parse(last_response.body)
     assert data.count > 0
   end
 
-  def test_upcoming_response
-    get "/launches/upcoming"
+  def test_upcoming
+    get '/launches/upcoming'
     assert last_response.ok?
     data = JSON.parse(last_response.body)
     assert data.count > 0
   end
 
-  def test_launches_year_response
-    get "/launches?year=2010"
+  def test_launches_year
+    get '/launches?year=2010'
     assert last_response.ok?
     assert last_response.body.include?('2010')
   end
 
-  def test_launches_date_response
-    get "/launches?from=2011-01-20&to=2013-05-25"
+  def test_launches_date
+    get '/launches?from=2011-01-20&to=2013-05-25'
     assert last_response.ok?
     data = JSON.parse(last_response.body)
     assert data.count == 3
   end
 
-  def test_caps_response
-    get "/parts/caps"
+  def test_caps
+    get '/parts/caps'
     assert last_response.ok?
     data = JSON.parse(last_response.body)
     assert data.count > 0
   end
 
-  def test_cores_response
-    get "/parts/cores"
+  def test_cores
+    get '/parts/cores'
     assert last_response.ok?
     data = JSON.parse(last_response.body)
     assert data.count > 0
   end
-
 end
