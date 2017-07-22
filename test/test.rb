@@ -19,7 +19,7 @@ class AppTest < Test::Unit::TestCase
   ##########################################
   # Tests all endpoints for correct number
   # of JSON responses with predefined
-  # data + predictible responses
+  # data + predictible responses.
   ##########################################
 
   def test_home
