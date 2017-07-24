@@ -17,12 +17,12 @@ class PrAppTest < Test::Unit::TestCase
   end
 
   ##########################################
-  # Tests all endpoints for correct number
-  # of JSON responses with predefined
-  # data + predictible responses.
+  # Tests a single endpoint to test for basic
+  # app functionality for pull requests, since
+  # travis restricts the env variables
   ##########################################
 
-  def test_home
+  def test_pr
     get '/pr'
     assert last_response.ok?
     data = JSON.parse(last_response.body)
