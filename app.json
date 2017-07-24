@@ -1,5 +1,5 @@
 {
-  "name": "SpaceX-API",
+  "name": "SpaceX-API-Review",
   "scripts": {
   },
   "env": {
@@ -25,10 +25,6 @@
   "formation": {
   },
   "addons": [
-    "graphenedb",
-    "jawsdb",
-    "jawsdb-maria",
-    "heroku-redis"
   ],
   "buildpacks": [
     {
