@@ -50,6 +50,12 @@ get '/' do
   JSON.pretty_generate(hash.to_a[0])
 end
 
+get '/pr' do
+  content_type :json
+  hash = { :running => true}
+  JSON.pretty_generate(hash)
+end
+
 get '/info' do
   content_type :json
   collection = client[:info]

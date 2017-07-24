@@ -2,6 +2,9 @@ language: ruby
 sudo: false
 dist: trusty
 cache: bundler
+script:
+   - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then bundle exec rake pr_test; fi'
+   - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then bash bundle exec rake test; fi'
 notifications:
   email:
     on_success: never

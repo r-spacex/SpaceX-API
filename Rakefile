@@ -10,4 +10,12 @@ Rake::TestTask.new(:test) do |test|
   test.verbose = true
 end
 
-task default: [:test]
+Rake::TestTask.new(:prtest) do |test|
+  test.libs << 'lib' << 'test'
+  test.pattern = 'test/pr_test.rb'
+  test.warning = true
+  test.verbose = true
+end
+
+# Disabled to allow for PR test path
+#task default: [:test]
