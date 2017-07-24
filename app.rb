@@ -15,10 +15,10 @@ class SpacexAPI < Sinatra::Base
   register Sinatra::Subdomain
 
 # DB credentials
-  host = ENV['MONGO_HOST']
-  user = ENV['MONGO_USER']
-  password = ENV['MONGO_PASS']
-  database = ENV['MONGO_DB']
+  host = 'ds063892.mlab.com'
+  user = 'public'
+  password = 'spacex'
+  database = 'spacex-api'
 
 # Creates connection for mongo client  
  client = Mongo::Client.new("mongodb://#{user}:#{password}@#{host}:63892/#{database}")
