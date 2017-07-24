@@ -9,7 +9,7 @@ GEM
       bson (>= 4.2.1, < 5.0.0)
     mustermann (1.0.0)
     power_assert (1.0.2)
-    puma (3.9.1)
+    puma (3.4.0)
     rack (2.0.3)
     rack-protection (2.0.0)
       rack
@@ -35,7 +35,7 @@ DEPENDENCIES
   foreman
   json
   mongo (~> 2.4)
-  puma
+  puma (= 3.4.0)
   rack-test
   rake
   sinatra
@@ -43,4 +43,4 @@ DEPENDENCIES
   test-unit
 
 BUNDLED WITH
-   1.15.2
+   1.15.3

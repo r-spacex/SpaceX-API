@@ -12,4 +12,4 @@ RUN bundle install --system
 
 EXPOSE 9292
 
-CMD ["bundle", "exec", "rackup", "-p", "9292"]
+CMD ["bundle", "exec", "rackup"]
