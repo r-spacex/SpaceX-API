@@ -10,6 +10,9 @@ require 'sinatra/subdomain'
 require 'json'
 require 'mongo'
 
+# Allows all connections
+set :bind, '0.0.0.0'
+
 # Uses the modular version of Sinatra
 class SpacexAPI < Sinatra::Base
   register Sinatra::Subdomain
