@@ -10,6 +10,6 @@ RUN bundle install --system
 ADD . /app
 RUN bundle install --system
 
-EXPOSE 8080
+EXPOSE 9292
 
-CMD ["bundle", "exec", "rackup", "-p", "8080"]
+CMD ["bundle", "exec", "rackup", "-p", "9292"]
