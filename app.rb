@@ -14,6 +14,7 @@ require 'mongo'
 # Uses the modular version of Sinatra
 class SpacexAPI < Sinatra::Base
   register Sinatra::Subdomain
+  register Sinatra::CrossOrigin
 
 # Enable CORS
   configure do
