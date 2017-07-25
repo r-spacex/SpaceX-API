@@ -7,12 +7,30 @@
 require 'bundler/setup'
 require 'sinatra'
 require 'sinatra/subdomain'
+require 'sinatra/cross_origin'
 require 'json'
 require 'mongo'
 
 # Uses the modular version of Sinatra
 class SpacexAPI < Sinatra::Base
   register Sinatra::Subdomain
+  register Sinatra::CrossOrigin
+
+# Enable CORS
+  configure do
+    enable :cross_origin
+  end
+
+  before do
+    response.headers['Access-Control-Allow-Origin'] = '*'
+  end
+
+  options "*" do
+    response.headers["Allow"] = "GET, POST, OPTIONS"
+    response.headers["Access-Control-Allow-Headers"] = "Content-Type, Accept"
+    response.headers["Access-Control-Allow-Origin"] = "*"
+    200
+  end
 
 # DB credentials
   host = 'ds063892.mlab.com'
