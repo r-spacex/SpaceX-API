@@ -7,6 +7,7 @@
 # SpaceX Data REST API
 
 [![Travis](https://img.shields.io/travis/r-spacex/SpaceX-API.svg?style=flat-square)](https://travis-ci.org/r-spacex/SpaceX-API)
+[![Docker Build Statu](https://img.shields.io/docker/build/jakewmeyer/spacex-api.svg)]()
 [![GitHub release](https://img.shields.io/github/release/r-spacex/SpaceX-API.svg?style=flat-square)]()
 [![Language](https://img.shields.io/badge/language-Ruby-red.svg?style=flat-square)]()
 [![license](https://img.shields.io/github/license/r-spacex/SpaceX-API.svg?style=flat-square)]()
