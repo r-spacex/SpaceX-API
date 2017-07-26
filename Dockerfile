@@ -10,8 +10,6 @@ RUN bundle install --system
 ADD . /app
 RUN bundle install --system
 
-ENV VIRTUAL_HOST=api.example.com
-
 EXPOSE 9292
 
 CMD ["bundle", "exec", "rackup"]

@@ -7,6 +7,7 @@ gem 'puma', '3.4.0'
 gem 'rack-test'
 gem 'rake'
 gem 'sinatra'
+gem "sinatra-namespace"
 gem 'sinatra-subdomain'
 gem 'sinatra-cross_origin'
 gem 'test-unit'

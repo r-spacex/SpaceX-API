@@ -6,17 +6,15 @@
 
 require 'bundler/setup'
 require 'sinatra'
+require "sinatra/namespace"
 require 'sinatra/subdomain'
 require 'sinatra/cross_origin'
 require 'json'
 require 'mongo'
 
-# Allow connections other than localhost
-set :bind, '0.0.0.0'
-
 # Uses the modular version of Sinatra
 class SpacexAPI < Sinatra::Base
-  register Sinatra::Subdomain
+  register Sinatra::Namespace
   register Sinatra::CrossOrigin
 
 # Enable CORS
@@ -57,8 +55,8 @@ disable :protection
 #  redirect request.url.sub('http', 'https') unless request.secure?
 # end
 
-# Uses subdomain api.example.com to route traffic
-subdomain :api do
+# Sets namespace for all following URL's
+namespace '/api/v1' do
 
 ##########################################
 # Basic Info Endpoints
