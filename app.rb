@@ -59,6 +59,14 @@ disable :protection
 #  redirect request.url.sub('http', 'https') unless request.secure?
 # end
 
+# Single endpoint outside namespace
+get '/' do
+  content_type :json
+  collection = client[:home]
+  hash = collection.find({}, projection: {_id: 0})
+  JSON.pretty_generate(hash.to_a[0])
+end
+
 # Sets namespace for all following URL's
 namespace '/v1' do
 
