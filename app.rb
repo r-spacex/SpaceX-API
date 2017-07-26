@@ -19,6 +19,7 @@ class SpacexAPI < Sinatra::Base
 
 # Allows connections from all  
   set :bind, '0.0.0.0'
+  set :logging, true
 
 # Enable CORS
   configure do
