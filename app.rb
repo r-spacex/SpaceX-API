@@ -17,6 +17,9 @@ class SpacexAPI < Sinatra::Base
   register Sinatra::Namespace
   register Sinatra::CrossOrigin
 
+# Allows connections from all  
+  set :bind, '0.0.0.0'
+
 # Enable CORS
   configure do
     enable :cross_origin
