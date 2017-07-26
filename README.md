@@ -27,7 +27,7 @@
 **Example Response**
 
 ```http
-GET https://api.spacexdata.com/launches/latest
+GET https://api.spacexdata.com/v1/launches/latest
 ```
 
 ```json
