@@ -2,6 +2,10 @@ language: ruby
 sudo: false
 dist: trusty
 cache: bundler
+after_success:
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+    curl -H "Content-Type: application/json" --data '{"build": true}' -X POST https://registry.hub.docker.com/u/jakewmeyer/spacex-api/trigger/5e92e617-8b11-489f-a269-36ab24a4d7a5/;
+    fi
 notifications:
   email:
     on_success: never
