@@ -1,0 +1,12 @@
+language: ruby
+sudo: false
+dist: trusty
+cache: bundler
+notifications:
+  email:
+    on_success: never
+    on_failure: always
+  slack:
+    secure: YCLQ9AqOPR4cnB+v9d+O6eX31IWDL43GyFcgHRCoUbfsccJoguo0vHqjzd36VdE+bp3PD9GJTEdiiDJGCPgQyq3vUP9VhiR4xbLdNSGth6+7Q0wZdoRHkG0qjXKgcFtEnAmjwgadHQ3Ymh9krZvzRlee5B92lPh2oocU1Lijw9Vw4e6cIco+Fr3Pjnx3eY1rSVUd45qv7bnzxHCT+my4lMcqgJXd9/OIHVL+RCigGcKeBSR7V79Fi/4fg7+e1fwaiwZKpRfF4cOtQ30K/x0M07Sbv01OHbn8CybUw1uax+6s+8nJXPCyWymxONexy54n/uMCAqr6ODNlKvJdeP0KqY+n3l913JCFZKVYfM6roxC70Mn4ZmT670Kxlc1ROLxmgruSTk5Cr3Pv+rSpC1F7p1Fv7gUi+Aia2uZec2n4gPmq482psubkRORW9f5aAtAQMzkdHYg8hs3QA0/XShpm+eksK6+/DAFP/eXQVNyDQysJlp7SD/GFjmusKIa4tJqD+jjWOFXtojyY7vT1RFIrMtUPAz4s5LMPLWiS4p0H6KCcJ3GpYEuZm5i4TJtQInec4lIgj/JLUSueIZy/kD+jY+nBXEzCyZPi1YFU/yQmx4+tBknKWJvQpFXI542bg7qEWD9IZUpGfIByRUVQvCo0xuhA/pCOVH8HQO0xTkBrPb0=
+after_success:
+ - ./docker_build.sh

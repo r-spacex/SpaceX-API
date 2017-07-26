@@ -1,0 +1,34 @@
+{
+  "name": "SpaceX-API-Review",
+  "scripts": {
+  },
+  "env": {
+    "LANG": {
+      "required": true
+    },
+    "MONGO_DB": {
+      "required": true
+    },
+    "MONGO_HOST": {
+      "required": true
+    },
+    "MONGO_PASS": {
+      "required": true
+    },
+    "MONGO_USER": {
+      "required": true
+    },
+    "RACK_ENV": {
+      "required": true
+    }
+  },
+  "formation": {
+  },
+  "addons": [
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/ruby"
+    }
+  ]
+}

@@ -2,125 +2,79 @@
 
 ![Imgur](http://i.imgur.com/eL73Iit.png)
 
-![Imgur](http://i.imgur.com/EdfIdgC.jpg)
+![Imgur](http://i.imgur.com/5RX6fgN.jpg)
 
-# SpaceX JSON Data API
+# SpaceX Data REST API
 
-[![GitHub release](https://img.shields.io/github/release/jakewmeyer/SpaceX-API.svg)]()
-[![Language](https://img.shields.io/badge/language-Ruby-red.svg)]()
-[![license](https://img.shields.io/github/license/mashape/apistatus.svg)]()
-[![Platform](https://img.shields.io/badge/platform-REST--API-brightgreen.svg)]()
+[![Travis](https://img.shields.io/travis/r-spacex/SpaceX-API.svg?style=flat-square)](https://travis-ci.org/r-spacex/SpaceX-API)
+[![Docker Build Statu](https://img.shields.io/docker/build/jakewmeyer/spacex-api.svg?style=flat-square)](https://hub.docker.com/r/jakewmeyer/spacex-api/)
+[![GitHub release](https://img.shields.io/github/release/r-spacex/SpaceX-API.svg?style=flat-square)]()
+[![Language](https://img.shields.io/badge/language-Ruby-red.svg?style=flat-square)]()
+[![Interface](https://img.shields.io/badge/interface-REST-brightgreen.svg?style=flat-square)]()
 
-### JSON API for data regarding company info, vehicles, launch sites, and launch data.
+### REST API for data regarding company info, vehicles, launch sites, and launch data.
 <br></br>
-# Usage / Endpoints
+
 </div>
 
+## Documentation
 
-## Basic Info
-Get API info
-```http
-GET https://api.spacexdata.com
-```
-Get company info
-```http
-GET https://api.spacexdata.com/info
-```
-Get vehicle information
-```http
-GET https://api.spacexdata.com/vehicles
-```
-```http
-GET https://api.spacexdata.com/vehicles/falcon9
-GET https://api.spacexdata.com/vehicles/falconheavy
-GET https://api.spacexdata.com/vehicles/dragon
-```
-Get launchpad information
-```http
-GET https://api.spacexdata.com/launchpads
-```
-## Launch information by dates
-Get all launches
-```http
-GET https://api.spacexdata.com/launches
-```
-Get all future launches
-```http
-GET https://api.spacexdata.com/launches/upcoming
-```
-Get past launches by year
-```http
-GET https://api.spacexdata.com/launches?year=2017
-```
-Get past launches in a date range
-```http
-GET https://api.spacexdata.com/launches?from=2011-01-20&to=2017-05-25
-```
+**See the [Wiki](https://github.com/r-spacex/SpaceX-API/wiki) for full API Documentation**
+<br></br>
 
-## Launch info by serial #'s
-Get launches by core serial #
-```http
-GET https://api.spacexdata.com/launches/cores/B1021
-```
-Get launches by capsule serial #
-```http
-GET https://api.spacexdata.com/launches/caps/C106
-```
+## Usage / Endpoints
 
-## Detailed info about each capsule
-Get detailed info on all capsules
-```http
-GET https://api.spacexdata.com/parts/caps
-```
-Get detailed capsule information by serial #
-```http
-GET https://api.spacexdata.com/parts/caps/C106
-```
+**Example Response**
 
-## Detailed info about each core
-Get detailed info on all cores
 ```http
-GET https://api.spacexdata.com/parts/cores
+GET https://api.spacexdata.com/v1/launches/latest
 ```
-Get detailed core information by serial #
-```http
-GET https://api.spacexdata.com/parts/cores/B1021
-```
-
-## JSON launch response example
 
 ```json
 {
-  "flight_number": 42,
-  "launch_year": "2017",
-  "launch_date": "2017-06-23",
-  "time_utc": "19:10",
-  "time_local": "03:10 pm EDT",
-  "rocket": "Falcon 9",
-  "rocket_type": "FT",
-  "core_serial": "B1029",
-  "cap_serial": "",
-  "launch_site": "KSC LC39A",
-  "payload_1": "BulgariaSat-1",
-  "payload_2": "",
-  "payload_type": "Satelite",
-  "payload_mass_kg": 3669,
-  "payload_mass_lbs": 8089,
-  "orbit": "GTO",
-  "customer_1": "Bulgaria Sat",
-  "customer_2": "",
-  "launch_success": true,
-  "reused": true,
-  "land_success": true,
-  "landing_type": "ASDS",
-  "mission_patch": "http://i.imgur.com/VAvulaO.png",
-  "article_link": "https://en.wikipedia.org/wiki/BulgariaSat-1",
-  "video_link": "https://www.youtube.com/watch?v=Y8mLi-rRTh8",
-  "details": "Second time a booster will be reused: Second flight of B1029 after the Iridium mission of January 2017. The satellite will be the first commercial Bulgarian-owned communications satellite and it will provide television broadcasts and other communications services over southeast Europe."
-},
-```  
-<br></br>
+    "flight_number": 44,
+    "launch_year": "2017",
+    "launch_date_utc": "2017-07-05T23:35:00Z",
+    "launch_date_local": "2017-07-05T19:35:00-04:00",
+    "rocket": "Falcon 9",
+    "rocket_type": "FT",
+    "core_serial": "B1037",
+    "cap_serial": null,
+    "launch_site": {
+      "site_id": "ksc_lc_39a",
+      "site_name": "KSC LC 39A"
+    },
+    "payloads": [
+      {
+        "payload_id": "Intelsat 35e",
+        "customer": "Intelsat",
+        "payload_type": "Satelite",
+        "payload_mass_kg": 6000.0,
+        "payload_mass_lbs": 13227.0,
+        "orbit": "GTO"
+      }
+    ],
+    "launch_success": true,
+    "reused": false,
+    "land_success": false,
+    "landing_type": null,
+    "landing_vehicle": null,
+    "links": {
+      "mission_patch": "http://i.imgur.com/8URp6ea.png",
+      "reddit_campaign": "https://www.reddit.com/r/spacex/comments/6fw4yy/",
+      "reddit_launch": "https://www.reddit.com/r/spacex/comments/6kt2re/",
+      "reddit_recovery": null,
+      "reddit_media": "https://www.reddit.com/r/spacex/comments/6kt3fe/",
+      "presskit": "http://www.spacex.com/sites/spacex/files/intelsat35epresskit.pdf",
+      "article_link": "https://en.wikipedia.org/wiki/Intelsat_35e",
+      "video_link": "https://www.youtube.com/watch?v=MIHVPCj25Z0"
+    },
+    "details": "Due to the constraints of sending a heavy satellite (~6,000 kg) to GTO, the rocket will fly in its expendable configuration and the first-stage booster will not be recovered."
+  }
+  ```
 
+## Contributions
+See the [Contribution](https://github.com/r-spacex/SpaceX-API/blob/master/CONTRIBUTING.md) guide for detailed steps
 
 ## FAQ's
 * If you have any questions or corrections, please open an issue and we'll get it merged ASAP
@@ -129,9 +83,11 @@ GET https://api.spacexdata.com/parts/cores/B1021
 * For any other questions or concerns, just shoot me an email
 
 ## Technical Details
-* API is using [Sinatra](http://www.sinatrarb.com/) as a framework in Ruby
-* Launch, Capsule, and Core data implemented in [MariaDB](https://mariadb.org/)
-* Vehicle, Launchpad, and Company data is stored directly in JSON
-* API is deployed on [Heroku](https://www.heroku.com/)
-* This repo deploys to a staging server first, so the production server might
-be a few commits behind, this allows for testing, and preserves stability
+* API is using [Sinatra](http://www.sinatrarb.com/) web framework
+* Uses [Travis CI](https://travis-ci.org/) for testing + deployment
+* All data stored as [MongoDB](https://www.mongodb.com/) documents
+* API is deployed on a [Heroku](https://www.heroku.com/) pipeline with staging and production servers
+* A [Docker](https://hub.docker.com/r/jakewmeyer/spacex-api/) image is avaiable for local development
+```bash
+docker pull jakewmeyer/spacex-api
+```

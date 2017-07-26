@@ -1,5 +1,13 @@
 source 'https://rubygems.org'
-gem 'sinatra'
-gem 'sinatra-subdomain'
+
+gem 'foreman'
 gem 'json'
-gem 'mysql2'
+gem 'mongo', '~> 2.4'
+gem 'puma', '3.4.0'
+gem 'rack-test'
+gem 'rake'
+gem 'sinatra'
+gem "sinatra-namespace"
+gem 'sinatra-subdomain'
+gem 'sinatra-cross_origin'
+gem 'test-unit'
