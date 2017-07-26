@@ -10,7 +10,6 @@
 [![Docker Build Statu](https://img.shields.io/docker/build/jakewmeyer/spacex-api.svg?style=flat-square)]()
 [![GitHub release](https://img.shields.io/github/release/r-spacex/SpaceX-API.svg?style=flat-square)]()
 [![Language](https://img.shields.io/badge/language-Ruby-red.svg?style=flat-square)]()
-[![license](https://img.shields.io/github/license/r-spacex/SpaceX-API.svg?style=flat-square)]()
 [![Interface](https://img.shields.io/badge/interface-REST-brightgreen.svg?style=flat-square)]()
 
 ### REST API for data regarding company info, vehicles, launch sites, and launch data.
