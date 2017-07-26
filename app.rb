@@ -56,7 +56,7 @@ disable :protection
 # end
 
 # Sets namespace for all following URL's
-namespace '/api/v1' do
+namespace '/v1' do
 
 ##########################################
 # Basic Info Endpoints
