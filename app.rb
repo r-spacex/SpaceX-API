@@ -11,6 +11,9 @@ require 'sinatra/cross_origin'
 require 'json'
 require 'mongo'
 
+# Allow connections other than localhost
+set :bind, '0.0.0.0'
+
 # Uses the modular version of Sinatra
 class SpacexAPI < Sinatra::Base
   register Sinatra::Subdomain
