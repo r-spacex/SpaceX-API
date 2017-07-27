@@ -47,7 +47,9 @@ GET https://api.spacexdata.com/v1/launches/latest
     "payloads": [
       {
         "payload_id": "Intelsat 35e",
-        "customer": "Intelsat",
+        "customers": [
+          "Intelsat"
+        ],
         "payload_type": "Satelite",
         "payload_mass_kg": 6000.0,
         "payload_mass_lbs": 13227.0,
