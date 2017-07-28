@@ -1,6 +1,10 @@
-FROM ruby:2.4.1
+FROM ruby:2.4.1-alpine
 
 MAINTAINER Jake Meyer <jakewmeyer@gmail.com>
+
+RUN apk update && apk upgrade
+RUN apk add --update alpine-sdk
+RUN apk add ruby-bundler
 
 WORKDIR /app
 ADD Gemfile /app/Gemfile
