@@ -131,6 +131,15 @@ get '/launchpads' do
   JSON.pretty_generate(hash.to_a[0])
 end
 
+# Get info on a specific launch pad
+get '/launchpads/:pad' do
+  content_type :json
+  pad = params['pad']
+  collection = client[:launchpad]
+  hash = collection.find({id: "#{pad}"}, projection: {_id: 0})
+  JSON.pretty_generate(hash.to_a[0])
+end
+
 get '/launches/latest' do
   content_type :json
   collection = client[:launch]
