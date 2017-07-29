@@ -44,6 +44,12 @@ class AppTest < Test::Unit::TestCase
     assert data.count > 0
   end
 
+  def test_individual_launchpads
+    get '/v1/launchpads/ccafs_slc_40'
+    assert last_response.ok?
+    assert last_response.body.include?('ccafs_slc_40')
+  end
+
   def test_vehicle
     get '/v1/vehicles'
     assert last_response.ok?
