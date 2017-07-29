@@ -44,7 +44,7 @@ class SpacexAPI < Sinatra::Base
   database = 'spacex-api'
 
 # Creates connection for mongo client  
- client = Mongo::Client.new("mongodb://#{user}:#{password}@#{host}:63892/#{database}")
+ client = Mongo::Client.new("mongodb://#{user}:#{password}@#{host}:63892/#{database}?connectTimeoutMS=30000&maxPoolSize=25")
 
 # Error for no results
  error = { error: 'No Matches Found' }
