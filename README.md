@@ -12,7 +12,7 @@
 [![Language](https://img.shields.io/badge/language-Ruby-red.svg?style=flat-square)]()
 [![Interface](https://img.shields.io/badge/interface-REST-brightgreen.svg?style=flat-square)]()
 
-### REST API for data regarding company info, vehicles, launch sites, and launch data.
+### Open Source REST API for data regarding company info, vehicles, launch sites, and launch data.
 <br></br>
 
 </div>
@@ -93,3 +93,4 @@ See the [Contribution](https://github.com/r-spacex/SpaceX-API/blob/master/CONTRI
 ```bash
 docker pull jakewmeyer/spacex-api
 ```
+* Latest database dump included under [releases](https://github.com/r-spacex/SpaceX-API/releases)
