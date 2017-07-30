@@ -16,4 +16,4 @@ RUN bundle install --system
 
 EXPOSE 9292
 
-CMD ["bundle", "exec", "puma"]
+CMD ["bundle", "exec", "puma", "-e", "production"]
