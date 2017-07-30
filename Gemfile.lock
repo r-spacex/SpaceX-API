@@ -18,6 +18,7 @@ GEM
     rack-test (0.6.3)
       rack (>= 1.0)
     rake (12.0.0)
+    redis (3.3.3)
     sinatra (2.0.0)
       mustermann (~> 1.0)
       rack (~> 2.0)
@@ -50,6 +51,7 @@ DEPENDENCIES
   puma (= 3.4.0)
   rack-test
   rake
+  redis
   sinatra
   sinatra-cross_origin
   sinatra-namespace
