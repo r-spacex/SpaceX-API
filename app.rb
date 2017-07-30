@@ -12,12 +12,13 @@ require 'sinatra/cross_origin'
 require 'json'
 require 'mongo'
 
-# Uses the modular version of Sinatra
+# Uses modular version of Sinatra
 class SpacexAPI < Sinatra::Base
   register Sinatra::Namespace
   register Sinatra::CrossOrigin
 
-# Allows connections from all  
+# Allow all connections
+# Enable request logging
   set :bind, '0.0.0.0'
   set :logging, true
 
@@ -37,14 +38,15 @@ class SpacexAPI < Sinatra::Base
     200
   end
 
-# DB credentials
-  host = 'ds063892.mlab.com'
+# Read only DB credentials
   user = 'public'
   password = 'spacex'
   database = 'spacex-api'
 
-# Creates connection for mongo client  
- client = Mongo::Client.new("mongodb://#{user}:#{password}@#{host}:63892/#{database}?connectTimeoutMS=30000&maxPoolSize=25")
+# Connection to MongoDB Replica Set
+ client = Mongo::Client.new("mongodb://#{user}:#{password}@spacex-api-shard-00-00-rzdz4.mongodb.net:27017"\
+ ",spacex-api-shard-00-01-rzdz4.mongodb.net:27017,spacex-api-shard-00-02-rzdz4.mongodb.net:27017/#{database}"\
+ "?ssl=true&replicaSet=spacex-api-shard-0&authSource=admin&connectTimeoutMS=30000&maxPoolSize=25")
 
 # Error for no results
  error = { error: 'No Matches Found' }
@@ -52,13 +54,6 @@ class SpacexAPI < Sinatra::Base
 # Disables rack protection because of false positives
 # that were blocking connections to home page
 disable :protection
-
-# loaderio-a76ef1f657093d655bce52a9ba6e1b44
-# No longer necessary
-# Forces the use of HTTPS for the API
-# before do
-#  redirect request.url.sub('http', 'https') unless request.secure?
-# end
 
 # Single endpoint outside namespace
 get '/' do
@@ -68,7 +63,7 @@ get '/' do
   JSON.pretty_generate(hash.to_a[0])
 end
 
-# Sets namespace for all following URL's
+# Sets version namespace for all following URL's
 namespace '/v1' do
 
 ##########################################
