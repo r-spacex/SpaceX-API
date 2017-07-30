@@ -87,9 +87,9 @@ See the [Contribution](https://github.com/r-spacex/SpaceX-API/blob/master/CONTRI
 ## Technical Details
 * API is using [Sinatra](http://www.sinatrarb.com/) web framework
 * Uses [Travis CI](https://travis-ci.org/) for testing + deployment
-* All data stored as [MongoDB](https://www.mongodb.com/) documents
-* API is deployed on a [Heroku](https://www.heroku.com/) pipeline with staging and production servers
-* A [Docker](https://hub.docker.com/r/jakewmeyer/spacex-api/) image is avaiable for local development
+* All data stored in a [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) 3 node replica set cluster
+* API is deployed on a [Heroku](https://www.heroku.com/) pipeline with pull request, staging and production servers
+* A [Docker](https://hub.docker.com/r/jakewmeyer/spacex-api/) image is avaiable for local development/deployment
 ```bash
 docker pull jakewmeyer/spacex-api
 ```
