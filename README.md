@@ -76,12 +76,6 @@ GET https://api.spacexdata.com/v1/launches/latest
 ## Contributions
 See the [Contribution](https://github.com/r-spacex/SpaceX-API/blob/master/CONTRIBUTING.md) guide for detailed steps
 
-## FAQ's
-* If you have any questions or corrections, please open an issue and we'll get it merged ASAP
-* All data and photos are property of Space Exploration Technologies Corporation (SpaceX)
-* I am not affiliated with SpaceX in any way, shape, form, or fashion. Just a fun side project for me
-* For any other questions or concerns, just shoot me an email
-
 ## Technical Details
 * API is using [Sinatra](http://www.sinatrarb.com/) web framework
 * Uses [Travis CI](https://travis-ci.org/) for testing + deployment
@@ -92,3 +86,9 @@ See the [Contribution](https://github.com/r-spacex/SpaceX-API/blob/master/CONTRI
 ```bash
 docker pull jakewmeyer/spacex-api
 ```
+
+## FAQ's
+* If you have any questions or corrections, please open an issue and we'll get it merged ASAP
+* All data and photos are property of Space Exploration Technologies Corporation (SpaceX)
+* I am not affiliated with SpaceX in any way, shape, form, or fashion. Just a fun side project for me
+* For any other questions or concerns, just shoot me an email
