@@ -52,7 +52,7 @@ database = 'spacex-api'
 # Connection to MongoDB Replica Set
 client = Mongo::Client.new("mongodb://#{user}:#{password}@spacex-api-shard-00-00-rzdz4.mongodb.net:27017"\
 ",spacex-api-shard-00-01-rzdz4.mongodb.net:27017,spacex-api-shard-00-02-rzdz4.mongodb.net:27017/#{database}"\
-"?ssl=true&replicaSet=spacex-api-shard-0&authSource=admin&connectTimeoutMS=30000&maxPoolSize=25")
+"?ssl=true&replicaSet=spacex-api-shard-0&authSource=admin&connectTimeoutMS=25000&maxPoolSize=25")
 
 # Create new Redis client
 redis = Redis.new
