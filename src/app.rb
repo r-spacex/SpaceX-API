@@ -23,6 +23,11 @@ class SpacexAPI < Sinatra::Base
 set :bind, '0.0.0.0'
 set :logging, true
 
+# Handler for 404 errors
+error Sinatra::NotFound do
+  send_file './pages/404.html'
+end
+
 # Enable CORS
 configure do
   enable :cross_origin
