@@ -1,7 +1,7 @@
 # Rack uses this to start the application
 
 require 'bundler'
-require './app'
+require './src/app.rb'
 
 Bundler.require
 

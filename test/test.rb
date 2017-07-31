@@ -1,6 +1,6 @@
 require 'test/unit'
 require 'rack/test'
-require_relative '../app'
+require_relative '../src/app.rb'
 require 'json'
 
 class AppTest < Test::Unit::TestCase
