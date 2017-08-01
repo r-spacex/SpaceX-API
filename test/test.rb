@@ -24,6 +24,7 @@ class AppTest < Test::Unit::TestCase
   ##########################################
 
   def test_404_page
+    headers 'Accept-Charset', 'utf-8'
     get '/launchpads'
     assert last_response.ok?
     assert last_response.body.include?('Endpoint Not Found')
