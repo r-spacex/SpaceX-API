@@ -1,3 +1,5 @@
+# Dockerfile with alpine based build
+
 FROM ruby:2.4.1-alpine
 
 MAINTAINER Jake Meyer <jakewmeyer@gmail.com>
