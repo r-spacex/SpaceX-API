@@ -193,4 +193,16 @@ class AppTest < Test::Unit::TestCase
     assert last_response.ok?
     assert last_response.body.include?('C106')
   end
+
+  def test_launches_core_error
+    get '/v1/launches/cores/B8765'
+    assert last_response.ok?
+    assert last_response.body.include?('error')
+  end
+
+  def test_launches_caps_error
+    get '/v1/launches/caps/C256'
+    assert last_response.ok?
+    assert last_response.body.include?('error')
+  end
 end
