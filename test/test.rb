@@ -23,7 +23,20 @@ class AppTest < Test::Unit::TestCase
   # data + predictible responses.
   ##########################################
 
+  def test_404_page
+    get '/launchpads'
+    assert last_response.ok?
+    assert last_response.body.include?('Endpoint Not Found')
+  end
+
   def test_home
+    get '/'
+    assert last_response.ok?
+    data = JSON.parse(last_response.body)
+    assert data.count > 0
+  end
+
+  def test_home_v1
     get '/v1/'
     assert last_response.ok?
     data = JSON.parse(last_response.body)
@@ -104,6 +117,18 @@ class AppTest < Test::Unit::TestCase
     assert last_response.ok?
     data = JSON.parse(last_response.body)
     assert data.count > 0
+  end
+
+  def test_upcoming_year
+    get '/v1/launches/upcoming?year=2016'
+    assert last_response.ok?
+    assert last_response.body.include?('error')
+  end
+
+  def test_upcoming_date_range
+    get '/v1/launches/upcoming?from=2011-01-20&to=2016-05-25'
+    assert last_response.ok?
+    assert last_response.body.include?('error')
   end
 
   def test_launches_year
