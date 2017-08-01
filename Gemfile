@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'codecov', :require => false, :group => :test
 gem 'foreman'
 gem 'json'
 gem 'mongo', '~> 2.4'
