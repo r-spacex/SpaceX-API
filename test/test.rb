@@ -132,9 +132,9 @@ class AppTest < Test::Unit::TestCase
   end
 
   def test_launches_year
-    get '/v1/launches?year=2010'
+    get '/v1/launches?year=2001'
     assert last_response.ok?
-    assert last_response.body.include?('2010')
+    assert last_response.body.include?('error')
   end
 
   def test_launches_date
