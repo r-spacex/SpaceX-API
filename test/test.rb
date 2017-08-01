@@ -1,12 +1,14 @@
+require 'simplecov'
+SimpleCov.start
+
+require 'codecov'
+SimpleCov.formatter = SimpleCov::Formatter::Codecov
+
 require 'test/unit'
 require 'rack/test'
 require_relative '../src/app.rb'
 require 'json'
-require 'simplecov'
-require 'codecov'
 
-SimpleCov.start
-SimpleCov.formatter = SimpleCov::Formatter::Codecov
 
 class AppTest < Test::Unit::TestCase
   include Rack::Test::Methods
