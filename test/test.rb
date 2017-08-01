@@ -157,4 +157,28 @@ class AppTest < Test::Unit::TestCase
     data = JSON.parse(last_response.body)
     assert data.count > 0
   end
+
+  def test_core_serial
+    get '/v1/parts/cores/B1021'
+    assert last_response.ok?
+    assert last_response.body.include?('B1021')
+  end
+
+  def test_cap_serial
+    get '/v1/parts/caps/C106'
+    assert last_response.ok?
+    assert last_response.body.include?('C106')
+  end
+
+  def test_launches_core
+    get '/v1/launches/cores/B1021'
+    assert last_response.ok?
+    assert last_response.body.include?('B1021')
+  end
+
+  def test_launches_caps
+    get '/v1/launches/caps/C106'
+    assert last_response.ok?
+    assert last_response.body.include?('C106')
+  end
 end

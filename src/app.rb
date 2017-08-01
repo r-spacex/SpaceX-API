@@ -250,12 +250,7 @@ get '/parts/caps' do
   content_type :json
   collection = client[:capsule]
   hash = collection.find({}, projection: {_id: 0}).sort({capsule_serial: 1})
-  array = hash.to_a
-  if array.empty?
-    JSON.pretty_generate(error)
-  else
-    JSON.pretty_generate(array)
-  end
+  JSON.pretty_generate(hash.to_a)
 end
 
 # Get all launches with capsule serial #
@@ -277,12 +272,7 @@ get '/parts/cores' do
   content_type :json
   collection = client[:core]
   hash = collection.find({}, projection: {_id: 0}).sort({core_serial: 1})
-  array = hash.to_a
-  if array.empty?
-    JSON.pretty_generate(error)
-  else
-    JSON.pretty_generate(array)
-  end
+  JSON.pretty_generate(hash.to_a)
 end
 
 # Get core information by serial #
