@@ -170,6 +170,18 @@ class AppTest < Test::Unit::TestCase
     assert last_response.body.include?('C106')
   end
 
+  def test_core_serial_error
+    get '/v1/parts/cores/B6780'
+    assert last_response.ok?
+    assert last_response.body.include?('null')
+  end
+
+  def test_cap_serial_error
+    get '/v1/parts/caps/C765'
+    assert last_response.ok?
+    assert last_response.body.include?('null')
+  end
+
   def test_launches_core
     get '/v1/launches/cores/B1021'
     assert last_response.ok?
