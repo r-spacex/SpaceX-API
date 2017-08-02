@@ -34,10 +34,16 @@ GET https://api.spacexdata.com/v1/launches/latest
     "launch_year": "2017",
     "launch_date_utc": "2017-07-05T23:35:00Z",
     "launch_date_local": "2017-07-05T19:35:00-04:00",
-    "rocket": "Falcon 9",
-    "rocket_type": "FT",
-    "core_serial": "B1037",
-    "cap_serial": null,
+    "rocket": {
+      "rocket_id": "falcon9",
+      "rocket_name": "Falcon 9",
+      "rocket_type": "FT",
+      "core_serial": "B1037",
+      "cap_serial": null
+    },
+    "telemetry": {
+      "flight_club": null
+    },
     "launch_site": {
       "site_id": "ksc_lc_39a",
       "site_name": "KSC LC 39A"
