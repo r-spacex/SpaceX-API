@@ -37,10 +37,10 @@ GET https://api.spacexdata.com/v1/launches/latest
     "rocket": {
       "rocket_id": "falcon9",
       "rocket_name": "Falcon 9",
-      "rocket_type": "FT",
-      "core_serial": "B1037",
-      "cap_serial": null
+      "rocket_type": "FT"
     },
+    "core_serial": "B1037",
+    "cap_serial": null,
     "telemetry": {
       "flight_club": null
     },
