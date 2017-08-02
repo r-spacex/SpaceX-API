@@ -68,7 +68,7 @@ get '/' do
   JSON.pretty_generate(hash.to_a[0])
 end
 
-# Sets version namespace for all following URL's
+# Sets version namespace for all following URLs
 namespace '/v1' do
 
 ##########################################
