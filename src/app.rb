@@ -11,7 +11,6 @@ require 'sinatra/subdomain'
 require 'sinatra/cross_origin'
 require 'json'
 require 'mongo'
-require 'redis'
 
 # Uses modular version of Sinatra
 class SpacexAPI < Sinatra::Base
@@ -53,9 +52,6 @@ database = 'spacex-api'
 client = Mongo::Client.new("mongodb://#{user}:#{password}@spacex-api-shard-00-00-rzdz4.mongodb.net:27017"\
 ",spacex-api-shard-00-01-rzdz4.mongodb.net:27017,spacex-api-shard-00-02-rzdz4.mongodb.net:27017/#{database}"\
 "?ssl=true&replicaSet=spacex-api-shard-0&authSource=admin&connectTimeoutMS=25000&maxPoolSize=25")
-
-# Create new Redis client
-redis = Redis.new
 
 # Error for no results
 error = { error: 'No Matches Found' }
