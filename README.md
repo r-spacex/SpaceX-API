@@ -92,7 +92,7 @@ See the [Contribution](https://github.com/r-spacex/SpaceX-API/blob/master/CONTRI
 ```bash
 docker pull jakewmeyer/spacex-api
 ```
-* Deploy on your own Heroku app below
+* Deploy on your own Heroku app below, LANG = "en_US.UTF-8"
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
