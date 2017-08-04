@@ -7,7 +7,7 @@
   },
   "env": {
     "LANG": {
-      "required": true
+      "value": "en_US.UTF-8"
     }
   },
   "formation": {
