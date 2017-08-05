@@ -1,6 +1,9 @@
 ## Contribution Steps
 
-1. Fork the repo, make changes, commit, and submit a Pull Request
+**NOTE**: Make sure every change is covered by a unit test. If the change isn't
+covered, make sure to add a test for it.
+
+1. Fork the repo, make changes, add tests, commit, and submit a Pull Request
 
 2. New Pull Requests will automatically trigger a Travis CI Build
 
