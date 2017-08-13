@@ -1,21 +1,14 @@
-# Dockerfile with alpine based build
-
-FROM ruby:2.4.1-alpine
+FROM node:alpine
 
 MAINTAINER Jake Meyer <jakewmeyer@gmail.com>
 
-RUN apk update && apk upgrade
-RUN apk add --update alpine-sdk
-RUN apk add ruby-bundler
+ENV NODE_ENV=production
 
-WORKDIR /app
-ADD Gemfile /app/Gemfile
-ADD Gemfile.lock /app/Gemfile.lock
-RUN bundle install --system
+RUN mkdir -p /home/nodejs/app
+WORKDIR /home/nodejs/app
 
-ADD . /app
-RUN bundle install --system
+COPY . /home/nodejs/app
+RUN npm install --production
 
-EXPOSE 9292
-
-CMD ["bundle", "exec", "puma", "-e", "production"]
+EXPOSE 5000
+CMD [ "npm", "start" ]

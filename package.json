@@ -1,0 +1,44 @@
+{
+  "name": "spacex-api-node",
+  "version": "1.0.0",
+  "description": "Repo for staging/testing SpaceX-API transition from Ruby to Javascript (Node.js)",
+  "main": "server.js",
+  "scripts": {
+    "test": "jest --forceExit && codecov",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jakewmeyer/SpaceX-API-Node.git"
+  },
+  "keywords": [
+    "spacex",
+    "rest-api",
+    "mongodb",
+    "expressjs"
+  ],
+  "author": "Jake Meyer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jakewmeyer/SpaceX-API-Node/issues"
+  },
+  "homepage": "https://github.com/jakewmeyer/SpaceX-API-Node#readme",
+  "dependencies": {
+    "codecov": "^2.3.0",
+    "compression": "^1.7.0",
+    "cors": "^2.8.4",
+    "express": "^4.15.4",
+    "helmet": "^3.8.1",
+    "mongodb": "^2.2.31",
+    "morgan": "^1.8.2",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "jest": "^20.0.4",
+    "supertest": "^3.0.0"
+  },
+  "jest": {
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true
+  }
+}
