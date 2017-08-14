@@ -9,6 +9,13 @@ beforeAll((done) => {
   })
 })
 
+// 404 Test
+test("It should return 404 page", () => {
+  return request(app).get("/v2").then(response => {
+    expect(response.statusCode).toBe(404)
+  })
+})
+
 // Home Tests
 test("It should return home info", () => {
   return request(app).get("/v1").then(response => {
