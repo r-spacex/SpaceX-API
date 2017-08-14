@@ -1,0 +1,6 @@
+{
+    "name": "SpaceX-API",
+    "description": "Open Source REST API for company, vehicle, launchpad, and launch data",
+    "repository": "https://github.com/r-spacex/SpaceX-API",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/0/08/Circle-icons-rocket.svg",
+}
