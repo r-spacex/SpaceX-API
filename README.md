@@ -84,7 +84,7 @@ See the [Contribution](https://github.com/r-spacex/SpaceX-API/blob/master/CONTRI
 
 ## Technical Details
 * API is using [Node.js](https://nodejs.org/en/) with the [Express.js](https://expressjs.com/) framework
-* Uses the [Jest](https://facebook.github.io/jest/) testing framework
+* Uses [Jest](https://facebook.github.io/jest/) and [Supertest](https://github.com/visionmedia/supertest) for unit/integration testing
 * Uses [Travis CI](https://travis-ci.org/) for continuous integration/delivery
 * All data stored in a [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) 3 node replica set cluster
 * Latest database dump included under [releases](https://github.com/r-spacex/SpaceX-API/releases)
