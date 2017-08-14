@@ -14,8 +14,8 @@ v1.get("/", (req, res) => {
 v1.get("/:pad", (req, res) => {
   let id = req.params.pad
   global.db.collection("launchpad").find({"id": `${id}`}, {"_id": 0 }).toArray((err, doc) => {
-    if (doc[0] === undefined) {
-      res.end("No results found")
+    if (doc.length == 0) {
+      res.end("No Matches Found")
     }
     res.end(JSON.stringify(doc[0], null, 2))
   })

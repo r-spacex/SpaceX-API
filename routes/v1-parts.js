@@ -18,8 +18,8 @@ v1.get("/caps/:cap", (req, res) => {
   global.db.collection("capsule").find({"capsule_serial": `${cap}`},{"_id": 0}).sort({"capsule_serial": 1})
     .toArray((err, doc) => {
       if (err) return console.log(err)
-      if (doc[0] === undefined) {
-        res.end("No results found")
+      if (doc.length == 0) {
+        res.end("No Matches Found")
       }
       res.end(JSON.stringify(doc[0], null, 2))
     })
@@ -40,8 +40,8 @@ v1.get("/cores/:core", (req, res) => {
   global.db.collection("core").find({"core_serial": `${core}`},{"_id": 0}).sort({"core_serial": 1})
     .toArray((err, doc) => {
       if (err) return console.log(err)
-      if (doc[0] === undefined) {
-        res.end("No results found")
+      if (doc.length == 0) {
+        res.end("No Matches Found")
       }
       res.end(JSON.stringify(doc[0], null, 2))
     })

@@ -11,8 +11,8 @@ v1.get("/", (req, res) => {
   if (year) {
     global.db.collection("upcoming").find({"launch_year": `${year}`}, {"_id": 0 }).sort({"flight_number": -1})
       .toArray((err, doc) => {
-        if (doc[0] === undefined) {
-          res.end("No results found")
+        if (doc.length == 0) {
+          res.end("No Matches Found")
         }
         res.end(JSON.stringify(doc, null, 2))
       })
@@ -20,8 +20,8 @@ v1.get("/", (req, res) => {
     global.db.collection("upcoming").find({ "launch_date_utc": {"$gte": `${start}T00:00:00Z`, "$lte": `${final}T00:00:00Z`}}, {"_id": 0 })
       .sort({"flight_number": 1})
       .toArray((err, doc) => {
-        if (doc[0] === undefined) {
-          res.end("No results found")
+        if (doc.length == 0) {
+          res.end("No Matches Found")
         }
         res.end(JSON.stringify(doc, null, 2))
       })

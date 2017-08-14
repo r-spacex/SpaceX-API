@@ -20,8 +20,8 @@ v1.get("/", (req, res) => {
   if (year) {
     global.db.collection("launch").find({"launch_year": `${year}`}, {"_id": 0 }).sort({"flight_number": -1})
       .toArray((err, doc) => {
-        if (doc[0] === undefined) {
-          res.end("No results found")
+        if (doc.length == 0) {
+          res.end("No Matches Found")
         }
         res.end(JSON.stringify(doc, null, 2))
       })
@@ -29,8 +29,8 @@ v1.get("/", (req, res) => {
     global.db.collection("launch").find({ "launch_date_utc": {"$gte": `${start}T00:00:00Z`, "$lte": `${final}T00:00:00Z`}}, {"_id": 0 })
       .sort({"flight_number": 1})
       .toArray((err, doc) => {
-        if (doc[0] === undefined) {
-          res.end("No results found")
+        if (doc.length == 0) {
+          res.end("No Matches Found")
         }
         res.end(JSON.stringify(doc, null, 2))
       })
@@ -49,8 +49,8 @@ v1.get("/cores/:core", (req, res) => {
   global.db.collection("launch").find({"core_serial": `${core}`},{"_id": 0}).sort({"core_serial": 1})
     .toArray((err, doc) => {
       if (err) return console.log(err)
-      if (doc[0] === undefined) {
-        res.end("No results found")
+      if (doc.length == 0) {
+        res.end("No Matches Found")
       }
       res.end(JSON.stringify(doc, null, 2))
     })
@@ -62,8 +62,8 @@ v1.get("/caps/:cap", (req, res) => {
   global.db.collection("launch").find({"cap_serial": `${cap}`},{"_id": 0}).sort({"capsule_serial": 1})
     .toArray((err, doc) => {
       if (err) return console.log(err)
-      if (doc[0] === undefined) {
-        res.end("No results found")
+      if (doc.length == 0) {
+        res.end("No Matches Found")
       }
       res.end(JSON.stringify(doc, null, 2))
     })

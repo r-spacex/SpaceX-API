@@ -10,3 +10,4 @@ notifications:
     on_failure: always
 after_success:
  - ./scripts/docker_build.sh
+ 
