@@ -20,6 +20,7 @@ test("It should return 404 page", () => {
 test("It should return home info", () => {
   return request(app).get("/v1").then(response => {
     expect(response.statusCode).toBe(200)
+    expect(response.text).toContain("SpaceX-API")
   })
 })
 
@@ -27,6 +28,7 @@ test("It should return home info", () => {
 test("It should return company info", () => {
   return request(app).get("/v1/info").then(response => {
     expect(response.statusCode).toBe(200)
+    expect(response.text).toContain("Elon Musk")
   })
 })
 
