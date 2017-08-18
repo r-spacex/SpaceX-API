@@ -40,7 +40,7 @@ GET https://api.spacexdata.com/v1/launches/latest
       "rocket_type": "FT"
     },
     "telemetry": {
-      "flight_club": null
+      "flight_club": "https://www.flightclub.io/results/?id=c277137b-55ca-42c4-b7de-555394cbcf50&code=CR12"
     },
     "core_serial": "B1039",
     "cap_serial": "C113",
@@ -72,7 +72,7 @@ GET https://api.spacexdata.com/v1/launches/latest
       "reddit_recovery": null,
       "reddit_media": "https://www.reddit.com/r/spacex/comments/6th2nf/rspacex_crs12_media_thread_videos_images_gifs/",
       "presskit": "http://www.spacex.com/sites/spacex/files/crs12presskit.pdf",
-      "article_link": null,
+      "article_link": "https://spaceflightnow.com/2017/08/17/photos-falcon-9-rocket-soars-into-space-lands-back-at-cape-canaveral/",
       "video_link": "https://www.youtube.com/watch?v=vLxWsYx8dbo"
     },
     "details": "Dragon is expected to carry 2,349 kg (5,179 lb) of pressurized mass and 961 kg (2,119 lb) unpressurized. The external payload manifested for this flight is the CREAM cosmic-ray detector. First flight of the Falcon 9 Block 4 upgrade. Last flight of a newly-built Dragon capsule; further missions will use refurbished spacecraft."
