@@ -30,52 +30,52 @@ GET https://api.spacexdata.com/v1/launches/latest
 
 ```json
 {
-    "flight_number": 44,
+    "flight_number": 45,
     "launch_year": "2017",
-    "launch_date_utc": "2017-07-05T23:35:00Z",
-    "launch_date_local": "2017-07-05T19:35:00-04:00",
+    "launch_date_utc": "2017-08-14T16:31:00Z",
+    "launch_date_local": "2017-08-14T12:31:00-04:00",
     "rocket": {
       "rocket_id": "falcon9",
       "rocket_name": "Falcon 9",
       "rocket_type": "FT"
     },
-    "core_serial": "B1037",
-    "cap_serial": null,
     "telemetry": {
       "flight_club": null
     },
+    "core_serial": "B1039",
+    "cap_serial": "C113",
     "launch_site": {
       "site_id": "ksc_lc_39a",
       "site_name": "KSC LC 39A"
     },
     "payloads": [
       {
-        "payload_id": "Intelsat 35e",
+        "payload_id": "SpaceX CRS-12",
         "customers": [
-          "Intelsat"
+          "NASA (CRS)"
         ],
-        "payload_type": "Satelite",
-        "payload_mass_kg": 6000.0,
-        "payload_mass_lbs": 13227.0,
-        "orbit": "GTO"
+        "payload_type": "Dragon 1.1",
+        "payload_mass_kg": 3310,
+        "payload_mass_lbs": 7298,
+        "orbit": "ISS"
       }
     ],
     "launch_success": true,
     "reused": false,
-    "land_success": false,
-    "landing_type": null,
-    "landing_vehicle": null,
+    "land_success": true,
+    "landing_type": "RTLS",
+    "landing_vehicle": "LZ-1",
     "links": {
-      "mission_patch": "http://i.imgur.com/8URp6ea.png",
-      "reddit_campaign": "https://www.reddit.com/r/spacex/comments/6fw4yy/",
-      "reddit_launch": "https://www.reddit.com/r/spacex/comments/6kt2re/",
+      "mission_patch": "http://spacexpatchlist.space/images/thumbs/spacex_f9_039_crs_12.png",
+      "reddit_campaign": "https://www.reddit.com/r/spacex/comments/6mrga2/crs12_launch_campaign_thread/",
+      "reddit_launch": "https://www.reddit.com/r/spacex/comments/6tfcio/welcome_to_the_rspacex_crs12_official_launch/",
       "reddit_recovery": null,
-      "reddit_media": "https://www.reddit.com/r/spacex/comments/6kt3fe/",
-      "presskit": "http://www.spacex.com/sites/spacex/files/intelsat35epresskit.pdf",
-      "article_link": "https://en.wikipedia.org/wiki/Intelsat_35e",
-      "video_link": "https://www.youtube.com/watch?v=MIHVPCj25Z0"
+      "reddit_media": "https://www.reddit.com/r/spacex/comments/6th2nf/rspacex_crs12_media_thread_videos_images_gifs/",
+      "presskit": "http://www.spacex.com/sites/spacex/files/crs12presskit.pdf",
+      "article_link": null,
+      "video_link": "https://www.youtube.com/watch?v=vLxWsYx8dbo"
     },
-    "details": "Due to the constraints of sending a heavy satellite (~6,000 kg) to GTO, the rocket will fly in its expendable configuration and the first-stage booster will not be recovered."
+    "details": "Dragon is expected to carry 2,349 kg (5,179 lb) of pressurized mass and 961 kg (2,119 lb) unpressurized. The external payload manifested for this flight is the CREAM cosmic-ray detector. First flight of the Falcon 9 Block 4 upgrade. Last flight of a newly-built Dragon capsule; further missions will use refurbished spacecraft."
   }
   ```
 
