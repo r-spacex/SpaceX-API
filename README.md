@@ -83,18 +83,12 @@ GET https://api.spacexdata.com/v1/launches/latest
 See the [Contribution](https://github.com/r-spacex/SpaceX-API/blob/master/CONTRIBUTING.md) guide for detailed steps
 
 ## Technical Details
-* API is using [Sinatra](http://www.sinatrarb.com/) web framework
-* Uses [Travis CI](https://travis-ci.org/) for testing + deployment
+* API is using [Node.js](https://nodejs.org/en/) with the [Express.js](https://expressjs.com/) framework
+* Uses [Jest](https://facebook.github.io/jest/) and [Supertest](https://github.com/visionmedia/supertest) for unit/integration testing
+* Uses [Travis CI](https://travis-ci.org/) for continuous integration/delivery
 * All data stored in a [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) 3 node replica set cluster
 * Latest database dump included under [releases](https://github.com/r-spacex/SpaceX-API/releases)
 * API deployed on a [Heroku](https://www.heroku.com/) pipeline with pull request, staging and production servers
-* A [Docker](https://hub.docker.com/r/jakewmeyer/spacex-api/) image is avaiable for local development/deployment
-```bash
-docker pull jakewmeyer/spacex-api
-```
-* Deploy on your own Heroku app below:
-
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 ## FAQ's
 * If you have any questions or corrections, please open an issue and we'll get it merged ASAP
