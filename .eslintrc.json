@@ -10,6 +10,14 @@
     },
     "rules": {
         "no-console":0,
+        "space-infix-ops": "error",
+        "eol-last": ["error", "always"],
+        "prefer-arrow-callback": "error",
+        "padded-blocks": ["error", "never"],
+        "space-before-blocks": "error",
+        "arrow-spacing": "error",
+        "space-in-parens": ["error", "never"],
+        "keyword-spacing": ["error", { "before": true }],
         "spaced-comment": ["error", "always", { "exceptions": ["-", "+"] }],
         "indent": [
             "error",
