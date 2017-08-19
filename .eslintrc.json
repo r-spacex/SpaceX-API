@@ -10,6 +10,7 @@
     },
     "rules": {
         "no-console":0,
+        "spaced-comment": ["error", "always", { "exceptions": ["-", "+"] }],
         "indent": [
             "error",
             2
