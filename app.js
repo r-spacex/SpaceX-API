@@ -1,3 +1,4 @@
+
 const express = require("express")
 const morgan = require("morgan")
 const cors = require("cors")
@@ -8,7 +9,6 @@ const MongoClient = require("mongodb")
 const Path = require("path")
 const app = express()
 
-// Define route paths
 const home  = require("./routes/v1-home")
 const info  = require("./routes/v1-info")
 const vehicles  = require("./routes/v1-vehicles")
@@ -17,13 +17,11 @@ const launches  = require("./routes/v1-launches")
 const upcoming  = require("./routes/v1-upcoming")
 const parts  = require("./routes/v1-parts")
 
-// Enable middleware
 app.use(compression())
 app.use(helmet())
 app.use(morgan("common"))
 app.use(cors())
 
-// Routes
 app.use("/v1", home)
 app.use("/v1/info", info)
 app.use("/v1/vehicles", vehicles)
@@ -37,7 +35,6 @@ app.use((req, res) => {
   res.status(404).sendFile(Path.join(__dirname + "/pages/404.html"))
 })
 
-// Create DB connection & start server
 MongoClient.connect(config.url, (err, database) => {
   if (err) return console.log(err)
   global.db = database

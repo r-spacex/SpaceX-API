@@ -1,4 +1,3 @@
-// SpaceX API Tests
 
 const app = require("../app")
 const request = require("supertest")
@@ -9,14 +8,20 @@ beforeAll((done) => {
   })
 })
 
-// 404 Test
+//------------------------------------------------------------
+//                     404 Page
+//------------------------------------------------------------
+
 test("It should return 404 page", () => {
   return request(app).get("/v2").then(response => {
     expect(response.statusCode).toBe(404)
   })
 })
 
-// Home Tests
+//------------------------------------------------------------
+//                     Home Page
+//------------------------------------------------------------
+
 test("It should return home info", () => {
   return request(app).get("/v1").then(response => {
     expect(response.statusCode).toBe(200)
@@ -24,7 +29,10 @@ test("It should return home info", () => {
   })
 })
 
-// Info Tests
+//------------------------------------------------------------
+//                     Company Info
+//------------------------------------------------------------
+
 test("It should return company info", () => {
   return request(app).get("/v1/info").then(response => {
     expect(response.statusCode).toBe(200)
@@ -32,7 +40,10 @@ test("It should return company info", () => {
   })
 })
 
-// Vehicle Tests
+//------------------------------------------------------------
+//                     Vehicles
+//------------------------------------------------------------
+
 test("It should return all vehicle info", () => {
   return request(app).get("/v1/vehicles").then(response => {
     expect(response.statusCode).toBe(200)
@@ -71,7 +82,10 @@ test("It should return Dragon info", () => {
   })
 })
 
-// Launchpad Tests
+//------------------------------------------------------------
+//                     Launchpads
+//------------------------------------------------------------
+
 test("It should return all launchpads", () => {
   return request(app).get("/v1/launchpads").then(response => {
     expect(response.statusCode).toBe(200)
@@ -93,7 +107,10 @@ test("It should return no launchpads found info", () => {
   })
 })
 
-// Past Launches Tests
+//------------------------------------------------------------
+//                    Past Launches
+//------------------------------------------------------------
+
 test("It should return all past launches", () => {
   return request(app).get("/v1/launches").then(response => {
     expect(response.statusCode).toBe(200)
@@ -163,7 +180,10 @@ test("It should return no launches with cap C403", () => {
   })
 })
 
-// Upcoming Launch Tests
+//------------------------------------------------------------
+//                    Upcoming Launches
+//------------------------------------------------------------
+
 test("It should return all upcoming launches", () => {
   return request(app).get("/v1/launches/upcoming").then(response => {
     expect(response.statusCode).toBe(200)
@@ -196,7 +216,10 @@ test("It should return no launches in the timeframe", () => {
   })
 })
 
-// Parts Tests
+//------------------------------------------------------------
+//                    Parts
+//------------------------------------------------------------
+
 test("It should return all capsule info", () => {
   return request(app).get("/v1/parts/caps").then(response => {
     expect(response.statusCode).toBe(200)
