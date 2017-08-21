@@ -125,6 +125,20 @@ test("It should return the latest launch", () => {
   })
 })
 
+test("It should return all past launches from LC-4E", () => {
+  return request(app).get("/v1/launches?site=vafb_slc_4e").then(response => {
+    expect(response.statusCode).toBe(200)
+    expect(response.text).toContain("vafb_slc_4e")
+  })
+})
+
+test("It should return no launches from made up launchpad", () => {
+  return request(app).get("/v1/launches?site=vafb_slc_5e").then(response => {
+    expect(response.statusCode).toBe(200)
+    expect(response.text).toContain("No Matches Found")
+  })
+})
+
 test("It should return all 2012 launches", () => {
   return request(app).get("/v1/launches?year=2012").then(response => {
     expect(response.statusCode).toBe(200)

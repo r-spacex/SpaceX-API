@@ -17,6 +17,7 @@ v1.get("/", (req, res) => {
   let year = req.query.year
   let start = req.query.start
   let final = req.query.final
+  const site = req.query.site
   if (year) {
     global.db.collection("launch").find({"launch_year": `${year}`}, {"_id": 0 }).sort({"flight_number": -1})
       .toArray((err, doc) => {
@@ -27,6 +28,15 @@ v1.get("/", (req, res) => {
       })
   } else if (start && final) {
     global.db.collection("launch").find({ "launch_date_utc": {"$gte": `${start}T00:00:00Z`, "$lte": `${final}T00:00:00Z`}}, {"_id": 0 })
+      .sort({"flight_number": 1})
+      .toArray((err, doc) => {
+        if (doc.length == 0) {
+          res.end("No Matches Found")
+        }
+        res.end(JSON.stringify(doc, null, 2))
+      })
+  } else if (site) {
+    global.db.collection("launch").find({ "launch_site.site_id": `${site}`}, {"_id": 0 })
       .sort({"flight_number": 1})
       .toArray((err, doc) => {
         if (doc.length == 0) {
