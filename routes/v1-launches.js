@@ -14,9 +14,9 @@ v1.get("/latest", (req, res) => {
 
 // All launches by date, year, or default to all launches
 v1.get("/", (req, res) => {
-  let year = req.query.year
-  let start = req.query.start
-  let final = req.query.final
+  const year = req.query.year
+  const start = req.query.start
+  const final = req.query.final
   const site = req.query.site
   if (year) {
     global.db.collection("launch").find({"launch_year": `${year}`}, {"_id": 0 }).sort({"flight_number": -1})
@@ -55,7 +55,7 @@ v1.get("/", (req, res) => {
 
 // Returns launches by core serial #
 v1.get("/cores/:core", (req, res) => {
-  let core = req.params.core
+  const core = req.params.core
   global.db.collection("launch").find({"core_serial": `${core}`},{"_id": 0}).sort({"core_serial": 1})
     .toArray((err, doc) => {
       if (err) return console.log(err)
@@ -68,7 +68,7 @@ v1.get("/cores/:core", (req, res) => {
 
 // Returns launches by capsule serial #
 v1.get("/caps/:cap", (req, res) => {
-  let cap = req.params.cap
+  const cap = req.params.cap
   global.db.collection("launch").find({"cap_serial": `${cap}`},{"_id": 0}).sort({"capsule_serial": 1})
     .toArray((err, doc) => {
       if (err) return console.log(err)

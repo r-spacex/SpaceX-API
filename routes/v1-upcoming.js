@@ -5,9 +5,9 @@ const v1 = express.Router()
 
 // Upcoming launches by date, year, or all
 v1.get("/", (req, res) => {
-  let year = req.query.year
-  let start = req.query.start
-  let final = req.query.final
+  const year = req.query.year
+  const start = req.query.start
+  const final = req.query.final
   if (year) {
     global.db.collection("upcoming").find({"launch_year": `${year}`}, {"_id": 0 }).sort({"flight_number": -1})
       .toArray((err, doc) => {

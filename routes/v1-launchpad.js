@@ -12,7 +12,7 @@ v1.get("/", (req, res) => {
 
 // Return all launchpads
 v1.get("/:pad", (req, res) => {
-  let id = req.params.pad
+  const id = req.params.pad
   global.db.collection("launchpad").find({"id": `${id}`}, {"_id": 0 }).toArray((err, doc) => {
     if (doc.length == 0) {
       res.end("No Matches Found")
