@@ -6,7 +6,6 @@ const compression = require("compression")
 const helmet = require("helmet")
 const config = require("./config.json")
 const MongoClient = require("mongodb")
-const Path = require("path")
 const app = express()
 
 const home  = require("./routes/v1-home")
@@ -30,9 +29,15 @@ app.use("/v1/launches", launches)
 app.use("/v1/launches/upcoming", upcoming)
 app.use("/v1/parts", parts)
 
+// Global content type
+app.use((req, res, next) => {
+  res.header("Content-Type","application/json")
+  next()
+})
+
 // 404 Error Handler
 app.use((req, res) => {
-  res.status(404).sendFile(Path.join(__dirname + "/pages/404.html"))
+  res.status(404).json("No Endpoint Found")
 })
 
 MongoClient.connect(config.url, (err, database) => {

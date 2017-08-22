@@ -12,9 +12,10 @@ beforeAll((done) => {
 //                     404 Page
 //------------------------------------------------------------
 
-test("It should return 404 page", () => {
+test("It should return 404 endpoint error", () => {
   return request(app).get("/v2").then(response => {
     expect(response.statusCode).toBe(404)
+    expect(response.text).toContain("No Endpoint Found")
   })
 })
 
