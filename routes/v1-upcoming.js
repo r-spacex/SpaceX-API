@@ -2,6 +2,7 @@
 
 const express = require("express")
 const v1 = express.Router()
+const error = {error: "No Matches Found"}
 
 // Upcoming launches by date, year, or all
 v1.get("/", (req, res) => {
@@ -12,7 +13,7 @@ v1.get("/", (req, res) => {
     global.db.collection("upcoming").find({"launch_year": `${year}`}, {"_id": 0 }).sort({"flight_number": -1})
       .toArray((err, doc) => {
         if (doc.length == 0) {
-          res.end("No Matches Found")
+          res.end(JSON.stringify(error, null, 2))
         }
         res.end(JSON.stringify(doc, null, 2))
       })
@@ -21,7 +22,7 @@ v1.get("/", (req, res) => {
       .sort({"flight_number": 1})
       .toArray((err, doc) => {
         if (doc.length == 0) {
-          res.end("No Matches Found")
+          res.end(JSON.stringify(error, null, 2))
         }
         res.end(JSON.stringify(doc, null, 2))
       })
