@@ -41,6 +41,7 @@ app.use((req, res) => {
   res.status(404).end(JSON.stringify(endpointError, null, 2))
 })
 
+// Mongo Connection + Server Start
 MongoClient.connect(config.url, (err, database) => {
   if (err) return console.log(err)
   global.db = database
