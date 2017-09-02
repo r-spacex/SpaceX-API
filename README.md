@@ -69,7 +69,7 @@ GET https://api.spacexdata.com/v1/launches/latest
       "mission_patch": "http://i.imgur.com/xjtPB9z.png",
       "reddit_campaign": "https://www.reddit.com/r/spacex/comments/6o98st",
       "reddit_launch": "https://www.reddit.com/r/spacex/comments/6vihsl/welcome_to_the_rspacex_formosat5_official_launch/",
-      "reddit_recovery": null,
+      "reddit_recovery": "https://www.reddit.com/r/spacex/comments/6wk653/b1038_recovery_thread/",
       "reddit_media": "https://www.reddit.com/r/spacex/comments/6vhwi1/rspacex_formosat5_media_thread_videos_images_gifs/",
       "presskit": "http://www.spacex.com/sites/spacex/files/formosat5presskit.pdf",
       "article_link": "https://en.wikipedia.org/wiki/FORMOSAT-5",
