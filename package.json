@@ -31,7 +31,8 @@
     "helmet": "^3.8.1",
     "mongodb": "^2.2.31",
     "morgan": "^1.8.2",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "throng": "^4.0.0"
   },
   "devDependencies": {
     "eslint": "^4.5.0",
