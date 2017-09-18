@@ -40,7 +40,7 @@ GET https://api.spacexdata.com/v1/launches/latest
       "rocket_type": "FT"
     },
     "telemetry": {
-      "flight_club": "https://www.flightclub.io/results/?id=5f90f4b8-3e5f-41ef-aa1a-4551254b2589&code=OTV5"
+      "flight_club": "https://www.flightclub.io/results/?code=OTV5"
     },
     "core_serial": "B1040",
     "cap_serial": null,
