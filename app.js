@@ -22,6 +22,12 @@ app.use(helmet())
 app.use(morgan("common"))
 app.use(cors())
 
+// Global content type
+app.use((req, res, next) => {
+  res.header("Content-Type","application/json")
+  next()
+})
+
 app.use("/v1", home)
 app.use("/v1/info", info)
 app.use("/v1/vehicles", vehicles)
@@ -29,12 +35,6 @@ app.use("/v1/launchpads", launchpad)
 app.use("/v1/launches", launches)
 app.use("/v1/launches/upcoming", upcoming)
 app.use("/v1/parts", parts)
-
-// Global content type
-app.use((req, res, next) => {
-  res.header("Content-Type","application/json")
-  next()
-})
 
 // 404 Error Handler
 app.use((req, res) => {
