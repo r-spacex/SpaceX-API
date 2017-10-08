@@ -9,7 +9,7 @@ const MongoClient = require("mongodb")
 const apicache = require("apicache")
 const endpointError = {error: "No Endpoint Found"}
 const app = express()
-let cache = apicache.middleware
+const cache = apicache.middleware
 
 const home  = require("./routes/v1-home")
 const info  = require("./routes/v1-info")
