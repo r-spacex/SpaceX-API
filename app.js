@@ -6,8 +6,10 @@ const compression = require("compression")
 const helmet = require("helmet")
 const config = require("./config.json")
 const MongoClient = require("mongodb")
+const apicache = require("apicache")
 const endpointError = {error: "No Endpoint Found"}
 const app = express()
+const cache = apicache.middleware
 
 const home  = require("./routes/v1-home")
 const info  = require("./routes/v1-info")
@@ -18,6 +20,7 @@ const upcoming  = require("./routes/v1-upcoming")
 const parts  = require("./routes/v1-parts")
 
 app.use(compression())
+app.use(cache("1 hour"))
 app.use(helmet())
 app.use(morgan("common"))
 app.use(cors())

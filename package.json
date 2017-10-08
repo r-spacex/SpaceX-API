@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/jakewmeyer/SpaceX-API-Node#readme",
   "dependencies": {
+    "apicache": "^1.1.0",
     "codecov": "^2.3.0",
     "compression": "^1.7.0",
     "cors": "^2.8.4",
