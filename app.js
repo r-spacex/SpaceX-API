@@ -7,12 +7,9 @@ const helmet = require("helmet")
 const config = require("./config.json")
 const MongoClient = require("mongodb")
 const apicache = require("apicache")
-const redis = require("redis")
 const endpointError = {error: "No Endpoint Found"}
 const app = express()
-const cacheWithRedis = apicache
-  .options({ redisClient: redis.createClient() })
-  .middleware
+let cache = apicache.middleware
 
 const home  = require("./routes/v1-home")
 const info  = require("./routes/v1-info")
@@ -23,7 +20,7 @@ const upcoming  = require("./routes/v1-upcoming")
 const parts  = require("./routes/v1-parts")
 
 app.use(compression())
-app.use(cacheWithRedis("30 minutes"))
+app.use(cache("30 minutes"))
 app.use(helmet())
 app.use(morgan("common"))
 app.use(cors())
