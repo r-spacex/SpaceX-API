@@ -29,54 +29,64 @@ GET https://api.spacexdata.com/v1/launches/latest
 ```
 
 ```json
-{
-    "flight_number": 48,
+  {
+    "flight_number": 49,
     "launch_year": "2017",
-    "launch_date_unix": 1507552620,
-    "launch_date_utc": "2017-10-09T12:37:00Z",
-    "launch_date_local": "2017-10-09T05:37:00-07:00",
+    "launch_date_unix": 1507762380,
+    "launch_date_utc": "2017-10-11T22:53:00Z",
+    "launch_date_local": "2017-10-11T18:53:00-04:00",
     "rocket": {
       "rocket_id": "falcon9",
       "rocket_name": "Falcon 9",
       "rocket_type": "FT"
     },
     "telemetry": {
-      "flight_club": "https://www.flightclub.io/results/?code=IRD3"
+      "flight_club": "https://www.flightclub.io/results/?code=SS11"
     },
-    "core_serial": "B1041",
+    "core_serial": "B1031",
     "cap_serial": null,
     "launch_site": {
-      "site_id": "vafb_slc_4e",
-      "site_name": "VAFB SLC 4E"
+      "site_id": "ksc_lc_39a",
+      "site_name": "KSC LC 39A"
     },
     "payloads": [
       {
-        "payload_id": "Iridium NEXT 21-30",
+        "payload_id": "SES-11",
         "customers": [
-          "Iridium Communications"
+          "SES"
         ],
-        "payload_type": "Satelite",
-        "payload_mass_kg": 8600,
-        "payload_mass_lbs": 18959,
-        "orbit": "LEO"
+        "payload_type": "Satellite",
+        "payload_mass_kg": 2700,
+        "payload_mass_lbs": 5952,
+        "orbit": "GTO"
+      },
+      {
+        "payload_id": "EchoStar 105",
+        "customers": [
+          "EchoStar"
+        ],
+        "payload_type": "Satellite",
+        "payload_mass_kg": 2700,
+        "payload_mass_lbs": 5952,
+        "orbit": "GTO"
       }
     ],
     "launch_success": true,
-    "reused": false,
+    "reused": true,
     "land_success": true,
     "landing_type": "ASDS",
-    "landing_vehicle": "JRTI",
+    "landing_vehicle": "OCISLY",
     "links": {
-      "mission_patch": "https://i.imgur.com/falQftx.png",
-      "reddit_campaign": "https://www.reddit.com/r/spacex/comments/6ygwxw/iridium_next_constellation_mission_3_launch/",
-      "reddit_launch": "https://www.reddit.com/r/spacex/comments/753e0m/iridium_next_mission_3_official_launch_discussion/",
+      "mission_patch": "https://i.imgur.com/03gonKW.png",
+      "reddit_campaign": "https://www.reddit.com/r/spacex/comments/6yvn64/ses11echostar_105_launch_campaign_thread/",
+      "reddit_launch": "https://www.reddit.com/r/spacex/comments/75bw7p/ses11echostar105_official_launch_discussions/",
       "reddit_recovery": null,
-      "reddit_media": "https://www.reddit.com/r/spacex/comments/755m2z/rspacex_iridium3_media_thread_videos_images_gifs/",
-      "presskit": "http://www.spacex.com/sites/spacex/files/iridium3presskit.pdf",
+      "reddit_media": "https://www.reddit.com/r/spacex/comments/75pgu5/rspacex_ses11_media_thread_videos_images_gifs/",
+      "presskit": "http://www.spacex.com/sites/spacex/files/echostar105ses11presskit.pdf",
       "article_link": null,
-      "video_link": "https://www.youtube.com/watch?v=SB4N4xF2B2w&feature=youtu.be"
+      "video_link": "https://www.youtube.com/watch?v=iv1zeGSvhIw"
     },
-    "details": "Third of eight missions to launch Iridium's second generation constellation from VAFB"
+    "details": "Nineteenth comsat to GTO, also the fourth satellite launched for SES and second for Echostar. Third time a first stage booster will be reused."
   }
   ```
 
