@@ -195,6 +195,13 @@ test("It should return no launches with cap C403", () => {
   })
 })
 
+test("It should return all past ASDS launches", () => {
+  return request(app).get("/v1/launches/asds").then(response => {
+    expect(response.statusCode).toBe(200)
+    expect(response.text).toContain("ASDS")
+  })
+})
+
 //------------------------------------------------------------
 //                    Upcoming Launches
 //------------------------------------------------------------
