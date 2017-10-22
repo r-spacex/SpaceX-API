@@ -92,4 +92,16 @@ v1.get("/asds", (req, res) => {
     })
 })
 
+// Returns all RTLS launches
+v1.get("/rtls", (req, res) => {
+  global.db.collection("launch").find({"landing_type": "RTLS"},{"_id": 0}).sort({"flight_number": 1})
+    .toArray((err, doc) => {
+      if (err) return console.log(err)
+      if (doc.length == 0) {
+        res.end(JSON.stringify(error, null, 2))
+      }
+      res.end(JSON.stringify(doc, null, 2))
+    })
+})
+
 module.exports = v1
