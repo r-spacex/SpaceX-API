@@ -29,7 +29,7 @@ GET https://api.spacexdata.com/v1/launches/latest
 ```
 
 ```json
-  {
+{
     "flight_number": 49,
     "launch_year": "2017",
     "launch_date_unix": 1507762380,
@@ -80,10 +80,10 @@ GET https://api.spacexdata.com/v1/launches/latest
       "mission_patch": "https://i.imgur.com/03gonKW.png",
       "reddit_campaign": "https://www.reddit.com/r/spacex/comments/6yvn64/ses11echostar_105_launch_campaign_thread/",
       "reddit_launch": "https://www.reddit.com/r/spacex/comments/75bw7p/ses11echostar105_official_launch_discussions/",
-      "reddit_recovery": null,
+      "reddit_recovery": "https://www.reddit.com/r/spacex/comments/76fqz1/b10312_recovery_thread/",
       "reddit_media": "https://www.reddit.com/r/spacex/comments/75pgu5/rspacex_ses11_media_thread_videos_images_gifs/",
       "presskit": "http://www.spacex.com/sites/spacex/files/echostar105ses11presskit.pdf",
-      "article_link": null,
+      "article_link": "https://spaceflightnow.com/2017/10/12/video-falcon-9-rocket-lifts-off-with-joint-satellite-for-ses-echostar/",
       "video_link": "https://www.youtube.com/watch?v=iv1zeGSvhIw"
     },
     "details": "Nineteenth comsat to GTO, also the fourth satellite launched for SES and second for Echostar. Third time a first stage booster will be reused."
