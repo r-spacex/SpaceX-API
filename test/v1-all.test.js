@@ -202,6 +202,13 @@ test("It should return all past ASDS launches", () => {
   })
 })
 
+test("It should return all past RTLS launches", () => {
+  return request(app).get("/v1/launches/rtls").then(response => {
+    expect(response.statusCode).toBe(200)
+    expect(response.text).toContain("RTLS")
+  })
+})
+
 //------------------------------------------------------------
 //                    Upcoming Launches
 //------------------------------------------------------------
