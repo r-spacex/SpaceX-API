@@ -28,6 +28,7 @@ app.use(cors())
 // Global content type
 app.use((req, res, next) => {
   res.header("Content-Type","application/json")
+  res.header("Last-Modified","Mon, 23 Oct 2017 03:39:28 GMT")
   next()
 })
 
