@@ -45,6 +45,13 @@ GET https://api.spacexdata.com/v1/launches/latest
     },
     "core_serial": "B1031",
     "cap_serial": null,
+    "reuse": {
+      "core": true,
+      "side_core1": false,
+      "side_core2": false,
+      "fairings": false,
+      "capsule": false
+    },
     "launch_site": {
       "site_id": "ksc_lc_39a",
       "site_name": "KSC LC 39A"
