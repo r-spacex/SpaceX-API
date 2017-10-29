@@ -25,7 +25,7 @@ app.use(helmet())
 app.use(morgan("common"))
 app.use(cors())
 
-// Global content type
+// Global HTTP headers
 app.use((req, res, next) => {
   res.header("Content-Type","application/json")
   res.header("Last-Modified","Wed, 25 Oct 2017 03:09:51 GMT")

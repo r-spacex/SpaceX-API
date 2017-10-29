@@ -1,6 +1,6 @@
 FROM node:alpine
 
-MAINTAINER Jake Meyer <jakewmeyer@gmail.com>
+LABEL maintainer="jakewmeyer@gmail.com"
 
 ENV NODE_ENV=production
 
