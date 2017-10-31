@@ -2,7 +2,7 @@
 
 const express = require("express")
 const v1 = express.Router()
-const error = {error: "No Matches Found"}
+const error = {error: "No results found"}
 
 // Get most recent launch
 v1.get("/latest", (req, res) => {
@@ -23,7 +23,7 @@ v1.get("/", (req, res) => {
     global.db.collection("launch").find({"launch_year": `${year}`}, {"_id": 0 }).sort({"flight_number": -1})
       .toArray((err, doc) => {
         if (doc.length == 0) {
-          res.end(JSON.stringify(error, null, 2))
+          res.status(404).end(JSON.stringify(error, null, 2))
         }
         res.end(JSON.stringify(doc, null, 2))
       })
@@ -32,7 +32,7 @@ v1.get("/", (req, res) => {
       .sort({"flight_number": 1})
       .toArray((err, doc) => {
         if (doc.length == 0) {
-          res.end(JSON.stringify(error, null, 2))
+          res.status(404).end(JSON.stringify(error, null, 2))
         }
         res.end(JSON.stringify(doc, null, 2))
       })
@@ -41,7 +41,7 @@ v1.get("/", (req, res) => {
       .sort({"flight_number": 1})
       .toArray((err, doc) => {
         if (doc.length == 0) {
-          res.end(JSON.stringify(error, null, 2))
+          res.status(404).end(JSON.stringify(error, null, 2))
         }
         res.end(JSON.stringify(doc, null, 2))
       })
@@ -61,7 +61,7 @@ v1.get("/cores/:core", (req, res) => {
     .toArray((err, doc) => {
       if (err) return console.log(err)
       if (doc.length == 0) {
-        res.end(JSON.stringify(error, null, 2))
+        res.status(404).end(JSON.stringify(error, null, 2))
       }
       res.end(JSON.stringify(doc, null, 2))
     })
@@ -74,7 +74,7 @@ v1.get("/caps/:cap", (req, res) => {
     .toArray((err, doc) => {
       if (err) return console.log(err)
       if (doc.length == 0) {
-        res.end(JSON.stringify(error, null, 2))
+        res.status(404).end(JSON.stringify(error, null, 2))
       }
       res.end(JSON.stringify(doc, null, 2))
     })
@@ -85,9 +85,6 @@ v1.get("/asds", (req, res) => {
   global.db.collection("launch").find({"landing_type": "ASDS"},{"_id": 0}).sort({"flight_number": 1})
     .toArray((err, doc) => {
       if (err) return console.log(err)
-      if (doc.length == 0) {
-        res.end(JSON.stringify(error, null, 2))
-      }
       res.end(JSON.stringify(doc, null, 2))
     })
 })
@@ -97,9 +94,6 @@ v1.get("/rtls", (req, res) => {
   global.db.collection("launch").find({"landing_type": "RTLS"},{"_id": 0}).sort({"flight_number": 1})
     .toArray((err, doc) => {
       if (err) return console.log(err)
-      if (doc.length == 0) {
-        res.end(JSON.stringify(error, null, 2))
-      }
       res.end(JSON.stringify(doc, null, 2))
     })
 })

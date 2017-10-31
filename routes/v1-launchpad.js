@@ -2,7 +2,7 @@
 
 const express = require("express")
 const v1 = express.Router()
-const error = {error: "No Matches Found"}
+const error = {error: "No results found"}
 
 // Get all launchpads
 v1.get("/", (req, res) => {
@@ -16,7 +16,7 @@ v1.get("/:pad", (req, res) => {
   const id = req.params.pad
   global.db.collection("launchpad").find({"id": `${id}`}, {"_id": 0 }).toArray((err, doc) => {
     if (doc.length == 0) {
-      res.end(JSON.stringify(error, null, 2))
+      res.status(404).end(JSON.stringify(error, null, 2))
     }
     res.end(JSON.stringify(doc[0], null, 2))
   })

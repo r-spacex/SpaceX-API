@@ -6,7 +6,7 @@ const compression = require("compression")
 const helmet = require("helmet")
 const config = require("./config.json")
 const MongoClient = require("mongodb")
-const endpointError = {error: "No Endpoint Found"}
+const error = {error: "No results found"}
 const app = express()
 
 const home  = require("./routes/v1-home")
@@ -39,7 +39,7 @@ app.use("/v1/parts", parts)
 
 // 404 Error Handler
 app.use((req, res) => {
-  res.status(404).end(JSON.stringify(endpointError, null, 2))
+  res.status(404).end(JSON.stringify(error, null, 2))
 })
 
 // Mongo Connection + Server Start

@@ -2,7 +2,7 @@
 
 const express = require("express")
 const v1 = express.Router()
-const error = {error: "No Matches Found"}
+const error = {error: "No results found"}
 
 // Returns all capsule information
 v1.get("/caps", (req, res) => {
@@ -20,7 +20,7 @@ v1.get("/caps/:cap", (req, res) => {
     .toArray((err, doc) => {
       if (err) return console.log(err)
       if (doc.length == 0) {
-        res.end(JSON.stringify(error, null, 2))
+        res.status(404).end(JSON.stringify(error, null, 2))
       }
       res.end(JSON.stringify(doc[0], null, 2))
     })
@@ -42,7 +42,7 @@ v1.get("/cores/:core", (req, res) => {
     .toArray((err, doc) => {
       if (err) return console.log(err)
       if (doc.length == 0) {
-        res.end(JSON.stringify(error, null, 2))
+        res.status(404).end(JSON.stringify(error, null, 2))
       }
       res.end(JSON.stringify(doc[0], null, 2))
     })
