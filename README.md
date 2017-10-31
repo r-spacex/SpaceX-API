@@ -2,7 +2,7 @@
 
 ![Imgur](http://i.imgur.com/eL73Iit.png)
 
-![Imgur](https://i.imgur.com/HOh86Ex.jpg)
+![Imgur](https://i.imgur.com/mNhinPo.jpg)
 
 # SpaceX Data REST API
 
