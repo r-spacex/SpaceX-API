@@ -23,7 +23,7 @@ v1.get("/", (req, res) => {
     global.db.collection("launch").find({"launch_year": `${year}`}, {"_id": 0 }).sort({"flight_number": -1})
       .toArray((err, doc) => {
         if (doc.length == 0) {
-          res.status(404).end(JSON.stringify(error, null, 2))
+          res.status(200).end(JSON.stringify(error, null, 2))
         }
         res.end(JSON.stringify(doc, null, 2))
       })
@@ -32,7 +32,7 @@ v1.get("/", (req, res) => {
       .sort({"flight_number": 1})
       .toArray((err, doc) => {
         if (doc.length == 0) {
-          res.status(404).end(JSON.stringify(error, null, 2))
+          res.status(200).end(JSON.stringify(error, null, 2))
         }
         res.end(JSON.stringify(doc, null, 2))
       })
@@ -41,7 +41,7 @@ v1.get("/", (req, res) => {
       .sort({"flight_number": 1})
       .toArray((err, doc) => {
         if (doc.length == 0) {
-          res.status(404).end(JSON.stringify(error, null, 2))
+          res.status(200).end(JSON.stringify(error, null, 2))
         }
         res.end(JSON.stringify(doc, null, 2))
       })
@@ -61,7 +61,7 @@ v1.get("/cores/:core", (req, res) => {
     .toArray((err, doc) => {
       if (err) return console.log(err)
       if (doc.length == 0) {
-        res.status(404).end(JSON.stringify(error, null, 2))
+        res.status(200).end(JSON.stringify(error, null, 2))
       }
       res.end(JSON.stringify(doc, null, 2))
     })
@@ -74,7 +74,7 @@ v1.get("/caps/:cap", (req, res) => {
     .toArray((err, doc) => {
       if (err) return console.log(err)
       if (doc.length == 0) {
-        res.status(404).end(JSON.stringify(error, null, 2))
+        res.status(200).end(JSON.stringify(error, null, 2))
       }
       res.end(JSON.stringify(doc, null, 2))
     })

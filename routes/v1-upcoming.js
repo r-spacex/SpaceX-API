@@ -13,7 +13,7 @@ v1.get("/", (req, res) => {
     global.db.collection("upcoming").find({"launch_year": `${year}`}, {"_id": 0 }).sort({"flight_number": -1})
       .toArray((err, doc) => {
         if (doc.length == 0) {
-          res.status(404).end(JSON.stringify(error, null, 2))
+          res.status(200).end(JSON.stringify(error, null, 2))
         }
         res.end(JSON.stringify(doc, null, 2))
       })
@@ -22,7 +22,7 @@ v1.get("/", (req, res) => {
       .sort({"flight_number": 1})
       .toArray((err, doc) => {
         if (doc.length == 0) {
-          res.status(404).end(JSON.stringify(error, null, 2))
+          res.status(200).end(JSON.stringify(error, null, 2))
         }
         res.end(JSON.stringify(doc, null, 2))
       })
