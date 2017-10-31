@@ -25,7 +25,7 @@ app.use(cors())
 // Global HTTP headers
 app.use((req, res, next) => {
   res.header("Content-Type","application/json")
-  res.header("Last-Modified","Mon, 30 Oct 2017 19:50:27 GMT")
+  res.header("Last-Modified","Tue, 31 Oct 2017 20:17:48 GMT")
   next()
 })
 
