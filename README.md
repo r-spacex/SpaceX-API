@@ -62,8 +62,8 @@ GET https://api.spacexdata.com/v1/launches/latest
           "KT Corporation"
         ],
         "payload_type": "Satellite",
-        "payload_mass_kg": 3500,
-        "payload_mass_lbs": 7716.2,
+        "payload_mass_kg": 3700,
+        "payload_mass_lbs": 8157.104,
         "orbit": "GTO"
       }
     ],
@@ -79,7 +79,7 @@ GET https://api.spacexdata.com/v1/launches/latest
       "reddit_recovery": null,
       "reddit_media": "https://www.reddit.com/r/spacex/comments/79lmdu/rspacex_koreasat5a_media_thread_videos_images/",
       "presskit": "http://www.spacex.com/sites/spacex/files/koreasat5apresskit.pdf",
-      "article_link": null,
+      "article_link": "https://spaceflightnow.com/2017/10/30/spacex-launches-and-lands-third-rocket-in-three-weeks/",
       "video_link": "https://www.youtube.com/watch?v=RUjH14vhLxA"
     },
     "details": "KoreaSat 5A is a Ku-band satellite capable of providing communication services from East Africa and Central Asia to southern India, Southeast Asia, the Philippines, Guam, Korea, and Japan. The satellite will be placed in GEO at 113Â° East Longitude, and will provide services ranging from broadband internet to broadcasting services and maritime communications."
