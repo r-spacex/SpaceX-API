@@ -4,6 +4,8 @@ node_js:
 cache:
   directories:
     - "node_modules"
+script:
+  - npm run-script lint
 notifications:
   email:
     on_success: never

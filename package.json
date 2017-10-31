@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest --forceExit && codecov",
     "start": "node app.js",
-    "lint": "eslint app.js && routes/**"
+    "lint": "eslint \"**/*.js\""
   },
   "repository": {
     "type": "git",
