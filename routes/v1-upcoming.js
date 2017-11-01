@@ -2,7 +2,6 @@
 
 const express = require("express")
 const v1 = express.Router()
-const error = {error: "No results found"}
 
 // Upcoming launches by date, year, or all
 v1.get("/", (req, res, next) => {
@@ -23,7 +22,9 @@ v1.get("/", (req, res, next) => {
   } else {
     global.db.collection("upcoming").find({},{"_id": 0 }).sort({"flight_number": 1})
       .toArray((err, doc) => {
-        if (err) return next(err)
+        if (err) {
+          return next(err)
+        }
         res.json(doc)
       })
   }

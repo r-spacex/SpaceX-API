@@ -8,7 +8,9 @@ const error = {error: "No results found"}
 v1.get("/caps", (req, res, next) => {
   global.db.collection("capsule").find({},{"_id": 0}).sort({"capsule_serial": 1})
     .toArray((err, doc) => {
-      if (err) return next(err)
+      if (err) {
+        return next(err)
+      }
       res.json(doc)
     })
 })
@@ -18,7 +20,9 @@ v1.get("/caps/:cap", (req, res, next) => {
   const cap = req.params.cap
   global.db.collection("capsule").find({"capsule_serial": `${cap}`},{"_id": 0}).sort({"capsule_serial": 1})
     .toArray((err, doc) => {
-      if (err) return next(err)
+      if (err) {
+        return next(err)
+      }
       if (doc.length == 0) {
         res.status(404)
         return res.json(error)
@@ -31,7 +35,9 @@ v1.get("/caps/:cap", (req, res, next) => {
 v1.get("/cores", (req, res, next) => {
   global.db.collection("core").find({},{"_id": 0}).sort({"core_serial": 1})
     .toArray((err, doc) => {
-      if (err) return next(err)
+      if (err) {
+        return next(err)
+      }
       res.json(doc)
     })
 })
@@ -41,7 +47,9 @@ v1.get("/cores/:core", (req, res, next) => {
   const core = req.params.core
   global.db.collection("core").find({"core_serial": `${core}`},{"_id": 0}).sort({"core_serial": 1})
     .toArray((err, doc) => {
-      if (err) return next(err)
+      if (err) {
+        return next(err)
+      }
       if (doc.length == 0) {
         res.status(404)
         return res.json(error)
