@@ -9,7 +9,7 @@ v1.get("/latest", (req, res) => {
   global.db.collection("launch").find({},{"_id": 0 }).sort({"flight_number": -1}).limit(1)
     .toArray((err, doc) => {
       if (err) return console.log(err)
-      res.end(JSON.stringify(doc, null, 2))
+      res.json(doc)
     })
 })
 
@@ -22,34 +22,26 @@ v1.get("/", (req, res) => {
   if (year) {
     global.db.collection("launch").find({"launch_year": `${year}`}, {"_id": 0 }).sort({"flight_number": -1})
       .toArray((err, doc) => {
-        if (doc.length == 0) {
-          res.status(200).end(JSON.stringify(error, null, 2))
-        }
-        res.end(JSON.stringify(doc, null, 2))
+        res.json(doc)
       })
   } else if (start && final) {
     global.db.collection("launch").find({ "launch_date_utc": {"$gte": `${start}T00:00:00Z`, "$lte": `${final}T00:00:00Z`}}, {"_id": 0 })
       .sort({"flight_number": 1})
       .toArray((err, doc) => {
         if (doc.length == 0) {
-          res.status(200).end(JSON.stringify(error, null, 2))
-        }
-        res.end(JSON.stringify(doc, null, 2))
+        res.json(doc)
       })
   } else if (site) {
     global.db.collection("launch").find({ "launch_site.site_id": `${site}`}, {"_id": 0 })
       .sort({"flight_number": 1})
       .toArray((err, doc) => {
-        if (doc.length == 0) {
-          res.status(200).end(JSON.stringify(error, null, 2))
-        }
-        res.end(JSON.stringify(doc, null, 2))
+        res.json(doc)
       })
   } else {
     global.db.collection("launch").find({},{"_id": 0 }).sort({"flight_number": 1})
       .toArray((err, doc) => {
         if (err) return console.log(err)
-        res.end(JSON.stringify(doc, null, 2))
+        res.json(doc)
       })
   }
 })
@@ -60,10 +52,7 @@ v1.get("/cores/:core", (req, res) => {
   global.db.collection("launch").find({"core_serial": `${core}`},{"_id": 0}).sort({"core_serial": 1})
     .toArray((err, doc) => {
       if (err) return console.log(err)
-      if (doc.length == 0) {
-        res.status(200).end(JSON.stringify(error, null, 2))
-      }
-      res.end(JSON.stringify(doc, null, 2))
+      res.json(doc)
     })
 })
 
@@ -73,10 +62,7 @@ v1.get("/caps/:cap", (req, res) => {
   global.db.collection("launch").find({"cap_serial": `${cap}`},{"_id": 0}).sort({"capsule_serial": 1})
     .toArray((err, doc) => {
       if (err) return console.log(err)
-      if (doc.length == 0) {
-        res.status(200).end(JSON.stringify(error, null, 2))
-      }
-      res.end(JSON.stringify(doc, null, 2))
+      res.json(doc)
     })
 })
 
@@ -85,7 +71,7 @@ v1.get("/asds", (req, res) => {
   global.db.collection("launch").find({"landing_type": "ASDS"},{"_id": 0}).sort({"flight_number": 1})
     .toArray((err, doc) => {
       if (err) return console.log(err)
-      res.end(JSON.stringify(doc, null, 2))
+      res.json(doc)
     })
 })
 
@@ -94,7 +80,7 @@ v1.get("/rtls", (req, res) => {
   global.db.collection("launch").find({"landing_type": "RTLS"},{"_id": 0}).sort({"flight_number": 1})
     .toArray((err, doc) => {
       if (err) return console.log(err)
-      res.end(JSON.stringify(doc, null, 2))
+      res.json(doc)
     })
 })
 

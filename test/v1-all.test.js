@@ -1,6 +1,7 @@
 
 const app = require("../app")
 const request = require("supertest")
+const express = require("express")
 
 beforeAll((done) => {
   app.on("ready", () => {
@@ -16,6 +17,31 @@ test("It should return 404 endpoint error", () => {
   return request(app).get("/v2").then(response => {
     expect(response.statusCode).toBe(404)
     expect(response.text).toContain("No results found")
+  })
+})
+
+//------------------------------------------------------------
+//                     500 Errors
+//------------------------------------------------------------
+
+test("It should return 500 error", () => {
+  // we add endpoint that throws error internally to the first router
+  // order is important here in order to not hit default 404 endpoint
+  for (let i = 0; i < app._router.stack.length; i++) {
+    let layer = app._router.stack[i]
+    if (layer.match("/v1") && layer.name == "router") {
+      layer.handle.get("/endpoint_that_errors", (req, res, next) => {
+        next(new Error("Forced error"))
+      })
+      break
+    }
+  }
+
+  return request(app).get("/v1/endpoint_that_errors").then((response) => {
+    expect(response.statusCode).toBe(500)
+    expect(response.body).toMatchObject({
+      error: "Internal Server Error"
+    })
   })
 })
 
@@ -90,7 +116,7 @@ test("It should return Dragon info", () => {
 test("It should return all launchpads", () => {
   return request(app).get("/v1/launchpads").then(response => {
     expect(response.statusCode).toBe(200)
-    expect(response.text.length).toBe(4368)
+    expect(response.text.length).toBe(3735)
   })
 })
 
@@ -103,7 +129,7 @@ test("It should return LC-39A info", () => {
 
 test("It should return no launchpads found info", () => {
   return request(app).get("/v1/launchpads/ksc_lc_40a").then(response => {
-    expect(response.statusCode).toBe(200)
+    expect(response.statusCode).toBe(404)
     expect(response.text).toContain("No results found")
   })
 })
@@ -135,7 +161,7 @@ test("It should return all past launches from LC-4E", () => {
 
 test("It should return no launches from made up launchpad", () => {
   return request(app).get("/v1/launches?site=vafb_slc_5e").then(response => {
-    expect(response.statusCode).toBe(200)
+    expect(response.statusCode).toBe(404)
     expect(response.text).toContain("No results found")
   })
 })
@@ -149,7 +175,7 @@ test("It should return all 2012 launches", () => {
 
 test("It should return no 2005 launches", () => {
   return request(app).get("/v1/launches?year=2005").then(response => {
-    expect(response.statusCode).toBe(200)
+    expect(response.statusCode).toBe(404)
     expect(response.text).toContain("No results found")
   })
 })
@@ -162,7 +188,7 @@ test("It should return past launches in timeframe", () => {
 
 test("It should return no past launches in timeframe", () => {
   return request(app).get("/v1/launches?start=2005-01-20&final=2005-05-25").then(response => {
-    expect(response.statusCode).toBe(200)
+    expect(response.statusCode).toBe(404)
     expect(response.text).toContain("No results found")
   })
 })
@@ -176,7 +202,7 @@ test("It should return all launches with core B1021", () => {
 
 test("It should return no launches with core A1021", () => {
   return request(app).get("/v1/launches/cores/A1021").then(response => {
-    expect(response.statusCode).toBe(200)
+    expect(response.statusCode).toBe(404)
     expect(response.text).toContain("No results found")
   })
 })
@@ -190,7 +216,7 @@ test("It should return all launches with cap C106", () => {
 
 test("It should return no launches with cap C403", () => {
   return request(app).get("/v1/launches/caps/C403").then(response => {
-    expect(response.statusCode).toBe(200)
+    expect(response.statusCode).toBe(404)
     expect(response.text).toContain("No results found")
   })
 })
@@ -227,20 +253,20 @@ test("It should return all upcoming launches in 2017", () => {
 
 test("It should return no upcoming launches in 2016", () => {
   return request(app).get("/v1/launches/upcoming?year=2016").then(response => {
-    expect(response.statusCode).toBe(200)
+    expect(response.statusCode).toBe(404)
     expect(response.text).toContain("No results found")
   })
 })
 
 test("It should return all launches in the timeframe", () => {
-  return request(app).get("/v1/launches/upcoming?start=2011-01-20&final=2017-05-25").then(response => {
+  return request(app).get("/v1/launches/upcoming?start=2011-01-20&final=2055-05-25").then(response => {
     expect(response.statusCode).toBe(200)
   })
 })
 
 test("It should return no launches in the timeframe", () => {
   return request(app).get("/v1/launches/upcoming?start=2011-01-20&final=2016-05-25").then(response => {
-    expect(response.statusCode).toBe(200)
+    expect(response.statusCode).toBe(404)
     expect(response.text).toContain("No results found")
   })
 })
@@ -266,7 +292,7 @@ test("It should return all info on C106", () => {
 
 test("It should return no info on C406", () => {
   return request(app).get("/v1/parts/caps/C406").then(response => {
-    expect(response.statusCode).toBe(200)
+    expect(response.statusCode).toBe(404)
     expect(response.text).toContain("No results found")
   })
 })
@@ -288,7 +314,7 @@ test("It should return core info on B1021", () => {
 
 test("It should return no core info on A1021", () => {
   return request(app).get("/v1/parts/cores/A1021").then(response => {
-    expect(response.statusCode).toBe(200)
+    expect(response.statusCode).toBe(404)
     expect(response.text).toContain("No results found")
   })
 })
