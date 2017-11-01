@@ -1,7 +1,6 @@
 
 const app = require("../app")
 const request = require("supertest")
-const express = require("express")
 
 beforeAll((done) => {
   app.on("ready", () => {
@@ -161,8 +160,8 @@ test("It should return all past launches from LC-4E", () => {
 
 test("It should return no launches from made up launchpad", () => {
   return request(app).get("/v1/launches?site=vafb_slc_5e").then(response => {
-    expect(response.statusCode).toBe(404)
-    expect(response.text).toContain("No results found")
+    expect(response.statusCode).toBe(200)
+    expect(response.body).toEqual([])
   })
 })
 
@@ -175,21 +174,22 @@ test("It should return all 2012 launches", () => {
 
 test("It should return no 2005 launches", () => {
   return request(app).get("/v1/launches?year=2005").then(response => {
-    expect(response.statusCode).toBe(404)
-    expect(response.text).toContain("No results found")
+    expect(response.statusCode).toBe(200)
+    expect(response.body).toEqual([])
   })
 })
 
 test("It should return past launches in timeframe", () => {
   return request(app).get("/v1/launches?start=2011-01-20&final=2017-05-25").then(response => {
     expect(response.statusCode).toBe(200)
+    expect(response.body).not.toHaveLength(0)
   })
 })
 
 test("It should return no past launches in timeframe", () => {
   return request(app).get("/v1/launches?start=2005-01-20&final=2005-05-25").then(response => {
-    expect(response.statusCode).toBe(404)
-    expect(response.text).toContain("No results found")
+    expect(response.statusCode).toBe(200)
+    expect(response.body).toEqual([])
   })
 })
 
@@ -202,8 +202,8 @@ test("It should return all launches with core B1021", () => {
 
 test("It should return no launches with core A1021", () => {
   return request(app).get("/v1/launches/cores/A1021").then(response => {
-    expect(response.statusCode).toBe(404)
-    expect(response.text).toContain("No results found")
+    expect(response.statusCode).toBe(200)
+    expect(response.body).toEqual([])
   })
 })
 
@@ -216,8 +216,8 @@ test("It should return all launches with cap C106", () => {
 
 test("It should return no launches with cap C403", () => {
   return request(app).get("/v1/launches/caps/C403").then(response => {
-    expect(response.statusCode).toBe(404)
-    expect(response.text).toContain("No results found")
+    expect(response.statusCode).toBe(200)
+    expect(response.body).toEqual([])
   })
 })
 
@@ -242,32 +242,35 @@ test("It should return all past RTLS launches", () => {
 test("It should return all upcoming launches", () => {
   return request(app).get("/v1/launches/upcoming").then(response => {
     expect(response.statusCode).toBe(200)
+    expect(response.body).not.toHaveLength(0)
   })
 })
 
 test("It should return all upcoming launches in 2017", () => {
   return request(app).get("/v1/launches/upcoming?year=2017").then(response => {
     expect(response.statusCode).toBe(200)
+    expect(response.body).not.toHaveLength(0)
   })
 })
 
 test("It should return no upcoming launches in 2016", () => {
   return request(app).get("/v1/launches/upcoming?year=2016").then(response => {
-    expect(response.statusCode).toBe(404)
-    expect(response.text).toContain("No results found")
+    expect(response.statusCode).toBe(200)
+    expect(response.body).toEqual([])
   })
 })
 
 test("It should return all launches in the timeframe", () => {
   return request(app).get("/v1/launches/upcoming?start=2011-01-20&final=2055-05-25").then(response => {
     expect(response.statusCode).toBe(200)
+    expect(response.body).not.toHaveLength(0)
   })
 })
 
 test("It should return no launches in the timeframe", () => {
   return request(app).get("/v1/launches/upcoming?start=2011-01-20&final=2016-05-25").then(response => {
-    expect(response.statusCode).toBe(404)
-    expect(response.text).toContain("No results found")
+    expect(response.statusCode).toBe(200)
+    expect(response.body).toEqual([])
   })
 })
 
