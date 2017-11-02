@@ -2,6 +2,7 @@
 
 const express = require("express")
 const v1 = express.Router()
+const error = {error: "No results found"}
 
 // Get most recent launch
 v1.get("/latest", (req, res, next) => {
@@ -10,7 +11,11 @@ v1.get("/latest", (req, res, next) => {
       if (err) {
         return next(err)
       }
-      res.json(doc)
+      if (doc.length == 0) {
+        res.status(404)
+        return res.json(error)
+      }
+      res.json(doc[0])
     })
 })
 

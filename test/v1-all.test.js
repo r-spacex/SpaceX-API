@@ -15,7 +15,9 @@ beforeAll((done) => {
 test("It should return 404 endpoint error", () => {
   return request(app).get("/v2").then(response => {
     expect(response.statusCode).toBe(404)
-    expect(response.text).toContain("No results found")
+    expect(response.body).toMatchObject({
+      error: "No results found"
+    })
   })
 })
 
@@ -51,7 +53,12 @@ test("It should return 500 error", () => {
 test("It should return home info", () => {
   return request(app).get("/v1").then(response => {
     expect(response.statusCode).toBe(200)
-    expect(response.text).toContain("SpaceX-API")
+    expect(response.body).toHaveProperty("description")
+    expect(response.body).toHaveProperty("organization", "r/SpaceX")
+    expect(response.body).toHaveProperty("organization_link", "https://github.com/r-spacex")
+    expect(response.body).toHaveProperty("project_link", "https://github.com/r-spacex/SpaceX-API")
+    expect(response.body).toHaveProperty("project_name", "SpaceX-API")
+    expect(response.body).toHaveProperty("version")
   })
 })
 
@@ -62,7 +69,22 @@ test("It should return home info", () => {
 test("It should return company info", () => {
   return request(app).get("/v1/info").then(response => {
     expect(response.statusCode).toBe(200)
-    expect(response.text).toContain("Elon Musk")
+    expect(response.body).toHaveProperty("name", "SpaceX")
+    expect(response.body).toHaveProperty("founder", "Elon Musk")
+    expect(response.body).toHaveProperty("founded", 2002)
+    expect(response.body).toHaveProperty("employees")
+    expect(response.body).toHaveProperty("vehicles")
+    expect(response.body).toHaveProperty("launch_sites")
+    expect(response.body).toHaveProperty("test_sites")
+    expect(response.body).toHaveProperty("ceo")
+    expect(response.body).toHaveProperty("cto")
+    expect(response.body).toHaveProperty("coo")
+    expect(response.body).toHaveProperty("cto_propulsion")
+    expect(response.body).toHaveProperty("valuation")
+    expect(response.body).toHaveProperty("headquarters.address", "Rocket Road")
+    expect(response.body).toHaveProperty("headquarters.city", "Hawthorne")
+    expect(response.body).toHaveProperty("headquarters.state", "California")
+    expect(response.body).toHaveProperty("summary")
   })
 })
 
@@ -73,38 +95,66 @@ test("It should return company info", () => {
 test("It should return all vehicle info", () => {
   return request(app).get("/v1/vehicles").then(response => {
     expect(response.statusCode).toBe(200)
-    expect(response.text).toContain("Falcon 1")
-    expect(response.text).toContain("Falcon 9")
-    expect(response.text).toContain("Falcon Heavy")
-    expect(response.text).toContain("Dragon")
+    expect(response.body).toHaveLength(4)
+    expect(response.body[0]).toHaveProperty("name", "Falcon 1")
+    expect(response.body[1]).toHaveProperty("name", "Falcon 9")
+    expect(response.body[2]).toHaveProperty("name", "Falcon Heavy")
+    expect(response.body[3]).toHaveProperty("name", "Dragon 1")
+
+    response.body.forEach(item => {
+      expect(item).toHaveProperty("id")
+      expect(item).toHaveProperty("name")
+      expect(item).toHaveProperty("active")
+    })
   })
 })
 
 test("It should return Falcon 1 info", () => {
   return request(app).get("/v1/vehicles/falcon1").then(response => {
     expect(response.statusCode).toBe(200)
-    expect(response.text).toContain("Falcon 1")
+    expect(response.body).toHaveProperty("name", "Falcon 1")
+    expect(response.body).toHaveProperty("stages", 2)
+    expect(response.body).toHaveProperty("cost_per_launch")
+    expect(response.body).toHaveProperty("success_rate_pct")
+    expect(response.body).toHaveProperty("first_flight", "2016-03-24")
+    expect(response.body).toHaveProperty("country")
+    expect(response.body).toHaveProperty("company", "SpaceX")
+    expect(response.body).toHaveProperty("description")
   })
 })
 
 test("It should return Falcon 9 info", () => {
   return request(app).get("/v1/vehicles/falcon9").then(response => {
     expect(response.statusCode).toBe(200)
-    expect(response.text).toContain("Falcon 9")
+    expect(response.body).toHaveProperty("name", "Falcon 9")
+    expect(response.body).toHaveProperty("stages", 2)
+    expect(response.body).toHaveProperty("cost_per_launch")
+    expect(response.body).toHaveProperty("success_rate_pct")
+    expect(response.body).toHaveProperty("first_flight", "2010-06-04")
+    expect(response.body).toHaveProperty("country")
+    expect(response.body).toHaveProperty("company", "SpaceX")
+    expect(response.body).toHaveProperty("description")
   })
 })
 
 test("It should return Falcon Heavy info", () => {
   return request(app).get("/v1/vehicles/falconheavy").then(response => {
     expect(response.statusCode).toBe(200)
-    expect(response.text).toContain("Falcon Heavy")
+    expect(response.body).toHaveProperty("name", "Falcon Heavy")
+    expect(response.body).toHaveProperty("stages", 2)
+    expect(response.body).toHaveProperty("cost_per_launch")
+    // expect(response.body).toHaveProperty("success_rate_pct")
+    // expect(response.body).toHaveProperty("first_flight")
+    expect(response.body).toHaveProperty("country")
+    expect(response.body).toHaveProperty("company", "SpaceX")
+    expect(response.body).toHaveProperty("description")
   })
 })
 
 test("It should return Dragon info", () => {
   return request(app).get("/v1/vehicles/dragon").then(response => {
     expect(response.statusCode).toBe(200)
-    expect(response.text).toContain("Dragon")
+    expect(response.body).toHaveProperty("name", "Dragon 1")
   })
 })
 
@@ -115,7 +165,14 @@ test("It should return Dragon info", () => {
 test("It should return all launchpads", () => {
   return request(app).get("/v1/launchpads").then(response => {
     expect(response.statusCode).toBe(200)
-    expect(response.text.length).toBe(3735)
+    expect(response.body).toHaveLength(8)
+    response.body.forEach(item => {
+      expect(item).toHaveProperty("id")
+      expect(item).toHaveProperty("full_name")
+      expect(item).toHaveProperty("status")
+      expect(item).toHaveProperty("vehicles_launched")
+      expect(item).toHaveProperty("details")
+    })
   })
 })
 
@@ -140,14 +197,51 @@ test("It should return no launchpads found info", () => {
 test("It should return all past launches", () => {
   return request(app).get("/v1/launches").then(response => {
     expect(response.statusCode).toBe(200)
-    expect(response.text.length).toBeGreaterThan(70000)
+    expect(response.body.length).toBeGreaterThanOrEqual(50)
+    response.body.forEach(item => {
+      expect(item).toHaveProperty("flight_number", expect.anything())
+      expect(item).toHaveProperty("launch_year", expect.stringMatching(/^[0-9]{4}$/))
+      // expect(item).toHaveProperty("launch_date_unix")
+      expect(item).toHaveProperty("launch_date_utc", expect.anything())
+      expect(item).toHaveProperty("launch_date_local", expect.anything())
+      expect(item).toHaveProperty("rocket.rocket_id")
+      expect(item).toHaveProperty("rocket.rocket_name")
+      expect(item).toHaveProperty("rocket.rocket_type")
+      expect(item).toHaveProperty("telemetry.flight_club")
+      expect(item).toHaveProperty("core_serial")
+      expect(item).toHaveProperty("cap_serial")
+      expect(item).toHaveProperty("reuse.core")
+      expect(item).toHaveProperty("reuse.side_core1")
+      expect(item).toHaveProperty("reuse.side_core2")
+      expect(item).toHaveProperty("reuse.fairings")
+      expect(item).toHaveProperty("reuse.capsule")
+      expect(item).toHaveProperty("launch_site.site_id")
+      expect(item).toHaveProperty("launch_site.site_name")
+      expect(item).toHaveProperty("payloads")
+      expect(item.payloads.length).toBeGreaterThan(0)
+      item.payloads.forEach(payload => {
+        expect(payload).toHaveProperty("payload_id")
+        expect(payload).toHaveProperty("customers")
+        expect(payload).toHaveProperty("payload_type")
+        expect(payload).toHaveProperty("payload_mass_kg")
+        expect(payload).toHaveProperty("payload_mass_lbs")
+        expect(payload).toHaveProperty("orbit")
+      })
+      expect(item).toHaveProperty("launch_success")
+      expect(item).toHaveProperty("reused")
+      expect(item).toHaveProperty("land_success")
+      expect(item).toHaveProperty("landing_type")
+      expect(item).toHaveProperty("landing_vehicle")
+      expect(item).toHaveProperty("links")
+      expect(item).toHaveProperty("details")
+    })
   })
 })
 
 test("It should return the latest launch", () => {
   return request(app).get("/v1/launches/latest").then(response => {
     expect(response.statusCode).toBe(200)
-    expect(response.text.length).toBeGreaterThan(0)
+    expect(response.body).toHaveProperty("flight_number")
   })
 })
 
