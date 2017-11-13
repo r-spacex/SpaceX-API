@@ -10,14 +10,30 @@ class CustomAsymmetricMatcher {
     // $$typeof is used internally by Jest and just to be sure let's use jest Symbol
     this.$$typeof = Symbol.for("jest.asymmetricMatcher")
   }
+
+  toAsymmetricMatcher() {
+    return this.toString()
+  }
+}
+
+class SpacexComposite extends CustomAsymmetricMatcher {
+  asymmetricMatch(any) {
+    return any !== undefined && typeof any === "object"
+  }
+
+  getExpectedType() {
+    return "object"
+  }
 }
 
 /**
  * Expect metric and imperial volume numbers in object.
  */
-class SpacexVolume extends CustomAsymmetricMatcher {
+class SpacexVolume extends SpacexComposite {
   asymmetricMatch(any) {
-    expect(any).toEqual(expect.anything())
+    if (!super.asymmetricMatch(any)) {
+      return false
+    }
     expect(any).toHaveProperty("cubic_meters", expect.any(Number))
     expect(any).toHaveProperty("cubic_feet", expect.any(Number))
     expect(any.cubic_meters).toBeGreaterThanOrEqual(0)
@@ -28,22 +44,16 @@ class SpacexVolume extends CustomAsymmetricMatcher {
   toString() {
     return "SpacexVolume"
   }
-
-  getExpectedType() {
-    return "object"
-  }
-
-  toAsymmetricMatcher() {
-    return "SpacexVolume"
-  }
 }
 
 /**
  * Expect metric and imperial length (or dimension) numbers in object.
  */
-class SpacexLength extends CustomAsymmetricMatcher {
+class SpacexLength extends SpacexComposite {
   asymmetricMatch(any) {
-    expect(any).toEqual(expect.anything())
+    if (!super.asymmetricMatch(any)) {
+      return false
+    }
     expect(any).toHaveProperty("meters", expect.any(Number))
     expect(any).toHaveProperty("feet", expect.any(Number))
     expect(any.meters).toBeGreaterThanOrEqual(0)
@@ -54,22 +64,16 @@ class SpacexLength extends CustomAsymmetricMatcher {
   toString() {
     return "SpacexLength"
   }
-
-  getExpectedType() {
-    return "object"
-  }
-
-  toAsymmetricMatcher() {
-    return "SpacexLength"
-  }
 }
 
 /**
  * Expect metric and imperial mass numbers in object.
  */
-class SpacexMass extends CustomAsymmetricMatcher {
+class SpacexMass extends SpacexComposite {
   asymmetricMatch(any) {
-    expect(any).toEqual(expect.anything())
+    if (!super.asymmetricMatch(any)) {
+      return false
+    }
     expect(any).toHaveProperty("kg", expect.any(Number))
     expect(any).toHaveProperty("lb", expect.any(Number))
     expect(any.kg).toBeGreaterThanOrEqual(0)
@@ -80,13 +84,67 @@ class SpacexMass extends CustomAsymmetricMatcher {
   toString() {
     return "SpacexMass"
   }
+}
 
-  getExpectedType() {
-    return "object"
+/**
+ * Expect metric and imperial thrust numbers in object.
+ */
+class SpacexThrust extends SpacexComposite {
+  asymmetricMatch(any) {
+    if (!super.asymmetricMatch(any)) {
+      return false
+    }
+    expect(any).toHaveProperty("kN", expect.any(Number))
+    expect(any).toHaveProperty("lbf", expect.any(Number))
+    expect(any.kN).toBeGreaterThanOrEqual(0)
+    expect(any.lbf).toBeGreaterThanOrEqual(0)
+    return true
   }
 
-  toAsymmetricMatcher() {
-    return "SpacexMass"
+  toString() {
+    return "SpacexThrust"
+  }
+}
+
+/**
+ * Expect composite payload weight object.
+ */
+class SpacexPayloadWeight extends SpacexComposite {
+  asymmetricMatch(any) {
+    if (!super.asymmetricMatch(any)) {
+      return false
+    }
+    expect(any).toHaveProperty("id", expect.any(String))
+    expect(any).toHaveProperty("name", expect.any(String))
+    expect(any).toEqual(new SpacexMass())
+    return true
+  }
+
+  toString() {
+    return "SpacexPayloadWeight"
+  }
+}
+
+/**
+ * Expect composite stage information object.
+ */
+class SpacexVehicleStage extends SpacexComposite {
+  asymmetricMatch(any) {
+    if (!super.asymmetricMatch(any)) {
+      return false
+    }
+    // expect(any).toHaveProperty("reusable", expect.any(Boolean)) // TODO missing from some stages
+    // expect(any).toHaveProperty("engines", expect.any(String)) // TODO inconsistent, sometimes number, sometimes composite
+    // expect(any).toHaveProperty("fuel_amount_tons", expect.any(Number)) // TODO missing from some stages
+    expect(any).toHaveProperty("burn_time_sec", expect.any(Number))
+    // expect(any).toHaveProperty("thrust_sea_level", new SpacexThrust()) // TODO missing from some stages
+    // expect(any).toHaveProperty("thrust_vacuum", new SpacexThrust()) // TODO missing from some stages
+    // expect(any).toHaveProperty("payloads", expect.any(String)) // composite object present only in 2nd stage
+    return true
+  }
+
+  toString() {
+    return "SpacexPayloadWeight"
   }
 }
 
@@ -99,5 +157,14 @@ module.exports = {
   },
   mass: () => {
     return new SpacexMass()
+  },
+  thrust: () => {
+    return new SpacexThrust()
+  },
+  payloadWeight: () => {
+    return new SpacexPayloadWeight()
+  },
+  vehicleStage: () => {
+    return new SpacexVehicleStage()
   }
 }
