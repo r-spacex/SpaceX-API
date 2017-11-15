@@ -121,9 +121,12 @@ test("It should return all vehicle info", () => {
         // expect(item).toHaveProperty("diameter", customMatchers.length()) // missing from FH
         // expect(item).toHaveProperty("total_width",customMatchers.length()) // missing from falcon1
         expect(item).toHaveProperty("mass", customMatchers.mass())
-        expect(item).toHaveProperty("payload_weights", expect.any(Array)) // TODO test it deeper
-        expect(item).toHaveProperty("first_stage", expect.any(Object)) // TODO test it deeper
-        expect(item).toHaveProperty("second_stage", expect.any(Object)) // TODO test it deeper
+        expect(item).toHaveProperty("payload_weights", expect.any(Array))
+        item.payload_weights.forEach(weight => {
+          expect(weight).toEqual(customMatchers.payloadWeight())
+        })
+        expect(item).toHaveProperty("first_stage", customMatchers.vehicleStage())
+        expect(item).toHaveProperty("second_stage", customMatchers.vehicleStage())
         // expect(item).toHaveProperty("landing_legs", expect.any(Number)) // missing from falcon1
         expect(item).toHaveProperty("description", expect.any(String))
       }
@@ -139,8 +142,7 @@ test("It should return all vehicle info", () => {
         expect(item).toHaveProperty("thrusters.fuel_1", expect.any(String))
         expect(item).toHaveProperty("thrusters.fuel_2", expect.any(String))
         expect(item).toHaveProperty("thrusters.pods", expect.any(Number))
-        expect(item).toHaveProperty("thrusters.thrust.kN", expect.any(Number))
-        expect(item).toHaveProperty("thrusters.thrust.lbf", expect.any(Number))
+        expect(item).toHaveProperty("thrusters.thrust", customMatchers.thrust())
         expect(item).toHaveProperty("thrusters.type", expect.any(String))
         expect(item).toHaveProperty("launch_payload_mass", customMatchers.mass())
         expect(item).toHaveProperty("launch_payload_vol", customMatchers.volume())
