@@ -56,25 +56,71 @@ v1.get("/", (req, res, next) => {
 // Returns launches by core serial #
 v1.get("/cores/:core", (req, res, next) => {
   const core = req.params.core
-  global.db.collection("launch").find({"core_serial": `${core}`},{"_id": 0}).sort({"core_serial": 1})
-    .toArray((err, doc) => {
-      if (err) {
-        return next(err)
-      }
-      res.json(doc)
-    })
+  const year = req.query.year
+  const start = req.query.start
+  const final = req.query.final
+  const site = req.query.site
+  if (year && core) {
+    global.db.collection("launch").find({"core_serial": `${core}`, "launch_year": `${year}`}, {"_id": 0 }).sort({"flight_number": -1})
+      .toArray((err, doc) => {
+        res.json(doc)
+      })
+  } else if (start && final && core) {
+    global.db.collection("launch").find({ "core_serial": `${core}`, "launch_date_utc": {"$gte": `${start}T00:00:00Z`, "$lte": `${final}T00:00:00Z`}}, {"_id": 0 })
+      .sort({"flight_number": 1})
+      .toArray((err, doc) => {
+        res.json(doc)
+      })
+  } else if (site && core) {
+    global.db.collection("launch").find({ "core_serial": `${core}`, "launch_site.site_id": `${site}`}, {"_id": 0 })
+      .sort({"flight_number": 1})
+      .toArray((err, doc) => {
+        res.json(doc)
+      })
+  } else if (core) {
+    global.db.collection("launch").find({"core_serial": `${core}`},{"_id": 0}).sort({"core_serial": 1})
+      .toArray((err, doc) => {
+        if (err) {
+          return next(err)
+        }
+        res.json(doc)
+      })
+  }
 })
 
 // Returns launches by capsule serial #
 v1.get("/caps/:cap", (req, res, next) => {
   const cap = req.params.cap
-  global.db.collection("launch").find({"cap_serial": `${cap}`},{"_id": 0}).sort({"capsule_serial": 1})
-    .toArray((err, doc) => {
-      if (err) {
-        return next(err)
-      }
-      res.json(doc)
-    })
+  const year = req.query.year
+  const start = req.query.start
+  const final = req.query.final
+  const site = req.query.site
+  if (year && cap) {
+    global.db.collection("launch").find({"cap_serial": `${cap}`, "launch_year": `${year}`}, {"_id": 0 }).sort({"flight_number": -1})
+      .toArray((err, doc) => {
+        res.json(doc)
+      })
+  } else if (start && final && cap) {
+    global.db.collection("launch").find({ "cap_serial": `${cap}`, "launch_date_utc": {"$gte": `${start}T00:00:00Z`, "$lte": `${final}T00:00:00Z`}}, {"_id": 0 })
+      .sort({"flight_number": 1})
+      .toArray((err, doc) => {
+        res.json(doc)
+      })
+  } else if (site && cap) {
+    global.db.collection("launch").find({ "cap_serial": `${cap}`, "launch_site.site_id": `${site}`}, {"_id": 0 })
+      .sort({"flight_number": 1})
+      .toArray((err, doc) => {
+        res.json(doc)
+      })
+  } else {
+    global.db.collection("launch").find({"cap_serial": `${cap}`},{"_id": 0}).sort({"capsule_serial": 1})
+      .toArray((err, doc) => {
+        if (err) {
+          return next(err)
+        }
+        res.json(doc)
+      })
+  }
 })
 
 // Returns all ASDS launches
