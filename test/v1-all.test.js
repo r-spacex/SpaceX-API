@@ -14,7 +14,7 @@ beforeAll((done) => {
 //------------------------------------------------------------
 
 test("It should return 404 endpoint error", () => {
-  return request(app).get("/v2").then(response => {
+  return request(app).get("/v3").then(response => {
     expect(response.statusCode).toBe(404)
     expect(response.body).toMatchObject({
       error: "No results found"
