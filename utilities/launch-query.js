@@ -1,4 +1,4 @@
-// Module build past launch queries
+// Build queries for past launches
 
 exports.queryBuilder = (req) => {
   let query = {}
