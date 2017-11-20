@@ -4,7 +4,7 @@ exports.queryBuilder = (req) => {
   let query = {}
 
   if (req.query.launch_year) {
-    query["rocket.rocket_type"] = req.query.rocket_type
+    query.launch_year = req.query.launch_year
   }
   if (req.query.launch_date_utc) {
     query.launch_date_utc = req.query.launch_date_utc

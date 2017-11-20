@@ -2,7 +2,6 @@
 
 const express = require("express")
 const v2 = express.Router()
-const error = {error: "No results found"}
 const launch = require("../utilities/launch-query")
 
 // Get most recent launch

@@ -16,6 +16,14 @@ const launches  = require("./v1-routes/v1-launches")
 const upcoming  = require("./v1-routes/v1-upcoming")
 const parts  = require("./v1-routes/v1-parts")
 
+const v2_home  = require("./v2-routes/v2-home")
+const v2_info  = require("./v2-routes/v2-info")
+const v2_vehicles  = require("./v2-routes/v2-vehicles")
+const v2_launchpad  = require("./v2-routes/v2-launchpad")
+const v2_launches  = require("./v2-routes/v2-launches")
+const v2_upcoming  = require("./v2-routes/v2-upcoming")
+const v2_parts  = require("./v2-routes/v2-parts")
+
 app.use(compression())
 app.use(helmet())
 app.use(morgan("common"))
@@ -35,6 +43,14 @@ app.use("/v1/launchpads", launchpad)
 app.use("/v1/launches", launches)
 app.use("/v1/launches/upcoming", upcoming)
 app.use("/v1/parts", parts)
+
+app.use("/v2", v2_home)
+app.use("/v2/info", v2_info)
+app.use("/v2/vehicles", v2_vehicles)
+app.use("/v2/launchpads", v2_launchpad)
+app.use("/v2/launches", v2_launches)
+app.use("/v2/launches/upcoming", v2_upcoming)
+app.use("/v2/parts", v2_parts)
 
 // 404 Error Handler
 app.use((req, res) => {
