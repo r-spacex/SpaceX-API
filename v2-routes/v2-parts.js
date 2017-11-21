@@ -2,11 +2,14 @@
 
 const express = require("express")
 const v2 = express.Router()
+const cores = require("../utilities/core-query")
+const caps = require("../utilities/capsule-query")
 const error = {error: "No results found"}
 
 // Returns all capsule information
 v2.get("/caps", (req, res, next) => {
-  global.db.collection("capsule").find({},{"_id": 0}).sort({"capsule_serial": 1})
+  let query = caps.capsuleQuery(req)
+  global.db.collection("capsule").find(query,{"_id": 0}).sort({"capsule_serial": 1})
     .toArray((err, doc) => {
       if (err) {
         return next(err)
@@ -33,7 +36,8 @@ v2.get("/caps/:cap", (req, res, next) => {
 
 // Returns all core information
 v2.get("/cores", (req, res, next) => {
-  global.db.collection("core").find({},{"_id": 0}).sort({"core_serial": 1})
+  let query = cores.coreQuery(req)
+  global.db.collection("core").find(query,{"_id": 0}).sort({"core_serial": 1})
     .toArray((err, doc) => {
       if (err) {
         return next(err)

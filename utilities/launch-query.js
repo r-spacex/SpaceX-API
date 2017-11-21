@@ -1,8 +1,8 @@
 /**
- * Returns query object from optional querystring inputs 
+ * Returns launch query object from optional querystring inputs 
 */
 
-exports.queryBuilder = (req) => {
+exports.launchQuery = (req) => {
   let query = {}
 
   if (req.query.start && req.query.final) {
