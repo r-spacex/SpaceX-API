@@ -1,4 +1,6 @@
-// Build queries for past launches
+/**
+ * Returns query object from optional querystring inputs 
+*/
 
 exports.queryBuilder = (req) => {
   let query = {}
