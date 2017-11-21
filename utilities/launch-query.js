@@ -18,12 +18,6 @@ exports.queryBuilder = (req) => {
   if (req.query.launch_date_local) {
     query.launch_date_local = req.query.launch_date_local
   }
-  if (req.query.site_id) {
-    query["launch_site.site_id"] = req.query.site_id
-  }
-  if (req.query.site_name) {
-    query["launch_site.site_name"] = req.query.site_name
-  }
   if (req.query.rocket_id) {
     query["rocket.rocket_id"] = req.query.rocket_id
   }
@@ -53,6 +47,24 @@ exports.queryBuilder = (req) => {
   }
   if (req.query.capsule_reuse) {
     query["reuse.capsule"] = Boolean(req.query.capsule_reuse)
+  }
+  if (req.query.site_id) {
+    query["launch_site.site_id"] = req.query.site_id
+  }
+  if (req.query.site_name) {
+    query["launch_site.site_name"] = req.query.site_name
+  }
+  if (req.query.payload_id) {
+    query["payloads.payload_id"] = req.query.payload_id
+  }
+  if (req.query.customer) {
+    query["payloads.customer"] = req.query.customer
+  }
+  if (req.query.payload_type) {
+    query["payloads.payload_type"] = req.query.payload_type
+  }
+  if (req.query.orbit) {
+    query["payloads.orbit"] = req.query.orbit
   }
   if (req.query.launch_success) {
     query.launch_success = Boolean(req.query.launch_success)
