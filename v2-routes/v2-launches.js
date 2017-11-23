@@ -2,7 +2,7 @@
 
 const express = require("express")
 const v2 = express.Router()
-const launch = require("../utilities/launch-query")
+const launch = require("../builders/launch-query")
 
 // Get most recent launch
 v2.get("/latest", (req, res, next) => {

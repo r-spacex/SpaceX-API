@@ -2,7 +2,7 @@
 
 const express = require("express")
 const v2 = express.Router()
-const launch = require("../utilities/launch-query")
+const launch = require("../builders/launch-query")
 
 // Upcoming launches by date, year, or all
 v2.get("/", (req, res, next) => {

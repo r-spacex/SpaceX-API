@@ -2,8 +2,8 @@
 
 const express = require("express")
 const v2 = express.Router()
-const cores = require("../utilities/core-query")
-const caps = require("../utilities/capsule-query")
+const cores = require("../builders/core-query")
+const caps = require("../builders/capsule-query")
 const error = {error: "No results found"}
 
 // Returns all capsule information
