@@ -4,7 +4,7 @@
   "description": "Repo for staging/testing SpaceX-API transition from Ruby to Javascript (Node.js)",
   "main": "server.js",
   "scripts": {
-    "test": "jest --forceExit && codecov && eslint \"**/*.js\"",
+    "test": "PORT=0 jest --forceExit && codecov && eslint \"**/*.js\"",
     "start": "node app.js",
     "lint": "eslint \"**/*.js\""
   },
