@@ -508,14 +508,30 @@ test("It should return all past launches", () => {
         expect(core).toHaveProperty("landing_vehicle")
       })
       expect(item.rocket.second_stage.payloads.length).toBeGreaterThan(0)
-      item.rocket.second_stage.payloads.forEach(payload => {
-        expect(payload).toHaveProperty("payload_id")
-        expect(payload).toHaveProperty("reused")
-        expect(payload.customers.length).toBeGreaterThan(0)
-        expect(payload).toHaveProperty("payload_mass_kg")
-        expect(payload).toHaveProperty("payload_mass_lbs")
-        expect(payload).toHaveProperty("orbit")
-      })
+      if (item.hasOwnProperty("cap_serial")) {
+        item.rocket.second_stage.payloads.forEach(payload => {
+          expect(payload).toHaveProperty("payload_id")
+          expect(payload).toHaveProperty("reused")
+          expect(payload).toHaveProperty("cap_serial")
+          expect(payload.customers.length).toBeGreaterThan(0)
+          expect(payload).toHaveProperty("payload_mass_kg")
+          expect(payload).toHaveProperty("payload_mass_lbs")
+          expect(payload).toHaveProperty("orbit")
+          expect(payload).toHaveProperty("mass_returned_kg")
+          expect(payload).toHaveProperty("mass_returned_lbs")
+          expect(payload).toHaveProperty("flight_time_sec")
+          expect(payload).toHaveProperty("cargo_manifest")
+        })
+      } else {
+        item.rocket.second_stage.payloads.forEach(payload => {
+          expect(payload).toHaveProperty("payload_id")
+          expect(payload).toHaveProperty("reused")
+          expect(payload.customers.length).toBeGreaterThan(0)
+          expect(payload).toHaveProperty("payload_mass_kg")
+          expect(payload).toHaveProperty("payload_mass_lbs")
+          expect(payload).toHaveProperty("orbit")
+        })
+      }
       expect(item).toHaveProperty("telemetry.flight_club")
       expect(item).toHaveProperty("reuse.core")
       expect(item).toHaveProperty("reuse.side_core1")
