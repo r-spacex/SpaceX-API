@@ -30,10 +30,10 @@ exports.launchQuery = (req) => {
     query["rocket.rocket_type"] = req.query.rocket_type
   }
   if (req.query.core_serial) {
-    query.core_serial = req.query.core_serial
+    query["rocket.first_stage.cores.core_serial"] = req.query.core_serial
   }
   if (req.query.cap_serial) {
-    query.cap_serial = req.query.cap_serial
+    query["rocket.second_stage.payloads.cap_serial"] = req.query.cap_serial
   }
   if (req.query.core_reuse) {
     query["reuse.core"] = Boolean(req.query.core_reuse)
@@ -57,31 +57,31 @@ exports.launchQuery = (req) => {
     query["launch_site.site_name"] = req.query.site_name
   }
   if (req.query.payload_id) {
-    query["payloads.payload_id"] = req.query.payload_id
+    query["rocket.second_stage.payloads.payload_id"] = req.query.payload_id
   }
   if (req.query.customer) {
-    query["payloads.customer"] = req.query.customer
+    query["rocket.second_stage.payloads.customers"] = req.query.customer
   }
   if (req.query.payload_type) {
-    query["payloads.payload_type"] = req.query.payload_type
+    query["rocket.second_stage.payloads.payload_type"] = req.query.payload_type
   }
   if (req.query.orbit) {
-    query["payloads.orbit"] = req.query.orbit
+    query["rocket.second_stage.payloads.orbit"] = req.query.orbit
   }
   if (req.query.launch_success) {
     query.launch_success = Boolean(req.query.launch_success)
   }
   if (req.query.reused) {
-    query.reused = Boolean(req.query.reused)
+    query["rocket.first_stage.cores.reused"] = Boolean(req.query.reused)
   }
   if (req.query.land_success) {
-    query.land_success = Boolean(req.query.land_success)
+    query["rocket.first_stage.cores.land_success"] = Boolean(req.query.land_success)
   }
   if (req.query.landing_type) {
-    query.landing_type = req.query.landing_type
+    query["rocket.first_stage.cores.landing_type"] = req.query.landing_type
   }
   if (req.query.landing_vehicle) {
-    query.landing_vehicle = req.query.landing_vehicle
+    query["rocket.first_stage.cores.landing_vehicle"] = req.query.landing_vehicle
   }
   return query
 }
