@@ -25,65 +25,75 @@ See the [Wiki](https://github.com/r-spacex/SpaceX-API/wiki) for full API Documen
 **Example Response**
 
 ```http
-GET https://api.spacexdata.com/v1/launches/latest
+GET https://api.spacexdata.com/v2/launches/latest
 ```
 
 ```json
-  {
+{
     "flight_number": 50,
     "launch_year": "2017",
+    "launch_date_unix": 1509392040,
     "launch_date_utc": "2017-10-30T19:34:00Z",
     "launch_date_local": "2017-10-30T15:34:00-04:00",
     "rocket": {
-      "rocket_id": "falcon9",
-      "rocket_name": "Falcon 9",
-      "rocket_type": "FT"
+        "rocket_id": "falcon9",
+        "rocket_name": "Falcon 9",
+        "rocket_type": "FT",
+        "first_stage": {
+            "cores": [
+                {
+                    "core_serial": "B1042",
+                    "reused": false,
+                    "land_success": true,
+                    "landing_type": "ASDS",
+                    "landing_vehicle": "OCISLY"
+                }
+            ]
+        },
+        "second_stage": {
+            "payloads": [
+                {
+                    "payload_id": "KoreaSat 5A",
+                    "reused": false,
+                    "customers": [
+                        "KT Corporation"
+                    ],
+                    "payload_type": "Satellite",
+                    "payload_mass_kg": 3700,
+                    "payload_mass_lbs": 8157.104,
+                    "orbit": "GTO"
+                }
+            ]
+        }
     },
     "telemetry": {
-      "flight_club": null
+        "flight_club": null
     },
-    "core_serial": "B1042",
-    "cap_serial": null,
     "reuse": {
-      "core": false,
-      "side_core1": false,
-      "side_core2": false,
-      "fairings": false,
-      "capsule": false
+        "core": false,
+        "side_core1": false,
+        "side_core2": false,
+        "fairings": false,
+        "capsule": false
     },
     "launch_site": {
-      "site_id": "ksc_lc_39a",
-      "site_name": "KSC LC 39A"
+        "site_id": "ksc_lc_39a",
+        "site_name": "KSC LC 39A",
+        "site_name_long": "Kennedy Space Center Historic Launch Complex 39A"
     },
-    "payloads": [
-      {
-        "payload_id": "KoreaSat 5A",
-        "customers": [
-          "KT Corporation"
-        ],
-        "payload_type": "Satellite",
-        "payload_mass_kg": 3700,
-        "payload_mass_lbs": 8157.104,
-        "orbit": "GTO"
-      }
-    ],
     "launch_success": true,
-    "reused": false,
-    "land_success": true,
-    "landing_type": "ASDS",
-    "landing_vehicle": "OCISLY",
     "links": {
-      "mission_patch": "http://spacexpatchlist.space/patches/spacex_f9_044_koreasat_5a_graphic.png",
-      "reddit_campaign": "https://www.reddit.com/r/spacex/comments/73ttkd/koreasat_5a_launch_campaign_thread/",
-      "reddit_launch": "https://www.reddit.com/r/spacex/comments/79iuvb/rspacex_koreasat_5a_official_launch_discussion/",
-      "reddit_recovery": null,
-      "reddit_media": "https://www.reddit.com/r/spacex/comments/79lmdu/rspacex_koreasat5a_media_thread_videos_images/",
-      "presskit": "http://www.spacex.com/sites/spacex/files/koreasat5apresskit.pdf",
-      "article_link": "https://spaceflightnow.com/2017/10/30/spacex-launches-and-lands-third-rocket-in-three-weeks/",
-      "video_link": "https://www.youtube.com/watch?v=RUjH14vhLxA"
+        "mission_patch": "http://spacexpatchlist.space/patches/spacex_f9_044_koreasat_5a_graphic.png",
+        "reddit_campaign": "https://www.reddit.com/r/spacex/comments/73ttkd/koreasat_5a_launch_campaign_thread/",
+        "reddit_launch": "https://www.reddit.com/r/spacex/comments/79iuvb/rspacex_koreasat_5a_official_launch_discussion/",
+        "reddit_recovery": null,
+        "reddit_media": "https://www.reddit.com/r/spacex/comments/79lmdu/rspacex_koreasat5a_media_thread_videos_images/",
+        "presskit": "http://www.spacex.com/sites/spacex/files/koreasat5apresskit.pdf",
+        "article_link": "https://spaceflightnow.com/2017/10/30/spacex-launches-and-lands-third-rocket-in-three-weeks/",
+        "video_link": "https://www.youtube.com/watch?v=RUjH14vhLxA"
     },
     "details": "KoreaSat 5A is a Ku-band satellite capable of providing communication services from East Africa and Central Asia to southern India, Southeast Asia, the Philippines, Guam, Korea, and Japan. The satellite will be placed in GEO at 113Â° East Longitude, and will provide services ranging from broadband internet to broadcasting services and maritime communications."
-  }
+}
   ```
 
 ## Contributions

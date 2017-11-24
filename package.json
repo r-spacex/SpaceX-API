@@ -1,16 +1,16 @@
 {
-  "name": "spacex-api-node",
-  "version": "1.0.0",
-  "description": "Repo for staging/testing SpaceX-API transition from Ruby to Javascript (Node.js)",
-  "main": "server.js",
+  "name": "spacex-api",
+  "version": "2.0.2",
+  "description": "Open Source REST API for SpaceX company, vehicle, launchpad, and launch data",
+  "main": "app.js",
   "scripts": {
-    "test": "jest --forceExit && codecov && eslint \"**/*.js\"",
+    "test": "PORT=0 jest -i --forceExit && codecov && eslint \"**/*.js\"",
     "start": "node app.js",
     "lint": "eslint \"**/*.js\""
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jakewmeyer/SpaceX-API-Node.git"
+    "url": "git+https://github.com/r-spacex/SpaceX-API"
   },
   "keywords": [
     "spacex",
@@ -21,9 +21,9 @@
   "author": "Jake Meyer",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jakewmeyer/SpaceX-API-Node/issues"
+    "url": "https://github.com/r-spacex/SpaceX-API/issues"
   },
-  "homepage": "https://github.com/jakewmeyer/SpaceX-API-Node#readme",
+  "homepage": "https://github.com/r-spacex/SpaceX-API",
   "dependencies": {
     "apicache": "^1.1.0",
     "codecov": "^2.3.0",

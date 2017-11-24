@@ -10,49 +10,11 @@ beforeAll((done) => {
 })
 
 //------------------------------------------------------------
-//                     404 Page
-//------------------------------------------------------------
-
-test("It should return 404 endpoint error", () => {
-  return request(app).get("/v3").then(response => {
-    expect(response.statusCode).toBe(404)
-    expect(response.body).toMatchObject({
-      error: "No results found"
-    })
-  })
-})
-
-//------------------------------------------------------------
-//                     500 Errors
-//------------------------------------------------------------
-
-test("It should return 500 error", () => {
-  // we add endpoint that throws error internally to the first router
-  // order is important here in order to not hit default 404 endpoint
-  for (let i = 0; i < app._router.stack.length; i++) {
-    let layer = app._router.stack[i]
-    if (layer.match("/v1") && layer.name == "router") {
-      layer.handle.get("/endpoint_that_errors", (req, res, next) => {
-        next(new Error("Forced error"))
-      })
-      break
-    }
-  }
-
-  return request(app).get("/v1/endpoint_that_errors").then((response) => {
-    expect(response.statusCode).toBe(500)
-    expect(response.body).toMatchObject({
-      error: "Internal Server Error"
-    })
-  })
-})
-
-//------------------------------------------------------------
-//                     Home Page
+//                     Home Page V2
 //------------------------------------------------------------
 
 test("It should return home info", () => {
-  return request(app).get("/v1").then(response => {
+  return request(app).get("/v2").then(response => {
     expect(response.statusCode).toBe(200)
     expect(response.body).toHaveProperty("description")
     expect(response.body).toHaveProperty("organization", "r/SpaceX")
@@ -64,11 +26,11 @@ test("It should return home info", () => {
 })
 
 //------------------------------------------------------------
-//                     Company Info
+//                     Company Info V2
 //------------------------------------------------------------
 
 test("It should return company info", () => {
-  return request(app).get("/v1/info").then(response => {
+  return request(app).get("/v2/info").then(response => {
     expect(response.statusCode).toBe(200)
     expect(response.body).toHaveProperty("name", "SpaceX")
     expect(response.body).toHaveProperty("founder", "Elon Musk")
@@ -90,11 +52,11 @@ test("It should return company info", () => {
 })
 
 //------------------------------------------------------------
-//                     Vehicles
+//                     Vehicles V2
 //------------------------------------------------------------
 
 test("It should return all vehicle info", () => {
-  return request(app).get("/v1/vehicles").then(response => {
+  return request(app).get("/v2/vehicles").then(response => {
     expect(response.statusCode).toBe(200)
     expect(response.body).toHaveLength(4)
     expect(response.body[0]).toHaveProperty("name", "Falcon 1")
@@ -160,7 +122,7 @@ test("It should return all vehicle info", () => {
 })
 
 test("It should return Falcon 1 info", () => {
-  return request(app).get("/v1/vehicles/falcon1").then(response => {
+  return request(app).get("/v2/vehicles/falcon1").then(response => {
     expect(response.statusCode).toBe(200)
     expect(response.body).toHaveProperty("name", "Falcon 1")
     expect(response.body).toHaveProperty("stages", 2)
@@ -198,7 +160,7 @@ test("It should return Falcon 1 info", () => {
 })
 
 test("It should return Falcon 9 info", () => {
-  return request(app).get("/v1/vehicles/falcon9").then(response => {
+  return request(app).get("/v2/vehicles/falcon9").then(response => {
     expect(response.statusCode).toBe(200)
     expect(response.body).toHaveProperty("name", "Falcon 9")
     expect(response.body).toHaveProperty("stages", 2)
@@ -236,7 +198,7 @@ test("It should return Falcon 9 info", () => {
 })
 
 test("It should return Falcon Heavy info", () => {
-  return request(app).get("/v1/vehicles/falconheavy").then(response => {
+  return request(app).get("/v2/vehicles/falconheavy").then(response => {
     expect(response.statusCode).toBe(200)
     expect(response.body).toHaveProperty("name", "Falcon Heavy")
     expect(response.body).toHaveProperty("stages", 2)
@@ -274,7 +236,7 @@ test("It should return Falcon Heavy info", () => {
 })
 
 test("It should return Dragon info", () => {
-  return request(app).get("/v1/vehicles/dragon").then(response => {
+  return request(app).get("/v2/vehicles/dragon").then(response => {
     expect(response.statusCode).toBe(200)
     expect(response.body).toHaveProperty("name", "Dragon 1")
     expect(Object.keys(response.body)).toEqual([
@@ -313,11 +275,11 @@ test("It should return Dragon info", () => {
 })
 
 //------------------------------------------------------------
-//                     Launchpads
+//                     Launchpads V2
 //------------------------------------------------------------
 
 test("It should return all launchpads", () => {
-  return request(app).get("/v1/launchpads").then(response => {
+  return request(app).get("/v2/launchpads").then(response => {
     expect(response.statusCode).toBe(200)
     expect(response.body).toHaveLength(8)
     response.body.forEach(item => {
@@ -331,39 +293,69 @@ test("It should return all launchpads", () => {
 })
 
 test("It should return LC-39A info", () => {
-  return request(app).get("/v1/launchpads/ksc_lc_39a").then(response => {
+  return request(app).get("/v2/launchpads/ksc_lc_39a").then(response => {
     expect(response.statusCode).toBe(200)
     expect(response.text).toContain("ksc_lc_39a")
   })
 })
 
 test("It should return no launchpads found info", () => {
-  return request(app).get("/v1/launchpads/ksc_lc_40a").then(response => {
+  return request(app).get("/v2/launchpads/ksc_lc_40a").then(response => {
     expect(response.statusCode).toBe(404)
     expect(response.text).toContain("No results found")
   })
 })
 
 //------------------------------------------------------------
-//                    Past Launches
+//                    Past Launches V2
 //------------------------------------------------------------
 
 test("It should return all past launches", () => {
-  return request(app).get("/v1/launches").then(response => {
+  return request(app.listen()).get("/v2/launches").then(response => {
     expect(response.statusCode).toBe(200)
-    expect(response.body.length).toBeGreaterThanOrEqual(50)
     response.body.forEach(item => {
       expect(item).toHaveProperty("flight_number", expect.anything())
       expect(item).toHaveProperty("launch_year", expect.stringMatching(/^[0-9]{4}$/))
-      // expect(item).toHaveProperty("launch_date_unix")
+      expect(item).toHaveProperty("launch_date_unix")
       expect(item).toHaveProperty("launch_date_utc", expect.anything())
       expect(item).toHaveProperty("launch_date_local", expect.anything())
       expect(item).toHaveProperty("rocket.rocket_id")
       expect(item).toHaveProperty("rocket.rocket_name")
       expect(item).toHaveProperty("rocket.rocket_type")
+      expect(item.rocket.first_stage.cores.length).toBeGreaterThan(0)
+      item.rocket.first_stage.cores.forEach(core => {
+        expect(core).toHaveProperty("core_serial")
+        expect(core).toHaveProperty("reused")
+        expect(core).toHaveProperty("land_success")
+        expect(core).toHaveProperty("landing_type")
+        expect(core).toHaveProperty("landing_vehicle")
+      })
+      expect(item.rocket.second_stage.payloads.length).toBeGreaterThan(0)
+      if (item.hasOwnProperty("cap_serial")) {
+        item.rocket.second_stage.payloads.forEach(payload => {
+          expect(payload).toHaveProperty("payload_id")
+          expect(payload).toHaveProperty("reused")
+          expect(payload).toHaveProperty("cap_serial")
+          expect(payload.customers.length).toBeGreaterThan(0)
+          expect(payload).toHaveProperty("payload_mass_kg")
+          expect(payload).toHaveProperty("payload_mass_lbs")
+          expect(payload).toHaveProperty("orbit")
+          expect(payload).toHaveProperty("mass_returned_kg")
+          expect(payload).toHaveProperty("mass_returned_lbs")
+          expect(payload).toHaveProperty("flight_time_sec")
+          expect(payload).toHaveProperty("cargo_manifest")
+        })
+      } else {
+        item.rocket.second_stage.payloads.forEach(payload => {
+          expect(payload).toHaveProperty("payload_id")
+          expect(payload).toHaveProperty("reused")
+          expect(payload.customers.length).toBeGreaterThan(0)
+          expect(payload).toHaveProperty("payload_mass_kg")
+          expect(payload).toHaveProperty("payload_mass_lbs")
+          expect(payload).toHaveProperty("orbit")
+        })
+      }
       expect(item).toHaveProperty("telemetry.flight_club")
-      expect(item).toHaveProperty("core_serial")
-      expect(item).toHaveProperty("cap_serial")
       expect(item).toHaveProperty("reuse.core")
       expect(item).toHaveProperty("reuse.side_core1")
       expect(item).toHaveProperty("reuse.side_core2")
@@ -371,201 +363,116 @@ test("It should return all past launches", () => {
       expect(item).toHaveProperty("reuse.capsule")
       expect(item).toHaveProperty("launch_site.site_id")
       expect(item).toHaveProperty("launch_site.site_name")
-      expect(item).toHaveProperty("payloads")
-      expect(item.payloads.length).toBeGreaterThan(0)
-      item.payloads.forEach(payload => {
-        expect(payload).toHaveProperty("payload_id")
-        expect(payload).toHaveProperty("customers")
-        expect(payload).toHaveProperty("payload_type")
-        expect(payload).toHaveProperty("payload_mass_kg")
-        expect(payload).toHaveProperty("payload_mass_lbs")
-        expect(payload).toHaveProperty("orbit")
-      })
+      expect(item).toHaveProperty("launch_site.site_name_long")
       expect(item).toHaveProperty("launch_success")
-      expect(item).toHaveProperty("reused")
-      expect(item).toHaveProperty("land_success")
-      expect(item).toHaveProperty("landing_type")
-      expect(item).toHaveProperty("landing_vehicle")
       expect(item).toHaveProperty("links")
       expect(item).toHaveProperty("details")
     })
   })
 })
 
-test("It should return the latest launch", () => {
-  return request(app).get("/v1/launches/latest").then(response => {
-    expect(response.statusCode).toBe(200)
-    expect(response.body).toHaveProperty("flight_number")
-  })
-})
-
-test("It should return all past launches from LC-4E", () => {
-  return request(app).get("/v1/launches?site=vafb_slc_4e").then(response => {
-    expect(response.statusCode).toBe(200)
-    expect(response.text).toContain("vafb_slc_4e")
-  })
-})
-
-test("It should return no launches from made up launchpad", () => {
-  return request(app).get("/v1/launches?site=vafb_slc_5e").then(response => {
-    expect(response.statusCode).toBe(200)
-    expect(response.body).toEqual([])
-  })
-})
-
-test("It should return all 2012 launches", () => {
-  return request(app).get("/v1/launches?year=2012").then(response => {
-    expect(response.statusCode).toBe(200)
-    expect(response.text).toContain("2012")
-  })
-})
-
-test("It should return no 2005 launches", () => {
-  return request(app).get("/v1/launches?year=2005").then(response => {
-    expect(response.statusCode).toBe(200)
-    expect(response.body).toEqual([])
-  })
-})
-
-test("It should return past launches in timeframe", () => {
-  return request(app).get("/v1/launches?start=2011-01-20&final=2017-05-25").then(response => {
-    expect(response.statusCode).toBe(200)
-    expect(response.body).not.toHaveLength(0)
-  })
-})
-
-test("It should return no past launches in timeframe", () => {
-  return request(app).get("/v1/launches?start=2005-01-20&final=2005-05-25").then(response => {
-    expect(response.statusCode).toBe(200)
-    expect(response.body).toEqual([])
-  })
-})
-
-test("It should return all launches with core B1021", () => {
-  return request(app).get("/v1/launches/cores/B1021").then(response => {
-    expect(response.statusCode).toBe(200)
-    expect(response.text).toContain("B1021")
-  })
-})
-
-test("It should return no launches with core A1021", () => {
-  return request(app).get("/v1/launches/cores/A1021").then(response => {
-    expect(response.statusCode).toBe(200)
-    expect(response.body).toEqual([])
-  })
-})
-
-test("It should return all launches with cap C106", () => {
-  return request(app).get("/v1/launches/caps/C106").then(response => {
-    expect(response.statusCode).toBe(200)
-    expect(response.text).toContain("C106")
-  })
-})
-
-test("It should return no launches with cap C403", () => {
-  return request(app).get("/v1/launches/caps/C403").then(response => {
-    expect(response.statusCode).toBe(200)
-    expect(response.body).toEqual([])
-  })
-})
-
-test("It should return all past ASDS launches", () => {
-  return request(app).get("/v1/launches/asds").then(response => {
-    expect(response.statusCode).toBe(200)
-    expect(response.text).toContain("ASDS")
-  })
-})
-
-test("It should return all past RTLS launches", () => {
-  return request(app).get("/v1/launches/rtls").then(response => {
-    expect(response.statusCode).toBe(200)
-    expect(response.text).toContain("RTLS")
-  })
-})
-
 //------------------------------------------------------------
-//                    Upcoming Launches
+//                    Upcoming Launches V2
 //------------------------------------------------------------
 
 test("It should return all upcoming launches", () => {
-  return request(app).get("/v1/launches/upcoming").then(response => {
+  return request(app.listen()).get("/v2/launches/upcoming").then(response => {
     expect(response.statusCode).toBe(200)
-    expect(response.body).not.toHaveLength(0)
-  })
-})
-
-test("It should return all upcoming launches in 2017", () => {
-  return request(app).get("/v1/launches/upcoming?year=2017").then(response => {
-    expect(response.statusCode).toBe(200)
-    expect(response.body).not.toHaveLength(0)
-  })
-})
-
-test("It should return no upcoming launches in 2016", () => {
-  return request(app).get("/v1/launches/upcoming?year=2016").then(response => {
-    expect(response.statusCode).toBe(200)
-    expect(response.body).toEqual([])
-  })
-})
-
-test("It should return all launches in the timeframe", () => {
-  return request(app).get("/v1/launches/upcoming?start=2011-01-20&final=2055-05-25").then(response => {
-    expect(response.statusCode).toBe(200)
-    expect(response.body).not.toHaveLength(0)
-  })
-})
-
-test("It should return no launches in the timeframe", () => {
-  return request(app).get("/v1/launches/upcoming?start=2011-01-20&final=2016-05-25").then(response => {
-    expect(response.statusCode).toBe(200)
-    expect(response.body).toEqual([])
+    response.body.forEach(item => {
+      expect(item).toHaveProperty("flight_number", expect.anything())
+      expect(item).toHaveProperty("launch_year", expect.stringMatching(/^[0-9]{4}$/))
+      expect(item).toHaveProperty("launch_date_unix")
+      expect(item).toHaveProperty("launch_date_utc", expect.anything())
+      expect(item).toHaveProperty("launch_date_local", expect.anything())
+      expect(item).toHaveProperty("rocket.rocket_id")
+      expect(item).toHaveProperty("rocket.rocket_name")
+      expect(item).toHaveProperty("rocket.rocket_type")
+      expect(item.rocket.first_stage.cores.length).toBeGreaterThan(0)
+      item.rocket.first_stage.cores.forEach(core => {
+        expect(core).toHaveProperty("core_serial")
+        expect(core).toHaveProperty("reused")
+        expect(core).toHaveProperty("land_success")
+        expect(core).toHaveProperty("landing_type")
+        expect(core).toHaveProperty("landing_vehicle")
+      })
+      expect(item.rocket.second_stage.payloads.length).toBeGreaterThan(0)
+      if (item.hasOwnProperty("cap_serial")) {
+        item.rocket.second_stage.payloads.forEach(payload => {
+          expect(payload).toHaveProperty("payload_id")
+          expect(payload).toHaveProperty("reused")
+          expect(payload).toHaveProperty("cap_serial")
+          expect(payload.customers.length).toBeGreaterThan(0)
+          expect(payload).toHaveProperty("payload_mass_kg")
+          expect(payload).toHaveProperty("payload_mass_lbs")
+          expect(payload).toHaveProperty("orbit")
+          expect(payload).toHaveProperty("mass_returned_kg")
+          expect(payload).toHaveProperty("mass_returned_lbs")
+          expect(payload).toHaveProperty("flight_time_sec")
+          expect(payload).toHaveProperty("cargo_manifest")
+        })
+      } else {
+        item.rocket.second_stage.payloads.forEach(payload => {
+          expect(payload).toHaveProperty("payload_id")
+          expect(payload).toHaveProperty("reused")
+          expect(payload.customers.length).toBeGreaterThan(0)
+          expect(payload).toHaveProperty("payload_mass_kg")
+          expect(payload).toHaveProperty("payload_mass_lbs")
+          expect(payload).toHaveProperty("orbit")
+        })
+      }
+      expect(item).toHaveProperty("telemetry.flight_club")
+      expect(item).toHaveProperty("reuse.core")
+      expect(item).toHaveProperty("reuse.side_core1")
+      expect(item).toHaveProperty("reuse.side_core2")
+      expect(item).toHaveProperty("reuse.fairings")
+      expect(item).toHaveProperty("reuse.capsule")
+      expect(item).toHaveProperty("launch_site.site_id")
+      expect(item).toHaveProperty("launch_site.site_name")
+      expect(item).toHaveProperty("launch_site.site_name_long")
+      expect(item).toHaveProperty("launch_success")
+      expect(item).toHaveProperty("links")
+      expect(item).toHaveProperty("details")
+    })
   })
 })
 
 //------------------------------------------------------------
-//                    Parts
+//                     Capsule V2
 //------------------------------------------------------------
 
-test("It should return all capsule info", () => {
-  return request(app).get("/v1/parts/caps").then(response => {
+test("It should return all v2 capsules", () => {
+  return request(app).get("/v2/parts/caps").then(response => {
     expect(response.statusCode).toBe(200)
-    expect(response.text).toContain("C101")
-    expect(response.text).toContain("C113")
+    response.body.forEach(item => {
+      expect(item).toHaveProperty("capsule_serial")
+      expect(item).toHaveProperty("status")
+      expect(item).toHaveProperty("original_launch")
+      expect(item.missions.length).toBeGreaterThan(0)
+      expect(item).toHaveProperty("landings")
+      expect(item).toHaveProperty("type")
+      expect(item).toHaveProperty("details")
+    })
   })
 })
 
-test("It should return all info on C106", () => {
-  return request(app).get("/v1/parts/caps/C106").then(response => {
+//------------------------------------------------------------
+//                     Core V2
+//------------------------------------------------------------
+
+test("It should return all v2 cores", () => {
+  return request(app).get("/v2/parts/cores").then(response => {
     expect(response.statusCode).toBe(200)
-    expect(response.text).toContain("C106")
-  })
-})
-
-test("It should return no info on C406", () => {
-  return request(app).get("/v1/parts/caps/C406").then(response => {
-    expect(response.statusCode).toBe(404)
-    expect(response.text).toContain("No results found")
-  })
-})
-
-test("It should return all core info", () => {
-  return request(app).get("/v1/parts/cores").then(response => {
-    expect(response.statusCode).toBe(200)
-    expect(response.text).toContain("B0003")
-    expect(response.text).toContain("B1040")
-  })
-})
-
-test("It should return core info on B1021", () => {
-  return request(app).get("/v1/parts/cores/B1021").then(response => {
-    expect(response.statusCode).toBe(200)
-    expect(response.text).toContain("B1021")
-  })
-})
-
-test("It should return no core info on A1021", () => {
-  return request(app).get("/v1/parts/cores/A1021").then(response => {
-    expect(response.statusCode).toBe(404)
-    expect(response.text).toContain("No results found")
+    response.body.forEach(item => {
+      expect(item).toHaveProperty("core_serial")
+      expect(item).toHaveProperty("status")
+      expect(item).toHaveProperty("original_launch")
+      expect(item.missions.length).toBeGreaterThan(0)
+      expect(item).toHaveProperty("rtls_attempt")
+      expect(item).toHaveProperty("rtls_landings")
+      expect(item).toHaveProperty("asds_attempt")
+      expect(item).toHaveProperty("asds_landings")
+      expect(item).toHaveProperty("water_landing")
+      expect(item).toHaveProperty("details")
+    })
   })
 })
