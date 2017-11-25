@@ -20,6 +20,8 @@
 ## Documentation
 See the [Wiki](https://github.com/r-spacex/SpaceX-API/wiki) for full API Documentation
 
+#### NOTICE: V1 endpoints will NOT be supported after 12/1/17, please see [Wiki](https://github.com/r-spacex/SpaceX-API/wiki) for V2 details
+
 ## Usage / Endpoints
 
 **Example Response**
