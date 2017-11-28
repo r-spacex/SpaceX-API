@@ -39,9 +39,5 @@
     "eslint": "^4.10.0",
     "jest": "^20.0.4",
     "supertest": "^3.0.0"
-  },
-  "jest": {
-    "coverageDirectory": "./coverage/",
-    "collectCoverage": true
   }
 }
