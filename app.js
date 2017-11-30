@@ -7,6 +7,7 @@ const helmet = require("helmet")
 const config = require("./config.json")
 const MongoClient = require("mongodb")
 const app = express()
+const RateLimit = require("express-rate-limit")
 
 const v2_home  = require("./v2-routes/v2-home")
 const v2_info  = require("./v2-routes/v2-info")
@@ -16,15 +17,25 @@ const v2_launches  = require("./v2-routes/v2-launches")
 const v2_upcoming  = require("./v2-routes/v2-upcoming")
 const v2_parts  = require("./v2-routes/v2-parts")
 
+// API rate limit of 10000 reqs / hour
+const limiter = new RateLimit({
+  windowMs: 2500 * 60 * 1000,
+  max: 2500,
+  delayMs: 0,
+  message: "API rate limit reached"
+})
+
 app.use(compression())
 app.use(helmet())
 app.use(morgan("common"))
 app.use(cors())
+app.enable("trust proxy")
+app.use(limiter)
 
 // Global HTTP headers
 app.use((req, res, next) => {
   res.header("Content-Type","application/json")
-  res.header("Last-Modified",new Date().toUTCString())
+  res.header("Last-Modified", new Date().toUTCString())
   next()
 })
 

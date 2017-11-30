@@ -36,19 +36,19 @@ exports.launchQuery = (req) => {
     query["rocket.second_stage.payloads.cap_serial"] = req.query.cap_serial
   }
   if (req.query.core_reuse) {
-    query["reuse.core"] = Boolean(req.query.core_reuse)
+    query["reuse.core"] = (req.query.core_reuse == "true")
   }
   if (req.query.side_core1_reuse) {
-    query["reuse.side_core1"] = Boolean(req.query.side_core1_reuse)
+    query["reuse.side_core1"] = (req.query.side_core1_reuse == "true")
   }
   if (req.query.side_core2_reuse) {
-    query["reuse.side_core2"] = Boolean(req.query.side_core2_reuse)
+    query["reuse.side_core2"] = (req.query.side_core2_reuse == "true")
   }
   if (req.query.fairings_reuse) {
-    query["reuse.fairings"] = Boolean(req.query.fairings_reuse)
+    query["reuse.fairings"] = (req.query.fairings_reuse == "true")
   }
   if (req.query.capsule_reuse) {
-    query["reuse.capsule"] = Boolean(req.query.capsule_reuse)
+    query["reuse.capsule"] = (req.query.capsule_reuse == "true")
   }
   if (req.query.site_id) {
     query["launch_site.site_id"] = req.query.site_id
@@ -69,13 +69,13 @@ exports.launchQuery = (req) => {
     query["rocket.second_stage.payloads.orbit"] = req.query.orbit
   }
   if (req.query.launch_success) {
-    query.launch_success = Boolean(req.query.launch_success)
+    query.launch_success = (req.query.launch_success == "true")
   }
   if (req.query.reused) {
-    query["rocket.first_stage.cores.reused"] = Boolean(req.query.reused)
+    query["rocket.first_stage.cores.reused"] = (req.query.reused == "true")
   }
   if (req.query.land_success) {
-    query["rocket.first_stage.cores.land_success"] = Boolean(req.query.land_success)
+    query["rocket.first_stage.cores.land_success"] = (req.query.land_success == "true")
   }
   if (req.query.landing_type) {
     query["rocket.first_stage.cores.landing_type"] = req.query.landing_type

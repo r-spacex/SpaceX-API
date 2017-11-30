@@ -1,6 +1,6 @@
 {
   "name": "spacex-api",
-  "version": "2.0.2",
+  "version": "2.1.0",
   "description": "Open Source REST API for SpaceX company, vehicle, launchpad, and launch data",
   "main": "app.js",
   "scripts": {
@@ -25,11 +25,11 @@
   },
   "homepage": "https://github.com/r-spacex/SpaceX-API",
   "dependencies": {
-    "apicache": "^1.1.0",
     "codecov": "^2.3.0",
     "compression": "^1.7.0",
     "cors": "^2.8.4",
     "express": "^4.15.4",
+    "express-rate-limit": "^2.9.0",
     "helmet": "^3.8.1",
     "mongodb": "^2.2.31",
     "morgan": "^1.8.2",
