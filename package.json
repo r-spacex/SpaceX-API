@@ -25,7 +25,6 @@
   },
   "homepage": "https://github.com/r-spacex/SpaceX-API",
   "dependencies": {
-    "apicache": "^1.1.0",
     "codecov": "^2.3.0",
     "compression": "^1.7.0",
     "cors": "^2.8.4",
