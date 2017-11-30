@@ -17,10 +17,10 @@ const v2_launches  = require("./v2-routes/v2-launches")
 const v2_upcoming  = require("./v2-routes/v2-upcoming")
 const v2_parts  = require("./v2-routes/v2-parts")
 
-// API rate limit of 9000 reqs / hour
+// API rate limit of 10000 reqs / hour
 const limiter = new RateLimit({
-  windowMs: 2250 * 60 * 1000,
-  max: 2250,
+  windowMs: 2500 * 60 * 1000,
+  max: 2500,
   delayMs: 0,
   message: "API rate limit reached"
 })
