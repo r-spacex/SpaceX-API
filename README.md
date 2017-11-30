@@ -111,7 +111,7 @@ Local development info can be found [here](https://github.com/r-spacex/SpaceX-AP
 * API deployed on a [Heroku](https://www.heroku.com/) pipeline with pull request, staging and production servers
 
 ## FAQ's
-* API has a per user rate limit of 2500 requests per 15 minuts or 10000 requests per hour
+* API has a per user rate limit of 2500 requests per 15 minutes or 10000 requests per hour
 * If you have any questions or corrections, please open an issue and we'll get it merged ASAP
 * All data and photos are property of Space Exploration Technologies Corporation (SpaceX)
 * I am not affiliated with SpaceX in any way, shape, form, or fashion. Just a fun side project for me
