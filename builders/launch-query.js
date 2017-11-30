@@ -3,7 +3,7 @@
 */
 
 exports.launchQuery = (req) => {
-  let query = {}
+  const query = {}
 
   if (req.query.start && req.query.final) {
     query.launch_date_utc = {"$gte": `${req.query.start}T00:00:00Z`, "$lte": `${req.query.final}T00:00:00Z`}

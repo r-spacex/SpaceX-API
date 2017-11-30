@@ -3,7 +3,7 @@
 */
 
 exports.capsuleQuery = (req) => {
-  let query = {}
+  const query = {}
   
   if (req.query.capsule_serial) {
     query.capsule_serial = req.query.capsule_serial

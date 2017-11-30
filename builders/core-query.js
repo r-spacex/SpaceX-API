@@ -3,7 +3,7 @@
 */
 
 exports.coreQuery = (req) => {
-  let query = {}
+  const query = {}
   
   if (req.query.core_serial) {
     query.core_serial = req.query.core_serial

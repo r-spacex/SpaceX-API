@@ -17,7 +17,7 @@ v2.get("/latest", (req, res, next) => {
 
 // All past launches filtered by any querystring
 v2.get("/", (req, res, next) => {
-  let query = launch.launchQuery(req)
+  const query = launch.launchQuery(req)
   global.db.collection("launch_v2").find(query,{"_id": 0 }).sort({"flight_number": 1})
     .toArray((err, doc) => {
       if (err) {

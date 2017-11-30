@@ -6,7 +6,7 @@ const launch = require("../builders/launch-query")
 
 // Upcoming launches by date, year, or all
 v2.get("/", (req, res, next) => {
-  let query = launch.launchQuery(req)
+  const query = launch.launchQuery(req)
   global.db.collection("upcoming_v2").find(query,{"_id": 0 }).sort({"flight_number": 1})
     .toArray((err, doc) => {
       if (err) {
