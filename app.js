@@ -20,7 +20,7 @@ const v2_parts  = require("./v2-routes/v2-parts")
 // API rate limit of 9000 reqs / hour
 const limiter = new RateLimit({
   windowMs: 2250 * 60 * 1000,
-  max: 5,
+  max: 0,
   delayMs: 0,
   message: "API rate limit reached"
 })
