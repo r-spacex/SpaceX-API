@@ -2,13 +2,14 @@ FROM node:alpine
 
 LABEL maintainer="jakewmeyer@gmail.com"
 
-ENV NODE_ENV=production
+WORKDIR /usr/src/app
 
-RUN mkdir -p /home/nodejs/app
-WORKDIR /home/nodejs/app
+COPY package*.json ./
 
-COPY . /home/nodejs/app
 RUN npm install --production
 
+COPY . .
+
 EXPOSE 5000
+
 CMD [ "npm", "start" ]
