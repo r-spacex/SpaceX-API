@@ -4,7 +4,7 @@ const express = require("express")
 const v2 = express.Router()
 const launch = require("../builders/launch-query")
 
-// Get most recent launch
+// Return most recent launch
 v2.get("/latest", (req, res, next) => {
   global.db.collection("launch_v2").find({},{"_id": 0 }).sort({"flight_number": -1}).limit(1)
     .toArray((err, doc) => {
