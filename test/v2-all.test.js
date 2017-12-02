@@ -380,10 +380,10 @@ test("It should return all upcoming launches", () => {
     expect(response.statusCode).toBe(200)
     response.body.forEach(item => {
       expect(item).toHaveProperty("flight_number", expect.anything())
-      expect(item).toHaveProperty("launch_year", expect.stringMatching(/^[0-9]{4}$/))
+      expect(item).toHaveProperty("launch_year")
       expect(item).toHaveProperty("launch_date_unix")
-      expect(item).toHaveProperty("launch_date_utc", expect.anything())
-      expect(item).toHaveProperty("launch_date_local", expect.anything())
+      expect(item).toHaveProperty("launch_date_utc")
+      expect(item).toHaveProperty("launch_date_local")
       expect(item).toHaveProperty("rocket.rocket_id")
       expect(item).toHaveProperty("rocket.rocket_name")
       expect(item).toHaveProperty("rocket.rocket_type")
