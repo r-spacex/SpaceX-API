@@ -4,7 +4,7 @@
   "description": "Open Source REST API for SpaceX company, vehicle, launchpad, and launch data",
   "main": "app.js",
   "scripts": {
-    "test": "PORT=0 jest -i --forceExit && codecov -t 5773cc57-a47e-4d50-8846-bd47272b1b6e && eslint \"**/*.js\"",
+    "test": "PORT=0 jest -i --forceExit && eslint \"**/*.js\"",
     "start": "node app.js",
     "lint": "eslint \"**/*.js\""
   },
@@ -39,5 +39,14 @@
     "eslint": "^4.10.0",
     "jest": "^20.0.4",
     "supertest": "^3.0.0"
+  },
+  "jest": {
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "**/*.{js,jsx}",
+      "!**/node_modules/**",
+      "!**/vendor/**"
+    ]
   }
 }
