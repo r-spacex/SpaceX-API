@@ -55,74 +55,46 @@ test("It should return company info", () => {
 //                     Vehicles V2
 //------------------------------------------------------------
 
-test("It should return all vehicle info", () => {
-  return request(app).get("/v2/vehicles").then(response => {
+test("It should return all rocket info", () => {
+  return request(app).get("/v2/rockets").then(response => {
     expect(response.statusCode).toBe(200)
-    expect(response.body).toHaveLength(4)
+    expect(response.body).toHaveLength(3)
     expect(response.body[0]).toHaveProperty("name", "Falcon 1")
     expect(response.body[1]).toHaveProperty("name", "Falcon 9")
     expect(response.body[2]).toHaveProperty("name", "Falcon Heavy")
-    expect(response.body[3]).toHaveProperty("name", "Dragon 1")
 
     response.body.forEach(item => {
       expect(item).toHaveProperty("id", expect.any(String))
       expect(item).toHaveProperty("name", expect.any(String))
       expect(item).toHaveProperty("type", expect.stringMatching(/^(?:rocket|capsule)$/))
       expect(item).toHaveProperty("active", expect.any(Boolean))
-      if (item.type === "rocket") {
-        expect(item).toHaveProperty("stages", expect.any(Number))
-        // expect(item).toHaveProperty("boosters", expect.any(Number)) // missing from falcon1
-        expect(item).toHaveProperty("cost_per_launch", expect.any(Number))
-        // expect(item).toHaveProperty("orbit_duration_yr", expect.any(Number)) // missing from falcon1
-        // expect(item).toHaveProperty("success_rate_pct", expect.any(Number)) // missing from FH
-        expect(item).toHaveProperty("first_flight", expect.stringMatching(/^(?:[0-9]{4}-[0-9]{2}-[0-9]{2}|TBD)$/))
-        // expect(item).toHaveProperty("launchpad", expect.any(String)) // missing from falcon9
-        expect(item).toHaveProperty("country", expect.any(String))
-        expect(item).toHaveProperty("company", expect.any(String))
-        expect(item).toHaveProperty("height", customMatchers.length())
-        // expect(item).toHaveProperty("diameter", customMatchers.length()) // missing from FH
-        // expect(item).toHaveProperty("total_width",customMatchers.length()) // missing from falcon1
-        expect(item).toHaveProperty("mass", customMatchers.mass())
-        expect(item).toHaveProperty("payload_weights", expect.any(Array))
-        item.payload_weights.forEach(weight => {
-          expect(weight).toEqual(customMatchers.payloadWeight())
-        })
-        expect(item).toHaveProperty("first_stage", customMatchers.vehicleStage())
-        expect(item).toHaveProperty("second_stage", customMatchers.vehicleStage())
-        // expect(item).toHaveProperty("landing_legs", expect.any(Number)) // missing from falcon1
-        expect(item).toHaveProperty("description", expect.any(String))
-      }
-      else if (item.type === "capsule") {
-        expect(item).toHaveProperty("sidewall_angle_deg", expect.any(Number))
-        expect(item).toHaveProperty("orbit_duration_yr", expect.any(Number))
-        expect(item).toHaveProperty("variations", expect.any(Object)) // TODO test it deeper
-        expect(item).toHaveProperty("heat_shield.dev_partner", expect.any(String))
-        expect(item).toHaveProperty("heat_shield.material", expect.any(String))
-        expect(item).toHaveProperty("heat_shield.size_meters", expect.any(Number))
-        expect(item).toHaveProperty("heat_shield.temp_degrees", expect.any(Number))
-        expect(item).toHaveProperty("thrusters.amount", expect.any(Number))
-        expect(item).toHaveProperty("thrusters.fuel_1", expect.any(String))
-        expect(item).toHaveProperty("thrusters.fuel_2", expect.any(String))
-        expect(item).toHaveProperty("thrusters.pods", expect.any(Number))
-        expect(item).toHaveProperty("thrusters.thrust", customMatchers.thrust())
-        expect(item).toHaveProperty("thrusters.type", expect.any(String))
-        expect(item).toHaveProperty("launch_payload_mass", customMatchers.mass())
-        expect(item).toHaveProperty("launch_payload_vol", customMatchers.volume())
-        expect(item).toHaveProperty("return_payload_mass", customMatchers.mass())
-        expect(item).toHaveProperty("return_payload_vol", customMatchers.volume())
-        expect(item).toHaveProperty("pressurized_capsule.payload_volume", customMatchers.volume())
-        expect(item).toHaveProperty("trunk.cargo.solar_array", expect.any(Number))
-        expect(item).toHaveProperty("trunk.cargo.unpressurized_cargo", expect.any(Boolean))
-        expect(item).toHaveProperty("trunk.trunk_volume", customMatchers.volume())
-        expect(item).toHaveProperty("height_w_trunk", customMatchers.length())
-        expect(item).toHaveProperty("diameter", customMatchers.length())
-      }
+      expect(item).toHaveProperty("stages", expect.any(Number))
+      // expect(item).toHaveProperty("boosters", expect.any(Number)) // missing from falcon1
+      expect(item).toHaveProperty("cost_per_launch", expect.any(Number))
+      // expect(item).toHaveProperty("orbit_duration_yr", expect.any(Number)) // missing from falcon1
+      // expect(item).toHaveProperty("success_rate_pct", expect.any(Number)) // missing from FH
+      expect(item).toHaveProperty("first_flight", expect.stringMatching(/^(?:[0-9]{4}-[0-9]{2}-[0-9]{2}|TBD)$/))
+      // expect(item).toHaveProperty("launchpad", expect.any(String)) // missing from falcon9
+      expect(item).toHaveProperty("country", expect.any(String))
+      expect(item).toHaveProperty("company", expect.any(String))
+      expect(item).toHaveProperty("height", customMatchers.length())
+      // expect(item).toHaveProperty("diameter", customMatchers.length()) // missing from FH
+      // expect(item).toHaveProperty("total_width",customMatchers.length()) // missing from falcon1
+      expect(item).toHaveProperty("mass", customMatchers.mass())
+      expect(item).toHaveProperty("payload_weights", expect.any(Array))
+      item.payload_weights.forEach(weight => {
+        expect(weight).toEqual(customMatchers.payloadWeight())
+      })
+      expect(item).toHaveProperty("first_stage", customMatchers.vehicleStage())
+      expect(item).toHaveProperty("second_stage", customMatchers.vehicleStage())
+      // expect(item).toHaveProperty("landing_legs", expect.any(Number)) // missing from falcon1
+      expect(item).toHaveProperty("description", expect.any(String))
     })
   })
 })
 
 test("It should return Falcon 1 info", () => {
-  return request(app).get("/v2/vehicles/falcon1").then(response => {
+  return request(app).get("/v2/rockets/falcon1").then(response => {
     expect(response.statusCode).toBe(200)
     expect(response.body).toHaveProperty("name", "Falcon 1")
     expect(response.body).toHaveProperty("stages", 2)
@@ -160,7 +132,7 @@ test("It should return Falcon 1 info", () => {
 })
 
 test("It should return Falcon 9 info", () => {
-  return request(app).get("/v2/vehicles/falcon9").then(response => {
+  return request(app).get("/v2/rockets/falcon9").then(response => {
     expect(response.statusCode).toBe(200)
     expect(response.body).toHaveProperty("name", "Falcon 9")
     expect(response.body).toHaveProperty("stages", 2)
@@ -198,7 +170,7 @@ test("It should return Falcon 9 info", () => {
 })
 
 test("It should return Falcon Heavy info", () => {
-  return request(app).get("/v2/vehicles/falconheavy").then(response => {
+  return request(app).get("/v2/rockets/falconheavy").then(response => {
     expect(response.statusCode).toBe(200)
     expect(response.body).toHaveProperty("name", "Falcon Heavy")
     expect(response.body).toHaveProperty("stages", 2)
@@ -231,45 +203,6 @@ test("It should return Falcon Heavy info", () => {
       "engines",
       "landing_legs",
       "description"
-    ])
-  })
-})
-
-test("It should return Dragon info", () => {
-  return request(app).get("/v2/vehicles/dragon").then(response => {
-    expect(response.statusCode).toBe(200)
-    expect(response.body).toHaveProperty("name", "Dragon 1")
-    expect(Object.keys(response.body)).toEqual([
-      "id",
-      "name",
-      "type",
-      "active",
-      // "stages",
-      // "cost_per_launch",
-      // "success_rate_pct",
-      // "first_flight",
-      // "launchpad",
-      // "country",
-      // "company",
-      // "height",
-      "sidewall_angle_deg", // capsule specific field
-      "orbit_duration_yr", // capsule specific field
-      "variations", // capsule specific field
-      "heat_shield", // capsule specific field
-      "thrusters", // capsule specific field
-      "launch_payload_mass", // capsule specific field
-      "launch_payload_vol", // capsule specific field
-      "return_payload_mass", // capsule specific field
-      "return_payload_vol", // capsule specific field
-      "pressurized_capsule", // capsule specific field
-      "trunk", // capsule specific field
-      "height_w_trunk", // capsule specific field
-      "diameter",
-      // "mass",
-      // "payload_weights",
-      // "first_stage",
-      // "second_stage",
-      // "description"
     ])
   })
 })
@@ -473,6 +406,41 @@ test("It should return all v2 cores", () => {
       expect(item).toHaveProperty("asds_landings")
       expect(item).toHaveProperty("water_landing")
       expect(item).toHaveProperty("details")
+    })
+  })
+})
+
+//------------------------------------------------------------
+//                    Dragon V2
+//------------------------------------------------------------
+
+test("It should return Dragon 1 data", () => {
+  return request(app).get("/v2/capsules").then(response => {
+    expect(response.statusCode).toBe(200)
+    response.body.forEach(item => {
+      expect(item).toHaveProperty("sidewall_angle_deg", expect.any(Number))
+      expect(item).toHaveProperty("orbit_duration_yr", expect.any(Number))
+      expect(item).toHaveProperty("variations", expect.any(Object)) // TODO test it deeper
+      expect(item).toHaveProperty("heat_shield.dev_partner", expect.any(String))
+      expect(item).toHaveProperty("heat_shield.material", expect.any(String))
+      expect(item).toHaveProperty("heat_shield.size_meters", expect.any(Number))
+      expect(item).toHaveProperty("heat_shield.temp_degrees", expect.any(Number))
+      expect(item).toHaveProperty("thrusters.amount", expect.any(Number))
+      expect(item).toHaveProperty("thrusters.fuel_1", expect.any(String))
+      expect(item).toHaveProperty("thrusters.fuel_2", expect.any(String))
+      expect(item).toHaveProperty("thrusters.pods", expect.any(Number))
+      expect(item).toHaveProperty("thrusters.thrust", customMatchers.thrust())
+      expect(item).toHaveProperty("thrusters.type", expect.any(String))
+      expect(item).toHaveProperty("launch_payload_mass", customMatchers.mass())
+      expect(item).toHaveProperty("launch_payload_vol", customMatchers.volume())
+      expect(item).toHaveProperty("return_payload_mass", customMatchers.mass())
+      expect(item).toHaveProperty("return_payload_vol", customMatchers.volume())
+      expect(item).toHaveProperty("pressurized_capsule.payload_volume", customMatchers.volume())
+      expect(item).toHaveProperty("trunk.cargo.solar_array", expect.any(Number))
+      expect(item).toHaveProperty("trunk.cargo.unpressurized_cargo", expect.any(Boolean))
+      expect(item).toHaveProperty("trunk.trunk_volume", customMatchers.volume())
+      expect(item).toHaveProperty("height_w_trunk", customMatchers.length())
+      expect(item).toHaveProperty("diameter", customMatchers.length())
     })
   })
 })

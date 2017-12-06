@@ -43,14 +43,4 @@ v2.get("/falconheavy", (req, res, next) => {
   })
 })
 
-// Returns Dragon info
-v2.get("/dragon", (req, res, next) => {
-  global.db.collection("vehicle").find({"id": "dragon"},{"_id": 0 }).toArray((err, doc) => {
-    if (err) {
-      return next(err)
-    }
-    res.json(doc[0])
-  })
-})
-
 module.exports = v2
