@@ -52,7 +52,7 @@ test("It should return company info", () => {
 })
 
 //------------------------------------------------------------
-//                     Vehicles V2
+//                     Rockets V2
 //------------------------------------------------------------
 
 test("It should return all rocket info", () => {
@@ -69,17 +69,14 @@ test("It should return all rocket info", () => {
       expect(item).toHaveProperty("type", expect.stringMatching(/^(?:rocket|capsule)$/))
       expect(item).toHaveProperty("active", expect.any(Boolean))
       expect(item).toHaveProperty("stages", expect.any(Number))
-      // expect(item).toHaveProperty("boosters", expect.any(Number)) // missing from falcon1
+      expect(item).toHaveProperty("boosters", expect.any(Number))
       expect(item).toHaveProperty("cost_per_launch", expect.any(Number))
-      // expect(item).toHaveProperty("orbit_duration_yr", expect.any(Number)) // missing from falcon1
-      // expect(item).toHaveProperty("success_rate_pct", expect.any(Number)) // missing from FH
+      expect(item).toHaveProperty("success_rate_pct", expect.any(Number))
       expect(item).toHaveProperty("first_flight", expect.stringMatching(/^(?:[0-9]{4}-[0-9]{2}-[0-9]{2}|TBD)$/))
-      // expect(item).toHaveProperty("launchpad", expect.any(String)) // missing from falcon9
       expect(item).toHaveProperty("country", expect.any(String))
       expect(item).toHaveProperty("company", expect.any(String))
       expect(item).toHaveProperty("height", customMatchers.length())
-      // expect(item).toHaveProperty("diameter", customMatchers.length()) // missing from FH
-      // expect(item).toHaveProperty("total_width",customMatchers.length()) // missing from falcon1
+      expect(item).toHaveProperty("diameter", customMatchers.length())
       expect(item).toHaveProperty("mass", customMatchers.mass())
       expect(item).toHaveProperty("payload_weights", expect.any(Array))
       item.payload_weights.forEach(weight => {
@@ -87,7 +84,6 @@ test("It should return all rocket info", () => {
       })
       expect(item).toHaveProperty("first_stage", customMatchers.vehicleStage())
       expect(item).toHaveProperty("second_stage", customMatchers.vehicleStage())
-      // expect(item).toHaveProperty("landing_legs", expect.any(Number)) // missing from falcon1
       expect(item).toHaveProperty("description", expect.any(String))
     })
   })
@@ -110,22 +106,20 @@ test("It should return Falcon 1 info", () => {
       "type",
       "active",
       "stages",
-      // "boosters",
+      "boosters",
       "cost_per_launch",
       "success_rate_pct",
       "first_flight",
-      "launchpad",
       "country",
       "company",
       "height",
       "diameter",
-      // "total_width",
       "mass",
       "payload_weights",
       "first_stage",
       "second_stage",
-      // "engines",
-      // "landing_legs",
+      "engines",
+      "landing_legs",
       "description"
     ])
   })
@@ -148,16 +142,14 @@ test("It should return Falcon 9 info", () => {
       "type",
       "active",
       "stages",
-      // "boosters",
+      "boosters",
       "cost_per_launch",
       "success_rate_pct",
       "first_flight",
-      // "launchpad",
       "country",
       "company",
       "height",
       "diameter",
-      // "total_width",
       "mass",
       "payload_weights",
       "first_stage",
@@ -175,8 +167,8 @@ test("It should return Falcon Heavy info", () => {
     expect(response.body).toHaveProperty("name", "Falcon Heavy")
     expect(response.body).toHaveProperty("stages", 2)
     expect(response.body).toHaveProperty("cost_per_launch")
-    // expect(response.body).toHaveProperty("success_rate_pct")
-    // expect(response.body).toHaveProperty("first_flight")
+    expect(response.body).toHaveProperty("success_rate_pct")
+    expect(response.body).toHaveProperty("first_flight")
     expect(response.body).toHaveProperty("country")
     expect(response.body).toHaveProperty("company", "SpaceX")
     expect(response.body).toHaveProperty("description")
@@ -188,14 +180,12 @@ test("It should return Falcon Heavy info", () => {
       "stages",
       "boosters",
       "cost_per_launch",
-      // "success_rate_pct",
+      "success_rate_pct",
       "first_flight",
-      // "launchpad",
       "country",
       "company",
       "height",
-      // "diameter",
-      "total_width",
+      "diameter",
       "mass",
       "payload_weights",
       "first_stage",

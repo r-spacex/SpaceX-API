@@ -35,7 +35,7 @@ v2.get("/falcon9", (req, res, next) => {
 
 // Returns Falcon Heavy info
 v2.get("/falconheavy", (req, res, next) => {
-  global.db.collection("vehicle").find({"id": "falcon_heavy"},{"_id": 0 }).toArray((err, doc) => {
+  global.db.collection("vehicle").find({"id": "falconheavy"},{"_id": 0 }).toArray((err, doc) => {
     if (err) {
       return next(err)
     }
