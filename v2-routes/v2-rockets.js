@@ -5,7 +5,7 @@ const v2 = express.Router()
 
 // Returns all vehicle info
 v2.get("/", (req, res, next) => {
-  global.db.collection("vehicle").find({},{"_id": 0 }).toArray((err, doc) => {
+  global.db.collection("rocket").find({},{"_id": 0 }).toArray((err, doc) => {
     if (err) {
       return next(err)
     }
@@ -15,7 +15,7 @@ v2.get("/", (req, res, next) => {
 
 // Returns Falcon 1 info
 v2.get("/falcon1", (req, res, next) => {
-  global.db.collection("vehicle").find({"id": "falcon1"},{"_id": 0 }).toArray((err, doc) => {
+  global.db.collection("rocket").find({"id": "falcon1"},{"_id": 0 }).toArray((err, doc) => {
     if (err) {
       return next(err)
     }
@@ -25,7 +25,7 @@ v2.get("/falcon1", (req, res, next) => {
 
 // Returns Falcon 9 info
 v2.get("/falcon9", (req, res, next) => {
-  global.db.collection("vehicle").find({"id": "falcon9"},{"_id": 0 }).toArray((err, doc) => {
+  global.db.collection("rocket").find({"id": "falcon9"},{"_id": 0 }).toArray((err, doc) => {
     if (err) {
       return next(err)
     }
@@ -35,7 +35,7 @@ v2.get("/falcon9", (req, res, next) => {
 
 // Returns Falcon Heavy info
 v2.get("/falconheavy", (req, res, next) => {
-  global.db.collection("vehicle").find({"id": "falconheavy"},{"_id": 0 }).toArray((err, doc) => {
+  global.db.collection("rocket").find({"id": "falconheavy"},{"_id": 0 }).toArray((err, doc) => {
     if (err) {
       return next(err)
     }
