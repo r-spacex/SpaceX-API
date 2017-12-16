@@ -2,7 +2,7 @@
 
 ![Imgur](http://i.imgur.com/eL73Iit.png)
 
-![Imgur](https://i.imgur.com/mNhinPo.jpg)
+![Imgur](https://i.imgur.com/EvNzjRY.jpg)
 
 # SpaceX Data REST API
 
@@ -29,69 +29,74 @@ GET https://api.spacexdata.com/v2/launches/latest
 
 ```json
 {
-    "flight_number": 50,
-    "launch_year": "2017",
-    "launch_date_unix": 1509392040,
-    "launch_date_utc": "2017-10-30T19:34:00Z",
-    "launch_date_local": "2017-10-30T15:34:00-04:00",
-    "rocket": {
-        "rocket_id": "falcon9",
-        "rocket_name": "Falcon 9",
-        "rocket_type": "FT",
-        "first_stage": {
-            "cores": [
-                {
-                    "core_serial": "B1042",
-                    "reused": false,
-                    "land_success": true,
-                    "landing_type": "ASDS",
-                    "landing_vehicle": "OCISLY"
-                }
-            ]
-        },
-        "second_stage": {
-            "payloads": [
-                {
-                    "payload_id": "KoreaSat 5A",
-                    "reused": false,
-                    "customers": [
-                        "KT Corporation"
-                    ],
-                    "payload_type": "Satellite",
-                    "payload_mass_kg": 3700,
-                    "payload_mass_lbs": 8157.104,
-                    "orbit": "GTO"
-                }
-            ]
+  "flight_number": 51,
+  "launch_year": "2017",
+  "launch_date_unix": 1513352160,
+  "launch_date_utc": "2017-12-15T15:36:00Z",
+  "launch_date_local": "2017-12-15T10:36:00-05:00",
+  "rocket": {
+    "rocket_id": "falcon9",
+    "rocket_name": "Falcon 9",
+    "rocket_type": "FT",
+    "first_stage": {
+      "cores": [
+        {
+          "core_serial": "B1035",
+          "reused": true,
+          "land_success": true,
+          "landing_type": "RTLS",
+          "landing_vehicle": "LZ-1"
         }
+      ]
     },
-    "telemetry": {
-        "flight_club": null
-    },
-    "reuse": {
-        "core": false,
-        "side_core1": false,
-        "side_core2": false,
-        "fairings": false,
-        "capsule": false
-    },
-    "launch_site": {
-        "site_id": "ksc_lc_39a",
-        "site_name": "KSC LC 39A",
-        "site_name_long": "Kennedy Space Center Historic Launch Complex 39A"
-    },
-    "launch_success": true,
-    "links": {
-        "mission_patch": "http://spacexpatchlist.space/patches/spacex_f9_044_koreasat_5a_graphic.png",
-        "reddit_campaign": "https://www.reddit.com/r/spacex/comments/73ttkd/koreasat_5a_launch_campaign_thread/",
-        "reddit_launch": "https://www.reddit.com/r/spacex/comments/79iuvb/rspacex_koreasat_5a_official_launch_discussion/",
-        "reddit_recovery": null,
-        "reddit_media": "https://www.reddit.com/r/spacex/comments/79lmdu/rspacex_koreasat5a_media_thread_videos_images/",
-        "presskit": "http://www.spacex.com/sites/spacex/files/koreasat5apresskit.pdf",
-        "article_link": "https://spaceflightnow.com/2017/10/30/spacex-launches-and-lands-third-rocket-in-three-weeks/",
-        "video_link": "https://www.youtube.com/watch?v=RUjH14vhLxA"
-    },
-    "details": "KoreaSat 5A is a Ku-band satellite capable of providing communication services from East Africa and Central Asia to southern India, Southeast Asia, the Philippines, Guam, Korea, and Japan. The satellite will be placed in GEO at 113Â° East Longitude, and will provide services ranging from broadband internet to broadcasting services and maritime communications."
+    "second_stage": {
+      "payloads": [
+        {
+          "payload_id": "SpaceX CRS-13",
+          "cap_serial": "C108",
+          "reused": true,
+          "customers": [
+            "NASA (CRS)"
+          ],
+          "payload_type": "Dragon 1.1",
+          "payload_mass_kg": 2205,
+          "payload_mass_lbs": 4861.2,
+          "orbit": "ISS",
+          "mass_returned_kg": null,
+          "mass_returned_lbs": null,
+          "flight_time_sec": null,
+          "cargo_manifest": "https://www.nasa.gov/sites/default/files/atoms/files/spacex_crs-13_mision_overview_low_res8.pdf"
+        }
+      ]
+    }
+  },
+  "telemetry": {
+    "flight_club": "https://www.flightclub.io/results/?code=CR13"
+  },
+  "reuse": {
+    "core": true,
+    "side_core1": false,
+    "side_core2": false,
+    "fairings": false,
+    "capsule": true
+  },
+  "launch_site": {
+    "site_id": "ccafs_slc_40",
+    "site_name": "CCAFS SLC 40",
+    "site_name_long": "Cape Canaveral Air Force Station Space Launch Complex 40"
+  },
+  "launch_success": true,
+  "links": {
+    "mission_patch": "https://i.imgur.com/YxaiZqy.png",
+    "reddit_campaign": "https://www.reddit.com/r/spacex/comments/7bxg5a/crs13_launch_campaign_thread/",
+    "reddit_launch": "https://www.reddit.com/r/spacex/comments/7j725w/rspacex_crs13_official_launch_discussion_updates/",
+    "reddit_recovery": null,
+    "reddit_media": "https://www.reddit.com/r/spacex/comments/7j6oxz/rspacex_crs13_media_thread_videos_images_gifs/",
+    "presskit": "http://www.spacex.com/sites/spacex/files/crs13presskit12_11.pdf",
+    "article_link": "https://spaceflightnow.com/2017/12/15/spacexs-50th-falcon-rocket-launch-kicks-off-station-resupply-mission/",
+    "video_link": "https://www.youtube.com/watch?v=OPHbqY9LHCs"
+  },
+  "details": "Will reuse the Dragon capsule previously flown on CRS-6 and will reuse the booster from CRS-11."
 }
   ```
 
