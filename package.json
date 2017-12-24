@@ -44,7 +44,7 @@
     "coverageDirectory": "./coverage/",
     "collectCoverage": true,
     "collectCoverageFrom": [
-      "**/*.{js,jsx}",
+      "src/**",
       "!**/node_modules/**",
       "!**/vendor/**",
       "!**/coverage/**"
