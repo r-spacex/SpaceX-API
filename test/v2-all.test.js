@@ -1,6 +1,6 @@
 
 const request = require("supertest")
-const app = require("../app")
+const app = require("../src/app")
 const customMatchers = require("./utilities/custom-asymmetric-matchers")
 
 beforeAll((done) => {
