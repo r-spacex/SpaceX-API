@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "PORT=0 jest -i --forceExit && eslint \"**/*.js\"",
-    "start": "node app.js",
+    "start": "node src/app.js",
     "lint": "eslint \"**/*.js\""
   },
   "repository": {
@@ -31,6 +31,7 @@
     "express": "^4.15.4",
     "express-rate-limit": "^2.9.0",
     "helmet": "^3.8.1",
+    "lower-case": "^1.1.4",
     "mongodb": "^2.2.31",
     "morgan": "^1.8.2",
     "path": "^0.12.7"
@@ -44,7 +45,7 @@
     "coverageDirectory": "./coverage/",
     "collectCoverage": true,
     "collectCoverageFrom": [
-      "**/*.{js,jsx}",
+      "src/**",
       "!**/node_modules/**",
       "!**/vendor/**",
       "!**/coverage/**"
