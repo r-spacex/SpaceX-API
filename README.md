@@ -2,7 +2,7 @@
 
 ![Imgur](http://i.imgur.com/eL73Iit.png)
 
-![Imgur](https://i.imgur.com/iw4m3NH.jpg)
+![Imgur](https://i.redd.it/8jkukgakvq801.jpg)
 
 # SpaceX Data REST API
 
@@ -29,11 +29,11 @@ GET https://api.spacexdata.com/v2/launches/latest
 
 ```json
 {
-   "flight_number":52,
-   "launch_year":"2017",
-   "launch_date_unix":1513992443,
-   "launch_date_utc":"2017-12-23T01:27:23Z",
-   "launch_date_local":"2017-12-22T17:27:23-08:00",
+   "flight_number":53,
+   "launch_year":"2018",
+   "launch_date_unix":1515373200,
+   "launch_date_utc":"2018-01-08T01:00:00Z",
+   "launch_date_local":"2018-01-07T20:00:00-05:00",
    "rocket":{
       "rocket_id":"falcon9",
       "rocket_name":"Falcon 9",
@@ -41,59 +41,59 @@ GET https://api.spacexdata.com/v2/launches/latest
       "first_stage":{
          "cores":[
             {
-               "core_serial":"B1036",
-               "reused":true,
-               "land_success":false,
-               "landing_type":null,
-               "landing_vehicle":null
+               "core_serial":"B1043",
+               "reused":false,
+               "land_success":true,
+               "landing_type":"RTLS",
+               "landing_vehicle":"LZ-1"
             }
          ]
       },
       "second_stage":{
          "payloads":[
             {
-               "payload_id":"Iridium NEXT 4",
+               "payload_id":"ZUMA",
                "reused":false,
                "customers":[
-                  "Iridium Communications"
+                  "Northrop Grumman"
                ],
                "payload_type":"Satellite",
-               "payload_mass_kg":9600,
-               "payload_mass_lbs":21164.38,
+               "payload_mass_kg":null,
+               "payload_mass_lbs":null,
                "orbit":"LEO"
             }
          ]
       }
    },
    "telemetry":{
-      "flight_club":"https://www.flightclub.io/result?code=IRD4"
+      "flight_club":"https://www.flightclub.io/result?code=ZUMA"
    },
    "reuse":{
-      "core":true,
+      "core":false,
       "side_core1":false,
       "side_core2":false,
       "fairings":false,
       "capsule":false
    },
    "launch_site":{
-      "site_id":"vafb_slc_4e",
-      "site_name":"VAFB SLC 4E",
-      "site_name_long":"Vandenberg Air Force Base Space Launch Complex 4E"
+      "site_id":"ccafs_slc_40",
+      "site_name":"CCAFS SLC 40",
+      "site_name_long":"Cape Canaveral Air Force Station Space Launch Complex 40"
    },
    "launch_success":true,
    "links":{
-      "mission_patch":"https://i.imgur.com/bNwARXL.png",
-      "reddit_campaign":"https://www.reddit.com/r/spacex/comments/7cgts7/iridium_next_constellation_mission_4_launch/",
-      "reddit_launch":"https://www.reddit.com/r/spacex/comments/7li8y2/rspacex_iridium_next_4_official_launch_discussion/",
+      "mission_patch":"https://i.imgur.com/c5pL42B.png",
+      "reddit_campaign":"https://www.reddit.com/r/spacex/comments/7895bo/zuma_launch_campaign_thread/",
+      "reddit_launch":"https://www.reddit.com/r/spacex/comments/7oqjf0/rspacex_zuma_official_launch_discussion_updates/",
       "reddit_recovery":null,
-      "reddit_media":"https://www.reddit.com/r/spacex/comments/7litv2/rspacex_iridium4_media_thread_videos_images_gifs/",
-      "presskit":"http://www.spacex.com/sites/spacex/files/iridium4presskit.pdf",
-      "article_link":"https://spaceflightnow.com/2017/12/23/spacex-launch-dazzles-delivering-10-more-satellites-for-iridium/",
-      "video_link":"https://www.youtube.com/watch?v=wtdjCwo6d3Q"
+      "reddit_media":"https://www.reddit.com/r/spacex/comments/7orksl/rspacex_zuma_media_thread_videos_images_gifs/",
+      "presskit":"http://www.spacex.com/sites/spacex/files/zumapresskit.pdf",
+      "article_link":null,
+      "video_link":"https://www.youtube.com/watch?v=0PWu3BRxn60"
    },
-   "details":"Reusing the booster first used on Iridium-2, but will be flying expendable."
+   "details":"Originally planned for mid-November 2017, the mission was delayed due to test results from the fairing of another customer. First-stage booster will attempt landing at LZ-1"
 }
-  ```
+```
 
 ## Contributions
 See the [Contribution](https://github.com/r-spacex/SpaceX-API/blob/master/CONTRIBUTING.md) guide for detailed steps
