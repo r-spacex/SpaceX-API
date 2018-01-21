@@ -410,17 +410,10 @@ test("It should return Dragon 1 data", () => {
     response.body.forEach(item => {
       expect(item).toHaveProperty("sidewall_angle_deg", expect.any(Number))
       expect(item).toHaveProperty("orbit_duration_yr", expect.any(Number))
-      expect(item).toHaveProperty("variations", expect.any(Object)) // TODO test it deeper
       expect(item).toHaveProperty("heat_shield.dev_partner", expect.any(String))
       expect(item).toHaveProperty("heat_shield.material", expect.any(String))
       expect(item).toHaveProperty("heat_shield.size_meters", expect.any(Number))
       expect(item).toHaveProperty("heat_shield.temp_degrees", expect.any(Number))
-      expect(item).toHaveProperty("thrusters.amount", expect.any(Number))
-      expect(item).toHaveProperty("thrusters.fuel_1", expect.any(String))
-      expect(item).toHaveProperty("thrusters.fuel_2", expect.any(String))
-      expect(item).toHaveProperty("thrusters.pods", expect.any(Number))
-      expect(item).toHaveProperty("thrusters.thrust", customMatchers.thrust())
-      expect(item).toHaveProperty("thrusters.type", expect.any(String))
       expect(item).toHaveProperty("launch_payload_mass", customMatchers.mass())
       expect(item).toHaveProperty("launch_payload_vol", customMatchers.volume())
       expect(item).toHaveProperty("return_payload_mass", customMatchers.mass())
