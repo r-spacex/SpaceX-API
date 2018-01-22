@@ -4,7 +4,7 @@
   "description": "Open Source REST API for SpaceX company, vehicle, launchpad, and launch data",
   "main": "app.js",
   "scripts": {
-    "test": "PORT=0 jest -i --forceExit && eslint \"**/*.js\"",
+    "test": "PORT=0 NODE_ENV=test jest -i --forceExit && eslint \"**/*.js\"",
     "start": "node src/app.js",
     "lint": "eslint \"**/*.js\""
   },
