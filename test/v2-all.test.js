@@ -437,3 +437,33 @@ test("It should return Dragon data", () => {
     })
   })
 })
+
+//------------------------------------------------------------
+//                     Individual Capsule V2
+//------------------------------------------------------------
+
+test("It should return all v2 capsules", () => {
+  return request(app).get("/v2/capsules/C106").then(response => {
+    expect(response.statusCode).toBe(200)
+  })
+})
+
+//------------------------------------------------------------
+//                     Latest Launch Test
+//------------------------------------------------------------
+
+test("It should return the latest launch", () => {
+  return request(app).get("/v2/launches/latest").then(response => {
+    expect(response.statusCode).toBe(200)
+  })
+})
+
+//------------------------------------------------------------
+//                     404 Test
+//------------------------------------------------------------
+
+test("It should return 404 error", () => {
+  return request(app).get("/v1").then(response => {
+    expect(response.statusCode).toBe(404)
+  })
+})
