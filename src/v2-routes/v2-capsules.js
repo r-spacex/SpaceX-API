@@ -13,13 +13,14 @@ v2.get("/", (req, res, next) => {
   })
 })
 
-// Returns Dragon 1 data
-v2.get("/dragon1", (req, res, next) => {
-  global.db.collection("dragon").find({"id": "dragon1"},{"_id": 0 }).toArray((err, doc) => {
+// Returns Dragon data
+v2.get("/:capsule", (req, res, next) => {
+  const capsule = req.params.capsule
+  global.db.collection("dragon").find({"id": capsule},{"_id": 0 }).toArray((err, doc) => {
     if (err) {
       return next(err)
     }
-    res.json(doc[0])
+    res.json(doc)
   })
 })
 
