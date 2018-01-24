@@ -222,10 +222,10 @@ test("It should return LC-39A info", () => {
   })
 })
 
-test("It should return no launchpads found info", () => {
+test("It should return no launchpad info", () => {
   return request(app).get("/v2/launchpads/ksc_lc_40a").then(response => {
-    expect(response.statusCode).toBe(404)
-    expect(response.text).toContain("No results found")
+    expect(response.statusCode).toBe(200)
+    expect(response.text).toContain("[]")
   })
 })
 
