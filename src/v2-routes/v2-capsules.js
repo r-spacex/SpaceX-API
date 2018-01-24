@@ -2,26 +2,25 @@
 
 const express = require("express")
 const v2 = express.Router()
+const asyncHandle = require("express-async-handler")
 
-// Returns all capsule data
-v2.get("/", (req, res, next) => {
-  global.db.collection("dragon").find({},{"_id": 0 }).toArray((err, doc) => {
-    if (err) {
-      return next(err)
-    }
-    res.json(doc)
-  })
-})
+// Returns all Dragon data
+v2.get("/", asyncHandle(async (req, res) => {
+  const data = await global.db
+    .collection("dragon")
+    .find({},{"_id": 0 })
+    .toArray()
+  res.json(data)
+}))
 
-// Returns Dragon data
-v2.get("/:capsule", (req, res, next) => {
+// Returns specific Dragon data
+v2.get("/:capsule", asyncHandle(async (req, res) => {
   const capsule = req.params.capsule
-  global.db.collection("dragon").find({"id": capsule},{"_id": 0 }).toArray((err, doc) => {
-    if (err) {
-      return next(err)
-    }
-    res.json(doc)
-  })
-})
+  const data = global.db
+    .collection("dragon")
+    .find({"id": capsule},{"_id": 0 })
+    .toArray()
+  res.json(data)
+}))
 
 module.exports = v2
