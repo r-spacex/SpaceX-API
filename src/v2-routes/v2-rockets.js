@@ -23,34 +23,4 @@ v2.get("/:rocket", asyncHandle(async (req, res) => {
   res.json(data)
 }))
 
-// // Returns Falcon 1 info
-// v2.get("/falcon1", (req, res, next) => {
-//   global.db.collection("rocket").find({"id": "falcon1"},{"_id": 0 }).toArray((err, doc) => {
-//     if (err) {
-//       return next(err)
-//     }
-//     res.json(doc[0])
-//   })
-// })
-
-// // Returns Falcon 9 info
-// v2.get("/falcon9", (req, res, next) => {
-//   global.db.collection("rocket").find({"id": "falcon9"},{"_id": 0 }).toArray((err, doc) => {
-//     if (err) {
-//       return next(err)
-//     }
-//     res.json(doc[0])
-//   })
-// })
-
-// // Returns Falcon Heavy info
-// v2.get("/falconheavy", (req, res, next) => {
-//   global.db.collection("rocket").find({"id": "falconheavy"},{"_id": 0 }).toArray((err, doc) => {
-//     if (err) {
-//       return next(err)
-//     }
-//     res.json(doc[0])
-//   })
-// })
-
 module.exports = v2
