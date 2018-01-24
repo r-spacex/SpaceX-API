@@ -29,7 +29,6 @@
     "cors": "^2.8.4",
     "express": "^4.15.4",
     "express-async-handler": "^1.0.2",
-    "express-rate-limit": "^2.9.0",
     "helmet": "^3.8.1",
     "lower-case": "^1.1.4",
     "mongodb": "^2.2.31",
