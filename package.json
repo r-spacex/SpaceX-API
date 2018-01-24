@@ -25,10 +25,10 @@
   },
   "homepage": "https://github.com/r-spacex/SpaceX-API",
   "dependencies": {
-    "codecov": "^2.3.0",
     "compression": "^1.7.0",
     "cors": "^2.8.4",
     "express": "^4.15.4",
+    "express-async-handler": "^1.0.2",
     "express-rate-limit": "^2.9.0",
     "helmet": "^3.8.1",
     "lower-case": "^1.1.4",

@@ -31,9 +31,7 @@ app.use(helmet())
 app.use(cors())
 app.enable("trust proxy")
 app.use(limiter)
-if (process.env.NODE_ENV !== "test") {
-  app.use(morgan("common"))
-}
+app.use(morgan("common"))
 
 // Global HTTP headers
 app.use((req, res, next) => {
