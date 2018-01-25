@@ -16,7 +16,7 @@ v2.get("/", asyncHandle(async (req, res) => {
 // Returns specific Dragon data
 v2.get("/:capsule", asyncHandle(async (req, res) => {
   const capsule = req.params.capsule
-  const data = global.db
+  const data = await global.db
     .collection("dragon")
     .find({"id": capsule},{"_id": 0 })
     .toArray()
