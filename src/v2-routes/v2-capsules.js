@@ -20,7 +20,7 @@ v2.get("/:capsule", asyncHandle(async (req, res) => {
     .collection("dragon")
     .find({"id": capsule},{"_id": 0 })
     .toArray()
-  res.json(data)
+  res.json(data[0])
 }))
 
 module.exports = v2

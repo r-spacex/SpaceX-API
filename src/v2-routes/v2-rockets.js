@@ -20,7 +20,7 @@ v2.get("/:rocket", asyncHandle(async (req, res) => {
     .collection("rocket")
     .find({"id": `${rocket}`},{"_id": 0 })
     .toArray()
-  res.json(data)
+  res.json(data[0])
 }))
 
 module.exports = v2

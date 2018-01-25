@@ -92,32 +92,28 @@ test("It should return all rocket info", () => {
 test("It should return Falcon 1 info", () => {
   return request(app).get("/v2/rockets/falcon1").then(response => {
     expect(response.statusCode).toBe(200)
-    response.body.forEach(item => {
-      expect(item).toHaveProperty("name", "Falcon 1")
-      expect(item).toHaveProperty("stages", 2)
-      expect(item).toHaveProperty("cost_per_launch")
-      expect(item).toHaveProperty("success_rate_pct")
-      expect(item).toHaveProperty("first_flight", "2006-03-24")
-      expect(item).toHaveProperty("country")
-      expect(item).toHaveProperty("company", "SpaceX")
-      expect(item).toHaveProperty("description")
-    })
+    expect(response.body).toHaveProperty("name", "Falcon 1")
+    expect(response.body).toHaveProperty("stages", 2)
+    expect(response.body).toHaveProperty("cost_per_launch")
+    expect(response.body).toHaveProperty("success_rate_pct")
+    expect(response.body).toHaveProperty("first_flight", "2006-03-24")
+    expect(response.body).toHaveProperty("country")
+    expect(response.body).toHaveProperty("company", "SpaceX")
+    expect(response.body).toHaveProperty("description")
   })
 })
 
 test("It should return Falcon Heavy info", () => {
   return request(app).get("/v2/rockets/falconheavy").then(response => {
     expect(response.statusCode).toBe(200)
-    response.body.forEach(item => {
-      expect(item).toHaveProperty("name", "Falcon Heavy")
-      expect(item).toHaveProperty("stages", 2)
-      expect(item).toHaveProperty("cost_per_launch")
-      expect(item).toHaveProperty("success_rate_pct")
-      expect(item).toHaveProperty("first_flight")
-      expect(item).toHaveProperty("country")
-      expect(item).toHaveProperty("company", "SpaceX")
-      expect(item).toHaveProperty("description")
-    })
+    expect(response.body).toHaveProperty("name", "Falcon Heavy")
+    expect(response.body).toHaveProperty("stages", 2)
+    expect(response.body).toHaveProperty("cost_per_launch")
+    expect(response.body).toHaveProperty("success_rate_pct")
+    expect(response.body).toHaveProperty("first_flight")
+    expect(response.body).toHaveProperty("country")
+    expect(response.body).toHaveProperty("company", "SpaceX")
+    expect(response.body).toHaveProperty("description")
   })
 })
 
