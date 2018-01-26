@@ -1,73 +1,74 @@
 
-const express = require("express")
-const morgan = require("morgan")
-const cors = require("cors")
-const compression = require("compression")
-const helmet = require("helmet")
-const config = require("../config/config.json")
-const MongoClient = require("mongodb")
-const app = express()
+const express = require('express');
+const morgan = require('morgan');
+const cors = require('cors');
+const compression = require('compression');
+const helmet = require('helmet');
+const config = require('../config/config.json');
+const MongoClient = require('mongodb');
 
-const v2_home  = require("./v2-routes/v2-home")
-const v2_info  = require("./v2-routes/v2-info")
-const v2_rockets  = require("./v2-routes/v2-rockets")
-const v2_capsules  = require("./v2-routes/v2-capsules")
-const v2_launchpad  = require("./v2-routes/v2-launchpad")
-const v2_launches  = require("./v2-routes/v2-launches")
-const v2_upcoming  = require("./v2-routes/v2-upcoming")
-const v2_parts  = require("./v2-routes/v2-parts")
+const app = express();
 
-app.use(compression())
-app.use(helmet())
-app.use(cors())
-app.use(morgan("common"))
+const home = require('./v2-routes/v2-home');
+const info = require('./v2-routes/v2-info');
+const rockets = require('./v2-routes/v2-rockets');
+const capsules = require('./v2-routes/v2-capsules');
+const launchpad = require('./v2-routes/v2-launchpad');
+const launches = require('./v2-routes/v2-launches');
+const upcoming = require('./v2-routes/v2-upcoming');
+const parts = require('./v2-routes/v2-parts');
+
+app.use(compression());
+app.use(helmet());
+app.use(cors());
+app.use(morgan('common'));
 
 // Global HTTP headers
 app.use((req, res, next) => {
-  res.header("Content-Type","application/json")
-  res.header("Last-Modified", new Date().toUTCString())
-  next()
-})
+  res.header('Content-Type', 'application/json');
+  res.header('Last-Modified', new Date().toUTCString());
+  next();
+});
 
-app.use("/v2", v2_home)
-app.use("/v2/info", v2_info)
-app.use("/v2/rockets", v2_rockets)
-app.use("/v2/capsules", v2_capsules)
-app.use("/v2/launchpads", v2_launchpad)
-app.use("/v2/launches", v2_launches)
-app.use("/v2/launches/upcoming", v2_upcoming)
-app.use("/v2/parts", v2_parts)
+app.use('/v2', home);
+app.use('/v2/info', info);
+app.use('/v2/rockets', rockets);
+app.use('/v2/capsules', capsules);
+app.use('/v2/launchpads', launchpad);
+app.use('/v2/launches', launches);
+app.use('/v2/launches/upcoming', upcoming);
+app.use('/v2/parts', parts);
 
 // 404 Error Handler
 app.use((req, res) => {
-  res.status(404)
+  res.status(404);
   res.json({
-    error: "No results found"
-  })
-})
+    error: 'No results found',
+  });
+});
 
 // generic error handler - must have 4 parameters
 // eslint-disable-next-line no-unused-vars
 app.use((err, req, res, next) => {
-  res.status(500)
+  res.status(500);
   res.json({
-    error: "Internal Server Error"
-  })
-})
+    error: 'Internal Server Error',
+  });
+});
 
 // Mongo Connection + Server Start
 MongoClient.connect(config.url, (err, database) => {
   if (err) {
-    console.log(err)
-    process.exit(1)
+    console.log(err);
+    process.exit(1);
   }
-  global.db = database
-  
-  app.set("port", (process.env.PORT || 5000))
-  app.listen(app.get("port"), "0.0.0.0", () => {
-    console.log("SpaceX API listening on port: " + app.get("port"))
-    app.emit("ready")
-  })
-})
+  global.db = database;
 
-module.exports = app
+  const port = process.env.PORT || 5000;
+  app.listen(port, '0.0.0.0', () => {
+    console.log(`SpaceX API running on port: ${port}`);
+    app.emit('ready');
+  });
+});
+
+module.exports = app;
