@@ -7,8 +7,6 @@ const helmet = require('helmet');
 const config = require('../config/config.json');
 const MongoClient = require('mongodb');
 
-const app = express();
-
 const home = require('./v2-routes/v2-home');
 const info = require('./v2-routes/v2-info');
 const rockets = require('./v2-routes/v2-rockets');
@@ -18,6 +16,7 @@ const launches = require('./v2-routes/v2-launches');
 const upcoming = require('./v2-routes/v2-upcoming');
 const parts = require('./v2-routes/v2-parts');
 
+const app = express();
 app.use(compression());
 app.use(helmet());
 app.use(cors());
