@@ -8,21 +8,21 @@
 class CustomAsymmetricMatcher {
   constructor() {
     // $$typeof is used internally by Jest and just to be sure let's use jest Symbol
-    this.$$typeof = Symbol.for("jest.asymmetricMatcher")
+    this.$$typeof = Symbol.for('jest.asymmetricMatcher');
   }
 
   toAsymmetricMatcher() {
-    return this.toString()
+    return this.toString();
   }
 }
 
 class SpacexComposite extends CustomAsymmetricMatcher {
   asymmetricMatch(any) {
-    return any !== undefined && typeof any === "object"
+    return any !== undefined && typeof any === 'object';
   }
 
   getExpectedType() {
-    return "object"
+    return 'object';
   }
 }
 
@@ -32,17 +32,17 @@ class SpacexComposite extends CustomAsymmetricMatcher {
 class SpacexVolume extends SpacexComposite {
   asymmetricMatch(any) {
     if (!super.asymmetricMatch(any)) {
-      return false
+      return false;
     }
-    expect(any).toHaveProperty("cubic_meters", expect.any(Number))
-    expect(any).toHaveProperty("cubic_feet", expect.any(Number))
-    expect(any.cubic_meters).toBeGreaterThanOrEqual(0)
-    expect(any.cubic_feet).toBeGreaterThanOrEqual(0)
-    return true
+    expect(any).toHaveProperty('cubic_meters', expect.any(Number));
+    expect(any).toHaveProperty('cubic_feet', expect.any(Number));
+    expect(any.cubic_meters).toBeGreaterThanOrEqual(0);
+    expect(any.cubic_feet).toBeGreaterThanOrEqual(0);
+    return true;
   }
 
   toString() {
-    return "SpacexVolume"
+    return 'SpacexVolume';
   }
 }
 
@@ -52,17 +52,17 @@ class SpacexVolume extends SpacexComposite {
 class SpacexLength extends SpacexComposite {
   asymmetricMatch(any) {
     if (!super.asymmetricMatch(any)) {
-      return false
+      return false;
     }
-    expect(any).toHaveProperty("meters", expect.any(Number))
-    expect(any).toHaveProperty("feet", expect.any(Number))
-    expect(any.meters).toBeGreaterThanOrEqual(0)
-    expect(any.feet).toBeGreaterThanOrEqual(0)
-    return true
+    expect(any).toHaveProperty('meters', expect.any(Number));
+    expect(any).toHaveProperty('feet', expect.any(Number));
+    expect(any.meters).toBeGreaterThanOrEqual(0);
+    expect(any.feet).toBeGreaterThanOrEqual(0);
+    return true;
   }
 
   toString() {
-    return "SpacexLength"
+    return 'SpacexLength';
   }
 }
 
@@ -72,17 +72,17 @@ class SpacexLength extends SpacexComposite {
 class SpacexMass extends SpacexComposite {
   asymmetricMatch(any) {
     if (!super.asymmetricMatch(any)) {
-      return false
+      return false;
     }
-    expect(any).toHaveProperty("kg", expect.any(Number))
-    expect(any).toHaveProperty("lb", expect.any(Number))
-    expect(any.kg).toBeGreaterThanOrEqual(0)
-    expect(any.lb).toBeGreaterThanOrEqual(0)
-    return true
+    expect(any).toHaveProperty('kg', expect.any(Number));
+    expect(any).toHaveProperty('lb', expect.any(Number));
+    expect(any.kg).toBeGreaterThanOrEqual(0);
+    expect(any.lb).toBeGreaterThanOrEqual(0);
+    return true;
   }
 
   toString() {
-    return "SpacexMass"
+    return 'SpacexMass';
   }
 }
 
@@ -92,17 +92,17 @@ class SpacexMass extends SpacexComposite {
 class SpacexThrust extends SpacexComposite {
   asymmetricMatch(any) {
     if (!super.asymmetricMatch(any)) {
-      return false
+      return false;
     }
-    expect(any).toHaveProperty("kN", expect.any(Number))
-    expect(any).toHaveProperty("lbf", expect.any(Number))
-    expect(any.kN).toBeGreaterThanOrEqual(0)
-    expect(any.lbf).toBeGreaterThanOrEqual(0)
-    return true
+    expect(any).toHaveProperty('kN', expect.any(Number));
+    expect(any).toHaveProperty('lbf', expect.any(Number));
+    expect(any.kN).toBeGreaterThanOrEqual(0);
+    expect(any.lbf).toBeGreaterThanOrEqual(0);
+    return true;
   }
 
   toString() {
-    return "SpacexThrust"
+    return 'SpacexThrust';
   }
 }
 
@@ -112,16 +112,16 @@ class SpacexThrust extends SpacexComposite {
 class SpacexPayloadWeight extends SpacexComposite {
   asymmetricMatch(any) {
     if (!super.asymmetricMatch(any)) {
-      return false
+      return false;
     }
-    expect(any).toHaveProperty("id", expect.any(String))
-    expect(any).toHaveProperty("name", expect.any(String))
-    expect(any).toEqual(new SpacexMass())
-    return true
+    expect(any).toHaveProperty('id', expect.any(String));
+    expect(any).toHaveProperty('name', expect.any(String));
+    expect(any).toEqual(new SpacexMass());
+    return true;
   }
 
   toString() {
-    return "SpacexPayloadWeight"
+    return 'SpacexPayloadWeight';
   }
 }
 
@@ -131,40 +131,40 @@ class SpacexPayloadWeight extends SpacexComposite {
 class SpacexVehicleStage extends SpacexComposite {
   asymmetricMatch(any) {
     if (!super.asymmetricMatch(any)) {
-      return false
+      return false;
     }
-    // expect(any).toHaveProperty("reusable", expect.any(Boolean)) // TODO missing from some stages
-    // expect(any).toHaveProperty("engines", expect.any(String)) // TODO inconsistent, sometimes number, sometimes composite
-    // expect(any).toHaveProperty("fuel_amount_tons", expect.any(Number)) // TODO missing from some stages
-    expect(any).toHaveProperty("burn_time_sec", expect.any(Number))
-    // expect(any).toHaveProperty("thrust_sea_level", new SpacexThrust()) // TODO missing from some stages
-    // expect(any).toHaveProperty("thrust_vacuum", new SpacexThrust()) // TODO missing from some stages
-    // expect(any).toHaveProperty("payloads", expect.any(String)) // composite object present only in 2nd stage
-    return true
+    // expect(any).toHaveProperty('reusable', expect.any(Boolean))
+    // expect(any).toHaveProperty('engines', expect.any(String))
+    // expect(any).toHaveProperty('fuel_amount_tons', expect.any(Number))
+    expect(any).toHaveProperty('burn_time_sec', expect.any(Number));
+    // expect(any).toHaveProperty('thrust_sea_level', new SpacexThrust())
+    // expect(any).toHaveProperty('thrust_vacuum', new SpacexThrust())
+    // expect(any).toHaveProperty('payloads', expect.any(String)) //
+    return true;
   }
 
   toString() {
-    return "SpacexPayloadWeight"
+    return 'SpacexPayloadWeight';
   }
 }
 
 module.exports = {
   volume: () => {
-    return new SpacexVolume()
+    return new SpacexVolume();
   },
   length: () => {
-    return new SpacexLength()
+    return new SpacexLength();
   },
   mass: () => {
-    return new SpacexMass()
+    return new SpacexMass();
   },
   thrust: () => {
-    return new SpacexThrust()
+    return new SpacexThrust();
   },
   payloadWeight: () => {
-    return new SpacexPayloadWeight()
+    return new SpacexPayloadWeight();
   },
   vehicleStage: () => {
-    return new SpacexVehicleStage()
-  }
-}
+    return new SpacexVehicleStage();
+  },
+};
