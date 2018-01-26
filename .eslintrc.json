@@ -4,7 +4,7 @@
         "node": true,
         "jest": true
     },
-    "extends": "eslint:recommended",
+    "extends": "airbnb",
     "parserOptions": {
         "sourceType": "module",
         "ecmaVersion": 2017
@@ -19,18 +19,6 @@
         "arrow-spacing": "error",
         "space-in-parens": ["error", "never"],
         "keyword-spacing": ["error", { "before": true }],
-        "spaced-comment": ["error", "always", { "exceptions": ["-", "+"] }],
-        "indent": [
-            "error",
-            2
-        ],
-        "quotes": [
-            "error",
-            "double"
-        ],
-        "semi": [
-            "error",
-            "never"
-        ]
+        "spaced-comment": ["error", "always", { "exceptions": ["-", "+"] }]
     }
 }
