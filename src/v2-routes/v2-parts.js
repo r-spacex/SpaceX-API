@@ -9,10 +9,9 @@ const v2 = express.Router();
 
 // Returns all capsule information
 v2.get('/caps', asyncHandle(async (req, res) => {
-  const query = caps.capsuleQuery(req);
   const data = await global.db
     .collection('capsule')
-    .find(query, { _id: 0 })
+    .find(caps.capsuleQuery(req), { _id: 0 })
     .sort({ capsule_serial: 1 })
     .toArray();
   res.json(data);
@@ -20,10 +19,9 @@ v2.get('/caps', asyncHandle(async (req, res) => {
 
 // Returns all core information
 v2.get('/cores', asyncHandle(async (req, res) => {
-  const query = cores.coreQuery(req);
   const data = await global.db
     .collection('core')
-    .find(query, { _id: 0 })
+    .find(cores.coreQuery(req), { _id: 0 })
     .sort({ core_serial: 1 })
     .toArray();
   res.json(data);

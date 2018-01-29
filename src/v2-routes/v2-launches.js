@@ -3,7 +3,7 @@
 const express = require('express');
 const asyncHandle = require('express-async-handler');
 const launch = require('../builders/launch-query');
-const querySort = require('../builders/launch-sort');
+const sort = require('../builders/launch-sort');
 
 const v2 = express.Router();
 
@@ -20,12 +20,10 @@ v2.get('/latest', asyncHandle(async (req, res) => {
 
 // Return all past launches filtered by any querystring
 v2.get('/', asyncHandle(async (req, res) => {
-  const query = launch.launchQuery(req);
-  const sort = querySort.launchSort(req);
   const data = await global.db
     .collection('launch_v2')
-    .find(query, { _id: 0 })
-    .sort(sort)
+    .find(launch.launchQuery(req), { _id: 0 })
+    .sort(sort.launchSort(req))
     .toArray();
   res.json(data);
 }));
