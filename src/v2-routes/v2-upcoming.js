@@ -7,7 +7,7 @@ const sort = require('../builders/launch-sort');
 
 const v2 = express.Router();
 
-// Upcoming launches by date, year, or all
+// Return upcoming launches filtered by querystrings
 v2.get('/', asyncHandle(async (req, res) => {
   const data = await global.db
     .collection('upcoming_v2')

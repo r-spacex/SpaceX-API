@@ -18,7 +18,7 @@ v2.get('/latest', asyncHandle(async (req, res) => {
   res.json(data[0]);
 }));
 
-// Return all past launches filtered by any querystring
+// Return all past launches filtered by querystrings
 v2.get('/', asyncHandle(async (req, res) => {
   const data = await global.db
     .collection('launch_v2')
