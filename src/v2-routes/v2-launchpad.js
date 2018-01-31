@@ -20,7 +20,7 @@ v2.get('/:pad', asyncHandle(async (req, res) => {
     .collection('launchpad')
     .find({ id: req.params.pad }, { _id: 0 })
     .toArray();
-  res.json(data);
+  res.json(data[0]);
 }));
 
 module.exports = v2;

@@ -145,7 +145,7 @@ test('It should return LC-39A info', () => {
 test('It should return no launchpad info', () => {
   return request(app).get('/v2/launchpads/ksc_lc_40a').then((response) => {
     expect(response.statusCode).toBe(200);
-    expect(response.text).toContain('[]');
+    expect(response.text).toContain('');
   });
 });
 
@@ -298,6 +298,13 @@ test('It should return all v2 capsules', () => {
   });
 });
 
+test('It should return capsule C101', () => {
+  return request(app).get('/v2/parts/caps/C101').then((response) => {
+    expect(response.statusCode).toBe(200);
+    expect(response.body).toHaveProperty('capsule_serial', 'C101');
+  });
+});
+
 //------------------------------------------------------------
 //                     Core V2
 //------------------------------------------------------------
@@ -317,6 +324,13 @@ test('It should return all v2 cores', () => {
       expect(item).toHaveProperty('water_landing');
       expect(item).toHaveProperty('details');
     });
+  });
+});
+
+test('It should return core B0007', () => {
+  return request(app).get('/v2/parts/cores/B0007').then((response) => {
+    expect(response.statusCode).toBe(200);
+    expect(response.body).toHaveProperty('core_serial', 'B0007');
   });
 });
 
