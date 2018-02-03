@@ -2,7 +2,7 @@
 
 ![Imgur](http://i.imgur.com/eL73Iit.png)
 
-![Imgur](https://i.redd.it/8jkukgakvq801.jpg)
+![Imgur](https://i.imgur.com/DGVwpos.jpg)
 
 # SpaceX Data REST API
 
@@ -29,11 +29,11 @@ GET https://api.spacexdata.com/v2/launches/latest
 
 ```json
 {
-   "flight_number":53,
+   "flight_number":54,
    "launch_year":"2018",
-   "launch_date_unix":1515373200,
-   "launch_date_utc":"2018-01-08T01:00:00Z",
-   "launch_date_local":"2018-01-07T20:00:00-05:00",
+   "launch_date_unix":1517433900,
+   "launch_date_utc":"2018-01-31T21:25:00Z",
+   "launch_date_local":"2018-01-31T16:25:00-05:00",
    "rocket":{
       "rocket_id":"falcon9",
       "rocket_name":"Falcon 9",
@@ -41,35 +41,35 @@ GET https://api.spacexdata.com/v2/launches/latest
       "first_stage":{
          "cores":[
             {
-               "core_serial":"B1043",
-               "reused":false,
+               "core_serial":"B1032",
+               "reused":true,
                "land_success":true,
-               "landing_type":"RTLS",
-               "landing_vehicle":"LZ-1"
+               "landing_type":"Ocean",
+               "landing_vehicle":null
             }
          ]
       },
       "second_stage":{
          "payloads":[
             {
-               "payload_id":"ZUMA",
+               "payload_id":"GovSat-1",
                "reused":false,
                "customers":[
-                  "Northrop Grumman"
+                  "GovSat"
                ],
                "payload_type":"Satellite",
-               "payload_mass_kg":null,
+               "payload_mass_kg":4000,
                "payload_mass_lbs":null,
-               "orbit":"LEO"
+               "orbit":"GTO"
             }
          ]
       }
    },
    "telemetry":{
-      "flight_club":"https://www.flightclub.io/result?code=ZUMA"
+      "flight_club":null
    },
    "reuse":{
-      "core":false,
+      "core":true,
       "side_core1":false,
       "side_core2":false,
       "fairings":false,
@@ -82,16 +82,16 @@ GET https://api.spacexdata.com/v2/launches/latest
    },
    "launch_success":true,
    "links":{
-      "mission_patch":"https://i.imgur.com/c5pL42B.png",
-      "reddit_campaign":"https://www.reddit.com/r/spacex/comments/7895bo/zuma_launch_campaign_thread/",
-      "reddit_launch":"https://www.reddit.com/r/spacex/comments/7oqjf0/rspacex_zuma_official_launch_discussion_updates/",
+      "mission_patch":"https://i.imgur.com/UJTbQ1f.png",
+      "reddit_campaign":"https://www.reddit.com/r/spacex/comments/7olw86/govsat1_ses16_launch_campaign_thread/",
+      "reddit_launch":"https://www.reddit.com/r/spacex/comments/7tvtbh/rspacex_govsat1_official_launch_discussion/",
       "reddit_recovery":null,
-      "reddit_media":"https://www.reddit.com/r/spacex/comments/7orksl/rspacex_zuma_media_thread_videos_images_gifs/",
-      "presskit":"http://www.spacex.com/sites/spacex/files/zumapresskit.pdf",
-      "article_link":null,
-      "video_link":"https://www.youtube.com/watch?v=0PWu3BRxn60"
+      "reddit_media":"https://www.reddit.com/r/spacex/comments/7tzzwy/rspacex_govsat1_media_thread_videos_images_gifs/",
+      "presskit":"http://www.spacex.com/sites/spacex/files/govsat1presskit.pdf",
+      "article_link":"https://spaceflightnow.com/2018/01/31/spacex-rocket-flies-on-60th-anniversary-of-first-u-s-satellite-launch/",
+      "video_link":"https://www.youtube.com/watch?v=ScYUA51-POQ"
    },
-   "details":"Originally planned for mid-November 2017, the mission was delayed due to test results from the fairing of another customer. First-stage booster will attempt landing at LZ-1"
+   "details":"Reused booster from the classified NROL-76 mission in May 2017. Following a successful experimental ocean landing that used three engines, the booster unexpectedly remained intact; Elon Musk stated in a tweet that SpaceX will attempt to tow the booster to shore."
 }
 ```
 
