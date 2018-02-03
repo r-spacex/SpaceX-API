@@ -288,6 +288,7 @@ test('It should return all v2 capsules', () => {
     expect(response.statusCode).toBe(200);
     response.body.forEach((item) => {
       expect(item).toHaveProperty('capsule_serial');
+      expect(item).toHaveProperty('capsule_id');
       expect(item).toHaveProperty('status');
       expect(item).toHaveProperty('original_launch');
       expect(item.missions.length).toBeGreaterThan(0);

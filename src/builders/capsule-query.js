@@ -8,6 +8,9 @@ exports.capsuleQuery = (req) => {
   if (req.query.capsule_serial) {
     query.capsule_serial = req.query.capsule_serial;
   }
+  if (req.query.capsule_id) {
+    query.capsule_id = req.query.capsule_id;
+  }
   if (req.query.status) {
     query.status = req.query.status;
   }
