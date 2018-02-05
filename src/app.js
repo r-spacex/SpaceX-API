@@ -20,7 +20,9 @@ const app = express();
 app.use(compression());
 app.use(helmet());
 app.use(cors());
-app.use(morgan('common'));
+if (process.env.NODE_ENV !== 'test') {
+  app.use(morgan('common'));
+}
 
 // Global HTTP headers
 app.use((req, res, next) => {
@@ -65,7 +67,6 @@ MongoClient.connect(config.url, (err, database) => {
 
   const port = process.env.PORT || 5000;
   app.listen(port, '0.0.0.0', () => {
-    console.log(`SpaceX API running on port: ${port}`);
     app.emit('ready');
   });
 });
