@@ -2,7 +2,7 @@
 
 ![Imgur](http://i.imgur.com/eL73Iit.png)
 
-![Imgur](https://i.imgur.com/DGVwpos.jpg)
+![Imgur](https://i.imgur.com/l0y1El1.jpg)
 
 # SpaceX Data REST API
 
@@ -29,69 +29,83 @@ GET https://api.spacexdata.com/v2/launches/latest
 
 ```json
 {
-   "flight_number":54,
-   "launch_year":"2018",
-   "launch_date_unix":1517433900,
-   "launch_date_utc":"2018-01-31T21:25:00Z",
-   "launch_date_local":"2018-01-31T16:25:00-05:00",
-   "rocket":{
-      "rocket_id":"falcon9",
-      "rocket_name":"Falcon 9",
-      "rocket_type":"FT",
-      "first_stage":{
-         "cores":[
-            {
-               "core_serial":"B1032",
-               "reused":true,
-               "land_success":true,
-               "landing_type":"Ocean",
-               "landing_vehicle":null
-            }
-         ]
-      },
-      "second_stage":{
-         "payloads":[
-            {
-               "payload_id":"GovSat-1",
-               "reused":false,
-               "customers":[
-                  "GovSat"
-               ],
-               "payload_type":"Satellite",
-               "payload_mass_kg":4000,
-               "payload_mass_lbs":null,
-               "orbit":"GTO"
-            }
-         ]
-      }
-   },
-   "telemetry":{
-      "flight_club":null
-   },
-   "reuse":{
-      "core":true,
-      "side_core1":false,
-      "side_core2":false,
-      "fairings":false,
-      "capsule":false
-   },
-   "launch_site":{
-      "site_id":"ccafs_slc_40",
-      "site_name":"CCAFS SLC 40",
-      "site_name_long":"Cape Canaveral Air Force Station Space Launch Complex 40"
-   },
-   "launch_success":true,
-   "links":{
-      "mission_patch":"https://i.imgur.com/UJTbQ1f.png",
-      "reddit_campaign":"https://www.reddit.com/r/spacex/comments/7olw86/govsat1_ses16_launch_campaign_thread/",
-      "reddit_launch":"https://www.reddit.com/r/spacex/comments/7tvtbh/rspacex_govsat1_official_launch_discussion/",
-      "reddit_recovery":null,
-      "reddit_media":"https://www.reddit.com/r/spacex/comments/7tzzwy/rspacex_govsat1_media_thread_videos_images_gifs/",
-      "presskit":"http://www.spacex.com/sites/spacex/files/govsat1presskit.pdf",
-      "article_link":"https://spaceflightnow.com/2018/01/31/spacex-rocket-flies-on-60th-anniversary-of-first-u-s-satellite-launch/",
-      "video_link":"https://www.youtube.com/watch?v=ScYUA51-POQ"
-   },
-   "details":"Reused booster from the classified NROL-76 mission in May 2017. Following a successful experimental ocean landing that used three engines, the booster unexpectedly remained intact; Elon Musk stated in a tweet that SpaceX will attempt to tow the booster to shore."
+  "flight_number": 55,
+  "launch_year": "2018",
+  "launch_date_unix": 1517941800,
+  "launch_date_utc": "2018-02-06T18:30:00Z",
+  "launch_date_local": "2018-02-06T13:30:00-05:00",
+  "rocket": {
+    "rocket_id": "falconheavy",
+    "rocket_name": "Falcon Heavy",
+    "rocket_type": "FT",
+    "first_stage": {
+      "cores": [
+        {
+          "core_serial": "B1033",
+          "reused": false,
+          "land_success": false,
+          "landing_type": "ASDS",
+          "landing_vehicle": "OCISLY"
+        },
+        {
+          "core_serial": "B1025",
+          "reused": true,
+          "land_success": true,
+          "landing_type": "RTLS",
+          "landing_vehicle": "LZ-1"
+        },
+        {
+          "core_serial": "B1023",
+          "reused": true,
+          "land_success": true,
+          "landing_type": "RTLS",
+          "landing_vehicle": "LZ-1"
+        }
+      ]
+    },
+    "second_stage": {
+      "payloads": [
+        {
+          "payload_id": "Tesla Roadster",
+          "reused": false,
+          "customers": [
+            "SpaceX"
+          ],
+          "payload_type": "Satellite",
+          "payload_mass_kg": null,
+          "payload_mass_lbs": null,
+          "orbit": "Heliocentric orbit"
+        }
+      ]
+    }
+  },
+  "telemetry": {
+    "flight_club": "https://www.flightclub.io/result?code=FHD1"
+  },
+  "reuse": {
+    "core": false,
+    "side_core1": true,
+    "side_core2": true,
+    "fairings": false,
+    "capsule": false
+  },
+  "launch_site": {
+    "site_id": "ksc_lc_39a",
+    "site_name": "KSC LC 39A",
+    "site_name_long": "Kennedy Space Center Historic Launch Complex 39A"
+  },
+  "launch_success": true,
+  "links": {
+    "mission_patch": "https://i.imgur.com/24OyAPQ.png",
+    "reddit_campaign": "https://www.reddit.com/r/spacex/comments/7hjp03/falcon_heavy_demo_launch_campaign_thread/",
+    "reddit_launch": "https://www.reddit.com/r/spacex/comments/7vg63x/rspacex_falcon_heavy_test_flight_official_launch/",
+    "reddit_recovery": null,
+    "reddit_media": "https://www.reddit.com/r/spacex/comments/7vimtm/rspacex_falcon_heavy_test_flight_media_thread/",
+    "presskit": "http://www.spacex.com/sites/spacex/files/falconheavypresskit_v1.pdf",
+    "article_link": "",
+    "video_link": "https://www.youtube.com/watch?v=wbSwFU6tY1c"
+  },
+  "details": "The launch was a success, and the side boosters landed simultaneously at adjacent ground pads. Drone ship landing of the central core is unconfirmed. Final burn to heliocentric mars-earth orbit is expected after the second stage and payload pass through the Van Allen belts, followed by payload separation."
 }
 ```
 
