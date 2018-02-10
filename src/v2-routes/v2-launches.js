@@ -11,7 +11,8 @@ const v2 = express.Router();
 v2.get('/latest', asyncHandle(async (req, res) => {
   const data = await global.db
     .collection('launch_v2')
-    .find({}, { _id: 0 })
+    .find({})
+    .project({ _id: 0 })
     .sort({ flight_number: -1 })
     .limit(1)
     .toArray();
@@ -22,7 +23,8 @@ v2.get('/latest', asyncHandle(async (req, res) => {
 v2.get('/', asyncHandle(async (req, res) => {
   const data = await global.db
     .collection('launch_v2')
-    .find(launch.launchQuery(req), { _id: 0 })
+    .find(launch.launchQuery(req))
+    .project({ _id: 0 })
     .sort(sort.launchSort(req))
     .toArray();
   res.json(data);

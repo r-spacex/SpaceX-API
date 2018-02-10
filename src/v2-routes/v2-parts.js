@@ -11,7 +11,8 @@ const v2 = express.Router();
 v2.get('/caps', asyncHandle(async (req, res) => {
   const data = await global.db
     .collection('capsule')
-    .find(caps.capsuleQuery(req), { _id: 0 })
+    .find(caps.capsuleQuery(req))
+    .project({ _id: 0 })
     .sort({ capsule_serial: 1 })
     .toArray();
   res.json(data);
@@ -21,7 +22,8 @@ v2.get('/caps', asyncHandle(async (req, res) => {
 v2.get('/caps/:cap', asyncHandle(async (req, res) => {
   const data = await global.db
     .collection('capsule')
-    .find({ capsule_serial: req.params.cap }, { _id: 0 })
+    .find({ capsule_serial: req.params.cap })
+    .project({ _id: 0 })
     .toArray();
   res.json(data[0]);
 }));
@@ -30,7 +32,8 @@ v2.get('/caps/:cap', asyncHandle(async (req, res) => {
 v2.get('/cores', asyncHandle(async (req, res) => {
   const data = await global.db
     .collection('core')
-    .find(cores.coreQuery(req), { _id: 0 })
+    .find(cores.coreQuery(req))
+    .project({ _id: 0 })
     .sort({ core_serial: 1 })
     .toArray();
   res.json(data);
@@ -40,7 +43,8 @@ v2.get('/cores', asyncHandle(async (req, res) => {
 v2.get('/cores/:core', asyncHandle(async (req, res) => {
   const data = await global.db
     .collection('core')
-    .find({ core_serial: req.params.core }, { _id: 0 })
+    .find({ core_serial: req.params.core })
+    .project({ _id: 0 })
     .toArray();
   res.json(data[0]);
 }));

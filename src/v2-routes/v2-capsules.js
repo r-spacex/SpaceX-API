@@ -9,7 +9,8 @@ const v2 = express.Router();
 v2.get('/', asyncHandle(async (req, res) => {
   const data = await global.db
     .collection('dragon')
-    .find({}, { _id: 0 })
+    .find({})
+    .project({ _id: 0 })
     .toArray();
   res.json(data);
 }));
@@ -18,7 +19,8 @@ v2.get('/', asyncHandle(async (req, res) => {
 v2.get('/:capsule', asyncHandle(async (req, res) => {
   const data = await global.db
     .collection('dragon')
-    .find({ id: req.params.capsule }, { _id: 0 })
+    .find({ id: req.params.capsule })
+    .project({ _id: 0 })
     .toArray();
   res.json(data[0]);
 }));

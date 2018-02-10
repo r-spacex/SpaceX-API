@@ -11,7 +11,8 @@ const v2 = express.Router();
 v2.get('/', asyncHandle(async (req, res) => {
   const data = await global.db
     .collection('upcoming_v2')
-    .find(launch.launchQuery(req), { _id: 0 })
+    .find(launch.launchQuery(req))
+    .project({ _id: 0 })
     .sort(sort.launchSort(req))
     .toArray();
   res.json(data);

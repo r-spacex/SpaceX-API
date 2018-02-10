@@ -9,7 +9,8 @@ const v2 = express.Router();
 v2.get('/', asyncHandle(async (req, res) => {
   const data = await global.db
     .collection('rocket')
-    .find({}, { _id: 0 })
+    .find({})
+    .project({ _id: 0 })
     .toArray();
   res.json(data);
 }));
@@ -18,7 +19,8 @@ v2.get('/', asyncHandle(async (req, res) => {
 v2.get('/:rocket', asyncHandle(async (req, res) => {
   const data = await global.db
     .collection('rocket')
-    .find({ id: req.params.rocket }, { _id: 0 })
+    .find({ id: req.params.rocket })
+    .project({ _id: 0 })
     .toArray();
   res.json(data[0]);
 }));

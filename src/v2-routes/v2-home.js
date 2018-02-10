@@ -9,7 +9,8 @@ const v2 = express.Router();
 v2.get('/', asyncHandle(async (req, res) => {
   const data = await global.db
     .collection('home')
-    .find({}, { _id: 0 })
+    .find({})
+    .project({ _id: 0 })
     .toArray();
   res.json(data[0]);
 }));
