@@ -42,6 +42,7 @@ GET https://api.spacexdata.com/v2/launches/latest
       "cores": [
         {
           "core_serial": "B1033",
+          "flight": 1,
           "reused": false,
           "land_success": false,
           "landing_type": "ASDS",
@@ -49,6 +50,7 @@ GET https://api.spacexdata.com/v2/launches/latest
         },
         {
           "core_serial": "B1025",
+          "flight": 2,
           "reused": true,
           "land_success": true,
           "landing_type": "RTLS",
@@ -56,6 +58,7 @@ GET https://api.spacexdata.com/v2/launches/latest
         },
         {
           "core_serial": "B1023",
+          "flight": 2,
           "reused": true,
           "land_success": true,
           "landing_type": "RTLS",
@@ -102,7 +105,7 @@ GET https://api.spacexdata.com/v2/launches/latest
     "reddit_recovery": null,
     "reddit_media": "https://www.reddit.com/r/spacex/comments/7vimtm/rspacex_falcon_heavy_test_flight_media_thread/",
     "presskit": "http://www.spacex.com/sites/spacex/files/falconheavypresskit_v1.pdf",
-    "article_link": "",
+    "article_link": "https://spaceflightnow.com/2018/02/07/spacex-debuts-worlds-most-powerful-rocket-sends-tesla-toward-the-asteroid-belt/",
     "video_link": "https://www.youtube.com/watch?v=wbSwFU6tY1c"
   },
   "details": "The launch was a success, and the side boosters landed simultaneously at adjacent ground pads. Drone ship landing of the central core is unconfirmed. Final burn to heliocentric mars-earth orbit is expected after the second stage and payload pass through the Van Allen belts, followed by payload separation."
