@@ -11,7 +11,7 @@
 [![GitHub release](https://img.shields.io/github/release/r-spacex/SpaceX-API.svg?style=flat-square)]()
 [![Interface](https://img.shields.io/badge/interface-REST-brightgreen.svg?style=flat-square)]()
 
-### Open Source REST API for data regarding company info, vehicles, launch sites, and launch data.
+### Open Source REST API for rocket, core, capsule, pad, and launch data
 <br></br>
 
 </div>

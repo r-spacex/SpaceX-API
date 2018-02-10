@@ -1,8 +1,8 @@
 {
   "name": "spacex-api",
   "version": "2.1.0",
-  "description": "Open Source REST API for SpaceX company, vehicle, launchpad, and launch data",
-  "main": "app.js",
+  "description": "Open Source REST API for rocket, core, capsule, pad, and launch data",
+  "main": "./src/app.js",
   "scripts": {
     "test": "NODE_ENV=test PORT=0 NODE_ENV=test jest -i --forceExit && eslint \"**/*.js\"",
     "start": "node src/app.js",
