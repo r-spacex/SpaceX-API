@@ -120,7 +120,7 @@ Local development info can be found [here](https://github.com/r-spacex/SpaceX-AP
 * Uses [Jest](https://facebook.github.io/jest/) and [Supertest](https://github.com/visionmedia/supertest) for unit/integration testing
 * Uses [Travis CI](https://travis-ci.org/) for continuous integration/delivery
 * All data stored in a [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) 3 node replica set cluster
-* Latest database dump included under [releases](https://github.com/r-spacex/SpaceX-API/releases)
+* Latest database mongodump available [here](https://drive.google.com/drive/folders/0B2DdgKR4GR4xdk1sRGowcUZXeE0?usp=sharing)
 * API deployed on a [Heroku](https://www.heroku.com/) pipeline with pull request, staging and production servers
 
 ## FAQ's
