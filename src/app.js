@@ -4,7 +4,6 @@ const morgan = require('morgan');
 const cors = require('cors');
 const compression = require('compression');
 const helmet = require('helmet');
-const config = require('../config/config.json');
 const MongoClient = require('mongodb');
 
 const home = require('./v2-routes/v2-home');
@@ -15,6 +14,8 @@ const launchpad = require('./v2-routes/v2-launchpad');
 const launches = require('./v2-routes/v2-launches');
 const upcoming = require('./v2-routes/v2-upcoming');
 const parts = require('./v2-routes/v2-parts');
+
+const url = 'mongodb+srv://public:spacex@spacex-api-rzdz4.mongodb.net/spacex-api';
 
 const app = express();
 app.use(compression());
@@ -58,7 +59,7 @@ app.use((err, req, res, next) => {
 });
 
 // Mongo Connection + Server Start
-MongoClient.connect(config.url, (err, client) => {
+MongoClient.connect(url, (err, client) => {
   if (err) {
     console.log(err);
     process.exit(1);
