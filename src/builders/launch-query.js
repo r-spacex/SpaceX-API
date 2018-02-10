@@ -35,6 +35,9 @@ exports.launchQuery = (req) => {
   if (req.query.cap_serial) {
     query['rocket.second_stage.payloads.cap_serial'] = req.query.cap_serial;
   }
+  if (req.query.core_flight) {
+    query['rocket.first_stage.cores.flight'] = parseInt(req.query.core_flight, 10);
+  }
   if (req.query.core_reuse) {
     query['reuse.core'] = (req.query.core_reuse === 'true');
   }
