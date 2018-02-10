@@ -1,3 +1,3 @@
 {
-    "url" : "mongodb://public:spacex@spacex-api-shard-00-00-rzdz4.mongodb.net:27017, spacex-api-shard-00-01-rzdz4.mongodb.net:27017,spacex-api-shard-00-02-rzdz4.mongodb.net:27017/spacex-api?ssl=true&replicaSet=spacex-api-shard-0&authSource=admin"
+    "url" : "mongodb+srv://public:spacex@spacex-api-rzdz4.mongodb.net/spacex-api"
 }

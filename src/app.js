@@ -58,12 +58,12 @@ app.use((err, req, res, next) => {
 });
 
 // Mongo Connection + Server Start
-MongoClient.connect(config.url, (err, database) => {
+MongoClient.connect(config.url, (err, client) => {
   if (err) {
     console.log(err);
     process.exit(1);
   }
-  global.db = database;
+  global.db = client.db('spacex-api');
 
   const port = process.env.PORT || 5000;
   app.listen(port, '0.0.0.0', () => {
