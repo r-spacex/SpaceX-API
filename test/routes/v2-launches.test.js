@@ -1,6 +1,6 @@
 
 const request = require('supertest');
-const app = require('../src/app');
+const app = require('../../src/app');
 
 beforeAll((done) => {
   app.on('ready', () => {
@@ -9,18 +9,18 @@ beforeAll((done) => {
 });
 
 //------------------------------------------------------------
-//                    Upcoming Launches V2
+//                    Past Launches V2
 //------------------------------------------------------------
 
-test('It should return all upcoming launches', () => {
-  return request(app.listen()).get('/v2/launches/upcoming').then((response) => {
+test('It should return all past launches', () => {
+  return request(app.listen()).get('/v2/launches').then((response) => {
     expect(response.statusCode).toBe(200);
     response.body.forEach((item) => {
       expect(item).toHaveProperty('flight_number', expect.anything());
-      expect(item).toHaveProperty('launch_year');
+      expect(item).toHaveProperty('launch_year', expect.stringMatching(/^[0-9]{4}$/));
       expect(item).toHaveProperty('launch_date_unix');
-      expect(item).toHaveProperty('launch_date_utc');
-      expect(item).toHaveProperty('launch_date_local');
+      expect(item).toHaveProperty('launch_date_utc', expect.anything());
+      expect(item).toHaveProperty('launch_date_local', expect.anything());
       expect(item).toHaveProperty('rocket.rocket_id');
       expect(item).toHaveProperty('rocket.rocket_name');
       expect(item).toHaveProperty('rocket.rocket_type');
@@ -70,5 +70,15 @@ test('It should return all upcoming launches', () => {
       expect(item).toHaveProperty('links');
       expect(item).toHaveProperty('details');
     });
+  });
+});
+
+//------------------------------------------------------------
+//                     Latest Launch Test
+//------------------------------------------------------------
+
+test('It should return the latest launch', () => {
+  return request(app).get('/v2/launches/latest').then((response) => {
+    expect(response.statusCode).toBe(200);
   });
 });
