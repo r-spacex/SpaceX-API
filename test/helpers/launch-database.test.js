@@ -26,6 +26,7 @@ describe('Helpers - Launch database', () => {
     const launches = await fetchLaunch('launches_v2', { query: [] });
 
     expect(launches).not.toBeUndefined();
+    expect(Array.isArray(launches)).toBe(true);
 
     done();
   });
