@@ -2,8 +2,7 @@
 
 const express = require('express');
 const asyncHandle = require('express-async-handler');
-const launch = require('../builders/launch-query');
-const sort = require('../builders/launch-sort');
+const { fetchLaunch } = require('../helpers/launch-database');
 
 const v2 = express.Router();
 
@@ -21,12 +20,15 @@ v2.get('/latest', asyncHandle(async (req, res) => {
 
 // Return all past launches filtered by querystrings
 v2.get('/', asyncHandle(async (req, res) => {
-  const data = await global.db
-    .collection('launch_v2')
-    .find(launch.launchQuery(req))
-    .project({ _id: 0 })
-    .sort(sort.launchSort(req))
-    .toArray();
+  const data = await fetchLaunch('launch_v2', req);
+  res.json(data);
+}));
+
+v2.get('/info', asyncHandle(async (req, res) => {
+  const pastData = await fetchLaunch('launch_v2', req);
+  const upcomingData = await fetchLaunch('upcoming_v2', req);
+  const data = pastData.concat(upcomingData);
+
   res.json(data);
 }));
 
