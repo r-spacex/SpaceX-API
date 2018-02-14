@@ -2,9 +2,16 @@
  * Returns launch query object from optional querystring inputs
 */
 
+const ObjectId = require('mongodb').ObjectID;
+
 exports.launchQuery = (req) => {
   const query = {};
 
+  if (req.query.flight_id) {
+    // Mongo _id field requires underscore dangle
+    // eslint-disable-next-line no-underscore-dangle
+    query._id = ObjectId(req.query.flight_id);
+  }
   if (req.query.start && req.query.final) {
     query.launch_date_utc = { $gte: `${req.query.start}T00:00:00Z`, $lte: `${req.query.final}T00:00:00Z` };
   }
