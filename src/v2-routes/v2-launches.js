@@ -2,6 +2,7 @@
 
 const express = require('express');
 const asyncHandle = require('express-async-handler');
+const project = require('../builders/project-query');
 const { fetchLaunch } = require('../helpers/launch-database');
 
 const v2 = express.Router();
@@ -11,7 +12,7 @@ v2.get('/latest', asyncHandle(async (req, res) => {
   const data = await global.db
     .collection('launch_v2')
     .find({})
-    .project({ _id: 0 })
+    .project(project.queryProject(req))
     .sort({ flight_number: -1 })
     .limit(1)
     .toArray();
