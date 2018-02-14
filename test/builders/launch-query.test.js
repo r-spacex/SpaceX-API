@@ -12,6 +12,24 @@ beforeAll((done) => {
 //                     Launch Query Test
 //------------------------------------------------------------
 
+test('It should return launches with mongo id\'s', () => {
+  return request(app).get('/v2/launches?id=true').then((response) => {
+    expect(response.statusCode).toBe(200);
+    response.body.forEach((item) => {
+      expect(item).toHaveProperty('_id');
+    });
+  });
+});
+
+test('It should return flight number 55', () => {
+  return request(app).get('/v2/launches?flight_id=5a7a3dceb7afa5b79ec71628').then((response) => {
+    expect(response.statusCode).toBe(200);
+    response.body.forEach((item) => {
+      expect(item).toHaveProperty('flight_number', 55);
+    });
+  });
+});
+
 test('It should return flight number 42', () => {
   return request(app).get('/v2/launches?flight_number=42').then((response) => {
     expect(response.statusCode).toBe(200);
@@ -160,101 +178,128 @@ test('It should return launches with reused capsules', () => {
   });
 });
 
-// test('It should return', () => {
-//   return request(app).get('/v2/launches?').then((response) => {
-//     expect(response.statusCode).toBe(200);
-//     response.body.forEach((item) => {
-//       expect(item).toHaveProperty('', '');
-//     });
-//   });
-// });
+test('It should return launches from LC-39A', () => {
+  return request(app).get('/v2/launches?site_id=ksc_lc_39a').then((response) => {
+    expect(response.statusCode).toBe(200);
+    response.body.forEach((item) => {
+      expect(item.launch_site).toHaveProperty('site_id', 'ksc_lc_39a');
+    });
+  });
+});
 
-// test('It should return', () => {
-//   return request(app).get('/v2/launches?').then((response) => {
-//     expect(response.statusCode).toBe(200);
-//     response.body.forEach((item) => {
-//       expect(item).toHaveProperty('', '');
-//     });
-//   });
-// });
+test('It should return more launches from LC-39A', () => {
+  return request(app).get('/v2/launches?site_name=KSC+LC+39A').then((response) => {
+    expect(response.statusCode).toBe(200);
+    response.body.forEach((item) => {
+      expect(item.launch_site).toHaveProperty('site_name', 'KSC LC 39A');
+    });
+  });
+});
 
-// test('It should return', () => {
-//   return request(app).get('/v2/launches?').then((response) => {
-//     expect(response.statusCode).toBe(200);
-//     response.body.forEach((item) => {
-//       expect(item).toHaveProperty('', '');
-//     });
-//   });
-// });
+test('It should return more launches from LC-39A long name', () => {
+  return request(app).get('/v2/launches?site_name_long=Kennedy+Space+Center+Historic+Launch+Complex+39A').then((response) => {
+    expect(response.statusCode).toBe(200);
+    response.body.forEach((item) => {
+      expect(item.launch_site).toHaveProperty('site_name_long', 'Kennedy Space Center Historic Launch Complex 39A');
+    });
+  });
+});
 
-// test('It should return', () => {
-//   return request(app).get('/v2/launches?').then((response) => {
-//     expect(response.statusCode).toBe(200);
-//     response.body.forEach((item) => {
-//       expect(item).toHaveProperty('', '');
-//     });
-//   });
-// });
+test('It should return launch of BulgariaSat-1', () => {
+  return request(app).get('/v2/launches?payload_id=BulgariaSat-1').then((response) => {
+    expect(response.statusCode).toBe(200);
+    response.body.forEach((item) => {
+      item.rocket.second_stage.payloads.forEach((payload) => {
+        expect(payload).toHaveProperty('payload_id', 'BulgariaSat-1');
+      });
+    });
+  });
+});
 
-// test('It should return', () => {
-//   return request(app).get('/v2/launches?').then((response) => {
-//     expect(response.statusCode).toBe(200);
-//     response.body.forEach((item) => {
-//       expect(item).toHaveProperty('', '');
-//     });
-//   });
-// });
+test('It should return launches with Bulgaria Sat customer', () => {
+  return request(app).get('/v2/launches?customer=Bulgaria+Sat').then((response) => {
+    expect(response.statusCode).toBe(200);
+    response.body.forEach((item) => {
+      item.rocket.second_stage.payloads.forEach((payload) => {
+        payload.customers.forEach((customer) => {
+          expect(customer).toContain('Bulgaria Sat');
+        });
+      });
+    });
+  });
+});
 
-// test('It should return', () => {
-//   return request(app).get('/v2/launches?').then((response) => {
-//     expect(response.statusCode).toBe(200);
-//     response.body.forEach((item) => {
-//       expect(item).toHaveProperty('', '');
-//     });
-//   });
-// });
+test('It should return launches with Satellite payloads', () => {
+  return request(app).get('/v2/launches?payload_type=Satellite').then((response) => {
+    expect(response.statusCode).toBe(200);
+    response.body.forEach((item) => {
+      item.rocket.second_stage.payloads.forEach((payload) => {
+        expect(payload).toHaveProperty('payload_type');
+      });
+    });
+  });
+});
 
-// test('It should return', () => {
-//   return request(app).get('/v2/launches?').then((response) => {
-//     expect(response.statusCode).toBe(200);
-//     response.body.forEach((item) => {
-//       expect(item).toHaveProperty('', '');
-//     });
-//   });
-// });
+test('It should return launches with GTO orbit', () => {
+  return request(app).get('/v2/launches?orbit=GTO').then((response) => {
+    expect(response.statusCode).toBe(200);
+    response.body.forEach((item) => {
+      item.rocket.second_stage.payloads.forEach((payload) => {
+        expect(payload).toHaveProperty('orbit');
+      });
+    });
+  });
+});
 
-// test('It should return', () => {
-//   return request(app).get('/v2/launches?').then((response) => {
-//     expect(response.statusCode).toBe(200);
-//     response.body.forEach((item) => {
-//       expect(item).toHaveProperty('', '');
-//     });
-//   });
-// });
+test('It should return launches with successful launches', () => {
+  return request(app).get('/v2/launches?launch_success=true').then((response) => {
+    expect(response.statusCode).toBe(200);
+    response.body.forEach((item) => {
+      expect(item).toHaveProperty('launch_success');
+    });
+  });
+});
 
-// test('It should return', () => {
-//   return request(app).get('/v2/launches?').then((response) => {
-//     expect(response.statusCode).toBe(200);
-//     response.body.forEach((item) => {
-//       expect(item).toHaveProperty('', '');
-//     });
-//   });
-// });
+test('It should return launches with core reuse', () => {
+  return request(app).get('/v2/launches?reused=true').then((response) => {
+    expect(response.statusCode).toBe(200);
+    response.body.forEach((item) => {
+      item.rocket.first_stage.cores.forEach((core) => {
+        expect(core).toHaveProperty('reused');
+      });
+    });
+  });
+});
 
-// test('It should return', () => {
-//   return request(app).get('/v2/launches?').then((response) => {
-//     expect(response.statusCode).toBe(200);
-//     response.body.forEach((item) => {
-//       expect(item).toHaveProperty('', '');
-//     });
-//   });
-// });
+test('It should return launches with successful core landings', () => {
+  return request(app).get('/v2/launches?land_success=true').then((response) => {
+    expect(response.statusCode).toBe(200);
+    response.body.forEach((item) => {
+      item.rocket.first_stage.cores.forEach((core) => {
+        expect(core).toHaveProperty('land_success');
+      });
+    });
+  });
+});
 
-// test('It should return', () => {
-//   return request(app).get('/v2/launches?').then((response) => {
-//     expect(response.statusCode).toBe(200);
-//     response.body.forEach((item) => {
-//       expect(item).toHaveProperty('', '');
-//     });
-//   });
-// });
+test('It should return launches with ASDS landing', () => {
+  return request(app).get('/v2/launches?landing_type=ASDS').then((response) => {
+    expect(response.statusCode).toBe(200);
+    response.body.forEach((item) => {
+      item.rocket.first_stage.cores.forEach((core) => {
+        expect(core).toHaveProperty('landing_type');
+      });
+    });
+  });
+});
+
+test('It should return launches with landings on OCISLY', () => {
+  return request(app).get('/v2/launches?landing_vehicle=OCISLY').then((response) => {
+    expect(response.statusCode).toBe(200);
+    response.body.forEach((item) => {
+      item.rocket.first_stage.cores.forEach((core) => {
+        expect(core).toHaveProperty('landing_vehicle');
+      });
+    });
+  });
+});

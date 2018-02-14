@@ -66,6 +66,9 @@ exports.launchQuery = (req) => {
   if (req.query.site_name) {
     query['launch_site.site_name'] = req.query.site_name;
   }
+  if (req.query.site_name_long) {
+    query['launch_site.site_name_long'] = req.query.site_name_long;
+  }
   if (req.query.payload_id) {
     query['rocket.second_stage.payloads.payload_id'] = req.query.payload_id;
   }
