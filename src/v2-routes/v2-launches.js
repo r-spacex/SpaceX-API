@@ -24,7 +24,7 @@ v2.get('/', asyncHandle(async (req, res) => {
   res.json(data);
 }));
 
-v2.get('/info', asyncHandle(async (req, res) => {
+v2.get('/all', asyncHandle(async (req, res) => {
   const pastData = await fetchLaunch('launch_v2', req);
   const upcomingData = await fetchLaunch('upcoming_v2', req);
   const data = pastData.concat(upcomingData);

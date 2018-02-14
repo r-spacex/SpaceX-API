@@ -90,7 +90,7 @@ test('It should return the latest launch', () => {
 //------------------------------------------------------------
 
 test('It should return a specific Launch info', () => {
-  return request(app.listen()).get('/v2/launches/info?flight_number=40').then((response) => {
+  return request(app.listen()).get('/v2/launches/all?flight_number=40').then((response) => {
     expect(response.statusCode).toBe(200);
     response.body.forEach((item) => {
       expect(item).toHaveProperty('flight_number', expect.anything());
