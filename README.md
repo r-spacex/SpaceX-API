@@ -31,9 +31,9 @@ GET https://api.spacexdata.com/v2/launches/latest
 {
   "flight_number": 55,
   "launch_year": "2018",
-  "launch_date_unix": 1517941800,
-  "launch_date_utc": "2018-02-06T18:30:00Z",
-  "launch_date_local": "2018-02-06T13:30:00-05:00",
+  "launch_date_unix": 1517949900,
+  "launch_date_utc": "2018-02-06T20:45:00Z",
+  "launch_date_local": "2018-02-06T15:45:00-05:00",
   "rocket": {
     "rocket_id": "falconheavy",
     "rocket_name": "Falcon Heavy",
@@ -43,6 +43,7 @@ GET https://api.spacexdata.com/v2/launches/latest
         {
           "core_serial": "B1033",
           "flight": 1,
+          "block": 3,
           "reused": false,
           "land_success": false,
           "landing_type": "ASDS",
@@ -51,6 +52,7 @@ GET https://api.spacexdata.com/v2/launches/latest
         {
           "core_serial": "B1025",
           "flight": 2,
+          "block": 2,
           "reused": true,
           "land_success": true,
           "landing_type": "RTLS",
@@ -59,6 +61,7 @@ GET https://api.spacexdata.com/v2/launches/latest
         {
           "core_serial": "B1023",
           "flight": 2,
+          "block": 2,
           "reused": true,
           "land_success": true,
           "landing_type": "RTLS",
@@ -108,7 +111,7 @@ GET https://api.spacexdata.com/v2/launches/latest
     "article_link": "https://spaceflightnow.com/2018/02/07/spacex-debuts-worlds-most-powerful-rocket-sends-tesla-toward-the-asteroid-belt/",
     "video_link": "https://www.youtube.com/watch?v=wbSwFU6tY1c"
   },
-  "details": "The launch was a success, and the side boosters landed simultaneously at adjacent ground pads. Drone ship landing of the central core is unconfirmed. Final burn to heliocentric mars-earth orbit is expected after the second stage and payload pass through the Van Allen belts, followed by payload separation."
+  "details": "The launch was a success, and the side boosters landed simultaneously at adjacent ground pads. Drone ship landing of the central core failed. Final burn to heliocentric mars-earth orbit was successful after the second stage and payload passed through the Van Allen belts."
 }
 ```
 
