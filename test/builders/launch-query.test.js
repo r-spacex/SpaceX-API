@@ -111,6 +111,17 @@ test('It should return launches with core serial B1029', () => {
   });
 });
 
+test('It should return launches block 4 cores', () => {
+  return request(app).get('/v2/launches?block=4').then((response) => {
+    expect(response.statusCode).toBe(200);
+    response.body.forEach((item) => {
+      item.rocket.first_stage.cores.forEach((core) => {
+        expect(core).toHaveProperty('block');
+      });
+    });
+  });
+});
+
 test('It should return launches with cap serial C113', () => {
   return request(app).get('/v2/launches?cap_serial=C113').then((response) => {
     expect(response.statusCode).toBe(200);

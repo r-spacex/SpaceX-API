@@ -8,6 +8,9 @@ exports.coreQuery = (req) => {
   if (req.query.core_serial) {
     query.core_serial = req.query.core_serial;
   }
+  if (req.query.block) {
+    query.block = parseInt(req.query.block, 10);
+  }
   if (req.query.status) {
     query.status = req.query.status;
   }

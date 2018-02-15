@@ -45,6 +45,9 @@ exports.launchQuery = (req) => {
   if (req.query.core_flight) {
     query['rocket.first_stage.cores.flight'] = parseInt(req.query.core_flight, 10);
   }
+  if (req.query.block) {
+    query['rocket.first_stage.cores.block'] = parseInt(req.query.block, 10);
+  }
   if (req.query.core_reuse) {
     query['reuse.core'] = (req.query.core_reuse === 'true');
   }

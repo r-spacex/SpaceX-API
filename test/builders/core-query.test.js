@@ -21,6 +21,15 @@ test('It should return core serial B1041', () => {
   });
 });
 
+test('It should return all block 4 cores', () => {
+  return request(app).get('/v2/parts/cores?block=4').then((response) => {
+    expect(response.statusCode).toBe(200);
+    response.body.forEach((item) => {
+      expect(item).toHaveProperty('block');
+    });
+  });
+});
+
 test('It should return all cores with active status', () => {
   return request(app).get('/v2/parts/cores?status=active').then((response) => {
     expect(response.statusCode).toBe(200);

@@ -28,6 +28,7 @@ test('It should return all upcoming launches', () => {
       item.rocket.first_stage.cores.forEach((core) => {
         expect(core).toHaveProperty('core_serial');
         expect(core).toHaveProperty('flight');
+        expect(core).toHaveProperty('block');
         expect(core).toHaveProperty('reused');
         expect(core).toHaveProperty('land_success');
         expect(core).toHaveProperty('landing_type');
