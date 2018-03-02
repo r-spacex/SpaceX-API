@@ -4,6 +4,7 @@ const morgan = require('morgan');
 const cors = require('cors');
 const compression = require('compression');
 const helmet = require('helmet');
+const pretty = require('express-prettify');
 const MongoClient = require('mongodb');
 
 const home = require('./v2-routes/v2-home');
@@ -21,6 +22,7 @@ const app = express();
 app.use(compression());
 app.use(helmet());
 app.use(cors());
+app.use(pretty({ query: 'pretty' }));
 if (process.env.NODE_ENV !== 'test') {
   app.use(morgan('common'));
 }
