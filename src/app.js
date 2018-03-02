@@ -16,13 +16,24 @@ const launches = require('./v2-routes/v2-launches');
 const upcoming = require('./v2-routes/v2-upcoming');
 const parts = require('./v2-routes/v2-parts');
 
+// Production read-only DB
 const url = 'mongodb+srv://public:spacex@spacex-api-rzdz4.mongodb.net/spacex-api';
 
 const app = express();
+
+// Gzip all responses
 app.use(compression());
+
+// HTTP header security
 app.use(helmet());
+
+// Enable CORS for all routes
 app.use(cors());
+
+// Add pretty output option for debugging
 app.use(pretty({ query: 'pretty' }));
+
+// Hide logging when running tests
 if (process.env.NODE_ENV !== 'test') {
   app.use(morgan('common'));
 }
@@ -34,6 +45,7 @@ app.use((req, res, next) => {
   next();
 });
 
+// Express Router routes
 app.use('/v2', home);
 app.use('/v2/info', info);
 app.use('/v2/rockets', rockets);
@@ -51,7 +63,7 @@ app.use((req, res) => {
   });
 });
 
-// generic error handler - must have 4 parameters
+// 500 error handler
 // eslint-disable-next-line no-unused-vars
 app.use((err, req, res, next) => {
   res.status(500);
