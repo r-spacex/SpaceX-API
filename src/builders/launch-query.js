@@ -1,10 +1,14 @@
-/**
- * Returns launch query object from optional querystring inputs
-*/
 
+/**
+ * Builds Mongo query for past/upcoming launch endpoints from querystrings
+ * @param {Object} req The Express request object to build queries
+ * @return {Object} Mongo compatible query object
+ */
+
+// Required to correctly output ObjectID's
 const ObjectId = require('mongodb').ObjectID;
 
-exports.launchQuery = (req) => {
+module.exports.launchQuery = (req) => {
   const query = {};
 
   if (req.query.flight_id) {
