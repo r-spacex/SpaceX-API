@@ -1,8 +1,11 @@
+
 /**
- * Returns core query object from optional querystring inputs
+ * Builds Mongo query for core data endpoints from querystrings
+ * @param {Object} req The Express request object to build queries
+ * @return {Object} Mongo compatible query object
  */
 
-exports.coreQuery = (req) => {
+module.exports.coreQuery = (req) => {
   const query = {};
 
   if (req.query.core_serial) {
