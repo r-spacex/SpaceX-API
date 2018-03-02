@@ -2,7 +2,6 @@
 // Required to correctly output ObjectID's
 const ObjectId = require('mongodb').ObjectID;
 
-
 /**
  * Builds Mongo query for past/upcoming launch endpoints from querystrings
  * @param {Object} req The Express request object to access querystrings

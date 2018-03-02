@@ -1,10 +1,14 @@
-/**
- * Returns sorting query for past/upcoming launches
-*/
 
+// Prevent incorrect input
 const lowerCase = require('lower-case');
 
-exports.launchSort = (req) => {
+/**
+ * Builds Mongo sort object to set document order
+ * @param {Object} req The Express request object to access querystrings
+ * @return {Object} Mongo compatible sort object
+ */
+
+module.exports.launchSort = (req) => {
   const query = {};
 
   if (lowerCase(req.query.order) === 'asc') {
