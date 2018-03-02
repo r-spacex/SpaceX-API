@@ -1,7 +1,7 @@
 
 /**
  * Builds Mongo query for capsule data endpoints from querystrings
- * @param {Object} req The Express request object to build queries
+ * @param {Object} req The Express request object to access querystrings
  * @return {Object} Mongo compatible query object
  */
 
