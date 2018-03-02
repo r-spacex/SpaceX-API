@@ -1,8 +1,12 @@
-/**
- * Returns project query for past/upcoming launches
-*/
 
+// Prevent incorrect input
 const lowerCase = require('lower-case');
+
+/**
+ * Builds Mongo projection object to show/hide document id field
+ * @param {Object} req The Express request object to access querystrings
+ * @return {Object} Mongo compatible projection object
+ */
 
 exports.queryProject = (req) => {
   const query = {};
