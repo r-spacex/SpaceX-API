@@ -24,7 +24,7 @@ See the [Wiki](https://github.com/r-spacex/SpaceX-API/wiki) for full API Documen
 **Example Response**
 
 ```http
-GET https://api.spacexdata.com/v2/launches/latest
+GET https://api.spacexdata.com/v2/launches/latest?pretty
 ```
 
 ```json
