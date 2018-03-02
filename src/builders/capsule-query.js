@@ -1,8 +1,11 @@
+
 /**
- * Returns capsule query object from optional querystring inputs
+ * Builds Mongo query for capsule data endpoints from querystrings
+ * @param {Object} req The Express request object to build queries
+ * @return {Object} Mongo compatible query object
  */
 
-exports.capsuleQuery = (req) => {
+module.exports.capsuleQuery = (req) => {
   const query = {};
 
   if (req.query.capsule_serial) {
