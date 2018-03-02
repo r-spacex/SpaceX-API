@@ -30,7 +30,7 @@
     "express": "^4.16.2",
     "express-async-handler": "^1.0.4",
     "express-prettify": "0.0.10",
-    "helmet": "^3.11.0",
+    "helmet": "^3.12.0",
     "lower-case": "^1.1.4",
     "mongodb": "^3.0.3",
     "morgan": "^1.9.0",
