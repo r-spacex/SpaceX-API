@@ -1,13 +1,14 @@
 {
     "env": {
-        "es6": true,
         "node": true,
-        "jest": true
+        "jest": true,
+        "mongo": true
     },
     "extends": "airbnb",
     "parserOptions": {
         "sourceType": "module",
-        "ecmaVersion": 2017
+        "ecmaVersion": 2017,
+        "impliedStrict": true
     },
     "rules": {
         "no-console":0,
