@@ -6,7 +6,6 @@ const compression = require('compression');
 const helmet = require('helmet');
 const pretty = require('express-prettify');
 const MongoClient = require('mongodb');
-const redis = require('redis');
 
 const home = require('./v2-routes/v2-home');
 const info = require('./v2-routes/v2-info');
@@ -21,7 +20,7 @@ const parts = require('./v2-routes/v2-parts');
 const url = 'mongodb+srv://public:spacex@spacex-api-rzdz4.mongodb.net/spacex-api';
 
 // Global object to access Redis
-global.client = redis.createClient(process.env.REDIS_URL);
+global.client = require('redis').createClient(process.env.REDIS_URL);
 
 const app = express();
 
