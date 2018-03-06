@@ -20,11 +20,6 @@ const parts = require('./v2-routes/v2-parts');
 // Production read-only DB
 const url = 'mongodb+srv://public:spacex@spacex-api-rzdz4.mongodb.net/spacex-api';
 
-// Global object to access Redis
-global.RedisClient = Redis.createClient(process.env.REDIS_URL);
-console.log(process.env.REDIS_URL);
-console.log('Redis Connected...');
-
 const app = express();
 
 // Gzip all responses
@@ -77,6 +72,10 @@ app.use((err, req, res, next) => {
     error: 'Internal Server Error',
   });
 });
+
+// Global object to access Redis
+global.RedisClient = Redis.createClient(process.env.REDIS_URL);
+console.log('Redis Connected...');
 
 // Mongo Connection + Server Start
 MongoClient.connect(url, (err, client) => {
