@@ -6,6 +6,7 @@ const compression = require('compression');
 const helmet = require('helmet');
 const pretty = require('express-prettify');
 const MongoClient = require('mongodb');
+const Redis = require('redis');
 
 const home = require('./v2-routes/v2-home');
 const info = require('./v2-routes/v2-info');
@@ -20,7 +21,9 @@ const parts = require('./v2-routes/v2-parts');
 const url = 'mongodb+srv://public:spacex@spacex-api-rzdz4.mongodb.net/spacex-api';
 
 // Global object to access Redis
-global.client = require('redis').createClient(process.env.REDIS_URL);
+global.RedisClient = Redis.createClient(process.env.REDIS_URL);
+console.log(process.env.REDIS_URL);
+console.log('Redis Connected...');
 
 const app = express();
 
@@ -82,9 +85,12 @@ MongoClient.connect(url, (err, client) => {
     process.exit(1);
   }
   global.db = client.db('spacex-api');
+  console.log('DB Connected...');
 
   const port = process.env.PORT || 5000;
   app.listen(port, '0.0.0.0', () => {
+    console.log('Mongo Connected...');
+    console.log('Running on port 5000');
     app.emit('ready');
   });
 });
