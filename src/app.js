@@ -74,7 +74,7 @@ app.use((err, req, res, next) => {
 });
 
 // Global object to access Redis
-global.RedisClient = Redis.createClient(process.env.REDIS_URL);
+global.RedisClient = Redis.createClient(process.env.REDISCLOUD_URL);
 console.log('Redis Connected...');
 
 // Mongo Connection + Server Start
@@ -84,7 +84,6 @@ MongoClient.connect(url, (err, client) => {
     process.exit(1);
   }
   global.db = client.db('spacex-api');
-  console.log('DB Connected...');
 
   const port = process.env.PORT || 5000;
   app.listen(port, '0.0.0.0', () => {
