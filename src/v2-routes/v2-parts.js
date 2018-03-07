@@ -13,7 +13,7 @@ v2.get('/caps', asyncHandle(async (req, res) => {
     .collection('capsule')
     .find(caps.capsuleQuery(req))
     .project({ _id: 0 })
-    .sort({ original_launch: 1 })
+    .sort({ original_launch: 1, capsule_serial: 1 })
     .toArray();
   res.json(data);
 }));
@@ -34,7 +34,7 @@ v2.get('/cores', asyncHandle(async (req, res) => {
     .collection('core')
     .find(cores.coreQuery(req))
     .project({ _id: 0 })
-    .sort({ original_launch: 1 })
+    .sort({ original_launch: 1, core_serial: 1 })
     .toArray();
   res.json(data);
 }));
