@@ -5,7 +5,7 @@ const asyncHandle = require('express-async-handler');
 const project = require('../builders/project-query');
 const { fetchLaunch } = require('../helpers/launch-database');
 const cache = require('express-redis-cache')({
-  client: global.RedisClient,
+  client: global.client,
   expire: 5000,
 });
 

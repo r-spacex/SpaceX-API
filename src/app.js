@@ -74,7 +74,7 @@ app.use((err, req, res, next) => {
 });
 
 // Global object to access Redis
-global.RedisClient = Redis.createClient(process.env.REDISCLOUD_URL);
+global.client = Redis.createClient(process.env.REDIS_URL);
 console.log('Redis Connected...');
 
 // Mongo Connection + Server Start
