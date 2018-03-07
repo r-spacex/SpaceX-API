@@ -22,6 +22,15 @@ const url = 'mongodb+srv://public:spacex@spacex-api-rzdz4.mongodb.net/spacex-api
 
 const app = express();
 
+// Global object to access Redis
+global.rclient = Redis.createClient(process.env.REDIS_URL);
+global.rclient.on('connect', () => {
+  console.log('Connected to Redis');
+});
+global.rclient.on('error', (err) => {
+  console.log(`Redis error: ${err}`);
+});
+
 // Gzip all responses
 app.use(compression());
 
@@ -72,10 +81,6 @@ app.use((err, req, res, next) => {
     error: 'Internal Server Error',
   });
 });
-
-// Global object to access Redis
-global.client = Redis.createClient(process.env.REDIS_URL);
-console.log('Redis Connected...');
 
 // Mongo Connection + Server Start
 MongoClient.connect(url, (err, client) => {
