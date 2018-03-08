@@ -2,7 +2,7 @@
 
 ![Imgur](http://i.imgur.com/eL73Iit.png)
 
-![Imgur](https://i.imgur.com/l0y1El1.jpg)
+![Imgur](https://i.imgur.com/ZTCR8rg.jpg)
 
 # SpaceX Data REST API
 
@@ -29,11 +29,11 @@ GET https://api.spacexdata.com/v2/launches/latest?pretty
 
 ```json
 {
-  "flight_number": 56,
+  "flight_number": 57,
   "launch_year": "2018",
-  "launch_date_unix": 1519309020,
-  "launch_date_utc": "2018-02-22T14:17:00Z",
-  "launch_date_local": "2018-02-22T06:17:00-08:00",
+  "launch_date_unix": 1520314380,
+  "launch_date_utc": "2018-03-06T05:33:00Z",
+  "launch_date_local": "2018-03-06T00:33:00-05:00",
   "rocket": {
     "rocket_id": "falcon9",
     "rocket_name": "Falcon 9",
@@ -41,10 +41,10 @@ GET https://api.spacexdata.com/v2/launches/latest?pretty
     "first_stage": {
       "cores": [
         {
-          "core_serial": "B1038",
-          "flight": 2,
-          "block": 3,
-          "reused": true,
+          "core_serial": "B1044",
+          "flight": 1,
+          "block": 4,
+          "reused": false,
           "land_success": null,
           "landing_type": null,
           "landing_vehicle": null
@@ -54,57 +54,46 @@ GET https://api.spacexdata.com/v2/launches/latest?pretty
     "second_stage": {
       "payloads": [
         {
-          "payload_id": "Paz",
+          "payload_id": "Hispasat 30W-6",
           "reused": false,
           "customers": [
-            "HisdeSAT"
+            "Hispasat"
           ],
           "payload_type": "Satellite",
-          "payload_mass_kg": 1350,
-          "payload_mass_lbs": 2976.2,
-          "orbit": "LEO"
-        },
-        {
-          "payload_id": "Microsat-2a, -2b",
-          "reused": false,
-          "customers": [
-            "SpaceX"
-          ],
-          "payload_type": "Satellite",
-          "payload_mass_kg": 800,
-          "payload_mass_lbs": 1763.7,
-          "orbit": "LEO"
+          "payload_mass_kg": 6092,
+          "payload_mass_lbs": 13430.6,
+          "orbit": "GTO"
         }
       ]
     }
   },
   "telemetry": {
-    "flight_club": "https://www.flightclub.io/result?code=PAZ1"
+    "flight_club": null
   },
   "reuse": {
-    "core": true,
+    "core": false,
     "side_core1": false,
     "side_core2": false,
     "fairings": false,
     "capsule": false
   },
   "launch_site": {
-    "site_id": "vafb_slc_4e",
-    "site_name": "VAFB SLC 4E",
-    "site_name_long": "Vandenberg Air Force Base Space Launch Complex 4E"
+    "site_id": "ccafs_slc_40",
+    "site_name": "CCAFS SLC 40",
+    "site_name_long": "Cape Canaveral Air Force Station Space Launch Complex 40"
   },
   "launch_success": true,
   "links": {
-    "mission_patch": "https://i.imgur.com/6iUJpn4.png",
-    "reddit_campaign": "https://www.reddit.com/r/spacex/comments/7qnflk/paz_microsat2a_2b_launch_campaign_thread/",
-    "reddit_launch": "https://www.reddit.com/r/spacex/comments/7y0grt/rspacex_paz_official_launch_discussion_updates/",
+    "mission_patch": "https://i.imgur.com/CLrl3eg.png",
+    "reddit_campaign": "https://www.reddit.com/r/spacex/comments/7r5pyn/hispasat_30w6_launch_campaign_thread/",
+    "reddit_launch": "https://www.reddit.com/r/spacex/comments/7r5pyn/hispasat_30w6_launch_campaign_thread/",
     "reddit_recovery": null,
-    "reddit_media": "https://www.reddit.com/r/spacex/comments/7zdvop/rspacex_paz_media_thread_videos_images_gifs/",
-    "presskit": "http://www.spacex.com/sites/spacex/files/paz_press_kit_2.21.pdf",
-    "article_link": "https://spaceflightnow.com/2018/02/22/recycled-spacex-rocket-boosts-paz-radar-satellite-first-starlink-testbeds-into-orbit/",
-    "video_link": "https://www.youtube.com/watch?v=-p-PToD2URA"
+    "reddit_media": "https://www.reddit.com/r/spacex/comments/825asx/rspacex_hispasat_30w6_media_thread_videos_images/",
+    "presskit": "http://www.spacex.com/sites/spacex/files/hispasat30w6_presskit.pdf",
+    "article_link": null,
+    "video_link": "https://www.youtube.com/watch?v=Kpfrp-GMKKM"
   },
-  "details": "First launch attempt on the 21st scrubbed due to upper level winds. Will also carry two SpaceX test satellites for the upcoming Starlink constellation."
+  "details": "Launched with landing legs and titanium grid fins. Did not attempt a landing due to 'unfavorable weather conditions in the recovery area'."
 }
 ```
 
