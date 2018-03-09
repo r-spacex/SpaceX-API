@@ -4,9 +4,10 @@ const express = require('express');
 const asyncHandle = require('express-async-handler');
 const project = require('../builders/project-query');
 const { fetchLaunch } = require('../helpers/launch-database');
+const redis = require('redis');
 
 const cache = require('express-redis-cache')({
-  client: global.rclient,
+  client: redis.createClient(process.env.REDIS_URL),
   expire: 5000,
 });
 
