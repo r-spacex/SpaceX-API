@@ -6,6 +6,7 @@ const compression = require('compression');
 const helmet = require('helmet');
 const pretty = require('express-prettify');
 const MongoClient = require('mongodb');
+const cache = require('./db/redis');
 
 const home = require('./v2-routes/v2-home');
 const info = require('./v2-routes/v2-info');
@@ -34,8 +35,10 @@ app.use(cors());
 app.use(pretty({ query: 'pretty' }));
 
 // Hide logging when running tests
+// Disable Redis caching when running tests
 if (process.env.NODE_ENV !== 'test') {
   app.use(morgan('common'));
+  app.use(cache.route());
 }
 
 // Global HTTP headers
