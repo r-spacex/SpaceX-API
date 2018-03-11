@@ -1,0 +1,12 @@
+version: '3'
+services:
+  web:
+    build: .
+    volumes:
+      - ".:/src/app"
+    ports:
+      - "80:5000"
+    links:
+      - redis_db
+  redis_db:
+    image: redis
