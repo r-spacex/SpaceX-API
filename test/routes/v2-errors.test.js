@@ -12,8 +12,7 @@ beforeAll((done) => {
 //                     404 Test
 //------------------------------------------------------------
 
-test('It should return 404 error', () => {
-  return request(app).get('/v1').then((response) => {
-    expect(response.statusCode).toBe(404);
-  });
+test('It should return 404 error', async () => {
+  const response = await request(app).get('/v1');
+  expect(response.statusCode).toBe(404);
 });
