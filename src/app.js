@@ -37,7 +37,7 @@ app.use(pretty({ query: 'pretty' }));
 // Hide logging when running tests
 // Disable Redis caching when running tests
 if (process.env.NODE_ENV !== 'test') {
-  app.use(morgan('common'));
+  app.use(morgan('dev'));
   app.use(cache.route());
 }
 
