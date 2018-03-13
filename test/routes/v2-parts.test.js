@@ -12,7 +12,7 @@ beforeAll((done) => {
 //                     Capsule V2
 //------------------------------------------------------------
 
-test('It should return all v2 capsules',  async () => {
+test('It should return all v2 capsules', async () => {
   const response = await request(app).get('/v2/parts/caps');
   expect(response.statusCode).toBe(200);
   response.body.forEach((item) => {
@@ -55,7 +55,7 @@ test('It should return all v2 cores', async () => {
 });
 
 test('It should return core B0007', async () => {
-  const response = await request(app).get('/v2/parts/cores/B0007')
+  const response = await request(app).get('/v2/parts/cores/B0007');
   expect(response.statusCode).toBe(200);
   expect(response.body).toHaveProperty('core_serial', 'B0007');
 });
