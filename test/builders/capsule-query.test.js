@@ -3,7 +3,7 @@ const request = require('supertest');
 const app = require('../../src/app');
 
 beforeAll((done) => {
-  app.on('ready', async () => {
+  app.on('ready', () => {
     jest.setTimeout(10000);
     done();
   });
