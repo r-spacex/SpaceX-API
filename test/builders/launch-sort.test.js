@@ -19,7 +19,7 @@ test('It should return launches sorted from smallest to greatest', async () => {
 });
 
 test('It should return launches sorted from greatest to smallest', async () => {
-  const response = await request(app).get('/v2/launches?order=desc')
+  const response = await request(app).get('/v2/launches?order=desc');
   expect(response.statusCode).toBe(200);
   expect(response.body[response.body.length - 1]).toHaveProperty('flight_number', 1);
 });
