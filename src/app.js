@@ -1,6 +1,6 @@
 
 const Koa = require('koa');
-const cache = require('koa-redis-cache')
+const cache = require('koa-redis-cache');
 const compress = require('koa-compress');
 const Logger = require('koa-logger');
 const Cors = require('@koa/cors');
