@@ -22,16 +22,22 @@ const url = 'mongodb+srv://public:spacex@spacex-api-rzdz4.mongodb.net/spacex-api
 
 const app = new Koa();
 
+// Gzip all responses
 app.use(compress());
 
+// HTTP header security
 app.use(Helmet());
 
+// Enable CORS for all routes
 app.use(Cors());
 
+// Add pretty output option for debugging
 app.use(json({ pretty: false, param: 'pretty' }));
 
+// Redis cache options
+// 90 minute TTL
 const options = {
-  expire: 60,
+  expire: 5000,
 };
 
 // Hide logging when running tests
@@ -51,6 +57,7 @@ app.use(launches.routes());
 app.use(upcoming.routes());
 app.use(parts.routes());
 
+// Error Handler
 app.use(async (ctx, next) => {
   try {
     await next();
