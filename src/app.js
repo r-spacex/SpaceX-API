@@ -1,12 +1,13 @@
 
 const Koa = require('koa');
+const cache = require('koa-redis-cache')
 const compress = require('koa-compress');
 const Logger = require('koa-logger');
 const Cors = require('@koa/cors');
 const Helmet = require('koa-helmet');
 const MongoClient = require('mongodb');
-const cache = require('koa-redis-cache');
 const json = require('koa-json');
+const urlParse = require('url');
 
 const home = require('./v2-routes/v2-home');
 const info = require('./v2-routes/v2-info');
@@ -36,10 +37,16 @@ app.use(json({ pretty: false, param: 'pretty' }));
 
 // Redis cache options
 // 90 minute TTL
+const redisURL = urlParse.parse(process.env.REDISCLOUD_URL || 'redis://default:default@redis_db:6379');
+
 const options = {
   expire: 5000,
-  options: {
-    url: process.env.REDISCLOUD_URL || 'redis://127.0.0.1:6379',
+  redis: {
+    host: redisURL.hostname,
+    port: redisURL.port,
+    options: {
+      auth: redisURL.auth.split(':')[1],
+    },
   },
 };
 
