@@ -50,7 +50,7 @@ test('It should return Dragon data', async () => {
 //                     Individual Capsule V2
 //------------------------------------------------------------
 
-test('It should return all v2 capsules', async () => {
-  const response = await request(app.callback()).get('/v2/capsules');
+test('It should return dragon1 capsule', async () => {
+  const response = await request(app.callback()).get('/v2/capsules/dragon1');
   expect(response.statusCode).toBe(200);
 });

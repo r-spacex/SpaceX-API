@@ -4,9 +4,9 @@ const cache = require('koa-redis-cache');
 const options = require('./db/redis');
 const compress = require('koa-compress');
 const logger = require('koa-logger');
-const cors = require('koa-cors');
 const helmet = require('koa-helmet');
 const MongoClient = require('mongodb');
+const cors = require('@koa/cors');
 const json = require('koa-json');
 
 const home = require('./v2-routes/v2-home');
@@ -30,10 +30,7 @@ app.use(compress());
 app.use(helmet());
 
 // Enable CORS for all routes
-const option = {
-  origin: '*',
-};
-app.use(cors(option));
+app.use(cors());
 
 // Add pretty output option for debugging
 app.use(json({ pretty: false, param: 'pretty' }));
