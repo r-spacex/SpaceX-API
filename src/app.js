@@ -37,7 +37,7 @@ app.use(json({ pretty: false, param: 'pretty' }));
 
 // Redis cache options
 // 90 minute TTL
-const redisURL = urlParse.parse(process.env.REDISCLOUD_URL || 'redis://default:default@redis_db:6379');
+const redisURL = urlParse.parse(process.env.REDISCLOUD_URL || 'redis://default:default@localhost:6379');
 
 const options = {
   expire: 5000,
