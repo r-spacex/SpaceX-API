@@ -3,9 +3,9 @@ const Koa = require('koa');
 const cache = require('koa-redis-cache');
 const options = require('./db/redis');
 const compress = require('koa-compress');
-const Logger = require('koa-logger');
-const Cors = require('@koa/cors');
-const Helmet = require('koa-helmet');
+const logger = require('koa-logger');
+const cors = require('koa-cors');
+const helmet = require('koa-helmet');
 const MongoClient = require('mongodb');
 const json = require('koa-json');
 
@@ -27,10 +27,13 @@ const app = new Koa();
 app.use(compress());
 
 // HTTP header security
-app.use(Helmet());
+app.use(helmet());
 
 // Enable CORS for all routes
-app.use(Cors());
+const corsOpt = {
+  origin: '*',
+};
+app.use(cors(corsOpt));
 
 // Add pretty output option for debugging
 app.use(json({ pretty: false, param: 'pretty' }));
@@ -38,7 +41,7 @@ app.use(json({ pretty: false, param: 'pretty' }));
 // Hide logging when running tests
 // Disable Redis caching when running tests
 if (process.env.NODE_ENV !== 'test') {
-  app.use(Logger());
+  app.use(logger());
   app.use(cache(options));
 }
 
