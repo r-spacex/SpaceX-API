@@ -30,10 +30,10 @@ app.use(compress());
 app.use(helmet());
 
 // Enable CORS for all routes
-const corsOpt = {
+const option = {
   origin: '*',
 };
-app.use(cors(corsOpt));
+app.use(cors(option));
 
 // Add pretty output option for debugging
 app.use(json({ pretty: false, param: 'pretty' }));
