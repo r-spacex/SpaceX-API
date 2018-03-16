@@ -55,13 +55,29 @@ app.use(launches.routes());
 app.use(upcoming.routes());
 app.use(parts.routes());
 
-// Error Handler
+// 500 Error Handler
 app.use(async (ctx, next) => {
   try {
     await next();
   } catch (err) {
     ctx.status = err.status || 500;
-    ctx.body = err.message;
+    ctx.body = {
+      error: 'No results found',
+    };
+    ctx.app.emit('error', err, ctx);
+  }
+});
+
+// 404 Error Handler
+app.use(async (ctx, next) => {
+  try {
+    await next();
+    if (ctx.status === 404) ctx.throw(404);
+  } catch (err) {
+    ctx.throw(err);
+    ctx.body = {
+      error: 'Internal Server Error',
+    }
     ctx.app.emit('error', err, ctx);
   }
 });
