@@ -38,6 +38,9 @@ app.use(json({ pretty: false, param: 'pretty' }));
 // 90 minute TTL
 const options = {
   expire: 5000,
+  options: {
+    url: process.env.REDISCLOUD_URL || 'redis://127.0.0.1:6379',
+  },
 };
 
 // Hide logging when running tests
