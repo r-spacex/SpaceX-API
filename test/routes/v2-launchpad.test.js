@@ -13,7 +13,7 @@ beforeAll((done) => {
 //------------------------------------------------------------
 
 test('It should return all launchpads', async () => {
-  const response = await request(app).get('/v2/launchpads');
+  const response = await request(app.callback()).get('/v2/launchpads');
   expect(response.statusCode).toBe(200);
   expect(response.body).toHaveLength(8);
   response.body.forEach((item) => {
@@ -26,13 +26,12 @@ test('It should return all launchpads', async () => {
 });
 
 test('It should return LC-39A info', async () => {
-  const response = await request(app).get('/v2/launchpads/ksc_lc_39a');
+  const response = await request(app.callback()).get('/v2/launchpads/ksc_lc_39a');
   expect(response.statusCode).toBe(200);
   expect(response.text).toContain('ksc_lc_39a');
 });
 
 test('It should return no launchpad info', async () => {
-  const response = await request(app).get('/v2/launchpads/ksc_lc_40a');
-  expect(response.statusCode).toBe(200);
-  expect(response.text).toContain('');
+  const response = await request(app.callback()).get('/v2/launchpads/ksc_lc_40a');
+  expect(response.statusCode).toBe(204);
 });

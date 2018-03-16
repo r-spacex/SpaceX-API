@@ -13,7 +13,7 @@ beforeAll((done) => {
 //------------------------------------------------------------
 
 test('It should return all upcoming launches', async () => {
-  const response = await request(app.listen()).get('/v2/launches/upcoming');
+  const response = await request(app.callback()).get('/v2/launches/upcoming');
   expect(response.statusCode).toBe(200);
   response.body.forEach((item) => {
     expect(item).toHaveProperty('flight_number', expect.anything());

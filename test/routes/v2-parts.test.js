@@ -13,7 +13,7 @@ beforeAll((done) => {
 //------------------------------------------------------------
 
 test('It should return all v2 capsules', async () => {
-  const response = await request(app).get('/v2/parts/caps');
+  const response = await request(app.callback()).get('/v2/parts/caps');
   expect(response.statusCode).toBe(200);
   response.body.forEach((item) => {
     expect(item).toHaveProperty('capsule_serial');
@@ -28,7 +28,7 @@ test('It should return all v2 capsules', async () => {
 });
 
 test('It should return capsule C101', async () => {
-  const response = await request(app).get('/v2/parts/caps/C101');
+  const response = await request(app.callback()).get('/v2/parts/caps/C101');
   expect(response.statusCode).toBe(200);
   expect(response.body).toHaveProperty('capsule_serial', 'C101');
 });
@@ -38,7 +38,7 @@ test('It should return capsule C101', async () => {
 //------------------------------------------------------------
 
 test('It should return all v2 cores', async () => {
-  const response = await request(app).get('/v2/parts/cores');
+  const response = await request(app.callback()).get('/v2/parts/cores');
   expect(response.statusCode).toBe(200);
   response.body.forEach((item) => {
     expect(item).toHaveProperty('core_serial');
@@ -55,7 +55,7 @@ test('It should return all v2 cores', async () => {
 });
 
 test('It should return core B0007', async () => {
-  const response = await request(app).get('/v2/parts/cores/B0007');
+  const response = await request(app.callback()).get('/v2/parts/cores/B0007');
   expect(response.statusCode).toBe(200);
   expect(response.body).toHaveProperty('core_serial', 'B0007');
 });

@@ -14,7 +14,7 @@ beforeAll((done) => {
 //------------------------------------------------------------
 
 test('It should return capsule serial C113', async () => {
-  const response = await request(app).get('/v2/parts/caps?capsule_serial=C113');
+  const response = await request(app.callback()).get('/v2/parts/caps?capsule_serial=C113');
   expect(response.statusCode).toBe(200);
   response.body.forEach((item) => {
     expect(item).toHaveProperty('capsule_serial', 'C113');
@@ -22,7 +22,7 @@ test('It should return capsule serial C113', async () => {
 });
 
 test('It should return capsule id dragon1', async () => {
-  const response = await request(app).get('/v2/parts/caps?capsule_id=dragon1');
+  const response = await request(app.callback()).get('/v2/parts/caps?capsule_id=dragon1');
   expect(response.statusCode).toBe(200);
   response.body.forEach((item) => {
     expect(item).toHaveProperty('capsule_id', 'dragon1');
@@ -30,7 +30,7 @@ test('It should return capsule id dragon1', async () => {
 });
 
 test('It should return capsules with an active status', async () => {
-  const response = await request(app).get('/v2/parts/caps?status=active');
+  const response = await request(app.callback()).get('/v2/parts/caps?status=active');
   expect(response.statusCode).toBe(200);
   response.body.forEach((item) => {
     expect(item).toHaveProperty('status', 'active');
@@ -38,7 +38,7 @@ test('It should return capsules with an active status', async () => {
 });
 
 test('It should return capsule C113 with the correct launch date', async () => {
-  const response = await request(app).get('/v2/parts/caps?original_launch=2017-08-14T16:31:00Z');
+  const response = await request(app.callback()).get('/v2/parts/caps?original_launch=2017-08-14T16:31:00Z');
   expect(response.statusCode).toBe(200);
   response.body.forEach((item) => {
     expect(item).toHaveProperty('original_launch', '2017-08-14T16:31:00Z');
@@ -46,7 +46,7 @@ test('It should return capsule C113 with the correct launch date', async () => {
 });
 
 test('It should return capsule for CRS-12', async () => {
-  const response = await request(app).get('/v2/parts/caps?missions=SpaceX+CRS-12');
+  const response = await request(app.callback()).get('/v2/parts/caps?missions=SpaceX+CRS-12');
   expect(response.statusCode).toBe(200);
   response.body.forEach((item) => {
     expect(item).toHaveProperty('missions');
@@ -54,7 +54,7 @@ test('It should return capsule for CRS-12', async () => {
 });
 
 test('It should return capsule with number of landings', async () => {
-  const response = await request(app).get('/v2/parts/caps?landings=1');
+  const response = await request(app.callback()).get('/v2/parts/caps?landings=1');
   expect(response.statusCode).toBe(200);
   response.body.forEach((item) => {
     expect(item).toHaveProperty('landings', 1);
@@ -62,7 +62,7 @@ test('It should return capsule with number of landings', async () => {
 });
 
 test('It should return capsule with type of Dragon 1.1', async () => {
-  const response = await request(app).get('/v2/parts/caps?type=Dragon+1.1');
+  const response = await request(app.callback()).get('/v2/parts/caps?type=Dragon+1.1');
   expect(response.statusCode).toBe(200);
   response.body.forEach((item) => {
     expect(item).toHaveProperty('type', 'Dragon 1.1');

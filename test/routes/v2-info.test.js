@@ -13,7 +13,7 @@ beforeAll((done) => {
 //------------------------------------------------------------
 
 test('It should return company info', async () => {
-  const response = await request(app).get('/v2/info');
+  const response = await request(app.callback()).get('/v2/info');
   expect(response.statusCode).toBe(200);
   expect(response.body).toHaveProperty('name', 'SpaceX');
   expect(response.body).toHaveProperty('founder', 'Elon Musk');

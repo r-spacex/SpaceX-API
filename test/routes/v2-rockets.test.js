@@ -14,7 +14,7 @@ beforeAll((done) => {
 //------------------------------------------------------------
 
 test('It should return all rocket info', async () => {
-  const response = await request(app).get('/v2/rockets');
+  const response = await request(app.callback()).get('/v2/rockets');
   expect(response.statusCode).toBe(200);
   expect(response.body).toHaveLength(3);
   expect(response.body[0]).toHaveProperty('name', 'Falcon 1');
@@ -47,7 +47,7 @@ test('It should return all rocket info', async () => {
 });
 
 test('It should return Falcon 1 info', async () => {
-  const response = await request(app).get('/v2/rockets/falcon1');
+  const response = await request(app.callback()).get('/v2/rockets/falcon1');
   expect(response.statusCode).toBe(200);
   expect(response.body).toHaveProperty('name', 'Falcon 1');
   expect(response.body).toHaveProperty('stages', 2);
@@ -60,7 +60,7 @@ test('It should return Falcon 1 info', async () => {
 });
 
 test('It should return Falcon Heavy info', async () => {
-  const response = await request(app).get('/v2/rockets/falconheavy');
+  const response = await request(app.callback()).get('/v2/rockets/falconheavy');
   expect(response.statusCode).toBe(200);
   expect(response.body).toHaveProperty('name', 'Falcon Heavy');
   expect(response.body).toHaveProperty('stages', 2);

@@ -1,28 +1,29 @@
 // Dragon Endpoints
 
-const express = require('express');
-const asyncHandle = require('express-async-handler');
+const Router = require('koa-router');
 
-const v2 = express.Router();
+const v2 = new Router({
+  prefix: '/v2/capsules',
+});
 
 // Returns all Dragon data
-v2.get('/', asyncHandle(async (req, res) => {
+v2.get('/', async (ctx) => {
   const data = await global.db
     .collection('dragon')
     .find({})
     .project({ _id: 0 })
     .toArray();
-  res.json(data);
-}));
+  ctx.body = data;
+});
 
 // Returns specific Dragon data
-v2.get('/:capsule', asyncHandle(async (req, res) => {
+v2.get('/:capsule', async (ctx) => {
   const data = await global.db
     .collection('dragon')
-    .find({ id: req.params.capsule })
+    .find({ id: ctx.params.capsule })
     .project({ _id: 0 })
     .toArray();
-  res.json(data[0]);
-}));
+  ctx.body = data[0];
+});
 
 module.exports = v2;

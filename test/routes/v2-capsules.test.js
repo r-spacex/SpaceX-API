@@ -14,7 +14,7 @@ beforeAll((done) => {
 //------------------------------------------------------------
 
 test('It should return Dragon data', async () => {
-  const response = await request(app).get('/v2/capsules');
+  const response = await request(app.callback()).get('/v2/capsules');
   expect(response.statusCode).toBe(200);
   response.body.forEach((item) => {
     expect(item).toHaveProperty('crew_capacity', expect.any(Number));
@@ -51,6 +51,6 @@ test('It should return Dragon data', async () => {
 //------------------------------------------------------------
 
 test('It should return all v2 capsules', async () => {
-  const response = await request(app).get('/v2/capsules/C106');
+  const response = await request(app.callback()).get('/v2/capsules');
   expect(response.statusCode).toBe(200);
 });
