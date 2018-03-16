@@ -77,7 +77,7 @@ app.use(async (ctx, next) => {
     ctx.throw(err);
     ctx.body = {
       error: 'Internal Server Error',
-    }
+    };
     ctx.app.emit('error', err, ctx);
   }
 });
