@@ -45,7 +45,7 @@ const options = {
     host: redisURL.hostname,
     port: redisURL.port,
     options: {
-      auth: redisURL.auth.split(':')[1],
+      password: redisURL.auth.split(':')[1],
     },
   },
 };
