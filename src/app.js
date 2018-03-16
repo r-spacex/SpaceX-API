@@ -1,13 +1,13 @@
 
 const Koa = require('koa');
 const cache = require('koa-redis-cache');
+const options = require('./db/redis');
 const compress = require('koa-compress');
 const Logger = require('koa-logger');
 const Cors = require('@koa/cors');
 const Helmet = require('koa-helmet');
 const MongoClient = require('mongodb');
 const json = require('koa-json');
-const urlParse = require('url');
 
 const home = require('./v2-routes/v2-home');
 const info = require('./v2-routes/v2-info');
@@ -34,21 +34,6 @@ app.use(Cors());
 
 // Add pretty output option for debugging
 app.use(json({ pretty: false, param: 'pretty' }));
-
-// Redis cache options
-// 90 minute TTL
-const redisURL = urlParse.parse(process.env.REDISCLOUD_URL || 'redis://default:default@localhost:6379');
-
-const options = {
-  expire: 5000,
-  redis: {
-    host: redisURL.hostname,
-    port: redisURL.port,
-    options: {
-      password: redisURL.auth.split(':')[1],
-    },
-  },
-};
 
 // Hide logging when running tests
 // Disable Redis caching when running tests
