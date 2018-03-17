@@ -6,7 +6,7 @@ const compress = require('koa-compress');
 const logger = require('koa-logger');
 const helmet = require('koa-helmet');
 const MongoClient = require('mongodb');
-const cors = require('@koa/cors');
+const cors = require('koa2-cors');
 const json = require('koa-json');
 
 const home = require('./v2-routes/v2-home');
@@ -30,7 +30,9 @@ app.use(compress());
 app.use(helmet());
 
 // Enable CORS for all routes
-app.use(cors());
+app.use(cors({
+  origin: '*',
+}));
 
 // Add pretty output option for debugging
 app.use(json({ pretty: false, param: 'pretty' }));

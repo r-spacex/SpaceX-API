@@ -27,7 +27,6 @@
   },
   "homepage": "https://github.com/r-spacex/SpaceX-API",
   "dependencies": {
-    "@koa/cors": "^2.2.1",
     "koa": "^2.5.0",
     "koa-compress": "^2.0.0",
     "koa-helmet": "^3.3.0",
@@ -36,6 +35,7 @@
     "koa-redis-cache": "^3.0.0",
     "koa-respond": "^1.0.1",
     "koa-router": "^7.4.0",
+    "koa2-cors": "^2.0.5",
     "lower-case": "^1.1.4",
     "mongodb": "^3.0.4",
     "path": "^0.12.7"
