@@ -2,10 +2,11 @@
 const url = require('url');
 
 /**
- * Declare options for Redis on Heroku
+ * Declare options for Redis with remote server
  */
 
 let options;
+
 if (process.env.REDISCLOUD_URL) {
   const redisURL = url.parse(process.env.REDISCLOUD_URL);
   options = {
