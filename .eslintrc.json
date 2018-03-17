@@ -13,6 +13,7 @@
     "rules": {
         "no-console":0,
         "space-infix-ops": "error",
+        "prefer-destructuring": 0,
         "eol-last": ["error", "always"],
         "prefer-arrow-callback": "error",
         "padded-blocks": ["error", "never"],

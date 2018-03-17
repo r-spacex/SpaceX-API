@@ -13,7 +13,7 @@ beforeAll((done) => {
 //------------------------------------------------------------
 
 test('It should return home info', async () => {
-  const response = await request(app).get('/v2');
+  const response = await request(app.callback()).get('/v2');
   expect(response.statusCode).toBe(200);
   expect(response.body).toHaveProperty('description');
   expect(response.body).toHaveProperty('organization', 'r/SpaceX');

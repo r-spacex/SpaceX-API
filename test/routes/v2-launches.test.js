@@ -13,7 +13,7 @@ beforeAll((done) => {
 //------------------------------------------------------------
 
 test('It should return all past launches', async () => {
-  const response = await request(app.listen()).get('/v2/launches');
+  const response = await request(app.callback()).get('/v2/launches');
   expect(response.statusCode).toBe(200);
   response.body.forEach((item) => {
     expect(item).toHaveProperty('flight_number', expect.anything());
@@ -79,7 +79,7 @@ test('It should return all past launches', async () => {
 //------------------------------------------------------------
 
 test('It should return the latest launch', async () => {
-  const response = await request(app).get('/v2/launches/latest');
+  const response = await request(app.callback()).get('/v2/launches/latest');
   expect(response.statusCode).toBe(200);
 });
 
@@ -89,7 +89,7 @@ test('It should return the latest launch', async () => {
 //------------------------------------------------------------
 
 test('It should return a specific Launch info', async () => {
-  const response = await request(app.listen()).get('/v2/launches/all?flight_number=40');
+  const response = await request(app.callback()).get('/v2/launches/all?flight_number=40');
   expect(response.statusCode).toBe(200);
   response.body.forEach((item) => {
     expect(item).toHaveProperty('flight_number', expect.anything());

@@ -24,7 +24,7 @@ See the [Wiki](https://github.com/r-spacex/SpaceX-API/wiki) for full API Documen
 **Example Response**
 
 ```http
-GET https://api.spacexdata.com/v2/launches/latest?pretty
+GET https://api.spacexdata.com/v2/launches/latest
 ```
 
 ```json
@@ -104,7 +104,7 @@ See the [Contribution](https://github.com/r-spacex/SpaceX-API/blob/master/CONTRI
 Local development info can be found [here](https://github.com/r-spacex/SpaceX-API/wiki/Local-Development)
 
 ## Technical Details
-* API is using [Node.js](https://nodejs.org/en/) with the [Express.js](https://expressjs.com/) framework
+* API is using [Node.js](https://nodejs.org/en/) with the [Koa](http://koajs.com/) framework
 * All data stored in a [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) 3 node replica set cluster
 * Latest database mongodump available [here](https://drive.google.com/drive/folders/0B2DdgKR4GR4xdk1sRGowcUZXeE0?usp=sharing)
 * Uses [Redis](https://redis.io/) for route caching
@@ -113,7 +113,6 @@ Local development info can be found [here](https://github.com/r-spacex/SpaceX-AP
 * API deployed on a [Heroku](https://www.heroku.com/) pipeline with pull request, staging and production servers
 
 ## FAQ's
-* All json responses can be pretty printed with the optional `pretty` querystring
 * If you have any questions or corrections, please open an issue and we'll get it merged ASAP
 * All data and photos are property of Space Exploration Technologies Corporation (SpaceX)
 * I am not affiliated with SpaceX in any way, shape, form, or fashion. Just a fun side project for me

@@ -1,12 +1,12 @@
 
-const express = require('express');
-const morgan = require('morgan');
-const cors = require('cors');
-const compression = require('compression');
-const helmet = require('helmet');
-const pretty = require('express-prettify');
+const Koa = require('koa');
+const cache = require('koa-redis-cache');
+const options = require('./db/redis');
+const compress = require('koa-compress');
+const logger = require('koa-logger');
+const helmet = require('koa-helmet');
 const MongoClient = require('mongodb');
-const cache = require('./db/redis');
+const cors = require('koa2-cors');
 
 const home = require('./v2-routes/v2-home');
 const info = require('./v2-routes/v2-info');
@@ -20,60 +20,64 @@ const parts = require('./v2-routes/v2-parts');
 // Production read-only DB
 const url = 'mongodb+srv://public:spacex@spacex-api-rzdz4.mongodb.net/spacex-api';
 
-const app = express();
+const app = new Koa();
 
 // Gzip all responses
-app.use(compression());
+app.use(compress());
 
 // HTTP header security
 app.use(helmet());
 
 // Enable CORS for all routes
-app.use(cors());
-
-// Add pretty output option for debugging
-app.use(pretty({ query: 'pretty' }));
+app.use(cors({
+  origin: '*',
+}));
 
 // Hide logging when running tests
 // Disable Redis caching when running tests
 if (process.env.NODE_ENV !== 'test') {
-  app.use(morgan('dev'));
-  app.use(cache.route());
+  app.use(logger());
+  app.use(cache(options));
 }
 
-// Global HTTP headers
-app.use((req, res, next) => {
-  res.header('Content-Type', 'application/json');
-  res.header('Last-Modified', new Date().toUTCString());
-  next();
-});
+// Koa routes
+app.use(home.routes());
+app.use(info.routes());
+app.use(rockets.routes());
+app.use(capsules.routes());
+app.use(launchpad.routes());
+app.use(launches.routes());
+app.use(upcoming.routes());
+app.use(parts.routes());
 
-// Express Router routes
-app.use('/v2', home);
-app.use('/v2/info', info);
-app.use('/v2/rockets', rockets);
-app.use('/v2/capsules', capsules);
-app.use('/v2/launchpads', launchpad);
-app.use('/v2/launches', launches);
-app.use('/v2/launches/upcoming', upcoming);
-app.use('/v2/parts', parts);
+// 500 Error Handler
+app.use(async (ctx, next) => {
+  try {
+    await next();
+  } catch (err) {
+    ctx.status = err.status || 500;
+    ctx.body = {
+      error: 'No results found',
+    };
+    ctx.app.emit('error', err, ctx);
+  }
+});
 
 // 404 Error Handler
-app.use((req, res) => {
-  res.status(404);
-  res.json({
-    error: 'No results found',
-  });
+app.use(async (ctx, next) => {
+  try {
+    await next();
+    if (ctx.status === 404) ctx.throw(404);
+  } catch (err) {
+    ctx.throw(err);
+    ctx.body = {
+      error: 'Internal Server Error',
+    };
+    ctx.app.emit('error', err, ctx);
+  }
 });
 
-// 500 error handler
-// eslint-disable-next-line no-unused-vars
-app.use((err, req, res, next) => {
-  res.status(500);
-  res.json({
-    error: 'Internal Server Error',
-  });
-});
+module.exports = app;
 
 // Mongo Connection + Server Start
 MongoClient.connect(url, (err, client) => {
@@ -88,5 +92,3 @@ MongoClient.connect(url, (err, client) => {
     app.emit('ready');
   });
 });
-
-module.exports = app;

@@ -13,6 +13,6 @@ beforeAll((done) => {
 //------------------------------------------------------------
 
 test('It should return 404 error', async () => {
-  const response = await request(app).get('/v1');
+  const response = await request(app.callback()).get('/v1');
   expect(response.statusCode).toBe(404);
 });
