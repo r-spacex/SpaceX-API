@@ -7,7 +7,6 @@ const logger = require('koa-logger');
 const helmet = require('koa-helmet');
 const MongoClient = require('mongodb');
 const cors = require('koa2-cors');
-const json = require('koa-json');
 
 const home = require('./v2-routes/v2-home');
 const info = require('./v2-routes/v2-info');
@@ -33,9 +32,6 @@ app.use(helmet());
 app.use(cors({
   origin: '*',
 }));
-
-// Add pretty output option for debugging
-app.use(json({ pretty: false, param: 'pretty' }));
 
 // Hide logging when running tests
 // Disable Redis caching when running tests

@@ -24,7 +24,7 @@ See the [Wiki](https://github.com/r-spacex/SpaceX-API/wiki) for full API Documen
 **Example Response**
 
 ```http
-GET https://api.spacexdata.com/v2/launches/latest?pretty
+GET https://api.spacexdata.com/v2/launches/latest
 ```
 
 ```json
@@ -113,7 +113,6 @@ Local development info can be found [here](https://github.com/r-spacex/SpaceX-AP
 * API deployed on a [Heroku](https://www.heroku.com/) pipeline with pull request, staging and production servers
 
 ## FAQ's
-* All json responses can be pretty printed with the optional `pretty` querystring
 * If you have any questions or corrections, please open an issue and we'll get it merged ASAP
 * All data and photos are property of Space Exploration Technologies Corporation (SpaceX)
 * I am not affiliated with SpaceX in any way, shape, form, or fashion. Just a fun side project for me
