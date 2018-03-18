@@ -32,12 +32,10 @@
     "koa-helmet": "^3.3.0",
     "koa-logger": "^3.2.0",
     "koa-redis-cache": "^3.0.0",
-    "koa-respond": "^1.0.1",
     "koa-router": "^7.4.0",
     "koa2-cors": "^2.0.5",
     "lower-case": "^1.1.4",
-    "mongodb": "^3.0.4",
-    "path": "^0.12.7"
+    "mongodb": "^3.0.4"
   },
   "devDependencies": {
     "eslint": "^4.19.0",
