@@ -1,10 +1,15 @@
-FROM node:alpine
+# Do npm install with full image
+FROM mhart/alpine-node:latest
 LABEL maintainer="jakewmeyer@gmail.com"
-# Needs password as placeholder for redis-connection
 ENV REDISCLOUD_URL=redis://default:default@redis_db:6379
-WORKDIR /usr/src/app
-COPY package*.json ./
+WORKDIR /app
+COPY package.json package-lock.json ./
 RUN npm install --production
+
+# And then copy over node_modules, etc from that stage to the smaller base image
+FROM mhart/alpine-node:base
+WORKDIR /app
+COPY --from=0 /app .
 COPY . .
 EXPOSE 5000
-CMD [ "npm", "start" ]
+CMD ["node", "src/app.js"]
