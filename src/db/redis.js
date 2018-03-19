@@ -15,7 +15,7 @@ if (process.env.REDISCLOUD_URL) {
       host: redisURL.hostname,
       port: redisURL.port,
       options: {
-        password: 'null' || redisURL.auth.split(':')[1],
+        password: redisURL.auth.split(':')[1],
       },
     },
   };
