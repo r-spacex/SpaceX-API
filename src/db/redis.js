@@ -10,7 +10,28 @@ let options;
 if (process.env.REDISCLOUD_URL) {
   const redisURL = url.parse(process.env.REDISCLOUD_URL);
   options = {
-    expire: 5000,
+    routes: [{
+      path: '/v2/launches/(.*)',
+      expire: 3600,
+    }, {
+      path: '/v2/parts/(.*)',
+      expire: 6000,
+    }, {
+      path: '/v2',
+      expire: 43200,
+    }, {
+      path: '/v2/info',
+      expire: 43200,
+    }, {
+      path: '/v2/launchpads/(.*)',
+      expire: 43200,
+    }, {
+      path: '/v2/rockets/(.*)',
+      expire: 43200,
+    }, {
+      path: '/v2/capsules/(.*)',
+      expire: 43200,
+    }],
     redis: {
       host: redisURL.hostname,
       port: redisURL.port,
@@ -21,7 +42,28 @@ if (process.env.REDISCLOUD_URL) {
   };
 } else {
   options = {
-    expire: 5000,
+    routes: [{
+      path: '/v2/launches/(.*)',
+      expire: 3600,
+    }, {
+      path: '/v2/parts/(.*)',
+      expire: 6000,
+    }, {
+      path: '/v2',
+      expire: 43200,
+    }, {
+      path: '/v2/info',
+      expire: 43200,
+    }, {
+      path: '/v2/launchpads/(.*)',
+      expire: 43200,
+    }, {
+      path: '/v2/rockets/(.*)',
+      expire: 43200,
+    }, {
+      path: '/v2/capsules/(.*)',
+      expire: 43200,
+    }],
   };
 }
 
