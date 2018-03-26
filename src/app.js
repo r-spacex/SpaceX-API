@@ -67,7 +67,9 @@ app.use(async (ctx, next) => {
 app.use(async (ctx, next) => {
   try {
     await next();
-    if (ctx.status === 404) ctx.throw(404);
+    if (ctx.status === 404) {
+      ctx.throw(404);
+    }
   } catch (err) {
     ctx.throw(err);
     ctx.body = {
@@ -76,8 +78,6 @@ app.use(async (ctx, next) => {
     ctx.app.emit('error', err, ctx);
   }
 });
-
-module.exports = app;
 
 // Mongo Connection + Server Start
 MongoClient.connect(url, (err, client) => {
@@ -92,3 +92,5 @@ MongoClient.connect(url, (err, client) => {
     app.emit('ready');
   });
 });
+
+module.exports = app;

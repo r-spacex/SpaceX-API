@@ -30,7 +30,6 @@ v2.get('/all', async (ctx) => {
   const pastData = await fetchLaunch('launch_v2', ctx.request);
   const upcomingData = await fetchLaunch('upcoming_v2', ctx.request);
   const data = pastData.concat(upcomingData);
-
   ctx.body = data;
 });
 
