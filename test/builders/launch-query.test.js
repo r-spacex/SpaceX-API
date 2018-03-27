@@ -36,8 +36,24 @@ test('It should return flight number 42', async () => {
   });
 });
 
-test('It should return flight 42 in date range', async () => {
+test('It should return flight 42 in short date range', async () => {
   const response = await request(app.callback()).get('/v2/launches?start=2017-06-22&final=2017-06-25');
+  expect(response.statusCode).toBe(200);
+  response.body.forEach((item) => {
+    expect(item).toHaveProperty('flight_number', 42);
+  });
+});
+
+test('It should return flight 42 in long date range', async () => {
+  const response = await request(app.callback()).get('/v2/launches?start=2017-06-22:00:00Z&final=2017-06-25:00:00Z');
+  expect(response.statusCode).toBe(200);
+  response.body.forEach((item) => {
+    expect(item).toHaveProperty('flight_number', 42);
+  });
+});
+
+test('It should return flight 42 in unix date range', async () => {
+  const response = await request(app.callback()).get('/v2/launches?start=1498244888&final=1498246000');
   expect(response.statusCode).toBe(200);
   response.body.forEach((item) => {
     expect(item).toHaveProperty('flight_number', 42);
