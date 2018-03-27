@@ -12,6 +12,7 @@ v2.get('/', async (ctx) => {
     .collection('rocket')
     .find({})
     .project({ _id: 0 })
+    .sort({ id: 1 })
     .toArray();
   ctx.body = data;
 });
