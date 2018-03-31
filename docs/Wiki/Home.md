@@ -5,7 +5,7 @@ This collection of documents describes the resources and functions that make up 
 No authentication is required to use this public API
 
 ## Rate Limiting
-No rate limiting is implemented at this time, but be respectful with your usage
+No rate limiting is implemented at this time, but please be respectful with your usage
 
 ## Endpoints
 [Company Data](https://github.com/r-spacex/SpaceX-API/wiki/Company-Info)
@@ -18,6 +18,6 @@ No rate limiting is implemented at this time, but be respectful with your usage
 
 [Launches](https://github.com/r-spacex/SpaceX-API/wiki/Launches)
 
-[Detailed Capsule Data](https://github.com/r-spacex/SpaceX-API/wiki/Capsule-Detail)
+[Individual Capsule Data](https://github.com/r-spacex/SpaceX-API/wiki/Capsule-Detail)
 
-[Detailed Core Data](https://github.com/r-spacex/SpaceX-API/wiki/Core-Details)
+[Individual Core Data](https://github.com/r-spacex/SpaceX-API/wiki/Core-Details)
