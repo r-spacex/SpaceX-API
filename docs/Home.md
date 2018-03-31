@@ -1,21 +1,13 @@
----
-layout: page
-homepage: true
----
-
-<div align="center">
-### Welcome to the r/SpaceX API Docs!
-<br></br>
-
 ## Introduction
 This collection of documents describes the resources and functions that make up the r/SpaceX API. 
 
 ## Authentication
+No authentication is required to use this public API
 
 ## Rate Limiting
+No rate limiting is implemented at this time, but please be respectful with your usage
 
 ## Endpoints
-
 [Company Data](https://github.com/r-spacex/SpaceX-API/wiki/Company-Info)
 
 [Rocket Data](https://github.com/r-spacex/SpaceX-API/wiki/Rocket-Info)
@@ -26,8 +18,6 @@ This collection of documents describes the resources and functions that make up 
 
 [Launches](https://github.com/r-spacex/SpaceX-API/wiki/Launches)
 
-[Detailed Capsule Data](https://github.com/r-spacex/SpaceX-API/wiki/Capsule-Detail)
+[Individual Capsule Data](https://github.com/r-spacex/SpaceX-API/wiki/Capsule-Detail)
 
-[Detailed Core Data](https://github.com/r-spacex/SpaceX-API/wiki/Core-Details)
-
-</div>
+[Individual Core Data](https://github.com/r-spacex/SpaceX-API/wiki/Core-Details)
