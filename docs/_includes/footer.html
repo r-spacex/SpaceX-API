@@ -1,0 +1,89 @@
+<footer class="bs-docs-footer" role="contentinfo">
+    <div class="container">
+        <div class="bs-docs-social">
+            <ul class="bs-docs-social-buttons">
+                {% if site.social.github.user and site.social.github.repo %}
+                    <li>
+                        <iframe class="github-btn"
+                                src="http://ghbtns.com/github-btn.html?user={{ site.social.github.user }}&amp;repo={{ site.social.github.repo }}&amp;type=watch&amp;count=true"
+                                width="90"
+                                height="20"
+                                title="Star on GitHub"></iframe>
+                    </li>
+                    <li>
+                        <iframe class="github-btn"
+                                src="http://ghbtns.com/github-btn.html?user={{ site.social.github.user }}&amp;repo={{ site.social.github.repo }}&amp;type=fork&amp;count=true"
+                                width="90"
+                                height="20"
+                                title="Fork on GitHub"></iframe>
+                    </li>
+                {% endif %}
+                {% if site.social.twitter.enabled %}
+                    <li>
+                        <a href="https://twitter.com/share"
+                           class="twitter-share-button"
+                           data-url="{{ site.github.url }}"
+                           data-count="horizontal"
+                           data-via="{{ site.social.twitter.via }}"
+                           data-text="{{ site.name }}"
+                           data-hashtags="{{ site.social.twitter.hash }}">Tweet</a>
+                    </li>
+                {% endif %}
+                {% if site.twitter.account %}
+                    <li>
+                        <a href="https://twitter.com/{{ site.social.twitter.account }}"
+                           class="twitter-follow-button"
+                           data-show-count="true">Follow @{{ site.social.twitter.account }}</a>
+                    </li>
+                {% endif %}
+                {% if site.facebook.enabled %}
+                    <li>
+                        <div class="fb-like"
+                             data-href="{{ site.github.url }}"
+                             data-layout="button_count"
+                             data-action="like"
+                             data-show-faces="false"
+                             data-share="true"></div>
+                    </li>
+                {% endif %}
+                {% if site.facebook.profileUrl %}
+                    <li>
+                        <div class="fb-follow"
+                             data-href="{{ site.social.facebook.profileUrl }}"
+                             data-layout="button_count"
+                             data-show-faces="false"></div>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+
+        <p>
+            Licensed under <a href="{{ site.license.software_url }}" target="_blank">{{ site.license.software }}</a>, documentation under <a href="{{ site.license.docs_url }}">{{ site.license.docs }}</a>.
+        </p>
+        <p>
+            Documentation template by <a href="http://getbootstrap.com">Bootstrap team</a>, generated with <a href="https://github.com/allejo/jekyll-docs-theme">Jekyll Docs Theme</a>
+        </p>
+
+        <ul class="bs-docs-footer-links muted">
+            <li>Currently v{{ site.project.version }}</li>
+            {% for l in site.links.footer %}
+                <li>&middot;</li>
+                <li>
+                    <a href="{{ l.url }}">{{ l.title }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</footer>
+
+{% if site.ui.header.trianglify %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/trianglify/0.1.2/trianglify.min.js"></script>
+    <script>
+        trianglify("{{ site.ui.header.color1 }}", "{{ site.ui.header.color2 }}");
+    </script>
+{% endif %}
+
+{% if site.analytics.google %}
+    {% include google-analytics.html %}
+{% endif %}

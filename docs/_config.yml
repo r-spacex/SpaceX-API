@@ -1,0 +1,51 @@
+# name of the software
+name: Jekyll Docs Theme
+
+project:
+    version: 0.1.0
+    download_url: https://github.com/allejo/jekyll-docs-theme/releases
+
+license:
+    software: MIT License
+    software_url: http://opensource.org/licenses/MIT
+
+    docs: CC BY 3.0
+    docs_url: http://creativecommons.org/licenses/by/3.0/
+
+links:
+    header:
+      - title: GitHub
+        url: https://github.com/allejo/jekyll-docs-theme
+    footer:
+      - title: GitHub
+        url: https://github.com/allejo/jekyll-docs-theme
+      - title: Issues
+        url: https://github.com/allejo/jekyll-docs-theme/issues?state=open
+
+ui:
+    header:
+        color1: "#080331"
+        color2: "#673051"
+        trianglify: true
+
+social:
+    github:
+        user: allejo
+        repo: jekyll-docs-theme
+    twitter:
+        enabled: false
+        via:
+        hash:
+        account:
+    facebook:
+        enabled: false
+        profileUrl:
+
+analytics:
+    google: UA-123456-1
+
+# Build settings
+markdown: kramdown
+exclude:
+    - Gemfile
+    - Gemfile.lock
