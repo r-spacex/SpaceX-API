@@ -1,3 +1,4 @@
+## Examples
 Get latest launch
 ```http
 GET https://api.spacexdata.com/v2/launches/latest
@@ -20,11 +21,11 @@ All launches can be filtered though any combination of the following query strin
 ```http
 GET https://api.spacexdata.com/v2/launches?launch_year=2017&rocket_id=falcon9&core_reuse=true&core_serial=B1029
 ```
-# Querystring Response Notes
+## Querystring Response Notes
 * By default, this endpoint returns an array of JSON objects when queried
 * If no match is found when using querystring filtering, an empty array is returned `[]` with a 200 response code
 
-# Query String Options
+## Query String Options
 | Query Strings  | Description |
 | ------------- | ------------- |
 | id  | Use `true` to show mongo document id's |
@@ -60,13 +61,13 @@ GET https://api.spacexdata.com/v2/launches?launch_year=2017&rocket_id=falcon9&co
 | landing_type  | Filter by landing method  |
 | landing_vehicle  | Filter by landing vehicle  |
 
-# HTTP Response Codes
+## HTTP Response Codes
 | Code  | Description |
 | ------------- | ------------- |
 | 200  | Returns all launches by default |
 | 404  | Returns  `"error": "No results found"` |
 
-# Return Values
+## Return Values
 | Field Name  | Data Type | Sample |
 | ------------- | ------------- | ------------- |
 | flight\_number  | Number | 28
