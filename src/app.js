@@ -57,7 +57,7 @@ app.use(async (ctx, next) => {
   } catch (err) {
     ctx.status = err.status || 500;
     ctx.body = {
-      error: 'No results found',
+      error: 'Internal Server Error',
     };
     ctx.app.emit('error', err, ctx);
   }
@@ -73,7 +73,7 @@ app.use(async (ctx, next) => {
   } catch (err) {
     ctx.throw(err);
     ctx.body = {
-      error: 'Internal Server Error',
+      error: 'No results found',
     };
     ctx.app.emit('error', err, ctx);
   }
