@@ -1,4 +1,4 @@
-// Basic Info Endpoints
+// SpaceX Company Info Endpoints
 
 const Router = require('koa-router');
 
