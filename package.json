@@ -3,7 +3,7 @@
   "version": "2.4.0",
   "description": "Open Source REST API for rocket, core, capsule, pad, and launch data",
   "engines": {
-    "node": "9.10.1"
+    "node": "9.x.x"
   },
   "main": "./src/app.js",
   "scripts": {
