@@ -2,6 +2,9 @@
   "name": "spacex-api",
   "version": "2.4.0",
   "description": "Open Source REST API for rocket, core, capsule, pad, and launch data",
+  "engines": {
+    "node": "9.10.1"
+  },
   "main": "./src/app.js",
   "scripts": {
     "test": "eslint \"**/*.js\" && NODE_ENV=test PORT=0 jest -i --forceExit",
