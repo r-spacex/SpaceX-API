@@ -79,6 +79,8 @@ app.use(async (ctx, next) => {
   }
 });
 
+module.exports = app;
+
 // Mongo Connection + Server Start
 MongoClient.connect(url, (err, client) => {
   if (err) {
@@ -92,5 +94,3 @@ MongoClient.connect(url, (err, client) => {
     app.emit('ready');
   });
 });
-
-module.exports = app;
