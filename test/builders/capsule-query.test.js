@@ -4,7 +4,6 @@ const app = require('../../src/app');
 
 beforeAll((done) => {
   app.on('ready', () => {
-    jest.setTimeout(10000);
     done();
   });
 });
