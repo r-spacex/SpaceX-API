@@ -7,7 +7,7 @@
   },
   "main": "./src/app.js",
   "scripts": {
-    "test": "eslint \"**/*.js\" && NODE_ENV=test PORT=0 jest -i --forceExit",
+    "test": "eslint \"**/*.js\" && NODE_ENV=test PORT=0 jest --forceExit",
     "start": "node src/app.js",
     "lint": "eslint \"**/*.js\""
   },
