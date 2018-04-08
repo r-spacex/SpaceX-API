@@ -1,21 +1,21 @@
 
-const Koa = require('koa');
 const cache = require('koa-redis-cache');
-const options = require('./db/redis');
 const compress = require('koa-compress');
-const logger = require('koa-logger');
-const helmet = require('koa-helmet');
-const MongoClient = require('mongodb');
 const cors = require('koa2-cors');
+const helmet = require('koa-helmet');
+const Koa = require('koa');
+const logger = require('koa-logger');
+const MongoClient = require('mongodb');
+const options = require('./db/redis');
 
+const capsules = require('./v2-routes/v2-capsules');
 const home = require('./v2-routes/v2-home');
 const info = require('./v2-routes/v2-info');
-const rockets = require('./v2-routes/v2-rockets');
-const capsules = require('./v2-routes/v2-capsules');
 const launchpad = require('./v2-routes/v2-launchpad');
 const launches = require('./v2-routes/v2-launches');
-const upcoming = require('./v2-routes/v2-upcoming');
 const parts = require('./v2-routes/v2-parts');
+const rockets = require('./v2-routes/v2-rockets');
+const upcoming = require('./v2-routes/v2-upcoming');
 
 // Production read-only DB
 const url = 'mongodb+srv://public:spacex@spacex-api-rzdz4.mongodb.net/spacex-api';
@@ -41,14 +41,14 @@ if (process.env.NODE_ENV !== 'test') {
 }
 
 // Koa routes
+app.use(capsules.routes());
 app.use(home.routes());
 app.use(info.routes());
-app.use(rockets.routes());
-app.use(capsules.routes());
 app.use(launchpad.routes());
 app.use(launches.routes());
-app.use(upcoming.routes());
 app.use(parts.routes());
+app.use(rockets.routes());
+app.use(upcoming.routes());
 
 // 500 Error Handler
 app.use(async (ctx, next) => {
