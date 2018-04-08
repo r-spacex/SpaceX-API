@@ -8,14 +8,14 @@ const logger = require('koa-logger');
 const MongoClient = require('mongodb');
 const options = require('./db/redis');
 
-const capsules = require('./v2-routes/v2-capsules');
-const home = require('./v2-routes/v2-home');
-const info = require('./v2-routes/v2-info');
-const launchpad = require('./v2-routes/v2-launchpad');
-const launches = require('./v2-routes/v2-launches');
-const parts = require('./v2-routes/v2-parts');
-const rockets = require('./v2-routes/v2-rockets');
-const upcoming = require('./v2-routes/v2-upcoming');
+const capsules = require('./routes/v2-capsules');
+const home = require('./routes/v2-home');
+const info = require('./routes/v2-info');
+const launchpad = require('./routes/v2-launchpad');
+const launches = require('./routes/v2-launches');
+const parts = require('./routes/v2-parts');
+const rockets = require('./routes/v2-rockets');
+const upcoming = require('./routes/v2-upcoming');
 
 // Production read-only DB
 const url = 'mongodb+srv://public:spacex@spacex-api-rzdz4.mongodb.net/spacex-api';
