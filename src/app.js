@@ -28,6 +28,19 @@ app.use(compress());
 // HTTP header security
 app.use(helmet());
 
+// Error Handler
+app.use(async (ctx, next) => {
+  try {
+    await next();
+  } catch (err) {
+    ctx.status = err.status || 500;
+    ctx.body = {
+      error: 'Internal Server Error',
+    };
+    ctx.app.emit('error', err, ctx);
+  }
+});
+
 // Enable CORS for all routes
 app.use(cors({
   origin: '*',
@@ -49,35 +62,6 @@ app.use(launches.routes());
 app.use(parts.routes());
 app.use(rockets.routes());
 app.use(upcoming.routes());
-
-// 500 Error Handler
-app.use(async (ctx, next) => {
-  try {
-    await next();
-  } catch (err) {
-    ctx.status = err.status || 500;
-    ctx.body = {
-      error: 'Internal Server Error',
-    };
-    ctx.app.emit('error', err, ctx);
-  }
-});
-
-// 404 Error Handler
-app.use(async (ctx, next) => {
-  try {
-    await next();
-    if (ctx.status === 404) {
-      ctx.throw(404);
-    }
-  } catch (err) {
-    ctx.throw(err);
-    ctx.body = {
-      error: 'No results found',
-    };
-    ctx.app.emit('error', err, ctx);
-  }
-});
 
 module.exports = app;
 
