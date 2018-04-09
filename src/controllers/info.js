@@ -1,7 +1,9 @@
 
 module.exports = {
 
-  // Returns company info
+  /**
+   * Returns company info
+   */
   get: async (ctx) => {
     const data = await global.db
       .collection('info')
