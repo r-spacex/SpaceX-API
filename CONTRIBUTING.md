@@ -30,3 +30,8 @@ yarn install
 ```bash
 yarn test
 ```
+
+4. Start the app
+```bash
+yarn start
+```
