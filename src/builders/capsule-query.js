@@ -5,7 +5,7 @@
  * @return {Object} Mongo compatible query object
  */
 
-module.exports.capsuleQuery = (request) => {
+module.exports = (request) => {
   const query = {};
 
   if (request.query.capsule_serial) {

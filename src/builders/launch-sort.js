@@ -8,7 +8,7 @@ const lowerCase = require('lower-case');
  * @return {Object} Mongo compatible sort object
  */
 
-module.exports.launchSort = (request) => {
+module.exports = (request) => {
   const query = {};
 
   if (lowerCase(request.query.order) === 'asc') {

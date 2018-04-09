@@ -1,7 +1,7 @@
 
-const launch = require('../builders/launch-query');
-const sort = require('../builders/launch-sort');
-const project = require('../builders/project-query');
+const launchQuery = require('../builders/launch-query');
+const sortQuery = require('../builders/launch-sort');
+const projectQuery = require('../builders/project-query');
 
 module.exports = {
 
@@ -12,7 +12,7 @@ module.exports = {
     const data = await global.db
       .collection('launch_v2')
       .find({})
-      .project(project.queryProject(ctx.request))
+      .project(projectQuery(ctx.request))
       .sort({ flight_number: -1 })
       .limit(1)
       .toArray();
@@ -25,15 +25,15 @@ module.exports = {
   all: async (ctx) => {
     const past = await global.db
       .collection('launch_v2')
-      .find(launch.launchQuery(ctx.request))
-      .project(project.queryProject(ctx.request))
-      .sort(sort.launchSort(ctx.request))
+      .find(launchQuery(ctx.request))
+      .project(projectQuery(ctx.request))
+      .sort(sortQuery(ctx.request))
       .toArray();
     const upcoming = await global.db
       .collection('upcoming_v2')
-      .find(launch.launchQuery(ctx.request))
-      .project(project.queryProject(ctx.request))
-      .sort(sort.launchSort(ctx.request))
+      .find(launchQuery(ctx.request))
+      .project(projectQuery(ctx.request))
+      .sort(sortQuery(ctx.request))
       .toArray();
     const data = past.concat(upcoming);
     ctx.body = data;
@@ -45,9 +45,9 @@ module.exports = {
   past: async (ctx) => {
     const data = await global.db
       .collection('launch_v2')
-      .find(launch.launchQuery(ctx.request))
-      .project(project.queryProject(ctx.request))
-      .sort(sort.launchSort(ctx.request))
+      .find(launchQuery(ctx.request))
+      .project(projectQuery(ctx.request))
+      .sort(sortQuery(ctx.request))
       .toArray();
     ctx.body = data;
   },
@@ -58,9 +58,9 @@ module.exports = {
   upcoming: async (ctx) => {
     const data = await global.db
       .collection('upcoming_v2')
-      .find(launch.launchQuery(ctx.request))
-      .project(project.queryProject(ctx.request))
-      .sort(sort.launchSort(ctx.request))
+      .find(launchQuery(ctx.request))
+      .project(projectQuery(ctx.request))
+      .sort(sortQuery(ctx.request))
       .toArray();
     ctx.body = data[0];
   },

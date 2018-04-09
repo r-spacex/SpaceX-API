@@ -8,7 +8,7 @@ const ObjectId = require('mongodb').ObjectID;
  * @return {Object} Mongo compatible query object
  */
 
-module.exports.launchQuery = (request) => {
+module.exports = (request) => {
   const query = {};
 
   if (request.query.flight_id) {
