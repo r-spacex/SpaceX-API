@@ -1,19 +1,13 @@
 // SpaceX Company Info Endpoints
 
 const Router = require('koa-router');
+const info = require('../controllers/info');
 
 const v2 = new Router({
   prefix: '/v2/info',
 });
 
 // Returns company info
-v2.get('/', async (ctx) => {
-  const data = await global.db
-    .collection('info')
-    .find({})
-    .project({ _id: 0 })
-    .toArray();
-  ctx.body = data[0];
-});
+v2.get('/', info.get);
 
 module.exports = v2;
