@@ -1,16 +1,14 @@
 // Upcoming Endpoints
 
 const Router = require('koa-router');
-const { fetchLaunch } = require('../helpers/launch-database');
+const launches = require('../controllers/launches');
+
 
 const v2 = new Router({
   prefix: '/v2/launches/upcoming',
 });
 
 // Return upcoming launches filtered by querystrings
-v2.get('/', async (ctx) => {
-  const data = await fetchLaunch('upcoming_v2', ctx.request);
-  ctx.body = data;
-});
+v2.get('/', launches.upcoming);
 
 module.exports = v2;

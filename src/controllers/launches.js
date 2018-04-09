@@ -62,7 +62,7 @@ module.exports = {
       .project(projectQuery(ctx.request))
       .sort(sortQuery(ctx.request))
       .toArray();
-    ctx.body = data[0];
+    ctx.body = data;
   },
 
 };
