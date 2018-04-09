@@ -6,7 +6,7 @@ const helmet = require('koa-helmet');
 const Koa = require('koa');
 const logger = require('koa-logger');
 const MongoClient = require('mongodb');
-const options = require('./db/redis');
+const options = require('./middleware/redis');
 
 const capsules = require('./routes/v2-capsules');
 const home = require('./routes/v2-home');
