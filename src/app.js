@@ -9,6 +9,7 @@ const MongoClient = require('mongodb');
 const options = require('./middleware/redis');
 
 const capsules = require('./routes/v2-capsules');
+const errors = require('./routes/v2-misc');
 const home = require('./routes/v2-home');
 const info = require('./routes/v2-info');
 const launchpad = require('./routes/v2-launchpad');
@@ -28,6 +29,9 @@ app.use(compress());
 // HTTP header security
 app.use(helmet());
 
+// HTTP requests logger
+app.use(logger());
+
 // Error Handler
 app.use(async (ctx, next) => {
   try {
@@ -46,15 +50,12 @@ app.use(cors({
   origin: '*',
 }));
 
-// Hide logging when running tests
-// Disable Redis caching when running tests
-if (process.env.NODE_ENV !== 'test') {
-  app.use(logger());
-  app.use(cache(options));
-}
+// Redis HTTP response caching
+app.use(cache(options));
 
 // Koa routes
 app.use(capsules.routes());
+app.use(errors.routes());
 app.use(home.routes());
 app.use(info.routes());
 app.use(launchpad.routes());
@@ -66,11 +67,7 @@ app.use(upcoming.routes());
 module.exports = app;
 
 // Mongo Connection + Server Start
-MongoClient.connect(url, (err, client) => {
-  if (err) {
-    console.log(err);
-    process.exit(1);
-  }
+MongoClient.connect(url, (client) => {
   global.db = client.db('spacex-api');
 
   const port = process.env.PORT || 5000;
