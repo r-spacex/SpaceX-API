@@ -50,8 +50,10 @@ app.use(cors({
   origin: '*',
 }));
 
-// Redis HTTP response caching
-app.use(cache(options));
+// Disable Redis caching when running tests
+if (process.env.NODE_ENV !== 'test') {
+  app.use(cache(options));
+}
 
 // Koa routes
 app.use(capsules.routes());
@@ -67,7 +69,11 @@ app.use(upcoming.routes());
 module.exports = app;
 
 // Mongo Connection + Server Start
-MongoClient.connect(url, (client) => {
+MongoClient.connect(url, (err, client) => {
+  if (err) {
+    console.log(err);
+    process.exit(1);
+  }
   global.db = client.db('spacex-api');
 
   const port = process.env.PORT || 5000;
