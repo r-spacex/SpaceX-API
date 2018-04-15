@@ -28,7 +28,7 @@
   "homepage": "https://github.com/r-spacex/SpaceX-API",
   "dependencies": {
     "koa": "^2.5.0",
-    "koa-compress": "^2.0.0",
+    "koa-compress": "^3.0.0",
     "koa-helmet": "^4.0.0",
     "koa-logger": "^3.2.0",
     "koa-redis-cache": "^3.0.0",
