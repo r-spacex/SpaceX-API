@@ -103,7 +103,7 @@ test('It should return a specific Launch info', async () => {
     expect(item.rocket.first_stage.cores.length).toBeGreaterThan(0);
     item.rocket.first_stage.cores.forEach((core) => {
       expect(core).toHaveProperty('core_serial');
-      expect(core).toHaveProperty('flight', expect.any(Number));
+      expect(core).toHaveProperty('flight');
       expect(core).toHaveProperty('block');
       expect(core).toHaveProperty('reused');
       expect(core).toHaveProperty('land_success');
