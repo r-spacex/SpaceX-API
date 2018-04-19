@@ -1,6 +1,6 @@
 <div align="center">
 
-![Imgur](https://i.imgur.com/cXxsJQX.jpg)
+![Imgur](https://i.imgur.com/CyPho0U.jpg)
 
 # SpaceX Data REST API
 
@@ -27,11 +27,11 @@ GET https://api.spacexdata.com/v2/launches/latest
 
 ```json
 {
-   "flight_number":59,
+   "flight_number":60,
    "launch_year":"2018",
-   "launch_date_unix":1522701041,
-   "launch_date_utc":"2018-04-02T20:30:41Z",
-   "launch_date_local":"2018-04-02T16:30:41-04:00",
+   "launch_date_unix":1524091860,
+   "launch_date_utc":"2018-04-18T22:51:00Z",
+   "launch_date_local":"2018-04-18T18:51:00-04:00",
    "rocket":{
       "rocket_id":"falcon9",
       "rocket_name":"Falcon 9",
@@ -39,46 +39,41 @@ GET https://api.spacexdata.com/v2/launches/latest
       "first_stage":{
          "cores":[
             {
-               "core_serial":"B1039",
-               "flight":2,
+               "core_serial":"B1045",
+               "flight":1,
                "block":4,
-               "reused":true,
-               "land_success":null,
-               "landing_type":null,
-               "landing_vehicle":null
+               "reused":false,
+               "land_success":true,
+               "landing_type":"ASDS",
+               "landing_vehicle":"OCISLY"
             }
          ]
       },
       "second_stage":{
          "payloads":[
             {
-               "payload_id":"SpaceX CRS-14",
-               "cap_serial":"C110",
-               "reused":true,
+               "payload_id":"TESS",
+               "reused":false,
                "customers":[
-                  "NASA (CRS)"
+                  "NASA"
                ],
-               "payload_type":"Dragon 1.1",
-               "payload_mass_kg":2760,
-               "payload_mass_lbs":6084.7,
-               "orbit":"ISS",
-               "mass_returned_kg":null,
-               "mass_returned_lbs":null,
-               "flight_time_sec":null,
-               "cargo_manifest":"https://www.nasa.gov/sites/default/files/atoms/files/spacex_crs-14_mision_overview_high_res.pdf"
+               "payload_type":"Satellite",
+               "payload_mass_kg":350,
+               "payload_mass_lbs":772,
+               "orbit":"HEO"
             }
          ]
       }
    },
    "telemetry":{
-      "flight_club":"https://www.flightclub.io/results/?code=CR14"
+      "flight_club":"https://www.flightclub.io/results/?code=TESS"
    },
    "reuse":{
       "core":true,
       "side_core1":false,
       "side_core2":false,
       "fairings":false,
-      "capsule":true
+      "capsule":false
    },
    "launch_site":{
       "site_id":"ccafs_slc_40",
@@ -87,16 +82,16 @@ GET https://api.spacexdata.com/v2/launches/latest
    },
    "launch_success":true,
    "links":{
-      "mission_patch":"https://i.imgur.com/eHxbiG3.png",
-      "reddit_campaign":"https://www.reddit.com/r/spacex/comments/82op7a/crs14_launch_campaign_thread/",
-      "reddit_launch":"https://www.reddit.com/r/spacex/comments/88s8a7/rspacex_crs14_official_launch_discussion_updates/",
+      "mission_patch":"https://i.imgur.com/MqflnNF.png",
+      "reddit_campaign":"https://www.reddit.com/r/spacex/comments/88l46q/tess_launch_campaign_thread/",
+      "reddit_launch":"https://www.reddit.com/r/spacex/comments/8cm61o/rspacex_tess_official_launch_discussion_updates/",
       "reddit_recovery":null,
-      "reddit_media":"https://www.reddit.com/r/spacex/comments/88l52i/rspacex_crs14_media_thread_videos_images_gifs/",
-      "presskit":"http://www.spacex.com/sites/spacex/files/crs-14presskit2018.pdf",
-      "article_link":null,
-      "video_link":"https://www.youtube.com/watch?v=BPQHG-LevZM"
+      "reddit_media":"https://www.reddit.com/r/spacex/comments/8cmzop/rspacex_tess_media_thread_videos_images_gifs/",
+      "presskit":"http://www.spacex.com/sites/spacex/files/tesspresskitfinal417.pdf",
+      "article_link":"https://spaceflightnow.com/2018/04/19/all-sky-surveyor-launched-from-cape-canaveral-on-the-hunt-for-exoplanets/",
+      "video_link":"https://www.youtube.com/watch?v=aY-0uBIYYKk"
    },
-   "details":"The launch used a refurbished booster (from CRS-12) for the 11th time, and a refurbished capsule (C110 from CRS-8) for the third time. External payloads include a materials research platform MISSE-FF phase 3 of the Robotic Refueling Mission TSIS, heliophysics sensor several crystallization experiments, and the RemoveDebris spacecraft aimed at space junk removal. The booster was expended in order to test a new landing profile."
+   "details":"Part of the Explorers program, this space telescope is intended for wide-field search of exoplanets transiting nearby stars. It is the first NASA high priority science mission launched by SpaceX. It was the first time SpaceX launched a scientific satellite not primarily intended for Earth observations. The second stage placed it into a high-Earth elliptical orbit, after which the satellite's own booster will perform complex maneuvers including a lunar flyby, and over the course of two months, reach a stable, 2:1 resonant orbit with the Moon. In January 2018, SpaceX received NASA's Launch Services Program Category 2 certification of its Falcon 9 'Full Thrust', certification which is required for launching medium risk missions like TESS. It was the last launch of a new Block 4 booster, and marked the 24th successful recovery of the booster. An experimental water landing was performed in order to attempt fairing recovery."
 }
 ```
 
