@@ -1,3 +1,17 @@
+## Version 2.5.0
+**Features & Fixes**
+* Redis route caching times adjusted for quicker launch updates
+* Added date format parsing in #80 to allow for any standardized date formats in query strings
+* Tests now lint first, allowing for earlier syntax error checks
+* Added sorting to rocket endpoints for consistent ordering
+* Switched from NPM to Yarn for faster dependency management 
+* Removed jest cli option blocking multi worker testing pools
+* Moved query logic out of routes and into controllers
+* Made all query builders anonymous functions by default
+
+**Database Changes**
+* Added `mission_patch_small` filed with links to smaller image versions
+
 ## Version 2.4.0
 **Features & Fixes**
 * Migration from Express to Koa in #78 
