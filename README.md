@@ -82,7 +82,8 @@ GET https://api.spacexdata.com/v2/launches/latest
    },
    "launch_success":true,
    "links":{
-      "mission_patch":"https://i.imgur.com/MqflnNF.png",
+      "mission_patch":"https://images2.imgbox.com/1f/13/kR2sdzO4_o.png",
+      "mission_patch_small":"https://images2.imgbox.com/f3/cd/Ub2z4QHa_o.png",
       "reddit_campaign":"https://www.reddit.com/r/spacex/comments/88l46q/tess_launch_campaign_thread/",
       "reddit_launch":"https://www.reddit.com/r/spacex/comments/8cm61o/rspacex_tess_official_launch_discussion_updates/",
       "reddit_recovery":null,
