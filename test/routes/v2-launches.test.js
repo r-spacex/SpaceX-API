@@ -97,8 +97,8 @@ test('It should return a specific Launch info', async () => {
     expect(item).toHaveProperty('mission_name', expect.anything());
     expect(item).toHaveProperty('launch_year', expect.stringMatching(/^[0-9]{4}$/));
     expect(item).toHaveProperty('launch_date_unix');
-    expect(item).toHaveProperty('launch_date_utc', expect.anything());
-    expect(item).toHaveProperty('launch_date_local', expect.anything());
+    expect(item).toHaveProperty('launch_date_utc');
+    expect(item).toHaveProperty('launch_date_local');
     expect(item).toHaveProperty('rocket.rocket_id');
     expect(item).toHaveProperty('rocket.rocket_name');
     expect(item).toHaveProperty('rocket.rocket_type');
