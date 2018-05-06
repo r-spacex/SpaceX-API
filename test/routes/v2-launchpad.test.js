@@ -9,7 +9,7 @@ beforeAll((done) => {
 });
 
 //------------------------------------------------------------
-//                     Launchpads V2
+//                        Launchpads
 //------------------------------------------------------------
 
 test('It should return all launchpads', async () => {

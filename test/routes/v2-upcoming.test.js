@@ -9,7 +9,7 @@ beforeAll((done) => {
 });
 
 //------------------------------------------------------------
-//                    Upcoming Launches V2
+//                    Upcoming Launches
 //------------------------------------------------------------
 
 test('It should return all upcoming launches', async () => {

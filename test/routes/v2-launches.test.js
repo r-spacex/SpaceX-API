@@ -9,7 +9,7 @@ beforeAll((done) => {
 });
 
 //------------------------------------------------------------
-//                    Past Launches V2
+//                      Past Launches
 //------------------------------------------------------------
 
 test('It should return all past launches', async () => {
@@ -76,7 +76,7 @@ test('It should return all past launches', async () => {
 });
 
 //------------------------------------------------------------
-//                     Latest Launch Test
+//                       Latest Launch
 //------------------------------------------------------------
 
 test('It should return the latest launch', async () => {
@@ -86,7 +86,7 @@ test('It should return the latest launch', async () => {
 
 
 //------------------------------------------------------------
-//                     All Launches Test
+//                        All Launches
 //------------------------------------------------------------
 
 test('It should return a specific Launch info', async () => {

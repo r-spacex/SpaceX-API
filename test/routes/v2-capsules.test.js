@@ -10,10 +10,10 @@ beforeAll((done) => {
 });
 
 //------------------------------------------------------------
-//                    Dragon V2
+//                         Dragon
 //------------------------------------------------------------
 
-test('It should return Dragon data', async () => {
+test('It should return all Dragon data', async () => {
   const response = await request(app.callback()).get('/v2/capsules');
   expect(response.statusCode).toBe(200);
   response.body.forEach((item) => {
@@ -47,7 +47,7 @@ test('It should return Dragon data', async () => {
 });
 
 //------------------------------------------------------------
-//                     Individual Capsule V2
+//                     Individual Capsule
 //------------------------------------------------------------
 
 test('It should return dragon1 capsule', async () => {

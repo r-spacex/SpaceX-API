@@ -9,7 +9,7 @@ beforeAll((done) => {
 });
 
 //------------------------------------------------------------
-//                     Company Info V2
+//                        Company Info
 //------------------------------------------------------------
 
 test('It should return company info', async () => {
