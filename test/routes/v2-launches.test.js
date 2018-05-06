@@ -17,6 +17,7 @@ test('It should return all past launches', async () => {
   expect(response.statusCode).toBe(200);
   response.body.forEach((item) => {
     expect(item).toHaveProperty('flight_number', expect.anything());
+    expect(item).toHaveProperty('mission_name', expect.anything());
     expect(item).toHaveProperty('launch_year', expect.stringMatching(/^[0-9]{4}$/));
     expect(item).toHaveProperty('launch_date_unix');
     expect(item).toHaveProperty('launch_date_utc', expect.anything());
@@ -85,7 +86,7 @@ test('It should return the latest launch', async () => {
 
 
 //------------------------------------------------------------
-//                     Launch Info Test
+//                     All Launches Test
 //------------------------------------------------------------
 
 test('It should return a specific Launch info', async () => {
@@ -93,6 +94,7 @@ test('It should return a specific Launch info', async () => {
   expect(response.statusCode).toBe(200);
   response.body.forEach((item) => {
     expect(item).toHaveProperty('flight_number', expect.anything());
+    expect(item).toHaveProperty('mission_name', expect.anything());
     expect(item).toHaveProperty('launch_year', expect.stringMatching(/^[0-9]{4}$/));
     expect(item).toHaveProperty('launch_date_unix');
     expect(item).toHaveProperty('launch_date_utc', expect.anything());
