@@ -15,7 +15,7 @@ if (process.env.REDISCLOUD_URL) {
       expire: 120,
     }, {
       path: '/v2/launches/(.*)',
-      expire: 600,
+      expire: 120,
     }, {
       path: '/v2/parts/(.*)',
       expire: 6000,
