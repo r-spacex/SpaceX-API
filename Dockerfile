@@ -1,4 +1,4 @@
-# Do npm install with full image
+# Do yarn install with full image
 FROM mhart/alpine-node:latest
 WORKDIR /app
 COPY package.json yarn.lock ./
