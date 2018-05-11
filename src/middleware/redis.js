@@ -12,7 +12,7 @@ if (process.env.REDISCLOUD_URL) {
   options = {
     routes: [{
       path: '/v2/launches',
-      expire: 600,
+      expire: 120,
     }, {
       path: '/v2/launches/(.*)',
       expire: 600,
