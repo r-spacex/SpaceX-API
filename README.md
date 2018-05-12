@@ -27,73 +27,73 @@ GET https://api.spacexdata.com/v2/launches/latest
 
 ```json
 {
-   "flight_number":61,
-   "mission_name":"Bangabandhu-1",
-   "launch_year":"2018",
-   "launch_date_unix":1526069640,
-   "launch_date_utc":"2018-05-11T20:14:00Z",
-   "launch_date_local":"2018-05-11T16:14:00-04:00",
-   "rocket":{
-      "rocket_id":"falcon9",
-      "rocket_name":"Falcon 9",
-      "rocket_type":"FT",
-      "first_stage":{
-         "cores":[
-            {
-               "core_serial":"B1046",
-               "flight":1,
-               "block":5,
-               "reused":false,
-               "land_success":true,
-               "landing_type":"ASDS",
-               "landing_vehicle":"OCISLY"
-            }
-         ]
-      },
-      "second_stage":{
-         "payloads":[
-            {
-               "payload_id":"Bangabandhu-1",
-               "reused":false,
-               "customers":[
-                  "Bangladesh Gov"
-               ],
-               "payload_type":"Satellite",
-               "payload_mass_kg":3750,
-               "payload_mass_lbs":8270,
-               "orbit":"GTO"
-            }
-         ]
-      }
-   },
-   "telemetry":{
-      "flight_club":"https://www.flightclub.io/result?code=BNG1"
-   },
-   "reuse":{
-      "core":false,
-      "side_core1":false,
-      "side_core2":false,
-      "fairings":false,
-      "capsule":false
-   },
-   "launch_site":{
-      "site_id":"ksc_lc_39a",
-      "site_name":"KSC LC 39A",
-      "site_name_long":"Kennedy Space Center Historic Launch Complex 39A"
-   },
-   "launch_success":true,
-   "links":{
-      "mission_patch":"https://images2.imgbox.com/07/15/dD7LXPVF_o.png",
-      "mission_patch_small":"https://images2.imgbox.com/64/33/NuiM3QU1_o.png",
-      "reddit_campaign":"https://www.reddit.com/r/spacex/comments/8624iq/bangabandhu1_launch_campaign_thread/",
-      "reddit_launch":"https://www.reddit.com/r/spacex/comments/8ia091/rspacex_bangabandhu1_official_launch_discussion",
-      "reddit_recovery":null,
-      "reddit_media":"https://www.reddit.com/r/spacex/comments/8ia5bu/rspacex_bangabandhu1_media_thread_videos_images/",
-      "presskit":"http://www.spacex.com/sites/spacex/files/bangabandhupresskit51118.pdf",
-      "article_link":"https://spaceflightnow.com/2018/05/11/spacex-debuts-an-improved-human-rated-model-of-the-falcon-9-rocket/",
-      "video_link":"https://www.youtube.com/watch?v=rQEqKZ7CJlk"
-   },
-   "details":"First launch of a Block V first stage."
+  "flight_number": 61,
+  "mission_name": "Bangabandhu-1",
+  "launch_year": "2018",
+  "launch_date_unix": 1526069640,
+  "launch_date_utc": "2018-05-11T20:14:00Z",
+  "launch_date_local": "2018-05-11T16:14:00-04:00",
+  "rocket": {
+    "rocket_id": "falcon9",
+    "rocket_name": "Falcon 9",
+    "rocket_type": "FT",
+    "first_stage": {
+      "cores": [
+        {
+          "core_serial": "B1046",
+          "flight": 1,
+          "block": 5,
+          "reused": false,
+          "land_success": true,
+          "landing_type": "ASDS",
+          "landing_vehicle": "OCISLY"
+        }
+      ]
+    },
+    "second_stage": {
+      "payloads": [
+        {
+          "payload_id": "Bangabandhu-1",
+          "reused": false,
+          "customers": [
+            "Bangladesh Gov"
+          ],
+          "payload_type": "Satellite",
+          "payload_mass_kg": 3750,
+          "payload_mass_lbs": 8270,
+          "orbit": "GTO"
+        }
+      ]
+    }
+  },
+  "telemetry": {
+    "flight_club": "https://www.flightclub.io/result?code=BNG1"
+  },
+  "reuse": {
+    "core": false,
+    "side_core1": false,
+    "side_core2": false,
+    "fairings": false,
+    "capsule": false
+  },
+  "launch_site": {
+    "site_id": "ksc_lc_39a",
+    "site_name": "KSC LC 39A",
+    "site_name_long": "Kennedy Space Center Historic Launch Complex 39A"
+  },
+  "launch_success": true,
+  "links": {
+    "mission_patch": "https://images2.imgbox.com/07/15/dD7LXPVF_o.png",
+    "mission_patch_small": "https://images2.imgbox.com/64/33/NuiM3QU1_o.png",
+    "reddit_campaign": "https://www.reddit.com/r/spacex/comments/8624iq/bangabandhu1_launch_campaign_thread/",
+    "reddit_launch": "https://www.reddit.com/r/spacex/comments/8ia091/rspacex_bangabandhu1_official_launch_discussion",
+    "reddit_recovery": null,
+    "reddit_media": "https://www.reddit.com/r/spacex/comments/8ia5bu/rspacex_bangabandhu1_media_thread_videos_images/",
+    "presskit": "http://www.spacex.com/sites/spacex/files/bangabandhupresskit51118.pdf",
+    "article_link": "https://spaceflightnow.com/2018/05/11/spacex-debuts-an-improved-human-rated-model-of-the-falcon-9-rocket/",
+    "video_link": "https://www.youtube.com/watch?v=rQEqKZ7CJlk"
+  },
+  "details": "First launch of a Block V first stage."
 }
 ```
 
