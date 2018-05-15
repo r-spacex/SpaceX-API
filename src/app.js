@@ -19,7 +19,7 @@ const rockets = require('./routes/v2-rockets');
 const upcoming = require('./routes/v2-upcoming');
 
 // Production read-only DB
-const url = 'mongodb+srv://public:spacex@cluster0-gpg0u.mongodb.net/spacex-api';
+const url = 'mongodb+srv://public:spacex@test-cluster-gpg0u.mongodb.net/spacex-api';
 
 const app = new Koa();
 
