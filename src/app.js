@@ -69,15 +69,17 @@ app.use(upcoming.routes());
 module.exports = app;
 
 // Mongo Connection + Server Start
-MongoClient.connect(url, (err, client) => {
-  if (err) {
-    console.log(err);
-    process.exit(1);
-  }
-  global.db = client.db('spacex-api');
+(async () => {
+  try {
+    const client = await MongoClient.connect(url);
 
-  const port = process.env.PORT || 5000;
-  app.listen(port, '0.0.0.0', () => {
-    app.emit('ready');
-  });
-});
+    global.db = client.db('spacex-api');
+
+    const port = process.env.PORT || 5000;
+    app.listen(port, '0.0.0.0', () => {
+      app.emit('ready');
+    });
+  } catch (err) {
+    console.log(err.stack);
+  }
+})();
