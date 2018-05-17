@@ -2,7 +2,7 @@
 
 ![Imgur](https://i.imgur.com/5JlPtsF.jpg)
 
-# SpaceX Data REST API
+# SpaceX REST API
 
 [![Travis](https://img.shields.io/travis/r-spacex/SpaceX-API.svg?style=flat-square)](https://travis-ci.org/r-spacex/SpaceX-API)
 [![Docker Build Statu](https://img.shields.io/docker/build/jakewmeyer/spacex-api.svg?style=flat-square)](https://hub.docker.com/r/jakewmeyer/spacex-api/)
