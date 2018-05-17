@@ -10,6 +10,9 @@ const v2 = new Router({
 // Return most recent launch
 v2.get('/latest', launches.latest);
 
+// Return next launch
+v2.get('/next', launches.next);
+
 // Return all past launches filtered by querystrings
 v2.get('/', launches.past);
 

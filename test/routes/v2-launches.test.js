@@ -84,6 +84,14 @@ test('It should return the latest launch', async () => {
   expect(response.statusCode).toBe(200);
 });
 
+//------------------------------------------------------------
+//                       Next Launch
+//------------------------------------------------------------
+
+test('It should return the next launch', async () => {
+  const response = await request(app.callback()).get('/v2/launches/next');
+  expect(response.statusCode).toBe(200);
+});
 
 //------------------------------------------------------------
 //                        All Launches

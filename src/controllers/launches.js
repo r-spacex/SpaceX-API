@@ -20,6 +20,20 @@ module.exports = {
   },
 
   /**
+   * Return next launch
+   */
+  next: async (ctx) => {
+    const data = await global.db
+      .collection('upcoming_v2')
+      .find({})
+      .project(projectQuery(ctx.request))
+      .sort({ flight_number: 1 })
+      .limit(1)
+      .toArray();
+    ctx.body = data[0];
+  },
+
+  /**
    * Return all past and upcoming launches
    */
   all: async (ctx) => {
