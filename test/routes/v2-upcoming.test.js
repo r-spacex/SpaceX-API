@@ -17,7 +17,7 @@ test('It should return all upcoming launches', async () => {
   expect(response.statusCode).toBe(200);
   response.body.forEach((item) => {
     expect(item).toHaveProperty('flight_number', expect.anything());
-    // expect(item).toHaveProperty('mission_name', expect.anything());
+    expect(item).toHaveProperty('mission_name', expect.anything());
     expect(item).toHaveProperty('launch_year');
     expect(item).toHaveProperty('launch_date_unix');
     expect(item).toHaveProperty('launch_date_utc');
