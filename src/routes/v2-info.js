@@ -2,6 +2,7 @@
 
 const Router = require('koa-router');
 const info = require('../controllers/info');
+const history = require('../controllers/history');
 
 const v2 = new Router({
   prefix: '/v2/info',
@@ -9,5 +10,6 @@ const v2 = new Router({
 
 // Returns company info
 v2.get('/', info.get);
+v2.get('/history', history.all);
 
 module.exports = v2;
