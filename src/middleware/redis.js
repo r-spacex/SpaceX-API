@@ -11,6 +11,12 @@ if (process.env.REDISCLOUD_URL) {
   const redisURL = url.parse(process.env.REDISCLOUD_URL);
   options = {
     routes: [{
+      path: '/v2/launches',
+      expire: 30,
+    }, {
+      path: '/v2/launches/(.*)',
+      expire: 30,
+    }, {
       path: '/v2/parts/(.*)',
       expire: 6000,
     }, {
