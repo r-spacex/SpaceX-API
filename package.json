@@ -4,7 +4,7 @@
   "description": "Open Source REST API for rocket, core, capsule, pad, and launch data",
   "main": "./src/app.js",
   "scripts": {
-    "test": "eslint \"**/*.js\" && NODE_ENV=test PORT=0 jest --silent --forceExit",
+    "test": "eslint \"**/*.js\" && NODE_ENV=test PORT=0 jest --silent",
     "start": "node src/app.js",
     "lint": "eslint \"**/*.js\""
   },
@@ -44,7 +44,7 @@
     "eslint-plugin-import": "^2.12.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.8.2",
-    "jest": "^22.4.4",
+    "jest": "^23.0.1",
     "supertest": "^3.1.0"
   },
   "jest": {
