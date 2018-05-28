@@ -9,7 +9,7 @@ module.exports = {
       .collection('rocket')
       .find({})
       .project({ _id: 0 })
-      .sort({ id: 1 })
+      .sort({ first_flight: 1 })
       .toArray();
     ctx.body = data;
   },

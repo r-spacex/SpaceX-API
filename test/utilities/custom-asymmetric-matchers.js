@@ -34,10 +34,8 @@ class SpacexVolume extends SpacexComposite {
     if (!super.asymmetricMatch(any)) {
       return false;
     }
-    expect(any).toHaveProperty('cubic_meters', expect.any(Number));
-    expect(any).toHaveProperty('cubic_feet', expect.any(Number));
-    expect(any.cubic_meters).toBeGreaterThanOrEqual(0);
-    expect(any.cubic_feet).toBeGreaterThanOrEqual(0);
+    expect(any).toHaveProperty('cubic_meters');
+    expect(any).toHaveProperty('cubic_feet');
     return true;
   }
 
@@ -54,10 +52,8 @@ class SpacexLength extends SpacexComposite {
     if (!super.asymmetricMatch(any)) {
       return false;
     }
-    expect(any).toHaveProperty('meters', expect.any(Number));
-    expect(any).toHaveProperty('feet', expect.any(Number));
-    expect(any.meters).toBeGreaterThanOrEqual(0);
-    expect(any.feet).toBeGreaterThanOrEqual(0);
+    expect(any).toHaveProperty('meters');
+    expect(any).toHaveProperty('feet');
     return true;
   }
 
@@ -74,10 +70,8 @@ class SpacexMass extends SpacexComposite {
     if (!super.asymmetricMatch(any)) {
       return false;
     }
-    expect(any).toHaveProperty('kg', expect.any(Number));
-    expect(any).toHaveProperty('lb', expect.any(Number));
-    expect(any.kg).toBeGreaterThanOrEqual(0);
-    expect(any.lb).toBeGreaterThanOrEqual(0);
+    expect(any).toHaveProperty('kg');
+    expect(any).toHaveProperty('lb');
     return true;
   }
 
@@ -94,10 +88,8 @@ class SpacexThrust extends SpacexComposite {
     if (!super.asymmetricMatch(any)) {
       return false;
     }
-    expect(any).toHaveProperty('kN', expect.any(Number));
-    expect(any).toHaveProperty('lbf', expect.any(Number));
-    expect(any.kN).toBeGreaterThanOrEqual(0);
-    expect(any.lbf).toBeGreaterThanOrEqual(0);
+    expect(any).toHaveProperty('kN');
+    expect(any).toHaveProperty('lbf');
     return true;
   }
 
@@ -114,8 +106,8 @@ class SpacexPayloadWeight extends SpacexComposite {
     if (!super.asymmetricMatch(any)) {
       return false;
     }
-    expect(any).toHaveProperty('id', expect.any(String));
-    expect(any).toHaveProperty('name', expect.any(String));
+    expect(any).toHaveProperty('id');
+    expect(any).toHaveProperty('name');
     expect(any).toEqual(new SpacexMass());
     return true;
   }
@@ -136,7 +128,7 @@ class SpacexVehicleStage extends SpacexComposite {
     // expect(any).toHaveProperty('reusable', expect.any(Boolean))
     // expect(any).toHaveProperty('engines', expect.any(String))
     // expect(any).toHaveProperty('fuel_amount_tons', expect.any(Number))
-    expect(any).toHaveProperty('burn_time_sec', expect.any(Number));
+    expect(any).toHaveProperty('burn_time_sec');
     // expect(any).toHaveProperty('thrust_sea_level', new SpacexThrust())
     // expect(any).toHaveProperty('thrust_vacuum', new SpacexThrust())
     // expect(any).toHaveProperty('payloads', expect.any(String)) //
