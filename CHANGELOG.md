@@ -1,3 +1,20 @@
+## Version 2.6.0
+**Features & Fixes**
+* Added yarn caching for faster Travis builds
+* Updated mongo connection syntax to use `async / await`
+* Added endpoint for next upcoming launch (thanks @pascoemitch)
+* Increased mongo driver connection pool size to prevent traffic surge bottlenecks
+* Decreased caching time for launches to 30sec to reduce database query load
+* All rocket data now sorted by original launch data instead of rocket id
+* Added `/v2/info/history` endpoint with important company milestones
+* Added tentative BFR data to rocket endpoints
+
+**Database Changes**
+* Added `mission_name` field for easier access to common mission names
+* Added `wikipedia` field in `links` for easy access to Wikipedia summaries on launches
+* History collection added
+* BFR added to list of rockets
+
 ## Version 2.5.0
 **Features & Fixes**
 * Redis route caching times adjusted for quicker launch updates
