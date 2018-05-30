@@ -33,7 +33,7 @@ module.exports = (request) => {
     query.asds_attempt = (request.query.asds_attempt === 'true');
   }
   if (request.query.asds_landings) {
-    query.landings = parseInt(request.query.asds_landings, 10);
+    query.asds_landings = parseInt(request.query.asds_landings, 10);
   }
   if (request.query.water_landing) {
     query.water_landing = (request.query.water_landing === 'true');
