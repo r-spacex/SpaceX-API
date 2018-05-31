@@ -61,7 +61,19 @@ GET https://api.spacexdata.com/v2/launches/latest
           "payload_type": "Satellite",
           "payload_mass_kg": 4300,
           "payload_mass_lbs": 9479.9,
-          "orbit": "PO"
+          "orbit": "PO",
+          "orbit_params": {
+            "reference_system": "geocentric",
+            "regime": "low-earth-orbit",
+            "longitude": null,
+            "semi_major_axis_km": null,
+            "eccentricity": null,
+            "periapsis_km": null,
+            "apoapsis_km": null,
+            "inclination_deg": 88.6,
+            "period_min": null,
+            "lifespan_years": 15
+          }
         },
         {
           "payload_id": "GRACE-FO 1-2",
@@ -73,7 +85,19 @@ GET https://api.spacexdata.com/v2/launches/latest
           "payload_type": "Satellite",
           "payload_mass_kg": 1160,
           "payload_mass_lbs": 2557.4,
-          "orbit": "PO"
+          "orbit": "PO",
+          "orbit_params": {
+            "reference_system": "geocentric",
+            "regime": "sun-synchronous",
+            "longitude": null,
+            "semi_major_axis_km": 6873.5,
+            "eccentricity": 0.00182,
+            "periapsis_km": 483,
+            "apoapsis_km": 508,
+            "inclination_deg": 89,
+            "period_min": 94.5,
+            "lifespan_years": 5
+          }
         }
       ]
     }
@@ -95,8 +119,8 @@ GET https://api.spacexdata.com/v2/launches/latest
   },
   "launch_success": true,
   "links": {
-    "mission_patch": "https://images2.imgbox.com/55/c2/l3BqVwEj_o.png",
-    "mission_patch_small": "https://images2.imgbox.com/02/5c/d5zmduUG_o.png",
+    "mission_patch": "https://images2.imgbox.com/3d/f9/IHjBUE1f_o.png",
+    "mission_patch_small": "https://images2.imgbox.com/f5/da/hz3r2Lni_o.png",
     "reddit_campaign": "https://www.reddit.com/r/spacex/comments/8ffsgl/iridium6_gracefo_launch_campaign_thread/",
     "reddit_launch": "https://www.reddit.com/r/spacex/comments/8kyk5a/rspacex_iridium_next_6_official_launch_discussion/",
     "reddit_recovery": null,
