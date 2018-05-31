@@ -110,6 +110,12 @@ GET https://api.spacexdata.com/v2/launches/latest
 }
 ```
 
+## Community made API Clients / Wrappers
+**.NET**
+* [Tearth/Oddity](https://github.com/Tearth/Oddity)
+**Node.js**
+* [Thomas-Smyth/SpaceX-API-Wrapper](https://github.com/Thomas-Smyth/SpaceX-API-Wrapper)
+
 ## Contributions
 See the [Contribution](https://github.com/r-spacex/SpaceX-API/blob/master/CONTRIBUTING.md) guide for detailed steps
 
