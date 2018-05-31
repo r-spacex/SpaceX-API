@@ -58,6 +58,17 @@ test('It should return all past launches', async () => {
         expect(payload).toHaveProperty('payload_mass_kg');
         expect(payload).toHaveProperty('payload_mass_lbs');
         expect(payload).toHaveProperty('orbit');
+        expect(payload).toHaveProperty('orbit_params');
+        expect(payload).toHaveProperty('orbit_params.reference_system');
+        expect(payload).toHaveProperty('orbit_params.regime');
+        expect(payload).toHaveProperty('orbit_params.longitude');
+        expect(payload).toHaveProperty('orbit_params.semi_major_axis_km');
+        expect(payload).toHaveProperty('orbit_params.eccentricity');
+        expect(payload).toHaveProperty('orbit_params.periapsis_km');
+        expect(payload).toHaveProperty('orbit_params.apoapsis_km');
+        expect(payload).toHaveProperty('orbit_params.inclination_deg');
+        expect(payload).toHaveProperty('orbit_params.period_min');
+        expect(payload).toHaveProperty('orbit_params.lifespan_years');
       });
     }
     expect(item).toHaveProperty('telemetry.flight_club');
@@ -143,6 +154,17 @@ test('It should return a specific Launch info', async () => {
         expect(payload).toHaveProperty('payload_mass_kg');
         expect(payload).toHaveProperty('payload_mass_lbs');
         expect(payload).toHaveProperty('orbit');
+        expect(payload).toHaveProperty('orbit_params');
+        expect(payload).toHaveProperty('orbit_params.reference_system');
+        expect(payload).toHaveProperty('orbit_params.regime');
+        expect(payload).toHaveProperty('orbit_params.longitude');
+        expect(payload).toHaveProperty('orbit_params.semi_major_axis_km');
+        expect(payload).toHaveProperty('orbit_params.eccentricity');
+        expect(payload).toHaveProperty('orbit_params.periapsis_km');
+        expect(payload).toHaveProperty('orbit_params.apoapsis_km');
+        expect(payload).toHaveProperty('orbit_params.inclination_deg');
+        expect(payload).toHaveProperty('orbit_params.period_min');
+        expect(payload).toHaveProperty('orbit_params.lifespan_years');
       });
     }
     expect(item).toHaveProperty('telemetry.flight_club');
