@@ -64,7 +64,7 @@ GET https://api.spacexdata.com/v2/launches/latest
           "orbit": "PO",
           "orbit_params": {
             "reference_system": "geocentric",
-            "regime": "low-earth-orbit",
+            "regime": "low-earth",
             "longitude": null,
             "semi_major_axis_km": null,
             "eccentricity": null,
