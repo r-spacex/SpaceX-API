@@ -35,7 +35,7 @@
     "koa-router": "^7.4.0",
     "koa2-cors": "^2.0.5",
     "lower-case": "^1.1.4",
-    "mongodb": "^3.0.8",
+    "mongodb": "^3.0.10",
     "path": "^0.12.7"
   },
   "devDependencies": {
@@ -43,7 +43,7 @@
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.12.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
-    "eslint-plugin-react": "^7.8.2",
+    "eslint-plugin-react": "^7.9.1",
     "jest": "^23.1.0",
     "supertest": "^3.1.0"
   },
