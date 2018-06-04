@@ -27,12 +27,12 @@ GET https://api.spacexdata.com/v2/launches/latest
 
 ```json
 {
-  "flight_number": 62,
-  "mission_name": "Iridium NEXT Mission 6",
+  "flight_number": 63,
+  "mission_name": "SES-12",
   "launch_year": "2018",
-  "launch_date_unix": 1527018478,
-  "launch_date_utc": "2018-05-22T19:47:58Z",
-  "launch_date_local": "2018-05-22T12:47:58-08:00",
+  "launch_date_unix": 1528087500,
+  "launch_date_utc": "2018-06-04T04:45:00.000Z",
+  "launch_date_local": "2018-06-04T00:45:00-04:00",
   "rocket": {
     "rocket_id": "falcon9",
     "rocket_name": "Falcon 9",
@@ -40,7 +40,7 @@ GET https://api.spacexdata.com/v2/launches/latest
     "first_stage": {
       "cores": [
         {
-          "core_serial": "B1043",
+          "core_serial": "B1040",
           "flight": 2,
           "block": 4,
           "reused": true,
@@ -53,57 +53,33 @@ GET https://api.spacexdata.com/v2/launches/latest
     "second_stage": {
       "payloads": [
         {
-          "payload_id": "Iridium NEXT 6",
+          "payload_id": "SES-12",
           "reused": false,
           "customers": [
-            "Iridium Communications"
+            "SES"
           ],
           "payload_type": "Satellite",
-          "payload_mass_kg": 4300,
-          "payload_mass_lbs": 9479.9,
-          "orbit": "PO",
+          "payload_mass_kg": 5383.85,
+          "payload_mass_lbs": 11869.4,
+          "orbit": "GTO",
           "orbit_params": {
             "reference_system": "geocentric",
-            "regime": "low-earth",
+            "regime": "geostationary",
             "longitude": null,
             "semi_major_axis_km": null,
             "eccentricity": null,
             "periapsis_km": null,
             "apoapsis_km": null,
-            "inclination_deg": 88.6,
+            "inclination_deg": null,
             "period_min": null,
             "lifespan_years": 15
-          }
-        },
-        {
-          "payload_id": "GRACE-FO 1-2",
-          "reused": false,
-          "customers": [
-            "NASA",
-            "DLR"
-          ],
-          "payload_type": "Satellite",
-          "payload_mass_kg": 1160,
-          "payload_mass_lbs": 2557.4,
-          "orbit": "PO",
-          "orbit_params": {
-            "reference_system": "geocentric",
-            "regime": "sun-synchronous",
-            "longitude": null,
-            "semi_major_axis_km": 6873.5,
-            "eccentricity": 0.00182,
-            "periapsis_km": 483,
-            "apoapsis_km": 508,
-            "inclination_deg": 89,
-            "period_min": 94.5,
-            "lifespan_years": 5
           }
         }
       ]
     }
   },
   "telemetry": {
-    "flight_club": "https://www.flightclub.io/result?code=IRD6"
+    "flight_club": "https://www.flightclub.io/result?code=SES12"
   },
   "reuse": {
     "core": true,
@@ -113,24 +89,24 @@ GET https://api.spacexdata.com/v2/launches/latest
     "capsule": false
   },
   "launch_site": {
-    "site_id": "vafb_slc_4e",
-    "site_name": "VAFB SLC 4E",
-    "site_name_long": "Vandenberg Air Force Base Space Launch Complex 4E"
+    "site_id": "ccafs_slc_40",
+    "site_name": "CCAFS SLC 40",
+    "site_name_long": "Cape Canaveral Air Force Station Space Launch Complex 40"
   },
   "launch_success": true,
   "links": {
-    "mission_patch": "https://images2.imgbox.com/3d/f9/IHjBUE1f_o.png",
-    "mission_patch_small": "https://images2.imgbox.com/f5/da/hz3r2Lni_o.png",
-    "reddit_campaign": "https://www.reddit.com/r/spacex/comments/8ffsgl/iridium6_gracefo_launch_campaign_thread/",
-    "reddit_launch": "https://www.reddit.com/r/spacex/comments/8kyk5a/rspacex_iridium_next_6_official_launch_discussion/",
+    "mission_patch": "https://images2.imgbox.com/44/ba/fvMeODet_o.png",
+    "mission_patch_small": "https://images2.imgbox.com/4b/b9/oS8ezl6V_o.png",
+    "reddit_campaign": "https://www.reddit.com/r/spacex/comments/8jv0ed/ses12_launch_campaign_thread/",
+    "reddit_launch": "https://www.reddit.com/r/spacex/comments/8o9woj/rspacex_ses12_official_launch_discussion_updates/",
     "reddit_recovery": null,
-    "reddit_media": "https://www.reddit.com/r/spacex/comments/8l9tfz/rspacex_iridium6gracefo_media_thread_videos/",
-    "presskit": "http://www.spacex.com/sites/spacex/files/iridium6presskit2018521.pdf",
-    "article_link": "https://spaceflightnow.com/2018/05/22/rideshare-launch-by-spacex-serves-commercial-and-scientific-customers/",
-    "wikipedia": "https://en.wikipedia.org/wiki/Gravity_Recovery_and_Climate_Experiment",
-    "video_link": "https://www.youtube.com/watch?v=I_0GgKfwCSk"
+    "reddit_media": "https://www.reddit.com/r/spacex/comments/8oa3k4/rspacex_ses12_media_thread_videos_images_gifs/",
+    "presskit": "http://www.spacex.com/sites/spacex/files/ses-12missionpress_kit_6.2.18.pdf",
+    "article_link": "https://spaceflightnow.com/2018/06/04/multi-mission-telecom-craft-launched-by-spacex-for-ses/",
+    "wikipedia": "https://en.wikipedia.org/wiki/SES-12",
+    "video_link": "https://www.youtube.com/watch?v=2hcM5hqQ45s"
   },
-  "details": "GFZ arranged a rideshare of GRACE-FO on a Falcon 9 with Iridium following the cancellation of their Dnepr launch contract in 2015. Iridium CEO Matt Desch disclosed in September 2017 that GRACE-FO would be launched on the sixth Iridium NEXT mission. The booster reuse turnaround was a record 4.5 months between flights."
+  "details": "The communications satellite serving the Middle East and the Asia-Pacific region at the same place as SES-8, and was the largest satellite built for SES. The first stage Block 4 was expended, while the second stage was Block 5."
 }
 ```
 
