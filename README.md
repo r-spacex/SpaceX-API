@@ -1,6 +1,6 @@
 <div align="center">
 
-![Imgur](https://i.imgur.com/l7JtVma.jpg)
+![Imgur](https://i.imgur.com/KOyCJ9y.jpg)
 
 # SpaceX REST API
 
