@@ -65,7 +65,7 @@ GET https://api.spacexdata.com/v2/launches/latest
           "orbit_params": {
             "reference_system": "geocentric",
             "regime": "geostationary",
-            "longitude": null,
+            "longitude": 95,
             "semi_major_axis_km": null,
             "eccentricity": null,
             "periapsis_km": null,
