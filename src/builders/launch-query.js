@@ -69,6 +69,9 @@ module.exports = (request) => {
   if (request.query.block) {
     query['rocket.first_stage.cores.block'] = parseInt(request.query.block, 10);
   }
+  if (request.query.second_stage_block) {
+    query['rocket.second_stage.block'] = parseInt(request.query.second_stage_block, 10);
+  }
   if (request.query.core_reuse) {
     query['reuse.core'] = (request.query.core_reuse === 'true');
   }

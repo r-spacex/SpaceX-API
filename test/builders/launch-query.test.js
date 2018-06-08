@@ -126,6 +126,12 @@ test('It should return launches block 4 cores', async () => {
   });
 });
 
+test('It should return 11 launches with second stage block 1 cores', async () => {
+  const response = await request(app.callback()).get('/v2/launches?block=4');
+  expect(response.statusCode).toBe(200);
+  expect(response.body.length).toBe(11);
+});
+
 test('It should return launches with cap serial C113', async () => {
   const response = await request(app.callback()).get('/v2/launches?cap_serial=C113');
   expect(response.statusCode).toBe(200);
