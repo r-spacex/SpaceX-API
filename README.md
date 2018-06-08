@@ -1,18 +1,15 @@
-<div align="center">
+<p align="center"><img src="https://i.imgur.com/KOyCJ9y.jpg"></p>
 
-![Imgur](https://i.imgur.com/KOyCJ9y.jpg)
+<h1 align="center">SpaceX REST API</h1>
 
-# SpaceX REST API
+<p align="center">
+<a href="https://travis-ci.org/r-spacex/SpaceX-API"><img src="https://img.shields.io/travis/r-spacex/SpaceX-API.svg?style=flat-square"></a>
+<a href="https://hub.docker.com/r/jakewmeyer/spacex-api/"><img src="https://img.shields.io/docker/build/jakewmeyer/spacex-api.svg?style=flat-square"></a>
+<a href="https://github.com/r-spacex/SpaceX-API/releases"><img src="https://img.shields.io/github/release/r-spacex/SpaceX-API.svg?style=flat-square"></a>
+<a href="https://en.wikipedia.org/wiki/Representational_state_transfer"><img src="https://img.shields.io/badge/interface-REST-brightgreen.svg?style=flat-square"></a>
+</p>
 
-[![Travis](https://img.shields.io/travis/r-spacex/SpaceX-API.svg?style=flat-square)](https://travis-ci.org/r-spacex/SpaceX-API)
-[![Docker Build Statu](https://img.shields.io/docker/build/jakewmeyer/spacex-api.svg?style=flat-square)](https://hub.docker.com/r/jakewmeyer/spacex-api/)
-[![GitHub release](https://img.shields.io/github/release/r-spacex/SpaceX-API.svg?style=flat-square)]()
-[![Interface](https://img.shields.io/badge/interface-REST-brightgreen.svg?style=flat-square)]()
-
-### Open Source REST API for rocket, core, capsule, pad, and launch data
-<br></br>
-
-</div>
+<h3 align="center">Open Source REST API for rocket, core, capsule, pad, and launch data</h3>
 
 ## Documentation
 See the [Wiki](https://github.com/r-spacex/SpaceX-API/wiki) for full API Documentation
