@@ -35,6 +35,7 @@ test('It should return all upcoming launches', async () => {
       expect(core).toHaveProperty('landing_type');
       expect(core).toHaveProperty('landing_vehicle');
     });
+    expect(item.rocket.second_stage).toHaveProperty('block');
     expect(item.rocket.second_stage.payloads.length).toBeGreaterThan(0);
     if (item.hasOwnProperty.call('cap_serial')) {
       item.rocket.second_stage.payloads.forEach((payload) => {
@@ -45,6 +46,17 @@ test('It should return all upcoming launches', async () => {
         expect(payload).toHaveProperty('payload_mass_kg');
         expect(payload).toHaveProperty('payload_mass_lbs');
         expect(payload).toHaveProperty('orbit');
+        expect(payload).toHaveProperty('orbit_params');
+        expect(payload).toHaveProperty('orbit_params.reference_system');
+        expect(payload).toHaveProperty('orbit_params.regime');
+        expect(payload).toHaveProperty('orbit_params.longitude');
+        expect(payload).toHaveProperty('orbit_params.semi_major_axis_km');
+        expect(payload).toHaveProperty('orbit_params.eccentricity');
+        expect(payload).toHaveProperty('orbit_params.periapsis_km');
+        expect(payload).toHaveProperty('orbit_params.apoapsis_km');
+        expect(payload).toHaveProperty('orbit_params.inclination_deg');
+        expect(payload).toHaveProperty('orbit_params.period_min');
+        expect(payload).toHaveProperty('orbit_params.lifespan_years');
         expect(payload).toHaveProperty('mass_returned_kg');
         expect(payload).toHaveProperty('mass_returned_lbs');
         expect(payload).toHaveProperty('flight_time_sec');
@@ -58,6 +70,17 @@ test('It should return all upcoming launches', async () => {
         expect(payload).toHaveProperty('payload_mass_kg');
         expect(payload).toHaveProperty('payload_mass_lbs');
         expect(payload).toHaveProperty('orbit');
+        expect(payload).toHaveProperty('orbit_params');
+        expect(payload).toHaveProperty('orbit_params.reference_system');
+        expect(payload).toHaveProperty('orbit_params.regime');
+        expect(payload).toHaveProperty('orbit_params.longitude');
+        expect(payload).toHaveProperty('orbit_params.semi_major_axis_km');
+        expect(payload).toHaveProperty('orbit_params.eccentricity');
+        expect(payload).toHaveProperty('orbit_params.periapsis_km');
+        expect(payload).toHaveProperty('orbit_params.apoapsis_km');
+        expect(payload).toHaveProperty('orbit_params.inclination_deg');
+        expect(payload).toHaveProperty('orbit_params.period_min');
+        expect(payload).toHaveProperty('orbit_params.lifespan_years');
       });
     }
     expect(item).toHaveProperty('telemetry.flight_club');
