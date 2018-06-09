@@ -9,7 +9,7 @@ const MongoClient = require('mongodb');
 const options = require('./middleware/redis');
 
 const capsules = require('./routes/v2-capsules');
-const errors = require('./routes/v2-misc');
+const errors = require('./routes/v2-errors');
 const home = require('./routes/v2-home');
 const info = require('./routes/v2-info');
 const launchpad = require('./routes/v2-launchpad');
