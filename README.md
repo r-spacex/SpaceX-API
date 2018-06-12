@@ -11,10 +11,10 @@
 
 <h3 align="center">Open Source REST API for rocket, core, capsule, pad, and launch data</h3>
 
-## Documentation
+## Docs
 See the [Wiki](https://github.com/r-spacex/SpaceX-API/wiki) for full API Documentation
 
-## Usage / Endpoints
+## Usage
 
 **Example Response**
 
@@ -124,8 +124,8 @@ Local development info can be found [here](https://github.com/r-spacex/SpaceX-AP
 * API is using [Node.js](https://nodejs.org/en/) with the [Koa](http://koajs.com/) framework
 * All data stored in a [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) 3 node replica set cluster
 * Latest database mongodump available [here](https://drive.google.com/drive/folders/0B2DdgKR4GR4xdk1sRGowcUZXeE0?usp=sharing)
-* Uses [Redis](https://redis.io/) for route caching
-* Uses [Jest](https://facebook.github.io/jest/) and [Supertest](https://github.com/visionmedia/supertest) for unit/integration testing
+* Uses [Redis](https://redis.io/) on [RedisCloud](https://redislabs.com/redis-enterprise/cloud/) for route caching
+* Uses [Jest](https://facebook.github.io/jest/) and [Supertest](https://github.com/visionmedia/supertest) for tests
 * Uses [Travis CI](https://travis-ci.org/) for continuous integration/delivery
 * API deployed on a [Heroku](https://www.heroku.com/) pipeline with pull request, staging and production servers
 
