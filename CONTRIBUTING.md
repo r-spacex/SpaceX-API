@@ -14,24 +14,8 @@ Changes will not be merged unless the build passes.
 pushed to the staging server at [http://stage.spacexdata.com/v2/](http://stage.spacexdata.com/v2/) for a
 final check before promoting changes to production at [https://api.spacexdata.com/v2/](https://api.spacexdata.com/v2/).
 
-## Local Development
+## Database additions / changes / updates
 
-1. Clone the repo
-```bash
-git clone https://github.com/r-spacex/SpaceX-API.git && cd SpaceX-API
-```
+1. Open an issue with your correction, addition, or new data ideas
 
-2. Install dependencies
-```bash
-yarn install
-```
-
-3. Run ESlint and all tests
-```bash
-yarn test
-```
-
-4. Start the app
-```bash
-yarn start
-```
+2. If approved, new data will be added to the database, and tests will be written to cover the new data
