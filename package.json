@@ -1,6 +1,6 @@
 {
   "name": "spacex-api",
-  "version": "2.4.0",
+  "version": "2.7.0",
   "description": "Open Source REST API for rocket, core, capsule, pad, and launch data",
   "main": "./src/app.js",
   "scripts": {
