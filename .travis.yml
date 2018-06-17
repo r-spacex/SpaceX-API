@@ -6,7 +6,7 @@ cache:
   directories:
     - "node_modules"
 script:
-  - yarn test --runInBand --forceExit
+  - yarn test
 notifications:
   email:
     on_success: never

@@ -9,4 +9,4 @@ cache:
 
 test:
   script:
-    - yarn test --runInBand --forceExit
+    - yarn test
