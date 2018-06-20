@@ -1,4 +1,6 @@
 
+const limitQuery = require('../builders/limit-query');
+
 module.exports = {
 
   /**
@@ -10,6 +12,7 @@ module.exports = {
       .find({})
       .project({ _id: 0 })
       .sort({ first_flight: 1 })
+      .limit(limitQuery(ctx.request))
       .toArray();
     ctx.body = data;
   },
