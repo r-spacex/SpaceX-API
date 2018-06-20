@@ -1,4 +1,6 @@
 
+const limitQuery = require('../builders/limit-query');
+
 module.exports = {
 
   /**
@@ -9,6 +11,7 @@ module.exports = {
       .collection('dragon')
       .find({})
       .project({ _id: 0 })
+      .limit(limitQuery(ctx.request))
       .toArray();
     ctx.body = data;
   },

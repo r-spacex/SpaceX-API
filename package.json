@@ -50,6 +50,7 @@
   "jest": {
     "coverageDirectory": "./coverage/",
     "collectCoverage": true,
+    "setupTestFrameworkScriptFile": "./test/jest.setup.js",
     "collectCoverageFrom": [
       "src/**",
       "!**/node_modules/**",

@@ -2,6 +2,7 @@
 const launchQuery = require('../builders/launch-query');
 const sortQuery = require('../builders/launch-sort');
 const projectQuery = require('../builders/project-query');
+const limitQuery = require('../builders/limit-query');
 
 module.exports = {
 
@@ -42,12 +43,14 @@ module.exports = {
       .find(launchQuery(ctx.request))
       .project(projectQuery(ctx.request))
       .sort(sortQuery(ctx.request))
+      .limit(limitQuery(ctx.request))
       .toArray();
     const upcoming = await global.db
       .collection('upcoming_v2')
       .find(launchQuery(ctx.request))
       .project(projectQuery(ctx.request))
       .sort(sortQuery(ctx.request))
+      .limit(limitQuery(ctx.request))
       .toArray();
     const data = past.concat(upcoming);
     ctx.body = data;
@@ -62,6 +65,7 @@ module.exports = {
       .find(launchQuery(ctx.request))
       .project(projectQuery(ctx.request))
       .sort(sortQuery(ctx.request))
+      .limit(limitQuery(ctx.request))
       .toArray();
     ctx.body = data;
   },
@@ -75,6 +79,7 @@ module.exports = {
       .find(launchQuery(ctx.request))
       .project(projectQuery(ctx.request))
       .sort(sortQuery(ctx.request))
+      .limit(limitQuery(ctx.request))
       .toArray();
     ctx.body = data;
   },
