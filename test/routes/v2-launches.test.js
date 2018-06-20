@@ -115,3 +115,21 @@ test('It should return the next launch', async () => {
   const response = await request(app.callback()).get('/v2/launches/next');
   expect(response.statusCode).toBe(200);
 });
+
+//------------------------------------------------------------
+//                       Past Launches
+//------------------------------------------------------------
+
+test('It should return the next launch', async () => {
+  const response = await request(app.callback()).get('/v2/launches');
+  expect(response.statusCode).toBe(200);
+});
+
+//------------------------------------------------------------
+//                       Upcoming Launches
+//------------------------------------------------------------
+
+test('It should return the next launch', async () => {
+  const response = await request(app.callback()).get('/v2/launches/upcoming');
+  expect(response.statusCode).toBe(200);
+});
