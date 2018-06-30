@@ -38,6 +38,7 @@ module.exports = {
    * Return all past and upcoming launches
    */
   all: async (ctx) => {
+    let data;
     const past = await global.db
       .collection('launch_v2')
       .find(launchQuery(ctx.request))
@@ -52,7 +53,11 @@ module.exports = {
       .sort(sortQuery(ctx.request))
       .limit(limitQuery(ctx.request))
       .toArray();
-    const data = past.concat(upcoming);
+    if (past[past.length - 1].flight_number === 1) {
+      data = upcoming.concat(past);
+    } else {
+      data = past.concat(upcoming);
+    }
     ctx.body = data;
   },
 
