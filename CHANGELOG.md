@@ -1,3 +1,21 @@
+**Features & Fixes**
+* Mission patch PNG size reduced 70-80% using compression (thanks @garyjacobs)
+* Added detailed orbital parameters for every payload
+* Fixed typo preventing cores from being sorted by number of ASDS launches
+* Added list of community made API clients to the readme
+* Added `second_stage_block` querystring to allow launch sorting by second stage block number
+* Fixed typo preventing travis ci from running tests sequentially, causing long build times
+* Readme header updated to only use HTML instead of an HTML/Markdown mix that caused issues on certain viewing platforms
+* Added gitlab mirrored repository as a backup
+* Added `limit` querystring to limit number of documents returned
+* Consolidated past, upcoming, and all launch tests into a single test (DRY)
+* Increased jest timeout length from 5sec to 10sec for longer running tests
+
+**Database Changes**
+* Added `orbit_params` object to every payload of every past and upcoming launch
+* Added `block` number to all second stage objects for hybrid launches
+* Added `event_date_unix` to all history milestones for easier date parsing
+
 ## Version 2.6.0
 **Features & Fixes**
 * Added yarn caching for faster Travis builds
