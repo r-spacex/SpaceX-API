@@ -1,3 +1,4 @@
+## Version 2.7.0
 **Features & Fixes**
 * Mission patch PNG size reduced 70-80% using compression (thanks @garyjacobs)
 * Added detailed orbital parameters for every payload
