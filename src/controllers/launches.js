@@ -53,8 +53,12 @@ module.exports = {
       .sort(sortQuery(ctx.request))
       .limit(limitQuery(ctx.request))
       .toArray();
-    if (past[past.length - 1].flight_number === 1) {
-      data = upcoming.concat(past);
+    if (past.length !== 0) {
+      if (past[past.length - 1].flight_number === 1) {
+        data = upcoming.concat(past);
+      } else {
+        data = past.concat(upcoming);
+      }
     } else {
       data = past.concat(upcoming);
     }
