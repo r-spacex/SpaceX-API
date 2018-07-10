@@ -71,7 +71,7 @@ module.exports = app;
 // Mongo Connection + Server Start
 (async () => {
   try {
-    const client = await MongoClient.connect(url, { poolSize: 20 });
+    const client = await MongoClient.connect(url, { poolSize: 20, useNewUrlParser: true });
 
     global.db = client.db('spacex-api');
 
