@@ -59,6 +59,6 @@
     ]
   },
   "engines": {
-    "node": "latest"
+    "node": ">=8.x.x"
   }
 }
