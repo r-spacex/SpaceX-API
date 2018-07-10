@@ -18,7 +18,7 @@
     "rocket",
     "rest-api",
     "mongodb",
-    "expressjs"
+    "koa"
   ],
   "author": "Jake Meyer",
   "license": "Apache-2.0",
@@ -57,5 +57,8 @@
       "!**/vendor/**",
       "!**/coverage/**"
     ]
+  },
+  "engines": {
+    "node": "latest"
   }
 }
