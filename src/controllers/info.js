@@ -13,4 +13,16 @@ module.exports = {
     ctx.body = data[0];
   },
 
+  /**
+   * Returns company info
+   */
+  roadster: async (ctx) => {
+    const data = await global.db
+      .collection('info')
+      .find({ name: "Elon Musk's Tesla Roadster" })
+      .project({ _id: 0 })
+      .toArray();
+    ctx.body = data[0];
+  },
+
 };

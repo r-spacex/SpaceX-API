@@ -10,6 +10,7 @@ const v2 = new Router({
 
 // Returns company info
 v2.get('/', info.get);
+v2.get('/roadster', info.roadster);
 v2.get('/history', history.all);
 
 module.exports = v2;
