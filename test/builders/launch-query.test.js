@@ -67,7 +67,7 @@ test('It should return launches in 2017', async () => {
 });
 
 test('It should return flight 42 with given launch date in UTC', async () => {
-  const response = await request(app.callback()).get('/v2/launches?launch_date_utc=2017-06-23T19:10:00Z');
+  const response = await request(app.callback()).get('/v2/launches?launch_date_utc=2017-06-23T19:10:00.000Z');
   expect(response.statusCode).toBe(200);
   response.body.forEach((item) => {
     expect(item).toHaveProperty('flight_number', 42);
