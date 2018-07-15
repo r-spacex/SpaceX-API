@@ -37,10 +37,10 @@ test('It should return capsules with an active status', async () => {
 });
 
 test('It should return capsule C113 with the correct launch date', async () => {
-  const response = await request(app.callback()).get('/v2/parts/caps?original_launch=2017-08-14T16:31:00Z');
+  const response = await request(app.callback()).get('/v2/parts/caps?original_launch=2017-08-14T16:31:00.000Z');
   expect(response.statusCode).toBe(200);
   response.body.forEach((item) => {
-    expect(item).toHaveProperty('original_launch', '2017-08-14T16:31:00Z');
+    expect(item).toHaveProperty('original_launch', '2017-08-14T16:31:00.000Z');
   });
 });
 
