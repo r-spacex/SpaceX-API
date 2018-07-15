@@ -33,12 +33,12 @@ Filter all capsules by using any combination of these querystrings
 GET https://api.spacexdata.com/v2/parts/caps?status=active
 ```
 
-| Query Stings  | Description |
-| ------------- | ------------- |
-| capsule_serial  | Filter by capsule serial # |
-| capsule_id  | Filter by capsule id |
-| status  | Filter by capsule status  |
-| original_launch  | Filter by original launch date  |
-| missions  | Filter by flight missions  |
-| landings  | Filter by # of landings  |
-| type  | Filter by type of dragon capusle  |
+| Query Stings  | Description | Example |
+| ------------- | ------------- | ------------- |
+| capsule_serial  | Filter by capsule serial # | `capsule_serial=C113` |
+| capsule_id  | Filter by capsule id | `capsule_id=dragon1` |
+| status  | Filter by capsule status  | `status=active` |
+| original_launch  | Filter by original launch date  | `original_launch=2017-08-14T16:31:00.000Z` |
+| missions  | Filter by flight missions  | `missions=SpaceX+CRS-12` |
+| landings  | Filter by # of landings  | `landings=1` |
+| type  | Filter by type of dragon capusle  | `type=Dragon+1.1` |
