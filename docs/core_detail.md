@@ -1,3 +1,6 @@
+# Core Details
+
+## Endpoints
 Get detailed info on all cores
 ```http
 GET https://api.spacexdata.com/v2/parts/cores

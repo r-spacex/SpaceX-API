@@ -1,3 +1,6 @@
+# Rockets
+
+## Endpoints
 Get all rocket information
 ```http
 GET https://api.spacexdata.com/v2/rockets

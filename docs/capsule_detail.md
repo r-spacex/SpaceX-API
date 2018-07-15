@@ -1,11 +1,16 @@
+# Capsule Details
+
+## Endpoints
 Get detailed info on all capsules
 ```http
 GET https://api.spacexdata.com/v2/parts/caps
 ```
+
 Get specific capsule data
 ```http
 GET https://api.spacexdata.com/v2/parts/caps/C113 
 ```
+
 Sample Response
 ```json
 {

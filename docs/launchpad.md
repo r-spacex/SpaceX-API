@@ -1,3 +1,6 @@
+# Launchpads
+
+## Endpoints
 Get launchpad information
 ```http
 GET https://api.spacexdata.com/v2/launchpads

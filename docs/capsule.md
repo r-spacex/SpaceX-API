@@ -1,3 +1,6 @@
+# Capsules
+
+## Endpoints
 Get all capsule information
 ```http
 GET https://api.spacexdata.com/v2/capsules

@@ -1,4 +1,6 @@
-## Examples
+# Launches
+
+## Endpoints
 Get latest launch
 ```http
 GET https://api.spacexdata.com/v2/launches/latest
