@@ -17,8 +17,8 @@ GET https://api.spacexdata.com/v2/info/history
 * If no match is found when using querystring filtering, an empty array is returned `[]` with a 200 response code
 
 ## History Query String Options
-| Query Strings  | Description |
-| ------------- | ------------- |
-| start & end  | Filter by a date range |
-| flight\_number  | Filter history events by flight number |
-| order  | Change result ordering by `asc` or `desc` |
+| Query Strings  | Description | Example |
+| ------------- | ------------- | ------------- |
+| order  | Change result ordering by setting values of `asc` or `desc` | `order=desc` |
+| start & end  | Include both to sort by date range using any valid javascript date format | `start=2017-06-22&end=2017-06-25` |
+| flight\_number  | Filter by flight number  | `flight_number=60` |
