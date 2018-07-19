@@ -50,8 +50,8 @@ app.use(cors({
   origin: '*',
 }));
 
-// Disable Redis caching when running tests
-if (process.env.NODE_ENV !== 'test') {
+// Disable Redis caching unless production
+if (process.env.NODE_ENV === 'production') {
   app.use(cache(options));
 }
 
