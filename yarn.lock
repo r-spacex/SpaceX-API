@@ -2509,9 +2509,9 @@ koa-router@^7.4.0:
     path-to-regexp "^1.1.1"
     urijs "^1.19.0"
 
-koa2-cors@^2.0.5:
-  version "2.0.5"
-  resolved "https://registry.yarnpkg.com/koa2-cors/-/koa2-cors-2.0.5.tgz#3404712cd092f728c7f72de704ee7b920d957658"
+koa2-cors@^2.0.6:
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/koa2-cors/-/koa2-cors-2.0.6.tgz#9ad23df3a0b9bb84530b46f5944f3fb576086554"
 
 koa@^2.5.2:
   version "2.5.2"

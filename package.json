@@ -33,7 +33,7 @@
     "koa-logger": "^3.2.0",
     "koa-redis-cache": "^3.0.1",
     "koa-router": "^7.4.0",
-    "koa2-cors": "^2.0.5",
+    "koa2-cors": "^2.0.6",
     "lower-case": "^1.1.4",
     "mongodb": "^3.1.1",
     "path": "^0.12.7"
