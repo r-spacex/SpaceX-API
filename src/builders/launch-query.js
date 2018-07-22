@@ -16,13 +16,13 @@ module.exports = (req) => {
     // eslint-disable-next-line no-underscore-dangle
     query._id = ObjectId(req.query.flight_id);
   }
-  // Allow date range comparisons using a veriety of date formats
+  // Allow date range comparisons using a variety of date formats
   if (req.query.start && (req.query.final || req.query.end)) {
     let startParsed;
     let endParsed;
-    const re = /^[0-9]*$/; // Matches any string of consecutive numbers ex. 1520314380
-    if (re.test(req.query.start && (req.query.final || req.query.end))) {
-      // If the date is unix, it is converted to a compatible date constructor param
+    // Matches any string of consecutive numbers ex. 1520314380
+    // If the date is unix, it is converted to a compatible date constructor param
+    if (/^[0-9]*$/.test(req.query.start && (req.query.final || req.query.end))) {
       startParsed = new Date(req.query.start * 1000);
       endParsed = new Date(req.query.final * 1000 || req.query.end * 1000);
     } else {
@@ -43,7 +43,13 @@ module.exports = (req) => {
     query.launch_year = req.query.launch_year;
   }
   if (req.query.launch_date_utc) {
-    query.launch_date_utc = req.query.launch_date_utc;
+    // Allow any valid date format
+    const date = new Date(req.query.launch_date_utc);
+    try {
+      query.launch_date_utc = date.toISOString();
+    } catch (e) {
+      console.log(e);
+    }
   }
   if (req.query.launch_date_local) {
     query.launch_date_local = req.query.launch_date_local;
