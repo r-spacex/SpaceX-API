@@ -24,12 +24,12 @@ GET https://api.spacexdata.com/v2/launches/latest
 
 ```json
 {
-  "flight_number": 64,
-  "mission_name": "CRS-15",
+  "flight_number": 65,
+  "mission_name": "Telstar 19V",
   "launch_year": "2018",
-  "launch_date_unix": 1530265320,
-  "launch_date_utc": "2018-06-29T09:42:00.000Z",
-  "launch_date_local": "2018-06-29T05:42:00-04:00",
+  "launch_date_unix": 1532238600,
+  "launch_date_utc": "2018-07-22T05:50:00.000Z",
+  "launch_date_local": "2018-07-22T01:50:00-04:00",
   "rocket": {
     "rocket_id": "falcon9",
     "rocket_name": "Falcon 9",
@@ -37,55 +37,50 @@ GET https://api.spacexdata.com/v2/launches/latest
     "first_stage": {
       "cores": [
         {
-          "core_serial": "B1045",
-          "flight": 2,
-          "block": 4,
-          "reused": true,
-          "land_success": null,
-          "landing_type": null,
-          "landing_vehicle": null
+          "core_serial": "B1047",
+          "flight": 1,
+          "block": 5,
+          "reused": false,
+          "land_success": true,
+          "landing_type": "ASDS",
+          "landing_vehicle": "OCISLY"
         }
       ]
     },
     "second_stage": {
-      "block": 4,
+      "block": 5,
       "payloads": [
         {
-          "payload_id": "SpaceX CRS-15",
-          "cap_serial": "C111",
-          "reused": true,
+          "payload_id": "Telstar 19V",
+          "reused": false,
           "customers": [
-            "NASA (CRS)"
+            "Telesat"
           ],
-          "payload_type": "Dragon 1.1",
-          "payload_mass_kg": 2410,
-          "payload_mass_lbs": 5313,
-          "orbit": "ISS",
+          "payload_type": "Satellite",
+          "payload_mass_kg": 7076,
+          "payload_mass_lbs": 15600,
+          "orbit": "GTO",
           "orbit_params": {
             "reference_system": "geocentric",
-            "regime": "low-earth",
-            "longitude": null,
+            "regime": "geostationary",
+            "longitude": -65,
             "semi_major_axis_km": null,
             "eccentricity": null,
             "periapsis_km": null,
             "apoapsis_km": null,
-            "inclination_deg": 51.6,
+            "inclination_deg": null,
             "period_min": null,
-            "lifespan_years": null
-          },
-          "mass_returned_kg": null,
-          "mass_returned_lbs": null,
-          "flight_time_sec": null,
-          "cargo_manifest": null
+            "lifespan_years": 15
+          }
         }
       ]
     }
   },
   "telemetry": {
-    "flight_club": "https://www.flightclub.io/results/?code=CR15"
+    "flight_club": "https://www.flightclub.io/results/?code=TS19V"
   },
   "reuse": {
-    "core": true,
+    "core": false,
     "side_core1": false,
     "side_core2": false,
     "fairings": false,
@@ -98,18 +93,18 @@ GET https://api.spacexdata.com/v2/launches/latest
   },
   "launch_success": true,
   "links": {
-    "mission_patch": "https://images2.imgbox.com/43/35/0QW7yRsB_o.png",
-    "mission_patch_small": "https://images2.imgbox.com/11/ec/xng5hAXN_o.png",
-    "reddit_campaign": "https://www.reddit.com/r/spacex/comments/8pua1m/crs15_launch_campaign_thread/",
-    "reddit_launch": "https://www.reddit.com/r/spacex/comments/8ugo3l/rspacex_crs15_official_launch_discussion_updates",
+    "mission_patch": "https://images2.imgbox.com/c5/53/5jklZkPz_o.png",
+    "mission_patch_small": "https://images2.imgbox.com/12/7c/NiniYxoh_o.png",
+    "reddit_campaign": "https://www.reddit.com/r/spacex/comments/8w19yg/telstar_19v_launch_campaign_thread/",
+    "reddit_launch": "https://www.reddit.com/r/spacex/comments/90p1a6/rspacex_telstar_19v_official_launch_discussion/",
     "reddit_recovery": null,
-    "reddit_media": "https://www.reddit.com/r/spacex/comments/8ujcwo/rspacex_crs15_media_thread_videos_images_gifs/",
-    "presskit": "http://www.spacex.com/sites/spacex/files/crs15presskit.pdf",
-    "article_link": "https://spaceflightnow.com/2018/06/29/spacex-launches-ai-enabled-robot-companion-vegetation-monitor-to-space-station/",
-    "wikipedia": "https://en.wikipedia.org/wiki/SpaceX_CRS-15",
-    "video_link": "https://www.youtube.com/watch?v=ycMagB1s8XM"
+    "reddit_media": "https://www.reddit.com/r/spacex/comments/90oxrr/rspacex_telstar_19v_media_thread_videos_images/",
+    "presskit": "http://www.spacex.com/sites/spacex/files/telstar19vantagepresskit.pdf",
+    "article_link": "https://spaceflightnow.com/2018/07/22/spacex-delivers-for-telesat-with-successful-early-morning-launch/",
+    "wikipedia": "https://en.wikipedia.org/wiki/Telstar_19V",
+    "video_link": "https://www.youtube.com/watch?v=xybp6zLaGx4"
   },
-  "details": "Payload included MISSE-FF 2, ECOSTRESS, and a Latching End Effector. The refurbished booster featured a record 2.5 months period turnaround from its original launch of the TESS satellite — the fastest previous was 4.5 months. This was the last commercial flight of a Block 4 booster, which was expended into the Atlantic without landing legs and grid fins."
+  "details": "SSL-manufactured communications satellite intended to be placed at 63° West over the Americas. At 7,075 kg, it became the heaviest commercial communications satellite ever launched."
 }
 ```
 
