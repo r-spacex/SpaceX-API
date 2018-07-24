@@ -16,7 +16,7 @@ let client;
     const db = client.db('spacex-api');
     const col = db.collection('info');
 
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox'] });
     const page = await browser.newPage();
     await page.goto('https://where-is-tesla-roadster.space/live');
 
