@@ -6,7 +6,8 @@
   "scripts": {
     "test": "yarn lint && NODE_ENV=test PORT=0 jest --silent",
     "start": "node src/app.js",
-    "lint": "eslint \"**/*.js\""
+    "lint": "eslint \"**/*.js\"",
+    "roadster": "node bin/roadster.js"
   },
   "repository": {
     "type": "git",
@@ -36,7 +37,8 @@
     "koa2-cors": "^2.0.6",
     "lower-case": "^1.1.4",
     "mongodb": "^3.1.1",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "puppeteer": "^1.6.0"
   },
   "devDependencies": {
     "eslint": "^5.2.0",
