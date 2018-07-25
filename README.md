@@ -12,7 +12,7 @@
 <h3 align="center">Open Source REST API for rocket, core, capsule, pad, and launch data</h3>
 
 ## Docs
-See the [Wiki](https://github.com/r-spacex/SpaceX-API/wiki) for full API Documentation
+See the [Docs](https://github.com/r-spacex/SpaceX-API/blob/master/docs/home.md) for full API Documentation
 
 ## Usage
 

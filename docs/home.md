@@ -7,18 +7,20 @@ No authentication is required to use this public API
 ## Rate Limiting
 No rate limiting is implemented at this time, but please be respectful with your usage
 
+## Development 
+[Dev Info](https://github.com/r-spacex/SpaceX-API/blob/master/docs/development.md)
+
 ## Endpoints
+[Launches](https://github.com/r-spacex/SpaceX-API/blob/master/docs/launches.md)
 
-[Company Data](https://github.com/r-spacex/SpaceX-API/wiki/Company-Info)
+[Rockets](https://github.com/r-spacex/SpaceX-API/blob/master/docs/rocket.md)
 
-[Rocket Data](https://github.com/r-spacex/SpaceX-API/wiki/Rocket-Info)
+[Capsules](https://github.com/r-spacex/SpaceX-API/blob/master/docs/capsule.md)
 
-[Capsule Data](https://github.com/r-spacex/SpaceX-API/wiki/Capsule-Info)
+[Company Info](https://github.com/r-spacex/SpaceX-API/blob/master/docs/company_info.md)
 
-[Launchpad Data](https://github.com/r-spacex/SpaceX-API/wiki/Launchpad-Info)
+[Capsule Details](https://github.com/r-spacex/SpaceX-API/blob/master/docs/capsule_detail.md)
 
-[Launches](https://github.com/r-spacex/SpaceX-API/wiki/Launches)
+[Core Detail](https://github.com/r-spacex/SpaceX-API/blob/master/docs/core_detail.md)
 
-[Detailed Capsule Data](https://github.com/r-spacex/SpaceX-API/wiki/Capsule-Detail)
-
-[Detailed Core Data](https://github.com/r-spacex/SpaceX-API/wiki/Core-Details)
+[Launchpads](https://github.com/r-spacex/SpaceX-API/blob/master/docs/launchpad.md)
