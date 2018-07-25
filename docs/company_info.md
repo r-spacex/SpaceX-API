@@ -8,6 +8,13 @@ Get company info
 GET https://api.spacexdata.com/v2/info
 ```
 
+# Falcon Heavy Roadster Orbital Data
+Get info + orbital data for roadster
+```http
+GET https://api.spacexdata.com/v2/info/roadster
+```
+**NOTE:** Data updated every 10 minutes
+
 # History
 Get company history / milestones
 ```http
