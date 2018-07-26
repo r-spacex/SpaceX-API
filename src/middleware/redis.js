@@ -46,6 +46,12 @@ if (process.env.REDISCLOUD_URL) {
 } else {
   options = {
     routes: [{
+      path: '/v2/launches',
+      expire: 30,
+    }, {
+      path: '/v2/launches/(.*)',
+      expire: 30,
+    }, {
       path: '/v2/parts/(.*)',
       expire: 6000,
     }, {

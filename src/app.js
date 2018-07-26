@@ -7,6 +7,7 @@ const Koa = require('koa');
 const logger = require('koa-logger');
 const MongoClient = require('mongodb');
 const options = require('./middleware/redis');
+const responseTime = require('./middleware/response');
 
 const capsules = require('./routes/v2-capsules');
 const errors = require('./routes/v2-errors');
@@ -25,6 +26,9 @@ const app = new Koa();
 
 // Gzip all responses
 app.use(compress());
+
+// Set header with API response time
+app.use(responseTime());
 
 // HTTP header security
 app.use(helmet());
