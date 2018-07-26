@@ -19,6 +19,7 @@ let client;
     const browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox'] });
     const page = await browser.newPage();
     await page.goto('https://where-is-tesla-roadster.space/live');
+    await page.waitFor(5000);
 
     let parsed = {};
     let document;
