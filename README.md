@@ -24,12 +24,12 @@ GET https://api.spacexdata.com/v2/launches/latest
 
 ```json
 {
-  "flight_number": 65,
-  "mission_name": "Telstar 19V",
+  "flight_number": 66,
+  "mission_name": "Iridium NEXT Mission 7",
   "launch_year": "2018",
-  "launch_date_unix": 1532238600,
-  "launch_date_utc": "2018-07-22T05:50:00.000Z",
-  "launch_date_local": "2018-07-22T01:50:00-04:00",
+  "launch_date_unix": 1532518766,
+  "launch_date_utc": "2018-07-25T11:39:26.000Z",
+  "launch_date_local": "2018-07-25T04:39:26-07:00",
   "rocket": {
     "rocket_id": "falcon9",
     "rocket_name": "Falcon 9",
@@ -37,39 +37,39 @@ GET https://api.spacexdata.com/v2/launches/latest
     "first_stage": {
       "cores": [
         {
-          "core_serial": "B1047",
+          "core_serial": "B1048",
           "flight": 1,
           "block": 5,
           "reused": false,
           "land_success": true,
           "landing_type": "ASDS",
-          "landing_vehicle": "OCISLY"
+          "landing_vehicle": "JRTI"
         }
       ]
     },
     "second_stage": {
-      "block": 5,
+      "block": null,
       "payloads": [
         {
-          "payload_id": "Telstar 19V",
+          "payload_id": "Iridium NEXT 7",
           "reused": false,
           "customers": [
-            "Telesat"
+            "Iridium Communications"
           ],
           "payload_type": "Satellite",
-          "payload_mass_kg": 7076,
-          "payload_mass_lbs": 15600,
-          "orbit": "GTO",
+          "payload_mass_kg": 9600,
+          "payload_mass_lbs": 21164.38,
+          "orbit": "PO",
           "orbit_params": {
             "reference_system": "geocentric",
-            "regime": "geostationary",
-            "longitude": -65,
+            "regime": "low-earth",
+            "longitude": null,
             "semi_major_axis_km": null,
             "eccentricity": null,
             "periapsis_km": null,
             "apoapsis_km": null,
-            "inclination_deg": null,
-            "period_min": null,
+            "inclination_deg": 86.4,
+            "period_min": 101,
             "lifespan_years": 15
           }
         }
@@ -77,7 +77,7 @@ GET https://api.spacexdata.com/v2/launches/latest
     }
   },
   "telemetry": {
-    "flight_club": "https://www.flightclub.io/results/?code=TS19V"
+    "flight_club": "https://www.flightclub.io/result?code=IRD7"
   },
   "reuse": {
     "core": false,
@@ -87,24 +87,24 @@ GET https://api.spacexdata.com/v2/launches/latest
     "capsule": false
   },
   "launch_site": {
-    "site_id": "ccafs_slc_40",
-    "site_name": "CCAFS SLC 40",
-    "site_name_long": "Cape Canaveral Air Force Station Space Launch Complex 40"
+    "site_id": "vafb_slc_4e",
+    "site_name": "VAFB SLC 4E",
+    "site_name_long": "Vandenberg Air Force Base Space Launch Complex 4E"
   },
   "launch_success": true,
   "links": {
-    "mission_patch": "https://images2.imgbox.com/c5/53/5jklZkPz_o.png",
-    "mission_patch_small": "https://images2.imgbox.com/12/7c/NiniYxoh_o.png",
-    "reddit_campaign": "https://www.reddit.com/r/spacex/comments/8w19yg/telstar_19v_launch_campaign_thread/",
-    "reddit_launch": "https://www.reddit.com/r/spacex/comments/90p1a6/rspacex_telstar_19v_official_launch_discussion/",
+    "mission_patch": "https://images2.imgbox.com/a9/cb/0xfkY5rT_o.png",
+    "mission_patch_small": "https://images2.imgbox.com/05/15/sT4UekiT_o.png",
+    "reddit_campaign": "https://www.reddit.com/r/spacex/comments/8v4wcm/iridium_next_constellation_mission_7_launch/",
+    "reddit_launch": "https://www.reddit.com/r/spacex/comments/91i1ru/rspacex_iridium_next_7_official_launch_discussion/",
     "reddit_recovery": null,
-    "reddit_media": "https://www.reddit.com/r/spacex/comments/90oxrr/rspacex_telstar_19v_media_thread_videos_images/",
-    "presskit": "http://www.spacex.com/sites/spacex/files/telstar19vantagepresskit.pdf",
-    "article_link": "https://spaceflightnow.com/2018/07/22/spacex-delivers-for-telesat-with-successful-early-morning-launch/",
-    "wikipedia": "https://en.wikipedia.org/wiki/Telstar_19V",
-    "video_link": "https://www.youtube.com/watch?v=xybp6zLaGx4"
+    "reddit_media": "https://www.reddit.com/r/spacex/comments/91gx44/rspacex_iridium_next_constellation_mission_7/",
+    "presskit": "http://www.spacex.com/sites/spacex/files/iridium7_press_kit_7_24.pdf",
+    "article_link": "https://spaceflightnow.com/2018/07/25/spacexs-second-launch-in-three-days-lofts-10-more-iridium-satellites/",
+    "wikipedia": "https://en.wikipedia.org/wiki/Iridium_satellite_constellation#Next-generation_constellation",
+    "video_link": "https://www.youtube.com/watch?v=vsDknmK30C0"
   },
-  "details": "SSL-manufactured communications satellite intended to be placed at 63° West over the Americas. At 7,075 kg, it became the heaviest commercial communications satellite ever launched."
+  "details": "Seventh Iridium NEXT launch, with 10 communication satellites. Booster landed safely despite the droneship experiencing significant waves. Mr. Steven boat with an upgraded 4x size net was used, unsuccessfully, to attempt fairing recovery."
 }
 ```
 
