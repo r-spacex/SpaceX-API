@@ -4,7 +4,7 @@ const compress = require('koa-compress');
 const cors = require('koa2-cors');
 const helmet = require('koa-helmet');
 const Koa = require('koa');
-const logger = require('koa-logger');
+const logger = require('koa-pino-logger');
 const MongoClient = require('mongodb');
 const options = require('./middleware/redis');
 
@@ -38,7 +38,9 @@ app.use(async (ctx, next) => {
 app.use(helmet());
 
 // HTTP requests logger
-app.use(logger());
+if (process.env.NODE_ENV !== 'test') {
+  app.use(logger());
+}
 
 // Error Handler
 app.use(async (ctx, next) => {
