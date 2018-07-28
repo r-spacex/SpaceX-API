@@ -1,10 +1,16 @@
 {
+    "plugins": [
+        "security"
+      ],
     "env": {
         "node": true,
         "jest": true,
         "mongo": true
     },
-    "extends": "airbnb",
+    "extends": [
+        "plugin:security/recommended",
+        "airbnb"
+    ],
     "parserOptions": {
         "sourceType": "module",
         "ecmaVersion": 2018,
