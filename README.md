@@ -1,4 +1,4 @@
-<p align="center"><img src="https://i.imgur.com/5zqMc07.jpg"></p>
+<p align="center"><img src="https://i.imgur.com/2xgfUEa.jpg"></p>
 
 <h1 align="center">SpaceX REST API</h1>
 
