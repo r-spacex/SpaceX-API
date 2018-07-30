@@ -15,6 +15,7 @@ const info = require('./routes/v2-info');
 const launchpad = require('./routes/v2-launchpad');
 const launches = require('./routes/v2-launches');
 const parts = require('./routes/v2-parts');
+const payloads = require('./routes/v2-payloads');
 const rockets = require('./routes/v2-rockets');
 const upcoming = require('./routes/v2-upcoming');
 
@@ -73,6 +74,7 @@ app.use(info.routes());
 app.use(launchpad.routes());
 app.use(launches.routes());
 app.use(parts.routes());
+app.use(payloads.routes());
 app.use(rockets.routes());
 app.use(upcoming.routes());
 
