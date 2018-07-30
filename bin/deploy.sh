@@ -3,7 +3,8 @@
 # Import the SSH deployment key
 openssl aes-256-cbc -K $encrypted_32b6c04b6d48_key -iv $encrypted_32b6c04b6d48_iv -in deploy-key.enc -out ~/deploy-key -d
 chmod 600 ~/deploy-key
-eval "$(ssh-agent -s)" # Start ssh-agent cache
-ssh-add ~/deploy-key # Add the private key to SSH
+eval "$(ssh-agent -s)"
+ssh-add ~/deploy-key 
 
+# SSH, pull, reinstall deps, and restart pm2 process
 ssh -t -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "bash --login -c 'cd SpaceX-API && git checkout master && git pull && yarn --production && pm2 reload spacex-api'"
