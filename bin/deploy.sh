@@ -6,4 +6,4 @@ chmod 600 ~/deploy-key
 eval "$(ssh-agent -s)" # Start ssh-agent cache
 ssh-add ~/deploy-key # Add the private key to SSH
 
-ssh -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "cd SpaceX-API && git checkout master && git pull && yarn -v && yarn --production && pm2 reload spacex-api"
+ssh -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "cd SpaceX-API && git checkout master && git pull && pm2 reload spacex-api"
