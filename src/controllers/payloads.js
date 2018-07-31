@@ -42,6 +42,7 @@ module.exports = {
    * Returns single payload
    */
   one: async (ctx) => {
+    let payloads;
     const past = await global.db
       .collection('launch_v2')
       .find({ 'rocket.second_stage.payloads.payload_id': ctx.params.payload_id })
@@ -55,15 +56,20 @@ module.exports = {
       .project({ _id: 0, 'rocket.second_stage.payloads': 1, flight_number: 1 })
       .toArray();
     const data = past.concat(upcoming);
-    const payloads = data[0].rocket.second_stage.payloads;
-    let index = 0;
-    payloads.forEach((payload, i) => {
-      if (payload.payload_id === ctx.params.payload_id) {
-        index = i;
-      }
-    });
-    // Allow because index can only be number
-    // eslint-disable-next-line security/detect-object-injection
-    ctx.body = payloads[index];
+    try {
+      payloads = data[0].rocket.second_stage.payloads;
+      let index = 0;
+      payloads.forEach((payload, i) => {
+        if (payload.payload_id === ctx.params.payload_id) {
+          index = i;
+        }
+      });
+      // Allow because index can only be number
+      // eslint-disable-next-line security/detect-object-injection
+      ctx.body = payloads[index];
+    } catch (err) {
+      console.log(err);
+      ctx.body = data;
+    }
   },
 };
