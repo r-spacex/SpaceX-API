@@ -19,7 +19,15 @@ module.exports = {
     const payloads = [];
     data.forEach((launch) => {
       launch.rocket.second_stage.payloads.forEach((payload) => {
-        payloads.push(payload);
+        if (Object.keys(ctx.request.query).length !== 0) {
+          Object.entries(ctx.request.query).forEach(([key, value]) => {
+            if (value === payload[key]) {
+              payloads.push(payload);
+            }
+          });
+        } else {
+          payloads.push(payload);
+        }
       });
     });
     ctx.body = payloads;
@@ -45,8 +53,6 @@ module.exports = {
           index = i;
         }
       });
-      // Allow because index can only be number
-      // eslint-disable-next-line security/detect-object-injection
       ctx.body = payloads[index];
     } catch (err) {
       console.log(err);
