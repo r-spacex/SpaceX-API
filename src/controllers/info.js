@@ -14,7 +14,7 @@ module.exports = {
   },
 
   /**
-   * Returns company info
+   * Returns Falcon Heavy roadster info
    */
   roadster: async (ctx) => {
     const data = await global.db

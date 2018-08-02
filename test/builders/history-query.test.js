@@ -23,3 +23,9 @@ test('It should history event for flight 14', async () => {
   expect(response.statusCode).toBe(200);
   expect(response.body[0]).toHaveProperty('flight_number', 14);
 });
+
+test('It should return Falcon Heavy Test Flight', async () => {
+  const response = await request(app.callback()).get('/v2/info/history?start=1517949800&end=1517949999');
+  expect(response.statusCode).toBe(200);
+  expect(response.body[0]).toHaveProperty('title', 'Falcon Heavy Test Flight');
+});
