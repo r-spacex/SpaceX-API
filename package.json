@@ -39,7 +39,7 @@
     "lower-case": "^1.1.4",
     "mongodb": "^3.1.1",
     "path": "^0.12.7",
-    "puppeteer": "^1.6.1"
+    "puppeteer": "^1.6.2"
   },
   "devDependencies": {
     "eslint": "^5.2.0",
