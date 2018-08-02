@@ -29,3 +29,9 @@ test('It should return Falcon Heavy Test Flight', async () => {
   expect(response.statusCode).toBe(200);
   expect(response.body[0]).toHaveProperty('title', 'Falcon Heavy Test Flight');
 });
+
+test('It should return an empty array due to invalid date', async () => {
+  const response = await request(app.callback()).get('/v2/info/history?start=1&end=1');
+  expect(response.statusCode).toBe(200);
+  expect(response.body).toEqual([]);
+});
