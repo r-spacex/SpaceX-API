@@ -11,8 +11,8 @@ module.exports = {
    */
   latest: async (ctx) => {
     const data = await global.db
-      .collection('launch_v2')
-      .find({})
+      .collection('launch')
+      .find({ upcoming: false })
       .project(projectQuery(ctx.request))
       .sort({ flight_number: -1 })
       .limit(1)
@@ -25,8 +25,8 @@ module.exports = {
    */
   next: async (ctx) => {
     const data = await global.db
-      .collection('upcoming_v2')
-      .find({})
+      .collection('launch')
+      .find({ upcoming: true })
       .project(projectQuery(ctx.request))
       .sort({ flight_number: 1 })
       .limit(1)
@@ -38,26 +38,13 @@ module.exports = {
    * Return all past and upcoming launches
    */
   all: async (ctx) => {
-    let data;
-    const past = await global.db
-      .collection('launch_v2')
+    const data = await global.db
+      .collection('launch')
       .find(launchQuery(ctx.request))
       .project(projectQuery(ctx.request))
       .sort(sortQuery(ctx.request))
       .limit(limitQuery(ctx.request))
       .toArray();
-    const upcoming = await global.db
-      .collection('upcoming_v2')
-      .find(launchQuery(ctx.request))
-      .project(projectQuery(ctx.request))
-      .sort(sortQuery(ctx.request))
-      .limit(limitQuery(ctx.request))
-      .toArray();
-    if (past.length !== 0 && past[past.length - 1].flight_number === 1) {
-      data = upcoming.concat(past);
-    } else {
-      data = past.concat(upcoming);
-    }
     ctx.body = data;
   },
 
@@ -66,8 +53,8 @@ module.exports = {
    */
   past: async (ctx) => {
     const data = await global.db
-      .collection('launch_v2')
-      .find(launchQuery(ctx.request))
+      .collection('launch')
+      .find(Object.assign({ upcoming: false }, launchQuery(ctx.request)))
       .project(projectQuery(ctx.request))
       .sort(sortQuery(ctx.request))
       .limit(limitQuery(ctx.request))
@@ -80,8 +67,8 @@ module.exports = {
    */
   upcoming: async (ctx) => {
     const data = await global.db
-      .collection('upcoming_v2')
-      .find(launchQuery(ctx.request))
+      .collection('launch')
+      .find(Object.assign({ upcoming: true }, launchQuery(ctx.request)))
       .project(projectQuery(ctx.request))
       .sort(sortQuery(ctx.request))
       .limit(limitQuery(ctx.request))
