@@ -12,6 +12,12 @@ beforeAll((done) => {
 //                     History Query Test
 //------------------------------------------------------------
 
+test('It should return all history events', async () => {
+  const response = await request(app.callback()).get('/v2/info/history');
+  expect(response.statusCode).toBe(200);
+  expect(response.body.length).toBeGreaterThanOrEqual(19);
+});
+
 test('It should return 2 history items for the year 2008', async () => {
   const response = await request(app.callback()).get('/v2/info/history?start=2008-08-28&end=2009-05-28');
   expect(response.statusCode).toBe(200);
@@ -31,7 +37,7 @@ test('It should return Falcon Heavy Test Flight', async () => {
 });
 
 test('It should return an empty array due to invalid date', async () => {
-  const response = await request(app.callback()).get('/v2/info/history?start=1&end=1');
+  const response = await request(app.callback()).get('/v2/info/history?start=2020-25-23&end=2020-25-24');
   expect(response.statusCode).toBe(200);
-  expect(response.body).toEqual([]);
+  expect(response.body.length).toBeGreaterThanOrEqual(19);
 });
