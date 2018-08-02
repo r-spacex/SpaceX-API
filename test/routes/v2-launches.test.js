@@ -105,6 +105,7 @@ test('It should return all launches', async () => {
 test('It should return the latest launch', async () => {
   const response = await request(app.callback()).get('/v2/launches/latest');
   expect(response.statusCode).toBe(200);
+  expect(response.body).toHaveProperty('upcoming', false);
 });
 
 //------------------------------------------------------------
@@ -114,15 +115,31 @@ test('It should return the latest launch', async () => {
 test('It should return the next launch', async () => {
   const response = await request(app.callback()).get('/v2/launches/next');
   expect(response.statusCode).toBe(200);
+  expect(response.body).toHaveProperty('upcoming', true);
 });
 
 //------------------------------------------------------------
 //                       Past Launches
 //------------------------------------------------------------
 
-test('It should return the next launch', async () => {
+test('It should return the all launches', async () => {
   const response = await request(app.callback()).get('/v2/launches');
   expect(response.statusCode).toBe(200);
+  response.body.forEach((launch) => {
+    expect(launch.upcoming).toBe(false);
+  });
+});
+
+test('It should return all launches due to invalid date', async () => {
+  const response = await request(app.callback()).get('/v2/launches?start=2020-25-23&end=2020-25-24');
+  expect(response.statusCode).toBe(200);
+  expect(response.body.length).toBeGreaterThan(65);
+});
+
+test('It should return all launches due to invalid UTC date', async () => {
+  const response = await request(app.callback()).get('/v2/launches?launch_date_utc=2011-25-05T14:48:00.000Z');
+  expect(response.statusCode).toBe(200);
+  expect(response.body.length).toBeGreaterThan(65);
 });
 
 //------------------------------------------------------------
@@ -132,4 +149,7 @@ test('It should return the next launch', async () => {
 test('It should return the next launch', async () => {
   const response = await request(app.callback()).get('/v2/launches/upcoming');
   expect(response.statusCode).toBe(200);
+  response.body.forEach((launch) => {
+    expect(launch.upcoming).toBe(true);
+  });
 });
