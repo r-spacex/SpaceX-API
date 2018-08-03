@@ -16,6 +16,8 @@ module.exports = {
       .sort(sortQuery(ctx.request))
       .limit(limitQuery(ctx.request))
       .toArray();
+    delete ctx.request.query.limit;
+    delete ctx.request.query.order;
     const payloads = [];
     data.forEach((launch) => {
       launch.rocket.second_stage.payloads.forEach((payload) => {
