@@ -38,7 +38,8 @@
     "koa2-cors": "^2.0.6",
     "lower-case": "^1.1.4",
     "mongodb": "^3.1.1",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "request-promise-native": "^1.0.5"
   },
   "devDependencies": {
     "eslint": "^5.3.0",
