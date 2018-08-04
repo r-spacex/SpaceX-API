@@ -40,7 +40,7 @@ module.exports = {
   all: async (ctx) => {
     const data = await global.db
       .collection('launch')
-      .find(launchQuery(ctx.request))
+      .find(launchQuery(ctx.request.query))
       .project(projectQuery(ctx.request))
       .sort(sortQuery(ctx.request))
       .limit(limitQuery(ctx.request))
@@ -54,7 +54,7 @@ module.exports = {
   past: async (ctx) => {
     const data = await global.db
       .collection('launch')
-      .find(Object.assign({ upcoming: false }, launchQuery(ctx.request)))
+      .find(Object.assign({ upcoming: false }, launchQuery(ctx.request.query)))
       .project(projectQuery(ctx.request))
       .sort(sortQuery(ctx.request))
       .limit(limitQuery(ctx.request))
@@ -68,7 +68,7 @@ module.exports = {
   upcoming: async (ctx) => {
     const data = await global.db
       .collection('launch')
-      .find(Object.assign({ upcoming: true }, launchQuery(ctx.request)))
+      .find(Object.assign({ upcoming: true }, launchQuery(ctx.request.query)))
       .project(projectQuery(ctx.request))
       .sort(sortQuery(ctx.request))
       .limit(limitQuery(ctx.request))
