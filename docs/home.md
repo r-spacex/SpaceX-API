@@ -19,6 +19,8 @@ No rate limiting is implemented at this time, but please be respectful with your
 
 [Company Info](https://github.com/r-spacex/SpaceX-API/blob/master/docs/company_info.md)
 
+[Roadster Info](https://github.com/r-spacex/SpaceX-API/blob/master/docs/roadster.md)
+
 [Capsule Details](https://github.com/r-spacex/SpaceX-API/blob/master/docs/capsule_detail.md)
 
 [Core Detail](https://github.com/r-spacex/SpaceX-API/blob/master/docs/core_detail.md)
