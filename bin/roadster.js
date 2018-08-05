@@ -150,7 +150,7 @@ const getData = async (orbit, earth, mars) => {
 
     // Read SOE of orbital speed in KM/s + calculate kph and mph
     const speedResult = shell.exec(`echo ${strippedMars}`).exec('awk \'NR==1{print $7}\'');
-    const orbitalSpeedKph = (parseFloat(speedResult.stdout.trim()) * 60);
+    const orbitalSpeedKph = (parseFloat(speedResult.stdout.trim()) * 60.0 * 60.0);
     const orbitalSpeedMph = orbitalSpeedKph * 0.621371;
 
     const update = {
