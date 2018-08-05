@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-// const MongoClient = require('mongodb');
+const MongoClient = require('mongodb');
 const request = require('request-promise-native');
 const dayjs = require('dayjs');
 const shell = require('shelljs');
@@ -70,7 +70,7 @@ R_T_S_ONLY= 'NO'&
 REF_SYSTEM= 'J2000'&
 CSV_FORMAT= 'NO'&
 OBJ_DATA= 'YES'&
-QUANTITIES= '19,20'`;
+QUANTITIES= '19,20,22'`;
 
 const getData = async (orbit, earth, mars) => {
   try {
@@ -148,6 +148,11 @@ const getData = async (orbit, earth, mars) => {
     const marsDistanceKm = (parseFloat(marsResult.stdout.trim()) * 149598073);
     const marsDistanceMi = marsDistanceKm * 0.621371;
 
+    // Read SOE of orbital speed in KM/s + calculate kph and mph
+    const speedResult = shell.exec(`echo ${strippedMars}`).exec('awk \'NR==1{print $7}\'');
+    const orbitalSpeedKph = (parseFloat(speedResult.stdout.trim()) * 60);
+    const orbitalSpeedMph = orbitalSpeedKph * 0.621371;
+
     const update = {
       epoch_jd: epoch,
       apoapsis_au: aad,
@@ -158,39 +163,37 @@ const getData = async (orbit, earth, mars) => {
       longitude: lon,
       periapsis_arg: aop,
       period_days: period,
-      speed_kph: null,
-      speed_mph: null,
+      speed_kph: orbitalSpeedKph,
+      speed_mph: orbitalSpeedMph,
       earth_distance_km: earthDistanceKm,
       earth_distance_mi: earthDistanceMi,
       mars_distance_km: marsDistanceKm,
       mars_distance_mi: marsDistanceMi,
     };
 
-    return update;
+    return Promise.resolve(update);
   } catch (error) {
     return Promise.reject(error);
   }
 };
 
-getData(orbitURL, earthDistURL, marsDistURL);
+(async () => {
+  let client;
+  try {
+    client = await MongoClient.connect(process.env.MONGO_URL, { useNewUrlParser: true });
+    const db = client.db('spacex-api');
+    const col = db.collection('info');
+    const data = await getData(orbitURL, earthDistURL, marsDistURL);
+    console.log(data);
 
-// const updateMongo = async (data) => {
-//   let client;
-//   try {
-//     client = await MongoClient.connect(process.env.MONGO_URL, { useNewUrlParser: true });
-//     const db = client.db('spacex-api');
-//     const col = db.collection('info');
+    await col.updateOne({ name: 'Elon Musk\'s Tesla Roadster' }, { $set: data });
+    console.log('Updated!');
+  } catch (err) {
+    console.log(err.stack);
+    process.exit(1);
+  }
 
-//     await col.updateOne({ name: 'Elon Musk\'s Tesla Roadster' }, { $set: data });
-//     console.log('Updated!');
-//   } catch (err) {
-//     console.log(err.stack);
-//     process.exit(1);
-//   }
-
-//   if (client) {
-//     client.close();
-//   }
-// };
-
-// updateMongo();
+  if (client) {
+    client.close();
+  }
+})();
