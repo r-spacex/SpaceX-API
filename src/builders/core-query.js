@@ -1,51 +1,51 @@
 
 /**
  * Builds Mongo query for core data endpoints from querystrings
- * @param {Object} req The Koa context object to access querystrings
+ * @param {Object} query Koa querystring object from ctx.request
  * @return {Object} Mongo compatible query object
  */
 
-module.exports = (req) => {
+module.exports = (q) => {
   const query = {};
 
-  if (req.query.core_serial) {
-    query.core_serial = req.query.core_serial;
+  if (q.core_serial) {
+    query.core_serial = q.core_serial;
   }
 
-  if (req.query.block) {
-    query.block = parseInt(req.query.block, 10);
+  if (q.block) {
+    query.block = parseInt(q.block, 10);
   }
 
-  if (req.query.status) {
-    query.status = req.query.status;
+  if (q.status) {
+    query.status = q.status;
   }
 
-  if (req.query.original_launch) {
-    query.original_launch = req.query.original_launch;
+  if (q.original_launch) {
+    query.original_launch = q.original_launch;
   }
 
-  if (req.query.missions) {
-    query.missions = req.query.missions;
+  if (q.missions) {
+    query.missions = q.missions;
   }
 
-  if (req.query.rtls_attempt) {
-    query.rtls_attempt = (req.query.rtls_attempt === 'true');
+  if (q.rtls_attempt) {
+    query.rtls_attempt = (q.rtls_attempt === 'true');
   }
 
-  if (req.query.rtls_landings) {
-    query.rtls_landings = parseInt(req.query.rtls_landings, 10);
+  if (q.rtls_landings) {
+    query.rtls_landings = parseInt(q.rtls_landings, 10);
   }
 
-  if (req.query.asds_attempt) {
-    query.asds_attempt = (req.query.asds_attempt === 'true');
+  if (q.asds_attempt) {
+    query.asds_attempt = (q.asds_attempt === 'true');
   }
 
-  if (req.query.asds_landings) {
-    query.asds_landings = parseInt(req.query.asds_landings, 10);
+  if (q.asds_landings) {
+    query.asds_landings = parseInt(q.asds_landings, 10);
   }
 
-  if (req.query.water_landing) {
-    query.water_landing = (req.query.water_landing === 'true');
+  if (q.water_landing) {
+    query.water_landing = (q.water_landing === 'true');
   }
 
   return query;

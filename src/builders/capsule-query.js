@@ -1,39 +1,39 @@
 
 /**
  * Builds Mongo query for capsule data endpoints from querystrings
- * @param {Object} req The Koa context object to access querystrings
+ * @param {Object} query Koa querystring object from ctx.request
  * @return {Object} Mongo compatible query object
  */
 
-module.exports = (req) => {
+module.exports = (q) => {
   const query = {};
 
-  if (req.query.capsule_serial) {
-    query.capsule_serial = req.query.capsule_serial;
+  if (q.capsule_serial) {
+    query.capsule_serial = q.capsule_serial;
   }
 
-  if (req.query.capsule_id) {
-    query.capsule_id = req.query.capsule_id;
+  if (q.capsule_id) {
+    query.capsule_id = q.capsule_id;
   }
 
-  if (req.query.status) {
-    query.status = req.query.status;
+  if (q.status) {
+    query.status = q.status;
   }
 
-  if (req.query.original_launch) {
-    query.original_launch = req.query.original_launch;
+  if (q.original_launch) {
+    query.original_launch = q.original_launch;
   }
 
-  if (req.query.missions) {
-    query.missions = req.query.missions;
+  if (q.missions) {
+    query.missions = q.missions;
   }
 
-  if (req.query.landings) {
-    query.landings = parseInt(req.query.landings, 10);
+  if (q.landings) {
+    query.landings = parseInt(q.landings, 10);
   }
 
-  if (req.query.type) {
-    query.type = req.query.type;
+  if (q.type) {
+    query.type = q.type;
   }
 
   return query;

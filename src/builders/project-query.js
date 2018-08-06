@@ -9,13 +9,13 @@ const lowerCase = require('lower-case');
  */
 
 module.exports = (q) => {
-  const result = {};
+  const query = {};
 
   if (lowerCase(q.id) !== 'true') {
     // Mongo _id field requires underscore dangle
     // eslint-disable-next-line no-underscore-dangle
-    result._id = 0;
+    query._id = 0;
   }
 
-  return result;
+  return query;
 };

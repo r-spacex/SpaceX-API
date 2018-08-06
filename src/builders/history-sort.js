@@ -3,17 +3,17 @@
 const lowerCase = require('lower-case');
 
 /**
- * Builds Mongo sort object to set document order for SpaceX history endpoint
- * @param {Object} req The Koa context object to access querystrings
+ * Builds Mongo sort object to set document order
+ * @param {Object} query Koa querystring object from ctx.request
  * @return {Object} Mongo compatible sort object
  */
 
-module.exports = (req) => {
+module.exports = (q) => {
   const query = {};
 
-  if (lowerCase(req.query.order) === 'asc') {
+  if (lowerCase(q.order) === 'asc') {
     query.event_date_utc = 1;
-  } else if (lowerCase(req.query.order) === 'desc') {
+  } else if (lowerCase(q.order) === 'desc') {
     query.event_date_utc = -1;
   } else {
     query.flight_number = 1;

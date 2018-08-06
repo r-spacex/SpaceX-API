@@ -9,15 +9,15 @@ const lowerCase = require('lower-case');
  */
 
 module.exports = (q) => {
-  const result = {};
+  const query = {};
 
   if (lowerCase(q.order) === 'asc') {
-    result.flight_number = 1;
+    query.flight_number = 1;
   } else if (lowerCase(q.order) === 'desc') {
-    result.flight_number = -1;
+    query.flight_number = -1;
   } else {
-    result.flight_number = 1;
+    query.flight_number = 1;
   }
 
-  return result;
+  return query;
 };

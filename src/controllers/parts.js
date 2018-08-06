@@ -11,7 +11,7 @@ module.exports = {
   allCaps: async (ctx) => {
     const data = await global.db
       .collection('capsule')
-      .find(capQuery(ctx.request))
+      .find(capQuery(ctx.request.query))
       .project({ _id: 0 })
       .sort({ original_launch: 1, capsule_serial: 1 })
       .limit(limitQuery(ctx.request.query))
@@ -37,7 +37,7 @@ module.exports = {
   allCores: async (ctx) => {
     const data = await global.db
       .collection('core')
-      .find(coreQuery(ctx.request))
+      .find(coreQuery(ctx.request.query))
       .project({ _id: 0 })
       .sort({ original_launch: 1, core_serial: 1 })
       .limit(limitQuery(ctx.request.query))

@@ -11,9 +11,9 @@ module.exports = {
   all: async (ctx) => {
     const data = await global.db
       .collection('history')
-      .find(historyQuery(ctx.request))
+      .find(historyQuery(ctx.request.query))
       .project({ _id: 0 })
-      .sort(historySort(ctx.request))
+      .sort(historySort(ctx.request.query))
       .limit(limitQuery(ctx.request.query))
       .toArray();
     ctx.body = data;
