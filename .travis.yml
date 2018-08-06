@@ -13,6 +13,6 @@ notifications:
     on_failure: always
 before_install:
 - openssl aes-256-cbc -K $encrypted_32b6c04b6d48_key -iv $encrypted_32b6c04b6d48_iv
-  -in deploy-key.enc -out ~\.ssh/deploy-key -d
+  -in deploy-key.enc -out ~/.ssh/deploy-key -d
 after_success:
 - bin/deploy.sh
