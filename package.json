@@ -52,6 +52,7 @@
     "eslint-plugin-react": "^7.10.0",
     "eslint-plugin-security": "^1.4.0",
     "jest": "^23.4.2",
+    "nodemon": "^1.18.3",
     "supertest": "^3.1.0"
   },
   "jest": {
