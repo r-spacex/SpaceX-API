@@ -7,7 +7,7 @@ Get info + orbital data for roadster
 ```http
 GET https://api.spacexdata.com/v2/info/roadster
 ```
-**NOTE:** Data updated every 10 minutes
+**NOTE:** Data updated every 5 minutes
 
 ## Sample Response
 ```json
