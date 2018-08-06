@@ -13,7 +13,7 @@ module.exports = {
     const data = await global.db
       .collection('launch')
       .find({ upcoming: false })
-      .project(projectQuery(ctx.request))
+      .project(projectQuery(ctx.request.query))
       .sort({ flight_number: -1 })
       .limit(1)
       .toArray();
@@ -27,7 +27,7 @@ module.exports = {
     const data = await global.db
       .collection('launch')
       .find({ upcoming: true })
-      .project(projectQuery(ctx.request))
+      .project(projectQuery(ctx.request.query))
       .sort({ flight_number: 1 })
       .limit(1)
       .toArray();
@@ -41,7 +41,7 @@ module.exports = {
     const data = await global.db
       .collection('launch')
       .find(launchQuery(ctx.request.query))
-      .project(projectQuery(ctx.request))
+      .project(projectQuery(ctx.request.query))
       .sort(sortQuery(ctx.request))
       .limit(limitQuery(ctx.request))
       .toArray();
@@ -55,7 +55,7 @@ module.exports = {
     const data = await global.db
       .collection('launch')
       .find(Object.assign({ upcoming: false }, launchQuery(ctx.request.query)))
-      .project(projectQuery(ctx.request))
+      .project(projectQuery(ctx.request.query))
       .sort(sortQuery(ctx.request))
       .limit(limitQuery(ctx.request))
       .toArray();
@@ -69,7 +69,7 @@ module.exports = {
     const data = await global.db
       .collection('launch')
       .find(Object.assign({ upcoming: true }, launchQuery(ctx.request.query)))
-      .project(projectQuery(ctx.request))
+      .project(projectQuery(ctx.request.query))
       .sort(sortQuery(ctx.request))
       .limit(limitQuery(ctx.request))
       .toArray();

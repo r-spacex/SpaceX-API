@@ -4,18 +4,18 @@ const lowerCase = require('lower-case');
 
 /**
  * Builds Mongo projection object to show/hide document id field
- * @param {Object} req The Koa context object to access querystrings
+ * @param {Object} query The Koa querystring object to a
  * @return {Object} Mongo compatible projection object
  */
 
-module.exports = (req) => {
-  const query = {};
+module.exports = (q) => {
+  const result = {};
 
-  if (lowerCase(req.query.id) !== 'true') {
+  if (lowerCase(q.id) !== 'true') {
     // Mongo _id field requires underscore dangle
     // eslint-disable-next-line no-underscore-dangle
-    query._id = 0;
+    result._id = 0;
   }
 
-  return query;
+  return result;
 };
