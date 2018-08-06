@@ -3,7 +3,7 @@
 const ObjectId = require('mongodb').ObjectID;
 
 /**
- * Builds Mongo query for past/upcoming launch endpoints from querystrings
+ * Builds mongo query for past/upcoming launch endpoints from querystrings
  * @param {Object} query The Koa query object from ctx.request
  * @return {Object} Mongo compatible find query object
  */

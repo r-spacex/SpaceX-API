@@ -1,15 +1,15 @@
 
 /**
- * Returns number to limit documents in query
- * @param {Object} req The Koa context object to access querystrings
+ * Returns number to limit documents in mongo query
+ * @param {Object} query Koa querystring object from ctx.request
  * @return {number} Number of documents to limit
  */
 
-module.exports = (req) => {
+module.exports = (q) => {
   let limit = null;
 
-  if (req.query.limit) {
-    limit = parseInt(req.query.limit, 10);
+  if (q.limit) {
+    limit = parseInt(q.limit, 10);
   } else {
     limit = 0;
   }

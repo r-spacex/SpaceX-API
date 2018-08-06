@@ -4,20 +4,20 @@ const lowerCase = require('lower-case');
 
 /**
  * Builds Mongo sort object to set document order
- * @param {Object} req The Koa context object to access querystrings
+ * @param {Object} query Koa querystring object from ctx.request
  * @return {Object} Mongo compatible sort object
  */
 
-module.exports = (req) => {
-  const query = {};
+module.exports = (q) => {
+  const result = {};
 
-  if (lowerCase(req.query.order) === 'asc') {
-    query.flight_number = 1;
-  } else if (lowerCase(req.query.order) === 'desc') {
-    query.flight_number = -1;
+  if (lowerCase(q.order) === 'asc') {
+    result.flight_number = 1;
+  } else if (lowerCase(q.order) === 'desc') {
+    result.flight_number = -1;
   } else {
-    query.flight_number = 1;
+    result.flight_number = 1;
   }
 
-  return query;
+  return result;
 };

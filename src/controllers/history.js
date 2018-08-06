@@ -14,7 +14,7 @@ module.exports = {
       .find(historyQuery(ctx.request))
       .project({ _id: 0 })
       .sort(historySort(ctx.request))
-      .limit(limitQuery(ctx.request))
+      .limit(limitQuery(ctx.request.query))
       .toArray();
     ctx.body = data;
   },

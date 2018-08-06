@@ -4,7 +4,7 @@ const lowerCase = require('lower-case');
 
 /**
  * Builds Mongo projection object to show/hide document id field
- * @param {Object} query The Koa querystring object to a
+ * @param {Object} query Koa querystring object from ctx.request
  * @return {Object} Mongo compatible projection object
  */
 

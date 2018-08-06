@@ -14,7 +14,7 @@ module.exports = {
       .find(capQuery(ctx.request))
       .project({ _id: 0 })
       .sort({ original_launch: 1, capsule_serial: 1 })
-      .limit(limitQuery(ctx.request))
+      .limit(limitQuery(ctx.request.query))
       .toArray();
     ctx.body = data;
   },
@@ -40,7 +40,7 @@ module.exports = {
       .find(coreQuery(ctx.request))
       .project({ _id: 0 })
       .sort({ original_launch: 1, core_serial: 1 })
-      .limit(limitQuery(ctx.request))
+      .limit(limitQuery(ctx.request.query))
       .toArray();
     ctx.body = data;
   },

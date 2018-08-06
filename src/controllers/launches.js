@@ -42,8 +42,8 @@ module.exports = {
       .collection('launch')
       .find(launchQuery(ctx.request.query))
       .project(projectQuery(ctx.request.query))
-      .sort(sortQuery(ctx.request))
-      .limit(limitQuery(ctx.request))
+      .sort(sortQuery(ctx.request.query))
+      .limit(limitQuery(ctx.request.query))
       .toArray();
     ctx.body = data;
   },
@@ -56,8 +56,8 @@ module.exports = {
       .collection('launch')
       .find(Object.assign({ upcoming: false }, launchQuery(ctx.request.query)))
       .project(projectQuery(ctx.request.query))
-      .sort(sortQuery(ctx.request))
-      .limit(limitQuery(ctx.request))
+      .sort(sortQuery(ctx.request.query))
+      .limit(limitQuery(ctx.request.query))
       .toArray();
     ctx.body = data;
   },
@@ -70,8 +70,8 @@ module.exports = {
       .collection('launch')
       .find(Object.assign({ upcoming: true }, launchQuery(ctx.request.query)))
       .project(projectQuery(ctx.request.query))
-      .sort(sortQuery(ctx.request))
-      .limit(limitQuery(ctx.request))
+      .sort(sortQuery(ctx.request.query))
+      .limit(limitQuery(ctx.request.query))
       .toArray();
     ctx.body = data;
   },

@@ -11,7 +11,7 @@ module.exports = {
       .collection('launchpad')
       .find({})
       .project({ _id: 0 })
-      .limit(limitQuery(ctx.request))
+      .limit(limitQuery(ctx.request.query))
       .toArray();
     ctx.body = data;
   },

@@ -12,7 +12,7 @@ module.exports = {
       .find({})
       .project({ _id: 0 })
       .sort({ first_flight: 1 })
-      .limit(limitQuery(ctx.request))
+      .limit(limitQuery(ctx.request.query))
       .toArray();
     ctx.body = data;
   },
