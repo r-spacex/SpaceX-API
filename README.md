@@ -24,12 +24,12 @@ GET https://api.spacexdata.com/v2/launches/latest
 
 ```json
 {
-  "flight_number": 66,
-  "mission_name": "Iridium NEXT Mission 7",
+  "flight_number": 67,
+  "mission_name": "Merah Putih",
   "launch_year": "2018",
-  "launch_date_unix": 1532518766,
-  "launch_date_utc": "2018-07-25T11:39:26.000Z",
-  "launch_date_local": "2018-07-25T04:39:26-07:00",
+  "launch_date_unix": 1533619080,
+  "launch_date_utc": "2018-08-07T05:18:00.000Z",
+  "launch_date_local": "2018-08-07T01:18:00-04:00",
   "rocket": {
     "rocket_id": "falcon9",
     "rocket_name": "Falcon 9",
@@ -37,39 +37,40 @@ GET https://api.spacexdata.com/v2/launches/latest
     "first_stage": {
       "cores": [
         {
-          "core_serial": "B1048",
-          "flight": 1,
+          "core_serial": "B1046",
+          "flight": 2,
           "block": 5,
-          "reused": false,
+          "reused": true,
           "land_success": true,
           "landing_type": "ASDS",
-          "landing_vehicle": "JRTI"
+          "landing_vehicle": "OCISLY"
         }
       ]
     },
     "second_stage": {
-      "block": null,
+      "block": 5,
       "payloads": [
         {
-          "payload_id": "Iridium NEXT 7",
+          "payload_id": "Telkom-4",
+          "norad_id": [],
           "reused": false,
           "customers": [
-            "Iridium Communications"
+            "Telkom"
           ],
           "payload_type": "Satellite",
-          "payload_mass_kg": 9600,
-          "payload_mass_lbs": 21164.38,
-          "orbit": "PO",
+          "payload_mass_kg": 5800,
+          "payload_mass_lbs": 12786.81,
+          "orbit": "GTO",
           "orbit_params": {
             "reference_system": "geocentric",
-            "regime": "low-earth",
-            "longitude": null,
+            "regime": "geostationary",
+            "longitude": -108,
             "semi_major_axis_km": null,
             "eccentricity": null,
             "periapsis_km": null,
             "apoapsis_km": null,
-            "inclination_deg": 86.4,
-            "period_min": 101,
+            "inclination_deg": null,
+            "period_min": null,
             "lifespan_years": 15
           }
         }
@@ -77,34 +78,35 @@ GET https://api.spacexdata.com/v2/launches/latest
     }
   },
   "telemetry": {
-    "flight_club": "https://www.flightclub.io/result?code=IRD7"
+    "flight_club": null
   },
   "reuse": {
-    "core": false,
+    "core": true,
     "side_core1": false,
     "side_core2": false,
     "fairings": false,
     "capsule": false
   },
   "launch_site": {
-    "site_id": "vafb_slc_4e",
-    "site_name": "VAFB SLC 4E",
-    "site_name_long": "Vandenberg Air Force Base Space Launch Complex 4E"
+    "site_id": "ccafs_slc_40",
+    "site_name": "CCAFS SLC 40",
+    "site_name_long": "Cape Canaveral Air Force Station Space Launch Complex 40"
   },
   "launch_success": true,
   "links": {
-    "mission_patch": "https://images2.imgbox.com/a9/cb/0xfkY5rT_o.png",
-    "mission_patch_small": "https://images2.imgbox.com/05/15/sT4UekiT_o.png",
-    "reddit_campaign": "https://www.reddit.com/r/spacex/comments/8v4wcm/iridium_next_constellation_mission_7_launch/",
-    "reddit_launch": "https://www.reddit.com/r/spacex/comments/91i1ru/rspacex_iridium_next_7_official_launch_discussion/",
+    "mission_patch": "https://images2.imgbox.com/a8/f5/ZgdsrbqW_o.png",
+    "mission_patch_small": "https://images2.imgbox.com/a7/ec/sbwePzVD_o.png",
+    "reddit_campaign": "https://www.reddit.com/r/spacex/comments/91gwfg/merah_putih_telkom4_launch_campaign_thread/",
+    "reddit_launch": "https://www.reddit.com/r/spacex/comments/9539nr/rspacex_merah_putih_telkom4_official_launch/",
     "reddit_recovery": null,
-    "reddit_media": "https://www.reddit.com/r/spacex/comments/91gx44/rspacex_iridium_next_constellation_mission_7/",
-    "presskit": "http://www.spacex.com/sites/spacex/files/iridium7_press_kit_7_24.pdf",
-    "article_link": "https://spaceflightnow.com/2018/07/25/spacexs-second-launch-in-three-days-lofts-10-more-iridium-satellites/",
-    "wikipedia": "https://en.wikipedia.org/wiki/Iridium_satellite_constellation#Next-generation_constellation",
-    "video_link": "https://www.youtube.com/watch?v=vsDknmK30C0"
+    "reddit_media": "https://www.reddit.com/r/spacex/comments/94zr0b/rspacex_merah_putih_media_thread_videos_images/",
+    "presskit": "https://www.spacex.com/sites/spacex/files/merahputihpresskit.pdf",
+    "article_link": "https://spaceflightnow.com/2018/08/07/indonesian-communications-satellite-deployed-in-orbit-by-spacex/",
+    "wikipedia": "https://en.wikipedia.org/wiki/Telkom_Indonesia",
+    "video_link": "https://www.youtube.com/watch?v=FjfQNBYv2IY"
   },
-  "details": "Seventh Iridium NEXT launch, with 10 communication satellites. Booster landed safely despite the droneship experiencing significant waves. Mr. Steven boat with an upgraded 4x size net was used, unsuccessfully, to attempt fairing recovery."
+  "details": "Indonesian comsat intended to replace the aging Telkom 1 at 108° E. First reflight of a Block 5-version booster.",
+  "upcoming": false
 }
 ```
 
