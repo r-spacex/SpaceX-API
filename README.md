@@ -18,8 +18,8 @@ See the [Docs](https://github.com/r-spacex/SpaceX-API/blob/master/docs/home.md) 
 
 **Example Response**
 
-```http
-GET https://api.spacexdata.com/v2/launches/latest
+```bash
+curl -s https://api.spacexdata.com/v2/launches/latest | jq
 ```
 
 ```json
