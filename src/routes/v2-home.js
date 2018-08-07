@@ -3,11 +3,9 @@
 const Router = require('koa-router');
 const home = require('../controllers/home');
 
-const v2 = new Router({
-  prefix: '/v2',
-});
+const v2 = new Router();
 
 // Returns API info
-v2.get('/', home.get);
+v2.get('/v2', home.get);
 
 module.exports = v2;
