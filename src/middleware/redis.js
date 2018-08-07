@@ -27,19 +27,22 @@ if (process.env.REDISCLOUD_URL) {
       expire: 6000,
     }, {
       path: '/v2',
-      expire: 43200,
+      expire: 86400,
     }, {
       path: '/v2/info',
-      expire: 43200,
+      expire: 86400,
+    }, {
+      path: '/v2/info/(.*)',
+      expire: 300,
     }, {
       path: '/v2/launchpads/(.*)',
-      expire: 43200,
+      expire: 86400,
     }, {
       path: '/v2/rockets/(.*)',
-      expire: 43200,
+      expire: 86400,
     }, {
       path: '/v2/capsules/(.*)',
-      expire: 43200,
+      expire: 86400,
     }],
     redis: {
       host: redisURL.hostname,
@@ -68,19 +71,22 @@ if (process.env.REDISCLOUD_URL) {
       expire: 6000,
     }, {
       path: '/v2',
-      expire: 43200,
+      expire: 86400,
     }, {
       path: '/v2/info',
-      expire: 43200,
+      expire: 86400,
+    }, {
+      path: '/v2/info/(.*)',
+      expire: 300,
     }, {
       path: '/v2/launchpads/(.*)',
-      expire: 43200,
+      expire: 86400,
     }, {
       path: '/v2/rockets/(.*)',
-      expire: 43200,
+      expire: 86400,
     }, {
       path: '/v2/capsules/(.*)',
-      expire: 43200,
+      expire: 86400,
     }],
   };
 }
