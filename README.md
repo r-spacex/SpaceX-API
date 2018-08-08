@@ -121,16 +121,16 @@ curl -s https://api.spacexdata.com/v2/launches/latest | jq
 See the [Contribution](https://github.com/r-spacex/SpaceX-API/blob/master/CONTRIBUTING.md) guide for detailed steps
 
 ## Local Development
-Local development info can be found [here](https://github.com/r-spacex/SpaceX-API/wiki/Local-Development)
+Local development info can be found [here](https://github.com/r-spacex/SpaceX-API/blob/master/docs/development.md)
 
 ## Technical Details
-* API is using [Node.js](https://nodejs.org/en/) with the [Koa](http://koajs.com/) framework
+* Deployed on a central U.S. [Linode](https://www.linode.com/) server
+* Using [Node.js](https://nodejs.org/en/) with the [Koa](http://koajs.com/) framework
+* Using [Redis](https://redis.io/), [Nginx](https://www.nginx.com/), and [Cloudflare](https://www.cloudflare.com/) for content caching
+* Using [Jest](https://facebook.github.io/jest/) and [Supertest](https://github.com/visionmedia/supertest) for tests
+* Using [Travis CI](https://travis-ci.org/) for continuous integration / deployments
 * All data stored in a [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) 3 node replica set cluster
-* Latest database mongodump available [here](https://drive.google.com/drive/folders/0B2DdgKR4GR4xdk1sRGowcUZXeE0?usp=sharing)
-* Uses [Redis](https://redis.io/) on [RedisCloud](https://redislabs.com/redis-enterprise/cloud/) for route caching
-* Uses [Jest](https://facebook.github.io/jest/) and [Supertest](https://github.com/visionmedia/supertest) for tests
-* Uses [Travis CI](https://travis-ci.org/) for continuous integration/delivery
-* API deployed on a [Heroku](https://www.heroku.com/) pipeline with pull request, staging and production servers
+* Latest database mongodump and zipped JSON files available [here](https://drive.google.com/drive/folders/0B2DdgKR4GR4xdk1sRGowcUZXeE0?usp=sharing)
 
 ## FAQ's
 * If you have any questions or corrections, please open an issue and we'll get it merged ASAP
