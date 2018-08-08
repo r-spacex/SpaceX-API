@@ -65,7 +65,9 @@ GET https://api.spacexdata.com/v2/launches?launch_year=2017&rocket_id=falcon9&co
 | site_name  | Filter by launch site name  | `site_name=KSC+LC+39A` |
 | site\_name_long  | Filter by long launch site name  | `site_name_long=Kennedy+Space+Center+Historic+Launch+Complex+39A` |
 | payload_id  | Filter by payload id  | `payload_id=BulgariaSat-1` |
-| customer | Filter by launch customer  | `customer=Bulgaria+Sat` |
+| customer | Filter by launch customer  | `customer=Iridium` |
+| nationality | Filter by payload nationality  | `nationality=Bulgaria` |
+| manufacturer | Filter by payload manufacturer  | `manufacturer=SSL` |
 | payload_type  | Filter by payload type  | `payload_type=Satellite` |
 | orbit  | Filter by payload orbit  | `orbit=GTO` |
 | launch_success  | Filter by successful launches | `launch_success=true` |
@@ -111,10 +113,15 @@ GET https://api.spacexdata.com/v2/launches?launch_year=2017&rocket_id=falcon9&co
       "payloads": [
         {
           "payload_id": "TESS",
+          "norad_id": [
+            43435
+          ],
           "reused": false,
           "customers": [
             "NASA"
           ],
+          "nationality": "United States",
+          "manufacturer": "Orbital ATK",
           "payload_type": "Satellite",
           "payload_mass_kg": 350,
           "payload_mass_lbs": 772,
@@ -163,6 +170,7 @@ GET https://api.spacexdata.com/v2/launches?launch_year=2017&rocket_id=falcon9&co
     "wikipedia": "https://en.wikipedia.org/wiki/Transiting_Exoplanet_Survey_Satellite",
     "video_link": "https://www.youtube.com/watch?v=aY-0uBIYYKk"
   },
-  "details": "Part of the Explorers program, this space telescope is intended for wide-field search of exoplanets transiting nearby stars. It is the first NASA high priority science mission launched by SpaceX. It was the first time SpaceX launched a scientific satellite not primarily intended for Earth observations. The second stage placed it into a high-Earth elliptical orbit, after which the satellite's own booster will perform complex maneuvers including a lunar flyby, and over the course of two months, reach a stable, 2:1 resonant orbit with the Moon. In January 2018, SpaceX received NASA's Launch Services Program Category 2 certification of its Falcon 9 'Full Thrust', certification which is required for launching medium risk missions like TESS. It was the last launch of a new Block 4 booster, and marked the 24th successful recovery of the booster. An experimental water landing was performed in order to attempt fairing recovery."
+  "details": "Part of the Explorers program, this space telescope is intended for wide-field search of exoplanets transiting nearby stars. It is the first NASA high priority science mission launched by SpaceX. It was the first time SpaceX launched a scientific satellite not primarily intended for Earth observations. The second stage placed it into a high-Earth elliptical orbit, after which the satellite's own booster will perform complex maneuvers including a lunar flyby, and over the course of two months, reach a stable, 2:1 resonant orbit with the Moon. In January 2018, SpaceX received NASA's Launch Services Program Category 2 certification of its Falcon 9 'Full Thrust', certification which is required for launching medium risk missions like TESS. It was the last launch of a new Block 4 booster, and marked the 24th successful recovery of the booster. An experimental water landing was performed in order to attempt fairing recovery.",
+  "upcoming": false
 }
 ```
