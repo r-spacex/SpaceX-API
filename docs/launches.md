@@ -65,6 +65,7 @@ GET https://api.spacexdata.com/v2/launches?launch_year=2017&rocket_id=falcon9&co
 | site_name  | Filter by launch site name  | `site_name=KSC+LC+39A` |
 | site\_name_long  | Filter by long launch site name  | `site_name_long=Kennedy+Space+Center+Historic+Launch+Complex+39A` |
 | payload_id  | Filter by payload id  | `payload_id=BulgariaSat-1` |
+| norad_id  | Filter by payload NORAD id  | `norad_id=43571` |
 | customer | Filter by launch customer  | `customer=Iridium` |
 | nationality | Filter by payload nationality  | `nationality=Bulgaria` |
 | manufacturer | Filter by payload manufacturer  | `manufacturer=SSL` |
