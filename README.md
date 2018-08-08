@@ -57,6 +57,8 @@ curl -s https://api.spacexdata.com/v2/launches/latest | jq
           "customers": [
             "Telkom"
           ],
+          "nationality": "Indonesia",
+          "manufacturer": "SSL",
           "payload_type": "Satellite",
           "payload_mass_kg": 5800,
           "payload_mass_lbs": 12786.81,
