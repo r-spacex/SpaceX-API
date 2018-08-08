@@ -7,17 +7,18 @@
 * Docs moved from wiki to repo
 
 **Features & Fixes**
-5669d0e47f64db155fce735a19b72b77fedad6a5 - Changed `koa-logger` to `koa-pino-logger` for a **~20%** reduction in high volume response latency 
-399039c0c455ee47842121511962a87e4c2efd9a - Fixed query builders where entire Koa request object was being passed to builders instead of just the object containing querystrings
-d728fdff82eb375e15616e3c83f2428dc1f34cd4 - Fixed bug showing incorrect order for all launches when sorting in descending order #107
-78a33e269b79ad1f5ae3ff2e2f7aa8c00a257e20 - Fixed bug preventing users from using the `flight_number` correctly with the all launches endpoint #109
-e880ead83b31ed49afee467ee4d248bf25256b98 - Fixed bug in invalid date tests where the dates tested weren't actually invalid
-3689db4d9082ca124f4012417f2451ddf75e852f - Fixed bug that allowed caching in dev environments by default
-37a24bca77d418b4078cdd2e4474cee03fc520bc - Added new mongo connection param to remove URL parser deprecation warnings
-0cce078d9f9e5a22be2a71b984fc2d376f24dc08 - Added new endpoint to house Falcon Heavy Roadster data `/info/roadster`
-409cb439013b42a855245374d9aa006a46d403f3 - Added script to update roadster orbital data every 10 min
-578578242f28008514d29e47e339ea9721c1f14f - Added new PowerShell wrapper link to readme
-6b09770d16c9ba24385d16eada5ebce696a4d9e8 - Moved docs from wiki to docs folder for portability & versioning
+
+* Changed `koa-logger` to `koa-pino-logger` for a **~20%** reduction in high volume response latency 
+* Fixed query builders where entire Koa request object was being passed to builders instead of just the object containing querystrings
+* Fixed bug showing incorrect order for all launches when sorting in descending order #107
+* Fixed bug preventing users from using the `flight_number` correctly with the all launches endpoint #109
+* Fixed bug in invalid date tests where the dates tested weren't actually invalid
+* Fixed bug that allowed caching in dev environments by default
+* Added new mongo connection param to remove URL parser deprecation warnings
+* Added new endpoint to house Falcon Heavy Roadster data `/info/roadster`
+* Added script to update roadster orbital data every 10 min
+* Added new PowerShell wrapper link to readme
+* Moved docs from wiki to docs folder for portability & versioning
 
 **Server Changes**
 * The API has migrated to a central U.S. [Linode](https://www.linode.com/) server instead of the north Virginia  [Heroku](https://www.heroku.com/) server, now latency should be balanced from coast to coast.
