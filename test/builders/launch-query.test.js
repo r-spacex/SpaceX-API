@@ -226,6 +226,16 @@ test('It should return launch of BulgariaSat-1', async () => {
   });
 });
 
+test('It should return Iridium NEXT 7 with the correct NORAD id', async () => {
+  const response = await request(app.callback()).get('/v2/launches?norad_id=43571');
+  expect(response.statusCode).toBe(200);
+  response.body.forEach((item) => {
+    item.rocket.second_stage.payloads.forEach((payload) => {
+      expect(payload).toHaveProperty('payload_id', 'Iridium NEXT 7');
+    });
+  });
+});
+
 test('It should return launches with Bulgaria Sat customer', async () => {
   const response = await request(app.callback()).get('/v2/launches?customer=Bulgaria+Sat');
   expect(response.statusCode).toBe(200);

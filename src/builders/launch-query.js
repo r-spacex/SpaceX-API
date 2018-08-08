@@ -128,6 +128,10 @@ module.exports = (q) => {
     query['rocket.second_stage.payloads.payload_id'] = q.payload_id;
   }
 
+  if (q.norad_id) {
+    query['rocket.second_stage.payloads.norad_id'] = parseInt(q.norad_id, 10);
+  }
+
   if (q.customer) {
     query['rocket.second_stage.payloads.customers'] = q.customer;
   }
