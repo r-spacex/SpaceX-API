@@ -238,6 +238,26 @@ test('It should return launches with Bulgaria Sat customer', async () => {
   });
 });
 
+test('It should return launches with Bulgaria nationality', async () => {
+  const response = await request(app.callback()).get('/v2/launches?nationality=Bulgaria');
+  expect(response.statusCode).toBe(200);
+  response.body.forEach((item) => {
+    item.rocket.second_stage.payloads.forEach((payload) => {
+      expect(payload).toHaveProperty('nationality', 'Bulgaria');
+    });
+  });
+});
+
+test('It should return launches with an SSL manufacturer', async () => {
+  const response = await request(app.callback()).get('/v2/launches?manufacturer=SSL');
+  expect(response.statusCode).toBe(200);
+  response.body.forEach((item) => {
+    item.rocket.second_stage.payloads.forEach((payload) => {
+      expect(payload).toHaveProperty('manufacturer', 'SSL');
+    });
+  });
+});
+
 test('It should return launches with Satellite payloads', async () => {
   const response = await request(app.callback()).get('/v2/launches?payload_type=Satellite');
   expect(response.statusCode).toBe(200);

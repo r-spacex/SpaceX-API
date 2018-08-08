@@ -132,6 +132,14 @@ module.exports = (q) => {
     query['rocket.second_stage.payloads.customers'] = q.customer;
   }
 
+  if (q.nationality) {
+    query['rocket.second_stage.payloads.nationality'] = q.nationality;
+  }
+
+  if (q.manufacturer) {
+    query['rocket.second_stage.payloads.manufacturer'] = q.manufacturer;
+  }
+
   if (q.payload_type) {
     query['rocket.second_stage.payloads.payload_type'] = q.payload_type;
   }
