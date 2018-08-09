@@ -5,7 +5,8 @@ This collection of documents describes the resources and functions that make up 
 No authentication is required to use this public API
 
 ## Rate Limiting
-No rate limiting is implemented at this time, but please be respectful with your usage
+The API has a rate limit of 50 req/sec per IP address, if exceeded, a response of 429 will be given
+until the rate drops back below 50 req/sec
 
 ## Development 
 [Dev Info](https://github.com/r-spacex/SpaceX-API/blob/master/docs/development.md)
