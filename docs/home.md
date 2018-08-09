@@ -1,6 +1,9 @@
 ## Introduction
 This collection of documents describes the resources and functions that make up the r/SpaceX API. 
 
+## API Status
+See the [status](https://status.spacexdata.com) page for more details
+
 ## Authentication
 No authentication is required to use this public API
 

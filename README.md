@@ -119,6 +119,9 @@ curl -s https://api.spacexdata.com/v2/launches/latest | jq
 | Node.js  | [Thomas-Smyth/SpaceX-API-Wrapper](https://github.com/Thomas-Smyth/SpaceX-API-Wrapper) |
 | PowerShell | [lazywinadmin/SpaceX](https://github.com/lazywinadmin/SpaceX) |
 
+## API Status
+See the [status](https://status.spacexdata.com) page for more details
+
 ## Contributions
 See the [Contribution](https://github.com/r-spacex/SpaceX-API/blob/master/CONTRIBUTING.md) guide for detailed steps
 
