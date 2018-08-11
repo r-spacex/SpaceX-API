@@ -7,7 +7,7 @@
     "test": "yarn lint && NODE_ENV=test PORT=0 jest --silent",
     "start": "node src/app.js",
     "lint": "eslint \"**/*.js\"",
-    "roadster": "node bin/roadster.js"
+    "roadster": "node scripts/roadster.js"
   },
   "repository": {
     "type": "git",
