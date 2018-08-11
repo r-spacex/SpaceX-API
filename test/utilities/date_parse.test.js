@@ -7,5 +7,5 @@ test('It should return the correct date comparison object', () => {
     final: '2017-06-25',
   };
   const response = dateParse(query);
-  expect(response).toEqual({ $gte: '2017-06-22T05:00:00.000Z', $lte: '2017-06-25T05:00:00.000Z' });
+  expect(response).toEqual({ $gte: '2017-06-22T00:00:00.000Z', $lte: '2017-06-25T00:00:00.000Z' });
 });

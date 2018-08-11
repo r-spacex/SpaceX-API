@@ -1,7 +1,7 @@
 
 // Required to correctly output ObjectID's
 const ObjectId = require('mongodb').ObjectID;
-const dayjs = require('dayjs');
+const moment = require('moment');
 const dateRange = require('../utilities/date_range');
 
 /**
@@ -21,8 +21,6 @@ module.exports = (q) => {
 
   if (q.start && (q.final || q.end)) {
     query.launch_date_utc = dateRange(q);
-    console.log(q);
-    console.log(dateRange(q));
   }
 
   if (q.flight_number) {
@@ -35,7 +33,7 @@ module.exports = (q) => {
 
   if (q.launch_date_utc) {
     // Allow any valid date format
-    const date = dayjs(q.launch_date_utc);
+    const date = moment(q.launch_date_utc);
     try {
       query.launch_date_utc = date.toISOString();
     } catch (e) {

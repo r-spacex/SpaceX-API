@@ -139,7 +139,7 @@ test('It should return no launches due to invalid date', async () => {
 test('It should return no launches due to invalid UTC date', async () => {
   const response = await request(app.callback()).get('/v2/launches?launch_date_utc=2011-25-05T14:48:00.000Z');
   expect(response.statusCode).toBe(200);
-  expect(response.body.length).toBeGreaterThanOrEqual(66);
+  expect(response.body).toEqual([]);
 });
 
 //------------------------------------------------------------

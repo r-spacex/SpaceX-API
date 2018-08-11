@@ -2,13 +2,13 @@
 
 const MongoClient = require('mongodb');
 const request = require('request-promise-native');
-const dayjs = require('dayjs');
+const moment = require('moment');
 const shell = require('shelljs');
 
 shell.config.silent = true;
 
-const today = dayjs().format('YYYY-MMM-DD HH:mm:ss');
-const tomorrow = dayjs().add(1, 'day').format('YYYY-MMM-DD HH:mm:ss');
+const today = moment().format('YYYY-MMM-DD HH:mm:ss');
+const tomorrow = moment().add(1, 'day').format('YYYY-MMM-DD HH:mm:ss');
 
 const orbitURL = `https://ssd.jpl.nasa.gov/horizons_batch.cgi?batch=1&
 COMMAND= '-143205'&
