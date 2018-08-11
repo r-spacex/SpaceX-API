@@ -130,16 +130,16 @@ test('It should return the all launches', async () => {
   });
 });
 
-test('It should return all launches due to invalid date', async () => {
+test('It should return no launches due to invalid date', async () => {
   const response = await request(app.callback()).get('/v2/launches?start=2020-25-23&end=2020-25-24');
   expect(response.statusCode).toBe(200);
-  expect(response.body.length).toBeGreaterThan(65);
+  expect(response.body).toEqual([]);
 });
 
-test('It should return all launches due to invalid UTC date', async () => {
+test('It should return no launches due to invalid UTC date', async () => {
   const response = await request(app.callback()).get('/v2/launches?launch_date_utc=2011-25-05T14:48:00.000Z');
   expect(response.statusCode).toBe(200);
-  expect(response.body.length).toBeGreaterThan(65);
+  expect(response.body.length).toBeGreaterThanOrEqual(66);
 });
 
 //------------------------------------------------------------

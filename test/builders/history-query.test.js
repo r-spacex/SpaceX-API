@@ -39,5 +39,5 @@ test('It should return Falcon Heavy Test Flight', async () => {
 test('It should return an empty array due to invalid date', async () => {
   const response = await request(app.callback()).get('/v2/info/history?start=2020-25-23&end=2020-25-24');
   expect(response.statusCode).toBe(200);
-  expect(response.body.length).toBeGreaterThanOrEqual(19);
+  expect(response.body).toEqual([]);
 });

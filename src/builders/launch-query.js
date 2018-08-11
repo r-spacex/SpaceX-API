@@ -1,6 +1,8 @@
 
 // Required to correctly output ObjectID's
 const ObjectId = require('mongodb').ObjectID;
+const dayjs = require('dayjs');
+const dateRange = require('../utilities/date_range');
 
 /**
  * Builds mongo query for past/upcoming launch endpoints from querystrings
@@ -17,25 +19,10 @@ module.exports = (q) => {
     query._id = ObjectId(q.flight_id);
   }
 
-  // Allow date range comparisons using a variety of date formats
   if (q.start && (q.final || q.end)) {
-    let startParsed;
-    let endParsed;
-    // Matches any string of consecutive numbers ex. 1520314380
-    // If the date is unix, it is converted to a compatible date constructor param
-    if (/^[0-9]*$/.test(q.start && (q.final || q.end))) {
-      startParsed = new Date(q.start * 1000);
-      endParsed = new Date(q.final * 1000 || q.end * 1000);
-    } else {
-      // If not unix, a date is created from the input
-      startParsed = new Date(q.start);
-      endParsed = new Date(q.final || q.end);
-    }
-    try {
-      query.launch_date_utc = { $gte: startParsed.toISOString(), $lte: endParsed.toISOString() };
-    } catch (e) {
-      console.log(e);
-    }
+    query.launch_date_utc = dateRange(q);
+    console.log(q);
+    console.log(dateRange(q));
   }
 
   if (q.flight_number) {
@@ -48,7 +35,7 @@ module.exports = (q) => {
 
   if (q.launch_date_utc) {
     // Allow any valid date format
-    const date = new Date(q.launch_date_utc);
+    const date = dayjs(q.launch_date_utc);
     try {
       query.launch_date_utc = date.toISOString();
     } catch (e) {
