@@ -52,7 +52,9 @@ curl -s https://api.spacexdata.com/v2/launches/latest | jq
       "payloads": [
         {
           "payload_id": "Telkom-4",
-          "norad_id": [],
+          "norad_id": [
+            43587
+          ],
           "reused": false,
           "customers": [
             "Telkom"
@@ -108,7 +110,8 @@ curl -s https://api.spacexdata.com/v2/launches/latest | jq
     "video_link": "https://www.youtube.com/watch?v=FjfQNBYv2IY"
   },
   "details": "Indonesian comsat intended to replace the aging Telkom 1 at 108° E. First reflight of a Block 5-version booster.",
-  "upcoming": false
+  "upcoming": false,
+  "static_fire_date_utc": "2018-08-02T15:53:00.000Z"
 }
 ```
 
