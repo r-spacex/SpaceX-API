@@ -8,7 +8,7 @@
     "start": "node src/app.js",
     "lint": "eslint \"**/*.js\"",
     "roadster": "node scripts/roadster.js",
-    "orbit": "node scripts/orbital_params.js"
+    "orbit": "node scripts/orbits.js"
   },
   "repository": {
     "type": "git",
