@@ -43,6 +43,7 @@ test('It should return all rocket info', async () => {
     });
     expect(item).toHaveProperty('first_stage', customMatchers.vehicleStage());
     expect(item).toHaveProperty('second_stage', customMatchers.vehicleStage());
+    expect(item).toHaveProperty('wikipedia', expect.any(String));
     expect(item).toHaveProperty('description', expect.any(String));
   });
 });
@@ -57,6 +58,7 @@ test('It should return Falcon 1 info', async () => {
   expect(response.body).toHaveProperty('first_flight', '2006-03-24');
   expect(response.body).toHaveProperty('country');
   expect(response.body).toHaveProperty('company', 'SpaceX');
+  expect(response.body).toHaveProperty('wikipedia');
   expect(response.body).toHaveProperty('description');
 });
 
@@ -70,5 +72,6 @@ test('It should return Falcon Heavy info', async () => {
   expect(response.body).toHaveProperty('first_flight');
   expect(response.body).toHaveProperty('country');
   expect(response.body).toHaveProperty('company', 'SpaceX');
+  expect(response.body).toHaveProperty('wikipedia');
   expect(response.body).toHaveProperty('description');
 });
