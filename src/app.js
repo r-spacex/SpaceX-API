@@ -6,6 +6,7 @@ const helmet = require('koa-helmet');
 const Koa = require('koa');
 const logger = require('koa-pino-logger');
 const MongoClient = require('mongodb');
+const json = require('./middleware/json');
 const options = require('./middleware/redis');
 
 const capsules = require('./routes/v2-capsules');
@@ -65,6 +66,10 @@ app.use(cors({
 if (process.env.NODE_ENV === 'production') {
   app.use(cache(options));
 }
+
+// Allow pretty print via pretty=true querystring
+// Pretty printed json will NOT be cached
+app.use(json({ pretty: false, param: { pretty: true } }));
 
 // Koa routes
 app.use(capsules.routes());

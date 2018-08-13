@@ -44,6 +44,7 @@ if (process.env.REDISCLOUD_URL) {
       path: '/v2/capsules/(.*)',
       expire: 86400,
     }],
+    passParam: 'pretty',
     redis: {
       host: redisURL.hostname,
       port: redisURL.port,
@@ -88,6 +89,7 @@ if (process.env.REDISCLOUD_URL) {
       path: '/v2/capsules/(.*)',
       expire: 86400,
     }],
+    passParam: 'pretty',
   };
 }
 
