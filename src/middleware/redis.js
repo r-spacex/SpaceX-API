@@ -38,10 +38,19 @@ if (process.env.REDISCLOUD_URL) {
       path: '/v2/launchpads/(.*)',
       expire: 86400,
     }, {
+      path: '/v2/launchpads',
+      expire: 86400,
+    }, {
+      path: '/v2/rockets',
+      expire: 86400,
+    }, {
       path: '/v2/rockets/(.*)',
       expire: 86400,
     }, {
       path: '/v2/capsules/(.*)',
+      expire: 86400,
+    }, {
+      path: '/v2/capsules',
       expire: 86400,
     }],
     passParam: 'pretty',
@@ -83,10 +92,19 @@ if (process.env.REDISCLOUD_URL) {
       path: '/v2/launchpads/(.*)',
       expire: 86400,
     }, {
+      path: '/v2/launchpads',
+      expire: 86400,
+    }, {
       path: '/v2/rockets/(.*)',
       expire: 86400,
     }, {
+      path: '/v2/rockets',
+      expire: 86400,
+    }, {
       path: '/v2/capsules/(.*)',
+      expire: 86400,
+    }, {
+      path: '/v2/capsules',
       expire: 86400,
     }],
     passParam: 'pretty',
