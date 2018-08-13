@@ -3,12 +3,8 @@
 const MongoClient = require('mongodb');
 const request = require('request-promise-native').defaults({ jar: true });
 
-const wait = (ms) => {
-  const start = new Date().getTime();
-  let end = start;
-  while (end < start + ms) {
-    end = new Date().getTime();
-  }
+const sleep = (ms) => {
+  return new Promise(resolve => setTimeout(resolve, ms));
 };
 
 async function asyncForEach(array, callback) {
@@ -46,7 +42,7 @@ async function asyncForEach(array, callback) {
 
     const start = async () => {
       await asyncForEach(id, async (num) => {
-        wait(5000);
+        await sleep(5000);
         const orbitData = await request(`https://www.space-track.org/basicspacedata/query/class/tle/NORAD_CAT_ID/${num}/limit/1`);
         const orbit = JSON.parse(orbitData);
 
