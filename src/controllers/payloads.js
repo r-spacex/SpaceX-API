@@ -16,22 +16,32 @@ module.exports = {
       .sort(sortQuery(ctx.request.query))
       .limit(limitQuery(ctx.request.query))
       .toArray();
+
     delete ctx.request.query.limit;
     delete ctx.request.query.order;
+    const pretty = ctx.request.query.pretty;
+    delete ctx.request.query.pretty;
+
     const payloads = [];
+    let match;
     data.forEach((launch) => {
       launch.rocket.second_stage.payloads.forEach((payload) => {
+        match = 0;
         if (Object.keys(ctx.request.query).length !== 0) {
           Object.entries(ctx.request.query).forEach(([key, value]) => {
             if (value === payload[key]) {
-              payloads.push(payload);
+              match += 1;
             }
           });
+          if (match === Object.keys(ctx.request.query).length) {
+            payloads.push(payload);
+          }
         } else {
           payloads.push(payload);
         }
       });
     });
+    ctx.request.query.pretty = pretty;
     ctx.body = payloads;
   },
 
