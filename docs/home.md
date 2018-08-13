@@ -11,6 +11,13 @@ No authentication is required to use this public API
 The API has a rate limit of 50 req/sec per IP address, if exceeded, a response of 429 will be given
 until the rate drops back below 50 req/sec
 
+## Pretty Printing
+JSON pretty printing is turned off by default to reduce payload size. It can be enabled by including
+the querystring `pretty=true` in the url
+```http
+GET https://api.spacexdata.com/v2/launches/latest?pretty=true
+```
+
 ## Development 
 [Dev Info](https://github.com/r-spacex/SpaceX-API/blob/master/docs/development.md)
 
