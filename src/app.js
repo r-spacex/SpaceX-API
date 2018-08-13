@@ -60,6 +60,8 @@ app.use(async (ctx, next) => {
 // Enable CORS for all routes
 app.use(cors({
   origin: '*',
+  allowMethods: ['GET', 'POST'],
+  allowHeaders: ['Content-Type', 'Accept'],
 }));
 
 // Disable Redis caching unless production
