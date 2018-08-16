@@ -69,13 +69,16 @@ curl -s https://api.spacexdata.com/v2/launches/latest | jq
             "reference_system": "geocentric",
             "regime": "geostationary",
             "longitude": -108,
-            "semi_major_axis_km": null,
-            "eccentricity": null,
-            "periapsis_km": null,
-            "apoapsis_km": null,
-            "inclination_deg": null,
-            "period_min": null,
-            "lifespan_years": 15
+            "semi_major_axis_km": 21226.178,
+            "eccentricity": 0.6904141,
+            "periapsis_km": 193.19,
+            "apoapsis_km": 29502.896,
+            "inclination_deg": 27.0648,
+            "period_min": 512.941,
+            "lifespan_years": 15,
+            "epoch": "2018-08-07T06:57:16.000Z",
+            "mean_motion": 2.80734018,
+            "raan": 227.0228
           }
         }
       ]
