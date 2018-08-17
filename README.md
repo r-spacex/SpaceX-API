@@ -124,6 +124,7 @@ curl -s https://api.spacexdata.com/v2/launches/latest | jq
 | .NET  | [Tearth/Oddity](https://github.com/Tearth/Oddity) |
 | Node.js  | [Thomas-Smyth/SpaceX-API-Wrapper](https://github.com/Thomas-Smyth/SpaceX-API-Wrapper) |
 | PowerShell | [lazywinadmin/SpaceX](https://github.com/lazywinadmin/SpaceX) |
+| Python  | [phadnisvinay30/Spacex-Python](https://github.com/phadnisvinay30/SpaceX-Python) 
 
 ## API Status
 See the [status](https://status.spacexdata.com) page for more details
