@@ -1,7 +1,12 @@
 #!/usr/bin/env bash
 set -xe
 
-if [$TRAVIS_BRANCH == 'master'] && [$TRAVIS_PULL_REQUEST == 'false']; then
+if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then
+  echo -e "Skipping publish; just doing a build.\n"
+  exit 0
+fi
+
+if [$TRAVIS_BRANCH == 'master']; then
     # Import the SSH deployment key
     openssl aes-256-cbc -K $encrypted_32b6c04b6d48_key -iv $encrypted_32b6c04b6d48_iv -in deploy-key.enc -out ~/deploy-key -d
     chmod 600 ~/deploy-key
