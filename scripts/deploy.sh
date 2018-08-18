@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -xe
 
-if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then
+if [ "${TRAVIS_PULL_REQUEST}" != "false" ]; then
   echo -e "Skipping publish; just doing a build.\n"
   exit 0
 fi
