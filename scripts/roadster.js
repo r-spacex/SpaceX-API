@@ -90,7 +90,7 @@ const getData = async (orbit, earth, mars) => {
     // Reading Epoch - valid for CE dates.
     const epochReg = /^[ ]*([0-9.]+)[ ]*=[ ]*A[.]D[.][ ]*/m;
     epochReg.exec(orbitSoe);
-    const epoch = RegExp.$1;
+    const epoch = parseFloat(RegExp.$1);
 
     // Reading Semi-major axis (A)
     const smaReg = /A=[ ]*([0-9.E+-]+)/m;
