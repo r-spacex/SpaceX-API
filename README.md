@@ -126,6 +126,7 @@ curl -s https://api.spacexdata.com/v2/launches/latest | jq
 | PowerShell | [lazywinadmin/SpaceX](https://github.com/lazywinadmin/SpaceX) |
 | Python  | [phadnisvinay30/Spacex-Python](https://github.com/phadnisvinay30/SpaceX-Python) 
 | Go | [orcaman/spacex](https://github.com/orcaman/spacex) |
+| Rust | [AGutan/spacex-api-wrapper](https://github.com/AGutan/spacex-api-wrapper) |
 
 ## API Status
 See the [status](https://status.spacexdata.com) page for more details
