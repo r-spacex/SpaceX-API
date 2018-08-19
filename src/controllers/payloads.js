@@ -13,7 +13,7 @@ module.exports = {
       .collection('launch')
       .find(launchQuery(ctx.request.query))
       .project({ _id: 0, 'rocket.second_stage.payloads': 1, flight_number: 1 })
-      .sort(sort(ctx.request.query))
+      .sort(sort(ctx.request))
       .limit(limitQuery(ctx.request.query))
       .toArray();
 
