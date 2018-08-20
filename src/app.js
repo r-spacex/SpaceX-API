@@ -1,4 +1,5 @@
 
+require('dotenv').config();
 const cache = require('koa-redis-cache');
 const compress = require('koa-compress');
 const cors = require('koa2-cors');
@@ -22,7 +23,7 @@ const rockets = require('./routes/v2-rockets');
 const upcoming = require('./routes/v2-upcoming');
 
 // Production read-only DB
-const url = 'mongodb+srv://public:spacex@spacex-gpg0u.mongodb.net/spacex-api';
+const url = process.env.MONGO_URL;
 
 const app = new Koa();
 
@@ -99,6 +100,7 @@ module.exports = app;
     const port = process.env.PORT || 5000;
     app.listen(port, '0.0.0.0', () => {
       app.emit('ready');
+      console.log('Running on port 5000');
     });
   } catch (err) {
     console.log(err.stack);
