@@ -12,7 +12,7 @@
 <h3 align="center">Open Source REST API for rocket, core, capsule, pad, and launch data</h3>
 
 ## Docs
-See the [Docs](https://github.com/r-spacex/SpaceX-API/blob/master/docs/home.md) for full API Documentation
+See the [Docs](https://github.com/r-spacex/SpaceX-API/tree/master/docs) for full API Documentation
 
 ## Usage
 
@@ -124,7 +124,7 @@ curl -s https://api.spacexdata.com/v2/launches/latest | jq
 | .NET  | [Tearth/Oddity](https://github.com/Tearth/Oddity) |
 | Node.js  | [Thomas-Smyth/SpaceX-API-Wrapper](https://github.com/Thomas-Smyth/SpaceX-API-Wrapper) |
 | PowerShell | [lazywinadmin/SpaceX](https://github.com/lazywinadmin/SpaceX) |
-| Python  | [phadnisvinay30/Spacex-Python](https://github.com/phadnisvinay30/SpaceX-Python) 
+| Python  | [phadnisvinay30/Spacex-Python](https://github.com/phadnisvinay30/SpaceX-Python)
 | Go | [orcaman/spacex](https://github.com/orcaman/spacex) |
 | Rust | [AGutan/spacex-api-wrapper](https://github.com/AGutan/spacex-api-wrapper) |
 | Ruby | [rodolfobandeira/spacex](https://github.com/rodolfobandeira/spacex) |
