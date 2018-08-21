@@ -1,5 +1,5 @@
 ## Introduction
-This collection of documents describes the resources and functions that make up the r/SpaceX API. 
+This collection of documents describes the resources and functions that make up the r/SpaceX API. The documentation uses [api blueprint](https://apiblueprint.org/) for formatting.
 
 ## API Status
 See the [status](https://status.spacexdata.com) page for more details
@@ -30,10 +30,6 @@ GET https://api.spacexdata.com/v2/launches/latest?pretty=true
 
 [Company Info](https://github.com/r-spacex/SpaceX-API/blob/master/docs/company_info.md)
 
-[Roadster Info](https://github.com/r-spacex/SpaceX-API/blob/master/docs/roadster.md)
-
-[Capsule Details](https://github.com/r-spacex/SpaceX-API/blob/master/docs/capsule_detail.md)
-
-[Core Detail](https://github.com/r-spacex/SpaceX-API/blob/master/docs/core_detail.md)
+[Parts](https://github.com/r-spacex/SpaceX-API/blob/master/docs/parts.md)
 
 [Launchpads](https://github.com/r-spacex/SpaceX-API/blob/master/docs/launchpad.md)
