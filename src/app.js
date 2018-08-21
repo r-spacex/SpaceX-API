@@ -1,5 +1,4 @@
 
-require('dotenv').config();
 const cache = require('koa-redis-cache');
 const compress = require('koa-compress');
 const cors = require('koa2-cors');
@@ -23,7 +22,7 @@ const rockets = require('./routes/v2-rockets');
 const upcoming = require('./routes/v2-upcoming');
 
 // Production read-only DB
-const url = process.env.MONGO_URL;
+const url = 'mongodb+srv://public:spacex@spacex-gpg0u.mongodb.net/spacex-api';
 
 const app = new Koa();
 
