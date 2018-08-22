@@ -6,7 +6,7 @@ HOST: https://api.spacexdata.com/v2/
 
 Endpoints allowing you to get information related to parts used during flights.
 
-[Home](https://github.com/r-spacex/SpaceX-API/blob/master/docs/home.md) | [Launches](https://github.com/r-spacex/SpaceX-API/blob/master/docs/launches.md) | [Rockets](https://github.com/r-spacex/SpaceX-API/blob/master/docs/rocket.md) | [Capsules](https://github.com/r-spacex/SpaceX-API/blob/master/docs/capsule.md) | [Company Info](https://github.com/r-spacex/SpaceX-API/blob/master/docs/company_info.md) | [Roadster Info](https://github.com/r-spacex/SpaceX-API/blob/master/docs/roadster.md) | Parts | [Launchpads](https://github.com/r-spacex/SpaceX-API/blob/master/docs/launchpad.md)
+[Home](https://github.com/r-spacex/SpaceX-API/blob/master/docs/home.md) | [Launches](https://github.com/r-spacex/SpaceX-API/blob/master/docs/launches.md) | [Rockets](https://github.com/r-spacex/SpaceX-API/blob/master/docs/rockets.md) | [Capsules](https://github.com/r-spacex/SpaceX-API/blob/master/docs/capsules.md) | [Company Info](https://github.com/r-spacex/SpaceX-API/blob/master/docs/company_info.md) | Parts | [Launchpads](https://github.com/r-spacex/SpaceX-API/blob/master/docs/launchpads.md)
 
 ## Capsule Details [/parts/caps]
 
