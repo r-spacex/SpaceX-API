@@ -9,7 +9,7 @@ Endpoints allowing you to get information related to SpaceX rockets.
 [Home](https://github.com/r-spacex/SpaceX-API/blob/master/docs/home.md)
  | [Launches](https://github.com/r-spacex/SpaceX-API/blob/master/docs/launches.md)
  | Rockets
- | [Capsules](https://github.com/r-spacex/SpaceX-API/blob/master/docs/capsule.md)
+ | [Capsules](https://github.com/r-spacex/SpaceX-API/blob/master/docs/capsules.md)
  | [Company Info](https://github.com/r-spacex/SpaceX-API/blob/master/docs/company_info.md)
  | [Parts](https://github.com/r-spacex/SpaceX-API/blob/master/docs/parts.md)
  | [Launchpads](https://github.com/r-spacex/SpaceX-API/blob/master/docs/launchpads.md)

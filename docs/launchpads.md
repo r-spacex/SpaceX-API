@@ -8,8 +8,8 @@ Endpoints allowing you to get information related to launchpads used for SpaceX 
 
 [Home](https://github.com/r-spacex/SpaceX-API/blob/master/docs/home.md)
  | [Launches](https://github.com/r-spacex/SpaceX-API/blob/master/docs/launches.md)
- | [Rockets](https://github.com/r-spacex/SpaceX-API/blob/master/docs/rocket.md)
- | [Capsules](https://github.com/r-spacex/SpaceX-API/blob/master/docs/capsule.md)
+ | [Rockets](https://github.com/r-spacex/SpaceX-API/blob/master/docs/rockets.md)
+ | [Capsules](https://github.com/r-spacex/SpaceX-API/blob/master/docs/capsules.md)
  | [Company Info](https://github.com/r-spacex/SpaceX-API/blob/master/docs/company_info.md)
  | [Parts](https://github.com/r-spacex/SpaceX-API/blob/master/docs/parts.md)
  | Launchpads
