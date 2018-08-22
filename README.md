@@ -128,6 +128,7 @@ curl -s https://api.spacexdata.com/v2/launches/latest | jq
 | Go | [orcaman/spacex](https://github.com/orcaman/spacex) |
 | Rust | [AGutan/spacex-api-wrapper](https://github.com/AGutan/spacex-api-wrapper) |
 | Ruby | [rodolfobandeira/spacex](https://github.com/rodolfobandeira/spacex) |
+| PHP | [airesvsg/spacex](https://github.com/airesvsg/spacex) |
 
 ## API Status
 See the [status](https://status.spacexdata.com) page for more details
