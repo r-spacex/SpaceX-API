@@ -6,7 +6,7 @@ HOST: https://api.spacexdata.com/v2/
 
 Endpoints allowing you to get information related to SpaceX launches.
 
-[Home](https://github.com/r-spacex/SpaceX-API/blob/master/docs/home.md)
+[Home](https://github.com/r-spacex/SpaceX-API/tree/master/docs)
 | Launches | [Rockets](https://github.com/r-spacex/SpaceX-API/blob/master/docs/rockets.md)
 | [Capsules](https://github.com/r-spacex/SpaceX-API/blob/master/docs/capsules.md)
 | [Company Info](https://github.com/r-spacex/SpaceX-API/blob/master/docs/company_info.md)
