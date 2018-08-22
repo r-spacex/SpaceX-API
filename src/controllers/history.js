@@ -17,8 +17,6 @@ module.exports = {
       .limit(limitQuery(ctx.request.query))
       .toArray();
     ctx.body = data;
-    console.log(sort(ctx.request));
-    console.log(ctx.request.url);
   },
 
 };

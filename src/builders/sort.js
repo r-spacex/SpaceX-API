@@ -137,9 +137,6 @@ module.exports = (r) => {
       if (r.query.sort === 'original_launch') {
         query.original_launch = direction;
       }
-      if (r.query.sort === 'missions') {
-        query.missions = direction;
-      }
       if (r.query.sort === 'landings') {
         query.landings = direction;
       }
@@ -163,9 +160,6 @@ module.exports = (r) => {
       if (r.query.sort === 'original_launch') {
         query.original_launch = direction;
       }
-      if (r.query.sort === 'missions') {
-        query.missions = direction;
-      }
       if (r.query.sort === 'rtls_attempt') {
         query.rtls_attempt = direction;
       }
@@ -180,6 +174,17 @@ module.exports = (r) => {
       }
       if (r.query.sort === 'water_landing') {
         query.water_landing = direction;
+      }
+    } else if (/^\/v2\/info\/history(.*)(?:\/)?$/i.test(r.url)) {
+      //------------------------------------------------------------
+      //                     History Fields
+      //------------------------------------------------------------
+
+      if (r.query.sort === 'event_date_utc') {
+        query.event_date_utc = direction;
+      }
+      if (r.query.sort === 'flight_number') {
+        query.flight_number = direction;
       }
     }
   // Set sensible defaults for endpoint to sort on if no sort or order param is passed in the url
