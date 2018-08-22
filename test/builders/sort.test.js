@@ -16,6 +16,60 @@ beforeAll((done) => {
 //                    Core Sort Test
 //------------------------------------------------------------
 
+test('It should return cores sorted by core serial', async () => {
+  const response = await request(app.callback()).get('/v2/parts/cores?sort=core_serial');
+  expect(response.statusCode).toBe(200);
+  expect(response.body[0]).toHaveProperty('core_serial', 'B0003');
+});
+
+test('It should return cores sorted by block number', async () => {
+  const response = await request(app.callback()).get('/v2/parts/cores?sort=block');
+  expect(response.statusCode).toBe(200);
+  expect(response.body[5]).toHaveProperty('block', 1);
+});
+
+test('It should return cores sorted by core status', async () => {
+  const response = await request(app.callback()).get('/v2/parts/cores?sort=status');
+  expect(response.statusCode).toBe(200);
+  expect(response.body[0]).toHaveProperty('status', 'active');
+});
+
+test('It should return cores sorted by original launch date', async () => {
+  const response = await request(app.callback()).get('/v2/parts/cores?sort=original_launch');
+  expect(response.statusCode).toBe(200);
+  expect(response.body[0]).toHaveProperty('original_launch');
+});
+
+test('It should return cores sorted by rtls attempts', async () => {
+  const response = await request(app.callback()).get('/v2/parts/cores?sort=rtls_attempt');
+  expect(response.statusCode).toBe(200);
+  expect(response.body[0]).toHaveProperty('rtls_attempt', false);
+});
+
+test('It should return cores sorted by rtls landings', async () => {
+  const response = await request(app.callback()).get('/v2/parts/cores?sort=rtls_landings');
+  expect(response.statusCode).toBe(200);
+  expect(response.body[0]).toHaveProperty('rtls_landings', 0);
+});
+
+test('It should return cores sorted by asds attempts', async () => {
+  const response = await request(app.callback()).get('/v2/parts/cores?sort=asds_attempt');
+  expect(response.statusCode).toBe(200);
+  expect(response.body[0]).toHaveProperty('asds_attempt', false);
+});
+
+test('It should return cores sorted by asds landings', async () => {
+  const response = await request(app.callback()).get('/v2/parts/cores?sort=asds_landings');
+  expect(response.statusCode).toBe(200);
+  expect(response.body[0]).toHaveProperty('asds_landings', 0);
+});
+
+test('It should return cores sorted by water landings', async () => {
+  const response = await request(app.callback()).get('/v2/parts/cores?sort=water_landing');
+  expect(response.statusCode).toBe(200);
+  expect(response.body[0]).toHaveProperty('water_landing', false);
+});
+
 //------------------------------------------------------------
 //                   Capsule Sort Test
 //------------------------------------------------------------
