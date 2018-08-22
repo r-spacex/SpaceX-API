@@ -12,6 +12,36 @@ beforeAll((done) => {
 //                     Launch Sort Test
 //------------------------------------------------------------
 
+test('It should return launches sorted by flight id', async () => {
+  const response = await request(app.callback()).get('/v2/launches?sort=flight_id&id=true');
+  expect(response.statusCode).toBe(200);
+  expect(response.body[0]).toHaveProperty('_id', '596eb600611279d39a00003c');
+});
+
+test('It should return launches sorted by flight number', async () => {
+  const response = await request(app.callback()).get('/v2/launches?sort=flight_number');
+  expect(response.statusCode).toBe(200);
+  expect(response.body[0]).toHaveProperty('flight_number', 1);
+});
+
+test('It should return launches sorted by launch_year', async () => {
+  const response = await request(app.callback()).get('/v2/launches?sort=launch_year&order=desc');
+  expect(response.statusCode).toBe(200);
+  expect(response.body[response.body.length - 1]).toHaveProperty('flight_number', 1);
+});
+
+test('It should return launches sorted by utc launch date', async () => {
+  const response = await request(app.callback()).get('/v2/launches?sort=launch_date_utc&order=desc');
+  expect(response.statusCode).toBe(200);
+  expect(response.body[response.body.length - 1]).toHaveProperty('flight_number', 1);
+});
+
+test('It should return launches sorted by local launch date', async () => {
+  const response = await request(app.callback()).get('/v2/launches?sort=launch_date_local&order=desc');
+  expect(response.statusCode).toBe(200);
+  expect(response.body[response.body.length - 1]).toHaveProperty('flight_number', 1);
+});
+
 //------------------------------------------------------------
 //                    Core Sort Test
 //------------------------------------------------------------
