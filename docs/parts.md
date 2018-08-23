@@ -18,6 +18,8 @@ Endpoints allowing you to get information related to parts used during flights.
     + missions: `SpaceX+CRS-12` (string) - Filter by flight missions
     + landings: `1` (integer) - Filter by number of landings
     + type: `Dragon+1.1` (string) - Filter by type of Dragon capsule
+    + sort: `norad_id` (string) - Change result sorting by setting values to any parameter in this list
+    + order: `desc` (string) - Change result ordering by setting values of `asc` or `desc`
 
 ### Get information for all capsules [GET]
 

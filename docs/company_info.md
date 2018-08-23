@@ -78,6 +78,7 @@ Endpoints allowing you to get information related to SpaceX as a company (includ
 ## History [/info/history]
 
 + Parameters
+    + sort: `norad_id` (string) - Change result sorting by setting values to any parameter in this list
     + order: `asc` (string) - Change result ordering by setting values of `asc` or `desc`
     + start/end: `start=2017-06-22&end=2017-06-25` (valid JavaScript date format) - Include both to sort by date range
     + flight_number: `60` (integer) - Filter by flight number

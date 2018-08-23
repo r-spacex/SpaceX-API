@@ -18,6 +18,7 @@ All launches can be filtered though any combination of query parameters.
 + Parameters
     + id: `true` (boolean) - Set as `true` to show mongo document id's
     + flight_id: `5a9fc479ab70786ba5a1eaaa` (string) - Filter launches by mongo document id
+    + sort: `norad_id` (string) - Change result sorting by setting values to any parameter in this list
     + order: `desc` (string) - Change result ordering by setting values of `asc` or `desc`
     + start/end: `start=2017-06-22&end=2017-06-25` (valid JavaScript date format) - Include both to sort by date range
     + flight_number: `60` (integer) - Filter by flight number
