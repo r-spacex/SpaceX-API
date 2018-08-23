@@ -211,6 +211,22 @@ test('It should return launches sorted by core landing vehicle', async () => {
 });
 
 //------------------------------------------------------------
+//                     Payload Sort Test
+//------------------------------------------------------------
+
+test('It should return payloads sorted in decending order', async () => {
+  const response = await request(app.callback()).get('/v2/payloads?order=desc');
+  expect(response.statusCode).toBe(200);
+  expect(response.body[response.body.length - 1]).toHaveProperty('payload_id', 'FalconSAT-2');
+});
+
+test('It should return payloads sorted in acending order', async () => {
+  const response = await request(app.callback()).get('/v2/payloads?order=asc');
+  expect(response.statusCode).toBe(200);
+  expect(response.body[0]).toHaveProperty('payload_id', 'FalconSAT-2');
+});
+
+//------------------------------------------------------------
 //                    Core Sort Test
 //------------------------------------------------------------
 
