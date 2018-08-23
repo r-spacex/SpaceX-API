@@ -1,6 +1,6 @@
 
 const launchQuery = require('../builders/launch-query');
-const sortQuery = require('../builders/launch-sort');
+const sort = require('../builders/sort');
 const limitQuery = require('../builders/limit-query');
 
 module.exports = {
@@ -13,12 +13,13 @@ module.exports = {
       .collection('launch')
       .find(launchQuery(ctx.request.query))
       .project({ _id: 0, 'rocket.second_stage.payloads': 1, flight_number: 1 })
-      .sort(sortQuery(ctx.request.query))
+      .sort(sort(ctx.request))
       .limit(limitQuery(ctx.request.query))
       .toArray();
 
     delete ctx.request.query.limit;
     delete ctx.request.query.order;
+    delete ctx.request.query.sort;
     const pretty = ctx.request.query.pretty;
     delete ctx.request.query.pretty;
 
@@ -54,7 +55,6 @@ module.exports = {
       .collection('launch')
       .find({ 'rocket.second_stage.payloads.payload_id': ctx.params.payload_id })
       .project({ _id: 0, 'rocket.second_stage.payloads': 1, flight_number: 1 })
-      .sort(sortQuery(ctx.request.query))
       .limit(limitQuery(ctx.request.query))
       .toArray();
     try {

@@ -16,7 +16,6 @@ test('It should return all payloads', async () => {
   const response = await request(app.callback()).get('/v2/payloads');
   expect(response.statusCode).toBe(200);
   expect(response.body[0]).toHaveProperty('payload_id', 'FalconSAT-2');
-  console.log(response.body[0]);
 });
 
 test('It should return all Dragon 1.0 payloads', async () => {

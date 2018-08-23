@@ -1,5 +1,5 @@
 
-const historySort = require('../builders/history-sort');
+const sort = require('../builders/sort');
 const historyQuery = require('../builders/history-query');
 const limitQuery = require('../builders/limit-query');
 
@@ -13,7 +13,7 @@ module.exports = {
       .collection('history')
       .find(historyQuery(ctx.request.query))
       .project({ _id: 0 })
-      .sort(historySort(ctx.request.query))
+      .sort(sort(ctx.request))
       .limit(limitQuery(ctx.request.query))
       .toArray();
     ctx.body = data;
