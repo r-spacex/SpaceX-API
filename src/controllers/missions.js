@@ -29,6 +29,6 @@ module.exports = {
       .limit(limitQuery(ctx.request.query))
       .toArray();
 
-    ctx.body = data;
+    ctx.body = data[0];
   },
 };
