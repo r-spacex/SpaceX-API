@@ -9,4 +9,6 @@ services:
     links:
       - redis_db
   redis_db:
-    image: redis
+    image: redis:alpine
+    ports:
+      - "6379"
