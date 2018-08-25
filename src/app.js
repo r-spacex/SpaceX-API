@@ -19,6 +19,7 @@ const missions = require('./routes/v2-missions');
 const parts = require('./routes/v2-parts');
 const payloads = require('./routes/v2-payloads');
 const rockets = require('./routes/v2-rockets');
+const v3_rockets = require('./routes/v3-rockets');
 const upcoming = require('./routes/v2-upcoming');
 
 // Production read-only DB
@@ -85,6 +86,7 @@ app.use(missions.routes());
 app.use(parts.routes());
 app.use(payloads.routes());
 app.use(rockets.routes());
+app.use(v3_rockets.routes());
 app.use(upcoming.routes());
 
 module.exports = app;
