@@ -12,6 +12,9 @@ notifications:
 jobs:
   include:
     - stage: test
+      before_install:
+        - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.9.4
+        - export PATH="$HOME/.yarn/bin:$PATH"
       script: "yarn test"
     - stage: deploy
       before_install: "openssl aes-256-cbc -K $encrypted_32b6c04b6d48_key -iv $encrypted_32b6c04b6d48_iv -in deploy-key.enc -out ~/.ssh/deploy-key -d"
