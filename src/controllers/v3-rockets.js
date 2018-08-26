@@ -15,9 +15,11 @@ module.exports = {
       .limit(limitQuery(ctx.request.query))
       .toArray();
     data.forEach((rocket) => {
+      rocket.id = rocket.rocketid;
       rocket.rocket_id = rocket.id;
       rocket.rocket_name = rocket.name;
       rocket.rocket_type = rocket.type;
+      delete rocket.rocketid;
       delete rocket.id;
       delete rocket.name;
       delete rocket.type;
@@ -34,9 +36,11 @@ module.exports = {
       .find({ id: ctx.params.rocket })
       .project({ _id: 0 })
       .toArray();
+    data[0].id = data[0].rocketid;
     data[0].rocket_id = data[0].id;
     data[0].rocket_name = data[0].name;
     data[0].rocket_type = data[0].type;
+    delete data[0].rocketid;
     delete data[0].id;
     delete data[0].name;
     delete data[0].type;
