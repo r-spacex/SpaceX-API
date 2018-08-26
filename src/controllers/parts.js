@@ -1,7 +1,7 @@
 
 const coreQuery = require('../builders/core-query');
 const capQuery = require('../builders/capsule-query');
-const limitQuery = require('../builders/limit-query');
+const limit = require('../builders/limit');
 const sort = require('../builders/sort');
 
 module.exports = {
@@ -15,7 +15,7 @@ module.exports = {
       .find(capQuery(ctx.request.query))
       .project({ _id: 0 })
       .sort(sort(ctx.request))
-      .limit(limitQuery(ctx.request.query))
+      .limit(limit(ctx.request.query))
       .toArray();
     ctx.body = data;
   },
@@ -41,7 +41,7 @@ module.exports = {
       .find(coreQuery(ctx.request.query))
       .project({ _id: 0 })
       .sort(sort(ctx.request))
-      .limit(limitQuery(ctx.request.query))
+      .limit(limit(ctx.request.query))
       .toArray();
     ctx.body = data;
   },

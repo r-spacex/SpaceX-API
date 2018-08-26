@@ -2,7 +2,7 @@
 const launchQuery = require('../builders/launch-query');
 const sort = require('../builders/sort');
 const projectQuery = require('../builders/project-query');
-const limitQuery = require('../builders/limit-query');
+const limit = require('../builders/limit');
 
 module.exports = {
 
@@ -43,7 +43,7 @@ module.exports = {
       .find(launchQuery(ctx.request.query))
       .project(projectQuery(ctx.request.query))
       .sort(sort(ctx.request))
-      .limit(limitQuery(ctx.request.query))
+      .limit(limit(ctx.request.query))
       .toArray();
     ctx.body = data;
   },
@@ -57,7 +57,7 @@ module.exports = {
       .find(Object.assign({ upcoming: false }, launchQuery(ctx.request.query)))
       .project(projectQuery(ctx.request.query))
       .sort(sort(ctx.request))
-      .limit(limitQuery(ctx.request.query))
+      .limit(limit(ctx.request.query))
       .toArray();
     ctx.body = data;
   },
@@ -71,7 +71,7 @@ module.exports = {
       .find(Object.assign({ upcoming: true }, launchQuery(ctx.request.query)))
       .project(projectQuery(ctx.request.query))
       .sort(sort(ctx.request))
-      .limit(limitQuery(ctx.request.query))
+      .limit(limit(ctx.request.query))
       .toArray();
     ctx.body = data;
   },

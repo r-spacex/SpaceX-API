@@ -1,5 +1,5 @@
 
-const limitQuery = require('../builders/limit-query');
+const limit = require('../builders/limit');
 
 module.exports = {
 
@@ -12,7 +12,7 @@ module.exports = {
       .find({})
       .project({ _id: 0 })
       .sort({ first_flight: 1 })
-      .limit(limitQuery(ctx.request.query))
+      .limit(limit(ctx.request.query))
       .toArray();
     data.forEach((rocket) => {
       rocket.id = rocket.rocketid;
