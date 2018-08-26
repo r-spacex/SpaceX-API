@@ -10,5 +10,6 @@ LABEL maintainer="jakewmeyer@gmail.com"
 WORKDIR /app
 COPY --from=0 /app .
 COPY . .
+ENV NODE_ENV=production
 EXPOSE 5000
 CMD ["node", "src/app.js"]
