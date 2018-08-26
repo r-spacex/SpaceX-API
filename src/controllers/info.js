@@ -1,4 +1,6 @@
 
+const project = require('../builders/project');
+
 module.exports = {
 
   /**
@@ -8,7 +10,7 @@ module.exports = {
     const data = await global.db
       .collection('info')
       .find({})
-      .project({ _id: 0 })
+      .project(project(ctx.request.query))
       .toArray();
     ctx.body = data[0];
   },
@@ -20,7 +22,7 @@ module.exports = {
     const data = await global.db
       .collection('info')
       .find({ name: "Elon Musk's Tesla Roadster" })
-      .project({ _id: 0 })
+      .project(project(ctx.request.query))
       .toArray();
     ctx.body = data[0];
   },

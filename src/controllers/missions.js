@@ -1,6 +1,7 @@
 
 const limit = require('../builders/limit');
 const missionQuery = require('../builders/mission-query');
+const project = require('../builders/project');
 
 module.exports = {
 
@@ -11,7 +12,7 @@ module.exports = {
     const data = await global.db
       .collection('mission')
       .find(missionQuery(ctx.request.query))
-      .project({ _id: 0 })
+      .project(project(ctx.request.query))
       .limit(limit(ctx.request.query))
       .toArray();
 
@@ -25,7 +26,7 @@ module.exports = {
     const data = await global.db
       .collection('mission')
       .find({ mission_id: ctx.params.mission_id })
-      .project({ _id: 0 })
+      .project(project(ctx.request.query))
       .limit(limit(ctx.request.query))
       .toArray();
 

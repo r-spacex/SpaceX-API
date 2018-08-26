@@ -3,6 +3,7 @@ const coreQuery = require('../builders/core-query');
 const capQuery = require('../builders/capsule-query');
 const limit = require('../builders/limit');
 const sort = require('../builders/sort');
+const project = require('../builders/project');
 
 module.exports = {
 
@@ -13,7 +14,7 @@ module.exports = {
     const data = await global.db
       .collection('capsule')
       .find(capQuery(ctx.request.query))
-      .project({ _id: 0 })
+      .project(project(ctx.request.query))
       .sort(sort(ctx.request))
       .limit(limit(ctx.request.query))
       .toArray();
@@ -27,7 +28,7 @@ module.exports = {
     const data = await global.db
       .collection('capsule')
       .find({ capsule_serial: ctx.params.cap })
-      .project({ _id: 0 })
+      .project(project(ctx.request.query))
       .toArray();
     ctx.body = data[0];
   },
@@ -39,7 +40,7 @@ module.exports = {
     const data = await global.db
       .collection('core')
       .find(coreQuery(ctx.request.query))
-      .project({ _id: 0 })
+      .project(project(ctx.request.query))
       .sort(sort(ctx.request))
       .limit(limit(ctx.request.query))
       .toArray();
@@ -53,7 +54,7 @@ module.exports = {
     const data = await global.db
       .collection('core')
       .find({ core_serial: ctx.params.core })
-      .project({ _id: 0 })
+      .project(project(ctx.request.query))
       .toArray();
     ctx.body = data[0];
   },

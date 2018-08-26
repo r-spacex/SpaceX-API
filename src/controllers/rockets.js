@@ -1,5 +1,6 @@
 
 const limit = require('../builders/limit');
+const project = require('../builders/project');
 
 module.exports = {
 
@@ -10,7 +11,7 @@ module.exports = {
     const data = await global.db
       .collection('rocket')
       .find({})
-      .project({ _id: 0 })
+      .project(project(ctx.request.query))
       .sort({ first_flight: 1 })
       .limit(limit(ctx.request.query))
       .toArray();
@@ -24,7 +25,7 @@ module.exports = {
     const data = await global.db
       .collection('rocket')
       .find({ id: ctx.params.rocket })
-      .project({ _id: 0 })
+      .project(project(ctx.request.query))
       .toArray();
     ctx.body = data[0];
   },

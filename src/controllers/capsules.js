@@ -1,5 +1,6 @@
 
 const limit = require('../builders/limit');
+const project = require('../builders/project');
 
 module.exports = {
 
@@ -10,7 +11,7 @@ module.exports = {
     const data = await global.db
       .collection('dragon')
       .find({})
-      .project({ _id: 0 })
+      .project(project(ctx.request.query))
       .limit(limit(ctx.request.query))
       .toArray();
     ctx.body = data;
@@ -23,7 +24,7 @@ module.exports = {
     const data = await global.db
       .collection('dragon')
       .find({ id: ctx.params.capsule })
-      .project({ _id: 0 })
+      .project(project(ctx.request.query))
       .toArray();
     ctx.body = data[0];
   },
