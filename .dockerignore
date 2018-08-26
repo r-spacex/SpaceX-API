@@ -1,2 +1,11 @@
+.git
 node_modules
 npm-debug.log
+*.md
+test
+docs
+scripts
+Dockerfile
+coverage
+deploy-key.enc
+LICENSE
