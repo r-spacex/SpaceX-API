@@ -7,7 +7,7 @@ module.exports = {
   /**
    * Returns all rocket info
    */
-  all: async (ctx) => {
+  all: async ctx => {
     const data = await global.db
       .collection('rocket')
       .find({})
@@ -15,7 +15,7 @@ module.exports = {
       .sort({ first_flight: 1 })
       .limit(limit(ctx.request.query))
       .toArray();
-    data.forEach((rocket) => {
+    data.forEach(rocket => {
       rocket.rocket_id = rocket.id;
       rocket.id = rocket.rocketid;
       rocket.rocket_name = rocket.name;
@@ -30,7 +30,7 @@ module.exports = {
   /**
    * Returns specific rocket info
    */
-  specific: async (ctx) => {
+  specific: async ctx => {
     const data = await global.db
       .collection('rocket')
       .find({ id: ctx.params.rocket })

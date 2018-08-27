@@ -7,7 +7,7 @@ const moment = require('moment');
  * @return {Object} Mongo compatible date range query object
  */
 
-module.exports = (q) => {
+module.exports = q => {
   let start;
   let end;
   // See if date is unix, if so, add miliseconds

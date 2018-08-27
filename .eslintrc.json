@@ -19,6 +19,7 @@
     "impliedStrict": true
   },
   "rules": {
+    "arrow-parens": ["error", "as-needed"],
     "camelcase": 0,
     "no-param-reassign": 0,
     "no-console": 0,

@@ -7,7 +7,7 @@ module.exports = {
   /**
    * Return all launchpads
    */
-  all: async (ctx) => {
+  all: async ctx => {
     const data = await global.db
       .collection('launchpad')
       .find({})
@@ -20,7 +20,7 @@ module.exports = {
   /**
    * Return specific launchpad
    */
-  specific: async (ctx) => {
+  specific: async ctx => {
     const data = await global.db
       .collection('launchpad')
       .find({ id: ctx.params.pad })

@@ -7,7 +7,7 @@ module.exports = {
   /**
    * Returns all rocket info
    */
-  all: async (ctx) => {
+  all: async ctx => {
     const data = await global.db
       .collection('rocket')
       .find({})
@@ -21,7 +21,7 @@ module.exports = {
   /**
    * Returns specific rocket info
    */
-  specific: async (ctx) => {
+  specific: async ctx => {
     const data = await global.db
       .collection('rocket')
       .find({ id: ctx.params.rocket })

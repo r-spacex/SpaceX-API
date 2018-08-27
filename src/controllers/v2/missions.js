@@ -8,7 +8,7 @@ module.exports = {
   /**
    * Returns all missions
    */
-  all: async (ctx) => {
+  all: async ctx => {
     const data = await global.db
       .collection('mission')
       .find(missionQuery(ctx.request.query))
@@ -22,7 +22,7 @@ module.exports = {
   /**
    * Returns single mission
    */
-  one: async (ctx) => {
+  one: async ctx => {
     const data = await global.db
       .collection('mission')
       .find({ mission_id: ctx.params.mission_id })

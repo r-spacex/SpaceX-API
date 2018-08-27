@@ -8,7 +8,7 @@ const lowerCase = require('lower-case');
  * @return {Object} Mongo compatible projection object
  */
 
-module.exports = (q) => {
+module.exports = q => {
   const query = {};
 
   if (lowerCase(q.id) !== 'true') {

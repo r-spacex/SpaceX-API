@@ -3,7 +3,7 @@
 const MongoClient = require('mongodb');
 const request = require('request-promise-native').defaults({ jar: true });
 
-const sleep = (ms) => {
+const sleep = ms => {
   return new Promise(resolve => setTimeout(resolve, ms));
 };
 
@@ -24,8 +24,8 @@ async function asyncForEach(array, callback) {
     const data = await col.find({}).sort({ flight_number: 1 });
 
     const id = [];
-    await data.forEach((launch) => {
-      launch.rocket.second_stage.payloads.forEach((payload) => {
+    await data.forEach(launch => {
+      launch.rocket.second_stage.payloads.forEach(payload => {
         if (payload.norad_id !== undefined && payload.norad_id.length !== 0) {
           id.push(payload.norad_id[0]);
         }
@@ -41,7 +41,7 @@ async function asyncForEach(array, callback) {
     });
 
     const start = async () => {
-      await asyncForEach(id, async (num) => {
+      await asyncForEach(id, async num => {
         await sleep(5000);
         const orbitData = await request(`https://www.space-track.org/basicspacedata/query/class/tle/NORAD_CAT_ID/${num}/limit/1`);
         const orbit = JSON.parse(orbitData);

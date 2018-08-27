@@ -7,7 +7,7 @@ const dateRange = require('../../utilities/date_range');
  * @return {Object} Mongo compatible query object
  */
 
-module.exports = (q) => {
+module.exports = q => {
   const query = {};
 
   if (q.start && (q.final || q.end)) {

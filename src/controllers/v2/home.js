@@ -4,7 +4,7 @@ module.exports = {
   /**
    * Get API info
    */
-  get: async (ctx) => {
+  get: async ctx => {
     const data = await global.db
       .collection('home')
       .find({})

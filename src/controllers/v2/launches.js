@@ -9,7 +9,7 @@ module.exports = {
   /**
    * Return most recent launch
    */
-  latest: async (ctx) => {
+  latest: async ctx => {
     const data = await global.db
       .collection('launch')
       .find({ upcoming: false })
@@ -23,7 +23,7 @@ module.exports = {
   /**
    * Return next launch
    */
-  next: async (ctx) => {
+  next: async ctx => {
     const data = await global.db
       .collection('launch')
       .find({ upcoming: true })
@@ -37,7 +37,7 @@ module.exports = {
   /**
    * Return all past and upcoming launches
    */
-  all: async (ctx) => {
+  all: async ctx => {
     const data = await global.db
       .collection('launch')
       .find(launchQuery(ctx.request.query))
@@ -51,7 +51,7 @@ module.exports = {
   /**
    * Return all past launches filtered by querystrings
    */
-  past: async (ctx) => {
+  past: async ctx => {
     const data = await global.db
       .collection('launch')
       .find(Object.assign({ upcoming: false }, launchQuery(ctx.request.query)))
@@ -65,7 +65,7 @@ module.exports = {
   /**
    * Return upcoming launches filtered by querystrings
    */
-  upcoming: async (ctx) => {
+  upcoming: async ctx => {
     const data = await global.db
       .collection('launch')
       .find(Object.assign({ upcoming: true }, launchQuery(ctx.request.query)))

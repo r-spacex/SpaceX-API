@@ -6,7 +6,7 @@ module.exports = {
   /**
    * Returns company info
    */
-  get: async (ctx) => {
+  get: async ctx => {
     const data = await global.db
       .collection('info')
       .find({})
@@ -18,7 +18,7 @@ module.exports = {
   /**
    * Returns Falcon Heavy roadster info
    */
-  roadster: async (ctx) => {
+  roadster: async ctx => {
     const data = await global.db
       .collection('info')
       .find({ name: "Elon Musk's Tesla Roadster" })

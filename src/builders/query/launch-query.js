@@ -10,7 +10,7 @@ const dateRange = require('../../utilities/date_range');
  * @return {Object} Mongo compatible find query object
  */
 
-module.exports = (q) => {
+module.exports = q => {
   const query = {};
 
   if (q.flight_id) {
