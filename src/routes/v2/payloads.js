@@ -1,7 +1,7 @@
 // Payloads Endpoint
 
 const Router = require('koa-router');
-const payloads = require('../controllers/payloads');
+const payloads = require('../../controllers/v2/payloads');
 
 const v2 = new Router({
   prefix: '/v2',

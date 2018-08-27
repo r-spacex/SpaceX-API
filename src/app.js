@@ -9,18 +9,21 @@ const MongoClient = require('mongodb');
 const json = require('./middleware/json');
 const options = require('./middleware/redis');
 
-const capsules = require('./routes/v2-capsules');
-const errors = require('./routes/v2-errors');
-const home = require('./routes/v2-home');
-const info = require('./routes/v2-info');
-const launchpad = require('./routes/v2-launchpad');
-const launches = require('./routes/v2-launches');
-const missions = require('./routes/v2-missions');
-const parts = require('./routes/v2-parts');
-const payloads = require('./routes/v2-payloads');
-const rockets = require('./routes/v2-rockets');
-const v3_rockets = require('./routes/v3-rockets');
-const upcoming = require('./routes/v2-upcoming');
+// v2 route imports
+const v2_capsules = require('./routes/v2/capsules');
+const v2_errors = require('./routes/v2/errors');
+const v2_home = require('./routes/v2/home');
+const v2_info = require('./routes/v2/info');
+const v2_launches = require('./routes/v2/launches');
+const v2_launchpads = require('./routes/v2/launchpad');
+const v2_missions = require('./routes/v2/missions');
+const v2_parts = require('./routes/v2/parts');
+const v2_payloads = require('./routes/v2/payloads');
+const v2_rockets = require('./routes/v2/rockets');
+const v2_upcoming = require('./routes/v2/upcoming');
+
+// v3 route imports
+const v3_rockets = require('./routes/v3/rockets');
 
 // Production read-only DB
 const url = 'mongodb+srv://public:spacex@spacex-gpg0u.mongodb.net/spacex-api';
@@ -75,19 +78,21 @@ if (process.env.NODE_ENV === 'production') {
 // Pretty printed json will NOT be cached
 app.use(json({ pretty: false, param: { pretty: true } }));
 
-// Koa routes
-app.use(capsules.routes());
-app.use(errors.routes());
-app.use(home.routes());
-app.use(info.routes());
-app.use(launchpad.routes());
-app.use(launches.routes());
-app.use(missions.routes());
-app.use(parts.routes());
-app.use(payloads.routes());
-app.use(rockets.routes());
+// v2 routes
+app.use(v2_capsules.routes());
+app.use(v2_errors.routes());
+app.use(v2_home.routes());
+app.use(v2_info.routes());
+app.use(v2_launchpads.routes());
+app.use(v2_launches.routes());
+app.use(v2_missions.routes());
+app.use(v2_parts.routes());
+app.use(v2_payloads.routes());
+app.use(v2_rockets.routes());
+app.use(v2_upcoming.routes());
+
+// v2 routes
 app.use(v3_rockets.routes());
-app.use(upcoming.routes());
 
 module.exports = app;
 

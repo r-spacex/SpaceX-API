@@ -1,7 +1,7 @@
 // Launchpad Endpoints
 
 const Router = require('koa-router');
-const launchpads = require('../controllers/launchpads');
+const launchpads = require('../../controllers/v2/launchpads');
 
 const v2 = new Router({
   prefix: '/v2/launchpads',

@@ -1,7 +1,7 @@
 // Rocket Endpoints
 
 const Router = require('koa-router');
-const rockets = require('../controllers/rockets');
+const rockets = require('../../controllers/v2/rockets');
 
 const v2 = new Router({
   prefix: '/v2/rockets',

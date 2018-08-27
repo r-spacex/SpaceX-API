@@ -1,15 +1,15 @@
 
-const limit = require('../builders/limit');
-const project = require('../builders/project');
+const limit = require('../../builders/limit');
+const project = require('../../builders/project');
 
 module.exports = {
 
   /**
-   * Return all launchpads
+   * Returns all Dragon data
    */
   all: async (ctx) => {
     const data = await global.db
-      .collection('launchpad')
+      .collection('dragon')
       .find({})
       .project(project(ctx.request.query))
       .limit(limit(ctx.request.query))
@@ -18,12 +18,12 @@ module.exports = {
   },
 
   /**
-   * Return specific launchpad
+   * Returns specific Dragon data
    */
   specific: async (ctx) => {
     const data = await global.db
-      .collection('launchpad')
-      .find({ id: ctx.params.pad })
+      .collection('dragon')
+      .find({ id: ctx.params.capsule })
       .project(project(ctx.request.query))
       .toArray();
     ctx.body = data[0];

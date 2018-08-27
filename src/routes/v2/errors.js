@@ -1,7 +1,7 @@
 // API Info Endpoint
 
 const Router = require('koa-router');
-const errors = require('../controllers/errors');
+const errors = require('../../controllers/v2/errors');
 
 const v2 = new Router({
   prefix: '/v2/errors',

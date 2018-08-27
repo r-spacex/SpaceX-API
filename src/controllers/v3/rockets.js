@@ -1,6 +1,6 @@
 
-const limit = require('../builders/limit');
-const project = require('../builders/project');
+const limit = require('../../builders/limit');
+const project = require('../../builders/project');
 
 module.exports = {
 

@@ -1,9 +1,9 @@
 
-const coreQuery = require('../builders/query/core-query');
-const capQuery = require('../builders/query/capsule-query');
-const limit = require('../builders/limit');
-const sort = require('../builders/sort');
-const project = require('../builders/project');
+const coreQuery = require('../../builders/query/core-query');
+const capQuery = require('../../builders/query/capsule-query');
+const limit = require('../../builders/limit');
+const sort = require('../../builders/sort');
+const project = require('../../builders/project');
 
 module.exports = {
 

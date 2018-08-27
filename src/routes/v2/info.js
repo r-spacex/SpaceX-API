@@ -1,8 +1,8 @@
 // SpaceX Company Info Endpoints
 
 const Router = require('koa-router');
-const info = require('../controllers/info');
-const history = require('../controllers/history');
+const info = require('../../controllers/v2/info');
+const history = require('../../controllers/v2/history');
 
 const v2 = new Router({
   prefix: '/v2/info',

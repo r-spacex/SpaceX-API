@@ -1,7 +1,7 @@
 // Parts Endpoints
 
 const Router = require('koa-router');
-const parts = require('../controllers/parts');
+const parts = require('../../controllers/v2/parts');
 
 const v2 = new Router({
   prefix: '/v2/parts',

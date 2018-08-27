@@ -1,7 +1,7 @@
 // Launches Endpoints
 
 const Router = require('koa-router');
-const launches = require('../controllers/launches');
+const launches = require('../../controllers/v2/launches');
 
 const v2 = new Router({
   prefix: '/v2/launches',

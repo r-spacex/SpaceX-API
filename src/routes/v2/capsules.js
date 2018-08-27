@@ -1,7 +1,7 @@
 // Dragon Endpoints
 
 const Router = require('koa-router');
-const capsules = require('../controllers/capsules');
+const capsules = require('../../controllers/v2/capsules');
 
 const v2 = new Router({
   prefix: '/v2/capsules',

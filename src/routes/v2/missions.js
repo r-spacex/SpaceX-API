@@ -1,7 +1,7 @@
 // Missions Endpoints
 
 const Router = require('koa-router');
-const missions = require('../controllers/missions');
+const missions = require('../../controllers/v2/missions');
 
 const v2 = new Router({
   prefix: '/v2',

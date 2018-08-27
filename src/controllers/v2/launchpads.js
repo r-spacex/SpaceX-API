@@ -1,30 +1,29 @@
 
-const limit = require('../builders/limit');
-const project = require('../builders/project');
+const limit = require('../../builders/limit');
+const project = require('../../builders/project');
 
 module.exports = {
 
   /**
-   * Returns all rocket info
+   * Return all launchpads
    */
   all: async (ctx) => {
     const data = await global.db
-      .collection('rocket')
+      .collection('launchpad')
       .find({})
       .project(project(ctx.request.query))
-      .sort({ first_flight: 1 })
       .limit(limit(ctx.request.query))
       .toArray();
     ctx.body = data;
   },
 
   /**
-   * Returns specific rocket info
+   * Return specific launchpad
    */
   specific: async (ctx) => {
     const data = await global.db
-      .collection('rocket')
-      .find({ id: ctx.params.rocket })
+      .collection('launchpad')
+      .find({ id: ctx.params.pad })
       .project(project(ctx.request.query))
       .toArray();
     ctx.body = data[0];
