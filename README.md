@@ -135,7 +135,7 @@ curl -s https://api.spacexdata.com/v2/launches/latest | jq
 See the [status](https://status.spacexdata.com) page for more details
 
 ## Contributions
-See the [Contribution](https://github.com/r-spacex/SpaceX-API/blob/master/CONTRIBUTING.md) guide for detailed steps
+See the [contribution](https://github.com/r-spacex/SpaceX-API/blob/master/CONTRIBUTING.md) guide for detailed steps
 
 ## Local Development
 Local development info can be found [here](https://github.com/r-spacex/SpaceX-API/blob/master/docs/development.md)

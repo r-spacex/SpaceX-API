@@ -1,37 +1,62 @@
 {
-    "plugins": [
-        "security"
-      ],
-    "env": {
-        "node": true,
-        "jest": true,
-        "mongo": true
-    },
-    "extends": [
-        "plugin:security/recommended",
-        "airbnb"
+  "plugins": [
+    "security",
+    "mongodb",
+    "jest"
+  ],
+  "env": {
+    "node": true,
+    "jest": true,
+    "mongo": true
+  },
+  "extends": [
+    "plugin:security/recommended",
+    "airbnb"
+  ],
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 2018,
+    "impliedStrict": true
+  },
+  "rules": {
+    "camelcase": 0,
+    "no-param-reassign": 0,
+    "no-console": 0,
+    "space-infix-ops": "error",
+    "prefer-destructuring": 0,
+    "eol-last": [
+      "error",
+      "always"
     ],
-    "parserOptions": {
-        "sourceType": "module",
-        "ecmaVersion": 2018,
-        "impliedStrict": true
-    },
-    "rules": {
-      "camelcase": 0,
-      "no-param-reassign": 0,
-        "no-console":0,
-        "space-infix-ops": "error",
-        "prefer-destructuring": 0,
-        "eol-last": ["error", "always"],
-        "prefer-arrow-callback": "error",
-        "padded-blocks": ["error", "never"],
-        "space-before-blocks": "error",
-        "arrow-spacing": "error",
-        "space-in-parens": ["error", "never"],
-        "keyword-spacing": ["error", { "before": true }],
-        "spaced-comment": ["error", "always", { "exceptions": ["-", "+"] }],
-        "arrow-body-style": 0,
-        "class-methods-use-this": 0,
-        "security/detect-object-injection" : 0
-    }
+    "prefer-arrow-callback": "error",
+    "padded-blocks": [
+      "error",
+      "never"
+    ],
+    "space-before-blocks": "error",
+    "arrow-spacing": "error",
+    "space-in-parens": [
+      "error",
+      "never"
+    ],
+    "keyword-spacing": [
+      "error",
+      {
+        "before": true
+      }
+    ],
+    "spaced-comment": [
+      "error",
+      "always",
+      {
+        "exceptions": [
+          "-",
+          "+"
+        ]
+      }
+    ],
+    "arrow-body-style": 0,
+    "class-methods-use-this": 0,
+    "security/detect-object-injection": 0
+  }
 }
