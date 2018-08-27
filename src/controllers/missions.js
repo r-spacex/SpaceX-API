@@ -1,6 +1,6 @@
 
 const limit = require('../builders/limit');
-const missionQuery = require('../builders/mission-query');
+const missionQuery = require('../builders/query/mission-query');
 const project = require('../builders/project');
 
 module.exports = {

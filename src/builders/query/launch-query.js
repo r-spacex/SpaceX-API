@@ -2,7 +2,7 @@
 // Required to correctly output ObjectID's
 const ObjectId = require('mongodb').ObjectID;
 const moment = require('moment');
-const dateRange = require('../utilities/date_range');
+const dateRange = require('../../utilities/date_range');
 
 /**
  * Builds mongo query for past/upcoming launch endpoints from querystrings

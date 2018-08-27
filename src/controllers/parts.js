@@ -1,6 +1,6 @@
 
-const coreQuery = require('../builders/core-query');
-const capQuery = require('../builders/capsule-query');
+const coreQuery = require('../builders/query/core-query');
+const capQuery = require('../builders/query/capsule-query');
 const limit = require('../builders/limit');
 const sort = require('../builders/sort');
 const project = require('../builders/project');

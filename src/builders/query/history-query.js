@@ -1,5 +1,5 @@
 
-const dateRange = require('../utilities/date_range');
+const dateRange = require('../../utilities/date_range');
 
 /**
  * Builds Mongo query for history endpints

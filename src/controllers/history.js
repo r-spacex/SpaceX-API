@@ -1,6 +1,6 @@
 
 const sort = require('../builders/sort');
-const historyQuery = require('../builders/history-query');
+const historyQuery = require('../builders/query/history-query');
 const limit = require('../builders/limit');
 const project = require('../builders/project');
 
