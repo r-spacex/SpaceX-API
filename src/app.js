@@ -24,6 +24,7 @@ const v2_upcoming = require('./routes/v2/upcoming');
 
 // v3 route imports
 const v3_rockets = require('./routes/v3/rockets');
+const v3_launchpads = require('./routes/v3/launchpad');
 
 // Production read-only DB
 const url = process.env.MONGO_URL || 'mongodb+srv://public:spacex@spacex-gpg0u.mongodb.net/spacex-api';
@@ -55,9 +56,15 @@ app.use(async (ctx, next) => {
     await next();
   } catch (err) {
     ctx.status = err.status || 500;
-    ctx.body = {
-      error: 'Internal Server Error',
-    };
+    if (ctx.status === 404) {
+      ctx.body = {
+        error: 'Not Found',
+      };
+    } else {
+      ctx.body = {
+        error: 'Internal Server Error',
+      };
+    }
     ctx.app.emit('error', err, ctx);
   }
 });
@@ -93,6 +100,7 @@ app.use(v2_upcoming.routes());
 
 // v2 routes
 app.use(v3_rockets.routes());
+app.use(v3_launchpads.routes());
 
 module.exports = app;
 
