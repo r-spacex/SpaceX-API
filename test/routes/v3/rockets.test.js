@@ -1,7 +1,7 @@
 
 const request = require('supertest');
-const app = require('../../src/app');
-const customMatchers = require('../utilities/custom-asymmetric-matchers');
+const app = require('../../../src/app');
+const customMatchers = require('../../utilities/custom-asymmetric-matchers');
 
 beforeAll((done) => {
   app.on('ready', () => {
@@ -14,18 +14,19 @@ beforeAll((done) => {
 //------------------------------------------------------------
 
 test('It should return all rocket info', async () => {
-  const response = await request(app.callback()).get('/v2/rockets');
+  const response = await request(app.callback()).get('/v3/rockets');
   expect(response.statusCode).toBe(200);
   expect(response.body).toHaveLength(4);
-  expect(response.body[0]).toHaveProperty('name', 'Falcon 1');
-  expect(response.body[1]).toHaveProperty('name', 'Falcon 9');
-  expect(response.body[2]).toHaveProperty('name', 'Falcon Heavy');
-  expect(response.body[3]).toHaveProperty('name', 'Big Falcon Rocket');
+  expect(response.body[0]).toHaveProperty('rocket_name', 'Falcon 1');
+  expect(response.body[1]).toHaveProperty('rocket_name', 'Falcon 9');
+  expect(response.body[2]).toHaveProperty('rocket_name', 'Falcon Heavy');
+  expect(response.body[3]).toHaveProperty('rocket_name', 'Big Falcon Rocket');
 
   response.body.forEach((item) => {
-    expect(item).toHaveProperty('id', expect.any(String));
-    expect(item).toHaveProperty('name', expect.any(String));
-    expect(item).toHaveProperty('type', expect.stringMatching(/^(?:rocket|capsule)$/));
+    expect(item).toHaveProperty('id', expect.any(Number));
+    expect(item).toHaveProperty('rocket_id', expect.any(String));
+    expect(item).toHaveProperty('rocket_name', expect.any(String));
+    expect(item).toHaveProperty('rocket_type', expect.stringMatching(/^(?:rocket|capsule)$/));
     expect(item).toHaveProperty('active', expect.any(Boolean));
     expect(item).toHaveProperty('stages', expect.any(Number));
     expect(item).toHaveProperty('boosters', expect.any(Number));
