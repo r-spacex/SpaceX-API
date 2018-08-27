@@ -26,7 +26,7 @@ const v2_upcoming = require('./routes/v2/upcoming');
 const v3_rockets = require('./routes/v3/rockets');
 
 // Production read-only DB
-const url = 'mongodb+srv://public:spacex@spacex-gpg0u.mongodb.net/spacex-api';
+const url = process.env.MONGO_URL || 'mongodb+srv://public:spacex@spacex-gpg0u.mongodb.net/spacex-api';
 
 const app = new Koa();
 
