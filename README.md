@@ -127,7 +127,7 @@ curl -s https://api.spacexdata.com/v2/launches/latest | jq
 | PowerShell | [lazywinadmin/SpaceX](https://github.com/lazywinadmin/SpaceX) |
 | Python  | [phadnisvinay30/Spacex-Python](https://github.com/phadnisvinay30/SpaceX-Python)
 | Go | [orcaman/spacex](https://github.com/orcaman/spacex) |
-| Rust | [AGutan/spacex-api-wrapper](https://github.com/AGutan/spacex-api-wrapper) |
+| Rust | [AGutan/spacex-api-wrapper](https://github.com/AGutan/spacex-api-wrapper) and [twilco/space-rx](https://github.com/twilco/space-rx)|
 | Ruby | [rodolfobandeira/spacex](https://github.com/rodolfobandeira/spacex) |
 | PHP | [airesvsg/spacex](https://github.com/airesvsg/spacex) |
 | Elixir | [crunchysoul/spacex_ex](https://github.com/crunchysoul/spacex_ex) |
