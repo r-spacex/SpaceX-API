@@ -121,6 +121,7 @@ curl -s https://api.spacexdata.com/v2/launches/latest | jq
 ## Community made API Clients / Wrappers
 | Lang  | Link |
 | ------------- | ------------- |
+| GraphQL | [emersonlaurentino/spacex-qraphql-api](https://github.com/emersonlaurentino/spacex-qraphql-api) |
 | .NET  | [Tearth/Oddity](https://github.com/Tearth/Oddity) |
 | Node.js  | [Thomas-Smyth/SpaceX-API-Wrapper](https://github.com/Thomas-Smyth/SpaceX-API-Wrapper) |
 | PowerShell | [lazywinadmin/SpaceX](https://github.com/lazywinadmin/SpaceX) |
