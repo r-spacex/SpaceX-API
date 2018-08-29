@@ -6,6 +6,7 @@
   "scripts": {
     "test": "yarn lint && NODE_ENV=test PORT=0 jest --silent --verbose",
     "start": "node src/app.js",
+    "dev": "nodemon yarn start",
     "lint": "eslint \"**/*.js\"",
     "roadster": "node scripts/roadster.js",
     "orbit": "node scripts/orbits.js"
