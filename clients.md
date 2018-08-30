@@ -1,6 +1,6 @@
 # List of known UI clients
 
-> _Do you, or do you know of some app, that makes use of this community maintained service, please [create an issue](https://github.com/r-spacex/SpaceX-API/issues/new) or submit a PR with additions to this list. Thanks_
+> _Do you, or do you know of some app, that makes use of this community maintained service, please [create an issue](https://github.com/r-spacex/SpaceX-API/issues/new) or [submit a PR](https://github.com/r-spacex/SpaceX-API/blob/master/CONTRIBUTING.md) with additions to this list. Thanks_
 
 > _For API **wrappers**, please check [this list](https://github.com/r-spacex/SpaceX-API#community-made-api-clients--wrappers)._
 
