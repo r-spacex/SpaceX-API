@@ -11,13 +11,14 @@
 | [SpaceXPedia](https://itunes.apple.com/app/spacexpedia/id1434177600?mt=8) | iOS App | [Philip Engberg](https://github.com/philipengberg) | [GitHub](https://github.com/philipengberg/SpaceXPedia) |
 | [SpaceX Companion](https://play.google.com/store/apps/details?id=nl.studionoorderlicht.spacex) | Android App | [Jeroen Boumans](https://github.com/jeroenboumans) | Not open sourced yet | [Website](https://spacexcompanion.app)
 | [SpaceXLaunches](https://play.google.com/store/apps/details?id=com.danielscholte.spacexlaunches) | Android App | [Daniël Scholte](https://github.com/linuxfreak23) | Closed source |
+| [InElonWeTrust](https://github.com/Tearth/InElonWeTrust) | Discord bot | [Tearth](https://github.com/Tearth) | [GitHub](https://github.com/Tearth/InElonWeTrust) |
 
 # List of known API clients / wrappers
 
 |Name|Lang|Creator(s)|Repo|
 |:---|:---|:---|:---|
 | spacex-graphql-api | GraphQL | Emerson Laurentino | [GitHub](https://github.com/emersonlaurentino/spacex-qraphql-api) |
-| Oddity | .NET  | Paweł | [GitHub](https://github.com/Tearth/Oddity) |
+| Oddity | .NET  | Tearth | [GitHub](https://github.com/Tearth/Oddity) |
 | SpaceX-API-Wrapper | Node.js | Thomas Smyth | [GitHub](https://github.com/Thomas-Smyth/SpaceX-API-Wrapper) |
 | SpaceX | PowerShell | François-Xavier Cat | [GitHub](https://github.com/lazywinadmin/SpaceX) |
 | SpaceX-Python | Python | Vinay Phadnis | [GitHub](https://github.com/phadnisvinay30/SpaceX-Python)
