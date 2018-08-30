@@ -5,7 +5,8 @@
 > _For API **wrappers**, please check [this list](https://github.com/r-spacex/SpaceX-API#community-made-api-clients--wrappers)._
 
 
-|App|Type|Creator(s)|Repo|
-|:---|:---|:---|:---|
+|App|Type|Creator(s)|Repo|More|
+|:---|:---|:---|:---|:---|
 | [SpaceX Stats](http://spacexstats.xyz) | Website | Luke Davia | [GitHub](https://github.com/r-spacex/spacexstats-react) |
 | [SpaceXPedia](https://itunes.apple.com/app/spacexpedia/id1434177600?mt=8) | iOS App | [Philip Engberg](https://github.com/philipengberg) | [GitHub](https://github.com/philipengberg/SpaceXPedia) |
+| [SpaceX Companion](https://play.google.com/store/apps/details?id=nl.studionoorderlicht.spacex) | Android App | [Jeroen Boumans](https://github.com/jeroenboumans) | Not open sourced yet | [Website](https://spacexcompanion.app)
