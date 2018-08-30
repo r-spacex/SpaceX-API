@@ -11,6 +11,7 @@
 | [SpaceXPedia](https://itunes.apple.com/app/spacexpedia/id1434177600?mt=8) | iOS App | [Philip Engberg](https://github.com/philipengberg) | [GitHub](https://github.com/philipengberg/SpaceXPedia) |
 | [SpaceX Companion](https://play.google.com/store/apps/details?id=nl.studionoorderlicht.spacex) | Android App | [Jeroen Boumans](https://github.com/jeroenboumans) | Not open sourced yet | [Website](https://spacexcompanion.app)
 | [SpaceXLaunches](https://play.google.com/store/apps/details?id=com.danielscholte.spacexlaunches) | Android App | [Daniël Scholte](https://github.com/linuxfreak23) | Closed source |
+| [SpaceX GO!](https://play.google.com/store/apps/details?id=com.chechu.cherry) | Android App | [Chechu](https://github.com/jesusrp98) | [GitHub](https://github.com/jesusrp98/spacex-go) |
 | [InElonWeTrust](https://github.com/Tearth/InElonWeTrust) | Discord bot | [Tearth](https://github.com/Tearth) | [GitHub](https://github.com/Tearth/InElonWeTrust) |
 | [SpaceX-Launch-Bot](https://github.com/r-spacex/SpaceX-Launch-Bot) | Discord bot | [Simon](https://github.com/thatguywiththatname) | [Github](https://github.com/r-spacex/SpaceX-Launch-Bot) | |
 
