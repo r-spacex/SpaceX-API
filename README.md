@@ -82,6 +82,12 @@ curl -s https://api.spacexdata.com/v2/launches/latest | jq
           }
         }
       ]
+    },
+    "fairings": {
+      "reused": false,
+      "recovery_attempt": false,
+      "recovered": false,
+      "ship": null
     }
   },
   "telemetry": {
