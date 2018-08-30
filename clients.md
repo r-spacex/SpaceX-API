@@ -12,15 +12,17 @@
 | [SpaceX Companion](https://play.google.com/store/apps/details?id=nl.studionoorderlicht.spacex) | Android App | [Jeroen Boumans](https://github.com/jeroenboumans) | Not open sourced yet | [Website](https://spacexcompanion.app)
 
 # List of known API clients / wrappers
-| Lang  | Link |
-| ------------- | ------------- |
-| GraphQL | [emersonlaurentino/spacex-qraphql-api](https://github.com/emersonlaurentino/spacex-qraphql-api) |
-| .NET  | [Tearth/Oddity](https://github.com/Tearth/Oddity) |
-| Node.js  | [Thomas-Smyth/SpaceX-API-Wrapper](https://github.com/Thomas-Smyth/SpaceX-API-Wrapper) |
-| PowerShell | [lazywinadmin/SpaceX](https://github.com/lazywinadmin/SpaceX) |
-| Python  | [phadnisvinay30/Spacex-Python](https://github.com/phadnisvinay30/SpaceX-Python)
-| Go | [orcaman/spacex](https://github.com/orcaman/spacex) |
-| Rust | [AGutan/spacex-api-wrapper](https://github.com/AGutan/spacex-api-wrapper) and [twilco/space-rx](https://github.com/twilco/space-rx)|
-| Ruby | [rodolfobandeira/spacex](https://github.com/rodolfobandeira/spacex) |
-| PHP | [airesvsg/spacex](https://github.com/airesvsg/spacex) |
-| Elixir | [crunchysoul/spacex_ex](https://github.com/crunchysoul/spacex_ex) |
+
+|Name|Lang|Creator(s)|Repo|
+|:---|:---|:---|:---|
+| spacex-graphql-api | GraphQL | Emerson Laurentino | [GitHub](https://github.com/emersonlaurentino/spacex-qraphql-api) |
+| Oddity | .NET  | Paweł | [GitHub](https://github.com/Tearth/Oddity) |
+| SpaceX-API-Wrapper | Node.js | Thomas Smyth | [GitHub](https://github.com/Thomas-Smyth/SpaceX-API-Wrapper) |
+| SpaceX | PowerShell | François-Xavier Cat | [GitHub](https://github.com/lazywinadmin/SpaceX) |
+| SpaceX-Python | Python | Vinay Phadnis | [GitHub](https://github.com/phadnisvinay30/SpaceX-Python)
+| spacex | Go | Or Hiltch | [GitHub](https://github.com/orcaman/spacex) |
+| spacex-api-wrapper | Rust | Alex Gutan | [GitHub](https://github.com/AGutan/spacex-api-wrapper)|
+| space-rx | Rust | Tyler Wilcock | [GitHub](https://github.com/twilco/space-rx) |
+| spacex | Ruby | Rodolfo | [GitHub](https://github.com/rodolfobandeira/spacex) |
+| spacex | PHP | Aires Gonçalves | [GitHub](https://github.com/airesvsg/spacex) |
+| spacex_ex | Elixir | Chen Zhao | [GitHub](https://github.com/crunchysoul/spacex_ex) |
