@@ -90,6 +90,30 @@ test('It should return launches sorted by second stage block number', async () =
   expect(response.body[response.body.length - 1].rocket.second_stage).toHaveProperty('block', 4);
 });
 
+test('It should return launches sorted by fairing reuse', async () => {
+  const response = await request(app.callback()).get('/v2/launches?sort=fairings_reused');
+  expect(response.statusCode).toBe(200);
+  expect(response.body[response.body.length - 1].rocket.fairings.reused).toEqual(false);
+});
+
+test('It should return launches sorted by fairing recovery attempts', async () => {
+  const response = await request(app.callback()).get('/v2/launches?sort=fairings_recovery_attempt');
+  expect(response.statusCode).toBe(200);
+  expect(response.body[response.body.length - 1].rocket.fairings.recovery_attempt).toEqual(true);
+});
+
+test('It should return launches sorted by fairing recoveries', async () => {
+  const response = await request(app.callback()).get('/v2/launches?sort=fairings_recovery');
+  expect(response.statusCode).toBe(200);
+  expect(response.body[response.body.length - 1].rocket.fairings.recovered).toEqual(false);
+});
+
+test('It should return launches sorted by fairing recovery ship', async () => {
+  const response = await request(app.callback()).get('/v2/launches?sort=fairings_ship');
+  expect(response.statusCode).toBe(200);
+  expect(response.body[response.body.length - 1].rocket.fairings.ship).toEqual('MR STEVEN');
+});
+
 test('It should return launches sorted by core reuse', async () => {
   const response = await request(app.callback()).get('/v2/launches?sort=core_reuse&launch_year=2017');
   expect(response.statusCode).toBe(200);

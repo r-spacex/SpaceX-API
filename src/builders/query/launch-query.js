@@ -77,6 +77,22 @@ module.exports = q => {
     query['rocket.second_stage.block'] = parseInt(q.second_stage_block, 10);
   }
 
+  if (q.fairings_reused) {
+    query['rocket.fairings.reused'] = (q.fairings_reused === 'true');
+  }
+
+  if (q.fairings_recovery_attempt) {
+    query['rocket.fairings.recovery_attempt'] = (q.fairings_recovery_attempt === 'true');
+  }
+
+  if (q.fairings_recovered) {
+    query['rocket.fairings.recovered'] = (q.fairings_recovered === 'true');
+  }
+
+  if (q.fairings_ship) {
+    query['rocket.fairings.ship'] = q.fairings_ship;
+  }
+
   if (q.core_reuse) {
     query['reuse.core'] = (q.core_reuse === 'true');
   }

@@ -105,6 +105,18 @@ module.exports = r => {
       if (r.query.sort === 'orbit') {
         query['rocket.second_stage.payloads.orbit'] = direction;
       }
+      if (r.query.sort === 'fairings_reused') {
+        query['rocket.fairings.reused'] = direction;
+      }
+      if (r.query.sort === 'fairings_recovery_attempt') {
+        query['rocket.fairings.recovery_attempt'] = direction;
+      }
+      if (r.query.sort === 'fairings_recovered') {
+        query['rocket.fairings.recovered'] = direction;
+      }
+      if (r.query.sort === 'fairings_ship') {
+        query['rocket.fairings.ship'] = direction;
+      }
       if (r.query.sort === 'launch_success') {
         query.launch_success = direction;
       }

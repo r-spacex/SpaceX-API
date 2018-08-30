@@ -288,6 +288,38 @@ test('It should return launches with GTO orbit', async () => {
   });
 });
 
+test('It should return launches with no reused fairings', async () => {
+  const response = await request(app.callback()).get('/v2/launches?fairings_recovered=false');
+  expect(response.statusCode).toBe(200);
+  response.body.forEach(item => {
+    expect(item.rocket.fairings.reused).toEqual(false);
+  });
+});
+
+test('It should return launches with fairing recovery attempts', async () => {
+  const response = await request(app.callback()).get('/v2/launches?fairings_recovery_attempt=true');
+  expect(response.statusCode).toBe(200);
+  response.body.forEach(item => {
+    expect(item.rocket.fairings.recovery_attempt).toEqual(true);
+  });
+});
+
+test('It should return launches with no recovered fairings', async () => {
+  const response = await request(app.callback()).get('/v2/launches?fairings_recovered=false');
+  expect(response.statusCode).toBe(200);
+  response.body.forEach(item => {
+    expect(item.rocket.fairings.recovered).toEqual(false);
+  });
+});
+
+test('It should return launches with MR STEVEN fairing ship', async () => {
+  const response = await request(app.callback()).get('/v2/launches?fairings_ship=MR%20STEVEN');
+  expect(response.statusCode).toBe(200);
+  response.body.forEach(item => {
+    expect(item.rocket.fairings.ship).toEqual('MR STEVEN');
+  });
+});
+
 test('It should return launches with successful launches', async () => {
   const response = await request(app.callback()).get('/v2/launches?launch_success=true');
   expect(response.statusCode).toBe(200);
