@@ -118,21 +118,7 @@ curl -s https://api.spacexdata.com/v2/launches/latest | jq
 }
 ```
 
-## Community made API Clients / Wrappers
-| Lang  | Link |
-| ------------- | ------------- |
-| GraphQL | [emersonlaurentino/spacex-qraphql-api](https://github.com/emersonlaurentino/spacex-qraphql-api) |
-| .NET  | [Tearth/Oddity](https://github.com/Tearth/Oddity) |
-| Node.js  | [Thomas-Smyth/SpaceX-API-Wrapper](https://github.com/Thomas-Smyth/SpaceX-API-Wrapper) |
-| PowerShell | [lazywinadmin/SpaceX](https://github.com/lazywinadmin/SpaceX) |
-| Python  | [phadnisvinay30/Spacex-Python](https://github.com/phadnisvinay30/SpaceX-Python)
-| Go | [orcaman/spacex](https://github.com/orcaman/spacex) |
-| Rust | [AGutan/spacex-api-wrapper](https://github.com/AGutan/spacex-api-wrapper) and [twilco/space-rx](https://github.com/twilco/space-rx)|
-| Ruby | [rodolfobandeira/spacex](https://github.com/rodolfobandeira/spacex) |
-| PHP | [airesvsg/spacex](https://github.com/airesvsg/spacex) |
-| Elixir | [crunchysoul/spacex_ex](https://github.com/crunchysoul/spacex_ex) |
-
-## Community made UI Clients
+## Community made UI Clients / API Clients / API wrappers
 See [clients](https://github.com/r-spacex/SpaceX-API/blob/master/clients.md)
 
 ## API Status
