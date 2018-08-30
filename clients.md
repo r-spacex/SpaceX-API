@@ -10,6 +10,7 @@
 | [SpaceX Stats](http://spacexstats.xyz) | Website | Luke Davia | [GitHub](https://github.com/r-spacex/spacexstats-react) |
 | [SpaceXPedia](https://itunes.apple.com/app/spacexpedia/id1434177600?mt=8) | iOS App | [Philip Engberg](https://github.com/philipengberg) | [GitHub](https://github.com/philipengberg/SpaceXPedia) |
 | [SpaceX Companion](https://play.google.com/store/apps/details?id=nl.studionoorderlicht.spacex) | Android App | [Jeroen Boumans](https://github.com/jeroenboumans) | Not open sourced yet | [Website](https://spacexcompanion.app)
+| [SpaceXLaunches](https://play.google.com/store/apps/details?id=com.danielscholte.spacexlaunches) | Android App | [Daniël Scholte](https://github.com/linuxfreak23) | Closed source |
 
 # List of known API clients / wrappers
 
