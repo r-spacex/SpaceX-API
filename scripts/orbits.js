@@ -59,15 +59,19 @@ async function asyncForEach(array, callback) {
             period_min: parseFloat(orbit[0].PERIOD),
           };
           console.log(`Updating...${orbit[0].OBJECT_NAME}`);
-          await col.updateOne({ 'rocket.second_stage.payloads.norad_id': num }, { $set: { 'rocket.second_stage.payloads.$.orbit_params.epoch': update.epoch } });
-          await col.updateOne({ 'rocket.second_stage.payloads.norad_id': num }, { $set: { 'rocket.second_stage.payloads.$.orbit_params.mean_motion': update.mean_motion } });
-          await col.updateOne({ 'rocket.second_stage.payloads.norad_id': num }, { $set: { 'rocket.second_stage.payloads.$.orbit_params.raan': update.raan } });
-          await col.updateOne({ 'rocket.second_stage.payloads.norad_id': num }, { $set: { 'rocket.second_stage.payloads.$.orbit_params.semi_major_axis_km': update.semi_major_axis_km } });
-          await col.updateOne({ 'rocket.second_stage.payloads.norad_id': num }, { $set: { 'rocket.second_stage.payloads.$.orbit_params.eccentricity': update.eccentricity } });
-          await col.updateOne({ 'rocket.second_stage.payloads.norad_id': num }, { $set: { 'rocket.second_stage.payloads.$.orbit_params.periapsis_km': update.periapsis_km } });
-          await col.updateOne({ 'rocket.second_stage.payloads.norad_id': num }, { $set: { 'rocket.second_stage.payloads.$.orbit_params.apoapsis_km': update.apoapsis_km } });
-          await col.updateOne({ 'rocket.second_stage.payloads.norad_id': num }, { $set: { 'rocket.second_stage.payloads.$.orbit_params.inclination_deg': update.inclination_deg } });
-          await col.updateOne({ 'rocket.second_stage.payloads.norad_id': num }, { $set: { 'rocket.second_stage.payloads.$.orbit_params.period_min': update.period_min } });
+          await col.updateOne({ 'rocket.second_stage.payloads.norad_id': num }, {
+            $set: {
+              'rocket.second_stage.payloads.$.orbit_params.epoch': update.epoch,
+              'rocket.second_stage.payloads.$.orbit_params.mean_motion': update.mean_motion,
+              'rocket.second_stage.payloads.$.orbit_params.raan': update.raan,
+              'rocket.second_stage.payloads.$.orbit_params.semi_major_axis_km': update.semi_major_axis_km,
+              'rocket.second_stage.payloads.$.orbit_params.eccentricity': update.eccentricity,
+              'rocket.second_stage.payloads.$.orbit_params.periapsis_km': update.periapsis_km,
+              'rocket.second_stage.payloads.$.orbit_params.apoapsis_km': update.apoapsis_km,
+              'rocket.second_stage.payloads.$.orbit_params.inclination_deg': update.inclination_deg,
+              'rocket.second_stage.payloads.$.orbit_params.period_min': update.period_min,
+            },
+          });
           console.log('Updated...');
         }
       });
