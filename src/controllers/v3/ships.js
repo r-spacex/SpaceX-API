@@ -5,26 +5,26 @@ const project = require('../../builders/project');
 module.exports = {
 
   /**
-   * Returns all rocket info
+   * Returns all ship info
    */
   all: async ctx => {
     const data = await global.db
       .collection('ship')
       .find({})
       .project(project(ctx.request.query))
-      .sort({ first_flight: 1 })
+      .sort({ ship_id: 1 })
       .limit(limit(ctx.request.query))
       .toArray();
     ctx.body = data;
   },
 
   /**
-   * Returns specific rocket info
+   * Returns specific ship info
    */
   specific: async ctx => {
     const data = await global.db
       .collection('ship')
-      .find({ id: ctx.params.rocket })
+      .find({ id: ctx.params.ship })
       .project(project(ctx.request.query))
       .toArray();
     ctx.body = data[0];
