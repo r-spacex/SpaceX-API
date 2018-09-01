@@ -24,7 +24,7 @@ module.exports = {
   specific: async ctx => {
     const data = await global.db
       .collection('ship')
-      .find({ id: ctx.params.ship })
+      .find({ ship_id: ctx.params.ship_id })
       .project(project(ctx.request.query))
       .toArray();
     ctx.body = data[0];

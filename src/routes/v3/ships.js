@@ -11,6 +11,6 @@ const v3 = new Router({
 v3.get('/', ships.all);
 
 // Returns specific rocket info
-v3.get('/:ship', ships.specific);
+v3.get('/:ship_id', ships.specific);
 
 module.exports = v3;
