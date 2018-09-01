@@ -9,7 +9,8 @@
     "dev": "nodemon yarn start",
     "lint": "eslint \"**/*.js\"",
     "roadster": "node scripts/roadster.js",
-    "orbit": "node scripts/orbits.js"
+    "orbit": "node scripts/orbits.js",
+    "ships": "node scripts/ships.js"
   },
   "repository": {
     "type": "git",
@@ -30,6 +31,7 @@
   },
   "homepage": "https://github.com/r-spacex/SpaceX-API",
   "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
     "koa": "^2.5.2",
     "koa-compress": "^3.0.0",
     "koa-helmet": "^4.0.0",
