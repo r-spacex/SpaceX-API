@@ -44,7 +44,7 @@ Endpoints allowing you to get information related to SpaceX as a company (includ
 ## Starman Roadster Orbital Data [/info/roadster]
 
 ### Get information and orbital data for Starman Roader [GET]
-**Updated every 5 minutes.**
+**Updated every 10 minutes.**
 
 + Response 200 (application/json)
 
