@@ -1,5 +1,5 @@
 
-const sort = require('../../builders/sort');
+const sort = require('../../builders/sort/v2-sort');
 const historyQuery = require('../../builders/query/history-query');
 const limit = require('../../builders/limit');
 const project = require('../../builders/project');

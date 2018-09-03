@@ -23,7 +23,8 @@ const v2_rockets = require('./routes/v2/rockets');
 const v2_upcoming = require('./routes/v2/upcoming');
 
 // v3 route imports
-const v3_rockets = require('./routes/v3/rockets');
+const v3_rockets = require('./routes/v3/launches');
+const v3_launches = require('./routes/v3/rockets');
 const v3_ships = require('./routes/v3/ships');
 const v3_launchpads = require('./routes/v3/launchpad');
 
@@ -99,7 +100,8 @@ app.use(v2_payloads.routes());
 app.use(v2_rockets.routes());
 app.use(v2_upcoming.routes());
 
-// v2 routes
+// v3 routes
+app.use(v3_launches.routes());
 app.use(v3_rockets.routes());
 app.use(v3_ships.routes());
 app.use(v3_launchpads.routes());

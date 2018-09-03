@@ -36,6 +36,9 @@ module.exports = {
       .find({ id: ctx.params.rocket })
       .project(project(ctx.request.query))
       .toArray();
+    if (data.length === 0) {
+      ctx.throw(404);
+    }
     data[0].rocket_id = data[0].id;
     data[0].id = data[0].rocketid;
     data[0].rocket_name = data[0].name;

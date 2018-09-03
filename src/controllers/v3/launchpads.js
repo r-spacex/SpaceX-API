@@ -33,15 +33,14 @@ module.exports = {
       .find({ id: ctx.params.pad })
       .project(project(ctx.request.query))
       .toArray();
-    try {
-      data[0].site_id = data[0].id;
-      data[0].id = data[0].padid;
-      data[0].site_name_long = data[0].full_name;
-      delete data[0].padid;
-      delete data[0].full_name;
-    } catch (e) {
+    if (data.length === 0) {
       ctx.throw(404);
     }
+    data[0].site_id = data[0].id;
+    data[0].id = data[0].padid;
+    data[0].site_name_long = data[0].full_name;
+    delete data[0].padid;
+    delete data[0].full_name;
     ctx.body = data[0];
   },
 
