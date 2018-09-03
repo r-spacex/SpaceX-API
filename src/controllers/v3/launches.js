@@ -113,7 +113,7 @@ module.exports = {
     const set = update(ctx.request.body, payload_index, core_index);
     const query = { flight_number: parseInt(ctx.params.flight_number, 10) };
     await global.db.collection('launch').updateOne(query, set);
-    ctx.status = 200;
+    ctx.status = 204;
   },
 
 };
