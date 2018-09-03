@@ -25,4 +25,7 @@ v3.get('/past', launches.past);
 // Return specific launch by flight number
 v3.get('/:flight_number', launches.specific);
 
+// Update specific launch by flight number
+v3.patch('/:flight_number', launches.updateOne);
+
 module.exports = v3;
