@@ -355,7 +355,7 @@ test('It should return capsules sorted by capsule type', async () => {
 test('It should return history sorted by flight number', async () => {
   const response = await request(app.callback()).get('/v2/info/history?sort=flight_number&order=desc');
   expect(response.statusCode).toBe(200);
-  expect(response.body[13]).toHaveProperty('flight_number', 4);
+  expect(response.body[response.body.length - 1]).toHaveProperty('flight_number', null);
 });
 
 test('It should return history sorted by event utc date', async () => {
