@@ -1,6 +1,7 @@
 
 const limit = require('../../builders/limit');
 const project = require('../../builders/project');
+const sort = require('../../builders/sort/v3-sort');
 
 module.exports = {
 
@@ -12,7 +13,7 @@ module.exports = {
       .collection('ship')
       .find({})
       .project(project(ctx.request.query))
-      .sort({ ship_id: 1 })
+      .sort(sort(ctx.request))
       .limit(limit(ctx.request.query))
       .toArray();
     ctx.body = data;

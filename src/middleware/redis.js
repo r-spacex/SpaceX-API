@@ -35,14 +35,20 @@ const options = {
     path: '/v2/rockets(.*)',
     expire: 86400,
   }, {
+    path: '/v2/capsules(.*)',
+    expire: 86400,
+  }, {
     path: '/v3/launchpads(.*)',
     expire: 86400,
   }, {
     path: '/v3/rockets(.*)',
     expire: 86400,
   }, {
-    path: '/v2/capsules(.*)',
-    expire: 86400,
+    path: '/v3/launches(.*)',
+    expire: 30,
+  }, {
+    path: '/v3/ships(.*)',
+    expire: 300,
   }],
   passParam: 'pretty',
   redis: {

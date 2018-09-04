@@ -198,6 +198,74 @@ module.exports = r => {
       if (r.query.sort === 'flight_number') {
         query.flight_number = direction;
       }
+    } else if (/^\/v3\/ships(.*)(?:\/)?$/i.test(r.url)) {
+      //------------------------------------------------------------
+      //                     Ships Fields
+      //------------------------------------------------------------
+
+      if (r.query.sort === 'ship_id') {
+        query.ship_id = direction;
+      }
+      if (r.query.sort === 'ship_name') {
+        query.ship_name = direction;
+      }
+      if (r.query.sort === 'ship_model') {
+        query.ship_model = direction;
+      }
+      if (r.query.sort === 'roles') {
+        query.roles = direction;
+      }
+      if (r.query.sort === 'active') {
+        query.active = direction;
+      }
+      if (r.query.sort === 'imo') {
+        query.imo = direction;
+      }
+      if (r.query.sort === 'mmsi') {
+        query.mmsi = direction;
+      }
+      if (r.query.sort === 'abs') {
+        query.abs = direction;
+      }
+      if (r.query.sort === 'class') {
+        query.class = direction;
+      }
+      if (r.query.sort === 'weight_lbs') {
+        query.weight_lbs = direction;
+      }
+      if (r.query.sort === 'weight_kg') {
+        query.weight_kg = direction;
+      }
+      if (r.query.sort === 'year_built') {
+        query.year_built = direction;
+      }
+      if (r.query.sort === 'home_port') {
+        query.home_port = direction;
+      }
+      if (r.query.sort === 'status') {
+        query.status = direction;
+      }
+      if (r.query.sort === 'speed_kn') {
+        query.speed_kn = direction;
+      }
+      if (r.query.sort === 'course_deg') {
+        query.course_deg = direction;
+      }
+      if (r.query.sort === 'latitude') {
+        query['position.latitude'] = direction;
+      }
+      if (r.query.sort === 'longitude') {
+        query['position.longitude'] = direction;
+      }
+      if (r.query.sort === 'successful_landings') {
+        query.successful_landings = direction;
+      }
+      if (r.query.sort === 'attempted_landings') {
+        query.attempted_landings = direction;
+      }
+      if (r.query.sort === 'missions') {
+        query.missions = direction;
+      }
     }
   // Set sensible defaults for endpoint to sort on if no sort or order param is passed in the url
   } else if (/^\/v3\/launches(.*)(?:\/)?$/i.test(r.url) || /^\/v3\/payloads(.*)(?:\/)?$/i.test(r.url)) {
@@ -210,6 +278,8 @@ module.exports = r => {
   } else if (/^\/v3\/cores(.*)(?:\/)?$/i.test(r.url)) {
     query.original_launch = direction;
     query.core_serial = direction;
+  } else if (/^\/v3\/ships(.*)(?:\/)?$/i.test(r.url)) {
+    query.ship_id = direction;
   }
 
   return query;
