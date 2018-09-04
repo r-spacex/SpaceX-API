@@ -1,6 +1,7 @@
 
 const limit = require('../../builders/limit');
 const project = require('../../builders/project');
+const query = require('../../builders/query/ship-query');
 const sort = require('../../builders/sort/v3-sort');
 
 module.exports = {
@@ -11,7 +12,7 @@ module.exports = {
   all: async ctx => {
     const data = await global.db
       .collection('ship')
-      .find({})
+      .find(query(ctx.request.query))
       .project(project(ctx.request.query))
       .sort(sort(ctx.request))
       .limit(limit(ctx.request.query))
