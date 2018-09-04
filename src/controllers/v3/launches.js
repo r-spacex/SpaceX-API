@@ -1,6 +1,6 @@
 
 const launchQuery = require('../../builders/query/launch-query');
-const sort = require('../../builders/sort/v2-sort');
+const sort = require('../../builders/sort/v3-sort');
 const project = require('../../builders/project');
 const limit = require('../../builders/limit');
 
@@ -17,6 +17,7 @@ module.exports = {
       .sort({ flight_number: -1 })
       .limit(1)
       .toArray();
+    delete data[0].reuse;
     ctx.body = data[0];
   },
 
@@ -31,6 +32,7 @@ module.exports = {
       .sort({ flight_number: 1 })
       .limit(1)
       .toArray();
+    delete data[0].reuse;
     ctx.body = data[0];
   },
 
@@ -45,6 +47,9 @@ module.exports = {
       .sort(sort(ctx.request))
       .limit(limit(ctx.request.query))
       .toArray();
+    data.forEach(launch => {
+      delete launch.reuse;
+    });
     ctx.body = data;
   },
 
@@ -59,6 +64,9 @@ module.exports = {
       .sort(sort(ctx.request))
       .limit(limit(ctx.request.query))
       .toArray();
+    data.forEach(launch => {
+      delete launch.reuse;
+    });
     ctx.body = data;
   },
 
@@ -73,7 +81,25 @@ module.exports = {
       .sort(sort(ctx.request))
       .limit(limit(ctx.request.query))
       .toArray();
+    data.forEach(launch => {
+      delete launch.reuse;
+    });
     ctx.body = data;
   },
 
+  /**
+   * Return specifc launch from flight number
+   */
+  specific: async ctx => {
+    const data = await global.db
+      .collection('launch')
+      .find({ flight_number: parseInt(ctx.params.flight_number, 10) })
+      .project(project(ctx.request.query))
+      .toArray();
+    if (data.length === 0) {
+      ctx.throw(404);
+    }
+    delete data[0].reuse;
+    ctx.body = data[0];
+  },
 };

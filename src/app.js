@@ -1,4 +1,5 @@
 
+const bodyParser = require('koa-bodyparser');
 const cache = require('koa-redis-cache');
 const compress = require('koa-compress');
 const cors = require('koa2-cors');
@@ -23,7 +24,8 @@ const v2_rockets = require('./routes/v2/rockets');
 const v2_upcoming = require('./routes/v2/upcoming');
 
 // v3 route imports
-const v3_rockets = require('./routes/v3/rockets');
+const v3_rockets = require('./routes/v3/launches');
+const v3_launches = require('./routes/v3/rockets');
 const v3_ships = require('./routes/v3/ships');
 const v3_launchpads = require('./routes/v3/launchpad');
 
@@ -77,6 +79,9 @@ app.use(cors({
   allowHeaders: ['Content-Type', 'Accept'],
 }));
 
+// Parse JSON body for launches PATCH
+app.use(bodyParser());
+
 // Disable Redis caching unless production
 if (process.env.NODE_ENV === 'production') {
   app.use(cache(options));
@@ -99,7 +104,8 @@ app.use(v2_payloads.routes());
 app.use(v2_rockets.routes());
 app.use(v2_upcoming.routes());
 
-// v2 routes
+// v3 routes
+app.use(v3_launches.routes());
 app.use(v3_rockets.routes());
 app.use(v3_ships.routes());
 app.use(v3_launchpads.routes());

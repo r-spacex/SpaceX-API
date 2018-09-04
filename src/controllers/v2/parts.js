@@ -2,7 +2,7 @@
 const coreQuery = require('../../builders/query/core-query');
 const capQuery = require('../../builders/query/capsule-query');
 const limit = require('../../builders/limit');
-const sort = require('../../builders/sort');
+const sort = require('../../builders/sort/v2-sort');
 const project = require('../../builders/project');
 
 module.exports = {

@@ -27,6 +27,9 @@ module.exports = {
       .find({ ship_id: ctx.params.ship_id })
       .project(project(ctx.request.query))
       .toArray();
+    if (data.length === 0) {
+      ctx.throw(404);
+    }
     ctx.body = data[0];
   },
 
