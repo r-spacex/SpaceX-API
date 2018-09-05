@@ -22,7 +22,7 @@ v3.get('/upcoming', launches.upcoming);
 // Return all past launches
 v3.get('/past', launches.past);
 
-// Return specific launch by flight number
-v3.get('/:flight_number', launches.specific);
+// Return one launch from flight number
+v3.get('/:flight_number', launches.one);
 
 module.exports = v3;

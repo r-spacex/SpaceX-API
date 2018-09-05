@@ -88,9 +88,9 @@ module.exports = {
   },
 
   /**
-   * Return specifc launch from flight number
+   * Return one launch from flight number
    */
-  specific: async ctx => {
+  one: async ctx => {
     const data = await global.db
       .collection('launch')
       .find({ flight_number: parseInt(ctx.params.flight_number, 10) })
