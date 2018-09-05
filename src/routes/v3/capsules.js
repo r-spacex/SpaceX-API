@@ -8,9 +8,9 @@ const v3 = new Router({
 });
 
 // Returns all capsule information
-v3.get('/caps', capsules.all);
+v3.get('/capsules', capsules.all);
 
 // Returns specific capsule information
-v3.get('/caps/:cap', capsules.one);
+v3.get('/capsules/:cap', capsules.one);
 
 module.exports = v3;
