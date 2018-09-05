@@ -10,10 +10,12 @@ const dateRange = require('../../utilities/date_range');
 module.exports = q => {
   const query = {};
 
+  if (q.id) {
+    query.id = parseInt(q.id, 10);
+  }
   if (q.start && (q.final || q.end)) {
     query.event_date_utc = dateRange(q);
   }
-
   if (q.flight_number) {
     query.flight_number = parseInt(q.flight_number, 10);
   }
