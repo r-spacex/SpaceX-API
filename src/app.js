@@ -24,6 +24,7 @@ const v2_rockets = require('./routes/v2/rockets');
 const v2_upcoming = require('./routes/v2/upcoming');
 
 // v3 route imports
+const v3_capsules = require('./routes/v3/capsules');
 const v3_cores = require('./routes/v3/cores');
 const v3_dragons = require('./routes/v3/dragons');
 const v3_info = require('./routes/v3/info');
@@ -109,6 +110,7 @@ app.use(v2_rockets.routes());
 app.use(v2_upcoming.routes());
 
 // v3 routes
+app.use(v3_capsules.routes());
 app.use(v3_cores.routes());
 app.use(v3_dragons.routes());
 app.use(v3_info.routes());
