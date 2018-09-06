@@ -30,6 +30,8 @@ curl -s https://api.spacexdata.com/v2/launches/latest | jq
   "launch_date_unix": 1533619080,
   "launch_date_utc": "2018-08-07T05:18:00.000Z",
   "launch_date_local": "2018-08-07T01:18:00-04:00",
+  "is_tentative": false,
+  "tentative_max_precision": "hour",
   "rocket": {
     "rocket_id": "falcon9",
     "rocket_name": "Falcon 9",
@@ -90,6 +92,10 @@ curl -s https://api.spacexdata.com/v2/launches/latest | jq
       "ship": null
     }
   },
+  "ships": [
+    "HAWK",
+    "OCISLY"
+  ],
   "telemetry": {
     "flight_club": null
   },
@@ -118,7 +124,7 @@ curl -s https://api.spacexdata.com/v2/launches/latest | jq
     "wikipedia": "https://en.wikipedia.org/wiki/Telkom_Indonesia",
     "video_link": "https://www.youtube.com/watch?v=FjfQNBYv2IY"
   },
-  "details": "Indonesian comsat intended to replace the aging Telkom 1 at 108° E. First reflight of a Block 5-version booster.",
+  "details": "SpaceX's fifteenth flight of 2018 launched the Merah Putih (also known as Telkom-4) geostationary communications satellite for Telkom Indonesia. It marked the first reuse of any Block 5 first stage; the booster B1046 had previously launched Bangabandhu-1. The stage was recovered and is expected to become the first Falcon 9 booster to fly three missions.",
   "upcoming": false,
   "static_fire_date_utc": "2018-08-02T15:53:00.000Z"
 }
