@@ -66,9 +66,5 @@
   },
   "jest": {
     "setupTestFrameworkScriptFile": "./test/jest.setup.js"
-  },
-  "engines": {
-    "node": "10.x.x",
-    "yarn": "1.9.4"
   }
 }
