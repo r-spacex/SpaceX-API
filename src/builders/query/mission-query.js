@@ -11,15 +11,12 @@ module.exports = q => {
   if (q.mission_name) {
     query.mission_name = q.mission_name;
   }
-
   if (q.mission_id) {
     query.mission_id = q.mission_id;
   }
-
   if (q.manufacturer) {
     query.manufacturers = q.manufacturer;
   }
-
   if (q.payload_id) {
     query.payload_ids = q.payload_id;
   }
