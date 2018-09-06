@@ -39,6 +39,12 @@ module.exports = q => {
   if (q.launch_date_local) {
     query.launch_date_local = q.launch_date_local;
   }
+  if (q.tentative) {
+    query.is_tentative = q.tentative;
+  }
+  if (q.tentative_max_precision) {
+    query.tentative_max_precision = q.tentative_max_precision;
+  }
   if (q.rocket_id) {
     query['rocket.rocket_id'] = q.rocket_id;
   }
@@ -89,6 +95,9 @@ module.exports = q => {
   }
   if (q.capsule_reuse) {
     query['reuse.capsule'] = (q.capsule_reuse === 'true');
+  }
+  if (q.ship) {
+    query.ships = q.ship;
   }
   if (q.site_id) {
     query['launch_site.site_id'] = q.site_id;
