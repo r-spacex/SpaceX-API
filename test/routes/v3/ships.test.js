@@ -46,7 +46,7 @@ test('It should return all ships', async () => {
 //                      All Ships Error
 //------------------------------------------------------------
 
-test('It should return one ship', async () => {
+test('It should return an empty array', async () => {
   const response = await request(app.callback()).get('/v3/ships?ship_id=MRSTEVENN');
   expect(response.statusCode).toBe(200);
   expect(response.body).toEqual([]);
@@ -66,7 +66,7 @@ test('It should return one ship', async () => {
 //                      One Ship Error
 //------------------------------------------------------------
 
-test('It should return one ship', async () => {
+test('It should return a 404 error msg', async () => {
   const response = await request(app.callback()).get('/v3/ships/MRSTEVENN');
   expect(response.statusCode).toBe(404);
   expect(response.body).toEqual({ error: 'Not Found' });
