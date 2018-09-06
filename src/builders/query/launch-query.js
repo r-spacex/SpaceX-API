@@ -82,16 +82,16 @@ module.exports = q => {
     query['rocket.fairings.ship'] = q.fairings_ship;
   }
   if (q.core_reuse) {
-    query['reuse.core'] = (q.core_reuse === 'true');
+    query['rocket.first_stage.cores.0.reused'] = (q.core_reuse === 'true');
   }
   if (q.side_core1_reuse) {
-    query['reuse.side_core1'] = (q.side_core1_reuse === 'true');
+    query['rocket.first_stage.cores.1.reused'] = (q.side_core1_reuse === 'true');
   }
   if (q.side_core2_reuse) {
-    query['reuse.side_core2'] = (q.side_core2_reuse === 'true');
+    query['rocket.first_stage.cores.2.reused'] = (q.side_core2_reuse === 'true');
   }
   if (q.fairings_reuse) {
-    query['reuse.fairings'] = (q.fairings_reuse === 'true');
+    query['rocket.fairings.reused'] = (q.fairings_reuse === 'true');
   }
   if (q.capsule_reuse) {
     query['reuse.capsule'] = (q.capsule_reuse === 'true');
@@ -128,6 +128,45 @@ module.exports = q => {
   }
   if (q.orbit) {
     query['rocket.second_stage.payloads.orbit'] = q.orbit;
+  }
+  if (q.reference_system) {
+    query['rocket.second_stage.payloads.orbit_params.reference_system'] = q.reference_system;
+  }
+  if (q.regime) {
+    query['rocket.second_stage.payloads.orbit_params.regime'] = q.regime;
+  }
+  if (q.longitude) {
+    query['rocket.second_stage.payloads.orbit_params.longitude'] = parseFloat(q.longitude);
+  }
+  if (q.semi_major_axis_km) {
+    query['rocket.second_stage.payloads.orbit_params.semi_major_axis_km'] = parseFloat(q.semi_major_axis_km);
+  }
+  if (q.eccentricity) {
+    query['rocket.second_stage.payloads.orbit_params.eccentricity'] = parseFloat(q.eccentricity);
+  }
+  if (q.periapsis_km) {
+    query['rocket.second_stage.payloads.orbit_params.periapsis_km'] = parseFloat(q.periapsis_km);
+  }
+  if (q.apoapsis_km) {
+    query['rocket.second_stage.payloads.orbit_params.apoapsis_km'] = parseFloat(q.apoapsis_km);
+  }
+  if (q.inclination_deg) {
+    query['rocket.second_stage.payloads.orbit_params.inclination_deg'] = parseFloat(q.inclination_deg);
+  }
+  if (q.period_min) {
+    query['rocket.second_stage.payloads.orbit_params.period_min'] = parseFloat(q.period_min);
+  }
+  if (q.lifespan_years) {
+    query['rocket.second_stage.payloads.orbit_params.lifespan_years'] = parseInt(q.lifespan_years, 10);
+  }
+  if (q.epoch) {
+    query['rocket.second_stage.payloads.orbit_params.epoch'] = q.epoch;
+  }
+  if (q.mean_motion) {
+    query['rocket.second_stage.payloads.orbit_params.mean_motion'] = parseFloat(q.mean_motion);
+  }
+  if (q.raan) {
+    query['rocket.second_stage.payloads.orbit_params.raan'] = parseFloat(q.raan);
   }
   if (q.launch_success) {
     query.launch_success = (q.launch_success === 'true');
