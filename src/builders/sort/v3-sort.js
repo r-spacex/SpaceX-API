@@ -36,6 +36,12 @@ module.exports = r => {
       if (r.query.sort === 'launch_date_local') {
         query.launch_date_local = direction;
       }
+      if (r.query.sort === 'tentative') {
+        query.is_tentative = direction;
+      }
+      if (r.query.sort === 'tentative_max_precision') {
+        query.tentative_max_precision = direction;
+      }
       if (r.query.sort === 'rocket_id') {
         query['rocket.rocket_id'] = direction;
       }
@@ -105,6 +111,45 @@ module.exports = r => {
       if (r.query.sort === 'orbit') {
         query['rocket.second_stage.payloads.orbit'] = direction;
       }
+      if (r.query.sort === 'reference_system') {
+        query['rocket.second_stage.payloads.orbit_params.reference_system'] = direction;
+      }
+      if (r.query.sort === 'regime') {
+        query['rocket.second_stage.payloads.orbit_params.regime'] = direction;
+      }
+      if (r.query.sort === 'longitude') {
+        query['rocket.second_stage.payloads.orbit_params.longitude'] = direction;
+      }
+      if (r.query.sort === 'semi_major_axis_km') {
+        query['rocket.second_stage.payloads.orbit_params.semi_major_axis_km'] = direction;
+      }
+      if (r.query.sort === 'eccentricity') {
+        query['rocket.second_stage.payloads.orbit_params.eccentricity'] = direction;
+      }
+      if (r.query.sort === 'periapsis_km') {
+        query['rocket.second_stage.payloads.orbit_params.periapsis_km'] = direction;
+      }
+      if (r.query.sort === 'apoapsis_km') {
+        query['rocket.second_stage.payloads.orbit_params.apoapsis_km'] = direction;
+      }
+      if (r.query.sort === 'inclination_deg') {
+        query['rocket.second_stage.payloads.orbit_params.inclination_deg'] = direction;
+      }
+      if (r.query.sort === 'period_min') {
+        query['rocket.second_stage.payloads.orbit_params.period_min'] = direction;
+      }
+      if (r.query.sort === 'lifespan_years') {
+        query['rocket.second_stage.payloads.orbit_params.lifespan_years'] = direction;
+      }
+      if (r.query.sort === 'epoch') {
+        query['rocket.second_stage.payloads.orbit_params.epoch'] = direction;
+      }
+      if (r.query.sort === 'mean_motion') {
+        query['rocket.second_stage.payloads.orbit_params.mean_motion'] = direction;
+      }
+      if (r.query.sort === 'raan') {
+        query['rocket.second_stage.payloads.orbit_params.raan'] = direction;
+      }
       if (r.query.sort === 'fairings_reused') {
         query['rocket.fairings.reused'] = direction;
       }
@@ -131,6 +176,9 @@ module.exports = r => {
       }
       if (r.query.sort === 'landing_vehicle') {
         query['rocket.first_stage.cores.landing_vehicle'] = direction;
+      }
+      if (r.query.sort === 'ship') {
+        query.ships = direction;
       }
     } else if (/^\/v3\/capsules(.*)(?:\/)?$/i.test(r.url)) {
       //------------------------------------------------------------
