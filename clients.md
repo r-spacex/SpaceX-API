@@ -23,7 +23,8 @@
 | Oddity | .NET  | Tearth | [GitHub](https://github.com/Tearth/Oddity) |
 | SpaceX-API-Wrapper | Node.js | Thomas Smyth | [GitHub](https://github.com/Thomas-Smyth/SpaceX-API-Wrapper) |
 | SpaceX | PowerShell | François-Xavier Cat | [GitHub](https://github.com/lazywinadmin/SpaceX) |
-| SpaceX-Python | Python | Vinay Phadnis | [GitHub](https://github.com/phadnisvinay30/SpaceX-Python)
+| SpaceX-Python | Python | Vinay Phadnis | [GitHub](https://github.com/phadnisvinay30/SpaceX-Python) |
+| SpaceX-PY | Python | Kaylum Lally | [GitHub](https://github.com/HiKaylum/SpaceX-PY) |
 | spacex | Go | Or Hiltch | [GitHub](https://github.com/orcaman/spacex) |
 | spacex-api-wrapper | Rust | Alex Gutan | [GitHub](https://github.com/AGutan/spacex-api-wrapper)|
 | space-rx | Rust | Tyler Wilcock | [GitHub](https://github.com/twilco/space-rx) |
