@@ -9,7 +9,7 @@ beforeAll(done => {
 });
 
 //------------------------------------------------------------
-//                        Cores
+//                        All Cores
 //------------------------------------------------------------
 
 test('It should return all v3 cores', async () => {
@@ -29,8 +29,32 @@ test('It should return all v3 cores', async () => {
   });
 });
 
+//------------------------------------------------------------
+//                      All Cores Error
+//------------------------------------------------------------
+
+test('It should return an empty cores array', async () => {
+  const response = await request(app.callback()).get('/v3/cores?core_serial=B1000');
+  expect(response.statusCode).toBe(200);
+  expect(response.body).toEqual([]);
+});
+
+//------------------------------------------------------------
+//                       One Core
+//------------------------------------------------------------
+
 test('It should return core B0007', async () => {
   const response = await request(app.callback()).get('/v3/cores/B0007');
   expect(response.statusCode).toBe(200);
   expect(response.body).toHaveProperty('core_serial', 'B0007');
+});
+
+//------------------------------------------------------------
+//                     One Core Error
+//------------------------------------------------------------
+
+test('It should return a cores 404 error msg', async () => {
+  const response = await request(app.callback()).get('/v3/cores/B1000');
+  expect(response.statusCode).toBe(404);
+  expect(response.body).toEqual({ error: 'Not Found' });
 });
