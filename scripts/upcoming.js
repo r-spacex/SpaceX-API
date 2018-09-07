@@ -5,6 +5,9 @@
  * fuzzy checks them against existing upcoming payload id's and updates the date if a
  * change is made in the wiki. The proper time zone is calculated from the launch site
  * id of the launch.
+ *
+ * Hopefully the format of the wiki does not change, but there's no real reason for it to change in the
+ * forseeable future. If it does change
  */
 
 const MongoClient = require('mongodb');
@@ -26,6 +29,9 @@ const payloads = [];
 const promises = [];
 const precision = [];
 
+// RegEx expressions for matching dates in the wiki manifest
+// Allows for long months or short months ex. September vs Sep
+// Allows for time with or without brackets ex [23:45] vs 23:45
 const hour = /^[0-9]{4}\s([a-zA-Z]{3}|[a-zA-Z]{3,9})\s[0-9]{1,2}\s(\[[0-9]{2}:[0-9]{2}\]|[0-9]{2}:[0-9]{2})$/;
 const day = /^[0-9]{4}\s([a-zA-Z]{3}|[a-zA-Z]{3,9})\s[0-9]{1,2}$/;
 const month = /^[0-9]{4}\s([a-zA-Z]{3}|[a-zA-Z]{3,9})$/;
@@ -96,20 +102,25 @@ const year = /^[0-9]{4}$/;
           } else if (hour.test(mdate)) {
             precision[m_index] = 'hour';
           } else {
-            precision[m_index] = 'hour';
+            console.log('Date did not match any of the existing regular expressions');
+            process.exit(1);
           }
 
+          // Store site_id for update query
+          // Store manifest date for cleaning
           location = sites[p_index];
           date = manifest_dates[m_index];
 
           console.log(date);
           console.log(`${payload} : ${manifest_payload}`);
 
+          // Strip brackets from time given, and tack on UTC time offset at the end for date parser
           const stripped_time = `${date.replace('[', '').replace(']', '')} +0000`;
+          // Feed stripped time into all possible date formats in the wiki currently
           const time = moment(stripped_time, ['YYYY MMM D HH:mm Z', 'YYYY MMM D Z', 'YYYY MMM Z', 'YYYY Q Z', 'YYYY Z']);
           const zone = moment.tz(time, 'UTC');
 
-          // Set timezone based on launch location
+          // Set timezone based on launch site id
           if (location === 'ccafs_slc_40' || location === 'ksc_lc_39a' || location === 'ccafs_lc_13') {
             localTime = time.tz('America/New_York').format();
           } else if (location === 'vafb_slc_4e' || location === 'vafb_slc_4w') {
@@ -135,11 +146,14 @@ const year = /^[0-9]{4}$/;
             payload = 'Iridium NEXT 8';
           }
 
+          // Add to array of promises to update all at once after the forEach functions finish
           promises.push(col.updateOne({ 'rocket.second_stage.payloads.payload_id': payload }, { $set: calculatedTimes }));
         }
       });
     });
+    // Execute all our stored update promises
     const output = await Promise.all(promises);
+    // Display if the document was found, and if it was modified or not
     output.forEach(doc => {
       console.log(`N: ${doc.result.n}`);
       console.log(`Modified: ${doc.result.nModified}`);
