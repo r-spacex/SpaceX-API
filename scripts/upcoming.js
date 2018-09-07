@@ -7,7 +7,7 @@
  * id of the launch.
  *
  * Hopefully the format of the wiki does not change, but there's no real reason for it to change in the
- * forseeable future. If it does change
+ * forseeable future. If it does change, this script will have to be updated as necessary.
  */
 
 const MongoClient = require('mongodb');
@@ -78,6 +78,9 @@ const year = /^[0-9]{4}$/;
       return (index + 3) % 8 === 0;
     });
 
+    // Compare each payload against entire list of manifest payloads, and fuzzy match the
+    // payload id against the manifest payload name. The partial match must be 100%, to avoid
+    // conflicts like SSO-A and SSO-B, where a really close match would produce wrong results.
     payloads.forEach((payload, p_index) => {
       manifest_payloads.forEach((manifest_payload, m_index) => {
         if (fuzz.partial_ratio(payload, manifest_payload) === 100) {
