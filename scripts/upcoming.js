@@ -61,6 +61,16 @@ const promises = [];
       return index % 8 === 0;
     });
 
+    manifest_dates.forEach((elem, index) => {
+      if (elem.includes('Q')) {
+        manifest_dates[index] = manifest_dates[index].replace('Q', '');
+      } else if (elem.includes('H1')) {
+        manifest_dates[index] = manifest_dates[index].replace('H1', '1');
+      } else if (elem.includes('H2')) {
+        manifest_dates[index] = manifest_dates[index].replace('H2', '3');
+      }
+    });
+
     // Filter to collect payload names
     const manifest_payloads = manifest_row.filter((value, index) => {
       return (index + 3) % 8 === 0;
@@ -75,8 +85,8 @@ const promises = [];
           console.log(date);
           console.log(`${payload} : ${manifest_payload}`);
 
-          const stripped_time = `${date.replace('[', '').replace(']', '')} UTC`;
-          const time = moment(stripped_time);
+          const stripped_time = `${date.replace('[', '').replace(']', '')} +0000`;
+          const time = moment(stripped_time, ['YYYY MMM D HH:mm Z', 'YYYY MMM D Z', 'YYYY MMM Z', 'YYYY Q Z', 'YYYY Z']);
           const zone = moment.tz(time, 'UTC');
 
           // Set timezone based on launch location
