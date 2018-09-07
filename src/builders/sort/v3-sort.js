@@ -203,6 +203,9 @@ module.exports = r => {
       if (r.query.sort === 'type') {
         query.type = direction;
       }
+      if (r.query.sort === 'reuse_count') {
+        query.reuse_count = direction;
+      }
     } else if (/^\/v3\/cores(.*)(?:\/)?$/i.test(r.url)) {
       //------------------------------------------------------------
       //                       Core Fields
@@ -219,6 +222,9 @@ module.exports = r => {
       }
       if (r.query.sort === 'original_launch') {
         query.original_launch = direction;
+      }
+      if (r.query.sort === 'reuse_count') {
+        query.reuse_count = direction;
       }
       if (r.query.sort === 'rtls_attempt') {
         query.rtls_attempt = direction;

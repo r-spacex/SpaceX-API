@@ -23,6 +23,9 @@ module.exports = q => {
   if (q.missions) {
     query.missions = q.missions;
   }
+  if (q.reuse_count) {
+    query.reuse_count = parseInt(q.reuse_count, 10);
+  }
   if (q.rtls_attempt) {
     query.rtls_attempt = (q.rtls_attempt === 'true');
   }

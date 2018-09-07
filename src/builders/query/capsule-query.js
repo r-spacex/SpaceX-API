@@ -29,6 +29,9 @@ module.exports = q => {
   if (q.type) {
     query.type = q.type;
   }
+  if (q.reuse_count) {
+    query.reuse_count = parseInt(q.reuse_count, 10);
+  }
 
   return query;
 };
