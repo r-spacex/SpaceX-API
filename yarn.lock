@@ -4398,9 +4398,9 @@ superagent@^3.8.3:
     qs "^6.5.1"
     readable-stream "^2.3.5"
 
-supertest@^3.2.0:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/supertest/-/supertest-3.2.0.tgz#9addd40096135f4fb8f032dd7c3fe3789604aa7a"
+supertest@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/supertest/-/supertest-3.3.0.tgz#79b27bd7d34392974ab33a31fa51a3e23385987e"
   dependencies:
     methods "^1.1.2"
     superagent "^3.8.3"
