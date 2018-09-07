@@ -278,6 +278,12 @@ test('It should return cores sorted by original launch date', async () => {
   expect(response.body[0]).toHaveProperty('original_launch');
 });
 
+test('It should return cores sorted by core reuse count', async () => {
+  const response = await request(app.callback()).get('/v3/cores?sort=reuse_count');
+  expect(response.statusCode).toBe(200);
+  expect(response.body[0]).toHaveProperty('reuse_count', 0);
+});
+
 test('It should return cores sorted by rtls attempts', async () => {
   const response = await request(app.callback()).get('/v2/parts/cores?sort=rtls_attempt');
   expect(response.statusCode).toBe(200);
@@ -346,6 +352,12 @@ test('It should return capsules sorted by capsule type', async () => {
   const response = await request(app.callback()).get('/v2/parts/caps?sort=type');
   expect(response.statusCode).toBe(200);
   expect(response.body[0]).toHaveProperty('type', 'Dragon 1.0');
+});
+
+test('It should return capsules sorted by capsule reuse count', async () => {
+  const response = await request(app.callback()).get('/v3/capsules?sort=reuse_count');
+  expect(response.statusCode).toBe(200);
+  expect(response.body[0]).toHaveProperty('reuse_count', 0);
 });
 
 //------------------------------------------------------------
