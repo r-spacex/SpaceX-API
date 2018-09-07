@@ -24,6 +24,12 @@ let date;
 const sites = [];
 const payloads = [];
 const promises = [];
+const precision = [];
+
+const hour = /^[0-9]{4}\s([a-zA-Z]{3}|[a-zA-Z]{3,9})\s[0-9]{1,2}\s(\[[0-9]{2}:[0-9]{2}\]|[0-9]{2}:[0-9]{2})$/;
+const day = /^[0-9]{4}\s([a-zA-Z]{3}|[a-zA-Z]{3,9})\s[0-9]{1,2}$/;
+const month = /^[0-9]{4}\s([a-zA-Z]{3}|[a-zA-Z]{3,9})$/;
+const year = /^[0-9]{4}$/;
 
 (async () => {
   try {
@@ -61,16 +67,6 @@ const promises = [];
       return index % 8 === 0;
     });
 
-    manifest_dates.forEach((elem, index) => {
-      if (elem.includes('Q')) {
-        manifest_dates[index] = manifest_dates[index].replace('Q', '');
-      } else if (elem.includes('H1')) {
-        manifest_dates[index] = manifest_dates[index].replace('H1', '1');
-      } else if (elem.includes('H2')) {
-        manifest_dates[index] = manifest_dates[index].replace('H2', '3');
-      }
-    });
-
     // Filter to collect payload names
     const manifest_payloads = manifest_row.filter((value, index) => {
       return (index + 3) % 8 === 0;
@@ -79,6 +75,30 @@ const promises = [];
     payloads.forEach((payload, p_index) => {
       manifest_payloads.forEach((manifest_payload, m_index) => {
         if (fuzz.partial_ratio(payload, manifest_payload) === 100) {
+          // Check and see if dates match a certain patten depending on the length of the
+          // date given. This sets the amount of precision needed for the date.
+          let mdate = manifest_dates[m_index];
+          if (mdate.includes('Q')) {
+            mdate = mdate.replace('Q', '');
+            precision[m_index] = 'quarter';
+          } else if (mdate.includes('H1')) {
+            mdate = mdate.replace('H1', '1');
+            precision[m_index] = 'half';
+          } else if (mdate.includes('H2')) {
+            mdate = mdate.replace('H2', '3');
+            precision[m_index] = 'half';
+          } else if (year.test(mdate)) {
+            precision[m_index] = 'year';
+          } else if (month.test(mdate)) {
+            precision[m_index] = 'month';
+          } else if (day.test(mdate)) {
+            precision[m_index] = 'day';
+          } else if (hour.test(mdate)) {
+            precision[m_index] = 'hour';
+          } else {
+            precision[m_index] = 'hour';
+          }
+
           location = sites[p_index];
           date = manifest_dates[m_index];
 
@@ -103,6 +123,8 @@ const promises = [];
             launch_date_unix: zone.unix(),
             launch_date_utc: zone.toISOString(),
             launch_date_local: localTime,
+            is_tentative: true,
+            tentative_max_precision: precision[m_index],
           };
           console.log(calculatedTimes);
           console.log('');
