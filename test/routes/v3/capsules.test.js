@@ -24,6 +24,7 @@ test('It should return all v3 capsules', async () => {
     expect(item).toHaveProperty('landings');
     expect(item).toHaveProperty('type');
     expect(item).toHaveProperty('details');
+    expect(item).toHaveProperty('reuse_count');
   });
 });
 
