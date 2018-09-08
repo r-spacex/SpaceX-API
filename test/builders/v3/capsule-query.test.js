@@ -9,7 +9,7 @@ beforeAll(done => {
 });
 
 //------------------------------------------------------------
-//                     Capsule Query Test
+//                    Capsule Query Test
 //------------------------------------------------------------
 
 test('It should return capsule serial C113', async () => {
