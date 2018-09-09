@@ -24,6 +24,9 @@ module.exports = q => {
   if (q.flight_number) {
     query.flight_number = parseInt(q.flight_number, 10);
   }
+  if (q.mission_name) {
+    query.mission_name = q.mission_name;
+  }
   if (q.launch_year) {
     query.launch_year = q.launch_year;
   }
