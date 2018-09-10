@@ -188,7 +188,7 @@ test('It should return launches with reused capsules', async () => {
   const response = await request(app.callback()).get('/v2/launches?capsule_reuse=true');
   expect(response.statusCode).toBe(200);
   response.body.forEach(item => {
-    expect(item.reuse).toHaveProperty('capsule', true);
+    expect(item.rocket.second_stage.payloads[0].reused).toEqual(true);
   });
 });
 
