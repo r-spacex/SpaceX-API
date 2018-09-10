@@ -100,7 +100,15 @@ module.exports = q => {
     query['rocket.fairings.reused'] = (q.fairings_reuse === 'true');
   }
   if (q.capsule_reuse) {
-    query['reuse.capsule'] = (q.capsule_reuse === 'true');
+    query['rocket.second_stage.payloads.reused'] = (q.capsule_reuse === 'true');
+    query.$or = [
+      {
+        'rocket.second_stage.payloads.payload_type': 'Dragon 1.1',
+      },
+      {
+        'rocket.second_stage.payloads.payload_type': 'Crew Dragon',
+      },
+    ];
   }
   if (q.ship) {
     query.ships = q.ship;
