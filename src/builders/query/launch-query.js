@@ -27,6 +27,9 @@ module.exports = q => {
   if (q.mission_name) {
     query.mission_name = q.mission_name;
   }
+  if (q.mission_id) {
+    query.mission_id = q.mission_id;
+  }
   if (q.launch_year) {
     query.launch_year = q.launch_year;
   }

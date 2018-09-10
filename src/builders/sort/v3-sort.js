@@ -30,6 +30,9 @@ module.exports = r => {
       if (r.query.sort === 'mission_name') {
         query.mission_name = direction;
       }
+      if (r.query.sort === 'mission_id') {
+        query.mission_id = direction;
+      }
       if (r.query.sort === 'launch_year') {
         query.launch_year = direction;
       }
