@@ -63,7 +63,7 @@
     "eslint-plugin-mongodb": "^1.0.0",
     "eslint-plugin-react": "^7.11.1",
     "eslint-plugin-security": "^1.4.0",
-    "jest": "^23.5.0",
+    "jest": "^23.6.0",
     "nodemon": "^1.18.4",
     "supertest": "^3.3.0"
   },
