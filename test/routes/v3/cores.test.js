@@ -21,9 +21,9 @@ test('It should return all v3 cores', async () => {
     expect(item).toHaveProperty('original_launch');
     expect(item).toHaveProperty('original_launch_unix');
     expect(item).toHaveProperty('reuse_count');
-    expect(item).toHaveProperty('rtls_attempt');
+    expect(item).toHaveProperty('rtls_attempts');
     expect(item).toHaveProperty('rtls_landings');
-    expect(item).toHaveProperty('asds_attempt');
+    expect(item).toHaveProperty('asds_attempts');
     expect(item).toHaveProperty('asds_landings');
     expect(item).toHaveProperty('water_landing');
     expect(item).toHaveProperty('details');

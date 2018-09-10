@@ -61,10 +61,10 @@ test('It should return core with an active status', async () => {
 });
 
 test('It should return cores with rtls attempts', async () => {
-  const response = await request(app.callback()).get('/v2/parts/cores?rtls_attempt=true');
+  const response = await request(app.callback()).get('/v2/parts/cores?rtls_attempts=2');
   expect(response.statusCode).toBe(200);
   response.body.forEach(item => {
-    expect(item).toHaveProperty('rtls_attempt', true);
+    expect(item).toHaveProperty('rtls_attempts', 2);
   });
 });
 
@@ -77,10 +77,10 @@ test('It should return cores with 1 rtls landings', async () => {
 });
 
 test('It should return cores with asds attempts', async () => {
-  const response = await request(app.callback()).get('/v2/parts/cores?asds_attempt=true');
+  const response = await request(app.callback()).get('/v2/parts/cores?asds_attempts=1');
   expect(response.statusCode).toBe(200);
   response.body.forEach(item => {
-    expect(item).toHaveProperty('asds_attempt', true);
+    expect(item).toHaveProperty('asds_attempts', 1);
   });
 });
 

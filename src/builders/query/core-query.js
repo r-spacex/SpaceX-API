@@ -26,14 +26,14 @@ module.exports = q => {
   if (q.reuse_count) {
     query.reuse_count = parseInt(q.reuse_count, 10);
   }
-  if (q.rtls_attempt) {
-    query.rtls_attempt = (q.rtls_attempt === 'true');
+  if (q.rtls_attempts) {
+    query.rtls_attempts = parseInt(q.rtls_attempts, 10);
   }
   if (q.rtls_landings) {
     query.rtls_landings = parseInt(q.rtls_landings, 10);
   }
-  if (q.asds_attempt) {
-    query.asds_attempt = (q.asds_attempt === 'true');
+  if (q.asds_attempts) {
+    query.asds_attempts = parseInt(q.asds_attempt, 10);
   }
   if (q.asds_landings) {
     query.asds_landings = parseInt(q.asds_landings, 10);

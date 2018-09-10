@@ -172,14 +172,14 @@ module.exports = r => {
       if (r.query.sort === 'original_launch') {
         query.original_launch = direction;
       }
-      if (r.query.sort === 'rtls_attempt') {
-        query.rtls_attempt = direction;
+      if (r.query.sort === 'rtls_attempts') {
+        query.rtls_attempts = direction;
       }
       if (r.query.sort === 'rtls_landings') {
         query.rtls_landings = direction;
       }
-      if (r.query.sort === 'asds_attempt') {
-        query.asds_attempt = direction;
+      if (r.query.sort === 'asds_attempts') {
+        query.asds_attempts = direction;
       }
       if (r.query.sort === 'asds_landings') {
         query.asds_landings = direction;

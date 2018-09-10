@@ -285,9 +285,9 @@ test('It should return cores sorted by core reuse count', async () => {
 });
 
 test('It should return cores sorted by rtls attempts', async () => {
-  const response = await request(app.callback()).get('/v2/parts/cores?sort=rtls_attempt');
+  const response = await request(app.callback()).get('/v2/parts/cores?sort=rtls_attempts');
   expect(response.statusCode).toBe(200);
-  expect(response.body[0]).toHaveProperty('rtls_attempt', false);
+  expect(response.body[0]).toHaveProperty('rtls_attempts', 0);
 });
 
 test('It should return cores sorted by rtls landings', async () => {
@@ -297,9 +297,9 @@ test('It should return cores sorted by rtls landings', async () => {
 });
 
 test('It should return cores sorted by asds attempts', async () => {
-  const response = await request(app.callback()).get('/v2/parts/cores?sort=asds_attempt');
+  const response = await request(app.callback()).get('/v2/parts/cores?sort=asds_attempts');
   expect(response.statusCode).toBe(200);
-  expect(response.body[0]).toHaveProperty('asds_attempt', false);
+  expect(response.body[0]).toHaveProperty('asds_attempts', 0);
 });
 
 test('It should return cores sorted by asds landings', async () => {
