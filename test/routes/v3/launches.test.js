@@ -18,6 +18,7 @@ test('It should return all launches', async () => {
   response.body.forEach(item => {
     expect(item).toHaveProperty('flight_number', expect.anything());
     expect(item).toHaveProperty('mission_name');
+    expect(item).toHaveProperty('mission_id');
     expect(item).toHaveProperty('launch_year', expect.stringMatching(/^[0-9]{4}$/));
     expect(item).toHaveProperty('launch_date_unix');
     expect(item).toHaveProperty('launch_date_utc');
@@ -99,6 +100,8 @@ test('It should return all launches', async () => {
     expect(item).toHaveProperty('launch_success');
     expect(item).toHaveProperty('links');
     expect(item).toHaveProperty('details');
+    expect(item).toHaveProperty('static_fire_date_utc');
+    expect(item).toHaveProperty('static_fire_date_unix');
   });
 });
 
