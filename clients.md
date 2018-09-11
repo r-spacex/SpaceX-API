@@ -31,3 +31,4 @@
 | spacex | Ruby | Rodolfo | [GitHub](https://github.com/rodolfobandeira/spacex) |
 | spacex | PHP | Aires Gonçalves | [GitHub](https://github.com/airesvsg/spacex) |
 | spacex_ex | Elixir | Chen Zhao | [GitHub](https://github.com/crunchysoul/spacex_ex) |
+| SpaceX | R | Johannes Friedrich | [GitHub](https://github.com/JohannesFriedrich/SpaceX) |
