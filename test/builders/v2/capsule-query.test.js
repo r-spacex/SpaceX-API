@@ -45,7 +45,7 @@ test('It should return capsule C113 with the correct launch date', async () => {
 });
 
 test('It should return capsule for CRS-12', async () => {
-  const response = await request(app.callback()).get('/v2/parts/caps?missions=SpaceX+CRS-12');
+  const response = await request(app.callback()).get('/v2/parts/caps?mission=SpaceX+CRS-12');
   expect(response.statusCode).toBe(200);
   response.body.forEach(item => {
     expect(item).toHaveProperty('missions');

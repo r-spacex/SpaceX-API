@@ -20,8 +20,8 @@ module.exports = q => {
   if (q.original_launch) {
     query.original_launch = q.original_launch;
   }
-  if (q.missions) {
-    query.missions = q.missions;
+  if (q.mission) {
+    query['missions.name'] = q.mission;
   }
   if (q.landings) {
     query.landings = parseInt(q.landings, 10);

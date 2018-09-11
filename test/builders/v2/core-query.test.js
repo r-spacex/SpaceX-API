@@ -45,7 +45,7 @@ test('It should return core B1041 with the correct launch date', async () => {
 });
 
 test('It should return core for Iridium NEXT 21-30', async () => {
-  const response = await request(app.callback()).get('/v2/parts/cores?missions=Iridium+NEXT+21-30');
+  const response = await request(app.callback()).get('/v2/parts/cores?mission=Iridium+NEXT+21-30');
   expect(response.statusCode).toBe(200);
   response.body.forEach(item => {
     expect(item).toHaveProperty('missions');

@@ -72,7 +72,7 @@ module.exports = q => {
     query.attempted_landings = q.attempted_landings;
   }
   if (q.mission) {
-    query.missions = q.mission;
+    query['missions.name'] = q.mission;
   }
 
   return query;
