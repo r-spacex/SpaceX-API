@@ -34,7 +34,7 @@
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
     "fuzzball": "^1.1.5",
-    "koa": "^2.5.2",
+    "koa": "^2.5.3",
     "koa-bodyparser": "^4.2.1",
     "koa-compress": "^3.0.0",
     "koa-helmet": "^4.0.0",
