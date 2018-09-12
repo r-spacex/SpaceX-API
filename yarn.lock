@@ -2905,13 +2905,13 @@ koa-morgan@^1.0.1:
   dependencies:
     morgan "^1.6.1"
 
-koa-redis-cache@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/koa-redis-cache/-/koa-redis-cache-3.0.1.tgz#037ca3e818473574b7a1c04f9afb593a6e161c60"
+koa-redis-cache@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/koa-redis-cache/-/koa-redis-cache-3.0.2.tgz#19dd97fff1ef830dd37b97dc108d2e6683a1308d"
   dependencies:
     co-redis "^2.1.1"
     path-to-regexp "^2.2.1"
-    readall "^1.0.0"
+    readall "^1.1.0"
     redis "^2.8.0"
 
 koa-router@^7.4.0:
@@ -3863,7 +3863,7 @@ readable-stream@^2.0.1, readable-stream@^2.0.2, readable-stream@^2.0.6, readable
     string_decoder "~1.1.1"
     util-deprecate "~1.0.1"
 
-readall@^1.0.0:
+readall@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/readall/-/readall-1.1.0.tgz#9dbfec0f3efe613fd4e1a8564c46d8a84eecc0c0"
   dependencies:
