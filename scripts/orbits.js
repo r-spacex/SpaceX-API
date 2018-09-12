@@ -21,7 +21,7 @@ async function asyncForEach(array, callback) {
     client = await MongoClient.connect(process.env.MONGO_URL, { useNewUrlParser: true });
     const db = client.db('spacex-api');
     const col = db.collection('launch');
-    const data = await col.find({}).sort({ flight_number: 1 });
+    const data = await col.find({ upcoming: false }).sort({ flight_number: 1 });
 
     const id = [];
     await data.forEach(launch => {
@@ -51,6 +51,8 @@ async function asyncForEach(array, callback) {
             epoch: new Date(orbit[0].EPOCH).toISOString(),
             mean_motion: parseFloat(orbit[0].MEAN_MOTION),
             raan: parseFloat(orbit[0].RA_OF_ASC_NODE),
+            arg_of_pericenter: parseFloat(orbit[0].ARG_OF_PERICENTER),
+            mean_anomaly: parseFloat(orbit[0].MEAN_ANOMALY),
             semi_major_axis_km: parseFloat(orbit[0].SEMIMAJOR_AXIS),
             eccentricity: parseFloat(orbit[0].ECCENTRICITY),
             periapsis_km: parseFloat(orbit[0].PERIGEE),
@@ -59,11 +61,14 @@ async function asyncForEach(array, callback) {
             period_min: parseFloat(orbit[0].PERIOD),
           };
           console.log(`Updating...${orbit[0].OBJECT_NAME}`);
+          console.log(update);
           await col.updateOne({ 'rocket.second_stage.payloads.norad_id': num }, {
             $set: {
               'rocket.second_stage.payloads.$.orbit_params.epoch': update.epoch,
               'rocket.second_stage.payloads.$.orbit_params.mean_motion': update.mean_motion,
               'rocket.second_stage.payloads.$.orbit_params.raan': update.raan,
+              'rocket.second_stage.payloads.$.orbit_params.arg_of_pericenter': update.arg_of_pericenter,
+              'rocket.second_stage.payloads.$.orbit_params.mean_anomaly': update.mean_anomaly,
               'rocket.second_stage.payloads.$.orbit_params.semi_major_axis_km': update.semi_major_axis_km,
               'rocket.second_stage.payloads.$.orbit_params.eccentricity': update.eccentricity,
               'rocket.second_stage.payloads.$.orbit_params.periapsis_km': update.periapsis_km,
