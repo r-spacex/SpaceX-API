@@ -156,7 +156,7 @@ const year = /^[0-9]{4}$/;
           }
 
           // Add to array of promises to update all at once after the forEach iterations finish
-          // promises.push(col.updateOne({ 'rocket.second_stage.payloads.payload_id': payload }, { $set: calculatedTimes }));
+          promises.push(col.updateOne({ 'rocket.second_stage.payloads.payload_id': payload }, { $set: calculatedTimes }));
         }
       });
     });
