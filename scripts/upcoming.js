@@ -4,7 +4,7 @@
  * This script gathers dates and payload names from the subreddit launch manifest,
  * fuzzy checks them against existing upcoming payload id's and updates the date if a
  * change is made in the wiki. The proper time zone is calculated from the launch site
- * id of the launch.
+ * id of the launch. It also updates the flight number order based on the launch manifest order.
  *
  * Hopefully the format of the wiki does not change, but there's no real reason for it to change in the
  * forseeable future. If it does change, this script will have to be updated as necessary.
@@ -28,6 +28,7 @@ const sites = [];
 const payloads = [];
 const promises = [];
 const precision = [];
+const flight_numbers = [];
 
 // RegEx expressions for matching dates in the wiki manifest
 // Allows for long months or short months ex. September vs Sep
@@ -44,7 +45,8 @@ const year = /^[0-9]{4}$/;
     const db = client.db('spacex-api');
     const col = db.collection('launch');
 
-    const launches = await col.find({ upcoming: true }).toArray();
+    const launches = await col.find({ upcoming: true }).sort({ flight_number: 1 }).toArray();
+    const base_flight_number = launches[0].flight_number;
 
     // Collect site names for time zone and payload name for fuzzy check
     launches.forEach(launch => {
@@ -132,8 +134,12 @@ const year = /^[0-9]{4}$/;
             localTime = time.tz('America/Chicago').format();
           }
 
+          // Add flight numbers to array to check for duplicates
+          flight_numbers.push(base_flight_number + m_index);
+
           // Build launch time objects to update
           calculatedTimes = {
+            flight_number: (base_flight_number + m_index),
             launch_date_unix: zone.unix(),
             launch_date_utc: zone.toISOString(),
             launch_date_local: localTime,
@@ -149,13 +155,21 @@ const year = /^[0-9]{4}$/;
             payload = 'Iridium NEXT 8';
           }
 
-          // Add to array of promises to update all at once after the forEach functions finish
-          promises.push(col.updateOne({ 'rocket.second_stage.payloads.payload_id': payload }, { $set: calculatedTimes }));
+          // Add to array of promises to update all at once after the forEach iterations finish
+          // promises.push(col.updateOne({ 'rocket.second_stage.payloads.payload_id': payload }, { $set: calculatedTimes }));
         }
       });
     });
+
+    // Check if duplicate flight numbers exist
+    if ([...new Set(flight_numbers)].length < flight_numbers.length) {
+      console.log('Duplicate flight numbers found');
+      process.exit(1);
+    }
+
     // Execute all our stored update promises
     const output = await Promise.all(promises);
+
     // Display if the document was found, and if it was modified or not
     output.forEach(doc => {
       console.log(`N: ${doc.result.n}`);
