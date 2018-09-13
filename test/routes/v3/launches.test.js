@@ -63,6 +63,8 @@ test('It should return all launches', async () => {
         expect(payload).toHaveProperty('orbit_params.epoch');
         expect(payload).toHaveProperty('orbit_params.mean_motion');
         expect(payload).toHaveProperty('orbit_params.raan');
+        expect(payload).toHaveProperty('orbit_params.mean_anomaly');
+        expect(payload).toHaveProperty('orbit_params.arg_of_pericenter');
         expect(payload).toHaveProperty('mass_returned_kg');
         expect(payload).toHaveProperty('mass_returned_lbs');
         expect(payload).toHaveProperty('flight_time_sec');
@@ -99,6 +101,7 @@ test('It should return all launches', async () => {
     expect(item).toHaveProperty('ships');
     expect(item).toHaveProperty('launch_success');
     expect(item).toHaveProperty('links');
+    expect(item).toHaveProperty('links.flickr_images');
     expect(item).toHaveProperty('details');
     expect(item).toHaveProperty('static_fire_date_utc');
     expect(item).toHaveProperty('static_fire_date_unix');
