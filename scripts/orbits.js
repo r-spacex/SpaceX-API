@@ -34,7 +34,7 @@ async function asyncForEach(array, callback) {
 
     await request.post('https://www.space-track.org/ajaxauth/login', {
       form: {
-        identity: process.env.USERNAME,
+        identity: process.env.LOGIN,
         password: process.env.PASSWORD,
       },
       json: true,
