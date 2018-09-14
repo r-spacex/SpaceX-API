@@ -1,7 +1,7 @@
 
 const launchQuery = require('../../builders/query/launch-query');
-const sort = require('../../builders/sort/v3-sort');
-const limit = require('../../builders/limit');
+const sort = require('../../builders/v3/sort');
+const limit = require('../../builders/v3/limit');
 
 module.exports = {
 
@@ -17,12 +17,14 @@ module.exports = {
       .limit(limit(ctx.request.query))
       .toArray();
 
-    // Remove params that aren't fields, so we can iterate them and check if the
-    // payload fields match
+    // Removed these fields so we can match the remaining querystrings against
+    // each payload
     delete ctx.request.query.limit;
     delete ctx.request.query.order;
     delete ctx.request.query.sort;
-    // Store pretty value so json formatter can check param at the request end
+
+    // Pretty is stored because the json formatter reads this after the request, and
+    // we need to get rid of querystrings not found in a payload object
     const pretty = ctx.request.query.pretty;
     delete ctx.request.query.pretty;
 
@@ -31,10 +33,7 @@ module.exports = {
     data.forEach(launch => {
       launch.rocket.second_stage.payloads.forEach(payload => {
         match = 0;
-        // Iterate keys in querystring object, and check if the payload object
-        // is equal. If they match, add to match counter. At the end, check that the
-        // number of matches equals the number of keys in the querystring object, and if so,
-        // push the payload object to the array
+        // Match each payload object with the given querystrings
         if (Object.keys(ctx.request.query).length !== 0) {
           Object.entries(ctx.request.query).forEach(([key, value]) => {
             if (value === payload[key]) {
@@ -44,13 +43,11 @@ module.exports = {
           if (match === Object.keys(ctx.request.query).length) {
             payloads.push(payload);
           }
-        // If no querystrings exist, we don't need to check matching, so add the payload
         } else {
           payloads.push(payload);
         }
       });
     });
-    // Add back pretty variable, so json formatter can tell whether or not to pretty print
     ctx.request.query.pretty = pretty;
     ctx.body = payloads;
   },
@@ -69,11 +66,11 @@ module.exports = {
     if (data.length === 0) {
       ctx.throw(404);
     }
+    // Because the query could return a launch with multiple payloads, we iterate
+    // through the object to find the matching payload
     try {
       payloads = data[0].rocket.second_stage.payloads;
       let index = 0;
-      // Check that the payload_id matches the one in the param. If it matches
-      // return the index of that payload
       payloads.forEach((payload, i) => {
         if (payload.payload_id === ctx.params.payload_id) {
           index = i;

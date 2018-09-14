@@ -1,5 +1,5 @@
 
-const order = require('../order');
+const order = require('./order');
 
 /**
  * Builds and returns mongo sort object for specific querystring fields.

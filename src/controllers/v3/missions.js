@@ -1,7 +1,7 @@
 
-const limit = require('../../builders/limit');
+const limit = require('../../builders/v3/limit');
 const query = require('../../builders/query/mission-query');
-const project = require('../../builders/project');
+const project = require('../../builders/v3/project');
 
 module.exports = {
 

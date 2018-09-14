@@ -1,6 +1,6 @@
 
 const request = require('supertest');
-const order = require('../../../src/builders/order');
+const order = require('../../../src/builders/v3/order');
 const app = require('../../../src/app');
 
 beforeAll(done => {

@@ -1,5 +1,5 @@
 
-const project = require('../../builders/project');
+const project = require('../../builders/v3/project');
 
 module.exports = {
 

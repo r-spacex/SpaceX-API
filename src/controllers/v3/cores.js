@@ -1,8 +1,8 @@
 
 const query = require('../../builders/query/core-query');
-const limit = require('../../builders/limit');
-const sort = require('../../builders/sort/v3-sort');
-const project = require('../../builders/project');
+const limit = require('../../builders/v3/limit');
+const sort = require('../../builders/v3/sort');
+const project = require('../../builders/v3/project');
 
 module.exports = {
 
