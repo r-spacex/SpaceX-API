@@ -31,12 +31,15 @@ curl -s https://api.spacexdata.com/v2/launches/latest | jq
 
 ```json
 {
-  "flight_number": 67,
-  "mission_name": "Merah Putih",
+  "flight_number": 68,
+  "mission_name": "Telstar 18V",
+  "mission_id": [
+    "F4F83DE"
+  ],
   "launch_year": "2018",
-  "launch_date_unix": 1533619080,
-  "launch_date_utc": "2018-08-07T05:18:00.000Z",
-  "launch_date_local": "2018-08-07T01:18:00-04:00",
+  "launch_date_unix": 1536554700,
+  "launch_date_utc": "2018-09-10T04:45:00.000Z",
+  "launch_date_local": "2018-09-10T00:45:00-04:00",
   "is_tentative": false,
   "tentative_max_precision": "hour",
   "rocket": {
@@ -46,10 +49,10 @@ curl -s https://api.spacexdata.com/v2/launches/latest | jq
     "first_stage": {
       "cores": [
         {
-          "core_serial": "B1046",
-          "flight": 2,
+          "core_serial": "B1049",
+          "flight": 1,
           "block": 5,
-          "reused": true,
+          "reused": false,
           "land_success": true,
           "landing_type": "ASDS",
           "landing_vehicle": "OCISLY"
@@ -60,34 +63,36 @@ curl -s https://api.spacexdata.com/v2/launches/latest | jq
       "block": 5,
       "payloads": [
         {
-          "payload_id": "Telkom-4",
+          "payload_id": "Telstar 18V",
           "norad_id": [
-            43587
+            43611
           ],
           "reused": false,
           "customers": [
-            "Telkom"
+            "Telesat"
           ],
-          "nationality": "Indonesia",
+          "nationality": "Canada",
           "manufacturer": "SSL",
           "payload_type": "Satellite",
-          "payload_mass_kg": 5800,
-          "payload_mass_lbs": 12786.81,
+          "payload_mass_kg": 7060,
+          "payload_mass_lbs": 15564.64,
           "orbit": "GTO",
           "orbit_params": {
             "reference_system": "geocentric",
             "regime": "geostationary",
-            "longitude": -108,
-            "semi_major_axis_km": 21226.178,
-            "eccentricity": 0.6904141,
-            "periapsis_km": 193.19,
-            "apoapsis_km": 29502.896,
-            "inclination_deg": 27.0648,
-            "period_min": 512.941,
+            "longitude": 138,
+            "semi_major_axis_km": 7226.647,
+            "eccentricity": 0.0013608,
+            "periapsis_km": 838.677,
+            "apoapsis_km": 858.346,
+            "inclination_deg": 98.8086,
+            "period_min": 101.897,
             "lifespan_years": 15,
-            "epoch": "2018-08-07T06:57:16.000Z",
-            "mean_motion": 2.80734018,
-            "raan": 227.0228
+            "epoch": "2018-09-07T06:29:40.000Z",
+            "mean_motion": 14.13180055,
+            "raan": 322.194,
+            "arg_of_pericenter": 130.3173,
+            "mean_anomaly": 328.1487
           }
         }
       ]
@@ -100,14 +105,15 @@ curl -s https://api.spacexdata.com/v2/launches/latest | jq
     }
   },
   "ships": [
+    "OCISLY",
     "HAWK",
-    "OCISLY"
+    "GOQUEST"
   ],
   "telemetry": {
-    "flight_club": null
+    "flight_club": "https://www.flightclub.io/result/2d?code=T18V"
   },
   "reuse": {
-    "core": true,
+    "core": false,
     "side_core1": false,
     "side_core2": false,
     "fairings": false,
@@ -120,20 +126,28 @@ curl -s https://api.spacexdata.com/v2/launches/latest | jq
   },
   "launch_success": true,
   "links": {
-    "mission_patch": "https://images2.imgbox.com/a8/f5/ZgdsrbqW_o.png",
-    "mission_patch_small": "https://images2.imgbox.com/a7/ec/sbwePzVD_o.png",
-    "reddit_campaign": "https://www.reddit.com/r/spacex/comments/91gwfg/merah_putih_telkom4_launch_campaign_thread/",
-    "reddit_launch": "https://www.reddit.com/r/spacex/comments/9539nr/rspacex_merah_putih_telkom4_official_launch/",
-    "reddit_recovery": null,
-    "reddit_media": "https://www.reddit.com/r/spacex/comments/94zr0b/rspacex_merah_putih_media_thread_videos_images/",
-    "presskit": "https://www.spacex.com/sites/spacex/files/merahputihpresskit.pdf",
-    "article_link": "https://spaceflightnow.com/2018/08/07/indonesian-communications-satellite-deployed-in-orbit-by-spacex/",
-    "wikipedia": "https://en.wikipedia.org/wiki/Telkom_Indonesia",
-    "video_link": "https://www.youtube.com/watch?v=FjfQNBYv2IY"
+    "mission_patch": "https://images2.imgbox.com/ba/db/3plcm5IB_o.png",
+    "mission_patch_small": "https://images2.imgbox.com/2d/d2/jStsqeLC_o.png",
+    "reddit_campaign": "https://www.reddit.com/r/spacex/comments/95cte4/telstar_18v_apstar_5c_launch_campaign_thread/",
+    "reddit_launch": "https://www.reddit.com/r/spacex/comments/9e7bmq/rspacex_telstar_18v_official_launch_discussion/",
+    "reddit_recovery": "https://www.reddit.com/r/spacex/comments/9erxlh/telstar_18_vantage_recovery_thread/",
+    "reddit_media": "https://www.reddit.com/r/spacex/comments/9ebkqw/rspacex_telstar_18v_media_thread_videos_images/",
+    "presskit": "https://www.spacex.com/sites/spacex/files/telstar18vantagepresskit.pdf",
+    "article_link": "https://spaceflightnow.com/2018/09/10/spacex-telesat-achieve-repeat-success-with-midnight-hour-launch/",
+    "wikipedia": "https://en.wikipedia.org/wiki/Telstar_18V",
+    "video_link": "https://www.youtube.com/watch?v=Apw3xqwsG1U",
+    "flickr_images": [
+      "https://farm2.staticflickr.com/1878/43690848045_492ef182dd_o.jpg",
+      "https://farm2.staticflickr.com/1856/43881229604_6d42e838b6_o.jpg",
+      "https://farm2.staticflickr.com/1852/43881223704_93777e34af_o.jpg",
+      "https://farm2.staticflickr.com/1841/43881217094_558b7b214e_o.jpg",
+      "https://farm2.staticflickr.com/1869/43881193934_423eff8c86_o.jpg"
+    ]
   },
-  "details": "SpaceX's fifteenth flight of 2018 launched the Merah Putih (also known as Telkom-4) geostationary communications satellite for Telkom Indonesia. It marked the first reuse of any Block 5 first stage; the booster B1046 had previously launched Bangabandhu-1. The stage was recovered and is expected to become the first Falcon 9 booster to fly three missions.",
+  "details": "SpaceX's sixteenth mission of 2018 will be the launch of Telstar 18V / APStar 5C to GTO for Telesat and APStar. Telesat signed a contract with SSL in December 2015 for the construction of the satellite. It is based on the SSL-1300 bus with an electrical output of approximately 14 kW. The new satellite will operate from 138° East and significantly expand Telesat’s capacity over the Asia Pacific region through a combination of broad regional beams and high throughput spot-beams. Telesat also announced it has entered into an agreement with APT Satellite Company Limited (APSTAR) under which APSTAR will make use of capacity on Telstar-18-VANTAGE to serve its growing base of customers. This agreement extends the long term relationship between APSTAR and Telesat that has existed for more than a decade. Equipped with C and Ku-band transponders, Telstar 18 VANTAGE will offer superior performance for broadcasters, telecom service providers and enterprise networks on the ground, in the air and at sea. Its broad C-band coverage will extend across the Asia region to Hawaii enabling direct connectivity between any point in Asia and the Americas. Its Ku-band capacity will expand on Telesat’s coverage of growing satellite service markets in China, Mongolia, Southeast Asia, and the Pacific Ocean.",
   "upcoming": false,
-  "static_fire_date_utc": "2018-08-02T15:53:00.000Z"
+  "static_fire_date_utc": "2018-09-05T07:21:00.000Z",
+  "static_fire_date_unix": 1536132060
 }
 ```
 
