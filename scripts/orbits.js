@@ -1,5 +1,10 @@
 #!/usr/bin/env node
 
+/**
+ * This script gathers current orbital data from the SpaceTrack API,
+ * and updates the current orbital position for each payload.
+ */
+
 const MongoClient = require('mongodb');
 const request = require('request-promise-native').defaults({ jar: true });
 
@@ -7,6 +12,7 @@ const sleep = ms => {
   return new Promise(resolve => setTimeout(resolve, ms));
 };
 
+// Using an async foreach so we can use request promises in each payload
 async function asyncForEach(array, callback) {
   for (let index = 0; index < array.length; index += 1) {
     // Allow await for nested async functions
