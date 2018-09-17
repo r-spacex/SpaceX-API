@@ -1,6 +1,6 @@
 
 const sort = require('../../builders/v2/sort');
-const historyQuery = require('../../builders/query/history-query');
+const find = require('../../builders/v2/find');
 const limit = require('../../builders/v2/limit');
 const project = require('../../builders/v2/project');
 
@@ -12,7 +12,7 @@ module.exports = {
   all: async ctx => {
     const data = await global.db
       .collection('history')
-      .find(historyQuery(ctx.request.query))
+      .find(find(ctx.request))
       .project(project(ctx.request.query))
       .sort(sort(ctx.request))
       .limit(limit(ctx.request.query))

@@ -1,6 +1,5 @@
 
-const coreQuery = require('../../builders/query/core-query');
-const capQuery = require('../../builders/query/capsule-query');
+const find = require('../../builders/v2/find');
 const limit = require('../../builders/v2/limit');
 const sort = require('../../builders/v2/sort');
 const project = require('../../builders/v2/project');
@@ -13,7 +12,7 @@ module.exports = {
   allCaps: async ctx => {
     const data = await global.db
       .collection('capsule')
-      .find(capQuery(ctx.request.query))
+      .find(find(ctx.request))
       .project(project(ctx.request.query))
       .sort(sort(ctx.request))
       .limit(limit(ctx.request.query))
@@ -39,7 +38,7 @@ module.exports = {
   allCores: async ctx => {
     const data = await global.db
       .collection('core')
-      .find(coreQuery(ctx.request.query))
+      .find(find(ctx.request))
       .project(project(ctx.request.query))
       .sort(sort(ctx.request))
       .limit(limit(ctx.request.query))

@@ -1,5 +1,5 @@
 
-const launchQuery = require('../../builders/query/launch-query');
+const find = require('../../builders/v2/find');
 const sort = require('../../builders/v2/sort');
 const limit = require('../../builders/v2/limit');
 
@@ -11,7 +11,7 @@ module.exports = {
   all: async ctx => {
     const data = await global.db
       .collection('launch')
-      .find(launchQuery(ctx.request.query))
+      .find(find(ctx.request))
       .project({ _id: 0, 'rocket.second_stage.payloads': 1, flight_number: 1 })
       .sort(sort(ctx.request))
       .limit(limit(ctx.request.query))

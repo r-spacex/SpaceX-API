@@ -1,5 +1,5 @@
 
-const launchQuery = require('../../builders/query/launch-query');
+const find = require('../../builders/v2/find');
 const sort = require('../../builders/v2/sort');
 const project = require('../../builders/v2/project');
 const limit = require('../../builders/v2/limit');
@@ -40,7 +40,7 @@ module.exports = {
   all: async ctx => {
     const data = await global.db
       .collection('launch')
-      .find(launchQuery(ctx.request.query))
+      .find(find(ctx.request))
       .project(project(ctx.request.query))
       .sort(sort(ctx.request))
       .limit(limit(ctx.request.query))
@@ -54,7 +54,7 @@ module.exports = {
   past: async ctx => {
     const data = await global.db
       .collection('launch')
-      .find(Object.assign({ upcoming: false }, launchQuery(ctx.request.query)))
+      .find(Object.assign({ upcoming: false }, find(ctx.request)))
       .project(project(ctx.request.query))
       .sort(sort(ctx.request))
       .limit(limit(ctx.request.query))
@@ -68,7 +68,7 @@ module.exports = {
   upcoming: async ctx => {
     const data = await global.db
       .collection('launch')
-      .find(Object.assign({ upcoming: true }, launchQuery(ctx.request.query)))
+      .find(Object.assign({ upcoming: true }, find(ctx.request)))
       .project(project(ctx.request.query))
       .sort(sort(ctx.request))
       .limit(limit(ctx.request.query))
