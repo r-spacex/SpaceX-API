@@ -126,6 +126,9 @@ module.exports = r => {
       if (r.query.sort === 'land_success') {
         query['rocket.first_stage.cores.land_success'] = direction;
       }
+      if (r.query.sort === 'landing_intent') {
+        query['rocket.first_stage.cores.landing_intent'] = direction;
+      }
       if (r.query.sort === 'landing_type') {
         query['rocket.first_stage.cores.landing_type'] = direction;
       }

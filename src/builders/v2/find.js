@@ -193,8 +193,11 @@ module.exports = r => {
     if (r.query.reused) {
       query['rocket.first_stage.cores.reused'] = (r.query.reused === 'true');
     }
-    if (r.query.land_success) {
-      query['rocket.first_stage.cores.land_success'] = (r.query.land_success === 'true');
+    if (r.query.landing_intent) {
+      query['rocket.first_stage.cores.landing_intent'] = (r.query.landing_intent === 'true');
+    }
+    if (r.query.landing_type) {
+      query['rocket.first_stage.cores.landing_type'] = r.query.landing_type;
     }
     if (r.query.landing_type) {
       query['rocket.first_stage.cores.landing_type'] = r.query.landing_type;
