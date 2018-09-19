@@ -171,9 +171,12 @@ const year = /^[0-9]{4}$/;
     const output = await Promise.all(promises);
 
     // Display if the document was found, and if it was modified or not
-    output.forEach(doc => {
-      console.log(`N: ${doc.result.n}`);
-      console.log(`Modified: ${doc.result.nModified}`);
+    output.forEach((doc, index) => {
+      if (doc.result.nModified !== 0) {
+        console.log(`${payloads[index]} UPDATED`);
+      } else {
+        console.log(`${payloads[index]}`);
+      }
     });
   } catch (err) {
     console.log(err.stack);
