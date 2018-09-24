@@ -1,8 +1,8 @@
-# Do yarn install with full image
+# Do npm install with full image
 FROM mhart/alpine-node:latest
 WORKDIR /app
-COPY package.json yarn.lock ./
-RUN yarn install --production
+COPY package.json package-lock.json ./
+RUN npm install --production
 
 # And then copy over node_modules, etc from that stage to the smaller base image
 FROM mhart/alpine-node:base

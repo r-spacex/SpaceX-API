@@ -1,7 +1,7 @@
 image: node:latest
 
 before_script:
-  - yarn install
+  - npm install
 
 cache:
   paths:
@@ -9,4 +9,4 @@ cache:
 
 test:
   script:
-    - yarn test --forceExit
+    - npm test --runInBand --forceExit
