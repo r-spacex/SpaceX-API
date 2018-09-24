@@ -7,17 +7,17 @@ git clone https://github.com/r-spacex/SpaceX-API.git && cd SpaceX-API
 
 2. Install dependencies
 ```bash
-yarn install
+npm install
 ```
 
 3. Run ESlint and all tests
 ```bash
-yarn test
+npm test
 ```
 
 4. Start the app
 ```bash
-yarn start
+npm start
 ```
 
 ### With Docker
