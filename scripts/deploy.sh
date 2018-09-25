@@ -14,7 +14,7 @@ if [ "${TRAVIS_BRANCH}" == 'master' ]; then
     ssh-add ~/deploy-key
 
     # SSH, pull, reinstall deps, and restart pm2 process
-    ssh -t -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "bash --login -c 'cd /var/www/spacexdata.com/SpaceX-API && git checkout master && git pull --force && npm install --production && pm2 reload spacex-api'"
+    ssh -t -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "bash --login -c 'cd /var/www/spacexdata.com/SpaceX-API && git checkout master --force && git pull --force && npm install --production && pm2 reload spacex-api'"
 else
     echo "Not publishing, since this branch isn't master."
 fi
