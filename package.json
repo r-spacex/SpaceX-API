@@ -32,6 +32,7 @@
   },
   "homepage": "https://github.com/r-spacex/SpaceX-API",
   "dependencies": {
+    "@koa/json-filter": "^1.0.0",
     "cheerio": "^1.0.0-rc.2",
     "fuzzball": "^1.1.5",
     "koa": "^2.5.3",

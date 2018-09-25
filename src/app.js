@@ -4,6 +4,7 @@ const cache = require('koa-redis-cache');
 const compress = require('koa-compress');
 const cors = require('koa2-cors');
 const helmet = require('koa-helmet');
+const jsonFilter = require('@koa/json-filter');
 const Koa = require('koa');
 const logger = require('koa-morgan');
 const MongoClient = require('mongodb');
@@ -94,6 +95,9 @@ app.use(bodyParser());
 if (process.env.NODE_ENV === 'production') {
   app.use(cache(options));
 }
+
+// Allow user to restrict the keys returned
+app.use(jsonFilter());
 
 // Allow pretty print via pretty=true querystring
 // Pretty printed json will NOT be cached
