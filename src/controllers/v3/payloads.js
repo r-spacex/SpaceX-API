@@ -22,6 +22,7 @@ module.exports = {
     delete ctx.request.query.limit;
     delete ctx.request.query.order;
     delete ctx.request.query.sort;
+    delete ctx.request.query.filter;
 
     // Pretty is stored because the json formatter reads this after the request, and
     // we need to get rid of querystrings not found in a payload object
