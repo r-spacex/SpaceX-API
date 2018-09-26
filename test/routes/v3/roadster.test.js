@@ -30,4 +30,5 @@ test('It should return roadster info', async () => {
   expect(response.body).toHaveProperty('earth_distance_mi', expect.any(Number));
   expect(response.body).toHaveProperty('mars_distance_km', expect.any(Number));
   expect(response.body).toHaveProperty('mars_distance_mi', expect.any(Number));
+  expect(response.body).toHaveProperty('flickr_images');
 });
