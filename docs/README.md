@@ -1,4 +1,4 @@
-## Introduction
+## Old V2 Documentation
 This collection of documents describes the resources and functions that make up the r/SpaceX API. The documentation uses [api blueprint](https://apiblueprint.org/) for formatting.
 
 ## API Status

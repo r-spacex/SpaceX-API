@@ -11,7 +11,7 @@ covered, make sure to add a test for it.
 Changes will not be merged unless the build passes
 
 4. If the build succeeds, the pull request will be merged, and automatically
-pushed to the production server at [https://api.spacexdata.com/v2/](https://api.spacexdata.com/v2/)
+pushed to the production server at [https://api.spacexdata.com/v3/](https://api.spacexdata.com/v3/)
 
 ## Database additions / changes / updates
 

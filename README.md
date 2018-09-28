@@ -11,14 +11,10 @@
 
 <h3 align="center">Open Source REST API for rocket, core, capsule, pad, and launch data</h3>
 
-## Docs
-* See the [Docs](https://github.com/r-spacex/SpaceX-API/tree/master/docs) for full  V2 API Documentation
+## Documentation
+* See the [Docs](https://documenter.getpostman.com/view/2025350/RWaEzAiG) for full  V3 API Documentation
 
-## V3 preview
-* API V3 will be released towards the end of September 2018
-* V2 will remain available indefinitely, and the data will continue to be updated
-* V3 docs preview located [here](https://documenter.getpostman.com/view/2025350/RWaEzAiG)
-
+## Postman Collection
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/3aeac01a548a87943749)
 
 ## Usage
@@ -26,7 +22,7 @@
 **Example Response**
 
 ```bash
-curl -s https://api.spacexdata.com/v2/launches/latest | jq
+curl -s https://api.spacexdata.com/v3/launches/latest | jq
 ```
 
 ```json
@@ -54,6 +50,7 @@ curl -s https://api.spacexdata.com/v2/launches/latest | jq
           "block": 5,
           "reused": false,
           "land_success": true,
+          "landing_intent": true,
           "landing_type": "ASDS",
           "landing_vehicle": "OCISLY"
         }
@@ -112,13 +109,6 @@ curl -s https://api.spacexdata.com/v2/launches/latest | jq
   "telemetry": {
     "flight_club": "https://www.flightclub.io/result/2d?code=T18V"
   },
-  "reuse": {
-    "core": false,
-    "side_core1": false,
-    "side_core2": false,
-    "fairings": false,
-    "capsule": false
-  },
   "launch_site": {
     "site_id": "ccafs_slc_40",
     "site_name": "CCAFS SLC 40",
@@ -144,7 +134,7 @@ curl -s https://api.spacexdata.com/v2/launches/latest | jq
       "https://farm2.staticflickr.com/1869/43881193934_423eff8c86_o.jpg"
     ]
   },
-  "details": "SpaceX's sixteenth mission of 2018 will be the launch of Telstar 18V / APStar 5C to GTO for Telesat and APStar. Telesat signed a contract with SSL in December 2015 for the construction of the satellite. It is based on the SSL-1300 bus with an electrical output of approximately 14 kW. The new satellite will operate from 138° East and significantly expand Telesat’s capacity over the Asia Pacific region through a combination of broad regional beams and high throughput spot-beams. Telesat also announced it has entered into an agreement with APT Satellite Company Limited (APSTAR) under which APSTAR will make use of capacity on Telstar-18-VANTAGE to serve its growing base of customers. This agreement extends the long term relationship between APSTAR and Telesat that has existed for more than a decade. Equipped with C and Ku-band transponders, Telstar 18 VANTAGE will offer superior performance for broadcasters, telecom service providers and enterprise networks on the ground, in the air and at sea. Its broad C-band coverage will extend across the Asia region to Hawaii enabling direct connectivity between any point in Asia and the Americas. Its Ku-band capacity will expand on Telesat’s coverage of growing satellite service markets in China, Mongolia, Southeast Asia, and the Pacific Ocean.",
+  "details": "SpaceX's sixteenth flight of 2018 launched the Telstar 18v GEO communication satellite for Telesat, the second launch for the canadian company in a few months. The first stage was a new Falcon 9 V1.2 Block 5 which was successfully recovered on OCISLY.",
   "upcoming": false,
   "static_fire_date_utc": "2018-09-05T07:21:00.000Z",
   "static_fire_date_unix": 1536132060
@@ -162,6 +152,12 @@ See the [contribution](https://github.com/r-spacex/SpaceX-API/blob/master/CONTRI
 
 ## Local Development
 Local development info can be found [here](https://github.com/r-spacex/SpaceX-API/blob/master/docs/development.md)
+
+## Old V2 docs
+* API V2 will be available indefinitely, but will no longer receive new feature updates.
+* V2 data will still be updated
+* V2 docs will no longer be updated
+* Old V2 docs located [here](https://github.com/r-spacex/SpaceX-API/tree/master/docs)
 
 ## Technical Details
 * Deployed on a central U.S. [Linode](https://www.linode.com/) server
