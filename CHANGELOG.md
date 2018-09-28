@@ -1,3 +1,68 @@
+## Version 3.0.0
+**Features**
+* Added ability to sort on any field where an endpoint returns an array - #129
+* Added array of links to official SpaceX flickr photos for rockets, dragon capsules, launches, and the tesla roadster
+* Added `tentative_max_precision` field for more information about partial dates in upcoming launches. Values can include hour, day, month, quarter, half, or year. This provides important context about how precise the future date is
+* Added link to api status page - 42aec55
+* Added reusable date parsing utility - 0d8ebc0
+* Added ability to pretty print json results with the `pretty=true` querystring - d8c51e6
+* Added ability to mask and filter specific json fields from the response to reduce JSON payload size - 9558453 - ( thanks **@jhpratt** )
+* Added script to update payload orbit params on an hourly basis - 03777f4
+* Added missions endpoint with additional data regarding groups of 2 or more launches by the same company
+* Added `arg_of_pericenter` and `mean_anomaly` to current orbital params for full Keplerian element support
+* Added automated update script to pull updated launch times from the [r/SpaceX wiki manifest](https://www.reddit.com/r/spacex/wiki/launches/manifest) every 10 min
+* Added automated script to pull current orbital data from the [SpaceTrack API](https://www.space-track.org) every hour
+* Added automated script to pull current lat/long, status, course, and speed of SpaceX support ships from [MarineTraffic.com](https://www.marinetraffic.com/) every 10 min
+* Updated docker compose to use alpine redis to reduce image size - 3e70fd1
+* Updated production logger to strip private info from response object - d9b47c1
+* Switched from day.js to moment.js in update scripts for improved UTC support - bf596e5
+
+**Fixes**
+* Fixed bug where duplicates might show up in payload endpoint - 5e608d5
+* Fixed bug where v3 rocket id was removed - 82c2568
+* Fixed bug where roadster epoch was displayed as a string instead of an int - 884c713
+
+**Docs Changes**
+* Now using [Postman](https://www.getpostman.com/) for [docs](https://documenter.getpostman.com/view/2025350/RWaEzAiG)
+* A Postman collection with all the new endpoints is available [here](https://app.getpostman.com/run-collection/3aeac01a548a87943749)
+* Added link to community made apps/bots/clients [here](https://github.com/r-spacex/SpaceX-API/blob/master/clients.md)
+
+**Endpoint Changes**
+* `/v2/launches/all` ----> `/v3/launches`
+* `/v2/launches` ----> `/v3/launches/past`
+* `/v2/info/history` ----> `/v3/history`
+* `/v2/info/roadster` ----> `/v3/roadster`
+* `/v2/parts/cores` ----> `/v3/cores`
+* `/v2/parts/caps` ----> `/v3/capsules`
+* `/v2/capsules` ----> `/v3/dragons`
+
+**Database Changes**
+* Added `flickr_images`, `landing_intent`, `arg_of_pericenter`, `mean_anomaly`, `fairings`, `ships`, `static_fire_date_unix`, `is_tentative`, and `tentative_max_precision` to launches
+* Added `reuse_count` to capsules
+* Added `reuse_count` to cores
+* Added Ships collection
+* Added Missions collection
+* Updated `rtls_attempts` and `asds_attempts` in cores to be an int instead of boolean
+* In rockets, `id` is now `rocket_id`, `rocketid` is now `id`, and `type` is now `rocket_type` to bring the fields in line with the launch fields
+* In launchpads, `id` is now `site_id`, `padid` is now `id`, and `full_name` is now `site_name_long` to bring the fields in line with the launch fields
+* The `reuse` object is no longer included on v3 launches. Reuse information has been moved into each core, payload, and fairing object
+* `capsules`, `cores`, and `ships` endpoints now have a new array format for the missions array. The new format provides more context, and allows the flight number to be passed in easily as a query param to quickly get launch data: `/launches/18`
+    * Old:
+        ```json
+        "missions": [
+            "CRS-4"
+       ]
+        ```
+    * New:
+        ```json
+        "missions": [
+              {
+                "name": "CRS-4",
+                "flight": 18
+              }
+        ]
+        ```
+
 ## Version 2.8.0
 **TLDR**
 * Migrated from  east U.S. Heroku to  central U.S. Linode
@@ -8,7 +73,7 @@
 
 **Features & Fixes**
 
-* Changed `koa-logger` to `koa-pino-logger` for a **~20%** reduction in high volume response latency 
+* Changed `koa-logger` to `koa-pino-logger` for a **~20%** reduction in high volume response latency
 * Fixed query builders where entire Koa request object was being passed to builders instead of just the object containing querystrings
 * Fixed bug showing incorrect order for all launches when sorting in descending order #107
 * Fixed bug preventing users from using the `flight_number` correctly with the all launches endpoint #109
@@ -26,7 +91,7 @@
 
 **Database Changes**
 * Added new info on the Falcon Heavy Tesla Roadster's orbital parameters, speed, and distance from earth/mars
-* Combined `Dragon 2` and `Crew Dragon` into a single `Dragon 2` object 
+* Combined `Dragon 2` and `Crew Dragon` into a single `Dragon 2` object
 * Added `original_launch_unix` fields for all cores and capsules
 * Added `rocketid` to rockets with an arbitrary number id, see #1 for discussion
 * Added `padid` to launchpads with an arbitrary number id, see #1 for discussion
@@ -77,7 +142,7 @@
 * Added date format parsing in #80 to allow for any standardized date formats in query strings
 * Tests now lint first, allowing for earlier syntax error checks
 * Added sorting to rocket endpoints for consistent ordering
-* Switched from NPM to Yarn for faster dependency management 
+* Switched from NPM to Yarn for faster dependency management
 * Removed jest cli option blocking multi worker testing pools
 * Moved query logic out of routes and into controllers
 * Made all query builders anonymous functions by default
@@ -87,7 +152,7 @@
 
 ## Version 2.4.0
 **Features & Fixes**
-* Migration from Express to Koa in #78 
+* Migration from Express to Koa in #78
 * Reduced Docker image size by **~30%** to **19MB**
 * Added Redis route caching, reduced average response time from **>250ms** to **<90ms**
 * Added Docker-Compose file for easy App + Redis deployment
@@ -110,7 +175,7 @@
 * Dragon data is now on its own endpoint `/v2/capsules`
 * Vehicle endpoint is now Rocket endpoint `/v2/rockets` instead of `/v2/vehicles`
 * All rocket data has identical schema for easy comparisons
-* Added ordering support for past and upcoming launches in #65 
+* Added ordering support for past and upcoming launches in #65
 * Updated style guide to Airbnb standards
 * Removed needless variable assignments in 4bbe8115482f44dc5601134b15eb265506af5e92
 * Some refactoring for mongo driver version 3 breaking changes
@@ -120,21 +185,21 @@
 
 ## Version 2.1.0
 **Features & Fixes**
-* V2 endpoints with improved filtering and schema added in #61 
-* Improved error handling and status code expectations in #51 
+* V2 endpoints with improved filtering and schema added in #61
+* Improved error handling and status code expectations in #51
 * V1 endpoints are now deprecated, and V2 schema was forked from the old DB
-* Data validation and custom assertions added in #55 & #58 for better DB consistency and earlier mistake catching thanks to @Srokap 
-* Removed double caching bug in #49 
+* Data validation and custom assertions added in #55 & #58 for better DB consistency and earlier mistake catching thanks to @Srokap
+* Removed double caching bug in #49
 * Added `site_name_long` to all past and future launches in #60
 
 ## Version 2.0.2
 **Features & Fixes**
-* FlightClub.io links are now dynamic in d08fb4ed6a7225e487660daf08855d614f698476 from #43 
-* Content type header now shows ```application/json``` in 2a829eb43038fa005833d1c7b096bc36c350d50d from #44 
+* FlightClub.io links are now dynamic in d08fb4ed6a7225e487660daf08855d614f698476 from #43
+* Content type header now shows ```application/json``` in 2a829eb43038fa005833d1c7b096bc36c350d50d from #44
 * 30 minute server DB query caching added in 2f2b819dd7ea03d93a06b61bcbad315fc73cdf46
 * Various data typo corrections from #45
-* Added CRS data for mass returned, flight time, and cargo manifests from #46 
-* Added detailed reuse stats from #47 
+* Added CRS data for mass returned, flight time, and cargo manifests from #46
+* Added detailed reuse stats from #47
 * Added endpoints to sort past launches by ASDS or RTLS landings
 
 ## Version 2.0.1
@@ -147,9 +212,9 @@
 
 ## Version 2.0.0
 **Features & Fixes**
-* 1:1 platform switch from Sinatra (Ruby) to Express (Node.js) in #42 
+* 1:1 platform switch from Sinatra (Ruby) to Express (Node.js) in #42
 * Added Codecov for test coverage monitoring & static code checking
-* Test coverage is now 100% 👍 
+* Test coverage is now 100% 👍
 * Added a "Deploy to Heroku" button as an easy deployment option
 * Various typo fixes and formatting errors
 
