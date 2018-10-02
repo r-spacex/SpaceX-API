@@ -8,7 +8,7 @@ notifications:
 jobs:
   include:
     - stage: test
-      script: "npm test --runInBand --forceExit"
+      script: "npm test --maxWorkers=4"
     - stage: deploy
       before_install: "openssl aes-256-cbc -K $encrypted_32b6c04b6d48_key -iv $encrypted_32b6c04b6d48_iv -in deploy-key.enc -out ~/.ssh/deploy-key -d"
       script: "scripts/deploy.sh"
