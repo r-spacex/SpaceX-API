@@ -43,6 +43,7 @@ test('It should return all Dragon data', async () => {
     expect(item).toHaveProperty('trunk.trunk_volume', customMatchers.volume());
     expect(item).toHaveProperty('height_w_trunk', customMatchers.length());
     expect(item).toHaveProperty('diameter', customMatchers.length());
+    expect(item).toHaveProperty('flickr_images');
   });
 });
 

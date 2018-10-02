@@ -45,6 +45,7 @@ test('It should return all rocket info', async () => {
     expect(item).toHaveProperty('second_stage', customMatchers.vehicleStage());
     expect(item).toHaveProperty('wikipedia', expect.any(String));
     expect(item).toHaveProperty('description', expect.any(String));
+    expect(item).toHaveProperty('flickr_images');
   });
 });
 
