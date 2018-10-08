@@ -32,8 +32,7 @@ async function asyncForEach(array, callback) {
     process.exit(1);
   }
 
-  const db = client.db('spacex-api');
-  const col = db.collection('ship');
+  const col = client.db('spacex-api').collection('ship');
   const data = await col.find({}).sort({ year_built: 1 });
 
   // Gather individual ship mmsi numbers into array for requests

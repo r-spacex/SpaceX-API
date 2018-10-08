@@ -30,8 +30,7 @@ async function asyncForEach(array, callback) {
     process.exit(1);
   }
 
-  const db = client.db('spacex-api');
-  const col = db.collection('launch');
+  const col = client.db('spacex-api').collection('launch');
   const data = await col.find({ upcoming: false }).sort({ flight_number: 1 });
 
   const id = [];

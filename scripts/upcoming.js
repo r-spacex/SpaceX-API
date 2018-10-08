@@ -44,8 +44,7 @@ const year = /^[0-9]{4}$/;
     console.log(err.stack);
   }
 
-  const db = client.db('spacex-api');
-  const col = db.collection('launch');
+  const col = client.db('spacex-api').collection('launch');
 
   const launches = await col.find({ upcoming: true }).sort({ flight_number: 1 }).toArray();
 

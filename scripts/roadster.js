@@ -188,8 +188,7 @@ const getData = async (orbit, earth, mars) => {
   let client;
   try {
     client = await MongoClient.connect(process.env.MONGO_URL, { useNewUrlParser: true });
-    const db = client.db('spacex-api');
-    const col = db.collection('info');
+    const col = client.db('spacex-api').collection('info');
     const data = await getData(orbitURL, earthDistURL, marsDistURL);
     console.log(data);
 
