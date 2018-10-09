@@ -27,15 +27,13 @@ curl -s https://api.spacexdata.com/v3/launches/latest | jq
 
 ```json
 {
-  "flight_number": 68,
-  "mission_name": "Telstar 18V",
-  "mission_id": [
-    "F4F83DE"
-  ],
+  "flight_number": 69,
+  "mission_name": "SAOCOM 1A",
+  "mission_id": [],
   "launch_year": "2018",
-  "launch_date_unix": 1536554700,
-  "launch_date_utc": "2018-09-10T04:45:00.000Z",
-  "launch_date_local": "2018-09-10T00:45:00-04:00",
+  "launch_date_unix": 1538965320,
+  "launch_date_utc": "2018-10-08T02:22:00.000Z",
+  "launch_date_local": "2018-10-07T19:22:00-07:00",
   "is_tentative": false,
   "tentative_max_precision": "hour",
   "rocket": {
@@ -45,14 +43,14 @@ curl -s https://api.spacexdata.com/v3/launches/latest | jq
     "first_stage": {
       "cores": [
         {
-          "core_serial": "B1049",
-          "flight": 1,
+          "core_serial": "B1048",
+          "flight": 2,
           "block": 5,
-          "reused": false,
+          "reused": true,
           "land_success": true,
           "landing_intent": true,
-          "landing_type": "ASDS",
-          "landing_vehicle": "OCISLY"
+          "landing_type": "RTLS",
+          "landing_vehicle": "LZ-4"
         }
       ]
     },
@@ -60,36 +58,36 @@ curl -s https://api.spacexdata.com/v3/launches/latest | jq
       "block": 5,
       "payloads": [
         {
-          "payload_id": "Telstar 18V",
+          "payload_id": "SAOCOM 1A",
           "norad_id": [
-            43611
+            43641
           ],
           "reused": false,
           "customers": [
-            "Telesat"
+            "CONAE"
           ],
-          "nationality": "Canada",
-          "manufacturer": "SSL",
+          "nationality": "Argentina",
+          "manufacturer": "INVAP",
           "payload_type": "Satellite",
-          "payload_mass_kg": 7060,
-          "payload_mass_lbs": 15564.64,
-          "orbit": "GTO",
+          "payload_mass_kg": 2800,
+          "payload_mass_lbs": 6172.94,
+          "orbit": "SSO",
           "orbit_params": {
             "reference_system": "geocentric",
-            "regime": "geostationary",
-            "longitude": 138,
-            "semi_major_axis_km": 7226.647,
-            "eccentricity": 0.0013608,
-            "periapsis_km": 838.677,
-            "apoapsis_km": 858.346,
-            "inclination_deg": 98.8086,
-            "period_min": 101.897,
-            "lifespan_years": 15,
-            "epoch": "2018-09-07T06:29:40.000Z",
-            "mean_motion": 14.13180055,
-            "raan": 322.194,
-            "arg_of_pericenter": 130.3173,
-            "mean_anomaly": 328.1487
+            "regime": "sun-synchronous",
+            "longitude": null,
+            "semi_major_axis_km": 6998.678,
+            "eccentricity": 0.0018839,
+            "periapsis_km": 607.358,
+            "apoapsis_km": 633.728,
+            "inclination_deg": 97.8996,
+            "period_min": 97.114,
+            "lifespan_years": 5,
+            "epoch": "2018-10-08T04:06:00.000Z",
+            "mean_motion": 14.82786712,
+            "raan": 106.0457,
+            "arg_of_pericenter": 244.3969,
+            "mean_anomaly": 261.797
           }
         }
       ]
@@ -101,43 +99,41 @@ curl -s https://api.spacexdata.com/v3/launches/latest | jq
       "ship": null
     }
   },
-  "ships": [
-    "OCISLY",
-    "HAWK",
-    "GOQUEST"
-  ],
+  "ships": [],
   "telemetry": {
-    "flight_club": "https://www.flightclub.io/result/2d?code=T18V"
+    "flight_club": "https://www.flightclub.io/result/2d?code=SAOCOM1A"
   },
   "launch_site": {
-    "site_id": "ccafs_slc_40",
-    "site_name": "CCAFS SLC 40",
-    "site_name_long": "Cape Canaveral Air Force Station Space Launch Complex 40"
+    "site_id": "vafb_slc_4e",
+    "site_name": "VAFB SLC 4E",
+    "site_name_long": "Vandenberg Air Force Base Space Launch Complex 4E"
   },
   "launch_success": true,
   "links": {
-    "mission_patch": "https://images2.imgbox.com/ba/db/3plcm5IB_o.png",
-    "mission_patch_small": "https://images2.imgbox.com/2d/d2/jStsqeLC_o.png",
-    "reddit_campaign": "https://www.reddit.com/r/spacex/comments/95cte4/telstar_18v_apstar_5c_launch_campaign_thread/",
-    "reddit_launch": "https://www.reddit.com/r/spacex/comments/9e7bmq/rspacex_telstar_18v_official_launch_discussion/",
-    "reddit_recovery": "https://www.reddit.com/r/spacex/comments/9erxlh/telstar_18_vantage_recovery_thread/",
-    "reddit_media": "https://www.reddit.com/r/spacex/comments/9ebkqw/rspacex_telstar_18v_media_thread_videos_images/",
-    "presskit": "https://www.spacex.com/sites/spacex/files/telstar18vantagepresskit.pdf",
-    "article_link": "https://spaceflightnow.com/2018/09/10/spacex-telesat-achieve-repeat-success-with-midnight-hour-launch/",
-    "wikipedia": "https://en.wikipedia.org/wiki/Telstar_18V",
-    "video_link": "https://www.youtube.com/watch?v=Apw3xqwsG1U",
+    "mission_patch": "https://images2.imgbox.com/66/d2/oVB1ofaZ_o.png",
+    "mission_patch_small": "https://images2.imgbox.com/ae/11/H85gskPQ_o.png",
+    "reddit_campaign": "https://www.reddit.com/r/spacex/comments/9fwj9o/saocom_1a_launch_campaign_thread/",
+    "reddit_launch": "https://www.reddit.com/r/spacex/comments/9lazvr/rspacex_saocom_1a_official_launch_discussion/",
+    "reddit_recovery": null,
+    "reddit_media": "https://www.reddit.com/r/spacex/comments/9m3ly5/rspacex_saocom_1a_media_thread_videos_images_gifs/",
+    "presskit": "https://www.spacex.com/sites/spacex/files/saocom1apresskit.pdf",
+    "article_link": "https://spaceflightnow.com/2018/10/08/spacex-aces-first-rocket-landing-in-california-after-launching-argentine-satellite/",
+    "wikipedia": "https://en.wikipedia.org/wiki/SAOCOM",
+    "video_link": "https://www.youtube.com/watch?v=vr_C6LQ7mHc",
     "flickr_images": [
-      "https://farm2.staticflickr.com/1878/43690848045_492ef182dd_o.jpg",
-      "https://farm2.staticflickr.com/1856/43881229604_6d42e838b6_o.jpg",
-      "https://farm2.staticflickr.com/1852/43881223704_93777e34af_o.jpg",
-      "https://farm2.staticflickr.com/1841/43881217094_558b7b214e_o.jpg",
-      "https://farm2.staticflickr.com/1869/43881193934_423eff8c86_o.jpg"
+      "https://farm2.staticflickr.com/1940/44262177535_9582184d3f_o.jpg",
+      "https://farm2.staticflickr.com/1917/30234800687_fd94fde151_o.jpg",
+      "https://farm2.staticflickr.com/1951/30234801997_b5a65426ca_o.jpg",
+      "https://farm2.staticflickr.com/1910/44262169525_e4c6b27299_o.jpg",
+      "https://farm2.staticflickr.com/1923/44451125454_8d26929d0b_o.jpg",
+      "https://farm2.staticflickr.com/1914/44262170545_22fe55d4bb_o.jpg",
+      "https://farm2.staticflickr.com/1934/44262166295_3f84597f09_o.jpg"
     ]
   },
-  "details": "SpaceX's sixteenth flight of 2018 launched the Telstar 18v GEO communication satellite for Telesat, the second launch for the canadian company in a few months. The first stage was a new Falcon 9 V1.2 Block 5 which was successfully recovered on OCISLY.",
+  "details": "SpaceX's seventeenth flight of 2018 will be the first launch of the Saocom Earth observation satellite constellation of the Argentine Space Agency CONAE. The second launch of Saocom 1B will happen in 2019. This flight will mark the first RTLS launch out of Vandenberg, with a landing on the concrete pad at SLC-4W, very close to the launch pad.",
   "upcoming": false,
-  "static_fire_date_utc": "2018-09-05T07:21:00.000Z",
-  "static_fire_date_unix": 1536132060
+  "static_fire_date_utc": "2018-10-02T21:00:00.000Z",
+  "static_fire_date_unix": 1538514000
 }
 ```
 
