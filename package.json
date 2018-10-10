@@ -33,7 +33,7 @@
   "homepage": "https://github.com/r-spacex/SpaceX-API",
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
-    "fuzzball": "^1.1.5",
+    "fuzzball": "^1.1.6",
     "koa": "^2.5.3",
     "koa-bodyparser": "^4.2.1",
     "koa-compress": "^3.0.0",
@@ -48,7 +48,7 @@
     "lower-case": "^1.1.4",
     "moment": "^2.22.2",
     "moment-timezone": "^0.5.21",
-    "mongodb": "^3.1.6",
+    "mongodb": "^3.1.7",
     "path": "^0.12.7",
     "request": "^2.88.0",
     "request-promise-native": "^1.0.5",
