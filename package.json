@@ -48,7 +48,7 @@
     "lower-case": "^1.1.4",
     "moment": "^2.22.2",
     "moment-timezone": "^0.5.21",
-    "mongodb": "^3.1.7",
+    "mongodb": "^3.1.8",
     "path": "^0.12.7",
     "request": "^2.88.0",
     "request-promise-native": "^1.0.5",
@@ -56,10 +56,10 @@
     "validator": "^10.8.0"
   },
   "devDependencies": {
-    "eslint": "^5.6.1",
+    "eslint": "^5.7.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-jest": "^21.24.1",
+    "eslint-plugin-jest": "^21.24.2",
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-mongodb": "^1.0.0",
     "eslint-plugin-react": "^7.11.1",
