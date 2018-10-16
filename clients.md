@@ -8,6 +8,7 @@
 |App|Type|Creator(s)|Repo|More|
 |:---|:---|:---|:---|:---|
 | [SpaceX Stats](http://spacexstats.xyz) | Website | Luke Davia | [GitHub](https://github.com/r-spacex/spacexstats-react) |
+| [SpaceX Data.Info](http://spacexdata.info) | Website | [Charles Omer](https://www.charlesomer.co.uk) | N/A | [Zyndex](https://www.zyndex.co.uk) |
 | [SpaceXPedia](https://itunes.apple.com/app/spacexpedia/id1434177600?mt=8) | iOS App | [Philip Engberg](https://github.com/philipengberg) | [GitHub](https://github.com/philipengberg/SpaceXPedia) |
 | [SpaceX Companion](https://play.google.com/store/apps/details?id=nl.studionoorderlicht.spacex) | Android App | [Jeroen Boumans](https://github.com/jeroenboumans) | Not open sourced yet | [Website](https://spacexcompanion.app)
 | [SpaceXLaunches](https://play.google.com/store/apps/details?id=com.danielscholte.spacexlaunches) | Android App | [Daniël Scholte](https://github.com/linuxfreak23) | Closed source |
