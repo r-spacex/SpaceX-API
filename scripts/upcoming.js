@@ -113,7 +113,7 @@ const year = /^[0-9]{4}$/;
           precision[manifest_index] = 'hour';
         } else {
           console.log('Date did not match any of the existing regular expressions');
-          process.exit(1);
+          return;
         }
 
         // Store site_id for update query
