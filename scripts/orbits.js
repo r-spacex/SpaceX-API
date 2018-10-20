@@ -23,6 +23,7 @@ async function asyncForEach(array, callback) {
 
 (async () => {
   let client;
+  let orbitData;
   try {
     client = await MongoClient.connect(process.env.MONGO_URL, { useNewUrlParser: true });
   } catch (err) {
@@ -53,7 +54,12 @@ async function asyncForEach(array, callback) {
   const start = async () => {
     await asyncForEach(id, async num => {
       await sleep(5000);
-      const orbitData = await request(`https://www.space-track.org/basicspacedata/query/class/tle/NORAD_CAT_ID/${num}/limit/1`);
+      try {
+        orbitData = await request(`https://www.space-track.org/basicspacedata/query/class/tle/NORAD_CAT_ID/${num}/limit/1`);
+      } catch (e) {
+        console.log('Login Broken');
+        process.exit(1);
+      }
       const orbit = JSON.parse(orbitData);
 
       if (orbit[0] !== undefined && orbit.length !== 0) {
