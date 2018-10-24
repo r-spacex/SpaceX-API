@@ -53,7 +53,7 @@ async function asyncForEach(array, callback) {
 
   const start = async () => {
     await asyncForEach(id, async num => {
-      await sleep(5000);
+      await sleep(7000);
       try {
         orbitData = await request(`https://www.space-track.org/basicspacedata/query/class/tle/NORAD_CAT_ID/${num}/limit/1`);
       } catch (e) {
