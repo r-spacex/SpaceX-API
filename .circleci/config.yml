@@ -1,6 +1,8 @@
+
 version: 2
+
 jobs:
-  build:
+  test:
     docker:
       - image: circleci/node:latest
 
@@ -24,3 +26,23 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       - run: npm test
+  deploy:
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "73:b7:b4:63:6a:82:76:02:ae:41:8f:80:5e:ca:01:8f"
+    commands:
+      - ssh $SERVER_USER@$SERVER_IP "bash --login -c 'cd /var/www/spacexdata.com/SpaceX-API && git checkout master --force && git pull --force && npm install --production && pm2 reload spacex-api'"
+
+workflows:
+  version: 2
+  build-test-and-deploy:
+    jobs:
+      - test:
+          requires:
+            - build
+      - deploy:
+          requires:
+            - test
