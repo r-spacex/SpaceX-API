@@ -160,7 +160,7 @@ Local development info can be found [here](https://github.com/r-spacex/SpaceX-AP
 * Using [Node.js](https://nodejs.org/en/) with the [Koa](http://koajs.com/) framework
 * Using [Redis](https://redis.io/), [Nginx](https://www.nginx.com/), and [Cloudflare](https://www.cloudflare.com/) for content caching
 * Using [Jest](https://facebook.github.io/jest/) and [Supertest](https://github.com/visionmedia/supertest) for tests
-* Using [Travis CI](https://travis-ci.org/) for continuous integration / deployments
+* Using [Circle CI](https://circleci.com/) for continuous integration / deployments
 * All data stored in a [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) 3 node replica set cluster
 * Latest database mongodump and zipped JSON files available [here](https://drive.google.com/drive/folders/0B2DdgKR4GR4xdk1sRGowcUZXeE0?usp=sharing)
 
