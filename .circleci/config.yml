@@ -33,8 +33,7 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "73:b7:b4:63:6a:82:76:02:ae:41:8f:80:5e:ca:01:8f"
-      - run: echo 'f1:38:7f:26:d4:57:32:ce:e6:fc:13:ac:40:3e:3a:9c' >> ~/.ssh/known_hosts
-      - run: ssh $SERVER_USER@$SERVER_IP "bash --login -c 'cd /var/www/spacexdata.com/SpaceX-API && git checkout master --force && git pull --force && npm install --production && pm2 reload spacex-api'"
+      - run: ssh -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "bash --login -c 'cd /var/www/spacexdata.com/SpaceX-API && git checkout master --force && git pull --force && npm install --production && pm2 reload spacex-api'"
 
 workflows:
   version: 2
