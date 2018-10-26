@@ -4,7 +4,7 @@
   "description": "Open Source REST API for rocket, core, capsule, pad, and launch data",
   "main": "./src/app.js",
   "scripts": {
-    "test": "eslint \"**/*.js\" && NODE_ENV=test PORT=0 jest --forceExit --silent --verbose",
+    "test": "eslint \"**/*.js\" && NODE_ENV=test PORT=0 jest --silent --verbose",
     "start": "node src/app.js",
     "dev": "nodemon node src/app.js",
     "lint": "eslint \"**/*.js\"",
