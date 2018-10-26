@@ -33,8 +33,7 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "73:b7:b4:63:6a:82:76:02:ae:41:8f:80:5e:ca:01:8f"
-    commands:
-      - ssh $SERVER_USER@$SERVER_IP "bash --login -c 'cd /var/www/spacexdata.com/SpaceX-API && git checkout master --force && git pull --force && npm install --production && pm2 reload spacex-api'"
+      - run: ssh $SERVER_USER@$SERVER_IP "bash --login -c 'cd /var/www/spacexdata.com/SpaceX-API && git checkout master --force && git pull --force && npm install --production && pm2 reload spacex-api'"
 
 workflows:
   version: 2
