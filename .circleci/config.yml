@@ -27,6 +27,8 @@ jobs:
 
       - run: npm test
   deploy:
+    branches:
+      only: master
     docker:
       - image: circleci/node:latest
     steps:
