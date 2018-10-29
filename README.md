@@ -46,6 +46,8 @@ curl -s https://api.spacexdata.com/v3/launches/latest | jq
           "core_serial": "B1048",
           "flight": 2,
           "block": 5,
+          "gridfins": true,
+          "legs": true,
           "reused": true,
           "land_success": true,
           "landing_intent": true,
@@ -76,18 +78,18 @@ curl -s https://api.spacexdata.com/v3/launches/latest | jq
             "reference_system": "geocentric",
             "regime": "sun-synchronous",
             "longitude": null,
-            "semi_major_axis_km": 6998.678,
-            "eccentricity": 0.0018839,
-            "periapsis_km": 607.358,
-            "apoapsis_km": 633.728,
-            "inclination_deg": 97.8996,
-            "period_min": 97.114,
+            "semi_major_axis_km": 7002.619,
+            "eccentricity": 0.001318,
+            "periapsis_km": 615.255,
+            "apoapsis_km": 633.714,
+            "inclination_deg": 97.8933,
+            "period_min": 97.196,
             "lifespan_years": 5,
-            "epoch": "2018-10-08T04:06:00.000Z",
-            "mean_motion": 14.82786712,
-            "raan": 106.0457,
-            "arg_of_pericenter": 244.3969,
-            "mean_anomaly": 261.797
+            "epoch": "2018-10-29T05:13:24.000Z",
+            "mean_motion": 14.81535086,
+            "raan": 126.786,
+            "arg_of_pericenter": 157.7531,
+            "mean_anomaly": 202.9134
           }
         }
       ]
@@ -130,7 +132,7 @@ curl -s https://api.spacexdata.com/v3/launches/latest | jq
       "https://farm2.staticflickr.com/1934/44262166295_3f84597f09_o.jpg"
     ]
   },
-  "details": "SpaceX's seventeenth flight of 2018 will be the first launch of the Saocom Earth observation satellite constellation of the Argentine Space Agency CONAE. The second launch of Saocom 1B will happen in 2019. This flight will mark the first RTLS launch out of Vandenberg, with a landing on the concrete pad at SLC-4W, very close to the launch pad.",
+  "details": "SpaceX's seventeenth flight of 2018 was the first launch of the Saocom Earth observation satellite constellation of the Argentine Space Agency CONAE. The second launch of Saocom 1B will happen in 2019. This flight marked the first RTLS launch out of Vandenberg, with a landing on the concrete pad at SLC-4W, very close to the launch pad.",
   "upcoming": false,
   "static_fire_date_utc": "2018-10-02T21:00:00.000Z",
   "static_fire_date_unix": 1538514000
