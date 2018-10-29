@@ -84,6 +84,18 @@ test('It should return launches sorted by core block number', async () => {
   expect(response.body[response.body.length - 1].rocket.first_stage.cores[0]).toHaveProperty('block', 4);
 });
 
+test('It should return launches sorted by core gridfins', async () => {
+  const response = await request(app.callback()).get('/v3/launches?sort=gridfins&launch_year=2017');
+  expect(response.statusCode).toBe(200);
+  expect(response.body[response.body.length - 1].rocket.first_stage.cores[0]).toHaveProperty('gridfins', true);
+});
+
+test('It should return launches sorted by core legs', async () => {
+  const response = await request(app.callback()).get('/v3/launches?sort=legs&launch_year=2017');
+  expect(response.statusCode).toBe(200);
+  expect(response.body[response.body.length - 1].rocket.first_stage.cores[0]).toHaveProperty('legs', true);
+});
+
 test('It should return launches sorted by second stage block number', async () => {
   const response = await request(app.callback()).get('/v3/launches?sort=second_stage_block&launch_year=2017');
   expect(response.statusCode).toBe(200);
