@@ -69,6 +69,12 @@ module.exports = r => {
       if (r.query.sort === 'block') {
         query['rocket.first_stage.cores.block'] = direction;
       }
+      if (r.query.sort === 'gridfins') {
+        query['rocket.first_stage.cores.gridfins'] = direction;
+      }
+      if (r.query.sort === 'legs') {
+        query['rocket.first_stage.cores.legs'] = direction;
+      }
       if (r.query.sort === 'second_stage_block') {
         query['rocket.second_stage.block'] = direction;
       }

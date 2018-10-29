@@ -77,6 +77,12 @@ module.exports = r => {
     if (r.query.block) {
       query['rocket.first_stage.cores.block'] = parseInt(r.query.block, 10);
     }
+    if (r.query.gridfins) {
+      query['rocket.first_stage.cores.gridfins'] = (r.query.gridfins === 'true');
+    }
+    if (r.query.legs) {
+      query['rocket.first_stage.cores.legs'] = (r.query.legs === 'true');
+    }
     if (r.query.second_stage_block) {
       query['rocket.second_stage.block'] = parseInt(r.query.second_stage_block, 10);
     }
