@@ -141,22 +141,10 @@ class SpacexVehicleStage extends SpacexComposite {
 }
 
 module.exports = {
-  volume: () => {
-    return new SpacexVolume();
-  },
-  length: () => {
-    return new SpacexLength();
-  },
-  mass: () => {
-    return new SpacexMass();
-  },
-  thrust: () => {
-    return new SpacexThrust();
-  },
-  payloadWeight: () => {
-    return new SpacexPayloadWeight();
-  },
-  vehicleStage: () => {
-    return new SpacexVehicleStage();
-  },
+  volume: () => new SpacexVolume(),
+  length: () => new SpacexLength(),
+  mass: () => new SpacexMass(),
+  thrust: () => new SpacexThrust(),
+  payloadWeight: () => new SpacexPayloadWeight(),
+  vehicleStage: () => new SpacexVehicleStage(),
 };

@@ -9,9 +9,7 @@ const MongoClient = require('mongodb');
 const cheerio = require('cheerio');
 const request = require('request-promise-native');
 
-const sleep = ms => {
-  return new Promise(resolve => setTimeout(resolve, ms));
-};
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 // Created so we can use async await with requests, and
 // to use async sleep function inside the IIFE

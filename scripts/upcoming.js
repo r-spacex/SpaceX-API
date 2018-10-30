@@ -76,14 +76,10 @@ const year = /^[0-9]{4}$/;
   const manifest_row = manifest.split('\n').filter(v => v !== '');
 
   // Filter to collect manaifest dates
-  const manifest_dates = manifest_row.filter((value, index) => {
-    return index % 8 === 0;
-  });
+  const manifest_dates = manifest_row.filter((value, index) => index % 8 === 0);
 
   // Filter to collect payload names
-  const manifest_payloads = manifest_row.filter((value, index) => {
-    return (index + 3) % 8 === 0;
-  });
+  const manifest_payloads = manifest_row.filter((value, index) => (index + 3) % 8 === 0);
 
   // Compare each payload against entire list of manifest payloads, and fuzzy match the
   // payload id against the manifest payload name. The partial match must be 100%, to avoid

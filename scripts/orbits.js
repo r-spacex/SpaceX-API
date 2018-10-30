@@ -57,9 +57,7 @@ async function asyncForEach(array, callback) {
     const orbit = JSON.parse(orbitData);
 
     await asyncForEach(id, async num => {
-      const specific_orbit = orbit.filter(satellite => {
-        return parseInt(satellite.NORAD_CAT_ID, 10) === num;
-      });
+      const specific_orbit = orbit.filter(satellite => parseInt(satellite.NORAD_CAT_ID, 10) === num);
 
       if (specific_orbit[0] !== undefined && specific_orbit.length !== 0) {
         const update = {
