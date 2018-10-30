@@ -20,7 +20,7 @@ module.exports = {
     delete ctx.request.query.limit;
     delete ctx.request.query.order;
     delete ctx.request.query.sort;
-    const pretty = ctx.request.query.pretty;
+    const { pretty } = ctx.request.query;
     delete ctx.request.query.pretty;
 
     const payloads = [];
@@ -58,7 +58,7 @@ module.exports = {
       .limit(limit(ctx.request.query))
       .toArray();
     try {
-      payloads = data[0].rocket.second_stage.payloads;
+      ({ payloads } = data[0].rocket.second_stage);
       let index = 0;
       payloads.forEach((payload, i) => {
         if (payload.payload_id === ctx.params.payload_id) {

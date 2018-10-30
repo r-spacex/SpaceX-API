@@ -13,12 +13,12 @@ const isJSON = require('koa-is-json');
  */
 
 module.exports = (opts = {}) => {
-  const param = opts.param;
+  const { param } = opts;
   const pretty = opts.pretty === false ? true : opts.pretty;
   const spaces = opts.spaces || 2;
 
   return (ctx, next) => next().then(() => {
-    const body = ctx.body;
+    const { body } = ctx;
     const json = isJSON(body);
     if (!json) return;
 

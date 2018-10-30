@@ -26,7 +26,7 @@ module.exports = {
 
     // Pretty is stored because the json formatter reads this after the request, and
     // we need to get rid of querystrings not found in a payload object
-    const pretty = ctx.request.query.pretty;
+    const { pretty } = ctx.request.query;
     delete ctx.request.query.pretty;
 
     const payloads = [];
@@ -70,7 +70,7 @@ module.exports = {
     // Because the query could return a launch with multiple payloads, we iterate
     // through the object to find the matching payload
     try {
-      payloads = data[0].rocket.second_stage.payloads;
+      ({ payloads } = data[0].rocket.second_stage);
       let index = 0;
       payloads.forEach((payload, i) => {
         if (payload.payload_id === ctx.params.payload_id) {
