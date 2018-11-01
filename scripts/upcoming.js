@@ -141,6 +141,7 @@ const year = /^[0-9]{4}$/;
         // Build launch time objects to update
         calculatedTimes = {
           flight_number: (base_flight_number + manifest_index),
+          launch_year: zone.year(),
           launch_date_unix: zone.unix(),
           launch_date_utc: zone.toISOString(),
           launch_date_local: localTime,
