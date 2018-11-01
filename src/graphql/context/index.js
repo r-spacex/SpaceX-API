@@ -1,8 +1,4 @@
 /*eslint-disable */
-const db = require('./db')
-
-const context = {
-  db
-}
+const context = {}
 
 module.exports = context
