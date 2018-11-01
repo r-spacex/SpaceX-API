@@ -12,7 +12,7 @@
     "orbit": "node scripts/orbits.js",
     "ships": "node scripts/ships.js",
     "upcoming": "node scripts/upcoming.js",
-    "graphql": "node src/graphql/index.js"
+    "graphql": "nodemon node src/graphql/index.js"
   },
   "repository": {
     "type": "git",
