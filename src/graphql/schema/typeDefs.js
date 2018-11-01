@@ -1,5 +1,6 @@
 /*eslint-disable */
 const { gql } = require('apollo-server')
+const { typeDefs: capsule } = require('./capsule')
 
 const Scalars = gql`
   scalar Date
@@ -22,6 +23,6 @@ const Subscription = gql`
 
 const globals = [Scalars, Query, Mutation, Subscription]
 
-const typeDefs = [...globals]
+const typeDefs = [...globals, capsule]
 
 module.exports = typeDefs
