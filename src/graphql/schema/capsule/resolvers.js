@@ -1,22 +1,23 @@
 /*eslint-disable */
+const collection = 'capsule'
+const url = `/v3/capsules`
 const resolvers = {
   Query: {
-    capsules: async (obj, args, { db }) => {
-      const data = await db
-        .collection('capsule')
-        .find()
-        // .find(find(ctx.request))
-        // .project(project(ctx.request.query))
-        // .sort(sort(ctx.request))
-        // .limit(limit(ctx.request.query))
+    capsules: async (obj, { find, id, order, sort, limit }, context) => {
+      const data = await context.db
+        .collection(collection)
+        .find(context.find({})) // todo
+        .project(context.project({ id }))
+        .sort(context.sort({ query: { order, sort }, url }))
+        .limit(context.limit({ limit }))
         .toArray()
       return data
     },
-    capsule: async (obj, { capsule_serial }, { db }) => {
-      const data = await db
-        .collection('capsule')
+    capsule: async (obj, { capsule_serial, id }, context) => {
+      const data = await context.db
+        .collection(collection)
         .find({ capsule_serial })
-        // .project(project(ctx.request.query))
+        .project(context.project({ id }))
         .toArray()
       return data[0]
     }

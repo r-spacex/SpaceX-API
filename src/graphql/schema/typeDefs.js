@@ -5,6 +5,7 @@ const { typeDefs: core } = require('./core')
 
 const Scalars = gql`
   scalar Date
+  scalar ObjectID
 `
 const Query = gql`
   type Query {

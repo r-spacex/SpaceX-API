@@ -3,11 +3,18 @@ const { gql } = require('apollo-server')
 
 const typeDefs = gql`
   extend type Query {
-    capsules: [Capsule]
-    capsule(capsule_serial: String!): Capsule
+    capsules(
+      find: String
+      id: Boolean
+      limit: Int
+      order: String
+      sort: String
+    ): [Capsule]
+    capsule(capsule_serial: String!, id: Boolean): Capsule
   }
 
   type Capsule {
+    _id: ObjectID
     capsule_serial: String
     capsule_id: String
     status: String
@@ -23,4 +30,5 @@ const typeDefs = gql`
     flight: Int
   }
 `
+
 module.exports = typeDefs
