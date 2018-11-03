@@ -6,7 +6,7 @@ const resolvers = {
     capsules: async (obj, { find, id, order, sort, limit }, context) => {
       const data = await context.db
         .collection(collection)
-        .find(context.find({})) // todo
+        .find(context.find({ query: { ...find }, url }))
         .project(context.project({ id }))
         .sort(context.sort({ query: { order, sort }, url }))
         .limit(context.limit({ limit }))
