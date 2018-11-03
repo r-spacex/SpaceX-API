@@ -1,24 +1,25 @@
 /*eslint-disable */
+const collection = 'core'
+const url = `/v3/cores`
 const resolvers = {
   Query: {
-    cores: async (obj, args, { db }) => {
-      const data = await db
-        .collection('core')
-        .find()
-        // .find(find(ctx.request))
-        // .project(project(ctx.request.query))
-        // .sort(sort(ctx.request))
-        // .limit(limit(ctx.request.query))
+    cores: async (obj, { find, id, order, sort, limit }, context) => {
+      const data = await context.db
+        .collection(collection)
+        .find(context.find({ query: { ...find }, url }))
+        .project(context.project({ id }))
+        .sort(context.sort({ query: { order, sort }, url }))
+        .limit(context.limit({ limit }))
         .toArray()
       return data
     },
-    core: async (obj, { core_serial }, { db }) => {
-      const data = await db
-        .collection('core')
+    core: async (obj, { core_serial }, context) => {
+      const [data] = await context.db
+        .collection(collection)
         .find({ core_serial })
-        // .project(project(ctx.request.query))
+        .project(context.project({ id }))
         .toArray()
-      return data[0]
+      return data
     }
   }
 }
