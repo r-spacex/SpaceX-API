@@ -21,6 +21,12 @@ const spaceX = gql`
     meters: Float
     feet: Float
   }
+
+  type Link {
+    reddit: String
+    article: String
+    wikipedia: String
+  }
 `
 
 module.exports = {
