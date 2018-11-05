@@ -7,12 +7,12 @@ const spaceX = gql`
     lbf: Float
   }
 
-  type PayloadMass {
+  type Mass {
     kg: Int
     lb: Int
   }
 
-  type PayloadVol {
+  type Volume {
     cubic_meters: Int
     cubic_feet: Int
   }

@@ -21,10 +21,10 @@ const typeDefs = gql`
     first_flight: String
     heat_shield: DragonHeatShield
     thrusters: [DragonThrust]
-    launch_payload_mass: PayloadMass
-    launch_payload_vol: PayloadVol
-    return_payload_mass: PayloadMass
-    return_payload_vol: PayloadVol
+    launch_payload_mass: Mass
+    launch_payload_vol: Volume
+    return_payload_mass: Mass
+    return_payload_vol: Volume
     pressurized_capsule: DragonPressurizedCapsule
     trunk: DragonTrunk
     height_w_trunk: Distance
@@ -50,11 +50,11 @@ const typeDefs = gql`
   }
 
   type DragonPressurizedCapsule {
-    payload_volume: PayloadVol
+    payload_volume: Volume
   }
 
   type DragonTrunk {
-    trunk_volume: PayloadVol
+    trunk_volume: Volume
     cargo: DragonTrunkCargo
   }
 
