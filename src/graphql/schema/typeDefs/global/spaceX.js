@@ -27,6 +27,12 @@ const spaceX = gql`
     article: String
     wikipedia: String
   }
+
+  type Address {
+    address: String
+    city: String
+    state: String
+  }
 `
 
 module.exports = {
