@@ -42,6 +42,4 @@ const spaceX = gql`
   }
 `
 
-module.exports = {
-  spaceX
-}
+module.exports = spaceX

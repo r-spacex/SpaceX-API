@@ -6,6 +6,4 @@ const scalars = gql`
   scalar ObjectID
 `
 
-module.exports = {
-  scalars
-}
+module.exports = scalars
