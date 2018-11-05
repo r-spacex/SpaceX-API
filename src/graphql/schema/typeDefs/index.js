@@ -5,7 +5,8 @@ const core = require('./core')
 const dragon = require('./dragon')
 const history = require('./history')
 const info = require('./info')
+const landpad = require('./landpad')
 
-const typeDefs = [...global, capsule, core, dragon, history, info]
+const typeDefs = [...global, capsule, core, dragon, history, info, landpad]
 
 module.exports = typeDefs

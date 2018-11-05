@@ -33,6 +33,13 @@ const spaceX = gql`
     city: String
     state: String
   }
+
+  type Location {
+    name: String
+    region: String
+    latitude: Float
+    longitude: Float
+  }
 `
 
 module.exports = {
