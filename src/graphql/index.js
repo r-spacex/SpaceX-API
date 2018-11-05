@@ -2,7 +2,7 @@
 const { ApolloServer } = require('apollo-server')
 const schema = require('./schema')
 const context = require('./context')
-const getDB = require('./db')
+const { getDB } = require('./db')
 
 // Mongo Connection + Server Start
 ;(async () => {

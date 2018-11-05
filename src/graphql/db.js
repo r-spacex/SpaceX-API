@@ -14,4 +14,4 @@ const getDB = async () => {
   return client.db('spacex-api')
 }
 
-module.exports = getDB
+module.exports = { getDB }
