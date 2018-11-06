@@ -46,7 +46,7 @@ const typeDefs = gql`
     pods: Int
     fuel_1: String
     fuel_2: String
-    thrust: Thrust
+    thrust: Force
   }
 
   type DragonPressurizedCapsule {
