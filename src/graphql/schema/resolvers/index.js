@@ -8,6 +8,7 @@ const info = require('./info')
 const landpad = require('./landpad')
 const launchpad = require('./launchpad')
 const mission = require('./mission')
+const payload = require('./payload')
 const roadster = require('./roadster')
 const rocket = require('./rocket')
 const ship = require('./ship')
@@ -21,6 +22,7 @@ const resolvers = merge(
   landpad,
   launchpad,
   mission,
+  payload,
   roadster,
   rocket,
   ship

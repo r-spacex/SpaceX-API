@@ -11,6 +11,7 @@ const mission = require('./mission')
 const roadster = require('./roadster')
 const rocket = require('./rocket')
 const ship = require('./ship')
+const payload = require('./payload')
 
 const typeDefs = [
   ...global,
@@ -22,6 +23,7 @@ const typeDefs = [
   landpad,
   launchpad,
   mission,
+  payload,
   roadster,
   rocket,
   ship
