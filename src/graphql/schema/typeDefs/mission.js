@@ -7,13 +7,6 @@ const typeDefs = gql`
     mission(mission_id: String!, id: Boolean): Mission
   }
 
-  input MissionsFind {
-    mission_name: String
-    mission_id: String
-    manufacturer: String
-    payload_id: String
-  }
-
   type Mission {
     _id: ObjectID
     mission_name: String
@@ -24,6 +17,13 @@ const typeDefs = gql`
     website: String
     twitter: String
     description: String
+  }
+
+  input MissionsFind {
+    mission_name: String
+    mission_id: String
+    manufacturer: String
+    payload_id: String
   }
 `
 module.exports = typeDefs

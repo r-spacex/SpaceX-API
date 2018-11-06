@@ -13,14 +13,6 @@ const typeDefs = gql`
     history(history_id: Int!, id: Boolean): History
   }
 
-  input HistoryFind {
-    id: Int
-    start: Date
-    # final: Date
-    end: Date
-    flight_number: Int
-  }
-
   type History {
     _id: ObjectID
     id: Int
@@ -30,6 +22,13 @@ const typeDefs = gql`
     flight_number: Int
     details: String
     links: [Link]
+  }
+
+  input HistoryFind {
+    id: Int
+    start: Date
+    end: Date
+    flight_number: Int
   }
 `
 module.exports = typeDefs

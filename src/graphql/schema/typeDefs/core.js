@@ -13,6 +13,21 @@ const typeDefs = gql`
     core(core_serial: String!, id: Boolean): Core
   }
 
+  type Core {
+    _id: ObjectID
+    core_serial: String
+    block: Int
+    status: String
+    original_launch: Date
+    missions: [CapsuleMission]
+    reuse_count: Int
+    rtls_attempts: Int
+    rtls_landings: Int
+    asds_attempts: Int
+    asds_landings: Int
+    water_landing: Boolean
+  }
+
   input CoresFind {
     core_serial: String
     block: Int
@@ -27,19 +42,9 @@ const typeDefs = gql`
     water_landing: Boolean
   }
 
-  type Core {
-    _id: ObjectID
-    core_serial: String
-    block: Int
-    status: String
-    original_launch: Date
-    missions: [Mission]
-    reuse_count: Int
-    rtls_attempts: Int
-    rtls_landings: Int
-    asds_attempts: Int
-    asds_landings: Int
-    water_landing: Boolean
+  type CoreMission {
+    name: String
+    flight: Int
   }
 `
 module.exports = typeDefs

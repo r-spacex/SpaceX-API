@@ -13,17 +13,6 @@ const typeDefs = gql`
     capsule(capsule_serial: String!, id: Boolean): Capsule
   }
 
-  input CapsulesFind {
-    capsule_serial: String
-    capsule_id: String
-    status: String
-    original_launch: Date
-    mission: String
-    landings: Int
-    type: String
-    reuse_count: Int
-  }
-
   type Capsule {
     _id: ObjectID
     capsule_serial: String
@@ -31,6 +20,17 @@ const typeDefs = gql`
     status: String
     original_launch: Date
     missions: [CapsuleMission]
+    landings: Int
+    type: String
+    reuse_count: Int
+  }
+
+  input CapsulesFind {
+    capsule_serial: String
+    capsule_id: String
+    status: String
+    original_launch: Date
+    mission: String
     landings: Int
     type: String
     reuse_count: Int
