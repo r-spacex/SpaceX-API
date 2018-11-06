@@ -30,13 +30,13 @@ const typeDefs = gql`
     capsule_id: String
     status: String
     original_launch: Date
-    missions: [Mission]
+    missions: [CapsuleMission]
     landings: Int
     type: String
     reuse_count: Int
   }
 
-  type Mission {
+  type CapsuleMission {
     name: String
     flight: Int
   }
