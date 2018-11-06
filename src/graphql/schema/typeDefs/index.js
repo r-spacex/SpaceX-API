@@ -6,6 +6,7 @@ const dragon = require('./dragon')
 const history = require('./history')
 const info = require('./info')
 const landpad = require('./landpad')
+const launch = require('./launch')
 const launchpad = require('./launchpad')
 const mission = require('./mission')
 const roadster = require('./roadster')
@@ -21,6 +22,7 @@ const typeDefs = [
   history,
   info,
   landpad,
+  launch,
   launchpad,
   mission,
   payload,
