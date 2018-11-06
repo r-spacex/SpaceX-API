@@ -7,6 +7,7 @@ const history = require('./history')
 const info = require('./info')
 const landpad = require('./landpad')
 const launchpad = require('./launchpad')
+const mission = require('./mission')
 
 const typeDefs = [
   ...global,
@@ -16,7 +17,8 @@ const typeDefs = [
   history,
   info,
   landpad,
-  launchpad
+  launchpad,
+  mission
 ]
 
 module.exports = typeDefs

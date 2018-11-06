@@ -7,6 +7,7 @@ const history = require('./history')
 const info = require('./info')
 const landpad = require('./landpad')
 const launchpad = require('./launchpad')
+const mission = require('./mission')
 
 const resolvers = merge(
   capsule,
@@ -15,7 +16,8 @@ const resolvers = merge(
   history,
   info,
   landpad,
-  launchpad
+  launchpad,
+  mission
 )
 
 module.exports = resolvers
