@@ -22,6 +22,7 @@ const typeDefs = gql`
   }
 
   type History {
+    _id: ObjectID
     id: Int
     title: String
     event_date_utc: Date

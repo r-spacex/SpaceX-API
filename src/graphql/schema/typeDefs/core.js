@@ -28,6 +28,7 @@ const typeDefs = gql`
   }
 
   type Core {
+    _id: ObjectID
     core_serial: String
     block: Int
     status: String
