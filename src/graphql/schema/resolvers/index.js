@@ -10,6 +10,7 @@ const launchpad = require('./launchpad')
 const mission = require('./mission')
 const roadster = require('./roadster')
 const rocket = require('./rocket')
+const ship = require('./ship')
 
 const resolvers = merge(
   capsule,
@@ -21,7 +22,8 @@ const resolvers = merge(
   launchpad,
   mission,
   roadster,
-  rocket
+  rocket,
+  ship
 )
 
 module.exports = resolvers
