@@ -2,7 +2,7 @@
 const { gql } = require('apollo-server')
 
 const spaceX = gql`
-  type Thrust {
+  type Force {
     kN: Float
     lbf: Float
   }

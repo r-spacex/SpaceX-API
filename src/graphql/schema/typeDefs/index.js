@@ -9,6 +9,7 @@ const landpad = require('./landpad')
 const launchpad = require('./launchpad')
 const mission = require('./mission')
 const roadster = require('./roadster')
+const rocket = require('./rocket')
 
 const typeDefs = [
   ...global,
@@ -20,7 +21,8 @@ const typeDefs = [
   landpad,
   launchpad,
   mission,
-  roadster
+  roadster,
+  rocket
 ]
 
 module.exports = typeDefs
