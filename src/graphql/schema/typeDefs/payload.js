@@ -25,7 +25,7 @@ const typeDefs = gql`
     payload_mass_kg: Int
     payload_mass_lbs: Int
     orbit: String
-    orbit_params: String
+    orbit_params: PayloadOrbitParams
   }
 
   type PayloadOrbitParams {
@@ -42,6 +42,8 @@ const typeDefs = gql`
     apoapsis_km: Float
     inclination_deg: Float
     period_min: Float
+    arg_of_pericenter: Float
+    mean_anomaly: Float
   }
 
   input PayloadsFind {
@@ -54,7 +56,7 @@ const typeDefs = gql`
     orbit: String
     reference_system: String
     regime: String
-    longitude: Int
+    longitude: Float
     semi_major_axis_km: Float
     eccentricity: Float
     periapsis_km: Float
