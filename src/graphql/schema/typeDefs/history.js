@@ -26,7 +26,7 @@ const typeDefs = gql`
     id: Int
     title: String
     event_date_utc: Date
-    event_date_unix: Int
+    event_date_unix: Date
     flight_number: Int
     details: String
     links: [Link]
