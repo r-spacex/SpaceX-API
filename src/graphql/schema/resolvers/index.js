@@ -6,7 +6,16 @@ const dragon = require('./dragon')
 const history = require('./history')
 const info = require('./info')
 const landpad = require('./landpad')
+const launchpad = require('./launchpad')
 
-const resolvers = merge(capsule, core, dragon, history, info, landpad)
+const resolvers = merge(
+  capsule,
+  core,
+  dragon,
+  history,
+  info,
+  landpad,
+  launchpad
+)
 
 module.exports = resolvers
