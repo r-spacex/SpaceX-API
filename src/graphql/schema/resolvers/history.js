@@ -21,6 +21,16 @@ const resolvers = {
         .toArray()
       return data
     }
+  },
+  History: {
+    flight: async ({ flight_number }, args, context) => {
+      const [data] = await context.db
+        .collection('launch')
+        .find({ flight_number })
+        .project(context.project({ id: true }))
+        .toArray()
+      return data
+    }
   }
 }
 
