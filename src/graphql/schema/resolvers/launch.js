@@ -77,12 +77,32 @@ const resolvers = {
 
       return data
     }
+  },
+  LaunchRocket: {
+    rocket: async ({ rocket_id }, args, context) => {
+      const [data] = await context.db
+        .collection('rocket')
+        .find({ id: rocket_id })
+        .project(context.project({ id: true }))
+        .map(parseRockets)
+        .toArray()
+      return data
+    }
   }
 }
 
 const parseLaunches = launch => {
   const { reuse, ...rest } = launch
   return rest
+}
+
+const parseRockets = rocket => {
+  rocket.rocket_id = rocket.id
+  rocket.id = rocket.rocketid
+  rocket.rocket_name = rocket.name
+  rocket.rocket_type = rocket.type
+  const { rocketid, name, type, ...rocketParsed } = rocket
+  return rocketParsed
 }
 
 module.exports = resolvers

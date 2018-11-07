@@ -53,7 +53,7 @@ const typeDefs = gql`
   }
 
   type LaunchRocket {
-    rocket_id: String
+    rocket: Rocket
     rocket_name: String
     rocket_type: String
     first_stage: LaunchRocketFirstStage
