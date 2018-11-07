@@ -13,7 +13,7 @@ const resolvers = {
         .toArray()
       return data
     },
-    core: async (obj, { core_serial }, context) => {
+    core: async (obj, { core_serial, id }, context) => {
       const [data] = await context.db
         .collection(collection)
         .find({ core_serial })
