@@ -12,7 +12,7 @@ const typeDefs = gql`
     id: Int
     status: String
     location: Location
-    vehicles_launched: [String]
+    vehicles_launched: [Rocket]
     attempted_launches: Int
     successful_launches: Int
     wikipedia: String
