@@ -66,7 +66,7 @@ const typeDefs = gql`
   }
 
   type LaunchRocketFirstStageCore {
-    core_serial: String
+    core: Core
     flight: Int
     block: Int
     gridfins: Boolean
