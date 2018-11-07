@@ -28,9 +28,8 @@ const parseLaunchpads = pad => {
   pad.site_id = pad.id
   pad.id = pad.padid
   pad.site_name_long = pad.full_name
-  delete pad.padid
-  delete pad.full_name
-  return pad
+  const { padid, full_name, ...padParsed } = pad
+  return padParsed
 }
 
 module.exports = resolvers

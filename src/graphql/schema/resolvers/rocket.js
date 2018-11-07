@@ -10,7 +10,7 @@ const resolvers = {
         .project(context.project({ id }))
         .sort({ first_flight: 1 })
         .limit(context.limit({ limit }))
-        .map(parseLaunchpads)
+        .map(parseRockets)
         .toArray()
       return data
     },
@@ -19,22 +19,20 @@ const resolvers = {
         .collection(collection)
         .find({ id: rocket })
         .project(context.project({ id }))
-        .map(parseLaunchpads)
+        .map(parseRockets)
         .toArray()
       return data
     }
   }
 }
 
-const parseLaunchpads = rocket => {
+const parseRockets = rocket => {
   rocket.rocket_id = rocket.id
   rocket.id = rocket.rocketid
   rocket.rocket_name = rocket.name
   rocket.rocket_type = rocket.type
-  delete rocket.rocketid
-  delete rocket.name
-  delete rocket.type
-  return rocket
+  const { rocketid, name, type, ...rocketParsed } = rocket
+  return rocketParsed
 }
 
 module.exports = resolvers
