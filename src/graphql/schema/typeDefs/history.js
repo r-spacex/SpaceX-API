@@ -19,7 +19,6 @@ const typeDefs = gql`
     title: String
     event_date_utc: Date
     event_date_unix: Date
-    flight: Launch
     details: String
     links: [Link]
   }

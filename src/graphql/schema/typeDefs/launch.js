@@ -52,6 +52,10 @@ const typeDefs = gql`
     static_fire_date_unix: Date
   }
 
+  extend type History {
+    flight: Launch
+  }
+
   type LaunchRocket {
     rocket: Rocket
     rocket_name: String
