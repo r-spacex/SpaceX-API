@@ -35,7 +35,6 @@
     "cheerio": "^1.0.0-rc.2",
     "fuzzball": "^1.1.6",
     "koa": "^2.6.2",
-    "koa-bodyparser": "^4.2.1",
     "koa-compress": "^3.0.0",
     "koa-helmet": "^4.0.0",
     "koa-is-json": "^1.0.0",
@@ -52,8 +51,7 @@
     "path": "^0.12.7",
     "request": "^2.88.0",
     "request-promise-native": "^1.0.5",
-    "shelljs": "^0.8.2",
-    "validator": "^10.9.0"
+    "shelljs": "^0.8.2"
   },
   "devDependencies": {
     "eslint": "^5.9.0",

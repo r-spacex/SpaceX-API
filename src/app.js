@@ -1,5 +1,4 @@
 
-const bodyParser = require('koa-bodyparser');
 const cache = require('koa-redis-cache');
 const compress = require('koa-compress');
 const cors = require('koa2-cors');
@@ -88,9 +87,6 @@ app.use(cors({
   allowMethods: ['GET', 'POST'],
   allowHeaders: ['Content-Type', 'Accept'],
 }));
-
-// Parse JSON body for launches PATCH
-app.use(bodyParser());
 
 // Disable Redis caching unless production
 if (process.env.NODE_ENV === 'production') {
