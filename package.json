@@ -34,7 +34,7 @@
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
     "fuzzball": "^1.1.6",
-    "koa": "^2.6.1",
+    "koa": "^2.6.2",
     "koa-bodyparser": "^4.2.1",
     "koa-compress": "^3.0.0",
     "koa-helmet": "^4.0.0",
@@ -53,10 +53,10 @@
     "request": "^2.88.0",
     "request-promise-native": "^1.0.5",
     "shelljs": "^0.8.2",
-    "validator": "^10.8.0"
+    "validator": "^10.9.0"
   },
   "devDependencies": {
-    "eslint": "^5.8.0",
+    "eslint": "^5.9.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jest": "^22.0.0",
