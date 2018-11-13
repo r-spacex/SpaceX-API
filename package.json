@@ -51,7 +51,7 @@
     "path": "^0.12.7",
     "request": "^2.88.0",
     "request-promise-native": "^1.0.5",
-    "shelljs": "^0.8.2"
+    "shelljs": "^0.8.3"
   },
   "devDependencies": {
     "eslint": "^5.9.0",
