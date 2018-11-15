@@ -7,6 +7,10 @@ const typeDefs = gql`
     dragon(capsule: String!, id: Boolean): Dragon
   }
 
+  extend type Capsule {
+    capsule: Dragon
+  }
+
   type Dragon {
     _id: ObjectID
     id: String

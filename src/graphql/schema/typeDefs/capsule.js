@@ -16,7 +16,6 @@ const typeDefs = gql`
   type Capsule {
     _id: ObjectID
     capsule_serial: String
-    capsule_id: String
     status: String
     original_launch: Date
     missions: [CapsuleMission]

@@ -20,6 +20,16 @@ const resolvers = {
         .toArray()
       return data
     }
+  },
+  Capsule: {
+    capsule: async ({ capsule_id }, args, context) => {
+      const [data] = await context.db
+        .collection(collection)
+        .find({ id: capsule_id })
+        .project(context.project({ id: true }))
+        .toArray()
+      return data
+    }
   }
 }
 
