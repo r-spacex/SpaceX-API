@@ -29,6 +29,10 @@ const typeDefs = gql`
     launchNext(id: Boolean): Launch
   }
 
+  extend type History {
+    flight: Launch
+  }
+
   type Launch {
     _id: ObjectID
     flight_number: Int
@@ -50,10 +54,6 @@ const typeDefs = gql`
     details: String
     static_fire_date_utc: Date
     static_fire_date_unix: Date
-  }
-
-  extend type History {
-    flight: Launch
   }
 
   type LaunchRocket {
