@@ -13,6 +13,10 @@ const typeDefs = gql`
     payload(payload_id: String!): Payload
   }
 
+  extend type Mission {
+    payloads: [Payload]
+  }
+
   type Payload {
     _id: ObjectID
     payload_id: String

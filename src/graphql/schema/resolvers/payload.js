@@ -32,6 +32,23 @@ const resolvers = {
 
       return parsePayload(data)
     }
+  },
+  Mission: {
+    payloads: async ({ payload_ids }, args, context) => {
+      return payload_ids.map(async payload_id => {
+        const [data] = await context.db
+          .collection(collection)
+          .find({ 'rocket.second_stage.payloads.payload_id': payload_id })
+          .project({
+            _id: 1,
+            'rocket.second_stage.payloads': 1,
+            flight_number: 1
+          })
+          .toArray()
+
+        return parsePayload(data)
+      })
+    }
   }
 }
 
@@ -61,6 +78,7 @@ const parsePayloads = (data, query) => {
 
 // TOCHECK
 const parsePayload = (payload, payload_id) => {
+  if (!payload) return null
   const { payloads } = payload.rocket.second_stage
   let index = 0
   payloads.forEach((payload, i) => {
