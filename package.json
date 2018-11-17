@@ -11,7 +11,8 @@
     "roadster": "node scripts/roadster.js",
     "orbit": "node scripts/orbits.js",
     "ships": "node scripts/ships.js",
-    "upcoming": "node scripts/upcoming.js"
+    "upcoming": "node scripts/upcoming.js",
+    "launchpad": "node scripts/launchpad.js"
   },
   "repository": {
     "type": "git",
