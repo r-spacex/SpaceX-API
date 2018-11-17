@@ -13,7 +13,8 @@
     "ships": "node scripts/ships.js",
     "upcoming": "node scripts/upcoming.js",
     "launchpad": "node scripts/launchpad.js",
-    "landpad": "node scripts/landpad.js"
+    "landpad": "node scripts/landpad.js",
+    "cores": "node scripts/cores.js"
   },
   "repository": {
     "type": "git",
