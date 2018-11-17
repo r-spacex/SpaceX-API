@@ -12,7 +12,8 @@
     "orbit": "node scripts/orbits.js",
     "ships": "node scripts/ships.js",
     "upcoming": "node scripts/upcoming.js",
-    "launchpad": "node scripts/launchpad.js"
+    "launchpad": "node scripts/launchpad.js",
+    "landpad": "node scripts/landpad.js"
   },
   "repository": {
     "type": "git",
