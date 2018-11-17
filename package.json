@@ -14,7 +14,8 @@
     "upcoming": "node scripts/upcoming.js",
     "launchpad": "node scripts/launchpad.js",
     "landpad": "node scripts/landpad.js",
-    "cores": "node scripts/cores.js"
+    "cores": "node scripts/cores.js",
+    "capsules": "node scripts/capsules.js"
   },
   "repository": {
     "type": "git",
