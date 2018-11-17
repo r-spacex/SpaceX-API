@@ -35,10 +35,12 @@ async function asyncForEach(array, callback) {
 
   // Gather individual ship mmsi numbers into array for requests
   const id = [];
+  const names = [];
   await data.forEach(ship => {
     if (ship.mmsi != null) {
       id.push(ship.mmsi);
     }
+    names.push(ship.ship_id);
   });
 
   const start = async () => {
@@ -92,7 +94,27 @@ async function asyncForEach(array, callback) {
       await sleep(5000);
     });
   };
+  const finish = async () => {
+    await asyncForEach(names, async name => {
+      const missions = [];
+      const launches = client.db('spacex-api').collection('launch');
+      const launch_results = await launches.find({ upcoming: false, ships: name }).project({ _id: 0, flight_number: 1, mission_name: 1 }).sort({ flight_number: 1 }).toArray();
+
+      launch_results.forEach(launch => {
+        const mission = {
+          name: launch.mission_name,
+          flight: launch.flight_number,
+        };
+        missions.push(mission);
+      });
+      console.log(name);
+      console.log(missions);
+
+      await col.updateOne({ ship_id: name }, { $set: { missions } });
+    });
+  };
   await start();
+  await finish();
   console.log(`Updated ${id.length} ships`);
 
   if (client) {

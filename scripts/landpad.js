@@ -56,7 +56,6 @@ const MongoClient = require('mongodb');
   console.log(`Sucesses: ${asog_successes}\n`);
 
   const landpad = client.db('spacex-api').collection('landpad');
-
   await landpad.updateOne({ id: 'LZ-1' }, { $set: { attempted_landings: lz1_attempts, successful_landings: lz1_successes } });
   await landpad.updateOne({ id: 'LZ-2' }, { $set: { attempted_landings: lz2_attempts, successful_landings: lz2_successes } });
   await landpad.updateOne({ id: 'LZ-4' }, { $set: { attempted_landings: lz4_attempts, successful_landings: lz4_successes } });
