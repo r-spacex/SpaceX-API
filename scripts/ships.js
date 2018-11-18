@@ -111,9 +111,28 @@ async function asyncForEach(array, callback) {
       console.log(missions);
 
       await col.updateOne({ ship_id: name }, { $set: { missions } });
+
+      if (name === 'MRSTEVEN') {
+        console.log('Mr Steven');
+        const attempted_catches = await launches.countDocuments({
+          upcoming: false,
+          launch_success: true,
+          'rocket.fairings.ship': 'MR STEVEN',
+          'rocket.fairings.recovery_attempt': true,
+        });
+        const successful_catches = await launches.countDocuments({
+          upcoming: false,
+          launch_success: true,
+          'rocket.fairings.ship': 'MR STEVEN',
+          'rocket.fairings.recovered': true,
+        });
+        console.log(`Attempts: ${attempted_catches}`);
+        console.log(`Successes: ${successful_catches}\n`);
+        await col.updateOne({ ship_id: name }, { $set: { attempted_catches, successful_catches } });
+      }
     });
   };
-  await start();
+  // await start();
   await finish();
   console.log(`Updated ${id.length} ships`);
 
