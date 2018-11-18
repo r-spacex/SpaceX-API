@@ -132,7 +132,7 @@ async function asyncForEach(array, callback) {
       }
     });
   };
-  // await start();
+  await start();
   await finish();
   console.log(`Updated ${id.length} ships`);
 
