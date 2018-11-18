@@ -35,6 +35,7 @@ const hour = /^[0-9]{4}\s([a-zA-Z]{3}|[a-zA-Z]{3,9})\s[0-9]{1,2}\s(\[[0-9]{2}:[0
 const day = /^[0-9]{4}\s([a-zA-Z]{3}|[a-zA-Z]{3,9})\s[0-9]{1,2}$/;
 const month = /^[0-9]{4}\s([a-zA-Z]{3}|[a-zA-Z]{3,9})$/;
 const year = /^[0-9]{4}$/;
+const year_tbd = /^[0-9]{4}\sTBD$/;
 
 // Using async IIFE to allow "top" level await
 (async () => {
@@ -99,6 +100,8 @@ const year = /^[0-9]{4}$/;
         } else if (mdate.includes('H2')) {
           mdate = mdate.replace('H2', '3');
           precision[manifest_index] = 'half';
+        } else if (year_tbd.test(mdate)) {
+          precision[manifest_index] = 'year';
         } else if (year.test(mdate)) {
           precision[manifest_index] = 'year';
         } else if (month.test(mdate)) {
