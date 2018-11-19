@@ -8,7 +8,7 @@ const resolvers = {
         .find({})
         .project(context.project({ id }))
         .limit(context.limit({ limit }))
-        .map(parseLaunchpads)
+        .map(parseLaunchpad)
         .toArray()
       return data
     },
@@ -17,7 +17,7 @@ const resolvers = {
         .collection(collection)
         .find({ id: pad })
         .project(context.project({ id }))
-        .map(parseLaunchpads)
+        .map(parseLaunchpad)
         .toArray()
       return data
     }
@@ -29,7 +29,7 @@ const resolvers = {
           .collection('rocket')
           .find({ name })
           .project(context.project({ id: true }))
-          .map(parseRockets)
+          .map(parseRocket)
           .toArray()
         return data
       })
@@ -37,7 +37,7 @@ const resolvers = {
   }
 }
 
-const parseLaunchpads = pad => {
+const parseLaunchpad = pad => {
   pad.site_id = pad.id
   pad.id = pad.padid
   pad.site_name_long = pad.full_name
@@ -45,7 +45,7 @@ const parseLaunchpads = pad => {
   return padParsed
 }
 
-const parseRockets = rocket => {
+const parseRocket = rocket => {
   rocket.rocket_id = rocket.id
   rocket.id = rocket.rocketid
   rocket.rocket_name = rocket.name

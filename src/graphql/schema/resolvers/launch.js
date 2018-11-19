@@ -10,7 +10,7 @@ const resolvers = {
         .project(context.project({ id }))
         .sort(context.sort({ query: { order, sort }, url }))
         .limit(context.limit({ limit }))
-        .map(parseLaunches)
+        .map(parseLaunch)
         .toArray()
 
       return data
@@ -22,7 +22,7 @@ const resolvers = {
         .project(context.project({ id }))
         .sort(context.sort({ query: { order, sort }, url }))
         .limit(context.limit({ limit }))
-        .map(parseLaunches)
+        .map(parseLaunch)
         .toArray()
 
       return data
@@ -38,7 +38,7 @@ const resolvers = {
         .project(context.project({ id }))
         .sort(context.sort({ query: { order, sort }, url }))
         .limit(context.limit({ limit }))
-        .map(parseLaunches)
+        .map(parseLaunch)
         .toArray()
 
       return data
@@ -48,7 +48,7 @@ const resolvers = {
         .collection(collection)
         .find({ flight_number })
         .project(context.project({ id }))
-        .map(parseLaunches)
+        .map(parseLaunch)
         .toArray()
 
       return data
@@ -60,7 +60,7 @@ const resolvers = {
         .project(context.project({ id }))
         .sort({ flight_number: -1 })
         .limit(1)
-        .map(parseLaunches)
+        .map(parseLaunch)
         .toArray()
 
       return data
@@ -72,7 +72,7 @@ const resolvers = {
         .project(context.project({ id }))
         .sort({ flight_number: -1 })
         .limit(1)
-        .map(parseLaunches)
+        .map(parseLaunch)
         .toArray()
 
       return data
@@ -84,7 +84,7 @@ const resolvers = {
         .collection('rocket')
         .find({ id: rocket_id })
         .project(context.project({ id: true }))
-        .map(parseRockets)
+        .map(parseRocket)
         .toArray()
       return data
     }
@@ -111,18 +111,15 @@ const resolvers = {
   }
 }
 
-const parseLaunches = launch => {
-  const { reuse, ...rest } = launch
-  return rest
-}
+const parseLaunch = ({ reuse, ...parsedLaunch }) => parsedLaunch
 
-const parseRockets = rocket => {
+const parseRocket = rocket => {
   rocket.rocket_id = rocket.id
   rocket.id = rocket.rocketid
   rocket.rocket_name = rocket.name
   rocket.rocket_type = rocket.type
-  const { rocketid, name, type, ...rocketParsed } = rocket
-  return rocketParsed
+  const { rocketid, name, type, ...parsedRocket } = rocket
+  return parsedRocket
 }
 
 module.exports = resolvers
