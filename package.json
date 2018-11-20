@@ -5,14 +5,13 @@
   "main": "./src/app.js",
   "scripts": {
     "test": "eslint \"**/*.js\" && NODE_ENV=test PORT=0 jest --silent --verbose",
-    "start": "node src/app.js",
-    "dev": "nodemon node src/app.js",
+    "start": "node src/app.js | node src/graphql/index.js",
+    "dev": "nodemon node src/app.js | nodemon node src/graphql/index.js",
     "lint": "eslint \"**/*.js\"",
     "roadster": "node scripts/roadster.js",
     "orbit": "node scripts/orbits.js",
     "ships": "node scripts/ships.js",
-    "upcoming": "node scripts/upcoming.js",
-    "graphql": "nodemon node src/graphql/index.js"
+    "upcoming": "node scripts/upcoming.js"
   },
   "repository": {
     "type": "git",
