@@ -31,11 +31,15 @@ const flight_numbers = [];
 // RegEx expressions for matching dates in the wiki manifest
 // Allows for long months or short months ex. September vs Sep
 // Allows for time with or without brackets ex [23:45] vs 23:45
-const hour = /^[0-9]{4}\s([a-zA-Z]{3}|[a-zA-Z]{3,9})\s[0-9]{1,2}\s(\[[0-9]{2}:[0-9]{2}\]|[0-9]{2}:[0-9]{2})$/;
-const day = /^[0-9]{4}\s([a-zA-Z]{3}|[a-zA-Z]{3,9})\s[0-9]{1,2}$/;
-const month = /^[0-9]{4}\s([a-zA-Z]{3}|[a-zA-Z]{3,9})$/;
-const year = /^[0-9]{4}$/;
-const year_tbd = /^[0-9]{4}\sTBD$/;
+const hour = /^[0-9]{4}\s([a-zA-Z]{3}|[a-zA-Z]{3,9})\s[0-9]{1,2}\s(\[[0-9]{2}:[0-9]{2}\]|[0-9]{2}:[0-9]{2})$/i;
+const day = /^[0-9]{4}\s([a-zA-Z]{3}|[a-zA-Z]{3,9})\s[0-9]{1,2}$/i;
+const month = /^[0-9]{4}\s([a-zA-Z]{3}|[a-zA-Z]{3,9})$/i;
+const year = /^[0-9]{4}$/i;
+
+// Seperate Regex for TBD times and dates
+const year_tbd = /^[0-9]{4}\sTBD$/i;
+const month_tbd = /^[0-9]{4}\s([a-zA-Z]{3}|[a-zA-Z]{3,9})\sTBD$/i;
+
 
 // Using async IIFE to allow "top" level await
 (async () => {
@@ -91,23 +95,34 @@ const year_tbd = /^[0-9]{4}\sTBD$/;
         // Check and see if dates match a certain patten depending on the length of the
         // date given. This sets the amount of precision needed for the date.
         let mdate = manifest_dates[manifest_index];
+        // 2020 Q3
         if (mdate.includes('Q')) {
           mdate = mdate.replace('Q', '');
           precision[manifest_index] = 'quarter';
+        // 2020 H1
         } else if (mdate.includes('H1')) {
           mdate = mdate.replace('H1', '1');
           precision[manifest_index] = 'half';
+        // 2020 H2
         } else if (mdate.includes('H2')) {
           mdate = mdate.replace('H2', '3');
           precision[manifest_index] = 'half';
+        // 2020 TBD
         } else if (year_tbd.test(mdate)) {
           precision[manifest_index] = 'year';
+        // 2020
         } else if (year.test(mdate)) {
           precision[manifest_index] = 'year';
+        // 2020 Nov TBD
+        } else if (month_tbd.test(mdate)) {
+          precision[manifest_index] = 'month';
+        // 2020 Nov
         } else if (month.test(mdate)) {
           precision[manifest_index] = 'month';
+        // 2020 Nov 4
         } else if (day.test(mdate)) {
           precision[manifest_index] = 'day';
+        // 2020 Nov 4 [14:10]
         } else if (hour.test(mdate)) {
           precision[manifest_index] = 'hour';
         } else {
