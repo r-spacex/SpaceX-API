@@ -22,6 +22,7 @@ let calculatedTimes;
 let localTime;
 let date;
 let tbd;
+let is_tentative;
 
 const sites = [];
 const payloads = [];
@@ -100,40 +101,49 @@ const month_tbd = /^[0-9]{4}\s([a-z]{3}|[a-z]{3,9})\sTBD$/i;
           mdate = mdate.replace('Q', '');
           precision[manifest_index] = 'quarter';
           tbd = true;
+          is_tentative = true;
           // 2020 H1
         } else if (mdate.includes('H1')) {
           mdate = mdate.replace('H1', '1');
           precision[manifest_index] = 'half';
           tbd = true;
+          is_tentative = true;
           // 2020 H2
         } else if (mdate.includes('H2')) {
           mdate = mdate.replace('H2', '3');
           precision[manifest_index] = 'half';
           tbd = true;
+          is_tentative = true;
           // 2020 TBD
         } else if (year_tbd.test(mdate)) {
           precision[manifest_index] = 'year';
           tbd = true;
+          is_tentative = true;
           // 2020
         } else if (year.test(mdate)) {
           precision[manifest_index] = 'year';
           tbd = true;
+          is_tentative = true;
           // 2020 Nov TBD
         } else if (month_tbd.test(mdate)) {
           precision[manifest_index] = 'month';
           tbd = true;
+          is_tentative = true;
           // 2020 Nov
         } else if (month.test(mdate)) {
           precision[manifest_index] = 'month';
           tbd = true;
+          is_tentative = true;
           // 2020 Nov 4
         } else if (day.test(mdate)) {
           precision[manifest_index] = 'day';
           tbd = false;
+          is_tentative = true;
           // 2020 Nov 4 [14:10]
         } else if (hour.test(mdate)) {
           precision[manifest_index] = 'hour';
           tbd = false;
+          is_tentative = false;
         } else {
           console.log('Date did not match any of the existing regular expressions');
           return;
@@ -172,7 +182,7 @@ const month_tbd = /^[0-9]{4}\s([a-z]{3}|[a-z]{3,9})\sTBD$/i;
           launch_date_unix: zone.unix(),
           launch_date_utc: zone.toISOString(),
           launch_date_local: localTime,
-          is_tentative: true,
+          is_tentative,
           tentative_max_precision: precision[manifest_index],
           tbd,
         };
