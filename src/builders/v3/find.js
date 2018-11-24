@@ -56,6 +56,9 @@ module.exports = r => {
     if (r.query.tentative_max_precision) {
       query.tentative_max_precision = r.query.tentative_max_precision;
     }
+    if (r.query.tbd) {
+      query.tbd = (r.query.tbd === 'true');
+    }
     if (r.query.rocket_id) {
       query['rocket.rocket_id'] = r.query.rocket_id;
     }

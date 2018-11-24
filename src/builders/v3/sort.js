@@ -48,6 +48,9 @@ module.exports = r => {
       if (r.query.sort === 'tentative_max_precision') {
         query.tentative_max_precision = direction;
       }
+      if (r.query.sort === 'tbd') {
+        query.tbd = direction;
+      }
       if (r.query.sort === 'rocket_id') {
         query['rocket.rocket_id'] = direction;
       }
