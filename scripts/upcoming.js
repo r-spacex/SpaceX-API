@@ -21,6 +21,7 @@ let location;
 let calculatedTimes;
 let localTime;
 let date;
+let tbd;
 
 const sites = [];
 const payloads = [];
@@ -99,32 +100,41 @@ const month_tbd = /^[0-9]{4}\s([a-zA-Z]{3}|[a-zA-Z]{3,9})\sTBD$/i;
         if (mdate.includes('Q')) {
           mdate = mdate.replace('Q', '');
           precision[manifest_index] = 'quarter';
+          tbd = true;
         // 2020 H1
         } else if (mdate.includes('H1')) {
           mdate = mdate.replace('H1', '1');
           precision[manifest_index] = 'half';
+          tbd = true;
         // 2020 H2
         } else if (mdate.includes('H2')) {
           mdate = mdate.replace('H2', '3');
           precision[manifest_index] = 'half';
+          tbd = true;
         // 2020 TBD
         } else if (year_tbd.test(mdate)) {
           precision[manifest_index] = 'year';
+          tbd = true;
         // 2020
         } else if (year.test(mdate)) {
           precision[manifest_index] = 'year';
+          tbd = true;
         // 2020 Nov TBD
         } else if (month_tbd.test(mdate)) {
           precision[manifest_index] = 'month';
+          tbd = true;
         // 2020 Nov
         } else if (month.test(mdate)) {
           precision[manifest_index] = 'month';
+          tbd = true;
         // 2020 Nov 4
         } else if (day.test(mdate)) {
           precision[manifest_index] = 'day';
+          tbd = false;
         // 2020 Nov 4 [14:10]
         } else if (hour.test(mdate)) {
           precision[manifest_index] = 'hour';
+          tbd = false;
         } else {
           console.log('Date did not match any of the existing regular expressions');
           return;
@@ -165,6 +175,7 @@ const month_tbd = /^[0-9]{4}\s([a-zA-Z]{3}|[a-zA-Z]{3,9})\sTBD$/i;
           launch_date_local: localTime,
           is_tentative: true,
           tentative_max_precision: precision[manifest_index],
+          tbd,
         };
         console.log(calculatedTimes);
         console.log('');
