@@ -36,6 +36,7 @@ curl -s https://api.spacexdata.com/v3/launches/latest | jq
   "launch_date_local": "2018-11-15T15:46:00-05:00",
   "is_tentative": false,
   "tentative_max_precision": "hour",
+  "tbd": false,
   "rocket": {
     "rocket_id": "falcon9",
     "rocket_name": "Falcon 9",
@@ -119,7 +120,7 @@ curl -s https://api.spacexdata.com/v3/launches/latest | jq
     "mission_patch_small": "https://images2.imgbox.com/a3/96/WvJsBXuE_o.png",
     "reddit_campaign": "https://www.reddit.com/r/spacex/comments/9p82jt/eshail_2_launch_campaign_thread/",
     "reddit_launch": "https://www.reddit.com/r/spacex/comments/9x9w9v/rspacex_eshail_2_official_launch_discussion/",
-    "reddit_recovery": null,
+    "reddit_recovery": "https://www.reddit.com/r/spacex/comments/9xmpa7/eshail_2_recovery_thread/",
     "reddit_media": "https://www.reddit.com/r/spacex/comments/9xaa76/rspacex_eshail_2_media_thread_videos_images_gifs/",
     "presskit": "https://www.spacex.com/sites/spacex/files/eshail-2_mission_press_kit_11_14_2018.pdf",
     "article_link": "https://spaceflightnow.com/2018/11/15/spacex-launches-qatars-eshail-2-communications-satellite/",
@@ -135,7 +136,7 @@ curl -s https://api.spacexdata.com/v3/launches/latest | jq
       "https://farm5.staticflickr.com/4888/32040173048_b2b29c020f_o.jpg"
     ]
   },
-  "details": "SpaceX's eighteenth flight of 2018 will be its first for Es'hailSat. Es'hail-2 is a communications satellite that will deliver television and internet to Qatar and the surrounding region. It will be launched into a geostationary transfer orbit from LC-39A at Kennedy Space Center. The booster is expected to land on OCISLY.",
+  "details": "SpaceX's eighteenth flight of 2018 was its first for Es'hailSat. Es'hail-2 is a communications satellite delivering television and internet to Qatar and the surrounding region. It was launched into a geostationary transfer orbit from LC-39A at Kennedy Space Center. The booster landed on OCISLY.",
   "upcoming": false,
   "static_fire_date_utc": "2018-11-12T18:13:00.000Z",
   "static_fire_date_unix": 1542046380
