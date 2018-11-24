@@ -25,6 +25,7 @@ test('It should return all launches', async () => {
     expect(item).toHaveProperty('launch_date_local');
     expect(item).toHaveProperty('is_tentative');
     expect(item).toHaveProperty('tentative_max_precision');
+    expect(item).toHaveProperty('tbd');
     expect(item).toHaveProperty('rocket.rocket_id');
     expect(item).toHaveProperty('rocket.rocket_name');
     expect(item).toHaveProperty('rocket.rocket_type');

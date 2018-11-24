@@ -82,6 +82,14 @@ test('It should return flight 42 with given launch date in local time', async ()
   });
 });
 
+test('It should only return tbd launches', async () => {
+  const response = await request(app.callback()).get('/v3/launches?tbd=true');
+  expect(response.statusCode).toBe(200);
+  response.body.forEach(item => {
+    expect(item).toHaveProperty('tbd', true);
+  });
+});
+
 test('It should return launches with falcon9 rocket id', async () => {
   const response = await request(app.callback()).get('/v3/launches?rocket_id=falcon9');
   expect(response.statusCode).toBe(200);
