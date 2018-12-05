@@ -1,5 +1,6 @@
 
 const limit = require('../../builders/v3/limit');
+const offset = require('../../builders/v3/offset');
 const project = require('../../builders/v3/project');
 
 module.exports = {
@@ -13,6 +14,7 @@ module.exports = {
       .find({})
       .project(project(ctx.request.query))
       .sort({ first_flight: 1 })
+      .skip(offset(ctx.request.query))
       .limit(limit(ctx.request.query))
       .toArray();
     data.forEach(rocket => {
@@ -35,6 +37,7 @@ module.exports = {
       .collection('rocket')
       .find({ id: ctx.params.rocket })
       .project(project(ctx.request.query))
+      .limit(1)
       .toArray();
     if (data.length === 0) {
       ctx.throw(404);

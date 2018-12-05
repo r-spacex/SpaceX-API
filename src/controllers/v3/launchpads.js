@@ -1,5 +1,6 @@
 
 const limit = require('../../builders/v3/limit');
+const offset = require('../../builders/v3/offset');
 const project = require('../../builders/v3/project');
 
 module.exports = {
@@ -12,6 +13,7 @@ module.exports = {
       .collection('launchpad')
       .find({})
       .project(project(ctx.request.query))
+      .skip(offset(ctx.request.query))
       .limit(limit(ctx.request.query))
       .toArray();
     data.forEach(pad => {
@@ -32,6 +34,7 @@ module.exports = {
       .collection('launchpad')
       .find({ id: ctx.params.pad })
       .project(project(ctx.request.query))
+      .limit(1)
       .toArray();
     if (data.length === 0) {
       ctx.throw(404);

@@ -1,8 +1,9 @@
 
 const find = require('../../builders/v3/find');
-const sort = require('../../builders/v3/sort');
-const project = require('../../builders/v3/project');
 const limit = require('../../builders/v3/limit');
+const offset = require('../../builders/v3/offset');
+const project = require('../../builders/v3/project');
+const sort = require('../../builders/v3/sort');
 
 module.exports = {
 
@@ -15,6 +16,7 @@ module.exports = {
       .find({ upcoming: false })
       .project(project(ctx.request.query))
       .sort({ flight_number: -1 })
+      .skip(offset(ctx.request.query))
       .limit(1)
       .toArray();
     delete data[0].reuse;
@@ -30,6 +32,7 @@ module.exports = {
       .find({ upcoming: true })
       .project(project(ctx.request.query))
       .sort({ flight_number: 1 })
+      .skip(offset(ctx.request.query))
       .limit(1)
       .toArray();
     delete data[0].reuse;
@@ -45,6 +48,7 @@ module.exports = {
       .find(find(ctx.request))
       .project(project(ctx.request.query))
       .sort(sort(ctx.request))
+      .skip(offset(ctx.request.query))
       .limit(limit(ctx.request.query))
       .toArray();
     data.forEach(launch => {
@@ -62,6 +66,7 @@ module.exports = {
       .find(Object.assign({ upcoming: false }, find(ctx.request)))
       .project(project(ctx.request.query))
       .sort(sort(ctx.request))
+      .skip(offset(ctx.request.query))
       .limit(limit(ctx.request.query))
       .toArray();
     data.forEach(launch => {
@@ -79,6 +84,7 @@ module.exports = {
       .find(Object.assign({ upcoming: true }, find(ctx.request)))
       .project(project(ctx.request.query))
       .sort(sort(ctx.request))
+      .skip(offset(ctx.request.query))
       .limit(limit(ctx.request.query))
       .toArray();
     data.forEach(launch => {
@@ -95,6 +101,7 @@ module.exports = {
       .collection('launch')
       .find({ flight_number: parseInt(ctx.params.flight_number, 10) })
       .project(project(ctx.request.query))
+      .limit(1)
       .toArray();
     if (data.length === 0) {
       ctx.throw(404);

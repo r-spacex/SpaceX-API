@@ -1,7 +1,8 @@
 
 const find = require('../../builders/v3/find');
-const sort = require('../../builders/v3/sort');
 const limit = require('../../builders/v3/limit');
+const offset = require('../../builders/v3/offset');
+const sort = require('../../builders/v3/sort');
 
 module.exports = {
 
@@ -14,12 +15,14 @@ module.exports = {
       .find(find(ctx.request))
       .project({ _id: 0, 'rocket.second_stage.payloads': 1, flight_number: 1 })
       .sort(sort(ctx.request))
+      .skip(offset(ctx.request.query))
       .limit(limit(ctx.request.query))
       .toArray();
 
     // Removed these fields so we can match the remaining querystrings against
     // each payload
     delete ctx.request.query.limit;
+    delete ctx.request.query.offset;
     delete ctx.request.query.order;
     delete ctx.request.query.sort;
     delete ctx.request.query.filter;
@@ -62,7 +65,7 @@ module.exports = {
       .collection('launch')
       .find({ 'rocket.second_stage.payloads.payload_id': ctx.params.payload_id })
       .project({ _id: 0, 'rocket.second_stage.payloads': 1, flight_number: 1 })
-      .limit(limit(ctx.request.query))
+      .limit(1)
       .toArray();
     if (data.length === 0) {
       ctx.throw(404);

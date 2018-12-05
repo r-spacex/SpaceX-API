@@ -1,5 +1,6 @@
 
 const limit = require('../../builders/v3/limit');
+const offset = require('../../builders/v3/offset');
 const project = require('../../builders/v3/project');
 
 module.exports = {
@@ -12,6 +13,7 @@ module.exports = {
       .collection('dragon')
       .find({})
       .project(project(ctx.request.query))
+      .skip(offset(ctx.request.query))
       .limit(limit(ctx.request.query))
       .toArray();
     ctx.body = data;
@@ -25,6 +27,7 @@ module.exports = {
       .collection('dragon')
       .find({ id: ctx.params.capsule })
       .project(project(ctx.request.query))
+      .limit(1)
       .toArray();
     if (data.length === 0) {
       ctx.throw(404);
