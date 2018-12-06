@@ -39,7 +39,7 @@ const v3_roadster = require('./routes/v3/roadster');
 const v3_ships = require('./routes/v3/ships');
 
 // Production read-only DB
-const url = process.env.MONGO_URL || 'mongodb+srv://public:spacex@spacex-gpg0u.mongodb.net/spacex-api';
+const url = 'mongodb+srv://public:spacex@spacex-gcp-gpg0u.gcp.mongodb.net/spacex-api';
 
 const app = new Koa();
 
