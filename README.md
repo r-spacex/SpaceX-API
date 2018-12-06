@@ -1,4 +1,4 @@
-<p align="center"><img src="https://i.imgur.com/CCCJB3z.jpg"></p>
+<p align="center"><img src="https://farm5.staticflickr.com/4840/45473446114_7d5e5d6fe2_o.jpg"></p>
 
 <h1 align="center">SpaceX REST API</h1>
 
@@ -27,13 +27,15 @@ curl -s https://api.spacexdata.com/v3/launches/latest | jq
 
 ```json
 {
-  "flight_number": 70,
-  "mission_name": "Es’hail 2",
-  "mission_id": [],
+  "flight_number": 72,
+  "mission_name": "CRS-16",
+  "mission_id": [
+    "EE86F74"
+  ],
   "launch_year": "2018",
-  "launch_date_unix": 1542314760,
-  "launch_date_utc": "2018-11-15T20:46:00.000Z",
-  "launch_date_local": "2018-11-15T15:46:00-05:00",
+  "launch_date_unix": 1544033760,
+  "launch_date_utc": "2018-12-05T18:16:00.000Z",
+  "launch_date_local": "2018-12-05T13:16:00-05:00",
   "is_tentative": false,
   "tentative_max_precision": "hour",
   "tbd": false,
@@ -44,16 +46,16 @@ curl -s https://api.spacexdata.com/v3/launches/latest | jq
     "first_stage": {
       "cores": [
         {
-          "core_serial": "B1047",
-          "flight": 2,
+          "core_serial": "B1050",
+          "flight": 1,
           "block": 5,
           "gridfins": true,
           "legs": true,
-          "reused": true,
-          "land_success": true,
+          "reused": false,
+          "land_success": false,
           "landing_intent": true,
-          "landing_type": "ASDS",
-          "landing_vehicle": "OCISLY"
+          "landing_type": "RTLS",
+          "landing_vehicle": "LZ-1"
         }
       ]
     },
@@ -61,85 +63,82 @@ curl -s https://api.spacexdata.com/v3/launches/latest | jq
       "block": 5,
       "payloads": [
         {
-          "payload_id": "Es’hail 2",
+          "payload_id": "CRS-16",
           "norad_id": [
-            43700
+            43827
           ],
-          "reused": false,
+          "cap_serial": "C112",
+          "reused": true,
           "customers": [
-            "Es’hailSat"
+            "NASA (CRS)"
           ],
-          "nationality": "Qatar",
-          "manufacturer": "Mitsubishi Electric",
-          "payload_type": "Satellite",
-          "payload_mass_kg": 3000,
-          "payload_mass_lbs": 6613.868,
-          "orbit": "GTO",
+          "nationality": "United States",
+          "manufacturer": "SpaceX",
+          "payload_type": "Dragon 1.1",
+          "payload_mass_kg": 2573,
+          "payload_mass_lbs": 5672.494,
+          "orbit": "ISS",
           "orbit_params": {
             "reference_system": "geocentric",
-            "regime": "geostationary",
-            "longitude": 25.5,
-            "semi_major_axis_km": 25322.941,
-            "eccentricity": 0.7401796,
-            "periapsis_km": 201.281,
-            "apoapsis_km": 37688.33,
-            "inclination_deg": 25.0155,
-            "period_min": 668.391,
-            "lifespan_years": 15,
-            "epoch": "2018-11-15T22:50:01.000Z",
-            "mean_motion": 2.1544258,
-            "raan": 199.6281,
-            "arg_of_pericenter": 178.1843,
-            "mean_anomaly": 52.4356
-          }
+            "regime": "low-earth",
+            "longitude": null,
+            "semi_major_axis_km": 6660.431,
+            "eccentricity": 0.0116661,
+            "periapsis_km": 204.595,
+            "apoapsis_km": 359.997,
+            "inclination_deg": 51.6366,
+            "period_min": 90.159,
+            "lifespan_years": null,
+            "epoch": "2018-12-06T23:10:05.000Z",
+            "mean_motion": 15.97162853,
+            "raan": 239.104,
+            "arg_of_pericenter": 50.4048,
+            "mean_anomaly": 52.6829
+          },
+          "mass_returned_kg": null,
+          "mass_returned_lbs": null,
+          "flight_time_sec": null,
+          "cargo_manifest": "https://www.nasa.gov/sites/default/files/atoms/files/spacex_crs-16_mision_overview_high_res_rev2.pdf"
         }
       ]
     },
-    "fairings": {
-      "reused": false,
-      "recovery_attempt": false,
-      "recovered": false,
-      "ship": null
-    }
+    "fairings": null
   },
   "ships": [
-    "HAWK",
-    "OCISLY"
+    "GOQUEST"
   ],
   "telemetry": {
-    "flight_club": "https://www.flightclub.io/result/2d?code=ESL2"
+    "flight_club": "https://www.flightclub.io/result/2d?code=CR16"
   },
   "launch_site": {
-    "site_id": "ksc_lc_39a",
-    "site_name": "KSC LC 39A",
-    "site_name_long": "Kennedy Space Center Historic Launch Complex 39A"
+    "site_id": "ccafs_slc_40",
+    "site_name": "CCAFS SLC 40",
+    "site_name_long": "Cape Canaveral Air Force Station Space Launch Complex 40"
   },
   "launch_success": true,
   "links": {
-    "mission_patch": "https://images2.imgbox.com/59/c8/HPYpMlux_o.png",
-    "mission_patch_small": "https://images2.imgbox.com/a3/96/WvJsBXuE_o.png",
-    "reddit_campaign": "https://www.reddit.com/r/spacex/comments/9p82jt/eshail_2_launch_campaign_thread/",
-    "reddit_launch": "https://www.reddit.com/r/spacex/comments/9x9w9v/rspacex_eshail_2_official_launch_discussion/",
-    "reddit_recovery": "https://www.reddit.com/r/spacex/comments/9xmpa7/eshail_2_recovery_thread/",
-    "reddit_media": "https://www.reddit.com/r/spacex/comments/9xaa76/rspacex_eshail_2_media_thread_videos_images_gifs/",
-    "presskit": "https://www.spacex.com/sites/spacex/files/eshail-2_mission_press_kit_11_14_2018.pdf",
-    "article_link": "https://spaceflightnow.com/2018/11/15/spacex-launches-qatars-eshail-2-communications-satellite/",
-    "wikipedia": "https://en.wikipedia.org/wiki/Es%27hailSat",
-    "video_link": "https://www.youtube.com/watch?v=PhTbzc-BqKs&feature=youtu.be",
+    "mission_patch": "https://images2.imgbox.com/b6/15/tLQrmwcl_o.png",
+    "mission_patch_small": "https://images2.imgbox.com/de/47/liJzNMRP_o.png",
+    "reddit_campaign": "https://www.reddit.com/r/spacex/comments/9z7i4j/crs16_launch_campaign_thread/",
+    "reddit_launch": "https://www.reddit.com/r/spacex/comments/a2oubw/rspacex_crs16_official_launch_discussion_updates/",
+    "reddit_recovery": "https://www.reddit.com/r/spacex/comments/a3n3vm/crs16_emergency_recovery_thread/",
+    "reddit_media": "https://www.reddit.com/r/spacex/comments/a2uojp/rspacex_crs16_media_thread_videos_images_gifs/",
+    "presskit": "https://www.spacex.com/sites/spacex/files/crs16_press_kit_12_4.pdf",
+    "article_link": "https://spaceflightnow.com/2018/12/05/spacex-falcon-9-boosts-dragon-cargo-ship-to-orbit-first-stage-misses-landing-target/",
+    "wikipedia": "https://en.wikipedia.org/wiki/SpaceX_CRS-16",
+    "video_link": "https://www.youtube.com/watch?v=Esh1jHT9oTA",
     "flickr_images": [
-      "https://farm5.staticflickr.com/4834/32040174268_b71d703417_o.jpg",
-      "https://farm5.staticflickr.com/4810/32040174058_a65fa64e85_o.jpg",
-      "https://farm5.staticflickr.com/4814/32040173268_0ab571e7bc_o.jpg",
-      "https://farm5.staticflickr.com/4899/32040173568_bb5c991565_o.jpg",
-      "https://farm5.staticflickr.com/4875/32040173278_b5578ba6be_o.jpg",
-      "https://farm5.staticflickr.com/4862/32040173928_afdfb09939_o.jpg",
-      "https://farm5.staticflickr.com/4888/32040173048_b2b29c020f_o.jpg"
+      "https://farm5.staticflickr.com/4835/45473442624_69ee8bee45_o.jpg",
+      "https://farm5.staticflickr.com/4903/45473443604_0d668c31da_o.jpg",
+      "https://farm5.staticflickr.com/4858/45473444314_413a344dcb_o.jpg",
+      "https://farm5.staticflickr.com/4856/45473445134_d9384878f8_o.jpg",
+      "https://farm5.staticflickr.com/4840/45473446114_7d5e5d6fe2_o.jpg"
     ]
   },
-  "details": "SpaceX's eighteenth flight of 2018 was its first for Es'hailSat. Es'hail-2 is a communications satellite delivering television and internet to Qatar and the surrounding region. It was launched into a geostationary transfer orbit from LC-39A at Kennedy Space Center. The booster landed on OCISLY.",
+  "details": "SpaceX's 16th Crew Resupply Mission on behalf of NASA, with a total of 20 contracted flights. This will bring essential supplies to the International Space Station using SpaceX's reusable Dragon spacecraft. The Falcon 9 will launch from SLC-40 at Cape Canaveral Air Force Station. During the landing of the first stage, a grid fin hydraulic pump stalled, causing the core to enter an uncontrolled roll, and resulting in a (succesful) water landing.",
   "upcoming": false,
-  "static_fire_date_utc": "2018-11-12T18:13:00.000Z",
-  "static_fire_date_unix": 1542046380
+  "static_fire_date_utc": "2018-11-30T19:57:00.000Z",
+  "static_fire_date_unix": 1543607820
 }
 ```
 
