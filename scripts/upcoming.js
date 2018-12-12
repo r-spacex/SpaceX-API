@@ -196,7 +196,7 @@ const month_tbd = /^[0-9]{4}\s([a-z]{3}|[a-z]{3,9})\sTBD$/i;
           site_id = 'vafb_slc_4e';
           site_name = 'VAFB SLC 4E';
           site_name_long = 'Vandenberg Air Force Base Space Launch Complex 4E';
-        } else if (manifest_launchpads[manifest_index] === 'BC') {
+        } else if (manifest_launchpads[manifest_index] === 'BC' || manifest_launchpads[manifest_index] === 'BC / LC-39A' || manifest_launchpads[manifest_index] === 'BC / SLC-40') {
           site_id = 'stls';
           site_name = 'STLS';
           site_name_long = 'SpaceX South Texas Launch Site';
