@@ -2,6 +2,7 @@
 const find = require('../../builders/v3/find');
 const limit = require('../../builders/v3/limit');
 const offset = require('../../builders/v3/offset');
+const order = require('../../builders/v3/order');
 const sort = require('../../builders/v3/sort');
 const project = require('../../builders/v3/project');
 
@@ -11,9 +12,56 @@ module.exports = {
    * Returns all core information
    */
   all: async ctx => {
+    let data;
+    let null_dates = [];
+    if (!ctx.request.query.original_launch) {
+      null_dates = await global.db
+        .collection('core')
+        .find(Object.assign({}, find(ctx.request), { original_launch: null }))
+        .project(project(ctx.request.query))
+        .sort(sort(ctx.request))
+        .skip(offset(ctx.request.query))
+        .limit(limit(ctx.request.query))
+        .toArray();
+    }
+    const not_null_dates = await global.db
+      .collection('core')
+      .find(Object.assign({ original_launch: { $ne: null } }, find(ctx.request)))
+      .project(project(ctx.request.query))
+      .sort(sort(ctx.request))
+      .skip(offset(ctx.request.query))
+      .limit(limit(ctx.request.query))
+      .toArray();
+    if (order(ctx.request.query) === -1) {
+      data = null_dates.concat(not_null_dates);
+    } else {
+      data = not_null_dates.concat(null_dates);
+    }
+    ctx.body = data;
+  },
+
+  /**
+   * Returns all cores with non null dates
+   */
+  past: async ctx => {
     const data = await global.db
       .collection('core')
-      .find(find(ctx.request))
+      .find(Object.assign({}, find(ctx.request), { original_launch: { $ne: null } }))
+      .project(project(ctx.request.query))
+      .sort(sort(ctx.request))
+      .skip(offset(ctx.request.query))
+      .limit(limit(ctx.request.query))
+      .toArray();
+    ctx.body = data;
+  },
+
+  /**
+   * Returns all cores with null original launches
+   */
+  upcoming: async ctx => {
+    const data = await global.db
+      .collection('core')
+      .find(Object.assign({}, find(ctx.request), { original_launch: null }))
       .project(project(ctx.request.query))
       .sort(sort(ctx.request))
       .skip(offset(ctx.request.query))

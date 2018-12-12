@@ -10,6 +10,12 @@ const v3 = new Router({
 // Returns all capsule information
 v3.get('/capsules', capsules.all);
 
+// Returns all capsules with null launch dates
+v3.get('/capsules/upcoming', capsules.upcoming);
+
+// Returns all capsules with non null launch dates
+v3.get('/capsules/past', capsules.past);
+
 // Returns specific capsule information
 v3.get('/capsules/:cap', capsules.one);
 
