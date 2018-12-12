@@ -87,6 +87,9 @@ const month_tbd = /^[0-9]{4}\s([a-z]{3}|[a-z]{3,9})\sTBD$/i;
   // Filter to collect payload names
   const manifest_payloads = manifest_row.filter((value, index) => (index + 3) % 8 === 0);
 
+  // Filter to collect launchpad names
+  const manifest_launchpads = manifest_row.filter((value, index) => (index + 6) % 8 === 0);
+
   // Compare each payload against entire list of manifest payloads, and fuzzy match the
   // payload id against the manifest payload name. The partial match must be 100%, to avoid
   // conflicts like SSO-A and SSO-B, where a really close match would produce wrong results.
@@ -175,6 +178,30 @@ const month_tbd = /^[0-9]{4}\s([a-z]{3}|[a-z]{3,9})\sTBD$/i;
         // Add flight numbers to array to check for duplicates
         flight_numbers.push(base_flight_number + manifest_index);
 
+        // Calculate launch site depending on wiki manifest
+        let site_id = null;
+        let site_name = null;
+        let site_name_long = null;
+        console.log(manifest_launchpads[manifest_index]);
+
+        if (manifest_launchpads[manifest_index] === 'SLC-40' || manifest_launchpads[manifest_index] === 'SLC-40 / LC-39A' || manifest_launchpads[manifest_index] === 'SLC-40 / BC') {
+          site_id = 'ccafs_slc_40';
+          site_name = 'CCAFS SLC 40';
+          site_name_long = 'Cape Canaveral Air Force Station Space Launch Complex 40';
+        } else if (manifest_launchpads[manifest_index] === 'LC-39A' || manifest_launchpads[manifest_index] === 'LC-39A / BC' || manifest_launchpads[manifest_index] === 'LC-39A / SLC-40') {
+          site_id = 'ksc_lc_39a';
+          site_name = 'KSC LC 39A';
+          site_name_long = 'Kennedy Space Center Historic Launch Complex 39A';
+        } else if (manifest_launchpads[manifest_index] === 'SLC-4E') {
+          site_id = 'vafb_slc_4e';
+          site_name = 'VAFB SLC 4E';
+          site_name_long = 'Vandenberg Air Force Base Space Launch Complex 4E';
+        } else if (manifest_launchpads[manifest_index] === 'BC') {
+          site_id = 'stls';
+          site_name = 'STLS';
+          site_name_long = 'SpaceX South Texas Launch Site';
+        }
+
         // Build launch time objects to update
         calculatedTimes = {
           flight_number: (base_flight_number + manifest_index),
@@ -185,6 +212,10 @@ const month_tbd = /^[0-9]{4}\s([a-z]{3}|[a-z]{3,9})\sTBD$/i;
           is_tentative,
           tentative_max_precision: precision[manifest_index],
           tbd,
+          'launch_site.site_id': site_id,
+          'launch_site.site_name': site_name,
+          'launch_site.site_name_long': site_name_long,
+
         };
         console.log(calculatedTimes);
         console.log('');
