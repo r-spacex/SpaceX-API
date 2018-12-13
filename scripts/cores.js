@@ -1,10 +1,12 @@
 #!/usr/bin/env node
 
 /**
- * This script updates core missions, reuse, and landing counts
+ * This script updates core missions, reuse, landing counts, and status
  */
 
 const MongoClient = require('mongodb');
+const cheerio = require('cheerio');
+const request = require('request-promise-native');
 
 // Created so we can use async await with requests, and
 // to use async sleep function inside the IIFE
@@ -28,13 +30,42 @@ async function asyncForEach(array, callback) {
   const col = client.db('spacex-api').collection('core');
   const launch = client.db('spacex-api').collection('launch');
 
+  // Update status of each core from the subreddit core tracking page
+  // Parses two tables: One for active cores, and one for the status unknown cores, may
+  // add support for the inactive and lost cores at some point
+  const result = await request('https://www.reddit.com/r/spacex/wiki/cores');
+  const $ = cheerio.load(result);
+  const promises = [];
+
+  const active = $('div.md:nth-child(2) > table:nth-child(14) > tbody:nth-child(2)').text();
+  const active_row = active.split('\n').filter(v => v !== '');
+  const active_cores = active_row.filter((value, index) => index % 7 === 0);
+  const active_status = active_row.filter((value, index) => (index + 1) % 7 === 0);
+
+  const unknown = $('div.md:nth-child(2) > table:nth-child(17) > tbody:nth-child(2)').text();
+  const unknown_row = unknown.split('\n').filter(v => v !== '');
+  const unknown_cores = unknown_row.filter((value, index) => index % 6 === 0);
+  const unknown_status = unknown_row.filter((value, index) => (index + 1) % 6 === 0).map(x => x.replace(' [source]', ''));
+
+  const all_cores = active_cores.concat(unknown_cores);
+  const all_status = active_status.concat(unknown_status);
+
+  all_cores.forEach((core_serial, index) => {
+    console.log(core_serial);
+    console.log(all_status[index]);
+    promises.push(col.updateOne({ core_serial }, { $set: { details: all_status[index] } }));
+  });
+
+  await Promise.all(promises);
+
+  // Create cores array to loop through for reuse counts
   const cores = [];
   const data = await col.find({}).sort({ core_serial: 1 }).toArray();
   data.forEach(core => {
     cores.push(core.core_serial);
   });
 
-
+  // Begin reuse count updates
   const start = async () => {
     await asyncForEach(cores, async core => {
       const rtls_attempts = await launch.countDocuments({
