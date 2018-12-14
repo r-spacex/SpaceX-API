@@ -49,7 +49,7 @@
     "koa-router": "^7.4.0",
     "koa2-cors": "^2.0.6",
     "lower-case": "^1.1.4",
-    "moment": "^2.22.2",
+    "moment": "^2.23.0",
     "moment-timezone": "^0.5.23",
     "mongodb": "^3.1.10",
     "path": "^0.12.7",
@@ -67,7 +67,7 @@
     "eslint-plugin-react": "^7.11.1",
     "eslint-plugin-security": "^1.4.0",
     "jest": "^23.6.0",
-    "nodemon": "^1.18.8",
+    "nodemon": "^1.18.9",
     "supertest": "^3.3.0"
   },
   "jest": {
