@@ -9,7 +9,7 @@ module.exports = {
   get: async ctx => {
     const data = await global.db
       .collection('info')
-      .find({})
+      .find({ name: 'SpaceX' })
       .project(project(ctx.request.query))
       .toArray();
     ctx.body = data[0];

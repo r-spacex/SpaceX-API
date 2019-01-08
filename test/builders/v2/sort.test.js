@@ -42,12 +42,6 @@ test('It should return launches sorted by local launch date', async () => {
   expect(response.body[response.body.length - 1]).toHaveProperty('flight_number', 1);
 });
 
-test('It should return launches sorted by rocket id', async () => {
-  const response = await request(app.callback()).get('/v2/launches?sort=rocket_id&order=desc&launch_year=2017');
-  expect(response.statusCode).toBe(200);
-  expect(response.body[response.body.length - 1]).toHaveProperty('flight_number', 52);
-});
-
 test('It should return launches sorted by rocket name', async () => {
   const response = await request(app.callback()).get('/v2/launches?sort=rocket_name&launch_year=2014');
   expect(response.statusCode).toBe(200);
