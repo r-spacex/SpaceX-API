@@ -13,6 +13,7 @@
 const MongoClient = require('mongodb');
 const moment = require('moment-timezone');
 const cheerio = require('cheerio');
+const chrono = require('chrono-node');
 const request = require('request-promise-native');
 const fuzz = require('fuzzball');
 
@@ -38,9 +39,12 @@ const day = /^[0-9]{4}\s([a-z]{3}|[a-z]{3,9})\s[0-9]{1,2}$/i;
 const month = /^[0-9]{4}\s([a-z]{3}|[a-z]{3,9})$/i;
 const year = /^[0-9]{4}$/i;
 
-// Seperate Regex for TBD times and dates
+// Separate Regex for TBD times and dates
 const year_tbd = /^[0-9]{4}\sTBD$/i;
 const month_tbd = /^[0-9]{4}\s([a-z]{3}|[a-z]{3,9})\sTBD$/i;
+
+// Separate Regex for Early, Mid, and Late
+const month_vague = /^[0-9]{4}\s(early|mid|late)\s([a-z]{3}|[a-z]{3,9})$/i;
 
 // Using async IIFE to allow "top" level await
 (async () => {
@@ -132,6 +136,11 @@ const month_tbd = /^[0-9]{4}\s([a-z]{3}|[a-z]{3,9})\sTBD$/i;
           precision[manifest_index] = 'month';
           tbd = true;
           is_tentative = true;
+          // 2020 Early/Mid/Late Nov
+        } else if (month_vague.test(mdate)) {
+          precision[manifest_index] = 'month';
+          tbd = true;
+          is_tentative = true;
           // 2020 Nov
         } else if (month.test(mdate)) {
           precision[manifest_index] = 'month';
@@ -160,10 +169,22 @@ const month_tbd = /^[0-9]{4}\s([a-z]{3}|[a-z]{3,9})\sTBD$/i;
         console.log(date);
         console.log(`${payload} : ${manifest_payload}`);
 
-        // Strip brackets from time given, and tack on UTC time offset at the end for date parser
-        const stripped_time = `${date.replace('[', '').replace(']', '')} +0000`;
+        // Attempt to use chrono parser first for crazy date formats, and if it fails, feed it into the moment.js
+        // parser with previously known date formats
+        // Chrono sets the time at 12:00 when just the day is known, kinda weird
+        // Moment.js sets the time as 00:00 when only the day is known
+        let parsed_date;
+        let time;
+        parsed_date = chrono.parseDate(date);
+        time = moment(parsed_date);
+        if (!parsed_date) {
+          // Strip brackets from time given, and tack on UTC time offset at the end for date parser
+          parsed_date = `${date.replace('[', '').replace(']', '')} +0000`;
+          time = moment(parsed_date, ['YYYY MMM D HH:mm Z', 'YYYY MMM D Z', 'YYYY MMM Z', 'YYYY Q Z', 'YYYY Z']);
+          console.log('OVERRIDE');
+        }
+
         // Feed stripped time into all possible date formats in the wiki currently
-        const time = moment(stripped_time, ['YYYY MMM D HH:mm Z', 'YYYY MMM D Z', 'YYYY MMM Z', 'YYYY Q Z', 'YYYY Z']);
         const zone = moment.tz(time, 'UTC');
 
         // Use launch site id's to properly set timezone for local time
@@ -239,16 +260,16 @@ const month_tbd = /^[0-9]{4}\s([a-z]{3}|[a-z]{3,9})\sTBD$/i;
   }
 
   // Execute all our stored update promises
-  const output = await Promise.all(promises);
+  // const output = await Promise.all(promises);
 
-  // Display if the document was found, and if it was modified or not
-  output.forEach((doc, index) => {
-    if (doc.result.nModified !== 0) {
-      console.log(`${payloads[index]} UPDATED`);
-    } else {
-      console.log(`${payloads[index]}`);
-    }
-  });
+  // // Display if the document was found, and if it was modified or not
+  // output.forEach((doc, index) => {
+  //   if (doc.result.nModified !== 0) {
+  //     console.log(`${payloads[index]} UPDATED`);
+  //   } else {
+  //     console.log(`${payloads[index]}`);
+  //   }
+  // });
 
   if (client) {
     client.close();

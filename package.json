@@ -4,10 +4,10 @@
   "description": "Open Source REST API for rocket, core, capsule, pad, and launch data",
   "main": "./src/app.js",
   "scripts": {
-    "test": "eslint \"**/*.js\" && NODE_ENV=test PORT=0 jest --silent --verbose",
+    "test": "eslint . && NODE_ENV=test PORT=0 jest --silent --verbose",
     "start": "node src/app.js",
     "dev": "nodemon node src/app.js",
-    "lint": "eslint \"**/*.js\"",
+    "lint": "eslint .",
     "roadster": "node scripts/roadster.js",
     "orbit": "node scripts/orbits.js",
     "ships": "node scripts/ships.js",
@@ -37,6 +37,7 @@
   "homepage": "https://github.com/r-spacex/SpaceX-API",
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
+    "chrono-node": "^1.3.5",
     "fuzzball": "^1.2.0",
     "koa": "^2.6.2",
     "koa-compress": "^3.0.0",
