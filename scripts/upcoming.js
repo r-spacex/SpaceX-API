@@ -260,16 +260,16 @@ const month_vague = /^[0-9]{4}\s(early|mid|late)\s([a-z]{3}|[a-z]{3,9})$/i;
   }
 
   // Execute all our stored update promises
-  // const output = await Promise.all(promises);
+  const output = await Promise.all(promises);
 
-  // // Display if the document was found, and if it was modified or not
-  // output.forEach((doc, index) => {
-  //   if (doc.result.nModified !== 0) {
-  //     console.log(`${payloads[index]} UPDATED`);
-  //   } else {
-  //     console.log(`${payloads[index]}`);
-  //   }
-  // });
+  // Display if the document was found, and if it was modified or not
+  output.forEach((doc, index) => {
+    if (doc.result.nModified !== 0) {
+      console.log(`${payloads[index]} UPDATED`);
+    } else {
+      console.log(`${payloads[index]}`);
+    }
+  });
 
   if (client) {
     client.close();
