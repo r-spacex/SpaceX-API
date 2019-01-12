@@ -13,7 +13,6 @@
 const MongoClient = require('mongodb');
 const moment = require('moment-timezone');
 const cheerio = require('cheerio');
-const chrono = require('chrono-node');
 const request = require('request-promise-native');
 const fuzz = require('fuzzball');
 
@@ -173,16 +172,9 @@ const month_vague = /^[0-9]{4}\s(early|mid|late)\s([a-z]{3}|[a-z]{3,9})$/i;
         // parser with previously known date formats
         // Chrono sets the time at 12:00 when just the day is known, kinda weird
         // Moment.js sets the time as 00:00 when only the day is known
-        let parsed_date;
-        let time;
-        parsed_date = chrono.parseDate(date);
-        time = moment(parsed_date);
-        if (!parsed_date) {
-          // Strip brackets from time given, and tack on UTC time offset at the end for date parser
-          parsed_date = `${date.replace('[', '').replace(']', '')} +0000`;
-          time = moment(parsed_date, ['YYYY MMM D HH:mm Z', 'YYYY MMM D Z', 'YYYY MMM Z', 'YYYY Q Z', 'YYYY Z']);
-          console.log('OVERRIDE');
-        }
+        // Strip brackets from time given, and tack on UTC time offset at the end for date parser
+        const parsed_date = `${date.replace('[', '').replace(']', '')} +0000`;
+        const time = moment(parsed_date, ['YYYY MMM D HH:mm Z', 'YYYY MMM D Z', 'YYYY MMM Z', 'YYYY Q Z', 'YYYY Z']);
 
         // Feed stripped time into all possible date formats in the wiki currently
         const zone = moment.tz(time, 'UTC');
