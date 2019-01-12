@@ -64,15 +64,7 @@ const month_vague = /^[0-9]{4}\s(early|mid|late)\s([a-z]{3}|[a-z]{3,9})$/i;
 
   // Collect site names for time zone and payload name for fuzzy check
   launches.forEach(launch => {
-    // Add temp fix for last Iridium NEXT launch because we need fuzzy
-    // search to return 100% substring match, else we get SSO-A and SSO-B changing
-    // because of a slight difference.
-    // NOTE: Will be removed after launch
-    if (launch.rocket.second_stage.payloads[0].payload_id === 'Iridium NEXT 8') {
-      payloads.push('Iridium 8');
-    } else {
-      payloads.push(launch.rocket.second_stage.payloads[0].payload_id);
-    }
+    payloads.push(launch.rocket.second_stage.payloads[0].payload_id);
     sites.push(launch.launch_site.site_id);
   });
 
@@ -84,7 +76,7 @@ const month_vague = /^[0-9]{4}\s(early|mid|late)\s([a-z]{3}|[a-z]{3,9})$/i;
   const manifest = $('body > div.content > div > div > table:nth-child(6) > tbody').text();
   const manifest_row = manifest.split('\n').filter(v => v !== '');
 
-  // Filter to collect manaifest dates
+  // Filter to collect manifest dates
   const manifest_dates = manifest_row.filter((value, index) => index % 8 === 0);
 
   // Filter to collect payload names
@@ -232,12 +224,6 @@ const month_vague = /^[0-9]{4}\s(early|mid|late)\s([a-z]{3}|[a-z]{3,9})$/i;
         };
         console.log(calculatedTimes);
         console.log('');
-
-        // Another special case added for last Iridium launch
-        // NOTE: Will be removed after launch
-        if (payload === 'Iridium 8') {
-          payload = 'Iridium NEXT 8';
-        }
 
         // Add to array of promises to update all at once after the forEach iterations finish
         promises.push(col.updateOne({ 'rocket.second_stage.payloads.payload_id': payload }, { $set: calculatedTimes }));
