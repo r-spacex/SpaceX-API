@@ -252,7 +252,7 @@ test('It should return cores sorted by block number', async () => {
 test('It should return cores sorted by core status', async () => {
   const response = await request(app.callback()).get('/v3/cores?sort=status');
   expect(response.statusCode).toBe(200);
-  expect(response.body[0]).toHaveProperty('status', 'active');
+  expect(response.body[0]).toHaveProperty('status', 'inactive');
 });
 
 test('It should return cores sorted by original launch date', async () => {
