@@ -160,12 +160,8 @@ const month_vague = /^[0-9]{4}\s(early|mid|late)\s([a-z]{3}|[a-z]{3,9})$/i;
         console.log(date);
         console.log(`${payload} : ${manifest_payload}`);
 
-        // Attempt to use chrono parser first for crazy date formats, and if it fails, feed it into the moment.js
-        // parser with previously known date formats
-        // Chrono sets the time at 12:00 when just the day is known, kinda weird
-        // Moment.js sets the time as 00:00 when only the day is known
         // Strip brackets from time given, and tack on UTC time offset at the end for date parser
-        const parsed_date = `${date.replace('[', '').replace(']', '')} +0000`;
+        const parsed_date = `${date.replace(/(early|mid|late)/i, '').replace('[', '').replace(']', '')} +0000`;
         const time = moment(parsed_date, ['YYYY MMM D HH:mm Z', 'YYYY MMM D Z', 'YYYY MMM Z', 'YYYY Q Z', 'YYYY Z']);
 
         // Feed stripped time into all possible date formats in the wiki currently
