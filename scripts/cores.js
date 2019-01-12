@@ -25,7 +25,6 @@ const request = require('request-promise-native');
   // add support for the inactive and lost cores at some point
   const result = await request('https://www.reddit.com/r/spacex/wiki/cores');
   const $ = cheerio.load(result);
-  const promises = [];
 
   const active = $('div.md:nth-child(2) > table:nth-child(14) > tbody:nth-child(2)').text();
   const active_row = active.split('\n').filter(v => v !== '');
@@ -35,18 +34,45 @@ const request = require('request-promise-native');
   const unknown = $('div.md:nth-child(2) > table:nth-child(17) > tbody:nth-child(2)').text();
   const unknown_row = unknown.split('\n').filter(v => v !== '');
   const unknown_cores = unknown_row.filter((value, index) => index % 6 === 0);
-  const unknown_status = unknown_row.filter((value, index) => (index + 1) % 6 === 0).map(x => x.replace(' [source]', ''));
+  const unknown_status = unknown_row.filter((value, index) => (index + 1) % 6 === 0).map(x => x.replace(/\[source\]/gi, ''));
 
-  const all_cores = active_cores.concat(unknown_cores);
-  const all_status = active_status.concat(unknown_status);
+  const inactive = $('div.md:nth-child(2) > table:nth-child(20) > tbody:nth-child(2)').text();
+  const inactive_row = inactive.split('\n').filter(v => v !== '');
+  const inactive_cores = inactive_row.filter((value, index) => index % 7 === 0);
+  const inactive_status = inactive_row.filter((value, index) => (index + 1) % 7 === 0).map(x => x.replace(/\[source\]/gi, ''));
 
-  all_cores.forEach((core_serial, index) => {
+  const lost = $('div.md:nth-child(2) > table:nth-child(24) > tbody:nth-child(2)').text();
+  const lost_row = lost.split('\n').filter(v => v !== '');
+  const lost_cores = lost_row.filter((value, index) => index % 8 === 0);
+  const lost_status = lost_row.filter((value, index) => (index + 1) % 8 === 0).map(x => x.replace(/\[source\]/gi, ''));
+
+  // Update status and details for all active cores
+  for await (const [index, core_serial] of active_cores.entries()) {
     console.log(core_serial);
-    console.log(all_status[index]);
-    promises.push(col.updateOne({ core_serial }, { $set: { details: all_status[index] } }));
-  });
+    console.log(active_status[index]);
+    await col.updateOne({ core_serial }, { $set: { details: active_status[index], status: 'active' } });
+  }
 
-  await Promise.all(promises);
+  // Update status and details for all unknown cores
+  for await (const [index, core_serial] of unknown_cores.entries()) {
+    console.log(core_serial);
+    console.log(unknown_status[index]);
+    await col.updateOne({ core_serial }, { $set: { details: unknown_status[index], status: 'unknown' } });
+  }
+
+  // Update status and details for all inactive cores
+  for await (const [index, core_serial] of inactive_cores.entries()) {
+    console.log(core_serial);
+    console.log(inactive_status[index]);
+    await col.updateOne({ core_serial }, { $set: { details: inactive_status[index], status: 'inactive' } });
+  }
+
+  // Update status and details for all lost/expended cores
+  for await (const [index, core_serial] of lost_cores.entries()) {
+    console.log(core_serial);
+    console.log(lost_status[index]);
+    await col.updateOne({ core_serial }, { $set: { details: lost_status[index], status: 'lost' } });
+  }
 
   // Create cores array to loop through for reuse counts
   const cores = [];
