@@ -103,6 +103,17 @@ test('It should return all launches', async () => {
     expect(item).toHaveProperty('launch_success');
     expect(item).toHaveProperty('links');
     expect(item).toHaveProperty('links.flickr_images');
+    expect(item).toHaveProperty('links.video_link');
+    expect(item).toHaveProperty('links.youtube_id');
+    expect(item).toHaveProperty('links.mission_patch');
+    expect(item).toHaveProperty('links.mission_patch_small');
+    expect(item).toHaveProperty('links.reddit_campaign');
+    expect(item).toHaveProperty('links.reddit_launch');
+    expect(item).toHaveProperty('links.reddit_recovery');
+    expect(item).toHaveProperty('links.reddit_media');
+    expect(item).toHaveProperty('links.presskit');
+    expect(item).toHaveProperty('links.article_link');
+    expect(item).toHaveProperty('links.wikipedia');
     expect(item).toHaveProperty('details');
     expect(item).toHaveProperty('static_fire_date_utc');
     expect(item).toHaveProperty('static_fire_date_unix');
