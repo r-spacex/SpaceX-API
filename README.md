@@ -27,18 +27,19 @@ curl -s https://api.spacexdata.com/v3/launches/latest | jq
 
 ```json
 {
-  "flight_number": 72,
-  "mission_name": "CRS-16",
+  "flight_number": 74,
+  "mission_name": "Iridium NEXT Mission 8",
   "mission_id": [
-    "EE86F74"
+    "F3364BF"
   ],
-  "launch_year": "2018",
-  "launch_date_unix": 1544033760,
-  "launch_date_utc": "2018-12-05T18:16:00.000Z",
-  "launch_date_local": "2018-12-05T13:16:00-05:00",
+  "launch_year": "2019",
+  "launch_date_unix": 1547220660,
+  "launch_date_utc": "2019-01-11T15:31:00.000Z",
+  "launch_date_local": "2019-01-11T07:31:00-08:00",
   "is_tentative": false,
   "tentative_max_precision": "hour",
   "tbd": false,
+  "launch_window": 0,
   "rocket": {
     "rocket_id": "falcon9",
     "rocket_name": "Falcon 9",
@@ -46,16 +47,16 @@ curl -s https://api.spacexdata.com/v3/launches/latest | jq
     "first_stage": {
       "cores": [
         {
-          "core_serial": "B1050",
-          "flight": 1,
+          "core_serial": "B1049",
+          "flight": 2,
           "block": 5,
           "gridfins": true,
           "legs": true,
-          "reused": false,
-          "land_success": false,
+          "reused": true,
+          "land_success": true,
           "landing_intent": true,
-          "landing_type": "RTLS",
-          "landing_vehicle": "LZ-1"
+          "landing_type": "ASDS",
+          "landing_vehicle": "JRTI"
         }
       ]
     },
@@ -63,82 +64,96 @@ curl -s https://api.spacexdata.com/v3/launches/latest | jq
       "block": 5,
       "payloads": [
         {
-          "payload_id": "CRS-16",
+          "payload_id": "Iridium NEXT 8",
           "norad_id": [
-            43827
+            43922,
+            43923,
+            43924,
+            43925,
+            43926,
+            43927,
+            43928,
+            43929,
+            43930,
+            43931
           ],
-          "cap_serial": "C112",
-          "reused": true,
+          "reused": false,
           "customers": [
-            "NASA (CRS)"
+            "Iridium Communications"
           ],
           "nationality": "United States",
-          "manufacturer": "SpaceX",
-          "payload_type": "Dragon 1.1",
-          "payload_mass_kg": 2573,
-          "payload_mass_lbs": 5672.494,
-          "orbit": "ISS",
+          "manufacturer": "Thales Alenia Space",
+          "payload_type": "Satellite",
+          "payload_mass_kg": 9600,
+          "payload_mass_lbs": 21164.38,
+          "orbit": "PO",
           "orbit_params": {
             "reference_system": "geocentric",
             "regime": "low-earth",
             "longitude": null,
-            "semi_major_axis_km": 6660.431,
-            "eccentricity": 0.0116661,
-            "periapsis_km": 204.595,
-            "apoapsis_km": 359.997,
-            "inclination_deg": 51.6366,
-            "period_min": 90.159,
-            "lifespan_years": null,
-            "epoch": "2018-12-06T23:10:05.000Z",
-            "mean_motion": 15.97162853,
-            "raan": 239.104,
-            "arg_of_pericenter": 50.4048,
-            "mean_anomaly": 52.6829
-          },
-          "mass_returned_kg": null,
-          "mass_returned_lbs": null,
-          "flight_time_sec": null,
-          "cargo_manifest": "https://www.nasa.gov/sites/default/files/atoms/files/spacex_crs-16_mision_overview_high_res_rev2.pdf"
+            "semi_major_axis_km": 6997.303,
+            "eccentricity": 0.0011185,
+            "periapsis_km": 611.342,
+            "apoapsis_km": 626.995,
+            "inclination_deg": 86.6809,
+            "period_min": 97.085,
+            "lifespan_years": 15,
+            "epoch": "2019-01-14T19:01:22.000Z",
+            "mean_motion": 14.83223805,
+            "raan": 46.2409,
+            "arg_of_pericenter": 203.1527,
+            "mean_anomaly": 156.9184
+          }
         }
       ]
     },
-    "fairings": null
+    "fairings": {
+      "reused": false,
+      "recovery_attempt": false,
+      "recovered": null,
+      "ship": null
+    }
   },
   "ships": [
-    "GOQUEST"
+    "JRTI-2",
+    "NRCQUEST",
+    "PACIFICFREEDOM"
   ],
   "telemetry": {
-    "flight_club": "https://www.flightclub.io/result/2d?code=CR16"
+    "flight_club": "https://www.flightclub.io/result?code=IRD8"
   },
   "launch_site": {
-    "site_id": "ccafs_slc_40",
-    "site_name": "CCAFS SLC 40",
-    "site_name_long": "Cape Canaveral Air Force Station Space Launch Complex 40"
+    "site_id": "vafb_slc_4e",
+    "site_name": "VAFB SLC 4E",
+    "site_name_long": "Vandenberg Air Force Base Space Launch Complex 4E"
   },
   "launch_success": true,
   "links": {
-    "mission_patch": "https://images2.imgbox.com/b6/15/tLQrmwcl_o.png",
-    "mission_patch_small": "https://images2.imgbox.com/de/47/liJzNMRP_o.png",
-    "reddit_campaign": "https://www.reddit.com/r/spacex/comments/9z7i4j/crs16_launch_campaign_thread/",
-    "reddit_launch": "https://www.reddit.com/r/spacex/comments/a2oubw/rspacex_crs16_official_launch_discussion_updates/",
-    "reddit_recovery": "https://www.reddit.com/r/spacex/comments/a3n3vm/crs16_emergency_recovery_thread/",
-    "reddit_media": "https://www.reddit.com/r/spacex/comments/a2uojp/rspacex_crs16_media_thread_videos_images_gifs/",
-    "presskit": "https://www.spacex.com/sites/spacex/files/crs16_press_kit_12_4.pdf",
-    "article_link": "https://spaceflightnow.com/2018/12/05/spacex-falcon-9-boosts-dragon-cargo-ship-to-orbit-first-stage-misses-landing-target/",
-    "wikipedia": "https://en.wikipedia.org/wiki/SpaceX_CRS-16",
-    "video_link": "https://www.youtube.com/watch?v=Esh1jHT9oTA",
+    "mission_patch": "https://images2.imgbox.com/80/ae/1JL1ZzXD_o.png",
+    "mission_patch_small": "https://images2.imgbox.com/11/f0/xPDcIpmS_o.png",
+    "reddit_campaign": "https://www.reddit.com/r/spacex/comments/a699fh/iridium_next_constellation_mission_8_launch/",
+    "reddit_launch": "https://www.reddit.com/r/spacex/comments/aemq2i/rspacex_iridium_next_8_official_launch_discussion/",
+    "reddit_recovery": "https://www.reddit.com/r/spacex/comments/aewp4r/iridium_8_recovery_thread/",
+    "reddit_media": "https://www.reddit.com/r/spacex/comments/aeoxve/rspacex_iridium_next_8_media_thread_videos_images/",
+    "presskit": "https://www.spacex.com/sites/spacex/files/iridium8presskit.pdf",
+    "article_link": "https://spaceflightnow.com/2019/01/11/spacex-begins-2019-with-eighth-and-final-for-upgraded-iridium-network/",
+    "wikipedia": "https://en.wikipedia.org/wiki/Iridium_satellite_constellation#Next-generation_constellation",
+    "video_link": "https://youtu.be/VshdafZvwrg",
+    "youtube_id": "VshdafZvwrg",
     "flickr_images": [
-      "https://farm5.staticflickr.com/4835/45473442624_69ee8bee45_o.jpg",
-      "https://farm5.staticflickr.com/4903/45473443604_0d668c31da_o.jpg",
-      "https://farm5.staticflickr.com/4858/45473444314_413a344dcb_o.jpg",
-      "https://farm5.staticflickr.com/4856/45473445134_d9384878f8_o.jpg",
-      "https://farm5.staticflickr.com/4840/45473446114_7d5e5d6fe2_o.jpg"
+      "https://farm5.staticflickr.com/4866/39745612523_14270b4b9d_o.jpg",
+      "https://farm8.staticflickr.com/7833/39745612923_21aa442350_o.jpg",
+      "https://farm5.staticflickr.com/4881/39745613173_e99b09c000_o.jpg",
+      "https://farm8.staticflickr.com/7882/39745613513_6cdd4581af_o.jpg",
+      "https://farm8.staticflickr.com/7807/39745613733_1a7b70e54a_o.jpg",
+      "https://farm5.staticflickr.com/4891/39745614053_43855205bc_o.jpg"
     ]
   },
-  "details": "SpaceX's 16th Crew Resupply Mission on behalf of NASA, with a total of 20 contracted flights. This will bring essential supplies to the International Space Station using SpaceX's reusable Dragon spacecraft. The Falcon 9 will launch from SLC-40 at Cape Canaveral Air Force Station. During the landing of the first stage, a grid fin hydraulic pump stalled, causing the core to enter an uncontrolled roll, and resulting in a (succesful) water landing.",
+  "details": "SpaceX's first flight of 2019 will be the eighth and final launch of its planned Iridium flights. Delivering 10 satellites to low earth orbit, this brings the total up to 75 and completes the Iridium NEXT constellation. This mission launches from SLC-4E at Vandenberg AFB. The booster is expected to land on JRTI.",
   "upcoming": false,
-  "static_fire_date_utc": "2018-11-30T19:57:00.000Z",
-  "static_fire_date_unix": 1543607820
+  "static_fire_date_utc": "2019-01-06T13:51:00.000Z",
+  "static_fire_date_unix": 1546782660,
+  "timeline": null
 }
 ```
 
