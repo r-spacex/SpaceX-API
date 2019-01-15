@@ -10,8 +10,8 @@ const moment = require('moment');
 module.exports = q => {
   let start;
   let end;
-  // See if date is unix, if so, add milliseconds
-  if (/^[0-9]*$/.test(q.start && (q.final || q.end))) {
+  // If the number is more than 5 digits long, it's likely unix
+  if (/\d{5,}/.test(q.start && (q.final || q.end))) {
     start = moment.utc(q.start * 1000);
     end = moment.utc(q.final * 1000 || q.end * 1000);
   } else {
