@@ -1,8 +1,8 @@
 
-const find = require('../../builders/v3/find');
-const limit = require('../../builders/v3/limit');
-const offset = require('../../builders/v3/offset');
-const sort = require('../../builders/v3/sort');
+const find = require('../../lib/query-builder/v3/find');
+const limit = require('../../lib/query-builder/v3/limit');
+const offset = require('../../lib/query-builder/v3/offset');
+const sort = require('../../lib/query-builder/v3/sort');
 
 module.exports = {
 

@@ -2,7 +2,7 @@
 // Required to correctly output ObjectID's
 const ObjectId = require('mongodb').ObjectID;
 const moment = require('moment');
-const dateRange = require('../../utilities/date_range');
+const { dateRange } = require('../../../utils');
 
 /**
  * Builds mongo find query object from querystrings
@@ -13,7 +13,7 @@ const dateRange = require('../../utilities/date_range');
 module.exports = r => {
   const query = {};
 
-  if (/^\/v3\/launches(.*)(?:\/)?$/i.test(r.url) || /^\/v3\/payloads(.*)(?:\/)?$/i.test(r.url)) {
+  if (/^\/v2\/launches(.*)(?:\/)?$/i.test(r.url) || /^\/v2\/payloads(.*)(?:\/)?$/i.test(r.url)) {
     //------------------------------------------------------------
     //                       Launch Fields
     //------------------------------------------------------------
@@ -56,9 +56,6 @@ module.exports = r => {
     if (r.query.tentative_max_precision) {
       query.tentative_max_precision = r.query.tentative_max_precision;
     }
-    if (r.query.tbd) {
-      query.tbd = (r.query.tbd === 'true');
-    }
     if (r.query.rocket_id) {
       query['rocket.rocket_id'] = r.query.rocket_id;
     }
@@ -79,12 +76,6 @@ module.exports = r => {
     }
     if (r.query.block) {
       query['rocket.first_stage.cores.block'] = parseInt(r.query.block, 10);
-    }
-    if (r.query.gridfins) {
-      query['rocket.first_stage.cores.gridfins'] = (r.query.gridfins === 'true');
-    }
-    if (r.query.legs) {
-      query['rocket.first_stage.cores.legs'] = (r.query.legs === 'true');
     }
     if (r.query.second_stage_block) {
       query['rocket.second_stage.block'] = parseInt(r.query.second_stage_block, 10);
@@ -202,11 +193,11 @@ module.exports = r => {
     if (r.query.reused) {
       query['rocket.first_stage.cores.reused'] = (r.query.reused === 'true');
     }
-    if (r.query.land_success) {
-      query['rocket.first_stage.cores.land_success'] = (r.query.land_success === 'true');
-    }
     if (r.query.landing_intent) {
       query['rocket.first_stage.cores.landing_intent'] = (r.query.landing_intent === 'true');
+    }
+    if (r.query.landing_type) {
+      query['rocket.first_stage.cores.landing_type'] = r.query.landing_type;
     }
     if (r.query.landing_type) {
       query['rocket.first_stage.cores.landing_type'] = r.query.landing_type;
@@ -214,7 +205,7 @@ module.exports = r => {
     if (r.query.landing_vehicle) {
       query['rocket.first_stage.cores.landing_vehicle'] = r.query.landing_vehicle;
     }
-  } else if (/^\/v3\/capsules(.*)(?:\/)?$/i.test(r.url)) {
+  } else if (/^\/v2\/parts\/caps(.*)(?:\/)?$/i.test(r.url)) {
     //------------------------------------------------------------
     //                       Capsule Fields
     //------------------------------------------------------------
@@ -243,7 +234,7 @@ module.exports = r => {
     if (r.query.reuse_count) {
       query.reuse_count = parseInt(r.query.reuse_count, 10);
     }
-  } else if (/^\/v3\/cores(.*)(?:\/)?$/i.test(r.url)) {
+  } else if (/^\/v2\/parts\/cores(.*)(?:\/)?$/i.test(r.url)) {
     //------------------------------------------------------------
     //                       Core Fields
     //------------------------------------------------------------
@@ -281,7 +272,7 @@ module.exports = r => {
     if (r.query.water_landing) {
       query.water_landing = (r.query.water_landing === 'true');
     }
-  } else if (/^\/v3\/history(.*)(?:\/)?$/i.test(r.url)) {
+  } else if (/^\/v2\/info\/history(.*)(?:\/)?$/i.test(r.url)) {
     //------------------------------------------------------------
     //                     History Fields
     //------------------------------------------------------------
@@ -295,78 +286,7 @@ module.exports = r => {
     if (r.query.flight_number) {
       query.flight_number = parseInt(r.query.flight_number, 10);
     }
-  } else if (/^\/v3\/ships(.*)(?:\/)?$/i.test(r.url)) {
-    //------------------------------------------------------------
-    //                     Ships Fields
-    //------------------------------------------------------------
-
-    if (r.query.ship_id) {
-      query.ship_id = r.query.ship_id;
-    }
-    if (r.query.ship_name) {
-      query.ship_name = r.query.ship_name;
-    }
-    if (r.query.ship_model) {
-      query.ship_model = r.query.ship_model;
-    }
-    if (r.query.ship_type) {
-      query.ship_type = r.query.ship_type;
-    }
-    if (r.query.role) {
-      query.roles = r.query.role;
-    }
-    if (r.query.active) {
-      query.active = (r.query.active === 'true');
-    }
-    if (r.query.imo) {
-      query.imo = parseInt(r.query.imo, 10);
-    }
-    if (r.query.mmsi) {
-      query.mmsi = parseInt(r.query.mmsi, 10);
-    }
-    if (r.query.abs) {
-      query.abs = parseInt(r.query.abs, 10);
-    }
-    if (r.query.class) {
-      query.class = parseInt(r.query.class, 10);
-    }
-    if (r.query.weight_lbs) {
-      query.weight_lbs = parseInt(r.query.weight_lbs, 10);
-    }
-    if (r.query.weight_kg) {
-      query.weight_kg = parseInt(r.query.weight_kg, 10);
-    }
-    if (r.query.year_built) {
-      query.year_built = parseInt(r.query.year_built, 10);
-    }
-    if (r.query.home_port) {
-      query.home_port = r.query.home_port;
-    }
-    if (r.query.status) {
-      query.status = r.query.status;
-    }
-    if (r.query.speed_kn) {
-      query.speed_kn = parseFloat(r.query.speed_kn);
-    }
-    if (r.query.course_deg) {
-      query.course_deg = parseInt(r.query.course_deg, 10);
-    }
-    if (r.query.latitude) {
-      query['position.latitude'] = parseFloat(r.query.latitude);
-    }
-    if (r.query.longitude) {
-      query['position.longitude'] = parseFloat(r.query.longitude);
-    }
-    if (r.query.successful_landings) {
-      query.successful_landings = r.query.successful_landings;
-    }
-    if (r.query.attempted_landings) {
-      query.attempted_landings = r.query.attempted_landings;
-    }
-    if (r.query.mission) {
-      query['missions.name'] = r.query.mission;
-    }
-  } else if (/^\/v3\/missions(.*)(?:\/)?$/i.test(r.url)) {
+  } else if (/^\/v2\/info\/missions(.*)(?:\/)?$/i.test(r.url)) {
     //------------------------------------------------------------
     //                     Mission Fields
     //------------------------------------------------------------

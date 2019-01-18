@@ -1,7 +1,7 @@
 
-const limit = require('../../builders/v3/limit');
-const offset = require('../../builders/v3/offset');
-const project = require('../../builders/v3/project');
+const limit = require('../../lib/query-builder/v3/limit');
+const offset = require('../../lib/query-builder/v3/offset');
+const project = require('../../lib/query-builder/v3/project');
 
 module.exports = {
 

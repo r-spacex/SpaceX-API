@@ -8,7 +8,9 @@ const logger = require('koa-morgan');
 const mask = require('koa-json-mask');
 const MongoClient = require('mongodb');
 const json = require('./middleware/json');
-const options = require('./middleware/redis');
+const responseTime = require('./middleware/response-time');
+const errorHandler = require('./middleware/error-handler');
+const options = require('./config/redis');
 
 // v2 route imports
 const v2_capsules = require('./routes/v2/capsules');
@@ -47,12 +49,7 @@ const app = new Koa();
 app.use(compress());
 
 // Set header with API response time
-app.use(async (ctx, next) => {
-  const start = Date.now();
-  await next();
-  const ms = Date.now() - start;
-  ctx.set('X-Response-Time', `${ms}ms`);
-});
+app.use(responseTime());
 
 // HTTP header security
 app.use(helmet());
@@ -63,23 +60,7 @@ if (process.env.NODE_ENV !== 'test') {
 }
 
 // Error Handler
-app.use(async (ctx, next) => {
-  try {
-    await next();
-  } catch (err) {
-    ctx.status = err.status || 500;
-    if (ctx.status === 404) {
-      ctx.body = {
-        error: 'Not Found',
-      };
-    } else {
-      ctx.body = {
-        error: 'Internal Server Error',
-      };
-    }
-    ctx.app.emit('error', err, ctx);
-  }
-});
+app.use(errorHandler());
 
 // Enable CORS for all routes
 app.use(cors({

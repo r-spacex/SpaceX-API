@@ -1,5 +1,5 @@
 
-const project = require('../../builders/v3/project');
+const project = require('../../lib/query-builder/v3/project');
 
 module.exports = {
 

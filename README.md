@@ -11,11 +11,12 @@
 
 <h3 align="center">Open Source REST API for rocket, core, capsule, pad, and launch data</h3>
 
-## Documentation
-* See the [Docs](https://documenter.getpostman.com/view/2025350/RWaEzAiG) for full API Documentation
-
-## Postman Collection
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/3aeac01a548a87943749)
+<h1 align="center">
+<a href="https://documenter.getpostman.com/view/2025350/RWaEzAiG">Documentation</a>
+<br/>
+<br/>
+<a href="https://app.getpostman.com/run-collection/3aeac01a548a87943749"><img src="https://run.pstmn.io/button.svg"></a>
+</h1>
 
 ## Usage
 
@@ -168,12 +169,6 @@ See the [contribution](https://github.com/r-spacex/SpaceX-API/blob/master/CONTRI
 
 ## Local Development
 Local development info can be found [here](https://github.com/r-spacex/SpaceX-API/blob/master/docs/development.md)
-
-## V2 - Deprecated
-* API V2 will be available indefinitely, but will no longer receive new feature updates.
-* V2 data will still be updated
-* V2 docs will no longer be updated
-* Old V2 docs located [here](https://github.com/r-spacex/SpaceX-API/tree/master/docs)
 
 ## Technical Details
 * Deployed on a central U.S. [Linode](https://www.linode.com/) server

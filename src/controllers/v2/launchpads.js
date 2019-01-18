@@ -1,6 +1,6 @@
 
-const limit = require('../../builders/v2/limit');
-const project = require('../../builders/v2/project');
+const limit = require('../../lib/query-builder/v2/limit');
+const project = require('../../lib/query-builder/v2/project');
 
 module.exports = {
 

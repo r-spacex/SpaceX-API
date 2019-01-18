@@ -1,8 +1,8 @@
 
-const find = require('../../builders/v2/find');
-const limit = require('../../builders/v2/limit');
-const sort = require('../../builders/v2/sort');
-const project = require('../../builders/v2/project');
+const find = require('../../lib/query-builder/v2/find');
+const limit = require('../../lib/query-builder/v2/limit');
+const sort = require('../../lib/query-builder/v2/sort');
+const project = require('../../lib/query-builder/v2/project');
 
 module.exports = {
 

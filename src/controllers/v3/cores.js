@@ -1,10 +1,10 @@
 
-const find = require('../../builders/v3/find');
-const limit = require('../../builders/v3/limit');
-const offset = require('../../builders/v3/offset');
-const order = require('../../builders/v3/order');
-const sort = require('../../builders/v3/sort');
-const project = require('../../builders/v3/project');
+const find = require('../../lib/query-builder/v3/find');
+const limit = require('../../lib/query-builder/v3/limit');
+const offset = require('../../lib/query-builder/v3/offset');
+const order = require('../../lib/query-builder/v3/order');
+const sort = require('../../lib/query-builder/v3/sort');
+const project = require('../../lib/query-builder/v3/project');
 
 module.exports = {
 
