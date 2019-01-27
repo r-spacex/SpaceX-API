@@ -26,7 +26,7 @@ const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
   // Gather individual ship mmsi numbers into array for requests
   const id = [];
   const names = [];
-  await data.forEach(ship => {
+  await data.forEach((ship) => {
     if (ship.mmsi != null) {
       id.push(ship.mmsi);
     }
@@ -41,30 +41,30 @@ const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
     // Get current lat/long and strip extra characters
     // Raw output: 28.40871° / -80.59808°
     const coordinates = $('#tabs-last-pos > div > div > div.table-cell.cell-full.collapse-768 > div:nth-child(4) > span:nth-child(2) > strong > a').text();
-    const parsed_coordinates = coordinates.replace('°', '').replace('°', '').split(' / ');
+    const parsedCoordinates = coordinates.replace('°', '').replace('°', '').split(' / ');
 
     // Get current ship status fx. Stopped, Moored, Underway...
     // Raw output: Underway Using Engine
-    const ship_status = $('#tabs-last-pos > div > div > div.table-cell.cell-full.collapse-768 > div:nth-child(5) > span:nth-child(2) > strong').text();
+    const shipStatus = $('#tabs-last-pos > div > div > div.table-cell.cell-full.collapse-768 > div:nth-child(5) > span:nth-child(2) > strong').text();
 
     // Get current ship speed and direction and strip extra characters
     // Raw output: 17.2kn / 67°
     // If the speed is zero, the course returns '-'. This is replaced with null for zero speeds
     const direction = $('#tabs-last-pos > div > div > div.table-cell.cell-full.collapse-768 > div:nth-child(6) > span:nth-child(2) > strong').text();
-    const parsed_direction = direction.replace('kn', '').replace('°', '').split(' / ');
-    let ship_course;
-    if (parsed_direction[1] === '-') {
-      ship_course = null;
+    const parsedDirection = direction.replace('kn', '').replace('°', '').split(' / ');
+    let shipCourse;
+    if (parsedDirection[1] === '-') {
+      shipCourse = null;
     } else {
-      ship_course = parseFloat(parsed_direction[1]);
+      shipCourse = parseFloat(parsedDirection[1]);
     }
 
     const update = {
-      latitude: parseFloat(parsed_coordinates[0]),
-      longitude: parseFloat(parsed_coordinates[1]),
-      status: ship_status,
-      speed: parseFloat(parsed_direction[0]),
-      course: ship_course,
+      latitude: parseFloat(parsedCoordinates[0]),
+      longitude: parseFloat(parsedCoordinates[1]),
+      status: shipStatus,
+      speed: parseFloat(parsedDirection[0]),
+      course: shipCourse,
     };
 
     console.log(`Updating ${num}...`);
@@ -86,9 +86,13 @@ const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
   for await (const name of names) {
     const missions = [];
     const launches = client.db('spacex-api').collection('launch');
-    const launch_results = await launches.find({ upcoming: false, ships: name }).project({ _id: 0, flight_number: 1, mission_name: 1 }).sort({ flight_number: 1 }).toArray();
+    const launchResults = await launches
+      .find({ upcoming: false, ships: name })
+      .project({ _id: 0, flight_number: 1, mission_name: 1 })
+      .sort({ flight_number: 1 })
+      .toArray();
 
-    launch_results.forEach(launch => {
+    launchResults.forEach((launch) => {
       const mission = {
         name: launch.mission_name,
         flight: launch.flight_number,
@@ -102,21 +106,21 @@ const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
     if (name === 'MRSTEVEN') {
       console.log('Mr Steven');
-      const attempted_catches = await launches.countDocuments({
+      const attemptedCatches = await launches.countDocuments({
         upcoming: false,
         launch_success: true,
         'rocket.fairings.ship': 'MR STEVEN',
         'rocket.fairings.recovery_attempt': true,
       });
-      const successful_catches = await launches.countDocuments({
+      const successfulCatches = await launches.countDocuments({
         upcoming: false,
         launch_success: true,
         'rocket.fairings.ship': 'MR STEVEN',
         'rocket.fairings.recovered': true,
       });
-      console.log(`Attempts: ${attempted_catches}`);
-      console.log(`Successes: ${successful_catches}\n`);
-      await col.updateOne({ ship_id: name }, { $set: { attempted_catches, successful_catches } });
+      console.log(`Attempts: ${attemptedCatches}`);
+      console.log(`Successes: ${successfulCatches}\n`);
+      await col.updateOne({ ship_id: name }, { $set: { attemptedCatches, successfulCatches } });
     }
   }
   console.log(`Updated ${id.length} ships`);

@@ -20,7 +20,7 @@ const MongoClient = require('mongodb');
 
   const capsules = [];
   const data = await col.find({}).sort({ capsule_serial: 1 }).toArray();
-  data.forEach(capsule => {
+  data.forEach((capsule) => {
     capsules.push(capsule.capsule_serial);
   });
 
@@ -38,7 +38,7 @@ const MongoClient = require('mongodb');
     });
 
     const missions = [];
-    const launch_results = await launch.find({
+    const launchResults = await launch.find({
       upcoming: false,
       'rocket.second_stage.payloads': {
         $elemMatch: {
@@ -53,7 +53,7 @@ const MongoClient = require('mongodb');
       flight_number: 1,
     }).toArray();
 
-    launch_results.forEach(i => {
+    launchResults.forEach((i) => {
       const mission = {
         name: i.mission_name,
         flight: i.flight_number,
@@ -61,21 +61,21 @@ const MongoClient = require('mongodb');
       missions.push(mission);
     });
 
-    let reuse_count;
+    let reuseCount;
     if (missions.length - 1 < 0) {
-      reuse_count = 0;
+      reuseCount = 0;
     } else {
-      reuse_count = missions.length - 1;
+      reuseCount = missions.length - 1;
     }
 
     console.log(capsule);
     console.log(missions);
-    console.log(`Reuse Count: ${reuse_count}`);
+    console.log(`Reuse Count: ${reuseCount}`);
     console.log(`Landings: ${landings}`);
 
     await col.updateOne({ capsule_serial: capsule }, {
       $set: {
-        reuse_count,
+        reuseCount,
         landings,
         missions,
       },

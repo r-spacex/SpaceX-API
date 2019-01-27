@@ -8,7 +8,7 @@ module.exports = {
   /**
    * Returns all rocket info
    */
-  all: async ctx => {
+  all: async (ctx) => {
     const data = await global.db
       .collection('rocket')
       .find({})
@@ -17,7 +17,7 @@ module.exports = {
       .skip(offset(ctx.request.query))
       .limit(limit(ctx.request.query))
       .toArray();
-    data.forEach(rocket => {
+    data.forEach((rocket) => {
       rocket.rocket_id = rocket.id;
       rocket.id = rocket.rocketid;
       rocket.rocket_name = rocket.name;
@@ -32,7 +32,7 @@ module.exports = {
   /**
    * Returns specific rocket info
    */
-  specific: async ctx => {
+  specific: async (ctx) => {
     const data = await global.db
       .collection('rocket')
       .find({ id: ctx.params.rocket })
@@ -49,7 +49,7 @@ module.exports = {
     delete data[0].rocketid;
     delete data[0].name;
     delete data[0].type;
-    ctx.body = data[0];
+    [ctx.body] = data;
   },
 
 };

@@ -2,7 +2,7 @@
 const request = require('supertest');
 const app = require('../../../src/app');
 
-beforeAll(done => {
+beforeAll((done) => {
   app.on('ready', () => {
     done();
   });
@@ -15,7 +15,7 @@ beforeAll(done => {
 test('It should return all ships', async () => {
   const response = await request(app.callback()).get('/v3/ships');
   expect(response.statusCode).toBe(200);
-  response.body.forEach(event => {
+  response.body.forEach((event) => {
     expect(event).toHaveProperty('ship_id', expect.any(String));
     expect(event).toHaveProperty('ship_name', expect.any(String));
     expect(event).toHaveProperty('ship_model');

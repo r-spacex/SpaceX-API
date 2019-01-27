@@ -2,7 +2,7 @@
 const request = require('supertest');
 const app = require('../../../src/app');
 
-beforeAll(done => {
+beforeAll((done) => {
   app.on('ready', () => {
     done();
   });

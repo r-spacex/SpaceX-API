@@ -10,7 +10,7 @@ module.exports = {
   /**
    * Return all landing pads
    */
-  all: async ctx => {
+  all: async (ctx) => {
     const data = await global.db
       .collection('landpad')
       .find(find(ctx.request))
@@ -25,7 +25,7 @@ module.exports = {
   /**
    * Return one landing pad by pad id
    */
-  one: async ctx => {
+  one: async (ctx) => {
     const data = await global.db
       .collection('landpad')
       .find({ id: ctx.params.id })
@@ -35,6 +35,6 @@ module.exports = {
     if (data.length === 0) {
       ctx.throw(404);
     }
-    ctx.body = data[0];
+    [ctx.body] = data;
   },
 };

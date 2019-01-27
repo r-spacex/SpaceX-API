@@ -2,7 +2,7 @@
 const request = require('supertest');
 const app = require('../../../src/app');
 
-beforeAll(done => {
+beforeAll((done) => {
   app.on('ready', () => {
     done();
   });
@@ -16,7 +16,7 @@ test('It should return all launchpads', async () => {
   const response = await request(app.callback()).get('/v3/launchpads');
   expect(response.statusCode).toBe(200);
   expect(response.body).toHaveLength(6);
-  response.body.forEach(item => {
+  response.body.forEach((item) => {
     expect(item).toHaveProperty('id');
     expect(item).toHaveProperty('site_id');
     expect(item).toHaveProperty('site_name_long');

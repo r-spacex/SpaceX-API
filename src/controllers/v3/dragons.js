@@ -8,7 +8,7 @@ module.exports = {
   /**
    * Returns all Dragon data
    */
-  all: async ctx => {
+  all: async (ctx) => {
     const data = await global.db
       .collection('dragon')
       .find({})
@@ -22,7 +22,7 @@ module.exports = {
   /**
    * Returns one Dragon data
    */
-  one: async ctx => {
+  one: async (ctx) => {
     const data = await global.db
       .collection('dragon')
       .find({ id: ctx.params.capsule })
@@ -32,7 +32,7 @@ module.exports = {
     if (data.length === 0) {
       ctx.throw(404);
     }
-    ctx.body = data[0];
+    [ctx.body] = data;
   },
 
 };

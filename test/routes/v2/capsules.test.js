@@ -3,7 +3,7 @@ const request = require('supertest');
 const app = require('../../../src/app');
 const customMatchers = require('../../utils/custom-asymmetric-matchers');
 
-beforeAll(done => {
+beforeAll((done) => {
   app.on('ready', () => {
     done();
   });
@@ -16,7 +16,7 @@ beforeAll(done => {
 test('It should return all Dragon data', async () => {
   const response = await request(app.callback()).get('/v2/capsules');
   expect(response.statusCode).toBe(200);
-  response.body.forEach(item => {
+  response.body.forEach((item) => {
     expect(item).toHaveProperty('crew_capacity', expect.any(Number));
     expect(item).toHaveProperty('sidewall_angle_deg', expect.any(Number));
     expect(item).toHaveProperty('orbit_duration_yr', expect.any(Number));
@@ -24,7 +24,7 @@ test('It should return all Dragon data', async () => {
     expect(item).toHaveProperty('heat_shield.material', expect.any(String));
     expect(item).toHaveProperty('heat_shield.size_meters', expect.any(Number));
     expect(item).toHaveProperty('heat_shield.temp_degrees', expect.any(Number));
-    item.thrusters.forEach(thruster => {
+    item.thrusters.forEach((thruster) => {
       expect(thruster).toHaveProperty('type', expect.any(String));
       expect(thruster).toHaveProperty('amount', expect.any(Number));
       expect(thruster).toHaveProperty('pods', expect.any(Number));

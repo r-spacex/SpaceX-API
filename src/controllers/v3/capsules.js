@@ -11,11 +11,11 @@ module.exports = {
   /**
    * Returns all capsule information
    */
-  all: async ctx => {
+  all: async (ctx) => {
     let data;
-    let null_dates = [];
+    let nullDates = [];
     if (!ctx.request.query.original_launch) {
-      null_dates = await global.db
+      nullDates = await global.db
         .collection('capsule')
         .find(Object.assign({}, find(ctx.request), { original_launch: null }))
         .project(project(ctx.request.query))
@@ -24,7 +24,7 @@ module.exports = {
         .limit(limit(ctx.request.query))
         .toArray();
     }
-    const not_null_dates = await global.db
+    const notNullDates = await global.db
       .collection('capsule')
       .find(Object.assign({ original_launch: { $ne: null } }, find(ctx.request)))
       .project(project(ctx.request.query))
@@ -33,9 +33,9 @@ module.exports = {
       .limit(limit(ctx.request.query))
       .toArray();
     if (order(ctx.request.query) === -1) {
-      data = null_dates.concat(not_null_dates);
+      data = nullDates.concat(notNullDates);
     } else {
-      data = not_null_dates.concat(null_dates);
+      data = notNullDates.concat(nullDates);
     }
     ctx.body = data;
   },
@@ -43,7 +43,7 @@ module.exports = {
   /**
    * Returns all capsules with non null dates
    */
-  past: async ctx => {
+  past: async (ctx) => {
     const data = await global.db
       .collection('capsule')
       .find(Object.assign({}, find(ctx.request), { original_launch: { $ne: null } }))
@@ -58,7 +58,7 @@ module.exports = {
   /**
    * Returns all capsules with null original launches
    */
-  upcoming: async ctx => {
+  upcoming: async (ctx) => {
     const data = await global.db
       .collection('capsule')
       .find(Object.assign({}, find(ctx.request), { original_launch: null }))
@@ -73,7 +73,7 @@ module.exports = {
   /**
    * Returns specific capsule information
    */
-  one: async ctx => {
+  one: async (ctx) => {
     const data = await global.db
       .collection('capsule')
       .find({ capsule_serial: ctx.params.cap })
@@ -83,7 +83,7 @@ module.exports = {
     if (data.length === 0) {
       ctx.throw(404);
     }
-    ctx.body = data[0];
+    [ctx.body] = data;
   },
 
 };

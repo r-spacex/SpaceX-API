@@ -9,7 +9,7 @@ module.exports = {
   /**
    * Return most recent launch
    */
-  latest: async ctx => {
+  latest: async (ctx) => {
     const data = await global.db
       .collection('launch')
       .find({ upcoming: false })
@@ -17,13 +17,13 @@ module.exports = {
       .sort({ flight_number: -1 })
       .limit(1)
       .toArray();
-    ctx.body = data[0];
+    [ctx.body] = data;
   },
 
   /**
    * Return next launch
    */
-  next: async ctx => {
+  next: async (ctx) => {
     const data = await global.db
       .collection('launch')
       .find({ upcoming: true })
@@ -31,13 +31,13 @@ module.exports = {
       .sort({ flight_number: 1 })
       .limit(1)
       .toArray();
-    ctx.body = data[0];
+    [ctx.body] = data;
   },
 
   /**
    * Return all past and upcoming launches
    */
-  all: async ctx => {
+  all: async (ctx) => {
     const data = await global.db
       .collection('launch')
       .find(find(ctx.request))
@@ -51,7 +51,7 @@ module.exports = {
   /**
    * Return all past launches filtered by querystrings
    */
-  past: async ctx => {
+  past: async (ctx) => {
     const data = await global.db
       .collection('launch')
       .find(Object.assign({ upcoming: false }, find(ctx.request)))
@@ -65,7 +65,7 @@ module.exports = {
   /**
    * Return upcoming launches filtered by querystrings
    */
-  upcoming: async ctx => {
+  upcoming: async (ctx) => {
     const data = await global.db
       .collection('launch')
       .find(Object.assign({ upcoming: true }, find(ctx.request)))

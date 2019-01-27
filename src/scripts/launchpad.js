@@ -18,37 +18,37 @@ const MongoClient = require('mongodb');
 
   const launch = client.db('spacex-api').collection('launch');
 
-  const slc4e_attempts = await launch.countDocuments({ upcoming: false, 'launch_site.site_id': 'vafb_slc_4e' });
-  const slc4e_successes = await launch.countDocuments({ upcoming: false, 'launch_site.site_id': 'vafb_slc_4e', launch_success: true });
+  const slc4eAttempts = await launch.countDocuments({ upcoming: false, 'launch_site.site_id': 'vafb_slc_4e' });
+  const slc4eSuccesses = await launch.countDocuments({ upcoming: false, 'launch_site.site_id': 'vafb_slc_4e', launch_success: true });
 
-  const slc40_attempts = await launch.countDocuments({ upcoming: false, 'launch_site.site_id': 'ccafs_slc_40' });
-  const slc40_successes = await launch.countDocuments({ upcoming: false, 'launch_site.site_id': 'ccafs_slc_40', launch_success: true });
+  const slc40Attempts = await launch.countDocuments({ upcoming: false, 'launch_site.site_id': 'ccafs_slc_40' });
+  const slc40Successes = await launch.countDocuments({ upcoming: false, 'launch_site.site_id': 'ccafs_slc_40', launch_success: true });
 
-  const lc39a_attempts = await launch.countDocuments({ upcoming: false, 'launch_site.site_id': 'ksc_lc_39a' });
-  const lc39a_successes = await launch.countDocuments({ upcoming: false, 'launch_site.site_id': 'ksc_lc_39a', launch_success: true });
+  const lc39aAttempts = await launch.countDocuments({ upcoming: false, 'launch_site.site_id': 'ksc_lc_39a' });
+  const lc39aSuccesses = await launch.countDocuments({ upcoming: false, 'launch_site.site_id': 'ksc_lc_39a', launch_success: true });
 
-  const stls_attempts = await launch.countDocuments({ upcoming: false, 'launch_site.site_id': 'stls' });
-  const stls_successes = await launch.countDocuments({ upcoming: false, 'launch_site.site_id': 'stls', launch_success: true });
+  const stlsAttempts = await launch.countDocuments({ upcoming: false, 'launch_site.site_id': 'stls' });
+  const stlsSuccesses = await launch.countDocuments({ upcoming: false, 'launch_site.site_id': 'stls', launch_success: true });
 
   console.log('SLC 4E');
-  console.log(`Attempts: ${slc4e_attempts}`);
-  console.log(`Sucesses: ${slc4e_successes}\n`);
+  console.log(`Attempts: ${slc4eAttempts}`);
+  console.log(`Sucesses: ${slc4eSuccesses}\n`);
   console.log('SLC 40');
-  console.log(`Attempts: ${slc40_attempts}`);
-  console.log(`Sucesses: ${slc40_successes}\n`);
+  console.log(`Attempts: ${slc40Attempts}`);
+  console.log(`Sucesses: ${slc40Successes}\n`);
   console.log('LC 39A');
-  console.log(`Attempts: ${lc39a_attempts}`);
-  console.log(`Sucesses: ${lc39a_successes}\n`);
+  console.log(`Attempts: ${lc39aAttempts}`);
+  console.log(`Sucesses: ${lc39aSuccesses}\n`);
   console.log('STLS');
-  console.log(`Attempts: ${stls_attempts}`);
-  console.log(`Sucesses: ${stls_successes}`);
+  console.log(`Attempts: ${stlsAttempts}`);
+  console.log(`Sucesses: ${stlsSuccesses}`);
 
   const launchpad = client.db('spacex-api').collection('launchpad');
 
-  await launchpad.updateOne({ id: 'vafb_slc_4e' }, { $set: { attempted_launches: slc4e_attempts, successful_launches: slc4e_successes } });
-  await launchpad.updateOne({ id: 'ccafs_slc_40' }, { $set: { attempted_launches: slc40_attempts, successful_launches: slc40_successes } });
-  await launchpad.updateOne({ id: 'ksc_lc_39a' }, { $set: { attempted_launches: lc39a_attempts, successful_launches: lc39a_successes } });
-  await launchpad.updateOne({ id: 'stls' }, { $set: { attempted_launches: stls_attempts, successful_launches: stls_successes } });
+  await launchpad.updateOne({ id: 'vafb_slc_4e' }, { $set: { attempted_launches: slc4eAttempts, successful_launches: slc4eSuccesses } });
+  await launchpad.updateOne({ id: 'ccafs_slc_40' }, { $set: { attempted_launches: slc40Attempts, successful_launches: slc40Successes } });
+  await launchpad.updateOne({ id: 'ksc_lc_39a' }, { $set: { attempted_launches: lc39aAttempts, successful_launches: lc39aSuccesses } });
+  await launchpad.updateOne({ id: 'stls' }, { $set: { attempted_launches: stlsAttempts, successful_launches: stlsSuccesses } });
 
 
   if (client) {

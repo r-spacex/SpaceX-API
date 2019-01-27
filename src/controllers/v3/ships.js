@@ -10,7 +10,7 @@ module.exports = {
   /**
    * Returns all ship info
    */
-  all: async ctx => {
+  all: async (ctx) => {
     const data = await global.db
       .collection('ship')
       .find(find(ctx.request))
@@ -25,7 +25,7 @@ module.exports = {
   /**
    * Returns specific ship info
    */
-  specific: async ctx => {
+  specific: async (ctx) => {
     const data = await global.db
       .collection('ship')
       .find({ ship_id: ctx.params.ship_id })
@@ -35,7 +35,7 @@ module.exports = {
     if (data.length === 0) {
       ctx.throw(404);
     }
-    ctx.body = data[0];
+    [ctx.body] = data;
   },
 
 };

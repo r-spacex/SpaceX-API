@@ -10,7 +10,7 @@ module.exports = {
   /**
    * Return most recent launch
    */
-  latest: async ctx => {
+  latest: async (ctx) => {
     const data = await global.db
       .collection('launch')
       .find({ upcoming: false })
@@ -20,13 +20,13 @@ module.exports = {
       .limit(1)
       .toArray();
     delete data[0].reuse;
-    ctx.body = data[0];
+    [ctx.body] = data;
   },
 
   /**
    * Return next launch
    */
-  next: async ctx => {
+  next: async (ctx) => {
     const data = await global.db
       .collection('launch')
       .find({ upcoming: true })
@@ -36,13 +36,13 @@ module.exports = {
       .limit(1)
       .toArray();
     delete data[0].reuse;
-    ctx.body = data[0];
+    [ctx.body] = data;
   },
 
   /**
    * Return all past and upcoming launches
    */
-  all: async ctx => {
+  all: async (ctx) => {
     const data = await global.db
       .collection('launch')
       .find(find(ctx.request))
@@ -51,7 +51,7 @@ module.exports = {
       .skip(offset(ctx.request.query))
       .limit(limit(ctx.request.query))
       .toArray();
-    data.forEach(launch => {
+    data.forEach((launch) => {
       delete launch.reuse;
     });
     ctx.body = data;
@@ -60,7 +60,7 @@ module.exports = {
   /**
    * Return all past launches filtered by querystrings
    */
-  past: async ctx => {
+  past: async (ctx) => {
     const data = await global.db
       .collection('launch')
       .find(Object.assign({ upcoming: false }, find(ctx.request)))
@@ -69,7 +69,7 @@ module.exports = {
       .skip(offset(ctx.request.query))
       .limit(limit(ctx.request.query))
       .toArray();
-    data.forEach(launch => {
+    data.forEach((launch) => {
       delete launch.reuse;
     });
     ctx.body = data;
@@ -78,7 +78,7 @@ module.exports = {
   /**
    * Return upcoming launches filtered by querystrings
    */
-  upcoming: async ctx => {
+  upcoming: async (ctx) => {
     const data = await global.db
       .collection('launch')
       .find(Object.assign({ upcoming: true }, find(ctx.request)))
@@ -87,7 +87,7 @@ module.exports = {
       .skip(offset(ctx.request.query))
       .limit(limit(ctx.request.query))
       .toArray();
-    data.forEach(launch => {
+    data.forEach((launch) => {
       delete launch.reuse;
     });
     ctx.body = data;
@@ -96,7 +96,7 @@ module.exports = {
   /**
    * Return one launch from flight number
    */
-  one: async ctx => {
+  one: async (ctx) => {
     const data = await global.db
       .collection('launch')
       .find({ flight_number: parseInt(ctx.params.flight_number, 10) })
@@ -107,6 +107,6 @@ module.exports = {
       ctx.throw(404);
     }
     delete data[0].reuse;
-    ctx.body = data[0];
+    [ctx.body] = data;
   },
 };

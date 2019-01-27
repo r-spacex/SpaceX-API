@@ -8,7 +8,7 @@ module.exports = {
   /**
    * Return all launchpads
    */
-  all: async ctx => {
+  all: async (ctx) => {
     const data = await global.db
       .collection('launchpad')
       .find({})
@@ -16,7 +16,7 @@ module.exports = {
       .skip(offset(ctx.request.query))
       .limit(limit(ctx.request.query))
       .toArray();
-    data.forEach(pad => {
+    data.forEach((pad) => {
       pad.site_id = pad.id;
       pad.id = pad.padid;
       pad.site_name_long = pad.full_name;
@@ -29,7 +29,7 @@ module.exports = {
   /**
    * Return specific launchpad
    */
-  specific: async ctx => {
+  specific: async (ctx) => {
     const data = await global.db
       .collection('launchpad')
       .find({ id: ctx.params.pad })
@@ -44,7 +44,7 @@ module.exports = {
     data[0].site_name_long = data[0].full_name;
     delete data[0].padid;
     delete data[0].full_name;
-    ctx.body = data[0];
+    [ctx.body] = data;
   },
 
 };

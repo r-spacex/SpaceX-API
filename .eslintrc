@@ -19,19 +19,10 @@
     "impliedStrict": true
   },
   "rules": {
-    "max-len" : 0,
     "no-restricted-syntax" : 0,
-    "no-param-reassign" : 0,
-    "arrow-parens": ["error", "as-needed"],
-    "camelcase": 0,
     "no-console": 0,
     "class-methods-use-this": 0,
-    "security/detect-object-injection": 0,
-    "prefer-destructuring": ["error", {
-      "array": false,
-      "object": true
-    }, {
-      "enforceForRenamedProperties": false
-    }]
+    "no-param-reassign": 0,
+    "security/detect-object-injection": 0
   }
 }

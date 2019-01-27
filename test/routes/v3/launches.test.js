@@ -2,7 +2,7 @@
 const request = require('supertest');
 const app = require('../../../src/app');
 
-beforeAll(done => {
+beforeAll((done) => {
   app.on('ready', () => {
     done();
   });
@@ -15,7 +15,7 @@ beforeAll(done => {
 test('It should return all launches', async () => {
   const response = await request(app.callback()).get('/v3/launches');
   expect(response.statusCode).toBe(200);
-  response.body.forEach(item => {
+  response.body.forEach((item) => {
     expect(item).toHaveProperty('flight_number', expect.anything());
     expect(item).toHaveProperty('mission_name');
     expect(item).toHaveProperty('mission_id');
@@ -30,7 +30,7 @@ test('It should return all launches', async () => {
     expect(item).toHaveProperty('rocket.rocket_name');
     expect(item).toHaveProperty('rocket.rocket_type');
     expect(item.rocket.first_stage.cores.length).toBeGreaterThan(0);
-    item.rocket.first_stage.cores.forEach(core => {
+    item.rocket.first_stage.cores.forEach((core) => {
       expect(core).toHaveProperty('core_serial');
       expect(core).toHaveProperty('flight');
       expect(core).toHaveProperty('block');
@@ -42,7 +42,7 @@ test('It should return all launches', async () => {
     expect(item.rocket.second_stage).toHaveProperty('block');
     expect(item.rocket.second_stage.payloads.length).toBeGreaterThan(0);
     if (item.hasOwnProperty.call('cap_serial')) {
-      item.rocket.second_stage.payloads.forEach(payload => {
+      item.rocket.second_stage.payloads.forEach((payload) => {
         expect(payload).toHaveProperty('payload_id');
         expect(payload).toHaveProperty('reused');
         expect(payload).toHaveProperty('cap_serial');
@@ -72,7 +72,7 @@ test('It should return all launches', async () => {
         expect(payload).toHaveProperty('cargo_manifest');
       });
     } else {
-      item.rocket.second_stage.payloads.forEach(payload => {
+      item.rocket.second_stage.payloads.forEach((payload) => {
         expect(payload).toHaveProperty('payload_id');
         expect(payload).toHaveProperty('reused');
         expect(payload.customers.length).toBeGreaterThan(0);
@@ -147,7 +147,7 @@ test('It should return the next launch', async () => {
 test('It should return all past launches', async () => {
   const response = await request(app.callback()).get('/v3/launches/past');
   expect(response.statusCode).toBe(200);
-  response.body.forEach(launch => {
+  response.body.forEach((launch) => {
     expect(launch.upcoming).toBe(false);
   });
 });
@@ -171,7 +171,7 @@ test('It should return no launches due to invalid UTC date', async () => {
 test('It should return the next launch', async () => {
   const response = await request(app.callback()).get('/v3/launches/upcoming');
   expect(response.statusCode).toBe(200);
-  response.body.forEach(launch => {
+  response.body.forEach((launch) => {
     expect(launch.upcoming).toBe(true);
   });
 });

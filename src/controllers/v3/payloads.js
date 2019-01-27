@@ -9,7 +9,7 @@ module.exports = {
   /**
    * Returns all payloads
    */
-  all: async ctx => {
+  all: async (ctx) => {
     const data = await global.db
       .collection('launch')
       .find(find(ctx.request))
@@ -34,8 +34,8 @@ module.exports = {
 
     const payloads = [];
     let match;
-    data.forEach(launch => {
-      launch.rocket.second_stage.payloads.forEach(payload => {
+    data.forEach((launch) => {
+      launch.rocket.second_stage.payloads.forEach((payload) => {
         match = 0;
         // Match each payload object with the given querystrings
         if (Object.keys(ctx.request.query).length !== 0) {
@@ -59,7 +59,7 @@ module.exports = {
   /**
    * Returns single payload
    */
-  one: async ctx => {
+  one: async (ctx) => {
     let payloads;
     const data = await global.db
       .collection('launch')

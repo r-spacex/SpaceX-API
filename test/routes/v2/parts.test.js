@@ -2,7 +2,7 @@
 const request = require('supertest');
 const app = require('../../../src/app');
 
-beforeAll(done => {
+beforeAll((done) => {
   app.on('ready', () => {
     done();
   });
@@ -15,7 +15,7 @@ beforeAll(done => {
 test('It should return all v2 capsules', async () => {
   const response = await request(app.callback()).get('/v2/parts/caps');
   expect(response.statusCode).toBe(200);
-  response.body.forEach(item => {
+  response.body.forEach((item) => {
     expect(item).toHaveProperty('capsule_serial');
     expect(item).toHaveProperty('capsule_id');
     expect(item).toHaveProperty('status');
@@ -40,7 +40,7 @@ test('It should return capsule C101', async () => {
 test('It should return all v2 cores', async () => {
   const response = await request(app.callback()).get('/v2/parts/cores');
   expect(response.statusCode).toBe(200);
-  response.body.forEach(item => {
+  response.body.forEach((item) => {
     expect(item).toHaveProperty('core_serial');
     expect(item).toHaveProperty('status');
     expect(item).toHaveProperty('original_launch');

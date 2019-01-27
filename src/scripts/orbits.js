@@ -22,8 +22,8 @@ const request = require('request-promise-native').defaults({ jar: true });
   const data = await col.find({ upcoming: false }).sort({ flight_number: 1 });
 
   const id = [];
-  await data.forEach(launch => {
-    launch.rocket.second_stage.payloads.forEach(payload => {
+  await data.forEach((launch) => {
+    launch.rocket.second_stage.payloads.forEach((payload) => {
       if (payload.norad_id !== undefined && payload.norad_id.length !== 0) {
         id.push(payload.norad_id[0]);
       }
@@ -47,23 +47,23 @@ const request = require('request-promise-native').defaults({ jar: true });
   const orbit = JSON.parse(orbitData);
 
   for await (const num of id) {
-    const specific_orbit = orbit.filter(satellite => parseInt(satellite.NORAD_CAT_ID, 10) === num);
+    const specificOrbit = orbit.filter(satellite => parseInt(satellite.NORAD_CAT_ID, 10) === num);
 
-    if (specific_orbit[0] !== undefined && specific_orbit.length !== 0) {
+    if (specificOrbit[0] !== undefined && specificOrbit.length !== 0) {
       const update = {
-        epoch: new Date(specific_orbit[0].EPOCH).toISOString(),
-        mean_motion: parseFloat(specific_orbit[0].MEAN_MOTION),
-        raan: parseFloat(specific_orbit[0].RA_OF_ASC_NODE),
-        arg_of_pericenter: parseFloat(specific_orbit[0].ARG_OF_PERICENTER),
-        mean_anomaly: parseFloat(specific_orbit[0].MEAN_ANOMALY),
-        semi_major_axis_km: parseFloat(specific_orbit[0].SEMIMAJOR_AXIS),
-        eccentricity: parseFloat(specific_orbit[0].ECCENTRICITY),
-        periapsis_km: parseFloat(specific_orbit[0].PERIGEE),
-        apoapsis_km: parseFloat(specific_orbit[0].APOGEE),
-        inclination_deg: parseFloat(specific_orbit[0].INCLINATION),
-        period_min: parseFloat(specific_orbit[0].PERIOD),
+        epoch: new Date(specificOrbit[0].EPOCH).toISOString(),
+        mean_motion: parseFloat(specificOrbit[0].MEAN_MOTION),
+        raan: parseFloat(specificOrbit[0].RA_OF_ASC_NODE),
+        arg_of_pericenter: parseFloat(specificOrbit[0].ARG_OF_PERICENTER),
+        mean_anomaly: parseFloat(specificOrbit[0].MEAN_ANOMALY),
+        semi_major_axis_km: parseFloat(specificOrbit[0].SEMIMAJOR_AXIS),
+        eccentricity: parseFloat(specificOrbit[0].ECCENTRICITY),
+        periapsis_km: parseFloat(specificOrbit[0].PERIGEE),
+        apoapsis_km: parseFloat(specificOrbit[0].APOGEE),
+        inclination_deg: parseFloat(specificOrbit[0].INCLINATION),
+        period_min: parseFloat(specificOrbit[0].PERIOD),
       };
-      console.log(`Updating...${specific_orbit[0].OBJECT_NAME}`);
+      console.log(`Updating...${specificOrbit[0].OBJECT_NAME}`);
       console.log(update);
       await col.updateOne({ 'rocket.second_stage.payloads.norad_id': num }, {
         $set: {

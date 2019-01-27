@@ -8,7 +8,7 @@ const lowerCase = require('lower-case');
  * @return {number} Positive or negative number to indicate sort direction
  */
 
-module.exports = q => {
+module.exports = (q) => {
   let order;
 
   if (lowerCase(q.order) === 'asc') {

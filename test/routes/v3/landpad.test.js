@@ -2,7 +2,7 @@
 const request = require('supertest');
 const app = require('../../../src/app');
 
-beforeAll(done => {
+beforeAll((done) => {
   app.on('ready', () => {
     done();
   });
@@ -15,7 +15,7 @@ beforeAll(done => {
 test('It should return all landing pads', async () => {
   const response = await request(app.callback()).get('/v3/landpads');
   expect(response.statusCode).toBe(200);
-  response.body.forEach(item => {
+  response.body.forEach((item) => {
     expect(item).toHaveProperty('id');
     expect(item).toHaveProperty('full_name');
     expect(item).toHaveProperty('status');

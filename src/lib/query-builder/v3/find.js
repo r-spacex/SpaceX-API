@@ -10,7 +10,7 @@ const { dateRange } = require('../../../utils');
  * @return {Object} Mongo compatible find query object
  */
 
-module.exports = r => {
+module.exports = (r) => {
   const query = {};
 
   if (/^\/v3\/launches(.*)(?:\/)?$/i.test(r.url) || /^\/v3\/payloads(.*)(?:\/)?$/i.test(r.url)) {

@@ -7,7 +7,7 @@ const moment = require('moment');
  * @return {Object} Mongo compatible date range query object
  */
 
-module.exports = q => {
+module.exports = (q) => {
   let start;
   let end;
   // If the number is more than 5 digits long, it's likely unix

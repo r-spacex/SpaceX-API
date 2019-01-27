@@ -6,25 +6,25 @@ module.exports = {
   /**
    * Returns all company info
    */
-  company: async ctx => {
+  company: async (ctx) => {
     const data = await global.db
       .collection('info')
       .find({ name: 'SpaceX' })
       .project(project(ctx.request.query))
       .toArray();
-    ctx.body = data[0];
+    [ctx.body] = data;
   },
 
   /**
    * Get API info
    */
-  api: async ctx => {
+  api: async (ctx) => {
     const data = await global.db
       .collection('home')
       .find({})
       .project({ _id: 0 })
       .toArray();
-    ctx.body = data[0];
+    [ctx.body] = data;
   },
 
 };

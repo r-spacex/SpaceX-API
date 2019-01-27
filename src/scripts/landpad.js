@@ -20,7 +20,7 @@ const MongoClient = require('mongodb');
 
   const launch = client.db('spacex-api').collection('launch');
 
-  const lz1_attempts = await launch.countDocuments({
+  const lz1Attempts = await launch.countDocuments({
     upcoming: false,
     'rocket.first_stage.cores': {
       $elemMatch: {
@@ -30,7 +30,7 @@ const MongoClient = require('mongodb');
     },
     launch_success: true,
   });
-  const lz1_successes = await launch.countDocuments({
+  const lz1Successes = await launch.countDocuments({
     upcoming: false,
     'rocket.first_stage.cores': {
       $elemMatch: {
@@ -42,7 +42,7 @@ const MongoClient = require('mongodb');
     launch_success: true,
   });
 
-  const lz2_attempts = await launch.countDocuments({
+  const lz2Attempts = await launch.countDocuments({
     upcoming: false,
     'rocket.first_stage.cores': {
       $elemMatch: {
@@ -52,7 +52,7 @@ const MongoClient = require('mongodb');
     },
     launch_success: true,
   });
-  const lz2_successes = await launch.countDocuments({
+  const lz2Successes = await launch.countDocuments({
     upcoming: false,
     'rocket.first_stage.cores': {
       $elemMatch: {
@@ -64,7 +64,7 @@ const MongoClient = require('mongodb');
     launch_success: true,
   });
 
-  const lz4_attempts = await launch.countDocuments({
+  const lz4Attempts = await launch.countDocuments({
     upcoming: false,
     'rocket.first_stage.cores': {
       $elemMatch: {
@@ -74,7 +74,7 @@ const MongoClient = require('mongodb');
     },
     launch_success: true,
   });
-  const lz4_successes = await launch.countDocuments({
+  const lz4Successes = await launch.countDocuments({
     upcoming: false,
     'rocket.first_stage.cores': {
       $elemMatch: {
@@ -86,7 +86,7 @@ const MongoClient = require('mongodb');
     launch_success: true,
   });
 
-  const ocisly_attempts = await launch.countDocuments({
+  const ocislyAttempts = await launch.countDocuments({
     upcoming: false,
     'rocket.first_stage.cores': {
       $elemMatch: {
@@ -96,7 +96,7 @@ const MongoClient = require('mongodb');
     },
     launch_success: true,
   });
-  const ocisly_successes = await launch.countDocuments({
+  const ocislySuccesses = await launch.countDocuments({
     upcoming: false,
     'rocket.first_stage.cores': {
       $elemMatch: {
@@ -108,7 +108,7 @@ const MongoClient = require('mongodb');
     launch_success: true,
   });
 
-  const jrti_attempts = await launch.countDocuments({
+  const jrtiAttempts = await launch.countDocuments({
     upcoming: false,
     'rocket.first_stage.cores': {
       $elemMatch: {
@@ -118,7 +118,7 @@ const MongoClient = require('mongodb');
     },
     launch_success: true,
   });
-  const jrti_successes = await launch.countDocuments({
+  const jrtiSuccesses = await launch.countDocuments({
     upcoming: false,
     'rocket.first_stage.cores': {
       $elemMatch: {
@@ -130,7 +130,7 @@ const MongoClient = require('mongodb');
     launch_success: true,
   });
 
-  const asog_attempts = await launch.countDocuments({
+  const asogAttempts = await launch.countDocuments({
     upcoming: false,
     'rocket.first_stage.cores': {
       $elemMatch: {
@@ -140,7 +140,7 @@ const MongoClient = require('mongodb');
     },
     launch_success: true,
   });
-  const asog_successes = await launch.countDocuments({
+  const asogSuccesses = await launch.countDocuments({
     upcoming: false,
     'rocket.first_stage.cores': {
       $elemMatch: {
@@ -153,23 +153,23 @@ const MongoClient = require('mongodb');
   });
 
   console.log('LZ-1');
-  console.log(`Attempts: ${lz1_attempts}`);
-  console.log(`Sucesses: ${lz1_successes}\n`);
+  console.log(`Attempts: ${lz1Attempts}`);
+  console.log(`Sucesses: ${lz1Successes}\n`);
   console.log('LZ-2');
-  console.log(`Attempts: ${lz2_attempts}`);
-  console.log(`Sucesses: ${lz2_successes}\n`);
+  console.log(`Attempts: ${lz2Attempts}`);
+  console.log(`Sucesses: ${lz2Successes}\n`);
   console.log('LZ-4');
-  console.log(`Attempts: ${lz4_attempts}`);
-  console.log(`Sucesses: ${lz4_successes}\n`);
+  console.log(`Attempts: ${lz4Attempts}`);
+  console.log(`Sucesses: ${lz4Successes}\n`);
   console.log('OCISLY');
-  console.log(`Attempts: ${ocisly_attempts}`);
-  console.log(`Sucesses: ${ocisly_successes}\n`);
+  console.log(`Attempts: ${ocislyAttempts}`);
+  console.log(`Sucesses: ${ocislySuccesses}\n`);
   console.log('JRTI');
-  console.log(`Attempts: ${jrti_attempts}`);
-  console.log(`Sucesses: ${jrti_successes}\n`);
+  console.log(`Attempts: ${jrtiAttempts}`);
+  console.log(`Sucesses: ${jrtiSuccesses}\n`);
   console.log('ASOG');
-  console.log(`Attempts: ${asog_attempts}`);
-  console.log(`Sucesses: ${asog_successes}\n`);
+  console.log(`Attempts: ${asogAttempts}`);
+  console.log(`Sucesses: ${asogSuccesses}\n`);
 
   const landpad = client.db('spacex-api').collection('landpad');
 
@@ -177,48 +177,48 @@ const MongoClient = require('mongodb');
     id: 'LZ-1',
   }, {
     $set: {
-      attempted_landings: lz1_attempts,
-      successful_landings: lz1_successes,
+      attempted_landings: lz1Attempts,
+      successful_landings: lz1Successes,
     },
   });
   await landpad.updateOne({
     id: 'LZ-2',
   }, {
     $set: {
-      attempted_landings: lz2_attempts,
-      successful_landings: lz2_successes,
+      attempted_landings: lz2Attempts,
+      successful_landings: lz2Successes,
     },
   });
   await landpad.updateOne({
     id: 'LZ-4',
   }, {
     $set: {
-      attempted_landings: lz4_attempts,
-      successful_landings: lz4_successes,
+      attempted_landings: lz4Attempts,
+      successful_landings: lz4Successes,
     },
   });
   await landpad.updateOne({
     id: 'OCISLY',
   }, {
     $set: {
-      attempted_landings: ocisly_attempts,
-      successful_landings: ocisly_successes,
+      attempted_landings: ocislyAttempts,
+      successful_landings: ocislySuccesses,
     },
   });
   await landpad.updateOne({
     id: 'JRTI',
   }, {
     $set: {
-      attempted_landings: jrti_attempts,
-      successful_landings: jrti_successes,
+      attempted_landings: jrtiAttempts,
+      successful_landings: jrtiSuccesses,
     },
   });
   await landpad.updateOne({
     id: 'ASOG',
   }, {
     $set: {
-      attempted_landings: asog_attempts,
-      successful_landings: asog_successes,
+      attempted_landings: asogAttempts,
+      successful_landings: asogSuccesses,
     },
   });
 
@@ -228,24 +228,24 @@ const MongoClient = require('mongodb');
     ship_id: 'OCISLY',
   }, {
     $set: {
-      successful_landings: ocisly_successes,
-      attempted_landings: ocisly_attempts,
+      successful_landings: ocislySuccesses,
+      attempted_landings: ocislyAttempts,
     },
   });
   await ships.updateOne({
     ship_id: 'JRTI-2',
   }, {
     $set: {
-      successful_landings: jrti_successes,
-      attempted_landings: jrti_attempts,
+      successful_landings: jrtiSuccesses,
+      attempted_landings: jrtiAttempts,
     },
   });
   await ships.updateOne({
     ship_id: 'ASOG',
   }, {
     $set: {
-      successful_landings: asog_successes,
-      attempted_landings: asog_attempts,
+      successful_landings: asogSuccesses,
+      attempted_landings: asogAttempts,
     },
   });
 

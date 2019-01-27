@@ -3,7 +3,7 @@ const request = require('supertest');
 const app = require('../../../src/app');
 const customMatchers = require('../../utils/custom-asymmetric-matchers');
 
-beforeAll(done => {
+beforeAll((done) => {
   app.on('ready', () => {
     done();
   });
@@ -22,7 +22,7 @@ test('It should return all rocket info', async () => {
   expect(response.body[2]).toHaveProperty('name', 'Falcon Heavy');
   expect(response.body[3]).toHaveProperty('name', 'Big Falcon Rocket');
 
-  response.body.forEach(item => {
+  response.body.forEach((item) => {
     expect(item).toHaveProperty('id', expect.any(String));
     expect(item).toHaveProperty('name', expect.any(String));
     expect(item).toHaveProperty('type', expect.stringMatching(/^(?:rocket|capsule)$/));
@@ -38,7 +38,7 @@ test('It should return all rocket info', async () => {
     expect(item).toHaveProperty('diameter', customMatchers.length());
     expect(item).toHaveProperty('mass', customMatchers.mass());
     expect(item).toHaveProperty('payload_weights', expect.any(Array));
-    item.payload_weights.forEach(weight => {
+    item.payload_weights.forEach((weight) => {
       expect(weight).toEqual(customMatchers.payloadWeight());
     });
     expect(item).toHaveProperty('first_stage', customMatchers.vehicleStage());

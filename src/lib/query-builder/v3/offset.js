@@ -4,7 +4,7 @@
  * @return {number} Number of documents to skip
  */
 
-module.exports = q => {
+module.exports = (q) => {
   let offset = null;
 
   if (q.offset) {

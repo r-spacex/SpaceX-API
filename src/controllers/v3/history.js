@@ -10,7 +10,7 @@ module.exports = {
   /**
    * Get all historical events
    */
-  all: async ctx => {
+  all: async (ctx) => {
     const data = await global.db
       .collection('history')
       .find(find(ctx.request))
@@ -25,7 +25,7 @@ module.exports = {
   /**
    * Get one historical event
    */
-  one: async ctx => {
+  one: async (ctx) => {
     const data = await global.db
       .collection('history')
       .find({ id: parseInt(ctx.params.history_id, 10) })
@@ -35,7 +35,7 @@ module.exports = {
     if (data.length === 0) {
       ctx.throw(404);
     }
-    ctx.body = data[0];
+    [ctx.body] = data;
   },
 
 };

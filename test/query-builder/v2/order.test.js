@@ -3,7 +3,7 @@ const request = require('supertest');
 const order = require('../../../src/lib/query-builder/v2/order');
 const app = require('../../../src/app');
 
-beforeAll(done => {
+beforeAll((done) => {
   app.on('ready', () => {
     done();
   });

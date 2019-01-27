@@ -9,7 +9,7 @@ module.exports = {
   /**
    * Returns all capsule information
    */
-  allCaps: async ctx => {
+  allCaps: async (ctx) => {
     const data = await global.db
       .collection('capsule')
       .find(find(ctx.request))
@@ -23,19 +23,19 @@ module.exports = {
   /**
    * Returns specific capsule information
    */
-  oneCap: async ctx => {
+  oneCap: async (ctx) => {
     const data = await global.db
       .collection('capsule')
       .find({ capsule_serial: ctx.params.cap })
       .project(project(ctx.request.query))
       .toArray();
-    ctx.body = data[0];
+    [ctx.body] = data;
   },
 
   /**
    * Returns all core information
    */
-  allCores: async ctx => {
+  allCores: async (ctx) => {
     const data = await global.db
       .collection('core')
       .find(find(ctx.request))
@@ -49,13 +49,13 @@ module.exports = {
   /**
    * Returns specific core information
    */
-  oneCore: async ctx => {
+  oneCore: async (ctx) => {
     const data = await global.db
       .collection('core')
       .find({ core_serial: ctx.params.core })
       .project(project(ctx.request.query))
       .toArray();
-    ctx.body = data[0];
+    [ctx.body] = data;
   },
 
 };

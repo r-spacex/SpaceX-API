@@ -10,7 +10,7 @@ const order = require('./order');
  * @return {Object} Mongo compatible sort object
  */
 
-module.exports = r => {
+module.exports = (r) => {
   const query = {};
   const direction = order(r.query);
 

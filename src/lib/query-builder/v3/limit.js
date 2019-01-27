@@ -5,7 +5,7 @@
  * @return {number} Number of documents to limit
  */
 
-module.exports = q => {
+module.exports = (q) => {
   let limit = null;
 
   if (q.limit) {
