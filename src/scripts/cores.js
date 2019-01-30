@@ -23,7 +23,7 @@ const request = require('request-promise-native');
   // Update status of each core from the subreddit core tracking page
   // Parses two tables: One for active cores, and one for the status unknown cores, may
   // add support for the inactive and lost cores at some point
-  const result = await request('https://www.reddit.com/r/spacex/wiki/cores');
+  const result = await request('https://old.reddit.com/r/spacex/wiki/cores');
   const $ = cheerio.load(result);
 
   const active = $('div.md:nth-child(2) > table:nth-child(14) > tbody:nth-child(2)').text();

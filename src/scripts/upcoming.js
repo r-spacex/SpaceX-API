@@ -70,7 +70,7 @@ const monthVague = /^[0-9]{4}\s(early|mid|late)\s([a-z]{3}|[a-z]{3,9})$/i;
   });
 
   // Grab subreddit wiki manifest
-  const result = await request('https://www.reddit.com/r/spacex/wiki/launches/manifest');
+  const result = await request('https://old.reddit.com/r/spacex/wiki/launches/manifest');
   const $ = cheerio.load(result);
 
   // Gives us all manifest table rows in a single array
