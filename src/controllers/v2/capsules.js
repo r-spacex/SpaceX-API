@@ -12,6 +12,7 @@ module.exports = {
       .collection('dragon')
       .find({})
       .project(project(ctx.request.query))
+      .sort({ id: 1 })
       .limit(limit(ctx.request.query))
       .toArray();
     ctx.body = data;
