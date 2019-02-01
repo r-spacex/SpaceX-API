@@ -13,6 +13,7 @@ module.exports = {
       .collection('dragon')
       .find({})
       .project(project(ctx.request.query))
+      .sort({ id: 1 })
       .skip(offset(ctx.request.query))
       .limit(limit(ctx.request.query))
       .toArray();
