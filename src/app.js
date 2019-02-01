@@ -1,6 +1,5 @@
 
 const cache = require('koa-redis-cache');
-const compress = require('koa-compress');
 const cors = require('koa2-cors');
 const helmet = require('koa-helmet');
 const Koa = require('koa');
@@ -44,9 +43,6 @@ const v3Ships = require('./routes/v3/ships');
 const url = 'mongodb+srv://public:spacex@spacex-gcp-gpg0u.gcp.mongodb.net/spacex-api';
 
 const app = new Koa();
-
-// Gzip all responses
-app.use(compress());
 
 // Set header with API response time
 app.use(responseTime());
