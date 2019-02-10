@@ -92,18 +92,18 @@ curl -s https://api.spacexdata.com/v3/launches/latest | jq
             "reference_system": "geocentric",
             "regime": "low-earth",
             "longitude": null,
-            "semi_major_axis_km": 6997.303,
-            "eccentricity": 0.0011185,
-            "periapsis_km": 611.342,
-            "apoapsis_km": 626.995,
-            "inclination_deg": 86.6809,
-            "period_min": 97.085,
+            "semi_major_axis_km": 7155.799,
+            "eccentricity": 0.0001578,
+            "periapsis_km": 776.534,
+            "apoapsis_km": 778.793,
+            "inclination_deg": 86.3952,
+            "period_min": 100.403,
             "lifespan_years": 15,
-            "epoch": "2019-01-14T19:01:22.000Z",
-            "mean_motion": 14.83223805,
-            "raan": 46.2409,
-            "arg_of_pericenter": 203.1527,
-            "mean_anomaly": 156.9184
+            "epoch": "2019-02-04T11:45:18.000Z",
+            "mean_motion": 14.34219278,
+            "raan": 37.5829,
+            "arg_of_pericenter": 49.2066,
+            "mean_anomaly": 310.9266
           }
         }
       ]
@@ -154,7 +154,31 @@ curl -s https://api.spacexdata.com/v3/launches/latest | jq
   "upcoming": false,
   "static_fire_date_utc": "2019-01-06T13:51:00.000Z",
   "static_fire_date_unix": 1546782660,
-  "timeline": null
+  "timeline": {
+    "webcast_liftoff": 960,
+    "go_for_prop_loading": -2280,
+    "rp1_loading": -2100,
+    "stage1_lox_loading": -2100,
+    "stage2_lox_loading": -960,
+    "engine_chill": -420,
+    "prelaunch_checks": -60,
+    "propellant_pressurization": -60,
+    "go_for_launch": -45,
+    "ignition": -3,
+    "liftoff": 0,
+    "maxq": 61,
+    "meco": 147,
+    "stage_sep": 150,
+    "second_stage_ignition": 158,
+    "fairing_deploy": 193,
+    "first_stage_boostback_burn": 193,
+    "first_stage_entry_burn": 330,
+    "first_stage_landing": 434,
+    "seco-1": 526,
+    "second_stage_restart": 3108,
+    "seco-2": 3111,
+    "payload_deploy": 3412
+  }
 }
 ```
 
