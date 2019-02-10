@@ -1,3 +1,33 @@
+## Version 3.1.0
+**Features**
+* Added new `timeline` field to launches with presskit timeline events offset according to webcast launch time
+* Added `gridfins` and `legs` boolean in launch cores section
+* Added `youtube_id` field to all launches for easier url building
+* Added `/cores/upcoming` and `/cores/past` to show cores that have or have not launched - b0184f1
+* Added `/capsules/upcoming` and `/capsules/past` to show caps that have or have not launched - b0184f1
+* Added `/landpad` endpoint - 0253c0e
+
+**Fixes**
+* Fixed bug in orbit update script causing high API usage - dc48e07
+* Fixed parsing bug in upcoming launch script for `TDB` launches - 51a6f28
+* Fixed parsing bug in upcoming launch script for launches with `mid`, `early`, and `late` launch dates - 
+a13aace
+* Fixed order of appearanch for `/dragons` endpoint - 
+fe40a55
+* Fixed broken Reddit links in upcoming launch script - d8b484e
+
+**Scripts**
+* Added webcast script to auto update webcast link/youtube_id as soon as it is posted - b37df98
+* Added launchpad updater script for attempt/success counts - 7a34812
+* Added landing pad updater script for attempt/success counts - 1ff486a
+* Added missions updating to ships script - 566e9ad
+* Added cores update script + scrape subreddit wiki for updates - 1fb50f7
+* Added capsule update script - 82f5e10
+* Added fairing catch attempt/success counts to ships script - 1cfa2b1
+
+**Misc**
+* Migrated from Travis CI to Circle CI
+
 ## Version 3.0.0
 **Features**
 * Added ability to sort on any field where an endpoint returns an array - #129
