@@ -54,14 +54,14 @@
     "mongodb": "^3.1.13",
     "path": "^0.12.7",
     "request": "^2.88.0",
-    "request-promise-native": "^1.0.5",
+    "request-promise-native": "^1.0.7",
     "shelljs": "^0.8.3"
   },
   "devDependencies": {
-    "eslint": "^5.13.0",
+    "eslint": "^5.14.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.16.0",
-    "eslint-plugin-jest": "^22.2.2",
+    "eslint-plugin-jest": "^22.3.0",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-mongodb": "^1.0.0",
     "eslint-plugin-react": "^7.12.4",
