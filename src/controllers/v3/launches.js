@@ -49,12 +49,13 @@ module.exports = {
       .project(project(ctx.request.query))
       .sort(sort(ctx.request))
       .skip(offset(ctx.request.query))
-      .limit(limit(ctx.request.query))
-      .toArray();
-    data.forEach((launch) => {
+      .limit(limit(ctx.request.query));
+    ctx.state.data = data;
+    const res = await data.toArray();
+    res.forEach((launch) => {
       delete launch.reuse;
     });
-    ctx.body = data;
+    ctx.body = res;
   },
 
   /**
@@ -67,12 +68,13 @@ module.exports = {
       .project(project(ctx.request.query))
       .sort(sort(ctx.request))
       .skip(offset(ctx.request.query))
-      .limit(limit(ctx.request.query))
-      .toArray();
-    data.forEach((launch) => {
+      .limit(limit(ctx.request.query));
+    ctx.state.data = data;
+    const res = await data.toArray();
+    res.forEach((launch) => {
       delete launch.reuse;
     });
-    ctx.body = data;
+    ctx.body = res;
   },
 
   /**
@@ -85,12 +87,13 @@ module.exports = {
       .project(project(ctx.request.query))
       .sort(sort(ctx.request))
       .skip(offset(ctx.request.query))
-      .limit(limit(ctx.request.query))
-      .toArray();
-    data.forEach((launch) => {
+      .limit(limit(ctx.request.query));
+    ctx.state.data = data;
+    const res = await data.toArray();
+    res.forEach((launch) => {
       delete launch.reuse;
     });
-    ctx.body = data;
+    ctx.body = res;
   },
 
   /**

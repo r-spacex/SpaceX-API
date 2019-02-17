@@ -16,8 +16,9 @@ module.exports = {
       .project({ _id: 0, 'rocket.second_stage.payloads': 1, flight_number: 1 })
       .sort(sort(ctx.request))
       .skip(offset(ctx.request.query))
-      .limit(limit(ctx.request.query))
-      .toArray();
+      .limit(limit(ctx.request.query));
+    ctx.state.data = data;
+    const res = await data.toArray();
 
     // Removed these fields so we can match the remaining querystrings against
     // each payload
@@ -34,7 +35,7 @@ module.exports = {
 
     const payloads = [];
     let match;
-    data.forEach((launch) => {
+    res.forEach((launch) => {
       launch.rocket.second_stage.payloads.forEach((payload) => {
         match = 0;
         // Match each payload object with the given querystrings

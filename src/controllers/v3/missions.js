@@ -15,10 +15,10 @@ module.exports = {
       .find(find(ctx.request))
       .project(project(ctx.request.query))
       .skip(offset(ctx.request.query))
-      .limit(limit(ctx.request.query))
-      .toArray();
-
-    ctx.body = data;
+      .limit(limit(ctx.request.query));
+    ctx.state.data = data;
+    const res = await data.toArray();
+    ctx.body = res;
   },
 
   /**

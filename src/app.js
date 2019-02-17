@@ -8,6 +8,7 @@ const mask = require('koa-json-mask');
 const MongoClient = require('mongodb');
 const json = require('./middleware/json');
 const responseTime = require('./middleware/response-time');
+const count = require('./middleware/count');
 const errorHandler = require('./middleware/error-handler');
 const options = require('./config/redis');
 
@@ -46,6 +47,9 @@ const app = new Koa();
 
 // Set header with API response time
 app.use(responseTime());
+
+// Set header with total objects returned
+app.use(count());
 
 // HTTP header security
 app.use(helmet());

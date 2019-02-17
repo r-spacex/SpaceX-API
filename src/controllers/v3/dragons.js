@@ -15,9 +15,10 @@ module.exports = {
       .project(project(ctx.request.query))
       .sort({ id: 1 })
       .skip(offset(ctx.request.query))
-      .limit(limit(ctx.request.query))
-      .toArray();
-    ctx.body = data;
+      .limit(limit(ctx.request.query));
+    ctx.state.data = data;
+    const res = await data.toArray();
+    ctx.body = res;
   },
 
   /**

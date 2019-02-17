@@ -14,6 +14,7 @@ module.exports = {
   all: async (ctx) => {
     let data;
     let nullDates = [];
+    let nullDatesCount = 0;
     if (!ctx.request.query.original_launch) {
       nullDates = await global.db
         .collection('capsule')
@@ -21,21 +22,25 @@ module.exports = {
         .project(project(ctx.request.query))
         .sort(sort(ctx.request))
         .skip(offset(ctx.request.query))
-        .limit(limit(ctx.request.query))
-        .toArray();
+        .limit(limit(ctx.request.query));
+      nullDatesCount = await nullDates.count(false);
+      nullDates = await nullDates.toArray();
     }
-    const notNullDates = await global.db
+    let notNullDates = await global.db
       .collection('capsule')
       .find(Object.assign({ original_launch: { $ne: null } }, find(ctx.request)))
       .project(project(ctx.request.query))
       .sort(sort(ctx.request))
       .skip(offset(ctx.request.query))
-      .limit(limit(ctx.request.query))
-      .toArray();
+      .limit(limit(ctx.request.query));
+    const notNullDatesCount = await notNullDates.count(false);
+    notNullDates = await notNullDates.toArray();
+    const count = nullDatesCount + notNullDatesCount;
+    ctx.set('SPACEX-API-COUNT', count);
     if (order(ctx.request.query) === -1) {
-      data = nullDates.concat(notNullDates);
+      data = (nullDates).concat(notNullDates);
     } else {
-      data = notNullDates.concat(nullDates);
+      data = (notNullDates).concat(nullDates);
     }
     ctx.body = data;
   },
@@ -50,9 +55,10 @@ module.exports = {
       .project(project(ctx.request.query))
       .sort(sort(ctx.request))
       .skip(offset(ctx.request.query))
-      .limit(limit(ctx.request.query))
-      .toArray();
-    ctx.body = data;
+      .limit(limit(ctx.request.query));
+    ctx.state.data = data;
+    const res = await data.toArray();
+    ctx.body = res;
   },
 
   /**
@@ -65,9 +71,10 @@ module.exports = {
       .project(project(ctx.request.query))
       .sort(sort(ctx.request))
       .skip(offset(ctx.request.query))
-      .limit(limit(ctx.request.query))
-      .toArray();
-    ctx.body = data;
+      .limit(limit(ctx.request.query));
+    ctx.state.data = data;
+    const res = await data.toArray();
+    ctx.body = res;
   },
 
   /**

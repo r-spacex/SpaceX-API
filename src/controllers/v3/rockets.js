@@ -15,9 +15,10 @@ module.exports = {
       .project(project(ctx.request.query))
       .sort({ first_flight: 1 })
       .skip(offset(ctx.request.query))
-      .limit(limit(ctx.request.query))
-      .toArray();
-    data.forEach((rocket) => {
+      .limit(limit(ctx.request.query));
+    ctx.state.data = data;
+    const res = await data.toArray();
+    res.forEach((rocket) => {
       rocket.rocket_id = rocket.id;
       rocket.id = rocket.rocketid;
       rocket.rocket_name = rocket.name;
@@ -26,7 +27,7 @@ module.exports = {
       delete rocket.name;
       delete rocket.type;
     });
-    ctx.body = data;
+    ctx.body = res;
   },
 
   /**

@@ -14,16 +14,17 @@ module.exports = {
       .find({})
       .project(project(ctx.request.query))
       .skip(offset(ctx.request.query))
-      .limit(limit(ctx.request.query))
-      .toArray();
-    data.forEach((pad) => {
+      .limit(limit(ctx.request.query));
+    ctx.state.data = data;
+    const res = await data.toArray();
+    res.forEach((pad) => {
       pad.site_id = pad.id;
       pad.id = pad.padid;
       pad.site_name_long = pad.full_name;
       delete pad.padid;
       delete pad.full_name;
     });
-    ctx.body = data;
+    ctx.body = res;
   },
 
   /**
