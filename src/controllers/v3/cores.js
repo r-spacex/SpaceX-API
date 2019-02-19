@@ -36,7 +36,8 @@ module.exports = {
     const notNullDatesCount = await notNullDates.count(false);
     notNullDates = await notNullDates.toArray();
     const count = nullDatesCount + notNullDatesCount;
-    ctx.set('SPACEX-API-COUNT', count);
+    ctx.set('spacex-api-count', count);
+    ctx.state.count = count;
     if (order(ctx.request.query) === -1) {
       data = (nullDates).concat(notNullDates);
     } else {
@@ -92,5 +93,4 @@ module.exports = {
     }
     [ctx.body] = data;
   },
-
 };
