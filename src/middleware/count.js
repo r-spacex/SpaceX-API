@@ -3,7 +3,6 @@
  * Total object count middleware
  * @return {function} Koa Middleware
  */
-
 module.exports = () => async (ctx, next) => {
   await next();
   if (ctx.state.data) {
