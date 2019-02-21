@@ -38,6 +38,15 @@ const options = {
     path: '/v2/capsules(.*)',
     expire: 86400,
   }, {
+    path: '/v3',
+    expire: 300,
+  }, {
+    path: '/v3/capsules(.*)',
+    expire: 86400,
+  }, {
+    path: '/v3/cores(.*)',
+    expire: 86400,
+  }, {
     path: '/v3/launchpads(.*)',
     expire: 86400,
   }, {
@@ -46,6 +55,24 @@ const options = {
   }, {
     path: '/v3/launches(.*)',
     expire: 30,
+  }, {
+    path: '/v3/missions(.*)',
+    expire: 86400,
+  }, {
+    path: '/v3/landpads(.*)',
+    expire: 86400,
+  }, {
+    path: '/v3/roadster(.*)',
+    expire: 300,
+  }, {
+    path: '/v3/payloads(.*)',
+    expire: 300,
+  }, {
+    path: '/v3/history(.*)',
+    expire: 86400,
+  }, {
+    path: '/v3/dragons(.*)',
+    expire: 86400,
   }, {
     path: '/v3/ships(.*)',
     expire: 300,

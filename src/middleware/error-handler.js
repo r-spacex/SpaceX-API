@@ -3,7 +3,6 @@
  * Error handler middleware
  * @return {function} Koa Middleware
  */
-
 module.exports = () => async (ctx, next) => {
   try {
     await next();

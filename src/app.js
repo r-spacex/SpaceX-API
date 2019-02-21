@@ -1,5 +1,4 @@
 
-const cache = require('koa-redis-cache');
 const cors = require('koa2-cors');
 const helmet = require('koa-helmet');
 const Koa = require('koa');
@@ -9,6 +8,7 @@ const MongoClient = require('mongodb');
 const json = require('./middleware/json');
 const responseTime = require('./middleware/response-time');
 const count = require('./middleware/count');
+const cache = require('./middleware/redis-cache');
 const errorHandler = require('./middleware/error-handler');
 const options = require('./config/redis');
 
@@ -48,9 +48,6 @@ const app = new Koa();
 // Set header with API response time
 app.use(responseTime());
 
-// Set header with total objects returned
-app.use(count());
-
 // HTTP header security
 app.use(helmet());
 
@@ -73,6 +70,9 @@ app.use(cors({
 if (process.env.NODE_ENV === 'production') {
   app.use(cache(options));
 }
+
+// Set header with total objects returned
+app.use(count());
 
 // Allow user to restrict the keys returned
 app.use(mask({

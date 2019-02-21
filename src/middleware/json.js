@@ -11,7 +11,6 @@ const isJSON = require('koa-is-json');
  * @return {GeneratorFunction}
  * @api public
  */
-
 module.exports = (opts = {}) => {
   const { param } = opts;
   const pretty = opts.pretty === false ? true : opts.pretty;
