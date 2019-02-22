@@ -42,13 +42,13 @@ const options = {
     expire: 300,
   }, {
     path: '/v3/capsules(.*)',
-    expire: 86400,
+    expire: 6000,
   }, {
     path: '/v3/cores(.*)',
-    expire: 86400,
+    expire: 6000,
   }, {
     path: '/v3/launchpads(.*)',
-    expire: 86400,
+    expire: 6000,
   }, {
     path: '/v3/rockets(.*)',
     expire: 86400,
@@ -60,7 +60,7 @@ const options = {
     expire: 86400,
   }, {
     path: '/v3/landpads(.*)',
-    expire: 86400,
+    expire: 6000,
   }, {
     path: '/v3/roadster(.*)',
     expire: 300,
