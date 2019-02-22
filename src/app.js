@@ -62,8 +62,9 @@ app.use(errorHandler());
 // Enable CORS for all routes
 app.use(cors({
   origin: '*',
-  allowMethods: ['GET', 'POST'],
+  allowMethods: ['GET'],
   allowHeaders: ['Content-Type', 'Accept'],
+  exposeHeaders: ['spacex-api-cache', 'spacex-api-count', 'spacex-api-response-time'],
 }));
 
 // Disable Redis caching unless production
