@@ -259,13 +259,15 @@ test('It should return launches with Bulgaria nationality', async () => {
 });
 
 test('It should return launches with an SSL manufacturer', async () => {
+  const manufacturers = [];
   const response = await request(app.callback()).get('/v2/launches?manufacturer=SSL');
   expect(response.statusCode).toBe(200);
   response.body.forEach((item) => {
     item.rocket.second_stage.payloads.forEach((payload) => {
-      expect(payload).toHaveProperty('manufacturer', 'SSL');
+      manufacturers.push(payload.manufacturer);
     });
   });
+  expect(manufacturers).toContain('SSL');
 });
 
 test('It should return launches with Satellite payloads', async () => {
