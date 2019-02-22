@@ -27,7 +27,7 @@ const fuzz = require('fuzzball');
   const result = await request('https://www.spacex.com/webcast');
   const $ = cheerio.load(result);
 
-  const embedSource = $('.left_column > font:nth-child(1) > iframe:nth-child(4)').attr('src');
+  const embedSource = $('.left_column > font:nth-child(1) > font:nth-child(1) > iframe:nth-child(4)').attr('src');
   const embedName = $('#page-title').text();
 
   const youtubeUrl = embedSource.replace(/https:\/\/www\.youtube\.com\/embed/i, 'https://youtu.be');
