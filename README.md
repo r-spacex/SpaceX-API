@@ -12,7 +12,7 @@
 <h3 align="center">Open Source REST API for rocket, core, capsule, pad, and launch data</h3>
 
 <h1 align="center">
-<a href="https://documenter.getpostman.com/view/2025350/RWaEzAiG">Documentation</a>
+<a href="https://docs.spacexdata.com/">Documentation</a>
 <br/>
 <br/>
 <a href="https://app.getpostman.com/run-collection/3aeac01a548a87943749"><img src="https://run.pstmn.io/button.svg"></a>

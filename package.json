@@ -7,6 +7,7 @@
     "test": "eslint . && NODE_ENV=test PORT=0 jest --silent --verbose",
     "start": "node src/app.js",
     "dev": "nodemon node src/app.js",
+    "pkg": "pkg src/app.js --output spacex-api",
     "lint": "eslint .",
     "roadster": "node src/scripts/roadster.js",
     "orbit": "node src/scripts/orbits.js",
@@ -68,6 +69,7 @@
     "eslint-plugin-security": "^1.4.0",
     "jest": "^24.1.0",
     "nodemon": "^1.18.10",
+    "pkg": "^4.3.7",
     "supertest": "^3.4.2"
   },
   "jest": {
