@@ -1,4 +1,4 @@
-# List of known UI clients
+# List of known Apps / UI clients
 
 > _Do you, or do you know of some app, that makes use of this community maintained service? If so, please [create an issue](https://github.com/r-spacex/SpaceX-API/issues/new) or [submit a PR](https://github.com/r-spacex/SpaceX-API/blob/master/CONTRIBUTING.md) with additions to this list. Thanks_
 
