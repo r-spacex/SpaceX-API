@@ -12,7 +12,7 @@
 <h3 align="center">Open Source REST API for rocket, core, capsule, pad, and launch data</h3>
 
 <h1 align="center">
-<a href="https://docs.spacexdata.com/">Documentation</a>
+<a href="https://docs.spacexdata.com">Docs</a> - <a href="https://github.com/r-spacex/SpaceX-API/blob/master/clients.md">Clients</a> - <a href="https://github.com/r-spacex/SpaceX-API/blob/master/apps.md">Apps</a> - <a href="https://status.spacexdata.com">Status</a>
 <br/>
 <br/>
 <a href="https://app.getpostman.com/run-collection/3aeac01a548a87943749"><img src="https://run.pstmn.io/button.svg"></a>
@@ -231,12 +231,6 @@ curl -s https://api.spacexdata.com/v3/launches/latest | jq
   }
 }
 ```
-
-## Community made UI Clients / API Clients / API wrappers
-See [clients](https://github.com/r-spacex/SpaceX-API/blob/master/clients.md)
-
-## API Status
-See the [status](https://status.spacexdata.com) page for more details
 
 ## Contributions
 See the [contribution](https://github.com/r-spacex/SpaceX-API/blob/master/CONTRIBUTING.md) guide for detailed steps
