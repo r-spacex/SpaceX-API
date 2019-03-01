@@ -50,7 +50,7 @@ const fuzz = require('fuzzball');
   // up correctly, the data would be entered regardless, this script is purely for convenience
   if (ratio >= 50) {
     console.log('Match');
-    await launch.updateOne({ upcoming: true, flight_number: flightNumber }, { $set: { update } });
+    await launch.updateOne({ upcoming: true, flight_number: flightNumber }, { $set: { 'links.video_link': youtubeUrl, 'links.youtube_id': youtubeId } });
   }
 
   if (client) {
