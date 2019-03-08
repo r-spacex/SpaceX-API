@@ -1,6 +1,6 @@
 /**
  * We make ourselves compatible with AsymmetricMatcher class used by Jest
- * @see https://github.com/facebook/jest/blob/master/packages/expect/src/asymmetric_matchers.js
+ * @see https://github.com/facebook/jest/blob/master/packages/expect/src/asymmetricMatchers.ts
  *
  * Perhaps we can simplify that a bit and write only Jasmine-compatible matchers.
  * @see https://jasmine.github.io/2.4/introduction.html#section-Custom_asymmetric_equality_tester
