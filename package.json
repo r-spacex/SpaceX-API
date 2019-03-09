@@ -59,7 +59,7 @@
     "shelljs": "^0.8.3"
   },
   "devDependencies": {
-    "eslint": "^5.15.0",
+    "eslint": "^5.15.1",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-jest": "^22.3.0",
@@ -67,10 +67,10 @@
     "eslint-plugin-mongodb": "^1.0.0",
     "eslint-plugin-react": "^7.12.4",
     "eslint-plugin-security": "^1.4.0",
-    "jest": "^24.1.0",
+    "jest": "^24.3.1",
     "nodemon": "^1.18.10",
     "pkg": "^4.3.7",
-    "supertest": "^3.4.2"
+    "supertest": "^4.0.0"
   },
   "jest": {
     "setupFilesAfterEnv": [
