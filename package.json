@@ -70,7 +70,7 @@
     "jest": "^24.3.1",
     "nodemon": "^1.18.10",
     "pkg": "^4.3.7",
-    "supertest": "^4.0.0"
+    "supertest": "^3.4.2"
   },
   "jest": {
     "setupFilesAfterEnv": [
