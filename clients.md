@@ -4,6 +4,7 @@
 
 |Name|Lang|Creator(s)|Repo|
 |:---|:---|:---|:---|
+| SpaceX-GraphQL | TypeScript | Jordan Owens | [GitHub](https://github.com/jor-dan/SpaceX-GraphQL) |
 | spacex-graphql-api | GraphQL | Emerson Laurentino | [GitHub](https://github.com/emersonlaurentino/spacex-qraphql-api) |
 | Oddity | .NET  | Tearth | [GitHub](https://github.com/Tearth/Oddity) |
 | SpaceX-API-Wrapper | Node.js | Thomas Smyth | [GitHub](https://github.com/Thomas-Smyth/SpaceX-API-Wrapper) |
