@@ -12,7 +12,7 @@
 <h3 align="center">Open Source REST API for rocket, core, capsule, pad, and launch data</h3>
 
 <h1 align="center">
-<a href="https://docs.spacexdata.com">Docs</a> - <a href="https://github.com/r-spacex/SpaceX-API/blob/master/clients.md">Clients</a> - <a href="https://github.com/r-spacex/SpaceX-API/blob/master/apps.md">Apps</a> - <a href="https://status.spacexdata.com">Status</a>
+<a href="https://docs.spacexdata.com">Docs</a> - <a href="https://github.com/r-spacex/SpaceX-API/blob/master/clients.md">Clients</a> - <a href="https://github.com/r-spacex/SpaceX-API/blob/master/apps.md">Apps</a> - <a href="https://status.spacexdata.com">Status</a> - <a href="https://backups.jakemeyer.ml">Database</a>
 <br/>
 <br/>
 <a href="https://app.getpostman.com/run-collection/3aeac01a548a87943749"><img src="https://run.pstmn.io/button.svg"></a>
@@ -182,7 +182,7 @@ Local development info can be found [here](https://github.com/r-spacex/SpaceX-AP
 * Using [Jest](https://facebook.github.io/jest/) and [Supertest](https://github.com/visionmedia/supertest) for tests
 * Using [Circle CI](https://circleci.com/) for continuous integration / deployments
 * All data stored in a [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) 3 node replica set cluster
-* Latest database mongodump and zipped JSON files available [here](https://drive.google.com/drive/folders/0B2DdgKR4GR4xdk1sRGowcUZXeE0?usp=sharing)
+* Nightly mongodump database backups [here](https://backups.jakemeyer.ml)
 
 ## FAQ's
 * If you have any questions or corrections, please open an issue and we'll get it merged ASAP
