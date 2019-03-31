@@ -31,7 +31,7 @@
     "mongodb",
     "koa"
   ],
-  "author": "Jake Meyer",
+  "author": "Jake Meyer <jakewmeyer@gmail.com>",
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/r-spacex/SpaceX-API/issues"
@@ -40,7 +40,7 @@
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
     "fuzzball": "^1.2.0",
-    "ioredis": "^4.6.2",
+    "ioredis": "^4.9.0",
     "koa": "^2.7.0",
     "koa-helmet": "^4.1.0",
     "koa-is-json": "^1.0.0",
@@ -59,7 +59,7 @@
     "shelljs": "^0.8.3"
   },
   "devDependencies": {
-    "eslint": "^5.15.3",
+    "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-jest": "^22.4.1",
