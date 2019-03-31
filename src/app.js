@@ -27,6 +27,7 @@ const v2Upcoming = require('./routes/v2/upcoming');
 
 // v3 route imports
 const v3Capsules = require('./routes/v3/capsules');
+const v3Crew = require('./routes/v3/crew');
 const v3Cores = require('./routes/v3/cores');
 const v3Dragons = require('./routes/v3/dragons');
 const v3History = require('./routes/v3/history');
@@ -100,6 +101,7 @@ app.use(v2Upcoming.routes());
 // v3 routes
 app.use(v3Capsules.routes());
 app.use(v3Cores.routes());
+app.use(v3Crew.routes());
 app.use(v3Dragons.routes());
 app.use(v3History.routes());
 app.use(v3Info.routes());
