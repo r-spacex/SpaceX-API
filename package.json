@@ -38,7 +38,7 @@
   },
   "homepage": "https://github.com/r-spacex/SpaceX-API",
   "dependencies": {
-    "cheerio": "^1.0.0-rc.2",
+    "cheerio": "^1.0.0-rc.3",
     "fuzzball": "^1.2.0",
     "ioredis": "^4.9.0",
     "koa": "^2.7.0",
@@ -51,7 +51,7 @@
     "lower-case": "^1.1.4",
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.23",
-    "mongodb": "^3.2.2",
+    "mongodb": "^3.2.3",
     "path": "^0.12.7",
     "path-to-regexp": "^3.0.0",
     "request": "^2.88.0",
@@ -67,7 +67,7 @@
     "eslint-plugin-mongodb": "^1.0.0",
     "eslint-plugin-react": "^7.12.4",
     "eslint-plugin-security": "^1.4.0",
-    "jest": "^24.5.0",
+    "jest": "^24.7.1",
     "nodemon": "^1.18.10",
     "pkg": "^4.3.7",
     "supertest": "^3.4.2"
