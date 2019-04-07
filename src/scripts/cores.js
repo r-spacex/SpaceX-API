@@ -50,28 +50,28 @@ const request = require('request-promise-native');
   for await (const [index, coreSerial] of activeCores.entries()) {
     console.log(coreSerial);
     console.log(activeStatus[index]);
-    await col.updateOne({ coreSerial }, { $set: { details: activeStatus[index], status: 'active' } });
+    await col.updateOne({ core_serial: coreSerial }, { $set: { details: activeStatus[index], status: 'active' } });
   }
 
   // Update status and details for all unknown cores
   for await (const [index, coreSerial] of unknownCores.entries()) {
     console.log(coreSerial);
     console.log(unknownStatus[index]);
-    await col.updateOne({ coreSerial }, { $set: { details: unknownStatus[index], status: 'unknown' } });
+    await col.updateOne({ core_serial: coreSerial }, { $set: { details: unknownStatus[index], status: 'unknown' } });
   }
 
   // Update status and details for all inactive cores
   for await (const [index, coreSerial] of inactiveCores.entries()) {
     console.log(coreSerial);
     console.log(inactiveStatus[index]);
-    await col.updateOne({ coreSerial }, { $set: { details: inactiveStatus[index], status: 'inactive' } });
+    await col.updateOne({ core_serial: coreSerial }, { $set: { details: inactiveStatus[index], status: 'inactive' } });
   }
 
   // Update status and details for all lost/expended cores
   for await (const [index, coreSerial] of lostCores.entries()) {
     console.log(coreSerial);
     console.log(lostStatus[index]);
-    await col.updateOne({ coreSerial }, { $set: { details: lostStatus[index], status: 'lost' } });
+    await col.updateOne({ core_serial: coreSerial }, { $set: { details: lostStatus[index], status: 'lost' } });
   }
 
   // Create cores array to loop through for reuse counts
