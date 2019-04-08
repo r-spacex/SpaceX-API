@@ -161,10 +161,10 @@ const request = require('request-promise-native');
 
     await col.updateOne({ core_serial: core }, {
       $set: {
-        reuseCount,
-        rtlsAttempts,
+        reuse_count: reuseCount,
+        rtls_attempts: rtlsAttempts,
         rtls_landings: rtlsSuccesses,
-        asdsAttempts,
+        asds_attempts: asdsAttempts,
         asds_landings: asdsSuccesses,
         missions,
       },

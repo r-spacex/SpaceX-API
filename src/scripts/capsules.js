@@ -75,7 +75,7 @@ const MongoClient = require('mongodb');
 
     await col.updateOne({ capsule_serial: capsule }, {
       $set: {
-        reuseCount,
+        reuse_count: reuseCount,
         landings,
         missions,
       },
