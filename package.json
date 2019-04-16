@@ -61,14 +61,14 @@
   "devDependencies": {
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
-    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-import": "^2.17.1",
     "eslint-plugin-jest": "^22.4.1",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-mongodb": "^1.0.0",
     "eslint-plugin-react": "^7.12.4",
     "eslint-plugin-security": "^1.4.0",
     "jest": "^24.7.1",
-    "nodemon": "^1.18.10",
+    "nodemon": "^1.18.11",
     "pkg": "^4.3.7",
     "supertest": "^3.4.2"
   },

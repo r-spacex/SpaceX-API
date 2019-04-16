@@ -1,4 +1,4 @@
-<p align="center"><img src="https://farm5.staticflickr.com/4882/39684490143_6ca2a58d37_k.jpg"></p>
+<p align="center"><img src="https://live.staticflickr.com/7885/40628434483_19cadc3d31_k.jpg"></p>
 
 <h1 align="center">SpaceX REST API</h1>
 
@@ -28,27 +28,25 @@ curl -s https://api.spacexdata.com/v3/launches/latest | jq
 
 ```json
 {
-  "flight_number": 76,
-  "mission_name": "CCtCap Demo Mission 1",
-  "mission_id": [
-    "EE86F74"
-  ],
+  "flight_number": 77,
+  "mission_name": "ArabSat 6A",
+  "mission_id": [],
   "launch_year": "2019",
-  "launch_date_unix": 1551512700,
-  "launch_date_utc": "2019-03-02T07:45:00.000Z",
-  "launch_date_local": "2019-03-02T02:45:00-05:00",
+  "launch_date_unix": 1555022100,
+  "launch_date_utc": "2019-04-11T22:35:00.000Z",
+  "launch_date_local": "2019-04-11T18:35:00-04:00",
   "is_tentative": false,
   "tentative_max_precision": "hour",
   "tbd": false,
-  "launch_window": 0,
+  "launch_window": 7020,
   "rocket": {
-    "rocket_id": "falcon9",
-    "rocket_name": "Falcon 9",
+    "rocket_id": "falconheavy",
+    "rocket_name": "Falcon Heavy",
     "rocket_type": "FT",
     "first_stage": {
       "cores": [
         {
-          "core_serial": "B1051",
+          "core_serial": "B1055",
           "flight": 1,
           "block": 5,
           "gridfins": true,
@@ -58,6 +56,30 @@ curl -s https://api.spacexdata.com/v3/launches/latest | jq
           "landing_intent": true,
           "landing_type": "ASDS",
           "landing_vehicle": "OCISLY"
+        },
+        {
+          "core_serial": "B1052",
+          "flight": 1,
+          "block": 5,
+          "gridfins": true,
+          "legs": true,
+          "reused": false,
+          "land_success": true,
+          "landing_intent": true,
+          "landing_type": "RTLS",
+          "landing_vehicle": "LZ-1"
+        },
+        {
+          "core_serial": "B1053",
+          "flight": 1,
+          "block": 5,
+          "gridfins": true,
+          "legs": true,
+          "reused": false,
+          "land_success": true,
+          "landing_intent": true,
+          "landing_type": "RTLS",
+          "landing_vehicle": "LZ-2"
         }
       ]
     },
@@ -65,52 +87,56 @@ curl -s https://api.spacexdata.com/v3/launches/latest | jq
       "block": 5,
       "payloads": [
         {
-          "payload_id": "CCtCap Demo Mission 1",
+          "payload_id": "ArabSat 6A",
           "norad_id": [
-            44063
+            44186
           ],
-          "cap_serial": "C201",
           "reused": false,
           "customers": [
-            "NASA (CCtCap)"
+            "Arabsat"
           ],
-          "nationality": "United States",
-          "manufacturer": "SpaceX",
-          "payload_type": "Crew Dragon",
-          "payload_mass_kg": 12259,
-          "payload_mass_lbs": 27026.47,
-          "orbit": "ISS",
+          "nationality": "Saudi Arabia",
+          "manufacturer": "Lockheed Martin",
+          "payload_type": "Satellite",
+          "payload_mass_kg": 6000,
+          "payload_mass_lbs": 13227.74,
+          "orbit": "GTO",
           "orbit_params": {
             "reference_system": "geocentric",
-            "regime": "low-earth",
-            "longitude": null,
-            "semi_major_axis_km": 6671.344,
-            "eccentricity": 0.0087165,
-            "periapsis_km": 235.058,
-            "apoapsis_km": 351.36,
-            "inclination_deg": 51.6368,
-            "period_min": 90.381,
-            "lifespan_years": null,
-            "epoch": "2019-03-02T15:41:00.000Z",
-            "mean_motion": 15.93245467,
-            "raan": 171.0737,
-            "arg_of_pericenter": 56.5274,
-            "mean_anomaly": 41.0649
-          },
-          "mass_returned_kg": null,
-          "mass_returned_lbs": null,
-          "flight_time_sec": null,
-          "cargo_manifest": null
+            "regime": "geostationary",
+            "longitude": 30.5,
+            "semi_major_axis_km": 52699.683,
+            "eccentricity": 0.8313451,
+            "periapsis_km": 2509.924,
+            "apoapsis_km": 90133.171,
+            "inclination_deg": 16.9243,
+            "period_min": 2006.65,
+            "lifespan_years": 15,
+            "epoch": "2019-04-14T21:32:10.000Z",
+            "mean_motion": 0.71761376,
+            "raan": 14.5658,
+            "arg_of_pericenter": 178.0709,
+            "mean_anomaly": 56.5468
+          }
         }
       ]
     },
-    "fairings": null
+    "fairings": {
+      "reused": false,
+      "recovery_attempt": false,
+      "recovered": false,
+      "ship": null
+    }
   },
   "ships": [
-    "OCISLY"
+    "HOLLYWOOD",
+    "OCISLY",
+    "GOQUEST",
+    "GONAVIGATOR",
+    "GOSEARCHER"
   ],
   "telemetry": {
-    "flight_club": "https://www2.flightclub.io/result/2d?code=DEM1"
+    "flight_club": "https://www2.flightclub.io/result/2d?code=AS6A"
   },
   "launch_site": {
     "site_id": "ksc_lc_39a",
@@ -119,52 +145,62 @@ curl -s https://api.spacexdata.com/v3/launches/latest | jq
   },
   "launch_success": true,
   "links": {
-    "mission_patch": "https://images2.imgbox.com/e6/a4/YKd36su1_o.png",
-    "mission_patch_small": "https://images2.imgbox.com/be/7e/gOkzvXPe_o.png",
-    "reddit_campaign": "https://www.reddit.com/r/spacex/comments/a65clm/dm1_launch_campaign_thread/",
-    "reddit_launch": "https://www.reddit.com/r/spacex/comments/av1asz/rspacex_cctcap_demo_mission_1_official_launch/",
-    "reddit_recovery": null,
-    "reddit_media": "https://www.reddit.com/r/spacex/comments/aw6g7j/rspacex_cctcap_demo_mission_1_media_thread_videos/",
-    "presskit": "https://www.spacex.com/sites/spacex/files/crew_demo-1_press_kit.pdf",
-    "article_link": "https://spaceflightnow.com/2019/03/02/spacex-launches-first-crew-dragon-ferry-ship/",
-    "wikipedia": "https://en.wikipedia.org/wiki/SpX-DM1",
-    "video_link": "https://youtu.be/2ZL0tbOZYhE",
-    "youtube_id": "2ZL0tbOZYhE",
+    "mission_patch": "https://images2.imgbox.com/82/e3/RzQ9nX2V_o.png",
+    "mission_patch_small": "https://images2.imgbox.com/ab/ad/YJDi2l1n_o.png",
+    "reddit_campaign": "https://www.reddit.com/r/spacex/comments/b0kscl/arabsat6a_launch_campaign_thread/",
+    "reddit_launch": "https://www.reddit.com/r/spacex/comments/basm9y/rspacex_arabsat6a_official_launch_discussion/",
+    "reddit_recovery": "https://www.reddit.com/r/spacex/comments/bcecao/fh_arabsat_6a_center_core_recovery_thread/",
+    "reddit_media": "https://www.reddit.com/r/spacex/comments/bbhz9a/rspacex_arabsat6a_media_thread_videos_images_gifs/",
+    "presskit": "https://www.spacex.com/sites/spacex/files/arabsat-6a_press_kit.pdf",
+    "article_link": "https://spaceflightnow.com/2019/04/11/spacexs-falcon-heavy-successful-in-commercial-debut/",
+    "wikipedia": "https://en.wikipedia.org/wiki/Arabsat-6A",
+    "video_link": "https://youtu.be/TXMGu2d8c8g",
+    "youtube_id": "TXMGu2d8c8g",
     "flickr_images": [
-      "https://farm8.staticflickr.com/7851/46535572784_7eb295968e_o.jpg",
-      "https://farm8.staticflickr.com/7826/46535572564_a022f9c43a_o.jpg",
-      "https://farm8.staticflickr.com/7889/40294395933_f429c12e83_o.jpg",
-      "https://farm8.staticflickr.com/7914/40294395873_0a328f2d87_o.jpg",
-      "https://farm8.staticflickr.com/7866/46535572294_22499c1223_o.jpg",
-      "https://farm8.staticflickr.com/7850/46535573034_03da10f899_o.jpg",
-      "https://farm8.staticflickr.com/7848/46535572664_316c466742_o.jpg"
+      "https://live.staticflickr.com/7911/32652060737_4be1171d4a_o.jpg",
+      "https://live.staticflickr.com/7807/40628442293_9643eaf670_o.jpg",
+      "https://live.staticflickr.com/7804/40628440983_4da5d76cc7_o.jpg",
+      "https://live.staticflickr.com/7856/40628439793_27927d11de_o.jpg",
+      "https://live.staticflickr.com/7919/40628438523_c597eabff1_o.jpg",
+      "https://live.staticflickr.com/7834/40628437283_84088aca75_o.jpg",
+      "https://live.staticflickr.com/7856/40628435833_a1bcde59db_o.jpg",
+      "https://live.staticflickr.com/7809/40628435153_17c05d3b5e_o.jpg",
+      "https://live.staticflickr.com/7885/40628434483_3545598b82_o.jpg"
     ]
   },
-  "details": "Demonstration Mission 1 (DM-1) will launch Dragon 2 as part of NASA's Commercial Crew Transportation Capability program. This mission will demonstrate Dragon 2, and Falcon 9 in its configuration for crewed missions. DM-1 will launch from LC-39A at Kennedy Space Center, likely carrying some cargo to the International Space Station. The booster is expected to land on OCISLY.",
+  "details": "SpaceX will launch Arabsat 6A to a geostationary transfer orbit from SLC-39A, KSC. The satellite is a geostationary telecommunications satellite built by Lockheed Martin for the Saudi Arabian company Arabsat. This will be the first operational flight of Falcon Heavy, and also the first Block 5 Falcon Heavy. All three cores will be new Block 5 cores. The side cores are expected to land at LZ-1 and LZ-2, and the center core is expected to land on OCISLY.",
   "upcoming": false,
-  "static_fire_date_utc": "2019-01-24T19:03:00.000Z",
-  "static_fire_date_unix": 1548356580,
+  "static_fire_date_utc": "2019-04-05T09:57:00.000Z",
+  "static_fire_date_unix": 1554458220,
   "timeline": {
-    "webcast_liftoff": 2941,
-    "go_for_prop_loading": -2280,
-    "rp1_loading": -2100,
-    "stage1_lox_loading": -2100,
-    "stage2_lox_loading": -960,
+    "webcast_liftoff": 1197,
+    "go_for_prop_loading": -3180,
+    "stage1_rp1_loading": -3000,
+    "stage1_lox_loading": -2700,
+    "stage2_rp1_loading": -2100,
+    "stage2_lox_loading": -1110,
     "engine_chill": -420,
-    "prelaunch_checks": -60,
+    "prelaunch_checks": -90,
     "propellant_pressurization": -60,
     "go_for_launch": -45,
-    "ignition": -3,
+    "ignition": -2,
     "liftoff": 0,
-    "maxq": 58,
-    "meco": 155,
-    "stage_sep": 158,
-    "second_stage_ignition": 162,
-    "first_stage_entry_burn": 468,
-    "seco-1": 539,
-    "first_stage_landing_burn": 564,
-    "first_stage_landing": 592,
-    "dragon_separation": 660
+    "maxq": 69,
+    "beco": 150,
+    "side_core_sep": 154,
+    "side_core_boostback": 171,
+    "meco": 211,
+    "center_stage_sep": 215,
+    "second_stage_ignition": 222,
+    "fairing_deploy": 247,
+    "side_core_entry_burn": 371,
+    "center_core_entry_burn": 420,
+    "side_core_landing": 471,
+    "seco-1": 521,
+    "center_core_landing": 588,
+    "second_stage_restart": 1654,
+    "seco-2": 1740,
+    "payload_deployment": 2042
   }
 }
 ```
