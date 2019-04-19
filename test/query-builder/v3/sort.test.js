@@ -118,7 +118,7 @@ test('It should return launches sorted by fairing recovery attempts', async () =
 test('It should return launches sorted by fairing recoveries', async () => {
   const response = await request(app.callback()).get('/v3/launches/past?sort=fairings_recovery');
   expect(response.statusCode).toBe(200);
-  expect(response.body[response.body.length - 1].rocket.fairings.recovered).toEqual(false);
+  expect(response.body[0].rocket.fairings.recovered).toEqual(false);
 });
 
 test('It should return launches sorted by launchpad site id', async () => {
