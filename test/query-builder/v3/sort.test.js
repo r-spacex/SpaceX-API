@@ -121,12 +121,6 @@ test('It should return launches sorted by fairing recoveries', async () => {
   expect(response.body[response.body.length - 1].rocket.fairings.recovered).toEqual(false);
 });
 
-test('It should return launches sorted by fairing recovery ship', async () => {
-  const response = await request(app.callback()).get('/v3/launches?sort=fairings_ship');
-  expect(response.statusCode).toBe(200);
-  expect(response.body[response.body.length - 1].rocket.fairings.ship).toEqual('MR STEVEN');
-});
-
 test('It should return launches sorted by launchpad site id', async () => {
   const response = await request(app.callback()).get('/v3/launches?sort=site_id&launch_year=2017');
   expect(response.statusCode).toBe(200);
