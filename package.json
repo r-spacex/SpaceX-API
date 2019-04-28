@@ -62,7 +62,7 @@
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.17.2",
-    "eslint-plugin-jest": "^22.4.1",
+    "eslint-plugin-jest": "^22.5.1",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-mongodb": "^1.0.0",
     "eslint-plugin-react": "^7.12.4",
@@ -70,7 +70,7 @@
     "jest": "^24.7.1",
     "nodemon": "^1.18.11",
     "pkg": "^4.3.7",
-    "supertest": "^3.4.2"
+    "supertest": "^4.0.2"
   },
   "jest": {
     "setupFilesAfterEnv": [
