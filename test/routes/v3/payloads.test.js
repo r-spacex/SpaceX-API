@@ -30,6 +30,19 @@ test('It should return 5 Satellite payloads in decending order', async () => {
   expect(response.body.length).toBe(5);
 });
 
+test('All launches with dragon should have a null fairings property', async () => {
+  const dragon1 = await request(app.callback()).get('/v3/launches?payload_type=Dragon%201.1');
+  const dragon2 = await request(app.callback()).get('/v3/launches?payload_type=Crew%20Dragon');
+  expect(dragon1.statusCode).toBe(200);
+  expect(dragon2.statusCode).toBe(200);
+  dragon1.body.forEach((launch) => {
+    expect(launch.rocket.fairings).toBe(null);
+  });
+  dragon2.body.forEach((launch) => {
+    expect(launch.rocket.fairings).toBe(null);
+  });
+});
+
 //------------------------------------------------------------
 //                     One Payload Test
 //------------------------------------------------------------
