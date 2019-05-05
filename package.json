@@ -65,11 +65,11 @@
     "eslint-plugin-jest": "^22.5.1",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-mongodb": "^1.0.0",
-    "eslint-plugin-react": "^7.12.4",
+    "eslint-plugin-react": "^7.13.0",
     "eslint-plugin-security": "^1.4.0",
-    "jest": "^24.7.1",
-    "nodemon": "^1.18.11",
-    "pkg": "^4.3.7",
+    "jest": "^24.8.0",
+    "nodemon": "^1.19.0",
+    "pkg": "^4.3.8",
     "supertest": "^4.0.2"
   },
   "jest": {
