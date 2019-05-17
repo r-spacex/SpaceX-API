@@ -12,7 +12,7 @@
 <h3 align="center">Open Source REST API for rocket, core, capsule, pad, and launch data</h3>
 
 <h1 align="center">
-<a href="https://docs.spacexdata.com">Docs</a> - <a href="https://github.com/r-spacex/SpaceX-API/blob/master/clients.md">Clients</a> - <a href="https://github.com/r-spacex/SpaceX-API/blob/master/apps.md">Apps</a> - <a href="https://status.spacexdata.com">Status</a> - <a href="https://backups.jakemeyer.ml">Database</a>
+<a href="https://docs.spacexdata.com">Docs</a> - <a href="https://github.com/r-spacex/SpaceX-API/blob/master/docs/clients.md">Clients</a> - <a href="https://github.com/r-spacex/SpaceX-API/blob/master/docs/apps.md">Apps</a> - <a href="https://status.spacexdata.com">Status</a> - <a href="https://backups.jakemeyer.ml">Database</a>
 <br/>
 <br/>
 <a href="https://app.getpostman.com/run-collection/3aeac01a548a87943749"><img src="https://run.pstmn.io/button.svg"></a>
