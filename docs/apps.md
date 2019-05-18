@@ -16,3 +16,4 @@
 | [InElonWeTrust](https://github.com/Tearth/InElonWeTrust) | Discord bot | [Tearth](https://github.com/Tearth) | [GitHub](https://github.com/Tearth/InElonWeTrust) |
 | [SpaceX-Launch-Bot](https://github.com/r-spacex/SpaceX-Launch-Bot) | Discord bot | [Simon](https://github.com/thatguywiththatname) | [Github](https://github.com/r-spacex/SpaceX-Launch-Bot) | |
 | [Space Launch Now](https://spacelaunchnow.me/) | API/Website/Apps | [Caleb Jones](https://github.com/ItsCalebJones) | [Github](https://github.com/ItsCalebJones/SpaceLaunchNow-Server) | |
+| [SpaceX Universe](https://play.google.com/store/apps/details?id=com.aastudio.spacexuniverse) | Android App | [Oleksii Chernov](https://github.com/chert12) | [Github](https://github.com/chert12/SpaceX-Universe) | |
