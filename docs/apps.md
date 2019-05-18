@@ -13,7 +13,7 @@
 | [SpaceX Companion](https://play.google.com/store/apps/details?id=nl.studionoorderlicht.spacex) | Android App | [Jeroen Boumans](https://github.com/jeroenboumans) | Not open sourced yet | [Website](https://spacexcompanion.app)
 | [SpaceXLaunches](https://play.google.com/store/apps/details?id=com.danielscholte.spacexlaunches) | Android App | [Daniël Scholte](https://github.com/linuxfreak23) | Closed source |
 | [SpaceX GO!](https://play.google.com/store/apps/details?id=com.chechu.cherry) | Android App | [Chechu](https://github.com/jesusrp98) | [GitHub](https://github.com/jesusrp98/spacex-go) |
+| [SpaceX Universe](https://play.google.com/store/apps/details?id=com.aastudio.spacexuniverse) | Android App | [Oleksii Chernov](https://github.com/chert12) | [Github](https://github.com/chert12/SpaceX-Universe) | |
 | [InElonWeTrust](https://github.com/Tearth/InElonWeTrust) | Discord bot | [Tearth](https://github.com/Tearth) | [GitHub](https://github.com/Tearth/InElonWeTrust) |
 | [SpaceX-Launch-Bot](https://github.com/r-spacex/SpaceX-Launch-Bot) | Discord bot | [Simon](https://github.com/thatguywiththatname) | [Github](https://github.com/r-spacex/SpaceX-Launch-Bot) | |
 | [Space Launch Now](https://spacelaunchnow.me/) | API/Website/Apps | [Caleb Jones](https://github.com/ItsCalebJones) | [Github](https://github.com/ItsCalebJones/SpaceLaunchNow-Server) | |
-| [SpaceX Universe](https://play.google.com/store/apps/details?id=com.aastudio.spacexuniverse) | Android App | [Oleksii Chernov](https://github.com/chert12) | [Github](https://github.com/chert12/SpaceX-Universe) | |
