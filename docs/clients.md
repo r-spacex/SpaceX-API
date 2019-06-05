@@ -18,3 +18,4 @@
 | spacex | PHP | Aires Gonçalves | [GitHub](https://github.com/airesvsg/spacex) |
 | spacex_ex | Elixir | Chen Zhao | [GitHub](https://github.com/crunchysoul/spacex_ex) |
 | SpaceX | R | Johannes Friedrich | [GitHub](https://github.com/JohannesFriedrich/SpaceX) |
+| SpaceXAPI-Swift | Swift | Sami Sharafeddine | [GitHub](https://github.com/devsamsh/SpaceXAPI-Swift) |
