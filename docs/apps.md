@@ -4,7 +4,6 @@
 
 |App|Type|Creator(s)|Repo|More|
 |:---|:---|:---|:---|:---|
-
 | [SpaceX Mission Watch](https://spacexmissionwatch.com) | Website | Quent McCoy | N/A | [QMDD](https://quentmccoy.com) |
 | [SpaceX Stats](http://spacexstats.xyz) | Website | Luke Davia | [GitHub](https://github.com/r-spacex/spacexstats-react) |
 | [SpaceX Data.Info](http://spacexdata.info) | Website | [Charles Omer](https://www.charlesomer.co.uk) | N/A | [Zyndex](https://www.zyndex.co.uk) |
