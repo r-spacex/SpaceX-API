@@ -2,9 +2,9 @@
 
 /**
  * This script gathers dates and payload names from the subreddit launch manifest,
- * fuzzy checks them against existing upcoming payload id's and updates the date if a
+ * fuzzy checks them against existing upcoming mission names and updates the date if a
  * change is made in the wiki. The proper time zone is calculated from the launch site
- * id of the launch. It also updates the flight number order based on the launch manifest order.
+ * id of the launch. It also corrects the flight number order based on the launch manifest order.
  *
  * Hopefully the format of the wiki does not change, but there's no real reason for it to
  * change in the forseeable future. If it does change, this script will have to be updated
@@ -26,27 +26,38 @@ let tbd;
 let isTentative;
 
 const sites = [];
-const payloads = [];
+const missionNames = [];
 const promises = [];
 const precision = [];
 const flightNumbers = [];
 
+
 // RegEx expressions for matching dates in the wiki manifest
 // Allows for long months or short months ex. September vs Sep
 // Allows for time with or without brackets ex [23:45] vs 23:45
+
+// 2020 Nov 4 [14:10]
 const hour = /^[0-9]{4}\s([a-z]{3}|[a-z]{3,9})\s[0-9]{1,2}\s(\[[0-9]{2}:[0-9]{2}\]|[0-9]{2}:[0-9]{2})$/i;
+
+// 2020 Nov 4
 const day = /^[0-9]{4}\s([a-z]{3}|[a-z]{3,9})\s[0-9]{1,2}$/i;
+
+// 2020 Nov
 const month = /^[0-9]{4}\s([a-z]{3}|[a-z]{3,9})$/i;
+
+// 2020
 const year = /^[0-9]{4}$/i;
 
-// Separate Regex for TBD times and dates
+// 2020 TBD
 const yearTbd = /^[0-9]{4}\sTBD$/i;
+
+// 2020 Nov TBD
 const monthTbd = /^[0-9]{4}\s([a-z]{3}|[a-z]{3,9})\sTBD$/i;
 
-// Separate Regex for Early, Mid, and Late
+// 2020 Early/Mid/Late Nov
 const monthVague = /^[0-9]{4}\s(early|mid|late)\s([a-z]{3}|[a-z]{3,9})$/i;
 
-// Using async IIFE to allow "top" level await
+
 (async () => {
   try {
     client = await MongoClient.connect(process.env.MONGO_URL, { useNewUrlParser: true });
@@ -65,7 +76,7 @@ const monthVague = /^[0-9]{4}\s(early|mid|late)\s([a-z]{3}|[a-z]{3,9})$/i;
 
   // Collect site names for time zone and payload name for fuzzy check
   launches.forEach((launch) => {
-    payloads.push(launch.rocket.second_stage.payloads[0].payload_id);
+    missionNames.push(launch.mission_name);
     sites.push(launch.launch_site.site_id);
   });
 
@@ -86,12 +97,12 @@ const monthVague = /^[0-9]{4}\s(early|mid|late)\s([a-z]{3}|[a-z]{3,9})$/i;
   // Filter to collect launchpad names
   const manifestLaunchpads = manifestRow.filter((value, index) => (index + 6) % 8 === 0);
 
-  // Compare each payload against entire list of manifest payloads, and fuzzy match the
-  // payload id against the manifest payload name. The partial match must be 100%, to avoid
+  // Compare each mission name against entire list of manifest payloads, and fuzzy match the
+  // mission name against the manifest payload name. The partial match must be 100%, to avoid
   // conflicts like SSO-A and SSO-B, where a really close match would produce wrong results.
-  payloads.forEach((payload, payloadIndex) => {
+  missionNames.forEach((missionName, payloadIndex) => {
     manifestPayloads.forEach((manifestPayload, manifestIndex) => {
-      if (fuzz.partial_ratio(payload, manifestPayload) === 100) {
+      if (fuzz.partial_ratio(missionName, manifestPayload) === 100) {
         // Check and see if dates match a certain patten depending on the length of the
         // date given. This sets the amount of precision needed for the date.
         let mdate = manifestDates[manifestIndex];
@@ -159,7 +170,7 @@ const monthVague = /^[0-9]{4}\s(early|mid|late)\s([a-z]{3}|[a-z]{3,9})$/i;
         date = manifestDates[manifestIndex];
 
         console.log(date);
-        console.log(`${payload} : ${manifestPayload}`);
+        console.log(`${missionName} : ${manifestPayload}`);
 
         // Strip brackets from time given, and tack on UTC time offset at the end for date parser
         const parsedDate = `${date.replace(/(early|mid|late)/i, '').replace('[', '').replace(']', '')} +0000`;
@@ -223,7 +234,7 @@ const monthVague = /^[0-9]{4}\s(early|mid|late)\s([a-z]{3}|[a-z]{3,9})$/i;
         console.log('');
 
         // Add to array of promises to update all at once after the forEach iterations finish
-        promises.push(col.updateOne({ 'rocket.second_stage.payloads.payload_id': payload }, { $set: calculatedTimes }));
+        promises.push(col.updateOne({ mission_name: missionName }, { $set: calculatedTimes }));
       }
     });
   });
@@ -240,9 +251,9 @@ const monthVague = /^[0-9]{4}\s(early|mid|late)\s([a-z]{3}|[a-z]{3,9})$/i;
   // Display if the document was found, and if it was modified or not
   output.forEach((doc, index) => {
     if (doc.result.nModified !== 0) {
-      console.log(`${payloads[index]} UPDATED`);
+      console.log(`${missionNames[index]} UPDATED`);
     } else {
-      console.log(`${payloads[index]}`);
+      console.log(`${missionNames[index]}`);
     }
   });
 
