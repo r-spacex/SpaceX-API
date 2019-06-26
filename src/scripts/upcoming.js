@@ -72,7 +72,6 @@ const monthVague = /^[0-9]{4}\s(early|mid|late)\s([a-z]{3}|[a-z]{3,9})$/i;
   // We need the most recent launch number to keep all upcoming launches
   // in the correct order
   const pastLaunches = await col.find({ upcoming: false }).sort({ flight_number: -1 }).toArray();
-  const baseFlightNumber = pastLaunches[0].flight_number + 1;
 
   // Collect site names for time zone and payload name for fuzzy check
   launches.forEach((launch) => {
@@ -96,6 +95,15 @@ const monthVague = /^[0-9]{4}\s(early|mid|late)\s([a-z]{3}|[a-z]{3,9})$/i;
 
   // Filter to collect launchpad names
   const manifestLaunchpads = manifestRow.filter((value, index) => (index + 6) % 8 === 0);
+
+  // Set base flight number to automatically reorder launches on the manifest
+  // If the most recent past launch is still on the wiki, don't offset the flight number
+  let baseFlightNumber;
+  if (fuzz.partial_ratio(pastLaunches[0].missionName, manifestPayloads[0]) === 100) {
+    baseFlightNumber = pastLaunches[0].flight_number;
+  } else {
+    baseFlightNumber = pastLaunches[0].flight_number + 1;
+  }
 
   // Compare each mission name against entire list of manifest payloads, and fuzzy match the
   // mission name against the manifest payload name. The partial match must be 100%, to avoid
