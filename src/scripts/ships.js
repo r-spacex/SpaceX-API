@@ -104,23 +104,28 @@ const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
     await col.updateOne({ ship_id: name }, { $set: { missions } });
 
-    if (name === 'MRSTEVEN') {
-      console.log('Mr Steven');
+    if (name === 'GOMSTREE') {
+      console.log('GO Ms Tree');
       const attemptedCatches = await launches.countDocuments({
         upcoming: false,
         launch_success: true,
-        'rocket.fairings.ship': 'MR STEVEN',
+        'rocket.fairings.ship': 'GOMSTREE',
         'rocket.fairings.recovery_attempt': true,
       });
       const successfulCatches = await launches.countDocuments({
         upcoming: false,
         launch_success: true,
-        'rocket.fairings.ship': 'MR STEVEN',
+        'rocket.fairings.ship': 'GOMSTREE',
         'rocket.fairings.recovered': true,
       });
       console.log(`Attempts: ${attemptedCatches}`);
       console.log(`Successes: ${successfulCatches}\n`);
-      await col.updateOne({ ship_id: name }, { $set: { attemptedCatches, successfulCatches } });
+      await col.updateOne({ ship_id: name }, {
+        $set: {
+          attempted_catches: attemptedCatches,
+          successful_catches: successfulCatches,
+        },
+      });
     }
   }
   console.log(`Updated ${id.length} ships`);

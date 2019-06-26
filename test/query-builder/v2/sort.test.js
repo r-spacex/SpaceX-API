@@ -105,7 +105,7 @@ test('It should return launches sorted by fairing recoveries', async () => {
 test('It should return launches sorted by fairing recovery ship', async () => {
   const response = await request(app.callback()).get('/v2/launches?sort=fairings_ship');
   expect(response.statusCode).toBe(200);
-  expect(response.body[response.body.length - 1].rocket.fairings.ship).toEqual('MR STEVEN');
+  expect(response.body[response.body.length - 1].rocket.fairings.ship).toEqual('GOSEARCHER');
 });
 
 test('It should return launches sorted by core reuse', async () => {
