@@ -84,7 +84,7 @@ const monthVague = /^[0-9]{4}\s(early|mid|late)\s([a-z]{3}|[a-z]{3,9})$/i;
   const $ = cheerio.load(result);
 
   // Gives us all manifest table rows in a single array
-  const manifest = $('body > div.content > div > div > table:nth-child(6) > tbody').text();
+  const manifest = $('body > div.content > div > div > table:nth-child(8) > tbody').text();
   const manifestRow = manifest.split('\n').filter(v => v !== '');
 
   // Filter to collect manifest dates
