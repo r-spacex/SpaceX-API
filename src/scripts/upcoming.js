@@ -36,6 +36,9 @@ const flightNumbers = [];
 // Allows for long months or short months ex. September vs Sep
 // Allows for time with or without brackets ex [23:45] vs 23:45
 
+// 2020 Nov 4 [14:10:56]
+const second = /^[0-9]{4}\s([a-z]{3}|[a-z]{3,9})\s[0-9]{1,2}\s(\[[0-9]{2}:[0-9]{2}:[0-9]{2}\]|[0-9]{2}:[0-9]{2})$/i;
+
 // 2020 Nov 4 [14:10]
 const hour = /^[0-9]{4}\s([a-z]{3}|[a-z]{3,9})\s[0-9]{1,2}\s(\[[0-9]{2}:[0-9]{2}\]|[0-9]{2}:[0-9]{2})$/i;
 
@@ -164,6 +167,10 @@ const monthVague = /^[0-9]{4}\s(early|mid|late)\s([a-z]{3}|[a-z]{3,9})$/i;
           isTentative = true;
           // 2020 Nov 4 [14:10]
         } else if (hour.test(mdate)) {
+          precision[manifestIndex] = 'hour';
+          tbd = false;
+          isTentative = false;
+        } else if (second.test(mdate)) {
           precision[manifestIndex] = 'hour';
           tbd = false;
           isTentative = false;
