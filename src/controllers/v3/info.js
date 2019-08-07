@@ -7,6 +7,7 @@ module.exports = {
    * Returns all company info
    */
   company: async (ctx) => {
+    ctx.set('Cache-Control', 'maxage=0, s-maxage=30');
     const data = await global.db
       .collection('info')
       .find({ name: 'SpaceX' })
