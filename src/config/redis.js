@@ -41,6 +41,9 @@ const options = {
     path: '/v3',
     expire: 300,
   }, {
+    path: '/v3/info',
+    expire: 86400,
+  }, {
     path: '/v3/capsules(.*)',
     expire: 6000,
   }, {
