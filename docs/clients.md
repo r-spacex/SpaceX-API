@@ -8,6 +8,7 @@
 | spacex-graphql-api | GraphQL | Emerson Laurentino | [GitHub](https://github.com/emersonlaurentino/spacex-qraphql-api) |
 | Oddity | .NET  | Tearth | [GitHub](https://github.com/Tearth/Oddity) |
 | SpaceX-API-Wrapper | Node.js | Thomas Smyth | [GitHub](https://github.com/Thomas-Smyth/SpaceX-API-Wrapper) |
+| spacex-api | TypeScript / Node.js | Tomasz Borowski | [GitHub](https://github.com/tbprojects/spacex-api), [NPM](https://www.npmjs.com/package/spacex-api) |
 | SpaceX | PowerShell | François-Xavier Cat | [GitHub](https://github.com/lazywinadmin/SpaceX) |
 | SpaceX-Python | Python | Vinay Phadnis | [GitHub](https://github.com/phadnisvinay30/SpaceX-Python) |
 | SpaceX-PY | Python | Kaylum Lally | [GitHub](https://github.com/HiKaylum/SpaceX-PY) |
