@@ -292,14 +292,4 @@ const monthVague = /^[0-9]{4}\s(early|mid|late)\s([a-z]{3}|[a-z]{3,9})$/i;
   if (client) {
     client.close();
   }
-
-  // Temp test
-  const send = gmail({
-    user: process.env.GMAIL_USER,
-    pass: process.env.GMAIL_PASS,
-    to: process.env.NOTIFY_EMAIL,
-    subject: 'Upcoming Launches',
-    text: 'System test',
-  });
-  await send();
 })().catch(e => console.error(e));
