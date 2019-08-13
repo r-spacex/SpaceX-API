@@ -12,6 +12,7 @@
  */
 
 const MongoClient = require('mongodb');
+const gmail = require('gmail-send');
 const moment = require('moment-timezone');
 const cheerio = require('cheerio');
 const request = require('request-promise-native');
@@ -111,8 +112,8 @@ const monthVague = /^[0-9]{4}\s(early|mid|late)\s([a-z]{3}|[a-z]{3,9})$/i;
   // Compare each mission name against entire list of manifest payloads, and fuzzy match the
   // mission name against the manifest payload name. The partial match must be 100%, to avoid
   // conflicts like SSO-A and SSO-B, where a really close match would produce wrong results.
-  missionNames.forEach((missionName, payloadIndex) => {
-    manifestPayloads.forEach((manifestPayload, manifestIndex) => {
+  for await (const [payloadIndex, missionName] of missionNames.entries()) {
+    for await (const [manifestIndex, manifestPayload] of manifestPayloads.entries()) {
       if (fuzz.partial_ratio(missionName, manifestPayload) === 100) {
         // Check and see if dates match a certain patten depending on the length of the
         // date given. This sets the amount of precision needed for the date.
@@ -176,6 +177,14 @@ const monthVague = /^[0-9]{4}\s(early|mid|late)\s([a-z]{3}|[a-z]{3,9})$/i;
           isTentative = false;
         } else {
           console.log('Date did not match any of the existing regular expressions');
+          const send = gmail({
+            user: process.env.GMAIL_USER,
+            pass: process.env.GMAIL_PASS,
+            to: process.env.NOTIFY_EMAIL,
+            subject: 'Upcoming Launches',
+            text: `Date does not match any formats: ${mdate}`,
+          });
+          await send();
           return;
         }
 
@@ -251,12 +260,20 @@ const monthVague = /^[0-9]{4}\s(early|mid|late)\s([a-z]{3}|[a-z]{3,9})$/i;
         // Add to array of promises to update all at once after the forEach iterations finish
         promises.push(col.updateOne({ mission_name: missionName }, { $set: calculatedTimes }));
       }
-    });
-  });
+    }
+  }
 
   // Check if duplicate flight numbers exist
   if ([...new Set(flightNumbers)].length < flightNumbers.length) {
     console.log('Duplicate flight numbers found');
+    const send = gmail({
+      user: process.env.GMAIL_USER,
+      pass: process.env.GMAIL_PASS,
+      to: process.env.NOTIFY_EMAIL,
+      subject: 'Upcoming Launches',
+      text: 'New launches added to manifest',
+    });
+    await send();
     process.exit(1);
   }
 
@@ -275,4 +292,14 @@ const monthVague = /^[0-9]{4}\s(early|mid|late)\s([a-z]{3}|[a-z]{3,9})$/i;
   if (client) {
     client.close();
   }
-})();
+
+  // Temp test
+  const send = gmail({
+    user: process.env.GMAIL_USER,
+    pass: process.env.GMAIL_PASS,
+    to: process.env.NOTIFY_EMAIL,
+    subject: 'Upcoming Launches',
+    text: 'System test',
+  });
+  await send();
+})().catch(e => console.error(e));
