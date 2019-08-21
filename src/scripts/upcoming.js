@@ -37,7 +37,7 @@ const lastWikiUpdates = [];
 // Launch Library settings
 
 // lsp=121 means that SpaceX is the agency that launches
-const launchLibraryURL = "https://launchlibrary.net/1.4/launch?lsp=121&name=";
+const launchLibraryURL = 'https://launchlibrary.net/1.4/launch?lsp=121&name=';
 
 // How close (in days) the launch needs to be in order to be updated
 // NOTE: Only applies to upcoming launches
@@ -95,7 +95,7 @@ const monthVague = /^[0-9]{4}\s(early|mid|late)\s([a-z]{3}|[a-z]{3,9})$/i;
   launches.forEach((launch) => {
     missionNames.push(launch.mission_name);
     sites.push(launch.launch_site.site_id);
-    lastWikiUpdates.push(launch.last_wiki_update)
+    lastWikiUpdates.push(launch.last_wiki_update);
   });
 
   // Grab subreddit wiki manifest
@@ -239,32 +239,42 @@ const monthVague = /^[0-9]{4}\s(early|mid|late)\s([a-z]{3}|[a-z]{3,9})$/i;
         }
 
         // Launch Library code
-        let isDateFromWiki, lastUpdate, launchDate;
-        let daysToLaunch = time.diff(moment(), 'days');
+        let isDateFromWiki;
+        let lastUpdate;
+        let launchDate;
+        let time;
+        let zone;
+
+        const parsedDate = `${date.replace(/(early|mid|late)/i, '').replace('[', '').replace(']', '')} +0000`;
+        time = moment(parsedDate, ['YYYY MMM D HH:mm Z', 'YYYY MMM D Z', 'YYYY MMM Z', 'YYYY Q Z', 'YYYY Z']);
+        zone = moment.tz(time, 'UTC');
+
+        const daysToLaunch = time.diff(moment(), 'days');
         if (daysToLaunch <= minimumProximity) {
-          let wikiDelay, resultLL, query;
+          let wikiDelay;
+          let resultLL;
           // Get the launch from Launch Library
           // and check if it has updated more recently than the wiki.
 
           // First we look for the mission name in LL
-          query = launchLibraryURL + missionName.replace(/ /g, "+");
+          const query = launchLibraryURL + missionName.replace(/ /g, '+');
           try {
             resultLL = await request(query);
             resultLL = JSON.parse(resultLL);
             // November 4, 2019 00:00:00 UTC
-            launchDate = moment(resultLL.launches[0].net.replace("UTC", "Z"), "MMMM D, YYYY hh:mm:ss Z");
-            let changed = moment(resultLL.launches[0].changed, "YYYY-MM-DD hh:mm:ss");
-            if (zone.diff(launchDate) != 0) {
+            launchDate = moment(resultLL.launches[0].net.replace('UTC', 'Z'), 'MMMM D, YYYY hh:mm:ss Z');
+            const changed = moment(resultLL.launches[0].changed, 'YYYY-MM-DD hh:mm:ss');
+            if (zone.diff(launchDate) !== 0) {
               // If the date in the wiki and Launch Library aren't the same
               // we calculate the delay of the wiki in respect to Launch Library
-              let lastWikiUpdate = moment(lastWikiUpdates[payloadIndex]);
+              const lastWikiUpdate = moment(lastWikiUpdates[payloadIndex]);
               wikiDelay = changed.diff(lastWikiUpdate, 'seconds'); // if negative, the server is ahead
             } else {
               wikiDelay = 0;
             }
           } catch (e) {
             if (resultLL) {
-              console.log(e)
+              console.log(e);
             }
             // Mission not found in LL, so we use wiki's data
             wikiDelay = 0;
@@ -289,16 +299,15 @@ const monthVague = /^[0-9]{4}\s(early|mid|late)\s([a-z]{3}|[a-z]{3,9})$/i;
 
         // Strip brackets from time given, and tack on UTC time offset at the end for date parser
         if (isDateFromWiki) {
-          const parsedDate = `${date.replace(/(early|mid|late)/i, '').replace('[', '').replace(']', '')} +0000`;
-          const time = moment(parsedDate, ['YYYY MMM D HH:mm Z', 'YYYY MMM D Z', 'YYYY MMM Z', 'YYYY Q Z', 'YYYY Z']);
+          time = moment(parsedDate, ['YYYY MMM D HH:mm Z', 'YYYY MMM D Z', 'YYYY MMM Z', 'YYYY Q Z', 'YYYY Z']);
         } else {
           // Use date from Launch Library instead
-          const time = launchDate;
+          time = launchDate;
         }
 
 
         // Feed stripped time into all possible date formats in the wiki currently
-        const zone = moment.tz(time, 'UTC');
+        zone = moment.tz(time, 'UTC');
 
         // Use launch site id's to properly set timezone for local time
         if (location === 'ccafs_slc_40' || location === 'ksc_lc_39a' || location === 'ccafs_lc_13') {
