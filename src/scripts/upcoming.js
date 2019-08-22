@@ -36,8 +36,9 @@ const lastWikiUpdates = [];
 
 // Launch Library settings
 
+// Request next 100 launches (for reference, current amount is around 40)
 // lsp=121 means that SpaceX is the agency that launches
-const launchLibraryURL = 'https://launchlibrary.net/1.4/launch?lsp=121&name=';
+const launchLibraryURL = 'https://launchlibrary.net/1.4/launch?next=100&lsp=121';
 
 // How close (in days) the launch needs to be in order to be updated
 // NOTE: Only applies to upcoming launches
@@ -46,6 +47,9 @@ const minimumProximity = 2;
 // Threshold (in seconds) for getting data from Launch Library instead of the wiki manifest
 // Represents how many hours without a Reddit update to wait before using data from Launch Library
 const thresholdSeconds = 3 * 60 * 60; // E.g. 3 hours
+
+// Minimum partial ratio from the fuzzy match, needed to accept a LL mission
+const minimumPartialRatio = 90;
 
 
 // RegEx expressions for matching dates in the wiki manifest
@@ -123,6 +127,10 @@ const monthVague = /^[0-9]{4}\s(early|mid|late)\s([a-z]{3}|[a-z]{3,9})$/i;
   } else {
     baseFlightNumber = pastLaunches[0].flight_number + 1;
   }
+
+  // Store all the upcoming launches from Launch Library
+  // if at least one launch is within the threshold
+  let launchLibraryNextLaunches;
 
   // Compare each mission name against entire list of manifest payloads, and fuzzy match the
   // mission name against the manifest payload name. The partial match must be 100%, to avoid
@@ -250,35 +258,61 @@ const monthVague = /^[0-9]{4}\s(early|mid|late)\s([a-z]{3}|[a-z]{3,9})$/i;
         zone = moment.tz(time, 'UTC');
 
         const daysToLaunch = time.diff(moment(), 'days');
-        if (daysToLaunch <= minimumProximity) {
+        if (daysToLaunch <= minimumProximity && daysToLaunch > -2) {
           let wikiDelay;
           let resultLL;
           // Get the launch from Launch Library
           // and check if it has updated more recently than the wiki.
 
           // First we look for the mission name in LL
-          const query = launchLibraryURL + missionName.replace(/ /g, '+');
-          try {
-            resultLL = await request(query);
-            resultLL = JSON.parse(resultLL);
-            // November 4, 2019 00:00:00 UTC
-            launchDate = moment(resultLL.launches[0].net.replace('UTC', 'Z'), 'MMMM D, YYYY hh:mm:ss Z');
-            const changed = moment(resultLL.launches[0].changed, 'YYYY-MM-DD hh:mm:ss');
+          // If the launches haven't been loaded,
+          // we request the next 100 launches from Launch Library
+          // in order to do fuzzy match locally
+          if (!launchLibraryNextLaunches) {
+            try {
+              resultLL = await request(launchLibraryURL);
+              resultLL = JSON.parse(resultLL);
+              // Save only 'name', net' and 'changed'
+              const unwrap = ({ name, net, changed }) => ({ name, net, changed });
+              launchLibraryNextLaunches = resultLL.launches.map(launch => unwrap(launch));
+              // Format: November 4, 2019 00:00:00 UTC
+            } catch (e) {
+              if (resultLL) {
+                console.log(e);
+              }
+              // No delay because LL is unavailable
+              wikiDelay = 0;
+            }
+          }
+
+          // Fuzzy match against the stored list to use
+          let bestMatch = [-1, 0];
+          launchLibraryNextLaunches.forEach((launch, index) => {
+            // Fuzzy match between local name and LL name
+            const partialRatio = fuzz.partial_ratio(missionName, launch.name);
+            // Return best match
+            if (partialRatio > bestMatch[1]) {
+              bestMatch = [index, partialRatio];
+            }
+          });
+          // Check that partial ratio is above the minimum
+          if (bestMatch[0] !== -1 && bestMatch[1] >= minimumPartialRatio) {
+            const launch = launchLibraryNextLaunches[bestMatch[0]];
+            launchDate = moment(launch.net.replace('UTC', 'Z'), 'MMMM D, YYYY hh:mm:ss Z');
+            const changed = moment(launch.changed, 'YYYY-MM-DD hh:mm:ss');
             if (zone.diff(launchDate) !== 0) {
               // If the date in the wiki and Launch Library aren't the same
               // we calculate the delay of the wiki in respect to Launch Library
               const lastWikiUpdate = moment(lastWikiUpdates[payloadIndex]);
-              wikiDelay = changed.diff(lastWikiUpdate, 'seconds'); // if negative, the server is ahead
+              // If negative, the server is ahead
+              wikiDelay = changed.diff(lastWikiUpdate, 'seconds');
             } else {
               wikiDelay = 0;
             }
-          } catch (e) {
-            if (resultLL) {
-              console.log(e);
-            }
-            // Mission not found in LL, so we use wiki's data
+          } else {
             wikiDelay = 0;
           }
+
           // Use the LL data if the delay of the wiki is bigger than 'thresholdSeconds'
           if (wikiDelay > thresholdSeconds) {
             isDateFromWiki = false;
