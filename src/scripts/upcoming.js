@@ -14,75 +14,61 @@
 const MongoClient = require('mongodb');
 const gmail = require('gmail-send');
 const moment = require('moment-timezone');
-const cheerio = require('cheerio');
-const request = require('request-promise-native');
 const fuzz = require('fuzzball');
 
+// Provider constants
+const WIKI_PROVIDER = 'wiki';
+const LL_PROVIDER = 'launch_library';
+
+// Import providers
+const wikiManifest = require('./providers/wiki-manifest');
+const launchLibrary = require('./providers/launch-library');
+
 let client;
-let location;
-let calculatedTimes;
-let localTime;
-let date;
-let tbd;
-let isTentative;
 
 const sites = [];
 const missionNames = [];
 const promises = [];
 const precision = [];
 const flightNumbers = [];
-const lastWikiUpdates = [];
 
+// Provider variables
 
-// Launch Library settings
+// Stores the wiki revisions
+let wikiRevisionHistory;
+// Stores launch dates
+const lastWikiLaunchDates = [];
+// Stores the update times
+const lastWikiDates = [];
+// Stores the UUIDs of the revisions
+const lastWikiRevisions = [];
 
-// Request next 100 launches (for reference, current amount is around 40)
-// lsp=121 means that SpaceX is the agency that launches
-const launchLibraryURL = 'https://launchlibrary.net/1.4/launch?next=100&lsp=121';
+// Store all the upcoming launches from Launch Library
+// if at least one launch is within the threshold
+let launchLibraryNextLaunches;
+
+// Alternative providers settings
 
 // How close (in days) the launch needs to be in order to be updated
 // NOTE: Only applies to upcoming launches
 const minimumProximity = 2;
 
+
 // Threshold (in seconds) for getting data from Launch Library instead of the wiki manifest
 // Represents how many hours without a Reddit update to wait before using data from Launch Library
 const thresholdSeconds = 3 * 60 * 60; // E.g. 3 hours
 
-// Minimum partial ratio from the fuzzy match, needed to accept a LL mission
-const minimumPartialRatio = 90;
+// Calculates if we're within the time-sensitive threshold to check for updates
+// from all providers (wiki, twitter, Launch Library and trusted users)
+const withinSensitiveTreshold = (time) => {
+  const daysToLaunch = time.diff(moment(), 'days');
+  return (daysToLaunch <= minimumProximity && daysToLaunch > -2);
+};
 
-
-// RegEx expressions for matching dates in the wiki manifest
-// Allows for long months or short months ex. September vs Sep
-// Allows for time with or without brackets ex [23:45] vs 23:45
-
-// 2020 Nov 4 [14:10:56]
-const second = /^[0-9]{4}\s([a-z]{3}|[a-z]{3,9})\s[0-9]{1,2}\s(\[[0-9]{2}:[0-9]{2}:[0-9]{2}\]|[0-9]{2}:[0-9]{2})$/i;
-
-// 2020 Nov 4 [14:10]
-const hour = /^[0-9]{4}\s([a-z]{3}|[a-z]{3,9})\s[0-9]{1,2}\s(\[[0-9]{2}:[0-9]{2}\]|[0-9]{2}:[0-9]{2})$/i;
-
-// 2020 Nov 4
-const day = /^[0-9]{4}\s([a-z]{3}|[a-z]{3,9})\s[0-9]{1,2}$/i;
-
-// 2020 Nov
-const month = /^[0-9]{4}\s([a-z]{3}|[a-z]{3,9})$/i;
-
-// 2020
-const year = /^[0-9]{4}$/i;
-
-// 2020 TBD
-const yearTbd = /^[0-9]{4}\sTBD$/i;
-
-// 2020 Nov TBD
-const monthTbd = /^[0-9]{4}\s([a-z]{3}|[a-z]{3,9})\sTBD$/i;
-
-// 2020 Early/Mid/Late Nov
-const monthVague = /^[0-9]{4}\s(early|mid|late)\s([a-z]{3}|[a-z]{3,9})$/i;
-
+// Main script
 (async () => {
   try {
-    client = await MongoClient.connect(process.env.MONGO_URL, { useNewUrlParser: true });
+    client = await MongoClient.connect(process.env.MONGO_URL || 'mongodb://localhost:27017', { useNewUrlParser: true });
   } catch (err) {
     console.log(err.stack);
   }
@@ -99,25 +85,13 @@ const monthVague = /^[0-9]{4}\s(early|mid|late)\s([a-z]{3}|[a-z]{3,9})$/i;
   launches.forEach((launch) => {
     missionNames.push(launch.mission_name);
     sites.push(launch.launch_site.site_id);
-    lastWikiUpdates.push(launch.last_wiki_update);
+    // undefined unless within threshold
+    lastWikiLaunchDates.push(launch.last_wiki_launch_date);
+    lastWikiDates.push(launch.last_wiki_update);
+    lastWikiRevisions.push(launch.last_wiki_revision);
   });
 
-  // Grab subreddit wiki manifest
-  const result = await request('https://old.reddit.com/r/spacex/wiki/launches/manifest');
-  const $ = cheerio.load(result);
-
-  // Gives us all manifest table rows in a single array
-  const manifest = $('body > div.content > div > div > table:nth-child(8) > tbody').text();
-  const manifestRow = manifest.split('\n').filter(v => v !== '');
-
-  // Filter to collect manifest dates
-  const manifestDates = manifestRow.filter((value, index) => index % 8 === 0);
-
-  // Filter to collect payload names
-  const manifestPayloads = manifestRow.filter((value, index) => (index + 3) % 8 === 0);
-
-  // Filter to collect launchpad names
-  const manifestLaunchpads = manifestRow.filter((value, index) => (index + 6) % 8 === 0);
+  const { manifestDates, manifestPayloads, manifestLaunchpads } = await wikiManifest.getData();
 
   // Set base flight number to automatically reorder launches on the manifest
   // If the most recent past launch is still on the wiki, don't offset the flight number
@@ -128,10 +102,6 @@ const monthVague = /^[0-9]{4}\s(early|mid|late)\s([a-z]{3}|[a-z]{3,9})$/i;
     baseFlightNumber = pastLaunches[0].flight_number + 1;
   }
 
-  // Store all the upcoming launches from Launch Library
-  // if at least one launch is within the threshold
-  let launchLibraryNextLaunches;
-
   // Compare each mission name against entire list of manifest payloads, and fuzzy match the
   // mission name against the manifest payload name. The partial match must be 100%, to avoid
   // conflicts like SSO-A and SSO-B, where a really close match would produce wrong results.
@@ -140,81 +110,14 @@ const monthVague = /^[0-9]{4}\s(early|mid|late)\s([a-z]{3}|[a-z]{3,9})$/i;
       if (fuzz.partial_ratio(missionName, manifestPayload) === 100) {
         // Check and see if dates match a certain pattern depending on the length of the
         // date given. This sets the amount of precision needed for the date.
-        let mdate = manifestDates[manifestIndex];
-        // 2020 Q3
-        if (mdate.includes('Q')) {
-          mdate = mdate.replace('Q', '');
-          precision[manifestIndex] = 'quarter';
-          tbd = true;
-          isTentative = true;
-          // 2020 H1
-        } else if (mdate.includes('H1')) {
-          mdate = mdate.replace('H1', '1');
-          precision[manifestIndex] = 'half';
-          tbd = true;
-          isTentative = true;
-          // 2020 H2
-        } else if (mdate.includes('H2')) {
-          mdate = mdate.replace('H2', '3');
-          precision[manifestIndex] = 'half';
-          tbd = true;
-          isTentative = true;
-          // 2020 TBD
-        } else if (yearTbd.test(mdate)) {
-          precision[manifestIndex] = 'year';
-          tbd = true;
-          isTentative = true;
-          // 2020
-        } else if (year.test(mdate)) {
-          precision[manifestIndex] = 'year';
-          tbd = true;
-          isTentative = true;
-          // 2020 Nov TBD
-        } else if (monthTbd.test(mdate)) {
-          precision[manifestIndex] = 'month';
-          tbd = true;
-          isTentative = true;
-          // 2020 Early/Mid/Late Nov
-        } else if (monthVague.test(mdate)) {
-          precision[manifestIndex] = 'month';
-          tbd = true;
-          isTentative = true;
-          // 2020 Nov
-        } else if (month.test(mdate)) {
-          precision[manifestIndex] = 'month';
-          tbd = true;
-          isTentative = true;
-          // 2020 Nov 4
-        } else if (day.test(mdate)) {
-          precision[manifestIndex] = 'day';
-          tbd = false;
-          isTentative = true;
-          // 2020 Nov 4 [14:10]
-        } else if (hour.test(mdate)) {
-          precision[manifestIndex] = 'hour';
-          tbd = false;
-          isTentative = false;
-        } else if (second.test(mdate)) {
-          precision[manifestIndex] = 'hour';
-          tbd = false;
-          isTentative = false;
-        } else {
-          console.log('Date did not match any of the existing regular expressions');
-          const send = gmail({
-            user: process.env.GMAIL_USER,
-            pass: process.env.GMAIL_PASS,
-            to: process.env.NOTIFY_EMAIL,
-            subject: 'Upcoming Launches',
-            text: `Date does not match any formats: ${mdate}`,
-          });
-          await send();
-          return;
-        }
+        const dateResult = await wikiManifest.checkDatePattern(manifestDates[manifestIndex]);
+        const { tbd, isTentative } = dateResult;
+        precision[manifestIndex] = dateResult.precision;
 
         // Store site_id for update query
         // Store manifest date for data cleaning
-        location = sites[payloadIndex];
-        date = manifestDates[manifestIndex];
+        const location = sites[payloadIndex];
+        const date = manifestDates[manifestIndex];
 
         console.log(date);
         console.log(`${missionName} : ${manifestPayload}`);
@@ -223,44 +126,35 @@ const monthVague = /^[0-9]{4}\s(early|mid|late)\s([a-z]{3}|[a-z]{3,9})$/i;
         flightNumbers.push(baseFlightNumber + manifestIndex);
 
         // Calculate launch site depending on wiki manifest
-        let siteId = null;
-        let siteName = null;
-        let siteNameLong = null;
-        console.log(manifestLaunchpads[manifestIndex]);
+        const launchpad = manifestLaunchpads[manifestIndex];
+        const { siteId, siteName, siteNameLong } = wikiManifest
+          .calculateLaunchSite(launchpad);
 
-        if (manifestLaunchpads[manifestIndex] === 'SLC-40' || manifestLaunchpads[manifestIndex] === 'SLC-40 / LC-39A' || manifestLaunchpads[manifestIndex] === 'SLC-40 / BC') {
-          siteId = 'ccafs_slc_40';
-          siteName = 'CCAFS SLC 40';
-          siteNameLong = 'Cape Canaveral Air Force Station Space Launch Complex 40';
-        } else if (manifestLaunchpads[manifestIndex] === 'LC-39A' || manifestLaunchpads[manifestIndex] === 'LC-39A / BC' || manifestLaunchpads[manifestIndex] === 'LC-39A / SLC-40') {
-          siteId = 'ksc_lc_39a';
-          siteName = 'KSC LC 39A';
-          siteNameLong = 'Kennedy Space Center Historic Launch Complex 39A';
-        } else if (manifestLaunchpads[manifestIndex] === 'SLC-4E') {
-          siteId = 'vafb_slc_4e';
-          siteName = 'VAFB SLC 4E';
-          siteNameLong = 'Vandenberg Air Force Base Space Launch Complex 4E';
-        } else if (manifestLaunchpads[manifestIndex] === 'BC' || manifestLaunchpads[manifestIndex] === 'BC / LC-39A' || manifestLaunchpads[manifestIndex] === 'BC / SLC-40') {
-          siteId = 'stls';
-          siteName = 'STLS';
-          siteNameLong = 'SpaceX South Texas Launch Site';
-        }
+        console.log(launchpad);
+
+        // Decide which provider's launch date to use
+        let provider;
+        let isWithinThreshold = false;
 
         // Launch Library code
-        let isDateFromWiki;
-        let lastUpdate;
-        let launchDate;
+        let launchDateWiki;
+        let launchDateLL;
+        let updateTimeWiki;
+        let updateTimeLL;
         let time;
-        let zone;
+        let lastRevision = null;
 
         const parsedDate = `${date.replace(/(early|mid|late)/i, '').replace('[', '').replace(']', '')} +0000`;
-        time = moment(parsedDate, ['YYYY MMM D HH:mm Z', 'YYYY MMM D Z', 'YYYY MMM Z', 'YYYY Q Z', 'YYYY Z']);
-        zone = moment.tz(time, 'UTC');
+        const timeWiki = moment(parsedDate, ['YYYY MMM D HH:mm Z', 'YYYY MMM D Z', 'YYYY MMM Z', 'YYYY Q Z', 'YYYY Z']);
 
-        const daysToLaunch = time.diff(moment(), 'days');
-        if (daysToLaunch <= minimumProximity && daysToLaunch > -2) {
-          let wikiDelay;
-          let resultLL;
+        // Is the launch within the update critical threshold?
+        if (withinSensitiveTreshold(timeWiki)) {
+          isWithinThreshold = true;
+          const possibleProviders = [WIKI_PROVIDER, LL_PROVIDER];
+          if (!wikiRevisionHistory) {
+            // Get UUIDs and dates for the revisions of the wiki manifest
+            wikiRevisionHistory = await wikiManifest.getRevisions();
+          }
           // Get the launch from Launch Library
           // and check if it has updated more recently than the wiki.
 
@@ -269,98 +163,112 @@ const monthVague = /^[0-9]{4}\s(early|mid|late)\s([a-z]{3}|[a-z]{3,9})$/i;
           // we request the next 100 launches from Launch Library
           // in order to do fuzzy match locally
           if (!launchLibraryNextLaunches) {
-            try {
-              resultLL = await request(launchLibraryURL);
-              resultLL = JSON.parse(resultLL);
-              // Save only 'name', net' and 'changed'
-              const unwrap = ({ name, net, changed }) => ({ name, net, changed });
-              launchLibraryNextLaunches = resultLL.launches.map(launch => unwrap(launch));
-              // Format: November 4, 2019 00:00:00 UTC
-            } catch (e) {
-              if (resultLL) {
-                console.log(e);
+            launchLibraryNextLaunches = await launchLibrary.nextLaunches();
+            if (!launchLibraryNextLaunches) {
+              possibleProviders.splice(possibleProviders.indexOf(LL_PROVIDER), 1);
+            }
+          }
+
+          // getLastUpdate checks for against the last revision
+          // returns the most recent launch date,
+          // and the date and UUID of the last revision in which the date changed
+          const lastWikiUpdate = wikiManifest.getLastUpdate(
+            lastWikiLaunchDates[payloadIndex],
+            lastWikiDates[payloadIndex],
+            lastWikiRevisions[payloadIndex],
+            timeWiki,
+            wikiRevisionHistory.date[0],
+            wikiRevisionHistory.UUID[0],
+          );
+          let lastLLUpdate;
+
+          if (possibleProviders.length > 1) {
+            lastLLUpdate = launchLibrary
+              .getLastUpdate(launchLibraryNextLaunches, missionName);
+            if (lastLLUpdate) {
+              // Check which provider is ahead.
+              // If positive, Launch Library is ahead and the wiki is delayed
+              const difference = lastLLUpdate.updateTimeLL
+                .diff(lastWikiUpdate.updateTimeWiki);
+              if (difference > thresholdSeconds) {
+                // Wiki is behind, use LL as provider
+                provider = LL_PROVIDER;
+              } else {
+                // Wiki is ahead, use it as provider
+                provider = WIKI_PROVIDER;
               }
-              // No delay because LL is unavailable
-              wikiDelay = 0;
-            }
-          }
-
-          // Fuzzy match against the stored list to use
-          let bestMatch = [-1, 0];
-          launchLibraryNextLaunches.forEach((launch, index) => {
-            // Fuzzy match between local name and LL name
-            const partialRatio = fuzz.partial_ratio(missionName, launch.name);
-            // Return best match
-            if (partialRatio > bestMatch[1]) {
-              bestMatch = [index, partialRatio];
-            }
-          });
-          // Check that partial ratio is above the minimum
-          if (bestMatch[0] !== -1 && bestMatch[1] >= minimumPartialRatio) {
-            const launch = launchLibraryNextLaunches[bestMatch[0]];
-            launchDate = moment(launch.net.replace('UTC', 'Z'), 'MMMM D, YYYY hh:mm:ss Z');
-            const changed = moment(launch.changed, 'YYYY-MM-DD hh:mm:ss');
-            if (zone.diff(launchDate) !== 0) {
-              // If the date in the wiki and Launch Library aren't the same
-              // we calculate the delay of the wiki in respect to Launch Library
-              const lastWikiUpdate = moment(lastWikiUpdates[payloadIndex]);
-              // If negative, the server is ahead
-              wikiDelay = changed.diff(lastWikiUpdate, 'seconds');
             } else {
-              wikiDelay = 0;
+              provider = WIKI_PROVIDER;
             }
           } else {
-            wikiDelay = 0;
+            provider = WIKI_PROVIDER;
           }
 
-          // Use the LL data if the delay of the wiki is bigger than 'thresholdSeconds'
-          if (wikiDelay > thresholdSeconds) {
-            isDateFromWiki = false;
+          // Unwrap all providers
+          ({ launchDateWiki, updateTimeWiki, lastRevision } = lastWikiUpdate);
+          if (lastLLUpdate) {
+            ({ launchDateLL, updateTimeLL } = lastLLUpdate);
           } else {
-            isDateFromWiki = true;
+            // Couldn't connect or fuzzy match didn't pass
+            // so we set the date to null
+            launchDateLL = null;
+            updateTimeLL = null;
           }
         } else {
-          isDateFromWiki = true;
+          provider = WIKI_PROVIDER;
         }
 
-        if (isDateFromWiki) {
-          // If it was updated from the wiki, we save the current time in last_wiki_update
-          lastUpdate = moment().toISOString();
+        // Add providers stats if within the threshold
+        let providerStats = {};
+        if (isWithinThreshold) {
+          let lastUpdate;
+          // Using other provider, so the revision of the wiki doesn't change
+          switch (provider) {
+            case LL_PROVIDER:
+              // If Launch Library is the provider
+              time = launchDateLL;
+              lastUpdate = updateTimeLL;
+              break;
+            default:
+              time = launchDateWiki;
+              lastUpdate = updateTimeWiki;
+              break;
+          }
+          providerStats = {
+            // Wiki provider
+            last_wiki_launch_date: launchDateWiki.toISOString(),
+            last_wiki_update: updateTimeWiki.toISOString(),
+            last_wiki_revision: lastRevision,
+
+            // LL provider
+            last_ll_launch_date: (launchDateLL === null) ? null : launchDateLL.toISOString(),
+            last_ll_update: (updateTimeLL === null) ? null : updateTimeLL.toISOString(),
+
+
+            // Final information
+            last_date_update: lastUpdate.toISOString(),
+            launch_date_source: provider,
+          };
         } else {
-          // If it was updated from LL, we don't update last_wiki_update
-          lastUpdate = lastWikiUpdates[payloadIndex];
+          // Not within threshold, update just from wiki
+          time = timeWiki;
         }
-
-        // Strip brackets from time given, and tack on UTC time offset at the end for date parser
-        if (isDateFromWiki) {
-          time = moment(parsedDate, ['YYYY MMM D HH:mm Z', 'YYYY MMM D Z', 'YYYY MMM Z', 'YYYY Q Z', 'YYYY Z']);
-        } else {
-          // Use date from Launch Library instead
-          time = launchDate;
-        }
-
 
         // Feed stripped time into all possible date formats in the wiki currently
-        zone = moment.tz(time, 'UTC');
+        const zone = moment.tz(time, 'UTC');
 
         // Use launch site id's to properly set timezone for local time
-        if (location === 'ccafs_slc_40' || location === 'ksc_lc_39a' || location === 'ccafs_lc_13') {
-          localTime = time.tz('America/New_York').format();
-        } else if (location === 'vafb_slc_4e' || location === 'vafb_slc_4w') {
-          localTime = time.tz('America/Los_Angeles').format();
-        } else {
-          localTime = time.tz('America/Chicago').format();
-        }
+        const localTime = wikiManifest.getLocalTime(time, location);
 
-        // Build launch time objects to update
-        calculatedTimes = {
+        const calculatedTimes = {
           flight_number: (baseFlightNumber + manifestIndex),
           launch_year: (zone.year()).toString(),
           launch_date_unix: zone.unix(),
           launch_date_utc: zone.toISOString(),
           launch_date_local: localTime,
-          last_wiki_update: lastUpdate,
-          is_date_from_wiki: isDateFromWiki,
+
+          ...providerStats,
+
           is_tentative: isTentative,
           tentative_max_precision: precision[manifestIndex],
           tbd,
