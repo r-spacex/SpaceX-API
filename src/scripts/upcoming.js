@@ -108,6 +108,11 @@ const withinSensitiveTreshold = (time) => {
   for await (const [payloadIndex, missionName] of missionNames.entries()) {
     for await (const [manifestIndex, manifestPayload] of manifestPayloads.entries()) {
       if (fuzz.partial_ratio(missionName, manifestPayload) === 100) {
+        // Special check for starlink / smallsat launches, because 'Starlink 2' and 'Starlink 23'
+        // both pass the partial ratio check, so they are checked strictly below
+        if (/starlink|smallsat/i.test(missionName) && fuzz.ratio(missionName, manifestPayload) !== 100) {
+          return;
+        }
         // Check and see if dates match a certain pattern depending on the length of the
         // date given. This sets the amount of precision needed for the date.
         const dateResult = await wikiManifest.checkDatePattern(manifestDates[manifestIndex]);
