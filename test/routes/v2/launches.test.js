@@ -66,7 +66,7 @@ test('It should return all launches', async () => {
       item.rocket.second_stage.payloads.forEach((payload) => {
         expect(payload).toHaveProperty('payload_id');
         expect(payload).toHaveProperty('reused');
-        expect(payload.customers.length).toBeGreaterThan(0);
+        expect(payload.customers.length).toBeGreaterThanOrEqual(0);
         expect(payload).toHaveProperty('payload_mass_kg');
         expect(payload).toHaveProperty('payload_mass_lbs');
         expect(payload).toHaveProperty('orbit');
