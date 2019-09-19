@@ -111,7 +111,8 @@ const withinSensitiveTreshold = (time) => {
         // Special check for starlink / smallsat launches, because 'Starlink 2' and 'Starlink 23'
         // both pass the partial ratio check, so they are checked strictly below
         if (/starlink|smallsat/i.test(missionName) && fuzz.ratio(missionName, manifestPayload) !== 100) {
-          return;
+          // eslint-disable-next-line no-continue
+          continue;
         }
         // Check and see if dates match a certain pattern depending on the length of the
         // date given. This sets the amount of precision needed for the date.
