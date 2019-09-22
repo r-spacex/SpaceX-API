@@ -119,7 +119,10 @@ module.exports = app;
 // Mongo Connection + Server Start
 (async () => {
   try {
-    const client = await MongoClient.connect(url, { useNewUrlParser: true });
+    const client = await MongoClient.connect(url, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
 
     global.db = client.db('spacex-api');
 
