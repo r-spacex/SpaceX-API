@@ -14,6 +14,7 @@
 | SpaceX-PY | Python | Kaylum Lally | [GitHub](https://github.com/HiKaylum/SpaceX-PY) |
 | spacex | Go | Or Hiltch | [GitHub](https://github.com/orcaman/spacex) |
 | spacex-api-wrapper | Rust | Alex Gutan | [GitHub](https://github.com/AGutan/spacex-api-wrapper)|
+| spacex-graphql-rust | Rust | Aaron Feigenbaum | [GitHub](https://github.com/adace123/spacex-graphql-rust)|
 | space-rx | Rust | Tyler Wilcock | [GitHub](https://github.com/twilco/space-rx) |
 | spacex | Ruby | Rodolfo | [GitHub](https://github.com/rodolfobandeira/spacex) |
 | spacex | PHP | Aires Gonçalves | [GitHub](https://github.com/airesvsg/spacex) |
