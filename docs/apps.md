@@ -21,3 +21,4 @@
 | [SpaceX-Launch-Bot](https://github.com/r-spacex/SpaceX-Launch-Bot) | Discord bot | [Simon](https://github.com/thatguywiththatname) | [Github](https://github.com/r-spacex/SpaceX-Launch-Bot) | |
 | [Space Launch Now](https://spacelaunchnow.me/) | API/Website/Apps | [Caleb Jones](https://github.com/ItsCalebJones) | [Github](https://github.com/ItsCalebJones/SpaceLaunchNow-Server) | |
 | [AV-SpaceX DB](https://av-spacex.surge.sh/) | API/Website | [Aswin Varghese](http://aswinvarghese.com) | [Github]() | |
+| [SpaceX Guide Site](https://spacex-guide.weebly.com) | Website | Jared-Base | N/A | [Mission Control Page](https://spacex-guide.weebly.com/mission-control.html) |
