@@ -20,7 +20,7 @@ test('It should return all rocket info', async () => {
   expect(response.body[0]).toHaveProperty('name', 'Falcon 1');
   expect(response.body[1]).toHaveProperty('name', 'Falcon 9');
   expect(response.body[2]).toHaveProperty('name', 'Falcon Heavy');
-  expect(response.body[3]).toHaveProperty('name', 'Big Falcon Rocket');
+  expect(response.body[3]).toHaveProperty('name', 'Starship');
 
   response.body.forEach((item) => {
     expect(item).toHaveProperty('id', expect.any(String));
