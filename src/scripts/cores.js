@@ -27,24 +27,24 @@ const request = require('request-promise-native');
   const $ = cheerio.load(result);
 
   const active = $('div.md:nth-child(2) > table:nth-child(14) > tbody:nth-child(2)').text();
-  const activeRow = active.split('\n').filter(v => v !== '');
+  const activeRow = active.split('\n').filter((v) => v !== '');
   const activeCores = activeRow.filter((value, index) => index % 7 === 0);
   const activeStatus = activeRow.filter((value, index) => (index + 1) % 7 === 0);
 
   const unknown = $('div.md:nth-child(2) > table:nth-child(17) > tbody:nth-child(2)').text();
-  const unknownRow = unknown.split('\n').filter(v => v !== '');
+  const unknownRow = unknown.split('\n').filter((v) => v !== '');
   const unknownCores = unknownRow.filter((value, index) => index % 6 === 0);
-  const unknownStatus = unknownRow.filter((value, index) => (index + 1) % 6 === 0).map(x => x.replace(/\[source\]/gi, ''));
+  const unknownStatus = unknownRow.filter((value, index) => (index + 1) % 6 === 0).map((x) => x.replace(/\[source\]/gi, ''));
 
   const inactive = $('div.md:nth-child(2) > table:nth-child(20) > tbody:nth-child(2)').text();
-  const inactiveRow = inactive.split('\n').filter(v => v !== '');
+  const inactiveRow = inactive.split('\n').filter((v) => v !== '');
   const inactiveCores = inactiveRow.filter((value, index) => index % 7 === 0);
-  const inactiveStatus = inactiveRow.filter((value, index) => (index + 1) % 7 === 0).map(x => x.replace(/\[source\]/gi, ''));
+  const inactiveStatus = inactiveRow.filter((value, index) => (index + 1) % 7 === 0).map((x) => x.replace(/\[source\]/gi, ''));
 
   const lost = $('div.md:nth-child(2) > table:nth-child(24) > tbody:nth-child(2)').text();
-  const lostRow = lost.split('\n').filter(v => v !== '');
+  const lostRow = lost.split('\n').filter((v) => v !== '');
   const lostCores = lostRow.filter((value, index) => index % 8 === 0);
-  const lostStatus = lostRow.filter((value, index) => (index + 1) % 8 === 0).map(x => x.replace(/\[source\]/gi, ''));
+  const lostStatus = lostRow.filter((value, index) => (index + 1) % 8 === 0).map((x) => x.replace(/\[source\]/gi, ''));
 
   // Update status and details for all active cores
   for await (const [index, coreSerial] of activeCores.entries()) {

@@ -320,4 +320,4 @@ const withinSensitiveTreshold = (time) => {
   if (client) {
     client.close();
   }
-})().catch(e => console.error(e));
+})().catch((e) => console.error(e));

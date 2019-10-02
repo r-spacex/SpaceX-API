@@ -131,7 +131,7 @@ module.exports = (opts = {}) => {
    * @param   {String}    str       String to hash
    * @returns {String}  Hashed result
   */
-  const hash = str => crypto.createHash('sha1').update(str).digest('hex');
+  const hash = (str) => crypto.createHash('sha1').update(str).digest('hex');
 
   /**
    * Match routes with a regexp

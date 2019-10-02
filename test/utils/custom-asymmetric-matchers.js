@@ -1,3 +1,4 @@
+/* eslint-disable max-classes-per-file */
 /**
  * We make ourselves compatible with AsymmetricMatcher class used by Jest
  * @see https://github.com/facebook/jest/blob/master/packages/expect/src/asymmetricMatchers.ts

@@ -20,7 +20,7 @@ const nextLaunches = async () => {
     resultLL = JSON.parse(resultLL);
     // Save only 'name', net' and 'changed'
     const unwrap = ({ name, net, changed }) => ({ name, net, changed });
-    return resultLL.launches.map(launch => unwrap(launch));
+    return resultLL.launches.map((launch) => unwrap(launch));
     // Format: November 4, 2019 00:00:00 UTC
   } catch (e) {
     if (resultLL) {

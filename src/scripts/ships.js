@@ -9,7 +9,7 @@ const MongoClient = require('mongodb');
 const cheerio = require('cheerio');
 const request = require('request-promise-native');
 
-const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 (async () => {
   let client;

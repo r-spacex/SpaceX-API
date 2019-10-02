@@ -38,7 +38,7 @@ const getData = async () => {
 
   // Gives us all manifest table rows in a single array
   const manifest = $('body > div.content > div > div > table:nth-child(8) > tbody').text();
-  const manifestRow = manifest.split('\n').filter(v => v !== '');
+  const manifestRow = manifest.split('\n').filter((v) => v !== '');
 
   // Filter to collect manifest dates
   const manifestDates = manifestRow.filter((_, index) => index % 8 === 0);
@@ -172,12 +172,12 @@ const getRevisions = async () => {
     const revisions = $('#siteTable > table > tbody').html();
     const revisionIDs = revisions.split(/(value="|" checked="yes")/g)
       // Get UUID
-      .filter(v => v.length === 36)
+      .filter((v) => v.length === 36)
       // Remove duplicates
       .filter((_, index) => index % 2 === 0);
 
     const revisionDates = revisions.split(/(datetime="|" class="live-timestamp")/g)
-      .filter(v => v.length === 25);
+      .filter((v) => v.length === 25);
 
     return { UUID: revisionIDs, date: revisionDates };
   } catch (e) {

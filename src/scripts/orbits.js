@@ -47,7 +47,7 @@ const request = require('request-promise-native').defaults({ jar: true });
   const orbit = JSON.parse(orbitData);
 
   for await (const num of id) {
-    const specificOrbit = orbit.filter(satellite => parseInt(satellite.NORAD_CAT_ID, 10) === num);
+    const specificOrbit = orbit.filter((satellite) => parseInt(satellite.NORAD_CAT_ID, 10) === num);
 
     if (specificOrbit[0] !== undefined && specificOrbit.length !== 0) {
       const update = {

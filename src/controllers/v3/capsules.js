@@ -18,7 +18,7 @@ module.exports = {
     if (!ctx.request.query.original_launch) {
       nullDates = await global.db
         .collection('capsule')
-        .find(Object.assign({}, find(ctx.request), { original_launch: null }))
+        .find({ ...find(ctx.request), original_launch: null })
         .project(project(ctx.request.query))
         .sort(sort(ctx.request))
         .skip(offset(ctx.request.query))
@@ -28,7 +28,7 @@ module.exports = {
     }
     let notNullDates = await global.db
       .collection('capsule')
-      .find(Object.assign({ original_launch: { $ne: null } }, find(ctx.request)))
+      .find({ original_launch: { $ne: null }, ...find(ctx.request) })
       .project(project(ctx.request.query))
       .sort(sort(ctx.request))
       .skip(offset(ctx.request.query))
@@ -52,7 +52,7 @@ module.exports = {
   past: async (ctx) => {
     const data = await global.db
       .collection('capsule')
-      .find(Object.assign({}, find(ctx.request), { original_launch: { $ne: null } }))
+      .find({ ...find(ctx.request), original_launch: { $ne: null } })
       .project(project(ctx.request.query))
       .sort(sort(ctx.request))
       .skip(offset(ctx.request.query))
@@ -68,7 +68,7 @@ module.exports = {
   upcoming: async (ctx) => {
     const data = await global.db
       .collection('capsule')
-      .find(Object.assign({}, find(ctx.request), { original_launch: null }))
+      .find({ ...find(ctx.request), original_launch: null })
       .project(project(ctx.request.query))
       .sort(sort(ctx.request))
       .skip(offset(ctx.request.query))
