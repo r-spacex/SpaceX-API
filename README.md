@@ -1,4 +1,4 @@
-<p align="center"><img src="https://live.staticflickr.com/65535/48052269657_e236290f92_k.jpg"></p>
+<p align="center"><img src="https://imgur.com/JI6PuKl.png"></p>
 
 <h1 align="center">SpaceX REST API</h1>
 
@@ -49,7 +49,7 @@ curl -s https://api.spacexdata.com/v3/launches/latest | jq
       "cores": [
         {
           "core_serial": "B1056",
-          "flight": 0,
+          "flight": 1,
           "block": 5,
           "gridfins": true,
           "legs": true,
@@ -84,22 +84,22 @@ curl -s https://api.spacexdata.com/v3/launches/latest | jq
             "reference_system": "geocentric",
             "regime": "low-earth",
             "longitude": null,
-            "semi_major_axis_km": 6787.125,
-            "eccentricity": 0.0000954,
-            "periapsis_km": 408.342,
-            "apoapsis_km": 409.637,
-            "inclination_deg": 51.6413,
-            "period_min": 92.744,
+            "semi_major_axis_km": 6784.509,
+            "eccentricity": 0.0015208,
+            "periapsis_km": 396.056,
+            "apoapsis_km": 416.692,
+            "inclination_deg": 51.6386,
+            "period_min": 92.69,
             "lifespan_years": null,
-            "epoch": "2019-05-09T11:41:12.000Z",
-            "mean_motion": 15.52651478,
-            "raan": 193.5186,
-            "arg_of_pericenter": 322.6178,
-            "mean_anomaly": 168.2425
+            "epoch": "2019-06-03T18:56:35.000Z",
+            "mean_motion": 15.53549418,
+            "raan": 67.8039,
+            "arg_of_pericenter": 3.7579,
+            "mean_anomaly": 111.5799
           },
-          "mass_returned_kg": null,
-          "mass_returned_lbs": null,
-          "flight_time_sec": null,
+          "mass_returned_kg": 1905.1,
+          "mass_returned_lbs": 4200,
+          "flight_time_sec": 2592000,
           "cargo_manifest": "https://www.nasa.gov/sites/default/files/atoms/files/spacex_crs-17_mission_overview.pdf"
         }
       ]
@@ -108,7 +108,7 @@ curl -s https://api.spacexdata.com/v3/launches/latest | jq
   },
   "ships": [
     "OCISLY",
-    "Hollywood",
+    "HOLLYWOOD",
     "GOQUEST"
   ],
   "telemetry": {
@@ -141,7 +141,7 @@ curl -s https://api.spacexdata.com/v3/launches/latest | jq
       "https://live.staticflickr.com/65535/32829382467_087d024428_o.jpg"
     ]
   },
-  "details": "SpaceX's 17th Commercial Resupply Services mission for NASA out of a total of 20 contracted flights, this mission brings essential supplies to the International Space Station using SpaceX's reusable Dragon 1 spacecraft. The external payloads for this mission include Orbital Carbon Observatory 3 and Space Test Program-Houston 6. The Falcon 9 launches from SLC-40 at Cape Canaveral AFS. The booster was expected to land at LZ-1, however, due to the ongoing investigation and clean-up following the Crew Dragon testing incident, it is likely to land on OCISLY instead.\n    ",
+  "details": "SpaceX's 17th Commercial Resupply Services mission for NASA out of a total of 20 contracted flights, this mission brings essential supplies to the International Space Station using SpaceX's reusable Dragon 1 spacecraft. The external payloads for this mission include Orbital Carbon Observatory 3 and Space Test Program-Houston 6. The Falcon 9 launches from SLC-40 at Cape Canaveral AFS. The booster was expected to land at LZ-1, however, due to the ongoing investigation and clean-up following the Crew Dragon testing incident, it is likely to land on OCISLY instead.",
   "upcoming": false,
   "static_fire_date_utc": "2019-04-27T07:23:00.000Z",
   "static_fire_date_unix": 1556349780,
@@ -168,7 +168,8 @@ curl -s https://api.spacexdata.com/v3/launches/latest | jq
     "dragon_separation": 578,
     "dragon_solar_deploy": 728,
     "dragon_bay_door_deploy": 8340
-  }
+  },
+  "crew": null
 }
 ```
 
