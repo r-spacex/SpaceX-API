@@ -12,7 +12,7 @@
 <h3 align="center">Open Source REST API for rocket, core, capsule, pad, and launch data</h3>
 
 <h1 align="center">
-<a href="https://docs.spacexdata.com">Docs</a> - <a href="https://github.com/r-spacex/SpaceX-API/blob/master/docs/clients.md">Clients</a> - <a href="https://github.com/r-spacex/SpaceX-API/blob/master/docs/apps.md">Apps</a> - <a href="https://status.spacexdata.com">Status</a> - <a href="https://backups.jakemeyer.ml">Database</a>
+<a href="https://docs.spacexdata.com">Docs</a> - <a href="https://github.com/r-spacex/SpaceX-API/blob/master/docs/clients.md">Clients</a> - <a href="https://github.com/r-spacex/SpaceX-API/blob/master/docs/apps.md">Apps</a> - <a href="https://status.spacexdata.com">Status</a> - <a href="https://backups.jakemeyer.sh">Database</a>
 <br/>
 <br/>
 <a href="https://app.getpostman.com/run-collection/3aeac01a548a87943749"><img src="https://run.pstmn.io/button.svg"></a>
@@ -172,6 +172,8 @@ curl -s https://api.spacexdata.com/v3/launches/latest | jq
   "crew": null
 }
 ```
+## Sponsors
+[![Studio 3T](https://imgur.com/ZuHz5Fk.png)](https://studio3t.com/)
 
 ## Contributions
 See the [contribution](https://github.com/r-spacex/SpaceX-API/blob/master/CONTRIBUTING.md) guide for detailed steps
@@ -186,7 +188,7 @@ Local development info can be found [here](https://github.com/r-spacex/SpaceX-AP
 * Using [Jest](https://facebook.github.io/jest/) and [Supertest](https://github.com/visionmedia/supertest) for tests
 * Using [Circle CI](https://circleci.com/) for continuous integration / deployments
 * All data stored in a [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) 3 node replica set cluster
-* Nightly mongodump database backups [here](https://backups.jakemeyer.ml)
+* Nightly mongodump database backups [here](https://backups.jakemeyer.sh)
 
 ## FAQ's
 * If you have any questions or corrections, please open an issue and we'll get it merged ASAP
