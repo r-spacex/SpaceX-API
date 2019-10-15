@@ -203,6 +203,5 @@ module.exports = (opts = {}) => {
     } catch (e) {
       console.log('Failed to set cache');
     }
-    routeExpire = false;
   };
 };
