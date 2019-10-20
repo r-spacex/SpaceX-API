@@ -29,6 +29,8 @@ services:
     networks:
       - spacex
     environment:
+      NODE_ENV: production
+      DOCKER: "true"
       MONGO_URL: null
       REDIS_URL: null
     depends_on:
