@@ -81,9 +81,6 @@ const options = {
     expire: 300,
   }],
   passParam: 'pretty',
-  redis: {
-    host: process.env.DOCKER ? 'redis_db' : 'localhost',
-  },
 };
 
 module.exports = options;

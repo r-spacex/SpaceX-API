@@ -15,15 +15,18 @@ module.exports = (opts = {}) => {
     routes = ['(.*)'],
     passParam = '',
   } = opts;
-  const {
-    host: redisHost = 'localhost',
-    port: redisPort = 6379,
-    url: redisUrl = `redis://${redisHost}:${redisPort}/`,
-    options: redisOptions = {},
-  } = opts.redis || {};
+
+  let redisUrl;
+  if (process.env.REDIS_URL) {
+    redisUrl = process.env.REDIS_URL;
+  } else if (process.env.DOCKER) {
+    redisUrl = 'redis://redis:6379';
+  } else {
+    redisUrl = 'redis://localhost:6379';
+  }
 
   let redisAvailable = false;
-  const redis = new Redis(redisUrl, redisOptions);
+  const redis = new Redis(redisUrl);
   redis.on('error', () => {
     redisAvailable = false;
   });
