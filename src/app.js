@@ -76,14 +76,14 @@ if (process.env.NODE_ENV === 'production') {
 // Set header with total objects returned
 app.use(count());
 
+// Allow pretty print via pretty=true querystring
+// Pretty printed json will NOT be cached
+app.use(json({ pretty: false, param: { pretty: true } }));
+
 // Allow user to restrict the keys returned
 app.use(mask({
   name: 'filter',
 }));
-
-// Allow pretty print via pretty=true querystring
-// Pretty printed json will NOT be cached
-app.use(json({ pretty: false, param: { pretty: true } }));
 
 // v2 routes
 app.use(v2Capsules.routes());
