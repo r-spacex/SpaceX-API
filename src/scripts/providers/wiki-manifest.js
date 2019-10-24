@@ -31,6 +31,9 @@ const monthTbd = /^[0-9]{4}\s([a-z]{3}|[a-z]{3,9})\sTBD$/i;
 // 2020 Early/Mid/Late Nov
 const monthVague = /^[0-9]{4}\s(early|mid|late)\s([a-z]{3}|[a-z]{3,9})$/i;
 
+// 2020 Early/Mid/Late Nov
+const monthVagueReverse = /^[0-9]{4}\s([a-z]{3}|[a-z]{3,9})\s(early|mid|late)$/i;
+
 const getData = async () => {
   // Grab subreddit wiki manifest
   const result = await request('https://old.reddit.com/r/spacex/wiki/launches/manifest');
@@ -113,6 +116,11 @@ const checkDatePattern = async (mdate) => {
     result.isTentative = true;
     // 2020 Early/Mid/Late Nov
   } else if (monthVague.test(mdate)) {
+    result.precision = 'month';
+    result.tbd = true;
+    result.isTentative = true;
+    // 2020 Nov
+  } else if (monthVagueReverse.test(mdate)) {
     result.precision = 'month';
     result.tbd = true;
     result.isTentative = true;
