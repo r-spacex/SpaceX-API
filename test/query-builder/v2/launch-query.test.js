@@ -176,11 +176,11 @@ test('It should return launches with reused side core 2', async () => {
   });
 });
 
-test('It should return launches with no reused fairings', async () => {
-  const response = await request(app.callback()).get('/v2/launches?fairings_reuse=false');
+test('It should return launches with reused fairings', async () => {
+  const response = await request(app.callback()).get('/v2/launches?fairings_reused=true');
   expect(response.statusCode).toBe(200);
   response.body.forEach((item) => {
-    expect(item.reuse).toHaveProperty('fairings', false);
+    expect(item.rocket.fairings.reused).toEqual(true);
   });
 });
 
@@ -294,7 +294,7 @@ test('It should return launches with no reused fairings', async () => {
   const response = await request(app.callback()).get('/v2/launches?fairings_recovered=false');
   expect(response.statusCode).toBe(200);
   response.body.forEach((item) => {
-    expect(item.rocket.fairings.reused).toEqual(false);
+    expect(item.rocket.fairings.recovered).toEqual(false);
   });
 });
 

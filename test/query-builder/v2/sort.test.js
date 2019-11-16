@@ -87,7 +87,7 @@ test('It should return launches sorted by second stage block number', async () =
 test('It should return launches sorted by fairing reuse', async () => {
   const response = await request(app.callback()).get('/v2/launches?sort=fairings_reused');
   expect(response.statusCode).toBe(200);
-  expect(response.body[response.body.length - 1].rocket.fairings.reused).toEqual(false);
+  expect(response.body[response.body.length - 1].rocket.fairings.reused).toEqual(true);
 });
 
 test('It should return launches sorted by fairing recovery attempts', async () => {

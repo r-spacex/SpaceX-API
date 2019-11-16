@@ -267,7 +267,7 @@ test('It should return launches with GTO orbit', async () => {
 });
 
 test('It should return launches with no reused fairings', async () => {
-  const response = await request(app.callback()).get('/v3/launches?fairings_recovered=false');
+  const response = await request(app.callback()).get('/v3/launches?fairings_reused=false');
   expect(response.statusCode).toBe(200);
   response.body.forEach((item) => {
     expect(item.rocket.fairings.reused).toEqual(false);

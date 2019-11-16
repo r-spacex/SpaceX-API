@@ -38,6 +38,7 @@ module.exports = {
    * Return all past and upcoming launches
    */
   all: async (ctx) => {
+    console.log(find(ctx.request));
     const data = await global.db
       .collection('launch')
       .find(find(ctx.request))
