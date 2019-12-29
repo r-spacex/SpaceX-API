@@ -12,7 +12,10 @@ const request = require('request-promise-native').defaults({ jar: true });
   let client;
   let orbitData;
   try {
-    client = await MongoClient.connect(process.env.MONGO_URL, { useNewUrlParser: true });
+    client = await MongoClient.connect(process.env.MONGO_URL, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
   } catch (err) {
     console.log(err.stack);
     process.exit(1);

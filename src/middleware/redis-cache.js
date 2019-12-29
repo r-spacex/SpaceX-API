@@ -1,5 +1,5 @@
 
-const pathToRegExp = require('path-to-regexp');
+const { pathToRegexp } = require('path-to-regexp');
 const Redis = require('ioredis');
 const crypto = require('crypto');
 
@@ -148,7 +148,7 @@ module.exports = (opts = {}) => {
       sensitive: true,
       strict: true,
     };
-    return pathToRegExp(route, [], options).exec(path);
+    return pathToRegexp(route, [], options).exec(path);
   };
 
   /**

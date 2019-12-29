@@ -12,6 +12,7 @@ const MongoClient = require('mongodb');
   try {
     client = await MongoClient.connect(process.env.MONGO_URL, {
       useNewUrlParser: true,
+      useUnifiedTopology: true,
     });
   } catch (err) {
     console.log(err.stack);

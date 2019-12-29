@@ -11,7 +11,10 @@ const request = require('request-promise-native');
 (async () => {
   let client;
   try {
-    client = await MongoClient.connect(process.env.MONGO_URL, { useNewUrlParser: true });
+    client = await MongoClient.connect(process.env.MONGO_URL, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
   } catch (err) {
     console.log(err.stack);
     process.exit(1);

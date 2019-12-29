@@ -68,7 +68,10 @@ const withinSensitiveTreshold = (time) => {
 // Main script
 (async () => {
   try {
-    client = await MongoClient.connect(process.env.MONGO_URL || 'mongodb://localhost:27017', { useNewUrlParser: true });
+    client = await MongoClient.connect(process.env.MONGO_URL || 'mongodb://localhost:27017', {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
   } catch (err) {
     console.log(err.stack);
   }
