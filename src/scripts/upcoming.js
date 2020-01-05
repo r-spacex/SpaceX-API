@@ -113,7 +113,7 @@ const withinSensitiveTreshold = (time) => {
       if (fuzz.partial_ratio(missionName, manifestPayload) === 100) {
         // Special check for starlink / smallsat launches, because 'Starlink 2' and 'Starlink 23'
         // both pass the partial ratio check, so they are checked strictly below
-        if (/starlink|smallsat/i.test(missionName) && fuzz.ratio(missionName, manifestPayload) !== 100) {
+        if (/starlink/i.test(missionName) && fuzz.ratio(missionName, manifestPayload) !== 100) {
           // eslint-disable-next-line no-continue
           continue;
         }
