@@ -5,6 +5,7 @@
  */
 
 const MongoClient = require('mongodb');
+const request = require('request-promise-native');
 
 (async () => {
   let client;
@@ -71,13 +72,27 @@ const MongoClient = require('mongodb');
       reuseCount = missions.length - 1;
     }
 
+    // Set original launch times from top mission
+    let originalLaunch = null;
+    let originalLaunchUnix = null;
+    if (missions.length) {
+      const originalFlightNum = missions[0].flight;
+      const originalFlight = await request(`https://api.spacexdata.com/v3/launches/${originalFlightNum}`, { json: true });
+      originalLaunch = originalFlight.launch_date_utc;
+      originalLaunchUnix = originalFlight.launch_date_unix;
+    }
+
     console.log(capsule);
     console.log(missions);
+    console.log(`Original Launch: ${originalLaunch}`);
+    console.log(`Original Launch Unix: ${originalLaunchUnix}`);
     console.log(`Reuse Count: ${reuseCount}`);
     console.log(`Landings: ${landings}`);
 
     await col.updateOne({ capsule_serial: capsule }, {
       $set: {
+        original_launch: originalLaunch,
+        original_launch_unix: originalLaunchUnix,
         reuse_count: reuseCount,
         landings,
         missions,
