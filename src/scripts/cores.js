@@ -154,8 +154,20 @@ const request = require('request-promise-native');
       reuseCount = missions.length - 1;
     }
 
+    // Set original launch times from top mission
+    let originalLaunch = null;
+    let originalLaunchUnix = null;
+    if (missions.length) {
+      const originalFlightNum = missions[0].flight;
+      const originalFlight = await request(`https://api.spacexdata.com/v3/launches/${originalFlightNum}`, { json: true });
+      originalLaunch = originalFlight.launch_date_utc;
+      originalLaunchUnix = originalFlight.launch_date_unix;
+    }
+
     console.log(core);
     console.log(missions);
+    console.log(`Original Launch: ${originalLaunch}`);
+    console.log(`Original Launch Unix: ${originalLaunchUnix}`);
     console.log(`Reuse Count: ${reuseCount}`);
     console.log(`RTLS Attempts: ${rtlsAttempts}`);
     console.log(`RTLS Successes: ${rtlsSuccesses}`);
@@ -164,6 +176,8 @@ const request = require('request-promise-native');
 
     await col.updateOne({ core_serial: core }, {
       $set: {
+        original_launch: originalLaunch,
+        original_launch_unix: originalLaunchUnix,
         reuse_count: reuseCount,
         rtls_attempts: rtlsAttempts,
         rtls_landings: rtlsSuccesses,
