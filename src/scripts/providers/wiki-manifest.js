@@ -8,31 +8,31 @@ const request = require('request-promise-native');
 // Allows for time with or without brackets ex [23:45] vs 23:45
 
 // 2020 Nov 4 [14:10:56]
-const second = /^[0-9]{4}\s([a-z]{3}|[a-z]{3,9})\s[0-9]{1,2}\s(\[[0-9]{2}:[0-9]{2}:[0-9]{2}\]|[0-9]{2}:[0-9]{2})$/i;
+const second = /^\s*[0-9]{4}\s*([a-z]{3}|[a-z]{3,9})\s*[0-9]{1,2}\s*(\[[0-9]{2}:[0-9]{2}:[0-9]{2}\]|[0-9]{2}:[0-9]{2})\s*$/i;
 
 // 2020 Nov 4 [14:10]
-const hour = /^[0-9]{4}\s([a-z]{3}|[a-z]{3,9})\s[0-9]{1,2}\s(\[[0-9]{2}:[0-9]{2}\]|[0-9]{2}:[0-9]{2})$/i;
+const hour = /^\s*[0-9]{4}\s*([a-z]{3}|[a-z]{3,9})\s*[0-9]{1,2}\s*(\[[0-9]{2}:[0-9]{2}\]|[0-9]{2}:[0-9]{2})\s*$/i;
 
 // 2020 Nov 4
-const day = /^[0-9]{4}\s([a-z]{3}|[a-z]{3,9})\s[0-9]{1,2}$/i;
+const day = /^\s*[0-9]{4}\s*([a-z]{3}|[a-z]{3,9})\s*[0-9]{1,2}\s*$/i;
 
 // 2020 Nov
-const month = /^[0-9]{4}\s([a-z]{3}|[a-z]{3,9})$/i;
+const month = /^\s*[0-9]{4}\s*([a-z]{3}|[a-z]{3,9})\s*$/i;
 
 // 2020
-const year = /^[0-9]{4}$/i;
+const year = /^\s*[0-9]{4}\s*$/i;
 
 // 2020 TBD
-const yearTbd = /^[0-9]{4}\sTBD$/i;
+const yearTbd = /^\s*[0-9]{4}\s*TBD\s*$/i;
 
 // 2020 Nov TBD
-const monthTbd = /^[0-9]{4}\s([a-z]{3}|[a-z]{3,9})\sTBD$/i;
+const monthTbd = /^\s*[0-9]{4}\s*([a-z]{3}|[a-z]{3,9})\s*TBD\s*$/i;
 
 // 2020 Early/Mid/Late Nov
-const monthVague = /^[0-9]{4}\s(early|mid|late)\s([a-z]{3}|[a-z]{3,9})$/i;
+const monthVague = /^\s*[0-9]{4}\s*(early|mid|late)\s*([a-z]{3}|[a-z]{3,9})\s*$/i;
 
 // 2020 Early/Mid/Late Nov
-const monthVagueReverse = /^[0-9]{4}\s([a-z]{3}|[a-z]{3,9})\s(early|mid|late)$/i;
+const monthVagueReverse = /^\s*[0-9]{4}\s*([a-z]{3}|[a-z]{3,9})\s*(early|mid|late)\s*$/i;
 
 const getData = async () => {
   // Grab subreddit wiki manifest

@@ -119,7 +119,8 @@ const withinSensitiveTreshold = (time) => {
         }
         // Check and see if dates match a certain pattern depending on the length of the
         // date given. This sets the amount of precision needed for the date.
-        const dateResult = await wikiManifest.checkDatePattern(manifestDates[manifestIndex].replace('-', ' ').replace('~', ''));
+        console.log(manifestDates[manifestIndex].replace('-', ' ').replace('~', '').split('/')[0].trim());
+        const dateResult = await wikiManifest.checkDatePattern(manifestDates[manifestIndex].replace('-', ' ').replace('~', '').split('/')[0]);
         const { tbd, isTentative } = dateResult;
         precision[manifestIndex] = dateResult.precision;
 
@@ -153,7 +154,7 @@ const withinSensitiveTreshold = (time) => {
         let time;
         let lastRevision = null;
 
-        const parsedDate = `${date.replace(/(-|\[|\]|~|early|mid|late)/gi, ' ')} +0000`;
+        const parsedDate = `${date.replace(/(-|\[|\]|~|early|mid|late)/gi, ' ').split('/')[0].trim()} +0000`;
         const timeWiki = moment(parsedDate, ['YYYY MMM D HH:mm Z', 'YYYY MMM D Z', 'YYYY MMM Z', 'YYYY Q Z', 'YYYY Z']);
 
         // Is the launch within the update critical threshold?
