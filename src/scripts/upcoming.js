@@ -99,7 +99,7 @@ const withinSensitiveTreshold = (time) => {
   // Set base flight number to automatically reorder launches on the manifest
   // If the most recent past launch is still on the wiki, don't offset the flight number
   let baseFlightNumber;
-  if (fuzz.partial_ratio(pastLaunches[0].missionName, manifestPayloads[0]) === 100) {
+  if (fuzz.partial_ratio(pastLaunches[0].mission_name, manifestPayloads[0]) === 100) {
     baseFlightNumber = pastLaunches[0].flight_number;
   } else {
     baseFlightNumber = pastLaunches[0].flight_number + 1;
