@@ -13,4 +13,4 @@ COPY . .
 ENV NODE_ENV=production
 ENV DOCKER=true
 EXPOSE 5000
-CMD ["node", "src/app.js"]
+CMD ["node", "src/server.js"]

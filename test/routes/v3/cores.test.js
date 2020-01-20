@@ -1,6 +1,8 @@
 
-const request = require('supertest');
+const supertest = require('supertest');
 const app = require('../../../src/app');
+
+const request = supertest(app.callback());
 
 beforeAll((done) => {
   app.on('ready', () => {
@@ -13,7 +15,7 @@ beforeAll((done) => {
 //------------------------------------------------------------
 
 test('It should return all v3 cores', async () => {
-  const response = await request(app.callback()).get('/v3/cores');
+  const response = await request.get('/v3/cores');
   expect(response.statusCode).toBe(200);
   response.body.forEach((item) => {
     expect(item).toHaveProperty('core_serial');
@@ -35,7 +37,7 @@ test('It should return all v3 cores', async () => {
 //------------------------------------------------------------
 
 test('It should return an empty cores array', async () => {
-  const response = await request(app.callback()).get('/v3/cores?core_serial=B1000');
+  const response = await request.get('/v3/cores?core_serial=B1000');
   expect(response.statusCode).toBe(200);
   expect(response.body).toEqual([]);
 });
@@ -45,7 +47,7 @@ test('It should return an empty cores array', async () => {
 //------------------------------------------------------------
 
 test('It should return core B0007', async () => {
-  const response = await request(app.callback()).get('/v3/cores/B0007');
+  const response = await request.get('/v3/cores/B0007');
   expect(response.statusCode).toBe(200);
   expect(response.body).toHaveProperty('core_serial', 'B0007');
 });
@@ -55,7 +57,7 @@ test('It should return core B0007', async () => {
 //------------------------------------------------------------
 
 test('It should return a cores 404 error msg', async () => {
-  const response = await request(app.callback()).get('/v3/cores/B1000');
+  const response = await request.get('/v3/cores/B1000');
   expect(response.statusCode).toBe(404);
   expect(response.body).toEqual({ error: 'Not Found' });
 });

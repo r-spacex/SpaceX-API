@@ -11,11 +11,11 @@
   },
   "extends": [
     "plugin:security/recommended",
-    "airbnb"
+    "airbnb-base"
   ],
   "parserOptions": {
     "sourceType": "module",
-    "ecmaVersion": 2018,
+    "ecmaVersion": 2020,
     "impliedStrict": true
   },
   "rules": {

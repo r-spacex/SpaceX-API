@@ -4,7 +4,7 @@ const helmet = require('koa-helmet');
 const Koa = require('koa');
 const logger = require('koa-morgan');
 const mask = require('koa-json-mask');
-const MongoClient = require('mongodb');
+const mongoose = require('mongoose');
 const json = require('./middleware/json');
 const responseTime = require('./middleware/response-time');
 const count = require('./middleware/count');
@@ -41,10 +41,24 @@ const v3Rockets = require('./routes/v3/launches');
 const v3Roadster = require('./routes/v3/roadster');
 const v3Ships = require('./routes/v3/ships');
 
-// Production read-only DB
-const url = process.env.MONGO_URL || 'mongodb+srv://public:spacex@spacex-gcp-gpg0u.gcp.mongodb.net/spacex-api';
-
 const app = new Koa();
+
+// Production read-only DB
+const URL = process.env.MONGO_URL || 'mongodb+srv://public:spacex@spacex-gcp-gpg0u.gcp.mongodb.net/spacex-api';
+
+// Mongo connection
+mongoose.connect(URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+const db = mongoose.connection;
+db.on('error', (err) => {
+  console.error(err);
+});
+db.once('open', () => {
+  console.log('Mongo ready');
+  app.emit('ready');
+});
 
 // Set header with API response time
 app.use(responseTime());
@@ -115,23 +129,3 @@ app.use(v3Roadster.routes());
 app.use(v3Ships.routes());
 
 module.exports = app;
-
-// Mongo Connection + Server Start
-(async () => {
-  try {
-    const client = await MongoClient.connect(url, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
-
-    global.db = client.db('spacex-api');
-
-    const port = process.env.PORT || 5000;
-    app.listen(port, '0.0.0.0', () => {
-      app.emit('ready');
-      console.log('Running on port 5000');
-    });
-  } catch (err) {
-    console.log(err.stack);
-  }
-})();

@@ -1,6 +1,8 @@
 
-const request = require('supertest');
+const supertest = require('supertest');
 const app = require('../../../src/app');
+
+const request = supertest(app.callback());
 
 beforeAll((done) => {
   app.on('ready', () => {
@@ -13,7 +15,7 @@ beforeAll((done) => {
 //------------------------------------------------------------
 
 test('It should return all v3 capsules', async () => {
-  const response = await request(app.callback()).get('/v3/capsules');
+  const response = await request.get('/v3/capsules');
   expect(response.statusCode).toBe(200);
   response.body.forEach((item) => {
     expect(item).toHaveProperty('capsule_serial');
@@ -34,7 +36,7 @@ test('It should return all v3 capsules', async () => {
 //------------------------------------------------------------
 
 test('It should return an empty capsules array', async () => {
-  const response = await request(app.callback()).get('/v3/capsules?capsule_serial=C866');
+  const response = await request.get('/v3/capsules?capsule_serial=C866');
   expect(response.statusCode).toBe(200);
   expect(response.body).toEqual([]);
 });
@@ -44,7 +46,7 @@ test('It should return an empty capsules array', async () => {
 //------------------------------------------------------------
 
 test('It should return capsule C101', async () => {
-  const response = await request(app.callback()).get('/v3/capsules/C101');
+  const response = await request.get('/v3/capsules/C101');
   expect(response.statusCode).toBe(200);
   expect(response.body).toHaveProperty('capsule_serial', 'C101');
 });
@@ -54,7 +56,7 @@ test('It should return capsule C101', async () => {
 //------------------------------------------------------------
 
 test('It should return a capsules 404 error msg', async () => {
-  const response = await request(app.callback()).get('/v3/capsules/C1011');
+  const response = await request.get('/v3/capsules/C1011');
   expect(response.statusCode).toBe(404);
   expect(response.body).toEqual({ error: 'Not Found' });
 });

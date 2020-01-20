@@ -1,4 +1,5 @@
 
+const db = require('mongoose').connection;
 const find = require('../../lib/query-builder/v3/find');
 const limit = require('../../lib/query-builder/v3/limit');
 const offset = require('../../lib/query-builder/v3/offset');
@@ -10,7 +11,7 @@ module.exports = {
    * Returns all payloads
    */
   all: async (ctx) => {
-    const data = await global.db
+    const data = await db
       .collection('launch')
       .find(find(ctx.request))
       .project({ _id: 0, 'rocket.second_stage.payloads': 1, flight_number: 1 })
@@ -62,7 +63,7 @@ module.exports = {
    */
   one: async (ctx) => {
     let payloads;
-    const data = await global.db
+    const data = await db
       .collection('launch')
       .find({ 'rocket.second_stage.payloads.payload_id': ctx.params.payload_id })
       .project({ _id: 0, 'rocket.second_stage.payloads': 1, flight_number: 1 })

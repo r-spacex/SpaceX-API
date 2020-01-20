@@ -1,4 +1,5 @@
 
+const db = require('mongoose').connection;
 const find = require('../../lib/query-builder/v3/find');
 const limit = require('../../lib/query-builder/v3/limit');
 const offset = require('../../lib/query-builder/v3/offset');
@@ -11,7 +12,7 @@ module.exports = {
    * Return all landing pads
    */
   all: async (ctx) => {
-    const data = await global.db
+    const data = await db
       .collection('landpad')
       .find(find(ctx.request))
       .project(project(ctx.request.query))
@@ -27,7 +28,7 @@ module.exports = {
    * Return one landing pad by pad id
    */
   one: async (ctx) => {
-    const data = await global.db
+    const data = await db
       .collection('landpad')
       .find({ id: ctx.params.id })
       .project(project(ctx.request.query))

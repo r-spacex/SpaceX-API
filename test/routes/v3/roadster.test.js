@@ -1,6 +1,8 @@
 
-const request = require('supertest');
+const supertest = require('supertest');
 const app = require('../../../src/app');
+
+const request = supertest(app.callback());
 
 beforeAll((done) => {
   app.on('ready', () => {
@@ -13,7 +15,7 @@ beforeAll((done) => {
 //------------------------------------------------------------
 
 test('It should return roadster info', async () => {
-  const response = await request(app.callback()).get('/v3/roadster');
+  const response = await request.get('/v3/roadster');
   expect(response.statusCode).toBe(200);
   expect(response.body).toHaveProperty('name', 'Elon Musk\'s Tesla Roadster');
   expect(response.body).toHaveProperty('apoapsis_au', expect.any(Number));

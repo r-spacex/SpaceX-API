@@ -1,4 +1,5 @@
 
+const db = require('mongoose').connection;
 const limit = require('../../lib/query-builder/v3/limit');
 const offset = require('../../lib/query-builder/v3/offset');
 const project = require('../../lib/query-builder/v3/project');
@@ -9,7 +10,7 @@ module.exports = {
    * Return all launchpads
    */
   all: async (ctx) => {
-    const data = await global.db
+    const data = await db
       .collection('launchpad')
       .find({})
       .project(project(ctx.request.query))
@@ -31,7 +32,7 @@ module.exports = {
    * Return specific launchpad
    */
   specific: async (ctx) => {
-    const data = await global.db
+    const data = await db
       .collection('launchpad')
       .find({ id: ctx.params.pad })
       .project(project(ctx.request.query))

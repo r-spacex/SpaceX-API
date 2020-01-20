@@ -1,6 +1,8 @@
 
-const request = require('supertest');
+const supertest = require('supertest');
 const app = require('../../../src/app');
+
+const request = supertest(app.callback());
 
 beforeAll((done) => {
   app.on('ready', () => {
@@ -13,7 +15,7 @@ beforeAll((done) => {
 //------------------------------------------------------------
 
 test('It should return all history', async () => {
-  const response = await request(app.callback()).get('/v3/history');
+  const response = await request.get('/v3/history');
   expect(response.statusCode).toBe(200);
   response.body.forEach((event) => {
     expect(event).toHaveProperty('id', expect.any(Number));

@@ -1,6 +1,8 @@
 
-const request = require('supertest');
+const supertest = require('supertest');
 const app = require('../../../src/app');
+
+const request = supertest(app.callback());
 
 beforeAll((done) => {
   app.on('ready', () => {
@@ -13,7 +15,7 @@ beforeAll((done) => {
 //------------------------------------------------------------
 
 test('It should return company info', async () => {
-  const response = await request(app.callback()).get('/v3/info');
+  const response = await request.get('/v3/info');
   expect(response.statusCode).toBe(200);
   expect(response.body).toHaveProperty('name', 'SpaceX');
   expect(response.body).toHaveProperty('founder', 'Elon Musk');
@@ -38,7 +40,7 @@ test('It should return company info', async () => {
 //------------------------------------------------------------
 
 test('It should return home info', async () => {
-  const response = await request(app.callback()).get('/v2');
+  const response = await request.get('/v2');
   expect(response.statusCode).toBe(200);
   expect(response.body).toHaveProperty('description');
   expect(response.body).toHaveProperty('organization', 'r/SpaceX');

@@ -1,4 +1,5 @@
 
+const db = require('mongoose').connection;
 const sort = require('../../lib/query-builder/v3/sort');
 const find = require('../../lib/query-builder/v3/find');
 const limit = require('../../lib/query-builder/v3/limit');
@@ -11,7 +12,7 @@ module.exports = {
    * Get all historical events
    */
   all: async (ctx) => {
-    const data = await global.db
+    const data = await db
       .collection('history')
       .find(find(ctx.request))
       .project(project(ctx.request.query))
@@ -27,7 +28,7 @@ module.exports = {
    * Get one historical event
    */
   one: async (ctx) => {
-    const data = await global.db
+    const data = await db
       .collection('history')
       .find({ id: parseInt(ctx.params.history_id, 10) })
       .project(project(ctx.request.query))

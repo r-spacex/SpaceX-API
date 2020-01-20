@@ -1,4 +1,5 @@
 
+const db = require('mongoose').connection;
 const find = require('../../lib/query-builder/v2/find');
 const sort = require('../../lib/query-builder/v2/sort');
 const project = require('../../lib/query-builder/v2/project');
@@ -10,7 +11,7 @@ module.exports = {
    * Return most recent launch
    */
   latest: async (ctx) => {
-    const data = await global.db
+    const data = await db
       .collection('launch')
       .find({ upcoming: false })
       .project(project(ctx.request.query))
@@ -24,7 +25,7 @@ module.exports = {
    * Return next launch
    */
   next: async (ctx) => {
-    const data = await global.db
+    const data = await db
       .collection('launch')
       .find({ upcoming: true })
       .project(project(ctx.request.query))
@@ -39,7 +40,7 @@ module.exports = {
    */
   all: async (ctx) => {
     console.log(find(ctx.request));
-    const data = await global.db
+    const data = await db
       .collection('launch')
       .find(find(ctx.request))
       .project(project(ctx.request.query))
@@ -53,7 +54,7 @@ module.exports = {
    * Return all past launches filtered by querystrings
    */
   past: async (ctx) => {
-    const data = await global.db
+    const data = await db
       .collection('launch')
       .find({ upcoming: false, ...find(ctx.request) })
       .project(project(ctx.request.query))
@@ -67,7 +68,7 @@ module.exports = {
    * Return upcoming launches filtered by querystrings
    */
   upcoming: async (ctx) => {
-    const data = await global.db
+    const data = await db
       .collection('launch')
       .find({ upcoming: true, ...find(ctx.request) })
       .project(project(ctx.request.query))

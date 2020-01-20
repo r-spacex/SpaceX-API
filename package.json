@@ -4,10 +4,8 @@
   "description": "Open Source REST API for rocket, core, capsule, pad, and launch data",
   "main": "./src/app.js",
   "scripts": {
-    "test": "eslint . && NODE_ENV=test PORT=0 jest --silent --verbose",
-    "start": "node src/app.js",
-    "dev": "nodemon node src/app.js",
-    "pkg": "pkg src/app.js --output spacex-api",
+    "test": "eslint . && jest --silent --verbose",
+    "start": "node src/server.js",
     "lint": "eslint .",
     "roadster": "node src/scripts/roadster.js",
     "orbit": "node src/scripts/orbits.js",
@@ -49,10 +47,10 @@
     "koa-morgan": "^1.0.1",
     "koa-router": "^7.4.0",
     "koa2-cors": "^2.0.6",
-    "lower-case": "^1.1.4",
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.27",
     "mongodb": "^3.4.1",
+    "mongoose": "^5.8.9",
     "path": "^0.12.7",
     "path-to-regexp": "^6.1.0",
     "request": "^2.88.0",
@@ -61,21 +59,16 @@
   },
   "devDependencies": {
     "eslint": "^6.8.0",
-    "eslint-config-airbnb": "^18.0.1",
-    "eslint-plugin-import": "^2.19.1",
-    "eslint-plugin-jest": "^23.2.0",
-    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.20.0",
+    "eslint-plugin-jest": "^23.6.0",
     "eslint-plugin-mongodb": "^1.0.0",
-    "eslint-plugin-react": "^7.17.0",
     "eslint-plugin-security": "^1.4.0",
     "jest": "^24.9.0",
-    "nodemon": "^2.0.2",
-    "pkg": "^4.4.2",
     "supertest": "^4.0.2"
   },
   "jest": {
-    "setupFilesAfterEnv": [
-      "./test/jest.setup.js"
-    ]
+    "testTimeout": 120000,
+    "testEnvironment": "node"
   }
 }

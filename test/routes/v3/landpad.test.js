@@ -1,6 +1,8 @@
 
-const request = require('supertest');
+const supertest = require('supertest');
 const app = require('../../../src/app');
+
+const request = supertest(app.callback());
 
 beforeAll((done) => {
   app.on('ready', () => {
@@ -13,7 +15,7 @@ beforeAll((done) => {
 //------------------------------------------------------------
 
 test('It should return all landing pads', async () => {
-  const response = await request(app.callback()).get('/v3/landpads');
+  const response = await request.get('/v3/landpads');
   expect(response.statusCode).toBe(200);
   response.body.forEach((item) => {
     expect(item).toHaveProperty('id');
@@ -26,12 +28,12 @@ test('It should return all landing pads', async () => {
 });
 
 test('It should return LZ-4 info', async () => {
-  const response = await request(app.callback()).get('/v3/landpads/LZ-4');
+  const response = await request.get('/v3/landpads/LZ-4');
   expect(response.statusCode).toBe(200);
   expect(response.body).toHaveProperty('id', 'LZ-4');
 });
 
 test('It should return no landpad info', async () => {
-  const response = await request(app.callback()).get('/v3/landpads/LZ-25');
+  const response = await request.get('/v3/landpads/LZ-25');
   expect(response.statusCode).toBe(404);
 });

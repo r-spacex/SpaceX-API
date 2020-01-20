@@ -1,6 +1,6 @@
 
 // Prevent incorrect input
-const lowerCase = require('lower-case');
+const { lowerCase } = require('../../../utils');
 
 /**
  * Builds Mongo projection object to show/hide document id field

@@ -1,4 +1,5 @@
 
+const db = require('mongoose').connection;
 const find = require('../../lib/query-builder/v3/find');
 const limit = require('../../lib/query-builder/v3/limit');
 const offset = require('../../lib/query-builder/v3/offset');
@@ -11,7 +12,7 @@ module.exports = {
    * Return most recent launch
    */
   latest: async (ctx) => {
-    const data = await global.db
+    const data = await db
       .collection('launch')
       .find({ upcoming: false })
       .project(project(ctx.request.query))
@@ -27,7 +28,7 @@ module.exports = {
    * Return next launch
    */
   next: async (ctx) => {
-    const data = await global.db
+    const data = await db
       .collection('launch')
       .find({ upcoming: true })
       .project(project(ctx.request.query))
@@ -43,7 +44,7 @@ module.exports = {
    * Return all past and upcoming launches
    */
   all: async (ctx) => {
-    const data = await global.db
+    const data = await db
       .collection('launch')
       .find(find(ctx.request))
       .project(project(ctx.request.query))
@@ -62,7 +63,7 @@ module.exports = {
    * Return all past launches filtered by querystrings
    */
   past: async (ctx) => {
-    const data = await global.db
+    const data = await db
       .collection('launch')
       .find({ upcoming: false, ...find(ctx.request) })
       .project(project(ctx.request.query))
@@ -81,7 +82,7 @@ module.exports = {
    * Return upcoming launches filtered by querystrings
    */
   upcoming: async (ctx) => {
-    const data = await global.db
+    const data = await db
       .collection('launch')
       .find({ upcoming: true, ...find(ctx.request) })
       .project(project(ctx.request.query))
@@ -100,7 +101,7 @@ module.exports = {
    * Return one launch from flight number
    */
   one: async (ctx) => {
-    const data = await global.db
+    const data = await db
       .collection('launch')
       .find({ flight_number: parseInt(ctx.params.flight_number, 10) })
       .project(project(ctx.request.query))

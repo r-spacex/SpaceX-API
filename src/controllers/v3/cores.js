@@ -1,4 +1,5 @@
 
+const db = require('mongoose').connection;
 const find = require('../../lib/query-builder/v3/find');
 const limit = require('../../lib/query-builder/v3/limit');
 const offset = require('../../lib/query-builder/v3/offset');
@@ -16,7 +17,7 @@ module.exports = {
     let nullDates = [];
     let nullDatesCount = 0;
     if (!ctx.request.query.original_launch) {
-      nullDates = await global.db
+      nullDates = await db
         .collection('core')
         .find({ ...find(ctx.request), original_launch: null })
         .project(project(ctx.request.query))
@@ -26,7 +27,7 @@ module.exports = {
       nullDatesCount = await nullDates.count(false);
       nullDates = await nullDates.toArray();
     }
-    let notNullDates = await global.db
+    let notNullDates = await db
       .collection('core')
       .find({ original_launch: { $ne: null }, ...find(ctx.request) })
       .project(project(ctx.request.query))
@@ -50,7 +51,7 @@ module.exports = {
    * Returns all cores with non null dates
    */
   past: async (ctx) => {
-    const data = await global.db
+    const data = await db
       .collection('core')
       .find({ ...find(ctx.request), original_launch: { $ne: null } })
       .project(project(ctx.request.query))
@@ -66,7 +67,7 @@ module.exports = {
    * Returns all cores with null original launches
    */
   upcoming: async (ctx) => {
-    const data = await global.db
+    const data = await db
       .collection('core')
       .find({ ...find(ctx.request), original_launch: null })
       .project(project(ctx.request.query))
@@ -82,7 +83,7 @@ module.exports = {
    * Returns specific core information
    */
   one: async (ctx) => {
-    const data = await global.db
+    const data = await db
       .collection('core')
       .find({ core_serial: ctx.params.core })
       .project(project(ctx.request.query))

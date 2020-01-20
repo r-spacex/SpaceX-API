@@ -1,7 +1,9 @@
 
-const request = require('supertest');
+const supertest = require('supertest');
 const app = require('../../../src/app');
 const customMatchers = require('../../utils/custom-asymmetric-matchers');
+
+const request = supertest(app.callback());
 
 beforeAll((done) => {
   app.on('ready', () => {
@@ -14,7 +16,7 @@ beforeAll((done) => {
 //------------------------------------------------------------
 
 test('It should return all Dragon data', async () => {
-  const response = await request(app.callback()).get('/v3/dragons');
+  const response = await request.get('/v3/dragons');
   expect(response.statusCode).toBe(200);
   response.body.forEach((item) => {
     expect(item).toHaveProperty('crew_capacity', expect.any(Number));
@@ -52,6 +54,6 @@ test('It should return all Dragon data', async () => {
 //------------------------------------------------------------
 
 test('It should return dragon1 capsule', async () => {
-  const response = await request(app.callback()).get('/v3/dragons/dragon1');
+  const response = await request.get('/v3/dragons/dragon1');
   expect(response.statusCode).toBe(200);
 });

@@ -6,7 +6,6 @@ const moment = require('moment');
  * @param {Object} query Koa querystring object from ctx.request
  * @return {Object} Mongo compatible date range query object
  */
-
 module.exports = (q) => {
   let start;
   let end;

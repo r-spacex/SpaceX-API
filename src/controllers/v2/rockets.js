@@ -1,4 +1,5 @@
 
+const db = require('mongoose').connection;
 const limit = require('../../lib/query-builder/v2/limit');
 const project = require('../../lib/query-builder/v2/project');
 
@@ -8,7 +9,7 @@ module.exports = {
    * Returns all rocket info
    */
   all: async (ctx) => {
-    const data = await global.db
+    const data = await db
       .collection('rocket')
       .find({})
       .project(project(ctx.request.query))
@@ -22,7 +23,7 @@ module.exports = {
    * Returns specific rocket info
    */
   specific: async (ctx) => {
-    const data = await global.db
+    const data = await db
       .collection('rocket')
       .find({ id: ctx.params.rocket })
       .project(project(ctx.request.query))
