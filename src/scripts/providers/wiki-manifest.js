@@ -31,8 +31,11 @@ const monthTbd = /^\s*[0-9]{4}\s*([a-z]{3}|[a-z]{3,9})\s*TBD\s*$/i;
 // 2020 Early/Mid/Late Nov
 const monthVague = /^\s*[0-9]{4}\s*(early|mid|late)\s*([a-z]{3}|[a-z]{3,9})\s*$/i;
 
-// 2020 Early/Mid/Late Nov
+// 2020 Nov Early/Mid/Late
 const monthVagueReverse = /^\s*[0-9]{4}\s*([a-z]{3}|[a-z]{3,9})\s*(early|mid|late)\s*$/i;
+
+// 2020 Jan Early/Mid/Late [16:00]
+const monthVagueReverseTime = /^\s*[0-9]{4}\s*([a-z]{3}|[a-z]{3,9})\s*(early|mid|late)\s*(\[[0-9]{2}:[0-9]{2}\]|[0-9]{2}:[0-9]{2})$/i;
 
 const getData = async () => {
   // Grab subreddit wiki manifest
@@ -134,6 +137,11 @@ const checkDatePattern = async (mdate) => {
     result.precision = 'day';
     result.tbd = false;
     result.isTentative = true;
+    // 2020 Jan Early/Mid/Late [16:00]
+  } else if (monthVagueReverseTime.test(mdate)) {
+    result.precision = 'hour';
+    result.tbd = false;
+    result.isTentative = false;
     // 2020 Nov 4 [14:10]
   } else if (hour.test(mdate)) {
     result.precision = 'hour';
