@@ -1,41 +1,6 @@
 const moment = require('moment-timezone');
-const gmail = require('gmail-send');
 const cheerio = require('cheerio');
 const request = require('request-promise-native');
-
-// RegEx expressions for matching dates in the wiki manifest
-// Allows for long months or short months ex. September vs Sep
-// Allows for time with or without brackets ex [23:45] vs 23:45
-
-// 2020 Nov 4 [14:10:56]
-const second = /^\s*[0-9]{4}\s*([a-z]{3}|[a-z]{3,9})\s*[0-9]{1,2}\s*(\[[0-9]{2}:[0-9]{2}:[0-9]{2}\]|[0-9]{2}:[0-9]{2})\s*$/i;
-
-// 2020 Nov 4 [14:10]
-const hour = /^\s*[0-9]{4}\s*([a-z]{3}|[a-z]{3,9})\s*[0-9]{1,2}\s*(\[[0-9]{2}:[0-9]{2}\]|[0-9]{2}:[0-9]{2})\s*$/i;
-
-// 2020 Nov 4
-const day = /^\s*[0-9]{4}\s*([a-z]{3}|[a-z]{3,9})\s*[0-9]{1,2}\s*$/i;
-
-// 2020 Nov
-const month = /^\s*[0-9]{4}\s*([a-z]{3}|[a-z]{3,9})\s*$/i;
-
-// 2020
-const year = /^\s*[0-9]{4}\s*$/i;
-
-// 2020 TBD
-const yearTbd = /^\s*[0-9]{4}\s*TBD\s*$/i;
-
-// 2020 Nov TBD
-const monthTbd = /^\s*[0-9]{4}\s*([a-z]{3}|[a-z]{3,9})\s*TBD\s*$/i;
-
-// 2020 Early/Mid/Late Nov
-const monthVague = /^\s*[0-9]{4}\s*(early|mid|late|end)\s*([a-z]{3}|[a-z]{3,9})\s*$/i;
-
-// 2020 Nov Early/Mid/Late
-const monthVagueReverse = /^\s*[0-9]{4}\s*([a-z]{3}|[a-z]{3,9})\s*(early|mid|late|end)\s*$/i;
-
-// 2020 Jan Early/Mid/Late [16:00]
-const monthVagueReverseTime = /^\s*[0-9]{4}\s*([a-z]{3}|[a-z]{3,9})\s*(early|mid|late|end)\s*(\[[0-9]{2}:[0-9]{2}\]|[0-9]{2}:[0-9]{2})$/i;
 
 const getData = async () => {
   // Grab subreddit wiki manifest
@@ -62,7 +27,7 @@ const calculateLaunchSite = (launchpad) => {
   let siteId = null;
   let siteName = null;
   let siteNameLong = null;
-  if (launchpad === 'SLC-40' || launchpad === 'SLC-40 / LC-39A' || launchpad === 'SLC-40 / BC') {
+  if (launchpad === 'SLC-40' || launchpad === 'SLC-40 / LC-39A' || launchpad === 'SLC-40 / BC' || launchpad === 'SLC-40, LC-39A') {
     siteId = 'ccafs_slc_40';
     siteName = 'CCAFS SLC 40';
     siteNameLong = 'Cape Canaveral Air Force Station Space Launch Complex 40';
@@ -83,86 +48,79 @@ const calculateLaunchSite = (launchpad) => {
 };
 
 const checkDatePattern = async (mdate) => {
-  const result = { mdate };
-  // 2020 Q3
-  if (mdate.includes('Q')) {
-    result.mdate = mdate.replace('Q', '');
-    result.precision = 'quarter';
+  // RegEx expressions for matching dates in the wiki manifest
+  // Allows for long months or short months ex: September vs Sep
+  // Allows for time with or without brackets ex: [23:45] vs 23:45
+
+  // Anything with TBD in date
+  const tbd = /^.*(tbd).*$/i;
+
+  // Anything with a time set
+  const tentative = /^.*(\[?[0-9]{2}:[0-9]{2}\]?).*$/i;
+
+  // 2020
+  const year = /^\s*[0-9]{4}\s*$/i;
+
+  // 2020 Nov
+  const month = /^\s*[0-9]{4}\s*([a-z]{3}|[a-z]{3,9})\s*$/i;
+
+  // 2020 Nov 4
+  const day = /^\s*[0-9]{4}\s*([a-z]{3}|[a-z]{3,9})\s*[0-9]{1,2}\s*$/i;
+
+  // 2020 Nov 4 [14:10]
+  const hour = /^\s*[0-9]{4}\s*([a-z]{3}|[a-z]{3,9})\s*[0-9]{1,2}\s*(\[?[0-9]{2}:[0-9]{2}\]?)\s*$/i;
+
+  // Remove extra stuff humans might add
+  // NOTE: Add to this when people add unexpected things to dates in the wiki
+  const cleaned = mdate.replace(/(~|early|mid|late|end)/gi, ' ').split('/')[0].trim();
+  console.log(cleaned);
+
+  const result = {
+    mdate,
+  };
+
+  // Check if date contains TBD
+  if (tbd.test(cleaned)) {
     result.tbd = true;
-    result.isTentative = true;
-    // 2020 H1
-  } else if (mdate.includes('H1')) {
-    result.mdate = mdate.replace('H1', '1');
-    result.precision = 'half';
-    result.tbd = true;
-    result.isTentative = true;
-    // 2020 H2
-  } else if (mdate.includes('H2')) {
-    result.mdate = mdate.replace('H2', '3');
-    result.precision = 'half';
-    result.tbd = true;
-    result.isTentative = true;
-    // 2020 TBD
-  } else if (yearTbd.test(mdate)) {
-    result.precision = 'year';
-    result.tbd = true;
-    result.isTentative = true;
-    // 2020
-  } else if (year.test(mdate)) {
-    result.precision = 'year';
-    result.tbd = true;
-    result.isTentative = true;
-    // 2020 Nov TBD
-  } else if (monthTbd.test(mdate)) {
-    result.precision = 'month';
-    result.tbd = true;
-    result.isTentative = true;
-    // 2020 Early/Mid/Late Nov
-  } else if (monthVague.test(mdate)) {
-    result.precision = 'month';
-    result.tbd = true;
-    result.isTentative = true;
-    // 2020 Nov
-  } else if (monthVagueReverse.test(mdate)) {
-    result.precision = 'month';
-    result.tbd = true;
-    result.isTentative = true;
-    // 2020 Nov
-  } else if (month.test(mdate)) {
-    result.precision = 'month';
-    result.tbd = true;
-    result.isTentative = true;
-    // 2020 Nov 4
-  } else if (day.test(mdate)) {
-    result.precision = 'day';
+  } else {
     result.tbd = false;
-    result.isTentative = true;
-    // 2020 Jan Early/Mid/Late [16:00]
-  } else if (monthVagueReverseTime.test(mdate)) {
-    result.precision = 'hour';
-    result.tbd = false;
-    result.isTentative = false;
-    // 2020 Nov 4 [14:10]
-  } else if (hour.test(mdate)) {
-    result.precision = 'hour';
-    result.tbd = false;
-    result.isTentative = false;
-  } else if (second.test(mdate)) {
-    result.precision = 'hour';
-    result.tbd = false;
+  }
+
+  // Set tentativeness
+  // Only true when a time is available
+  if (tentative.test(cleaned)) {
     result.isTentative = false;
   } else {
-    console.log('Date did not match any of the existing regular expressions');
-    const send = gmail({
-      user: process.env.GMAIL_USER,
-      pass: process.env.GMAIL_PASS,
-      to: process.env.NOTIFY_EMAIL,
-      subject: 'Upcoming Launches',
-      text: `Date does not match any formats: ${mdate}`,
-    });
-    await send();
-    return null;
+    result.isTentative = true;
   }
+
+  // Set date precision
+  if (cleaned.includes('Q')) {
+    // Quarter is first because moment.js does not make
+    // a distinction between half vs quarter. Therefore
+    // the first half starts at the beginning Q1, and the
+    // second half starts at the beginning of Q3
+    result.mdate = mdate.replace('Q', '');
+    result.precision = 'quarter';
+  } else if (cleaned.includes('H1')) {
+    result.mdate = mdate.replace('H1', '1');
+    result.precision = 'half';
+  } else if (cleaned.includes('H2')) {
+    result.mdate = mdate.replace('H2', '3');
+    result.precision = 'half';
+  } else if (year.test(cleaned)) {
+    result.precision = 'year';
+  } else if (month.test(cleaned)) {
+    result.precision = 'month';
+  } else if (day.test(cleaned)) {
+    result.precision = 'day';
+  } else if (hour.test(cleaned)) {
+    result.precision = 'hour';
+  } else {
+    // Send notification
+    console.log(`No match: ${cleaned}`);
+  }
+
   return result;
 };
 

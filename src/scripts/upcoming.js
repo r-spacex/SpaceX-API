@@ -119,8 +119,7 @@ const withinSensitiveTreshold = (time) => {
         }
         // Check and see if dates match a certain pattern depending on the length of the
         // date given. This sets the amount of precision needed for the date.
-        console.log(manifestDates[manifestIndex].replace('-', ' ').replace('~', '').split('/')[0].trim());
-        const dateResult = await wikiManifest.checkDatePattern(manifestDates[manifestIndex].replace('-', ' ').replace('~', '').split('/')[0]);
+        const dateResult = await wikiManifest.checkDatePattern(manifestDates[manifestIndex]);
         const { tbd, isTentative } = dateResult;
         precision[manifestIndex] = dateResult.precision;
 
@@ -322,6 +321,6 @@ const withinSensitiveTreshold = (time) => {
   });
 
   if (client) {
-    client.close();
+    await client.close();
   }
 })().catch((e) => console.error(e));
