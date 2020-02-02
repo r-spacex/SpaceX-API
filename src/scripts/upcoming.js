@@ -154,7 +154,7 @@ const withinSensitiveTreshold = (time) => {
         let time;
         let lastRevision = null;
 
-        const parsedDate = `${date.replace(/(-|\[|\]|~|early|mid|late)/gi, ' ').split('/')[0].trim()} +0000`;
+        const parsedDate = `${date.replace(/(-|\[|\]|~|early|mid|late|end)/gi, ' ').split('/')[0].trim()} +0000`;
         const timeWiki = moment(parsedDate, ['YYYY MMM D HH:mm Z', 'YYYY MMM D Z', 'YYYY MMM Z', 'YYYY Q Z', 'YYYY Z']);
 
         // Is the launch within the update critical threshold?
