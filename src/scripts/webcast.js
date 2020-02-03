@@ -27,6 +27,10 @@ const fuzz = require('fuzzball');
   const flightNumber = data[0].flight_number;
   const missionName = data[0].mission_name;
 
+  // Get most recent launch youtube link
+  const prev = await launch.find({ upcoming: true }).sort({ flight_number: 1 }).limit(1).toArray();
+  const prevYoutubeUrl = prev[0].links.video_link;
+
   const result = await request('https://www.spacex.com/webcast');
   const $ = cheerio.load(result);
 
@@ -35,6 +39,15 @@ const fuzz = require('fuzzball');
 
   const youtubeUrl = embedSource.replace(/https:\/\/www\.youtube\.com\/embed/i, 'https://youtu.be');
   const youtubeId = youtubeUrl.replace(/https:\/\/youtu\.be\//i, '');
+
+  // Check if most recent launch matches
+  // Prevents early triggering for extremely similar launch names
+  if (prevYoutubeUrl === youtubeUrl) {
+    console.log(`Previous: ${prevYoutubeUrl}`);
+    console.log(`Current: ${youtubeUrl}`);
+    console.log('Matches most recent launch, exiting...');
+    process.exit(0);
+  }
 
   const update = {
     'links.video_link': youtubeUrl,
