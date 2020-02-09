@@ -12,6 +12,8 @@
 | SpaceX | PowerShell | François-Xavier Cat | [GitHub](https://github.com/lazywinadmin/SpaceX) |
 | SpaceX-Python | Python | Vinay Phadnis | [GitHub](https://github.com/phadnisvinay30/SpaceX-Python) |
 | SpacePY-X | Python | Andrew Shapton | [GitHub](https://github.com/alshapton/SpacePY-X) |
+| SpaceNIM-X | Nim | Andrew Shapton | [GitHub](https://github.com/alshapton/SpaceNIM-X) |
+| SpaceCRYST-X | Crystal | Andrew Shapton | [GitHub](https://github.com/alshapton/SpaceCRYST-X) |
 | SpaceX-PY | Python | Kaylum Lally | [GitHub](https://github.com/HiKaylum/SpaceX-PY) |
 | spacex | Go | Or Hiltch | [GitHub](https://github.com/orcaman/spacex) |
 | spacex-api-wrapper | Rust | Alex Gutan | [GitHub](https://github.com/AGutan/spacex-api-wrapper)|
