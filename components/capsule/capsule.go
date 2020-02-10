@@ -6,7 +6,7 @@ import (
 )
 
 type Capsule struct {
-	Id string
+	ID string
 }
 
 // Get info headers

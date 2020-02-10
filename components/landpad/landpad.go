@@ -6,7 +6,7 @@ import (
 )
 
 type Landpad struct {
-	Id string
+	ID string
 }
 
 // Get info headers

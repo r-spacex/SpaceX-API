@@ -6,7 +6,7 @@ import (
 )
 
 type Core struct {
-	Id string
+	ID string
 }
 
 // Get info headers

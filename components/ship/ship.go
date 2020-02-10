@@ -6,7 +6,7 @@ import (
 )
 
 type Ship struct {
-	Id string
+	ID string
 }
 
 // Get info headers

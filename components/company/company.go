@@ -6,7 +6,7 @@ import (
 )
 
 type Company struct {
-	Id string
+	ID string
 }
 
 // Get company info

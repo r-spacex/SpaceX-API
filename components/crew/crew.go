@@ -6,7 +6,7 @@ import (
 )
 
 type Crew struct {
-	Id string
+	ID string
 }
 
 // Get info headers
@@ -34,7 +34,7 @@ func Add(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "One crew member added")
 }
 
-// Update a crew memeber
+// Update a crew member
 func Update(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "One crew member updated")
 }

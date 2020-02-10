@@ -6,7 +6,7 @@ import (
 )
 
 type Dragon struct {
-	Id string
+	ID string
 }
 
 // Get info headers

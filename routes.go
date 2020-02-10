@@ -4,7 +4,6 @@ import (
 	"net/http"
 
 	"github.com/go-chi/chi"
-	"github.com/r-spacex/spacex-api/middlewares"
 	"github.com/r-spacex/spacex-api/components/capsule"
 	"github.com/r-spacex/spacex-api/components/company"
 	"github.com/r-spacex/spacex-api/components/core"
@@ -16,6 +15,7 @@ import (
 	"github.com/r-spacex/spacex-api/components/payload"
 	"github.com/r-spacex/spacex-api/components/rocket"
 	"github.com/r-spacex/spacex-api/components/ship"
+	"github.com/r-spacex/spacex-api/middlewares"
 )
 
 func Routes() http.Handler {

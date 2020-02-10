@@ -6,7 +6,7 @@ import (
 )
 
 type Rocket struct {
-	Id string
+	ID string
 }
 
 // Get info headers
