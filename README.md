@@ -3,8 +3,8 @@
 <h1 align="center">SpaceX REST API</h1>
 
 <p align="center">
-<a href="https://circleci.com/gh/r-spacex/SpaceX-API"><img src="https://img.shields.io/circleci/project/github/r-spacex/SpaceX-API/master.svg?style=flat-square"></a>
-<a href="https://hub.docker.com/r/jakewmeyer/spacex-api/"><img src="https://img.shields.io/docker/build/jakewmeyer/spacex-api.svg?longCache=true&style=flat-square"></a>
+<a href="https://github.com/r-spacex/SpaceX-API/actions?query=workflow%3A%22test+and+build%22"><img src="https://img.shields.io/github/workflow/status/r-spacex/spacex-api/test%20and%20build?style=flat-square"></a>
+<a href="https://coveralls.io/github/r-spacex/SpaceX-API?branch=v4"><img src="https://img.shields.io/coveralls/github/r-spacex/spacex-api/v4?style=flat-square"></a>
 <a href="https://github.com/r-spacex/SpaceX-API/releases"><img src="https://img.shields.io/github/release/r-spacex/SpaceX-API.svg?longCache=true&style=flat-square"></a>
 <a href="https://en.wikipedia.org/wiki/Representational_state_transfer"><img src="https://img.shields.io/badge/interface-REST-brightgreen.svg?longCache=true&style=flat-square"></a>
 </p>
