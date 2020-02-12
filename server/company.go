@@ -1,4 +1,4 @@
-package company
+package server
 
 import (
 	"fmt"
@@ -10,21 +10,21 @@ type Company struct {
 }
 
 // Get company info
-func GetInfo(w http.ResponseWriter, r *http.Request) {
+func (s *Server) CompanyGetInfo(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Company info returned")
 }
 
 // Add company info
-func Add(w http.ResponseWriter, r *http.Request) {
+func (s *Server) CompanyAdd(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Company info returned")
 }
 
 // Update company info
-func Update(w http.ResponseWriter, r *http.Request) {
+func (s *Server) CompanyUpdate(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Company info returned")
 }
 
 // Delete company info
-func Delete(w http.ResponseWriter, r *http.Request) {
+func (s *Server) CompanyDelete(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Company info returned")
 }

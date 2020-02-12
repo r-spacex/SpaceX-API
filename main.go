@@ -14,7 +14,10 @@ import (
 	"github.com/go-chi/cors"
 	"github.com/jmoiron/sqlx"
 	_ "github.com/mattn/go-sqlite3"
+	"github.com/r-spacex/spacex-api/server"
 )
+
+type Server server.Server
 
 func main() {
 	r := chi.NewRouter()
@@ -34,11 +37,8 @@ func main() {
 	})
 	r.Use(cors.Handler)
 
-	// Routes
-	r.Mount("/v4", Routes())
-
 	// Placeholder db connection
-	_, err := sqlx.Connect("sqlite3", ":memory:")
+  db, err := sqlx.Connect("sqlite3", ":memory:")
 	if err != nil {
 		log.Fatalf("Failed to connect to database: %v", err)
 	}
@@ -47,11 +47,17 @@ func main() {
 	if port == "" {
 		port = "6673"
 	}
-
-	s := &http.Server{
+	
+	s := server.New()
+	s.DB = db
+	s.Router = r
+	s.Http = &http.Server{
 		Addr:    ":" + port,
 		Handler: r,
 	}
+
+	// Set custom routes
+	s.Router.Mount("/v4", s.Routes())
 
 	// Handle graceful shutdown
 	stop := make(chan os.Signal, 1)
@@ -59,7 +65,7 @@ func main() {
 
 	// Run listen in goroutine to catch signal
 	go func() {
-		if err := s.ListenAndServe(); err != nil && err != http.ErrServerClosed {
+		if err := s.Http.ListenAndServe(); err != nil && err != http.ErrServerClosed {
 			log.Fatal(err)
 		}
 	}()
@@ -69,7 +75,7 @@ func main() {
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 
-	if err := s.Shutdown(ctx); err != nil {
+	if err := s.Http.Shutdown(ctx); err != nil {
 		log.Fatalf("Server Shutdown Failed:%+v", err)
 	}
 	log.Print("Server Exited Properly")

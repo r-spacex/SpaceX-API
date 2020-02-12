@@ -1,4 +1,4 @@
-package payload
+package server
 
 import (
 	"fmt"
@@ -10,37 +10,37 @@ type Payload struct {
 }
 
 // Get info headers
-func Head(w http.ResponseWriter, r *http.Request) {
+func (s *Server) PayloadHeaders(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("spacex-api-count", "sample")
 }
 
 // Get all payloads
-func GetAll(w http.ResponseWriter, r *http.Request) {
+func (s *Server) PayloadGetAll(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "All payloads returned")
 }
 
 // Get one payload
-func GetOne(w http.ResponseWriter, r *http.Request) {
+func (s *Server) PayloadGetOne(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "One payload returned")
 }
 
 // Query payloads
-func Query(w http.ResponseWriter, r *http.Request) {
+func (s *Server) PayloadQuery(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Filtered payloads returned")
 }
 
 // Add a payload
-func Add(w http.ResponseWriter, r *http.Request) {
+func (s *Server) PayloadAdd(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "One payload added")
 }
 
 // Update a payload
-func Update(w http.ResponseWriter, r *http.Request) {
+func (s *Server) PayloadUpdate(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "One payload updated")
 }
 
 // Delete a payload
-func Delete(w http.ResponseWriter, r *http.Request) {
+func (s *Server) PayloadDelete(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "One payload deleted")
 }
 
@@ -49,6 +49,6 @@ func Delete(w http.ResponseWriter, r *http.Request) {
 //
 
 // Get Tesla Roadster payload
-func GetRoadster(w http.ResponseWriter, r *http.Request) {
+func (s *Server) PayloadGetRoadster(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Tesla Roadster returned")
 }
