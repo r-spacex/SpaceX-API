@@ -28,6 +28,7 @@ const fuzz = require('fuzzball');
   const missionName = data[0].mission_name;
 
   // Get most recent launch youtube link
+  // eslint-disable-next-line max-len
   const prev = await launch.find({ upcoming: false }).sort({ flight_number: -1 }).limit(1).toArray();
   const prevYoutubeUrl = prev[0].links.video_link;
 
