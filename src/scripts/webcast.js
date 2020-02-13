@@ -28,7 +28,7 @@ const fuzz = require('fuzzball');
   const missionName = data[0].mission_name;
 
   // Get most recent launch youtube link
-  const prev = await launch.find({ upcoming: true }).sort({ flight_number: 1 }).limit(1).toArray();
+  const prev = await launch.find({ upcoming: false }).sort({ flight_number: -1 }).limit(1).toArray();
   const prevYoutubeUrl = prev[0].links.video_link;
 
   const result = await request('https://www.spacex.com/webcast');
