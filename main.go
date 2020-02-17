@@ -17,8 +17,6 @@ import (
 	"github.com/r-spacex/spacex-api/server"
 )
 
-type Server server.Server
-
 func main() {
 	r := chi.NewRouter()
 
