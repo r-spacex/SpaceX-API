@@ -4,11 +4,11 @@ import (
 	"net/http"
 
 	"github.com/go-chi/chi"
-	"github.com/jmoiron/sqlx"
+	"go.mongodb.org/mongo-driver/mongo"
 )
 
 type Server struct {
-	DB     *sqlx.DB
+	DB     *mongo.Client
 	Router *chi.Mux
 	Http   *http.Server
 }

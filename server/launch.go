@@ -1,8 +1,14 @@
 package server
 
 import (
+	"context"
+	"encoding/json"
 	"fmt"
+	"io/ioutil"
+	"log"
 	"net/http"
+
+	"go.mongodb.org/mongo-driver/bson"
 )
 
 type Launch struct {
@@ -26,7 +32,32 @@ func (s *Server) LaunchGetOne(w http.ResponseWriter, r *http.Request) {
 
 // Query launches
 func (s *Server) LaunchQuery(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Filtered launches returned")
+	db := s.DB.Database("spacex-api")
+
+	// Build BSON query
+	var jsonData bson.M
+	data, _ := ioutil.ReadAll(r.Body)
+	if e := json.Unmarshal(data, &jsonData); e != nil {
+		http.Error(w, "Invalid Request", http.StatusBadRequest)
+	}
+
+	// Fetch documents
+	cursor, err := db.Collection("launch").Find(context.TODO(), jsonData)
+	if err != nil {
+		http.Error(w, "Invalid Request", http.StatusBadRequest)
+	}
+	defer cursor.Close(context.TODO())
+	for cursor.Next(context.TODO()) {
+		var result bson.M
+		if err := cursor.Decode(&result); err != nil {
+			http.Error(w, "Invalid Request", http.StatusBadRequest)
+		}
+		log.Println(result)
+	}
+	if err := cursor.Err(); err != nil {
+		http.Error(w, "Invalid Request", http.StatusBadRequest)
+	}
+	fmt.Fprintf(w, "Raw mongo query results")
 }
 
 // Add a launch

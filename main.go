@@ -12,8 +12,8 @@ import (
 	"github.com/go-chi/chi"
 	"github.com/go-chi/chi/middleware"
 	"github.com/go-chi/cors"
-	"github.com/jmoiron/sqlx"
-	_ "github.com/mattn/go-sqlite3"
+	"go.mongodb.org/mongo-driver/mongo"
+	"go.mongodb.org/mongo-driver/mongo/options"
 	"github.com/r-spacex/spacex-api/server"
 )
 
@@ -35,10 +35,15 @@ func main() {
 	})
 	r.Use(cors.Handler)
 
-	// Placeholder db connection
-  db, err := sqlx.Connect("sqlite3", ":memory:")
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
+	client, err := mongo.Connect(ctx, options.Client().ApplyURI(os.Getenv("MONGO_URL")))
 	if err != nil {
-		log.Fatalf("Failed to connect to database: %v", err)
+		log.Fatalln(err)
+	}
+	err = client.Ping(ctx, nil)
+	if err != nil {
+		log.Fatalln(err)
 	}
 
 	port := os.Getenv("PORT")
@@ -47,7 +52,7 @@ func main() {
 	}
 	
 	s := server.New()
-	s.DB = db
+	s.DB = client
 	s.Router = r
 	s.Http = &http.Server{
 		Addr:    ":" + port,
@@ -70,8 +75,6 @@ func main() {
 	log.Printf("Starting on earth at: %v", port)
 
 	<-stop
-	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
-	defer cancel()
 
 	if err := s.Http.Shutdown(ctx); err != nil {
 		log.Fatalf("Server Shutdown Failed:%+v", err)

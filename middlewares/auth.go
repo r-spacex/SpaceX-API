@@ -3,10 +3,10 @@ package middlewares
 import (
 	"net/http"
 
-	"github.com/jmoiron/sqlx"
+	"go.mongodb.org/mongo-driver/mongo"
 )
 
-func Auth(db *sqlx.DB) func(next http.Handler) http.Handler {
+func Auth(db *mongo.Client) func(next http.Handler) http.Handler {
 	return func(next http.Handler) http.Handler {
 		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 			// Check if token exists in database
