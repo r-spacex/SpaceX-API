@@ -32,7 +32,7 @@ func (s *Server) LaunchGetOne(w http.ResponseWriter, r *http.Request) {
 
 // Query launches
 func (s *Server) LaunchQuery(w http.ResponseWriter, r *http.Request) {
-	db := s.DB.Database("spacex-api")
+	db := s.Client.Database("spacex-api")
 
 	// Build BSON query
 	var jsonData bson.M

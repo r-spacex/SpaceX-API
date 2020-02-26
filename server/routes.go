@@ -16,17 +16,17 @@ func (s *Server) Routes() http.Handler {
 		r.Get("/", s.CapsuleGetAll)
 		r.Get("/{id}", s.CapsuleGetOne)
 		r.Post("/query", s.CapsuleQuery)
-		r.With(middlewares.Auth(s.DB)).Post("/", s.CapsuleAdd)
-		r.With(middlewares.Auth(s.DB)).Put("/{id}", s.CapsuleUpdate)
-		r.With(middlewares.Auth(s.DB)).Delete("/{id}", s.CapsuleDelete)
+		r.With(middlewares.Auth(s.Client)).Post("/", s.CapsuleAdd)
+		r.With(middlewares.Auth(s.Client)).Put("/{id}", s.CapsuleUpdate)
+		r.With(middlewares.Auth(s.Client)).Delete("/{id}", s.CapsuleDelete)
 	})
 
 	// Company Info
 	r.Route("/company", func(r chi.Router) {
 		r.Get("/", s.CompanyGetInfo)
-		r.With(middlewares.Auth(s.DB)).Post("/", s.CompanyAdd)
-		r.With(middlewares.Auth(s.DB)).Put("/{id}", s.CompanyUpdate)
-		r.With(middlewares.Auth(s.DB)).Delete("/{id}", s.CompanyDelete)
+		r.With(middlewares.Auth(s.Client)).Post("/", s.CompanyAdd)
+		r.With(middlewares.Auth(s.Client)).Put("/{id}", s.CompanyUpdate)
+		r.With(middlewares.Auth(s.Client)).Delete("/{id}", s.CompanyDelete)
 	})
 
 	// Cores
@@ -35,9 +35,9 @@ func (s *Server) Routes() http.Handler {
 		r.Get("/", s.CoreGetAll)
 		r.Get("/{id}", s.CoreGetOne)
 		r.Post("/query", s.CoreQuery)
-		r.With(middlewares.Auth(s.DB)).Post("/", s.CoreAdd)
-		r.With(middlewares.Auth(s.DB)).Put("/{id}", s.CoreUpdate)
-		r.With(middlewares.Auth(s.DB)).Delete("/{id}", s.CoreDelete)
+		r.With(middlewares.Auth(s.Client)).Post("/", s.CoreAdd)
+		r.With(middlewares.Auth(s.Client)).Put("/{id}", s.CoreUpdate)
+		r.With(middlewares.Auth(s.Client)).Delete("/{id}", s.CoreDelete)
 	})
 
 	// Crew
@@ -46,9 +46,9 @@ func (s *Server) Routes() http.Handler {
 		r.Get("/", s.CrewGetAll)
 		r.Get("/{id}", s.CrewGetOne)
 		r.Post("/query", s.CrewQuery)
-		r.With(middlewares.Auth(s.DB)).Post("/", s.CrewAdd)
-		r.With(middlewares.Auth(s.DB)).Put("/{id}", s.CrewUpdate)
-		r.With(middlewares.Auth(s.DB)).Delete("/{id}", s.CrewDelete)
+		r.With(middlewares.Auth(s.Client)).Post("/", s.CrewAdd)
+		r.With(middlewares.Auth(s.Client)).Put("/{id}", s.CrewUpdate)
+		r.With(middlewares.Auth(s.Client)).Delete("/{id}", s.CrewDelete)
 	})
 
 	// Dragons
@@ -57,9 +57,9 @@ func (s *Server) Routes() http.Handler {
 		r.Get("/", s.DragonGetAll)
 		r.Get("/{id}", s.DragonGetOne)
 		r.Post("/query", s.DragonQuery)
-		r.With(middlewares.Auth(s.DB)).Post("/", s.DragonAdd)
-		r.With(middlewares.Auth(s.DB)).Put("/{id}", s.DragonUpdate)
-		r.With(middlewares.Auth(s.DB)).Delete("/{id}", s.DragonDelete)
+		r.With(middlewares.Auth(s.Client)).Post("/", s.DragonAdd)
+		r.With(middlewares.Auth(s.Client)).Put("/{id}", s.DragonUpdate)
+		r.With(middlewares.Auth(s.Client)).Delete("/{id}", s.DragonDelete)
 	})
 
 	// Landpads
@@ -68,9 +68,9 @@ func (s *Server) Routes() http.Handler {
 		r.Get("/", s.LandpadGetAll)
 		r.Get("/{id}", s.LandpadGetOne)
 		r.Post("/query", s.LandpadQuery)
-		r.With(middlewares.Auth(s.DB)).Post("/", s.LandpadQuery)
-		r.With(middlewares.Auth(s.DB)).Put("/{id}", s.LandpadUpdate)
-		r.With(middlewares.Auth(s.DB)).Delete("/{id}", s.LandpadDelete)
+		r.With(middlewares.Auth(s.Client)).Post("/", s.LandpadQuery)
+		r.With(middlewares.Auth(s.Client)).Put("/{id}", s.LandpadUpdate)
+		r.With(middlewares.Auth(s.Client)).Delete("/{id}", s.LandpadDelete)
 	})
 
 	// Launches
@@ -83,9 +83,9 @@ func (s *Server) Routes() http.Handler {
 		r.Get("/upcoming", s.LaunchGetUpcoming)
 		r.Get("/past", s.LaunchGetPast)
 		r.Post("/query", s.LaunchQuery)
-		r.With(middlewares.Auth(s.DB)).Post("/", s.LaunchAdd)
-		r.With(middlewares.Auth(s.DB)).Put("/{id}", s.LaunchUpdate)
-		r.With(middlewares.Auth(s.DB)).Delete("/{id}", s.LaunchDelete)
+		r.With(middlewares.Auth(s.Client)).Post("/", s.LaunchAdd)
+		r.With(middlewares.Auth(s.Client)).Put("/{id}", s.LaunchUpdate)
+		r.With(middlewares.Auth(s.Client)).Delete("/{id}", s.LaunchDelete)
 	})
 
 	// Launchpads
@@ -94,9 +94,9 @@ func (s *Server) Routes() http.Handler {
 		r.Get("/", s.LaunchpadGetAll)
 		r.Get("/{id}", s.LaunchpadGetOne)
 		r.Post("/query", s.LaunchpadQuery)
-		r.With(middlewares.Auth(s.DB)).Post("/", s.LaunchpadAdd)
-		r.With(middlewares.Auth(s.DB)).Put("/{id}", s.LaunchpadUpdate)
-		r.With(middlewares.Auth(s.DB)).Delete("/{id}", s.LaunchpadDelete)
+		r.With(middlewares.Auth(s.Client)).Post("/", s.LaunchpadAdd)
+		r.With(middlewares.Auth(s.Client)).Put("/{id}", s.LaunchpadUpdate)
+		r.With(middlewares.Auth(s.Client)).Delete("/{id}", s.LaunchpadDelete)
 	})
 
 	// Payloads
@@ -105,9 +105,9 @@ func (s *Server) Routes() http.Handler {
 		r.Get("/", s.PayloadGetAll)
 		r.Get("/{id}", s.PayloadGetOne)
 		r.Post("/query", s.PayloadQuery)
-		r.With(middlewares.Auth(s.DB)).Post("/", s.PayloadAdd)
-		r.With(middlewares.Auth(s.DB)).Put("/{id}", s.PayloadUpdate)
-		r.With(middlewares.Auth(s.DB)).Delete("/{id}", s.PayloadDelete)
+		r.With(middlewares.Auth(s.Client)).Post("/", s.PayloadAdd)
+		r.With(middlewares.Auth(s.Client)).Put("/{id}", s.PayloadUpdate)
+		r.With(middlewares.Auth(s.Client)).Delete("/{id}", s.PayloadDelete)
 	})
 
 	// Rockets
@@ -116,9 +116,9 @@ func (s *Server) Routes() http.Handler {
 		r.Get("/", s.RocketGetAll)
 		r.Get("/{id}", s.RocketGetOne)
 		r.Post("/query", s.RocketGetOne)
-		r.With(middlewares.Auth(s.DB)).Post("/", s.RocketAdd)
-		r.With(middlewares.Auth(s.DB)).Put("/{id}", s.RocketUpdate)
-		r.With(middlewares.Auth(s.DB)).Delete("/{id}", s.RocketDelete)
+		r.With(middlewares.Auth(s.Client)).Post("/", s.RocketAdd)
+		r.With(middlewares.Auth(s.Client)).Put("/{id}", s.RocketUpdate)
+		r.With(middlewares.Auth(s.Client)).Delete("/{id}", s.RocketDelete)
 	})
 
 	// Ships
@@ -127,9 +127,9 @@ func (s *Server) Routes() http.Handler {
 		r.Get("/", s.ShipGetAll)
 		r.Get("/{id}", s.ShipGetOne)
 		r.Post("/query", s.ShipQuery)
-		r.With(middlewares.Auth(s.DB)).Post("/", s.ShipAdd)
-		r.With(middlewares.Auth(s.DB)).Put("/{id}", s.ShipUpdate)
-		r.With(middlewares.Auth(s.DB)).Delete("/{id}", s.ShipDelete)
+		r.With(middlewares.Auth(s.Client)).Post("/", s.ShipAdd)
+		r.With(middlewares.Auth(s.Client)).Put("/{id}", s.ShipUpdate)
+		r.With(middlewares.Auth(s.Client)).Delete("/{id}", s.ShipDelete)
 	})
 
 	// Misc

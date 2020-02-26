@@ -8,7 +8,7 @@ import (
 )
 
 type Server struct {
-	DB     *mongo.Client
+	Client *mongo.Client
 	Router *chi.Mux
 	Http   *http.Server
 }

@@ -52,7 +52,7 @@ func main() {
 	}
 	
 	s := server.New()
-	s.DB = client
+	s.Client = client
 	s.Router = r
 	s.Http = &http.Server{
 		Addr:    ":" + port,
