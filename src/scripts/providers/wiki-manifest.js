@@ -1,6 +1,7 @@
 const moment = require('moment-timezone');
 const cheerio = require('cheerio');
 const request = require('request-promise-native');
+const gmail = require('gmail-send');
 
 const getData = async () => {
   // Grab subreddit wiki manifest
@@ -9,6 +10,19 @@ const getData = async () => {
 
   // Gives us all manifest table rows in a single array
   const manifest = $('body > div.content > div > div > table:nth-child(7) > tbody').text();
+  if (!manifest) {
+    console.log('Broken wiki selector');
+    const send = gmail({
+      user: process.env.GMAIL_USER,
+      pass: process.env.GMAIL_PASS,
+      to: process.env.NOTIFY_EMAIL,
+      subject: 'Upcoming Launches',
+      text: `Broken wiki selctor: ${manifest}`,
+    });
+    await send();
+    process.exit(1);
+  }
+
   const manifestRow = manifest.split('\n').filter((v) => v !== '');
 
   // Filter to collect manifest dates
