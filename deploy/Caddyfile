@@ -1,8 +1,0 @@
-api.spacexdata.com {
-        tls jakewmeyer@gmail.com {
-                dns cloudflare
-        }
-        proxy / api:5000 {
-                transparent
-        }
-}
