@@ -12,7 +12,6 @@ func (s *Server) Routes() http.Handler {
 
 	// Capsules
 	r.Route("/capsules", func(r chi.Router) {
-		r.Head("/", s.CapsuleHeaders)
 		r.Get("/", s.CapsuleGetAll)
 		r.Get("/{id}", s.CapsuleGetOne)
 		r.Post("/query", s.CapsuleQuery)
@@ -21,17 +20,8 @@ func (s *Server) Routes() http.Handler {
 		r.With(middlewares.Auth(s.Client)).Delete("/{id}", s.CapsuleDelete)
 	})
 
-	// Company Info
-	r.Route("/company", func(r chi.Router) {
-		r.Get("/", s.CompanyGetInfo)
-		r.With(middlewares.Auth(s.Client)).Post("/", s.CompanyAdd)
-		r.With(middlewares.Auth(s.Client)).Put("/{id}", s.CompanyUpdate)
-		r.With(middlewares.Auth(s.Client)).Delete("/{id}", s.CompanyDelete)
-	})
-
 	// Cores
 	r.Route("/cores", func(r chi.Router) {
-		r.Head("/", s.CoreHeaders)
 		r.Get("/", s.CoreGetAll)
 		r.Get("/{id}", s.CoreGetOne)
 		r.Post("/query", s.CoreQuery)
@@ -42,7 +32,6 @@ func (s *Server) Routes() http.Handler {
 
 	// Crew
 	r.Route("/crew", func(r chi.Router) {
-		r.Head("/", s.CrewHeaders)
 		r.Get("/", s.CrewGetAll)
 		r.Get("/{id}", s.CrewGetOne)
 		r.Post("/query", s.CrewQuery)
@@ -53,7 +42,6 @@ func (s *Server) Routes() http.Handler {
 
 	// Dragons
 	r.Route("/dragons", func(r chi.Router) {
-		r.Head("/", s.DragonHeaders)
 		r.Get("/", s.DragonGetAll)
 		r.Get("/{id}", s.DragonGetOne)
 		r.Post("/query", s.DragonQuery)
@@ -64,7 +52,6 @@ func (s *Server) Routes() http.Handler {
 
 	// Landpads
 	r.Route("/landpads", func(r chi.Router) {
-		r.Head("/", s.LandpadHeaders)
 		r.Get("/", s.LandpadGetAll)
 		r.Get("/{id}", s.LandpadGetOne)
 		r.Post("/query", s.LandpadQuery)
@@ -75,7 +62,6 @@ func (s *Server) Routes() http.Handler {
 
 	// Launches
 	r.Route("/launches", func(r chi.Router) {
-		r.Head("/", s.LaunchHeaders)
 		r.Get("/", s.LaunchGetAll)
 		r.Get("/{id}", s.LandpadGetOne)
 		r.Get("/latest", s.LaunchGetLatest)
@@ -90,7 +76,6 @@ func (s *Server) Routes() http.Handler {
 
 	// Launchpads
 	r.Route("/launchpads", func(r chi.Router) {
-		r.Head("/", s.LaunchpadHeaders)
 		r.Get("/", s.LaunchpadGetAll)
 		r.Get("/{id}", s.LaunchpadGetOne)
 		r.Post("/query", s.LaunchpadQuery)
@@ -101,7 +86,6 @@ func (s *Server) Routes() http.Handler {
 
 	// Payloads
 	r.Route("/payloads", func(r chi.Router) {
-		r.Head("/", s.PayloadHeaders)
 		r.Get("/", s.PayloadGetAll)
 		r.Get("/{id}", s.PayloadGetOne)
 		r.Post("/query", s.PayloadQuery)
@@ -112,7 +96,6 @@ func (s *Server) Routes() http.Handler {
 
 	// Rockets
 	r.Route("/rockets", func(r chi.Router) {
-		r.Head("/", s.RocketHeaders)
 		r.Get("/", s.RocketGetAll)
 		r.Get("/{id}", s.RocketGetOne)
 		r.Post("/query", s.RocketGetOne)
@@ -123,7 +106,6 @@ func (s *Server) Routes() http.Handler {
 
 	// Ships
 	r.Route("/ships", func(r chi.Router) {
-		r.Head("/", s.ShipHeaders)
 		r.Get("/", s.ShipGetAll)
 		r.Get("/{id}", s.ShipGetOne)
 		r.Post("/query", s.ShipQuery)

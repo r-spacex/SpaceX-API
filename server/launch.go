@@ -15,11 +15,6 @@ type Launch struct {
 	ID string
 }
 
-// Get info headers
-func (s *Server) LaunchHeaders(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("spacex-api-count", "sample")
-}
-
 // Get all launches
 func (s *Server) LaunchGetAll(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "All launches returned")

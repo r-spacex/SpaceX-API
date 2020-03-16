@@ -9,11 +9,6 @@ type Dragon struct {
 	ID string
 }
 
-// Get info headers
-func (s *Server) DragonHeaders(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("spacex-api-count", "sample")
-}
-
 // Get all dragons
 func (s *Server) DragonGetAll(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "All dragons returned")

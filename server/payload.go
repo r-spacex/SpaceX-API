@@ -9,11 +9,6 @@ type Payload struct {
 	ID string
 }
 
-// Get info headers
-func (s *Server) PayloadHeaders(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("spacex-api-count", "sample")
-}
-
 // Get all payloads
 func (s *Server) PayloadGetAll(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "All payloads returned")

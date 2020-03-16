@@ -9,11 +9,6 @@ type Landpad struct {
 	ID string
 }
 
-// Get info headers
-func (s *Server) LandpadHeaders(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("spacex-api-count", "sample")
-}
-
 // Get all landpads
 func (s *Server) LandpadGetAll(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "All landpads returned")

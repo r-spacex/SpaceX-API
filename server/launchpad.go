@@ -9,11 +9,6 @@ type Launchpad struct {
 	ID string
 }
 
-// Get info headers
-func (s *Server) LaunchpadHeaders(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("spacex-api-count", "sample")
-}
-
 // Get all launchpads
 func (s *Server) LaunchpadGetAll(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "All launchpads returned")

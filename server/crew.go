@@ -9,11 +9,6 @@ type Crew struct {
 	ID string
 }
 
-// Get info headers
-func (s *Server) CrewHeaders(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("spacex-api-count", "sample")
-}
-
 // Get all crew
 func (s *Server) CrewGetAll(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "All crew returned")

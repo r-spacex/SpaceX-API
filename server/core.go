@@ -9,11 +9,6 @@ type Core struct {
 	ID string
 }
 
-// Get info headers
-func (s *Server) CoreHeaders(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("spacex-api-count", "sample")
-}
-
 // Get all cores
 func (s *Server) CoreGetAll(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "All cores returned")

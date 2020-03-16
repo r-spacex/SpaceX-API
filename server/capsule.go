@@ -9,11 +9,6 @@ type Capsule struct {
 	ID string
 }
 
-// Get info headers
-func (s *Server) CapsuleHeaders(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("spacex-api-count", "sample")
-}
-
 // Get all capsules
 func (s *Server) CapsuleGetAll(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "All capsules returned")

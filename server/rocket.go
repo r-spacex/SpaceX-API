@@ -9,11 +9,6 @@ type Rocket struct {
 	ID string
 }
 
-// Get info headers
-func (s *Server) RocketHeaders(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("spacex-api-count", "sample")
-}
-
 // Get all rockets
 func (s *Server) RocketGetAll(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "All rockets returned")
