@@ -86,7 +86,7 @@ const checkDatePattern = async (mdate) => {
 
   // Remove extra stuff humans might add
   // NOTE: Add to this when people add unexpected things to dates in the wiki
-  const cleaned = mdate.replace(/(~|early|mid|late|end)/gi, ' ').split('/')[0].trim();
+  const cleaned = mdate.replace(/(early|mid|late|end)/gi, ' ').replace(/(~)/gi, '').split('/')[0].trim();
   console.log(cleaned);
 
   const result = {
@@ -133,6 +133,14 @@ const checkDatePattern = async (mdate) => {
   } else {
     // Send notification
     console.log(`No match: ${cleaned}`);
+    const send = gmail({
+      user: process.env.GMAIL_USER,
+      pass: process.env.GMAIL_PASS,
+      to: process.env.NOTIFY_EMAIL,
+      subject: 'Upcoming Launches',
+      text: `No date match: ${cleaned}`,
+    });
+    await send();
   }
 
   return result;
