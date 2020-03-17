@@ -82,11 +82,11 @@ const checkDatePattern = async (mdate) => {
   const day = /^\s*[0-9]{4}\s*([a-z]{3}|[a-z]{3,9})\s*[0-9]{1,2}\s*$/i;
 
   // 2020 Nov 4 [14:10]
-  const hour = /^\s*[0-9]{4}\s*([a-z]{3}|[a-z]{3,9})\s*[0-9]{1,2}\s*(\[?[0-9]{2}:[0-9]{2}\]?)\s*$/i;
+  const hour = /^\s*[0-9]{4}\s*([a-z]{3}|[a-z]{3,9})\s*[0-9]{1,2}\s*(\[?\s*[0-9]{2}:[0-9]{2}\s*\]?)\s*$/i;
 
   // Remove extra stuff humans might add
   // NOTE: Add to this when people add unexpected things to dates in the wiki
-  const cleaned = mdate.replace(/(early|mid|late|end)/gi, ' ').replace(/(~)/gi, '').split('/')[0].trim();
+  const cleaned = mdate.replace(/(~|early|mid|late|end)/gi, ' ').split('/')[0].trim();
   console.log(cleaned);
 
   const result = {
