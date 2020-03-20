@@ -12,6 +12,7 @@ type Ship struct {
 	Name *string `bson:"name" json:"name"`
 	Model *string `bson:"model" json:"model"`
 	Type *string `bson:"type" json:"type"`
+	Roles []string `bson:"roles" json:"roles"`
 	Active *bool `bson:"active" json:"active"`
 	Imo *int `bson:"imo" json:"imo"`
 	Mmsi *int `bson:"mmsi" json:"mmsi"`

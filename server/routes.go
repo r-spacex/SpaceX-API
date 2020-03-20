@@ -50,6 +50,16 @@ func (s *Server) Routes() http.Handler {
 		r.With(middlewares.Auth(s.Client)).Delete("/{id}", s.DragonDelete)
 	})
 
+	// Fairings
+	r.Route("/fairings", func(r chi.Router) {
+		r.Get("/", s.FairingGetAll)
+		r.Get("/{id}", s.FairingGetOne)
+		r.Post("/query", s.FairingQuery)
+		r.With(middlewares.Auth(s.Client)).Post("/", s.FairingAdd)
+		r.With(middlewares.Auth(s.Client)).Put("/{id}", s.FairingUpdate)
+		r.With(middlewares.Auth(s.Client)).Delete("/{id}", s.FairingDelete)
+	})
+
 	// Landpads
 	r.Route("/landpads", func(r chi.Router) {
 		r.Get("/", s.LandpadGetAll)
@@ -89,6 +99,7 @@ func (s *Server) Routes() http.Handler {
 		r.Get("/", s.PayloadGetAll)
 		r.Get("/{id}", s.PayloadGetOne)
 		r.Post("/query", s.PayloadQuery)
+		r.Get("/roadster", s.PayloadGetRoadster)
 		r.With(middlewares.Auth(s.Client)).Post("/", s.PayloadAdd)
 		r.With(middlewares.Auth(s.Client)).Put("/{id}", s.PayloadUpdate)
 		r.With(middlewares.Auth(s.Client)).Delete("/{id}", s.PayloadDelete)
@@ -112,11 +123,6 @@ func (s *Server) Routes() http.Handler {
 		r.With(middlewares.Auth(s.Client)).Post("/", s.ShipAdd)
 		r.With(middlewares.Auth(s.Client)).Put("/{id}", s.ShipUpdate)
 		r.With(middlewares.Auth(s.Client)).Delete("/{id}", s.ShipDelete)
-	})
-
-	// Misc
-	r.Route("/", func(r chi.Router) {
-		r.Get("/roadster", s.PayloadGetRoadster)
 	})
 
 	return r
