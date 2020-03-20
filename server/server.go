@@ -10,7 +10,7 @@ import (
 type Server struct {
 	Client *mongo.Client
 	Router *chi.Mux
-	Http   *http.Server
+	HTTP   *http.Server
 }
 
 // Construct a new server

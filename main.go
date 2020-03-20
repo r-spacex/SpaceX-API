@@ -53,7 +53,7 @@ func main() {
 	s := server.New()
 	s.Client = client
 	s.Router = r
-	s.Http = &http.Server{
+	s.HTTP = &http.Server{
 		Addr:    ":" + port,
 		Handler: r,
 	}
@@ -67,7 +67,7 @@ func main() {
 
 	// Run listen in goroutine to catch signal
 	go func() {
-		if err := s.Http.ListenAndServe(); err != nil && err != http.ErrServerClosed {
+		if err := s.HTTP.ListenAndServe(); err != nil && err != http.ErrServerClosed {
 			log.Fatal(err)
 		}
 	}()

@@ -16,7 +16,7 @@ jobs:
     - name: Run linters
       run: |
         export PATH=$PATH:$(go env GOPATH)/bin
-        golangci-lint -E bodyclose,misspell,gocyclo,dupl,gofmt,golint,unconvert,goimports,depguard,gocritic,interfacer run
+        golangci-lint -E bodyclose,misspell,gocyclo,gofmt,golint,unconvert,goimports,depguard,gocritic,interfacer run
   test:
     runs-on: ubuntu-latest
     steps:
