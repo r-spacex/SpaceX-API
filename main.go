@@ -75,7 +75,7 @@ func main() {
 
 	<-stop
 
-	if err := s.Http.Shutdown(ctx); err != nil {
+	if err := s.HTTP.Shutdown(ctx); err != nil {
 		log.Fatalf("Server Shutdown Failed:%+v", err)
 	}
 	log.Print("Server Exited Properly")
