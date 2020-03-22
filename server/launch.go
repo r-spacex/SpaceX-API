@@ -36,15 +36,16 @@ type Launch struct {
 		LandingSuccess  *bool               `bson:"landing_success" json:"landing_success"`
 		LandingType     *string             `bson:"landing_type" json:"landing_type"`
 		LandingLocation *string             `bson:"landing_location" json:"landing_location"`
-	} `bson:"cores" json:"cores"`
+	} `bson:"cores" json:"cores,nilasempty"`
 	Fairings struct {
 		Reused          *bool                `bson:"reused" json:"reused"`
 		RecoveryAttempt *bool                `bson:"recovery_attempt" json:"recovery_attempt"`
 		Recovered       *bool                `bson:"recovered" json:"recovered"`
-		Ships           []primitive.ObjectID `bson:"ships" json:"ships"`
+		Ships           []primitive.ObjectID `bson:"ships" json:"ships,nilasempty"`
 	} `bson:"fairings" json:"fairings"`
-	Crew  []primitive.ObjectID `bson:"crew" json:"crew"`
+	Crew  []primitive.ObjectID `bson:"crew" json:"crew,nilasempty"`
 	Site  *primitive.ObjectID  `bson:"site" json:"site"`
+	Ships  []primitive.ObjectID `bson:"ships" json:"ships,nilasempty"`
 	Links struct {
 		Patch struct {
 			Small *string `bson:"small" json:"small"`
@@ -57,8 +58,8 @@ type Launch struct {
 			Recovery *string `bson:"recovery" json:"recovery"`
 		} `bson:"reddit" json:"reddit"`
 		Flickr struct {
-			Small []string `bson:"small" json:"small"`
-			Large []string `bson:"large" json:"large"`
+			Small []string `bson:"small" json:"small,nilasempty"`
+			Large []string `bson:"large" json:"large,nilasempty"`
 		} `bson:"flickr" json:"flickr"`
 		Presskit       *string `bson:"presskit" json:"presskit"`
 		Livestream     *string `bson:"livestream" json:"livestream"`
