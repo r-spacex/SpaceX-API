@@ -3,10 +3,22 @@ package server
 import (
 	"fmt"
 	"net/http"
+
+	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
 type Launchpad struct {
-	ID string
+	ID              *primitive.ObjectID `bson:"_id,omitempty" json:"id"`
+	Name            *string             `bson:"name" json:"name"`
+	FullName        *string             `bson:"full_name" json:"full_name"`
+	Status          *string             `bson:"status" json:"status"`
+	Timezone        *string             `bson:"timezone" json:"timezone"`
+	Locality        *string             `bson:"locality" json:"locality"`
+	Region          *string             `bson:"region" json:"region"`
+	Latitude        *float64            `bson:"latitude" json:"latitude"`
+	Longitude       *float64            `bson:"longitude" json:"longitude"`
+	LaunchAttempts  int                 `bson:"launch_attempts" json:"launch_attempts"`
+	LaunchSuccesses int                 `bson:"launch_successes" json:"launch_successes"`
 }
 
 // Get all launchpads

@@ -8,27 +8,27 @@ import (
 )
 
 type Ship struct {
-	ID primitive.ObjectID `bson:"_id" json:"id"`
-	Name *string `bson:"name" json:"name"`
-	Model *string `bson:"model" json:"model"`
-	Type *string `bson:"type" json:"type"`
-	Roles []string `bson:"roles" json:"roles"`
-	Active *bool `bson:"active" json:"active"`
-	Imo *int `bson:"imo" json:"imo"`
-	Mmsi *int `bson:"mmsi" json:"mmsi"`
-	Abs *int `bson:"abs" json:"abs"`
-	Class *int `bson:"class" json:"class"`
-	MassKg *int `bson:"mass_kg" json:"mass_kg"`
-	MassLbs *int `bson:"mass_lbs" json:"mass_lbs"`
-	YearBuilt *int `bson:"year_built" json:"year_built"`
-	HomePort *string `bson:"home_port" json:"home_port"`
-	Status *string `bson:"status" json:"status"`
-	SpeedKn *float64 `bson:"speed_kn" json:"speed_kn"`
-	CourseDeg *float64 `bson:"course_deg" json:"course_deg"`
-	Latitude *float64 `bson:"latitude" json:"latitude"`
-	Longitude *float64 `bson:"longitude" json:"longitude"`
-	Link *string `bson:"link" json:"link"`
-	Image *string `bson:"image" json:"image"`
+	ID        *primitive.ObjectID `bson:"_id,omitempty" json:"id"`
+	Name      *string             `bson:"name" json:"name"`
+	Model     *string             `bson:"model" json:"model"`
+	Type      *string             `bson:"type" json:"type"`
+	Roles     []string            `bson:"roles" json:"roles,nilasempty"`
+	Active    *bool               `bson:"active" json:"active"`
+	Imo       *int                `bson:"imo" json:"imo"`
+	Mmsi      *int                `bson:"mmsi" json:"mmsi"`
+	Abs       *int                `bson:"abs" json:"abs"`
+	Class     *int                `bson:"class" json:"class"`
+	MassKg    *int                `bson:"mass_kg" json:"mass_kg"`
+	MassLbs   *int                `bson:"mass_lbs" json:"mass_lbs"`
+	YearBuilt *int                `bson:"year_built" json:"year_built"`
+	HomePort  *string             `bson:"home_port" json:"home_port"`
+	Status    *string             `bson:"status" json:"status"`
+	SpeedKn   *float64            `bson:"speed_kn" json:"speed_kn"`
+	CourseDeg *float64            `bson:"course_deg" json:"course_deg"`
+	Latitude  *float64            `bson:"latitude" json:"latitude"`
+	Longitude *float64            `bson:"longitude" json:"longitude"`
+	Link      *string             `bson:"link" json:"link"`
+	Image     *string             `bson:"image" json:"image"`
 }
 
 // Get all ships

@@ -3,10 +3,19 @@ package server
 import (
 	"fmt"
 	"net/http"
+
+	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
 type Capsule struct {
-	ID string
+	ID            *primitive.ObjectID `bson:"_id,omitempty" json:"id"`
+	Serial        *string             `bson:"serial" json:"serial"`
+	Status        *string             `bson:"status" json:"status"`
+	Dragon        *primitive.ObjectID `bson:"dragon" json:"dragon"`
+	ReuseCount    *int                `bson:"reuse_count" json:"reuse_count"`
+	WaterLandings *int                `bson:"water_landings" json:"water_landings"`
+	LandLandings  *int                `bson:"land_landings" json:"land_landings"`
+	LastUpdate    *string             `bson:"last_update" json:"last_update"`
 }
 
 // Get all capsules

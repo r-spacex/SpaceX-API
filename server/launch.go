@@ -9,10 +9,63 @@ import (
 	"net/http"
 
 	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
 type Launch struct {
-	ID string
+	ID                *primitive.ObjectID `bson:"_id,omitempty" json:"id"`
+	FlightNumber      *int                `bson:"flight_number" json:"flight_number"`
+	Name              *string             `bson:"name" json:"name"`
+	DateUTC           *primitive.DateTime `bson:"date_utc" json:"date_utc"`
+	DateLocal         *primitive.DateTime `bson:"date_local" json:"date_local"`
+	DatePrecision     *string             `bson:"date_precision" json:"date_precision"`
+	StaticFireDateUTC *primitive.DateTime `bson:"static_fire_date_utc" json:"static_fire_date_utc"`
+	TBD               bool                `bson:"tbd" json:"tbd"`
+	NET               bool                `bson:"net" json:"net"`
+	Window            *int                `bson:"window" json:"window"`
+	Rocket            *primitive.ObjectID `bson:"rocket" json:"rocket"`
+	LaunchSuccess     *bool               `bson:"launch_success" json:"launch_success"`
+	Upcoming          bool                `bson:"upcoming" json:"upcoming"`
+	Details           *string             `bson:"details" json:"details"`
+	Cores             []struct {
+		Core            *primitive.ObjectID `bson:"core" json:"core"`
+		Gridfins        *bool               `bson:"gridfins" json:"gridfins"`
+		Legs            *bool               `bson:"legs" json:"legs"`
+		Reused          *bool               `bson:"reused" json:"reused"`
+		LandingAttempt  *bool               `bson:"landing_attempt" json:"landing_attempt"`
+		LandingSuccess  *bool               `bson:"landing_success" json:"landing_success"`
+		LandingType     *string             `bson:"landing_type" json:"landing_type"`
+		LandingLocation *string             `bson:"landing_location" json:"landing_location"`
+	} `bson:"cores" json:"cores"`
+	Fairings struct {
+		Reused          *bool                `bson:"reused" json:"reused"`
+		RecoveryAttempt *bool                `bson:"recovery_attempt" json:"recovery_attempt"`
+		Recovered       *bool                `bson:"recovered" json:"recovered"`
+		Ships           []primitive.ObjectID `bson:"ships" json:"ships"`
+	} `bson:"fairings" json:"fairings"`
+	Crew  []primitive.ObjectID `bson:"crew" json:"crew"`
+	Site  *primitive.ObjectID  `bson:"site" json:"site"`
+	Links struct {
+		Patch struct {
+			Small *string `bson:"small" json:"small"`
+			Large *string `bson:"large" json:"large"`
+		} `bson:"patch" json:"patch"`
+		Reddit struct {
+			Campaign *string `bson:"campaign" json:"campaign"`
+			Launch   *string `bson:"launch" json:"launch"`
+			Media    *string `bson:"media" json:"media"`
+			Recovery *string `bson:"recovery" json:"recovery"`
+		} `bson:"reddit" json:"reddit"`
+		Flickr struct {
+			Small []string `bson:"small" json:"small"`
+			Large []string `bson:"large" json:"large"`
+		} `bson:"flickr" json:"flickr"`
+		Presskit       *string `bson:"presskit" json:"presskit"`
+		Livestream     *string `bson:"livestream" json:"livestream"`
+		YoutubeID      *string `bson:"youtube_id" json:"youtube_id"`
+		Spaceflightnow *string `bson:"spaceflightnow" json:"spaceflightnow"`
+		Wikipedia      *string `bson:"wikipedia" json:"wikipedia"`
+	} `bson:"links" json:"links"`
 }
 
 // Get all launches
