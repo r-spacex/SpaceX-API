@@ -1,9 +1,10 @@
-package server
+package ship
 
 import (
 	"fmt"
 	"net/http"
 
+	"github.com/r-spacex/spacex-api/server"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
@@ -12,7 +13,7 @@ type Ship struct {
 	Name      *string             `bson:"name" json:"name"`
 	Model     *string             `bson:"model" json:"model"`
 	Type      *string             `bson:"type" json:"type"`
-	Roles     []string            `bson:"roles" json:"roles,nilasempty"`
+	Roles     []string            `bson:"roles" json:"roles"`
 	Active    *bool               `bson:"active" json:"active"`
 	Imo       *int                `bson:"imo" json:"imo"`
 	Mmsi      *int                `bson:"mmsi" json:"mmsi"`
@@ -32,31 +33,43 @@ type Ship struct {
 }
 
 // Get all ships
-func (s *Server) ShipGetAll(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "All ships returned")
+func All(s *server.Server) http.HandlerFunc {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "All ships returned")
+	})
 }
 
 // Get one ship
-func (s *Server) ShipGetOne(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "One ship returned")
+func One(s *server.Server) http.HandlerFunc {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "One ship returned")
+	})
 }
 
 // Query ships
-func (s *Server) ShipQuery(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Filtered ships returned")
+func Query(s *server.Server) http.HandlerFunc {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "Filtered ships returned")
+	})
 }
 
 // Add a ship
-func (s *Server) ShipAdd(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "One ship added")
+func Add(s *server.Server) http.HandlerFunc {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "One ship added")
+	})
 }
 
 // Update a ship
-func (s *Server) ShipUpdate(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "One ship updated")
+func Update(s *server.Server) http.HandlerFunc {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "One ship updated")
+	})
 }
 
 // Delete a ship
-func (s *Server) ShipDelete(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "One ship deleted")
+func Delete(s *server.Server) http.HandlerFunc {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "One ship deleted")
+	})
 }

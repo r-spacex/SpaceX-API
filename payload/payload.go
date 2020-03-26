@@ -1,9 +1,10 @@
-package server
+package payload
 
 import (
 	"fmt"
 	"net/http"
 
+	"github.com/r-spacex/spacex-api/server"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
@@ -12,10 +13,10 @@ type Payload struct {
 	Name            *string             `bson:"name" json:"name"`
 	Type            *string             `bson:"type" json:"type"`
 	Reused          *bool               `bson:"reused" json:"reused"`
-	Customers       []string            `bson:"customers" json:"customers,nilasempty"`
-	NoradIds        []int               `bson:"norad_ids" json:"norad_ids,nilasempty"`
-	Nationalities   []string            `bson:"nationalities" json:"nationalities,nilasempty"`
-	Manufacturers   []string            `bson:"manufacturers" json:"manufacturers,nilasempty"`
+	Customers       []string            `bson:"customers" json:"customers"`
+	NoradIds        []int               `bson:"norad_ids" json:"norad_ids"`
+	Nationalities   []string            `bson:"nationalities" json:"nationalities"`
+	Manufacturers   []string            `bson:"manufacturers" json:"manufacturers"`
 	MassKg          *float64            `bson:"mass_kg" json:"mass_kg"`
 	MassLbs         *float64            `bson:"mass_lbs" json:"mass_lbs"`
 	Orbit           *string             `bson:"orbit" json:"orbit"`
@@ -44,33 +45,45 @@ type Payload struct {
 }
 
 // Get all payloads
-func (s *Server) PayloadGetAll(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "All payloads returned")
+func All(s *server.Server) http.HandlerFunc {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "All payloads returned")
+	})
 }
 
 // Get one payload
-func (s *Server) PayloadGetOne(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "One payload returned")
+func One(s *server.Server) http.HandlerFunc {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "One payload returned")
+	})
 }
 
 // Query payloads
-func (s *Server) PayloadQuery(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Filtered payloads returned")
+func Query(s *server.Server) http.HandlerFunc {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "Filtered payloads returned")
+	})
 }
 
 // Add a payload
-func (s *Server) PayloadAdd(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "One payload added")
+func Add(s *server.Server) http.HandlerFunc {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "One payload added")
+	})
 }
 
 // Update a payload
-func (s *Server) PayloadUpdate(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "One payload updated")
+func Update(s *server.Server) http.HandlerFunc {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "One payload updated")
+	})
 }
 
 // Delete a payload
-func (s *Server) PayloadDelete(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "One payload deleted")
+func Delete(s *server.Server) http.HandlerFunc {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "One payload deleted")
+	})
 }
 
 //
@@ -78,6 +91,8 @@ func (s *Server) PayloadDelete(w http.ResponseWriter, r *http.Request) {
 //
 
 // Get Tesla Roadster payload
-func (s *Server) PayloadGetRoadster(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Tesla Roadster returned")
+func Roadster(s *server.Server) http.HandlerFunc {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "Tesla Roadster returned")
+	})
 }

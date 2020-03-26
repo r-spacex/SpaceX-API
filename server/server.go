@@ -16,6 +16,5 @@ type Server struct {
 // Construct a new server
 func New() *Server {
 	s := &Server{}
-	s.Routes()
 	return s
 }

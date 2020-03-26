@@ -1,9 +1,10 @@
-package server
+package landpad
 
 import (
 	"fmt"
 	"net/http"
 
+	"github.com/r-spacex/spacex-api/server"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
@@ -22,32 +23,45 @@ type Landpad struct {
 	Details          *string             `bson:"details" json:"details"`
 }
 
+
 // Get all landpads
-func (s *Server) LandpadGetAll(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "All landpads returned")
+func All(s *server.Server) http.HandlerFunc {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "All landpads returned")
+	})
 }
 
 // Get one landpad
-func (s *Server) LandpadGetOne(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "One landpad returned")
+func One(s *server.Server) http.HandlerFunc {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "One landpad returned")
+	})
 }
 
 // Query landpads
-func (s *Server) LandpadQuery(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Filtered landpads returned")
+func Query(s *server.Server) http.HandlerFunc {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "Filtered landpads returned")
+	})
 }
 
 // Add a landpad
-func (s *Server) LandpadAdd(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "One landpad added")
+func Add(s *server.Server) http.HandlerFunc {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "One landpad added")
+	})
 }
 
 // Update a landpad
-func (s *Server) LandpadUpdate(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "One landpad updated")
+func Update(s *server.Server) http.HandlerFunc {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "One landpad updated")
+	})
 }
 
 // Delete a landpad
-func (s *Server) LandpadDelete(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "One landpad deleted")
+func Delete(s *server.Server) http.HandlerFunc {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "One landpad deleted")
+	})
 }
