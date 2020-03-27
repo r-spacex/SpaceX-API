@@ -84,21 +84,21 @@ const checkDatePattern = async (mdate) => {
   // 2020 Nov 4 [14:10]
   const hour = /^\s*[0-9]{4}\s*([a-z]{3}|[a-z]{3,9})\s*[0-9]{1,2}\s*(\[?\s*[0-9]{2}:[0-9]{2}\s*\]?)\s*$/i;
 
-  // Remove extra stuff humans might add
-  // NOTE: Add to this when people add unexpected things to dates in the wiki
-  const cleaned = mdate.replace(/(~|early|mid|late|end)/gi, ' ').split('/')[0].trim();
-  console.log(cleaned);
-
   const result = {
     mdate,
   };
 
   // Check if date contains TBD
-  if (tbd.test(cleaned)) {
+  if (tbd.test(mdate)) {
     result.tbd = true;
   } else {
     result.tbd = false;
   }
+
+  // Remove extra stuff humans might add
+  // NOTE: Add to this when people add unexpected things to dates in the wiki
+  const cleaned = mdate.replace(/(~|early|mid|late|end|tbd)/gi, ' ').split('/')[0].trim();
+  console.log(cleaned);
 
   // Set tentativeness
   // Only true when a time is available
