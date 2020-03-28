@@ -46,7 +46,7 @@ type Launch struct {
 	} `bson:"fairings" json:"fairings"`
 	Crew  []primitive.ObjectID `bson:"crew" json:"crew"`
 	Site  *primitive.ObjectID  `bson:"site" json:"site"`
-	Ships  []primitive.ObjectID `bson:"ships" json:"ships"`
+	Ships []primitive.ObjectID `bson:"ships" json:"ships"`
 	Links struct {
 		Patch struct {
 			Small *string `bson:"small" json:"small"`
@@ -95,7 +95,7 @@ func Query(s *server.Server) http.HandlerFunc {
 		if e := json.Unmarshal(data, &jsonData); e != nil {
 			http.Error(w, "Invalid Request", http.StatusBadRequest)
 		}
-	
+
 		// Fetch documents
 		cursor, err := db.Collection("launch").Find(context.TODO(), jsonData)
 		if err != nil {
