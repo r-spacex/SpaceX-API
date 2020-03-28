@@ -123,6 +123,6 @@ func Routes(s *server.Server) *chi.Mux {
 		r.With(middlewares.Auth(s.Client)).Put("/{id}", ship.Update(s))
 		r.With(middlewares.Auth(s.Client)).Delete("/{id}", ship.Delete(s))
 	})
-	
+
 	return r
 }

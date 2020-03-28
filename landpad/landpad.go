@@ -23,7 +23,6 @@ type Landpad struct {
 	Details          *string             `bson:"details" json:"details"`
 }
 
-
 // Get all landpads
 func All(s *server.Server) http.HandlerFunc {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {

@@ -46,7 +46,6 @@ func Update(s *server.Server) http.HandlerFunc {
 	})
 }
 
-
 // Delete a dragon
 func Delete(s *server.Server) http.HandlerFunc {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
