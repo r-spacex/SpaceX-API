@@ -1,15 +1,15 @@
 
 const Router = require('koa-router');
-const capsules = require('./capsules');
-const cores = require('./cores');
-const crew = require('./crew');
-const dragons = require('./dragons');
-const landpads = require('./landpads');
-const launches = require('./launches');
-const launchpads = require('./launchpads');
-const payloads = require('./payloads');
-const rockets = require('./rockets');
-const ships = require('./ships');
+const capsules = require('./capsules/routes');
+const cores = require('./cores/routes');
+const crew = require('./crew/routes');
+const dragons = require('./dragons/routes');
+const landpads = require('./landpads/routes');
+const launches = require('./launches/routes');
+const launchpads = require('./launchpads/routes');
+const payloads = require('./payloads/routes');
+const rockets = require('./rockets/routes');
+const ships = require('./ships/routes');
 
 const v4 = new Router({
   prefix: '/v4',

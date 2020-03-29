@@ -7,11 +7,6 @@ const router = new Router({
   prefix: '/capsules',
 });
 
-// Get all capsules
-router.get('/', async (ctx) => {
-
-});
-
 // Get one capsule
 router.get('/:id', async (ctx) => {
 

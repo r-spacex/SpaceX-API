@@ -1,33 +1,33 @@
 
 const Router = require('koa-router');
-const Crew = require('./model');
+const Landpad = require('./model');
 const { auth } = require('../../../middleware');
 
 const router = new Router({
-  prefix: '/crew',
+  prefix: '/landpads',
 });
 
-// Get one crew member
+// Get one landpad
 router.get('/:id', async (ctx) => {
 
 });
 
-// Query crew members
+// Query landpads
 router.post('/query', async (ctx) => {
 
 });
 
-// Create crew member
+// Create landpad
 router.post('/', auth, async (ctx) => {
 
 });
 
-// Update crew member
+// Update landpad
 router.put('/:id', auth, async (ctx) => {
 
 });
 
-// Delete crew member
+// Delete landpad
 router.delete('/:id', auth, async (ctx) => {
 
 });

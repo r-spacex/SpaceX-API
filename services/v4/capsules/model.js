@@ -1,43 +1,44 @@
 
 const mongoose = require('mongoose');
 const mongoosePaginate = require('mongoose-paginate-v2');
+const uniqueValidator = require('mongoose-unique-validator');
 
 const capsuleSchema = new mongoose.Schema({
   serial: {
     type: String,
-    default: null,
     required: true,
+    unique: true,
   },
   status: {
     type: String,
-    default: null,
-    required: true,
     enum: ['unknown', 'active', 'retired', 'destroyed'],
+    required: true,
   },
   dragon: mongoose.ObjectId,
   reuse_count: {
     type: Number,
     default: 0,
-    required: true,
   },
   water_landings: {
     type: Number,
     default: 0,
-    required: true,
   },
   land_landings: {
     type: Number,
     default: 0,
-    required: true,
   },
   last_update: {
     type: String,
     default: null,
-    required: true,
   },
+  launches: [{
+    type: mongoose.ObjectId,
+    ref: 'Launch',
+  }],
 });
 
 capsuleSchema.plugin(mongoosePaginate);
+capsuleSchema.plugin(uniqueValidator);
 
 const Capsule = mongoose.model('Capsule', capsuleSchema);
 

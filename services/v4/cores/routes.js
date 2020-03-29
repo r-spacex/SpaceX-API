@@ -9,32 +9,67 @@ const router = new Router({
 
 // Get all cores
 router.get('/', async (ctx) => {
-
+  try {
+    const result = await Core.find({});
+    ctx.status = 200;
+    ctx.body = result;
+  } catch (error) {
+    ctx.throw(400, error.message);
+  }
 });
 
 // Get one core
 router.get('/:id', async (ctx) => {
-
+  try {
+    const result = await Core.findById(ctx.params.id);
+    ctx.status = 200;
+    ctx.body = result;
+  } catch (error) {
+    ctx.throw(400, error.message);
+  }
 });
 
 // Query cores
 router.post('/query', async (ctx) => {
-
+  const { query, options } = ctx.request.body;
+  try {
+    const result = await Core.paginate(query, options);
+    ctx.status = 200;
+    ctx.body = result;
+  } catch (error) {
+    ctx.throw(400, error.message);
+  }
 });
 
 // Create core
 router.post('/', auth, async (ctx) => {
-
+  try {
+    const core = new Core(ctx.request.body);
+    await core.save();
+    ctx.status = 201;
+  } catch (error) {
+    ctx.throw(400, error.message);
+  }
 });
 
 // Update core
-router.put('/:id', auth, async (ctx) => {
-
+router.patch('/:id', auth, async (ctx) => {
+  try {
+    await Core.findByIdAndUpdate(ctx.params.id, ctx.request.body, { runValidators: true });
+    ctx.status = 200;
+  } catch (error) {
+    ctx.throw(400, error.message);
+  }
 });
 
 // Delete core
 router.delete('/:id', auth, async (ctx) => {
-
+  try {
+    await Core.findByIdAndDelete(ctx.params.id);
+    ctx.status = 200;
+  } catch (error) {
+    ctx.throw(400, error.message);
+  }
 });
 
 module.exports = router;
