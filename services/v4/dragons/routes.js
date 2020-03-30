@@ -10,7 +10,7 @@ const router = new Router({
 // Get all dragons
 router.get('/', async (ctx) => {
   try {
-    const result = await Dragon.find({});
+    const result = await Dragon.find({}, null, { sort: { name: 'asc' } });
     ctx.status = 200;
     ctx.body = result;
   } catch (error) {

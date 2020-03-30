@@ -38,7 +38,7 @@ const dragonSchema = new mongoose.Schema({
     required: true,
   },
   first_flight: {
-    type: Date,
+    type: String,
     default: null,
   },
   heat_shield: {

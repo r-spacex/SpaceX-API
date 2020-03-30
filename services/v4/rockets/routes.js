@@ -10,7 +10,7 @@ const router = new Router({
 // Get all rockets
 router.get('/', async (ctx) => {
   try {
-    const result = await Rocket.find({});
+    const result = await Rocket.find({}, null, { sort: { first_flight: 'asc' } });
     ctx.status = 200;
     ctx.body = result;
   } catch (error) {

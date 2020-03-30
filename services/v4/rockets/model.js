@@ -26,7 +26,7 @@ const rocketSchema = new mongoose.Schema({
     type: Number,
   },
   first_flight: {
-    type: Date,
+    type: String,
   },
   country: {
     type: String,
