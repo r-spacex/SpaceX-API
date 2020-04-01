@@ -36,18 +36,19 @@ app.use(logger('[:date[clf]] ":method :url HTTP/:http-version" :status - :respon
 // Enable CORS for all routes
 app.use(cors({
   origin: '*',
-  allowMethods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowMethods: ['GET', 'POST', 'PATCH', 'DELETE'],
   allowHeaders: ['Content-Type', 'Accept'],
-  exposeHeaders: ['spacex-api-cache', 'spacex-api-count', 'spacex-api-response-time'],
+  exposeHeaders: ['spacex-api-cache', 'spacex-api-response-time'],
 }));
 
 // Set header with API response time
 app.use(responseTime);
 
 // Disable Redis caching unless production
-if (process.env.NODE_ENV === 'production') {
-  app.use(cache);
-}
+// if (process.env.NODE_ENV === 'production') {
+//   app.use(cache);
+// }
+app.use(cache());
 
 // V4 routes
 app.use(v4.routes());

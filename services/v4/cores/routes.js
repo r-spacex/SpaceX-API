@@ -31,6 +31,7 @@ router.get('/:id', async (ctx) => {
 
 // Query cores
 router.post('/query', async (ctx) => {
+  ctx.state.cache = 60;
   const { query, options } = ctx.request.body;
   try {
     const result = await Core.paginate(query, options);
