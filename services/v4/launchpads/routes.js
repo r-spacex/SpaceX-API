@@ -9,6 +9,7 @@ const router = new Router({
 
 // Get all launchpads
 router.get('/', async (ctx) => {
+  ctx.state.cache = 3600;
   try {
     const result = await Launchpad.find({});
     ctx.status = 200;
@@ -20,8 +21,12 @@ router.get('/', async (ctx) => {
 
 // Get one launchpad
 router.get('/:id', async (ctx) => {
+  ctx.state.cache = 3600;
   try {
     const result = await Launchpad.findById(ctx.params.id);
+    if (!result) {
+      ctx.throw(404);
+    }
     ctx.status = 200;
     ctx.body = result;
   } catch (error) {
@@ -31,7 +36,8 @@ router.get('/:id', async (ctx) => {
 
 // Query launchpads
 router.post('/query', async (ctx) => {
-  const { query, options } = ctx.request.body;
+  ctx.state.cache = 3600;
+  const { query = {}, options = {} } = ctx.request.body;
   try {
     const result = await Launchpad.paginate(query, options);
     ctx.status = 200;

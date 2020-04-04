@@ -9,6 +9,7 @@ const router = new Router({
 
 // Get all payloads
 router.get('/', async (ctx) => {
+  ctx.state.cache = 300;
   try {
     const result = await Payload.find({});
     ctx.status = 200;
@@ -20,8 +21,12 @@ router.get('/', async (ctx) => {
 
 // Get one payload
 router.get('/:id', async (ctx) => {
+  ctx.state.cache = 300;
   try {
     const result = await Payload.findById(ctx.params.id);
+    if (!result) {
+      ctx.throw(404);
+    }
     ctx.status = 200;
     ctx.body = result;
   } catch (error) {
@@ -31,7 +36,8 @@ router.get('/:id', async (ctx) => {
 
 // Query payloads
 router.post('/query', async (ctx) => {
-  const { query, options } = ctx.request.body;
+  ctx.state.cache = 300;
+  const { query = {}, options = {} } = ctx.request.body;
   try {
     const result = await Payload.paginate(query, options);
     ctx.status = 200;

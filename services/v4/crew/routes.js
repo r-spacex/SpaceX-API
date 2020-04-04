@@ -22,6 +22,9 @@ router.get('/', async (ctx) => {
 router.get('/:id', async (ctx) => {
   try {
     const result = await Crew.findById(ctx.params.id);
+    if (!result) {
+      ctx.throw(404);
+    }
     ctx.status = 200;
     ctx.body = result;
   } catch (error) {
@@ -31,7 +34,7 @@ router.get('/:id', async (ctx) => {
 
 // Query crew members
 router.post('/query', async (ctx) => {
-  const { query, options } = ctx.request.body;
+  const { query = {}, options = {} } = ctx.request.body;
   try {
     const result = await Crew.paginate(query, options);
     ctx.status = 200;

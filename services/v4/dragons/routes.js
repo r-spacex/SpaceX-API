@@ -9,6 +9,7 @@ const router = new Router({
 
 // Get all dragons
 router.get('/', async (ctx) => {
+  ctx.state.cache = 86400;
   try {
     const result = await Dragon.find({}, null, { sort: { name: 'asc' } });
     ctx.status = 200;
@@ -20,8 +21,12 @@ router.get('/', async (ctx) => {
 
 // Get one dragon
 router.get('/:id', async (ctx) => {
+  ctx.state.cache = 86400;
   try {
     const result = await Dragon.findById(ctx.params.id);
+    if (!result) {
+      ctx.throw(404);
+    }
     ctx.status = 200;
     ctx.body = result;
   } catch (error) {
@@ -31,7 +36,8 @@ router.get('/:id', async (ctx) => {
 
 // Query dragons
 router.post('/query', async (ctx) => {
-  const { query, options } = ctx.request.body;
+  ctx.state.cache = 86400;
+  const { query = {}, options = {} } = ctx.request.body;
   try {
     const result = await Dragon.paginate(query, options);
     ctx.status = 200;
