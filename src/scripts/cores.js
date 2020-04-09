@@ -41,13 +41,13 @@ const request = require('request-promise-native');
 
   const inactive = $('div.md:nth-child(2) > table:nth-child(20) > tbody:nth-child(2)').text();
   const inactiveRow = inactive.split('\n').filter((v) => v !== '');
-  const inactiveCores = inactiveRow.filter((value, index) => index % 7 === 0);
-  const inactiveStatus = inactiveRow.filter((value, index) => (index + 1) % 7 === 0).map((x) => x.replace(/\[source\]/gi, ''));
+  const inactiveCores = inactiveRow.filter((value, index) => index % 6 === 0);
+  const inactiveStatus = inactiveRow.filter((value, index) => (index + 1) % 6 === 0).map((x) => x.replace(/\[source\]/gi, ''));
 
   const lost = $('div.md:nth-child(2) > table:nth-child(24) > tbody:nth-child(2)').text();
   const lostRow = lost.split('\n').filter((v) => v !== '');
-  const lostCores = lostRow.filter((value, index) => index % 8 === 0);
-  const lostStatus = lostRow.filter((value, index) => (index + 1) % 8 === 0).map((x) => x.replace(/\[source\]/gi, ''));
+  const lostCores = lostRow.filter((value, index) => index % 7 === 0);
+  const lostStatus = lostRow.filter((value, index) => (index + 1) % 7 === 0).map((x) => x.replace(/\[source\]/gi, ''));
 
   // Update status and details for all active cores
   for await (const [index, coreSerial] of activeCores.entries()) {
