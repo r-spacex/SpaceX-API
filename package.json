@@ -45,7 +45,7 @@
     "eslint-plugin-jest": "^23.8.2",
     "eslint-plugin-mongodb": "^1.0.0",
     "eslint-plugin-security": "^1.4.0",
-    "jest": "^25.2.4"
+    "jest": "^25.3.0"
   },
   "jest": {
     "testEnvironment": "node"
