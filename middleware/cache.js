@@ -11,8 +11,8 @@ module.exports = () => {
   let redis;
   let redisAvailable = false;
 
-  if (process.env.REDIS_URL) {
-    redis = new Redis(process.env.REDIS_URL);
+  if (process.env.SPACEX_REDIS) {
+    redis = new Redis(process.env.SPACEX_REDIS);
   } else {
     redis = new Redis();
   }
@@ -25,6 +25,7 @@ module.exports = () => {
   });
   redis.on('connect', () => {
     redisAvailable = true;
+    console.log('Redis ready');
   });
 
   /**

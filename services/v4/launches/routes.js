@@ -7,6 +7,82 @@ const router = new Router({
   prefix: '/launches',
 });
 
+//
+// Convenience Endpoints
+//
+
+// Get past launches
+router.get('/past', async (ctx) => {
+  try {
+    const result = await Launch.find({
+      upcoming: false,
+    }, null, {
+      sort: {
+        flight_number: 'asc',
+      },
+    });
+    ctx.status = 200;
+    ctx.body = result;
+  } catch (error) {
+    ctx.throw(400, error.message);
+  }
+});
+
+// Get upcoming launches
+router.get('/upcoming', async (ctx) => {
+  try {
+    const result = await Launch.find({
+      upcoming: true,
+    }, null, {
+      sort: {
+        flight_number: 'asc',
+      },
+    });
+    ctx.status = 200;
+    ctx.body = result;
+  } catch (error) {
+    ctx.throw(400, error.message);
+  }
+});
+
+// Get latest launch
+router.get('/latest', async (ctx) => {
+  try {
+    const result = await Launch.findOne({
+      upcoming: false,
+    }, null, {
+      sort: {
+        flight_number: 'desc',
+      },
+    });
+    ctx.status = 200;
+    ctx.body = result;
+  } catch (error) {
+    ctx.throw(400, error.message);
+  }
+});
+
+// Get next launch
+router.get('/next', async (ctx) => {
+  try {
+    const result = await Launch.findOne({
+      upcoming: true,
+    }, null, {
+      sort: {
+        flight_number: 'asc',
+      },
+    });
+    ctx.status = 200;
+    ctx.body = result;
+  } catch (error) {
+    ctx.throw(400, error.message);
+  }
+});
+
+//
+// Standard Endpoints
+//
+
 // Get all launches
 router.get('/', async (ctx) => {
   ctx.state.cache = 20;
@@ -75,78 +151,6 @@ router.delete('/:id', auth, async (ctx) => {
   try {
     await Launch.findByIdAndDelete(ctx.params.id);
     ctx.status = 200;
-  } catch (error) {
-    ctx.throw(400, error.message);
-  }
-});
-
-//
-// Convenience Endpoints
-//
-
-// Get past launches
-router.get('/past', async (ctx) => {
-  try {
-    const result = await Launch.find({
-      upcoming: false,
-    }, null, {
-      sort: {
-        flight_number: 'asc',
-      },
-    });
-    ctx.status = 200;
-    ctx.body = result;
-  } catch (error) {
-    ctx.throw(400, error.message);
-  }
-});
-
-// Get upcoming launches
-router.get('/upcoming', async (ctx) => {
-  try {
-    const result = await Launch.find({
-      upcoming: true,
-    }, null, {
-      sort: {
-        flight_number: 'asc',
-      },
-    });
-    ctx.status = 200;
-    ctx.body = result;
-  } catch (error) {
-    ctx.throw(400, error.message);
-  }
-});
-
-// Get latest launch
-router.get('/latest', async (ctx) => {
-  try {
-    const result = await Launch.findOne({
-      upcoming: false,
-    }, null, {
-      sort: {
-        flight_number: 'desc',
-      },
-    });
-    ctx.status = 200;
-    ctx.body = result;
-  } catch (error) {
-    ctx.throw(400, error.message);
-  }
-});
-
-// Get next launch
-router.get('/next', async (ctx) => {
-  try {
-    const result = await Launch.findOne({
-      upcoming: true,
-    }, null, {
-      sort: {
-        flight_number: 'asc',
-      },
-    });
-    ctx.status = 200;
-    ctx.body = result;
   } catch (error) {
     ctx.throw(400, error.message);
   }
