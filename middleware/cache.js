@@ -8,15 +8,15 @@ const crypto = require('crypto');
  * @returns {Function}
  */
 module.exports = () => {
-  let redisUrl;
+  let redis;
+  let redisAvailable = false;
+
   if (process.env.REDIS_URL) {
-    redisUrl = process.env.REDIS_URL;
+    redis = new Redis(process.env.REDIS_URL);
   } else {
-    redisUrl = 'redis://127.0.0.1:6379';
+    redis = new Redis();
   }
 
-  let redisAvailable = false;
-  const redis = new Redis(redisUrl);
   redis.on('error', () => {
     redisAvailable = false;
   });
@@ -47,9 +47,11 @@ module.exports = () => {
     const key = `spacex-cache:${hash(url)}:${hash(JSON.stringify(ctx.request.body))}`;
 
     if (!redisAvailable) {
+      ctx.response.set('spacex-api-cache-online', 'false');
       await next();
       return;
     }
+    ctx.response.set('spacex-api-cache-online', 'true');
 
     // Try and get cache
     if (ctx.request.method !== 'GET' || ctx.request.method !== 'POST') {

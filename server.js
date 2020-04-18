@@ -3,7 +3,7 @@ const http = require('http');
 const mongoose = require('mongoose');
 const app = require('./app');
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 6673;
 const SERVER = http.createServer(app.callback());
 
 // Gracefully close Mongo connection
