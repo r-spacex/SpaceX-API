@@ -3,10 +3,6 @@ name: Build
 
 on:
   push:
-    # Publish `master` as Docker `latest` image.
-    branches:
-      - master
-
     # Publish `v1.2.3` tags as releases.
     tags:
       - v*
@@ -33,7 +29,7 @@ jobs:
     runs-on: ubuntu-latest
 
     # Only run on master pushes
-    if: github.event_name == 'push'
+    if: github.event_name == 'push' && github.ref == 'master'
 
     steps:
       - uses: actions/checkout@v2
