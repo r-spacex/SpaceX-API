@@ -1,5 +1,6 @@
 
 const Router = require('koa-router');
+const admin = require('./admin/routes');
 const capsules = require('./capsules/routes');
 const cores = require('./cores/routes');
 const crew = require('./crew/routes');
@@ -15,6 +16,7 @@ const v4 = new Router({
   prefix: '/v4',
 });
 
+v4.use(admin.routes());
 v4.use(capsules.routes());
 v4.use(cores.routes());
 v4.use(crew.routes());

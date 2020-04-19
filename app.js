@@ -47,7 +47,7 @@ app.use(responseTime);
 
 // Disable Redis caching unless production
 if (process.env.NODE_ENV === 'production') {
-  app.use(cache());
+  app.use(cache.middleware());
 }
 
 // V4 routes

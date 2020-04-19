@@ -2,32 +2,32 @@
 const Redis = require('ioredis');
 const crypto = require('crypto');
 
+let redis;
+let redisAvailable = false;
+
+if (process.env.SPACEX_REDIS) {
+  redis = new Redis(process.env.SPACEX_REDIS);
+} else {
+  redis = new Redis();
+}
+
+redis.on('error', () => {
+  redisAvailable = false;
+});
+redis.on('end', () => {
+  redisAvailable = false;
+});
+redis.on('connect', () => {
+  redisAvailable = true;
+  console.log('Redis ready');
+});
+
 /**
  * Redis caching middleware
  *
  * @returns {Function}
  */
-module.exports = () => {
-  let redis;
-  let redisAvailable = false;
-
-  if (process.env.SPACEX_REDIS) {
-    redis = new Redis(process.env.SPACEX_REDIS);
-  } else {
-    redis = new Redis();
-  }
-
-  redis.on('error', () => {
-    redisAvailable = false;
-  });
-  redis.on('end', () => {
-    redisAvailable = false;
-  });
-  redis.on('connect', () => {
-    redisAvailable = true;
-    console.log('Redis ready');
-  });
-
+module.exports.middleware = () => {
   /**
    * Hash func for redis keys
    *
@@ -92,3 +92,6 @@ module.exports = () => {
     }
   };
 };
+
+// Share redis connection
+module.exports.redis = redis;
