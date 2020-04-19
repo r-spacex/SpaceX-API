@@ -23,8 +23,8 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
 
-    # Only run on master pushes
-    if: github.event_name == 'push' && github.ref == 'master'
+    # Only run on master or tagged pushes
+    if: github.event_name == 'push' && ( github.ref == 'refs/heads/master' || github.ref == 'refs/tags/*')
 
     steps:
       - uses: actions/checkout@v2
