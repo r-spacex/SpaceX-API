@@ -48,7 +48,7 @@ router.post('/query', async (ctx) => {
 });
 
 // Create a payload
-router.post('/', auth, async (ctx) => {
+router.post('/', auth('basic'), async (ctx) => {
   try {
     const core = new Payload(ctx.request.body);
     await core.save();
@@ -59,7 +59,7 @@ router.post('/', auth, async (ctx) => {
 });
 
 // Update a payload
-router.patch('/:id', auth, async (ctx) => {
+router.patch('/:id', auth('basic'), async (ctx) => {
   try {
     await Payload.findByIdAndUpdate(ctx.params.id, ctx.request.body, {
       runValidators: true,
@@ -71,7 +71,7 @@ router.patch('/:id', auth, async (ctx) => {
 });
 
 // Delete a payload
-router.delete('/:id', auth, async (ctx) => {
+router.delete('/:id', auth('basic'), async (ctx) => {
   try {
     await Payload.findByIdAndDelete(ctx.params.id);
     ctx.status = 200;

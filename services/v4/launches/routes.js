@@ -124,7 +124,7 @@ router.post('/query', async (ctx) => {
 });
 
 // Create a launch
-router.post('/', auth, async (ctx) => {
+router.post('/', auth('basic'), async (ctx) => {
   try {
     const core = new Launch(ctx.request.body);
     await core.save();
@@ -135,7 +135,7 @@ router.post('/', auth, async (ctx) => {
 });
 
 // Update a launch
-router.patch('/:id', auth, async (ctx) => {
+router.patch('/:id', auth('basic'), async (ctx) => {
   try {
     await Launch.findByIdAndUpdate(ctx.params.id, ctx.request.body, {
       runValidators: true,
@@ -147,7 +147,7 @@ router.patch('/:id', auth, async (ctx) => {
 });
 
 // Delete a launch
-router.delete('/:id', auth, async (ctx) => {
+router.delete('/:id', auth('basic'), async (ctx) => {
   try {
     await Launch.findByIdAndDelete(ctx.params.id);
     ctx.status = 200;

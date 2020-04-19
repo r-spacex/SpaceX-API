@@ -11,6 +11,7 @@ const launchpads = require('./launchpads/routes');
 const payloads = require('./payloads/routes');
 const rockets = require('./rockets/routes');
 const ships = require('./ships/routes');
+const users = require('./users/routes');
 
 const v4 = new Router({
   prefix: '/v4',
@@ -27,5 +28,6 @@ v4.use(launchpads.routes());
 v4.use(payloads.routes());
 v4.use(rockets.routes());
 v4.use(ships.routes());
+v4.use(users.routes());
 
 module.exports = v4;

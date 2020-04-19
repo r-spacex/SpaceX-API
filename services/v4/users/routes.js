@@ -1,17 +1,16 @@
 
 const Router = require('koa-router');
-const Ship = require('./model');
+const User = require('./model');
 const { auth } = require('../../../middleware');
 
 const router = new Router({
-  prefix: '/ships',
+  prefix: '/users',
 });
 
-// Get all ships
-router.get('/', async (ctx) => {
-  ctx.state.cache = 300;
+// Get all users
+router.get('/', auth('admin'), async (ctx) => {
   try {
-    const result = await Ship.find({});
+    const result = await User.find({});
     ctx.status = 200;
     ctx.body = result;
   } catch (error) {
@@ -19,11 +18,10 @@ router.get('/', async (ctx) => {
   }
 });
 
-// Get one ship
-router.get('/:id', async (ctx) => {
-  ctx.state.cache = 300;
+// Get one user
+router.get('/:id', auth('admin'), async (ctx) => {
   try {
-    const result = await Ship.findById(ctx.params.id);
+    const result = await User.findById(ctx.params.id);
     if (!result) {
       ctx.throw(404);
     }
@@ -34,12 +32,11 @@ router.get('/:id', async (ctx) => {
   }
 });
 
-// Query ships
-router.post('/query', async (ctx) => {
-  ctx.state.cache = 300;
+// Query users
+router.post('/query', auth('admin'), async (ctx) => {
   const { query = {}, options = {} } = ctx.request.body;
   try {
-    const result = await Ship.paginate(query, options);
+    const result = await User.paginate(query, options);
     ctx.status = 200;
     ctx.body = result;
   } catch (error) {
@@ -47,10 +44,10 @@ router.post('/query', async (ctx) => {
   }
 });
 
-// Create a ship
-router.post('/', auth('basic'), async (ctx) => {
+// Create a user
+router.post('/', auth('admin'), async (ctx) => {
   try {
-    const core = new Ship(ctx.request.body);
+    const core = new User(ctx.request.body);
     await core.save();
     ctx.status = 201;
   } catch (error) {
@@ -58,20 +55,22 @@ router.post('/', auth('basic'), async (ctx) => {
   }
 });
 
-// Update a ship
-router.patch('/:id', auth('basic'), async (ctx) => {
+// Update a user
+router.patch('/:id', auth('admin'), async (ctx) => {
   try {
-    await Ship.findByIdAndUpdate(ctx.params.id, ctx.request.body, { runValidators: true });
+    await User.findByIdAndUpdate(ctx.params.id, ctx.request.body, {
+      runValidators: true,
+    });
     ctx.status = 200;
   } catch (error) {
     ctx.throw(400, error.message);
   }
 });
 
-// Delete a ship
-router.delete('/:id', auth('basic'), async (ctx) => {
+// Delete a user
+router.delete('/:id', auth('admin'), async (ctx) => {
   try {
-    await Ship.findByIdAndDelete(ctx.params.id);
+    await User.findByIdAndDelete(ctx.params.id);
     ctx.status = 200;
   } catch (error) {
     ctx.throw(400, error.message);

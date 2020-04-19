@@ -48,7 +48,7 @@ router.post('/query', async (ctx) => {
 });
 
 // Create a dragon
-router.post('/', auth, async (ctx) => {
+router.post('/', auth('basic'), async (ctx) => {
   try {
     const core = new Dragon(ctx.request.body);
     await core.save();
@@ -59,7 +59,7 @@ router.post('/', auth, async (ctx) => {
 });
 
 // Update a dragon
-router.patch('/:id', auth, async (ctx) => {
+router.patch('/:id', auth('basic'), async (ctx) => {
   try {
     await Dragon.findByIdAndUpdate(ctx.params.id, ctx.request.body, { runValidators: true });
     ctx.status = 200;
@@ -69,7 +69,7 @@ router.patch('/:id', auth, async (ctx) => {
 });
 
 // Delete dragon
-router.delete('/:id', auth, async (ctx) => {
+router.delete('/:id', auth('basic'), async (ctx) => {
   try {
     await Dragon.findByIdAndDelete(ctx.params.id);
     ctx.status = 200;
