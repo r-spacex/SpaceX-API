@@ -44,6 +44,10 @@ const landpadSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
+  wikipedia: {
+    type: String,
+    default: null,
+  },
   details: {
     type: String,
     default: null,
