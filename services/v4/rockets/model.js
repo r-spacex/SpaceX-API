@@ -2,6 +2,7 @@
 const mongoose = require('mongoose');
 const mongoosePaginate = require('mongoose-paginate-v2');
 const uniqueValidator = require('mongoose-unique-validator');
+const idPlugin = require('mongoose-id');
 
 const rocketSchema = new mongoose.Schema({
   name: {
@@ -211,6 +212,7 @@ const rocketSchema = new mongoose.Schema({
 
 rocketSchema.plugin(mongoosePaginate);
 rocketSchema.plugin(uniqueValidator);
+rocketSchema.plugin(idPlugin);
 
 const Rocket = mongoose.model('Rocket', rocketSchema);
 

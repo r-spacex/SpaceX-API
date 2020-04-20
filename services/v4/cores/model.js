@@ -2,6 +2,7 @@
 const mongoose = require('mongoose');
 const mongoosePaginate = require('mongoose-paginate-v2');
 const uniqueValidator = require('mongoose-unique-validator');
+const idPlugin = require('mongoose-id');
 
 const coreSchema = new mongoose.Schema({
   serial: {
@@ -50,6 +51,7 @@ const coreSchema = new mongoose.Schema({
 
 coreSchema.plugin(mongoosePaginate);
 coreSchema.plugin(uniqueValidator);
+coreSchema.plugin(idPlugin);
 
 const Core = mongoose.model('Core', coreSchema);
 

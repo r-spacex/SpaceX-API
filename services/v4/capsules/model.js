@@ -2,6 +2,7 @@
 const mongoose = require('mongoose');
 const mongoosePaginate = require('mongoose-paginate-v2');
 const uniqueValidator = require('mongoose-unique-validator');
+const idPlugin = require('mongoose-id');
 
 const capsuleSchema = new mongoose.Schema({
   serial: {
@@ -39,6 +40,7 @@ const capsuleSchema = new mongoose.Schema({
 
 capsuleSchema.plugin(mongoosePaginate);
 capsuleSchema.plugin(uniqueValidator);
+capsuleSchema.plugin(idPlugin);
 
 const Capsule = mongoose.model('Capsule', capsuleSchema);
 

@@ -1,6 +1,7 @@
 
 const mongoose = require('mongoose');
 const mongoosePaginate = require('mongoose-paginate-v2');
+const idPlugin = require('mongoose-id');
 
 const launchpadSchema = new mongoose.Schema({
   name: {
@@ -51,6 +52,7 @@ const launchpadSchema = new mongoose.Schema({
 });
 
 launchpadSchema.plugin(mongoosePaginate);
+launchpadSchema.plugin(idPlugin);
 
 const Launchpad = mongoose.model('Launchpad', launchpadSchema);
 

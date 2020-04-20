@@ -1,6 +1,7 @@
 
 const mongoose = require('mongoose');
 const mongoosePaginate = require('mongoose-paginate-v2');
+const idPlugin = require('mongoose-id');
 
 const crewSchema = new mongoose.Schema({
   name: {
@@ -31,6 +32,7 @@ const crewSchema = new mongoose.Schema({
 });
 
 crewSchema.plugin(mongoosePaginate);
+crewSchema.plugin(idPlugin);
 
 const Crew = mongoose.model('Crew', crewSchema);
 
