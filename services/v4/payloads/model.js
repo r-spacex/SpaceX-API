@@ -74,7 +74,7 @@ const payloadSchema = new mongoose.Schema({
     default: null,
   },
   epoch: {
-    type: Date,
+    type: String,
     default: null,
   },
   mean_motion: {

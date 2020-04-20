@@ -5,7 +5,7 @@ const uniqueValidator = require('mongoose-unique-validator');
 
 const rocketSchema = new mongoose.Schema({
   name: {
-    type: Date,
+    type: String,
   },
   type: {
     type: String,
