@@ -45,6 +45,10 @@ const launchpadSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
+  rockets: [{
+    type: mongoose.ObjectId,
+    ref: 'Rocket',
+  }],
   launches: [{
     type: mongoose.ObjectId,
     ref: 'Launch',
