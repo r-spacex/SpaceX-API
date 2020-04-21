@@ -17,10 +17,6 @@ const launchpadSchema = new mongoose.Schema({
     enum: ['active', 'inactive', 'unknown', 'retired', 'lost', 'under construction'],
     required: true,
   },
-  timezone: {
-    type: String,
-    default: null,
-  },
   locality: {
     type: String,
     default: null,
