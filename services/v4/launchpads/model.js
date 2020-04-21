@@ -14,7 +14,7 @@ const launchpadSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    enum: ['active', 'inactive', 'unknown', 'retired', 'lost'],
+    enum: ['active', 'inactive', 'unknown', 'retired', 'lost', 'under construction'],
     required: true,
   },
   timezone: {
