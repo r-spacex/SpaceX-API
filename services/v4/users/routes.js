@@ -47,8 +47,8 @@ router.post('/query', auth('admin'), async (ctx) => {
 // Create a user
 router.post('/', auth('admin'), async (ctx) => {
   try {
-    const core = new User(ctx.request.body);
-    await core.save();
+    const user = new User(ctx.request.body);
+    await user.save();
     ctx.status = 201;
   } catch (error) {
     ctx.throw(400, error.message);

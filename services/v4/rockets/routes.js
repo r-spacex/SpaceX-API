@@ -50,8 +50,8 @@ router.post('/query', async (ctx) => {
 // Create a rocket
 router.post('/', auth('basic'), async (ctx) => {
   try {
-    const core = new Rocket(ctx.request.body);
-    await core.save();
+    const rocket = new Rocket(ctx.request.body);
+    await rocket.save();
     ctx.status = 201;
   } catch (error) {
     ctx.throw(400, error.message);

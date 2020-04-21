@@ -50,8 +50,8 @@ router.post('/query', async (ctx) => {
 // Create a ship
 router.post('/', auth('basic'), async (ctx) => {
   try {
-    const core = new Ship(ctx.request.body);
-    await core.save();
+    const ship = new Ship(ctx.request.body);
+    await ship.save();
     ctx.status = 201;
   } catch (error) {
     ctx.throw(400, error.message);

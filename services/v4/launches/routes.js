@@ -126,8 +126,8 @@ router.post('/query', async (ctx) => {
 // Create a launch
 router.post('/', auth('basic'), async (ctx) => {
   try {
-    const core = new Launch(ctx.request.body);
-    await core.save();
+    const launch = new Launch(ctx.request.body);
+    await launch.save();
     ctx.status = 201;
   } catch (error) {
     ctx.throw(400, error.message);

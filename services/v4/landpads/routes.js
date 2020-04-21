@@ -50,8 +50,8 @@ router.post('/query', async (ctx) => {
 // Create a landpad
 router.post('/', auth('basic'), async (ctx) => {
   try {
-    const core = new Landpad(ctx.request.body);
-    await core.save();
+    const landpad = new Landpad(ctx.request.body);
+    await landpad.save();
     ctx.status = 201;
   } catch (error) {
     ctx.throw(400, error.message);

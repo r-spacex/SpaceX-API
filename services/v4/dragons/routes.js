@@ -50,8 +50,8 @@ router.post('/query', async (ctx) => {
 // Create a dragon
 router.post('/', auth('basic'), async (ctx) => {
   try {
-    const core = new Dragon(ctx.request.body);
-    await core.save();
+    const dragon = new Dragon(ctx.request.body);
+    await dragon.save();
     ctx.status = 201;
   } catch (error) {
     ctx.throw(400, error.message);

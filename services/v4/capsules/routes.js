@@ -50,8 +50,8 @@ router.post('/query', async (ctx) => {
 // Create capsule
 router.post('/', auth('basic'), async (ctx) => {
   try {
-    const core = new Capsule(ctx.request.body);
-    await core.save();
+    const capsule = new Capsule(ctx.request.body);
+    await capsule.save();
     ctx.status = 201;
   } catch (error) {
     ctx.throw(400, error.message);

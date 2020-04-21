@@ -50,8 +50,8 @@ router.post('/query', async (ctx) => {
 // Create a launchpad
 router.post('/', auth('basic'), async (ctx) => {
   try {
-    const core = new Launchpad(ctx.request.body);
-    await core.save();
+    const launchpad = new Launchpad(ctx.request.body);
+    await launchpad.save();
     ctx.status = 201;
   } catch (error) {
     ctx.throw(400, error.message);

@@ -47,8 +47,8 @@ router.post('/query', async (ctx) => {
 // Create crew member
 router.post('/', auth('basic'), async (ctx) => {
   try {
-    const core = new Crew(ctx.request.body);
-    await core.save();
+    const crew = new Crew(ctx.request.body);
+    await crew.save();
     ctx.status = 201;
   } catch (error) {
     ctx.throw(400, error.message);
