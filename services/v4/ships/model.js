@@ -1,14 +1,12 @@
 
 const mongoose = require('mongoose');
 const mongoosePaginate = require('mongoose-paginate-v2');
-const uniqueValidator = require('mongoose-unique-validator');
 const idPlugin = require('mongoose-id');
 
 const shipSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
-    unique: true,
   },
   model: {
     type: String,
@@ -88,7 +86,6 @@ const shipSchema = new mongoose.Schema({
 });
 
 shipSchema.plugin(mongoosePaginate);
-shipSchema.plugin(uniqueValidator);
 shipSchema.plugin(idPlugin);
 
 const Ship = mongoose.model('Ship', shipSchema);
