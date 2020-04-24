@@ -66,8 +66,8 @@ Standard cache times are as follows:
 
 **dragons**, **rockets** - 24 hours
 
-Cache can be cleared with the following endpoint: Requires Auth
-* [Clear cache](cache/clear.md) : `DELETE /admin/cache`
+Cache can be cleared with the following endpoint:
+* [Clear cache](cache/clear.md) : `DELETE /admin/cache` - Requires Auth
 
 ## Routes
 
