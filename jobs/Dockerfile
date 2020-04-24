@@ -13,6 +13,4 @@ ENV NODE_ENV=production
 
 LABEL maintainer="jakewmeyer@gmail.com"
 
-EXPOSE 5000
-
-ENTRYPOINT ["./start.sh"]
+CMD ["node", "jobs/worker.js"]
