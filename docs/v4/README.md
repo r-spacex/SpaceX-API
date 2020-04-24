@@ -58,13 +58,13 @@ The api makes use of response caching via Redis for all `GET` requests, and `POS
 
 Standard cache times are as follows:
 
-launches - 20 seconds
+**launches** - 20 seconds
 
-ships, payloads - 5 minutes
+**ships**, **payloads** - 5 minutes
 
-capsules, cores, launchpads, landpads, crew - 1 hour
+**capsules**, **cores**, **launchpads**, **landpads**, **crew** - 1 hour
 
-dragons, rockets - 24 hours
+**dragons**, **rockets** - 24 hours
 
 Cache can be cleared with the following endpoint: Requires Auth
 * [Clear cache](cache/clear.md) : `DELETE /admin/cache`
