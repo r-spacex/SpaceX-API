@@ -36,6 +36,10 @@ const launchSchema = new mongoose.Schema({
     type: String,
     default: null,
   },
+  static_fire_date_unix: {
+    type: String,
+    default: null,
+  },
   tdb: {
     type: Boolean,
     default: false,

@@ -18,6 +18,10 @@ const payloadSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  launch: {
+    type: mongoose.ObjectId,
+    default: null,
+  },
   customers: [String],
   norad_ids: [Number],
   nationalities: [String],
@@ -116,10 +120,6 @@ const payloadSchema = new mongoose.Schema({
       default: null,
     },
   },
-  launches: [{
-    type: mongoose.ObjectId,
-    ref: 'Launch',
-  }],
 });
 
 payloadSchema.plugin(mongoosePaginate);

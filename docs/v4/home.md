@@ -10,13 +10,47 @@ Authentication via api key is required for all destructive routes. This includes
 
 Authenticate by passing the header `spacex-key` with your api key. Protected routes return `401` without a valid key.
 
-## Pagination
+## Pagination + Querying
 
-All `query` routes support pagination parameters via [mongoose-paginate](https://github.com/aravindnc/mongoose-paginate-v2). View individual query routes for more details.
+All `/query` routes support pagination parameters via [mongoose-paginate](https://github.com/aravindnc/mongoose-paginate-v2).
 
-## Rate Limiting
+By default the body is:
+```json
+{
+  "query": {},
+  "options": {},
+}
+```
 
-The API has a rate limit of 50 req/sec per IP address, if exceeded, a response of 429 will be given until the rate drops back below 50 req/sec. 
+`query` accepts any valid MongoDB find() query, documented [here](https://docs.mongodb.com/manual/tutorial/query-documents/)
+
+**Note:** The [$where](https://docs.mongodb.com/manual/reference/operator/query/where/) operator is not supported in `query`. [$expr](https://docs.mongodb.com/manual/reference/operator/query/expr/) should be used instead for complex query expressions
+
+`options` accepts any of the options documented [here](https://github.com/aravindnc/mongoose-paginate-v2#modelpaginatequery-options-callback), but here are some of the most common:
+
+  - `select` { Object | String } - Fields to return (by default returns all fields). [Documentation](http://mongoosejs.com/docs/api.html#query_Query-select)
+  - `sort` { Object | String } - Sort order. [Documentation](http://mongoosejs.com/docs/api.html#query_Query-sort)
+  - `offset` { Number } - Use `offset` or `page` to set skip position
+  - `page` { Number }
+  - `limit` { Number }
+
+
+This is the default return structure:
+```json
+{
+    "docs": [],
+    "totalDocs": 0,
+    "offset": 0,
+    "limit": 10,
+    "totalPages": 1,
+    "page": 1,
+    "pagingCounter": 1,
+    "hasPrevPage": false,
+    "hasNextPage": false,
+    "prevPage": null,
+    "nextPage": null
+}
+```
 
 ## Caching
 
@@ -30,7 +64,7 @@ capsules, cores, launchpads, landpads, crew - 1 hour
 dragons, rockets - 24 hours
 
 Cache can be cleared with the following endpoint: Requires Auth
-* [Clear cache](cache/clear.md) : `DELETE /cache`
+* [Clear cache](cache/clear.md) : `DELETE /admin/cache`
 
 ## Routes
 
