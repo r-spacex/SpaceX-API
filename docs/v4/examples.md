@@ -1,21 +1,23 @@
 # Query endpoint samples
 
-## Query between 2 dates
+
+
+### Query between 2 dates
 
 Dates need to be ISO 8601 friendly for these operators to work properly
 
 ```json
 {
 	"query": {
-    "date_utc": { 
-      "$gte": "2017-06-22T00:00:00.000Z",
-      "$lte": "2017-06-25T00:00:00.000Z" 
-    }
+		"date_utc": {
+			"$gte": "2017-06-22T00:00:00.000Z",
+			"$lte": "2017-06-25T00:00:00.000Z"
+		}
 	}
 }
 ```
 
-## Full text search
+### Full text search
 
 Generally this will search all text indexes in a collection. All string fields get indexed
 
