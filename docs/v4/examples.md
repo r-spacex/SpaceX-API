@@ -44,3 +44,35 @@ Note: Full text search using `$text` will search all text index fields in a docu
 	}
 }
 ```
+
+### Complex Query
+
+```json
+{
+	"query": {
+		"date_utc": {
+			"$gte": "2017-06-22T00:00:00.000Z",
+			"$lte": "2017-06-25T00:00:00.000Z"
+		},
+		"$or": [
+			{
+				"flight_number": {
+					"$gt": 30
+				}
+			},
+			{
+				"tbd": true
+			}
+		],
+		"date_precision": {
+			"$in": ["month", "day"]
+		}
+	},
+	"options": {
+		"sort": {
+			"flight_number": "asc"
+		},
+		"limit": 50
+	}
+}
+```

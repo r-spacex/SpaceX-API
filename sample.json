@@ -1,7 +1,0 @@
-{
-	"query": {
-		"serial": {
-			"$regex": "/^crs/i"
-		}
-	}
-}
