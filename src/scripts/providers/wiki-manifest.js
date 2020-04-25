@@ -66,8 +66,8 @@ const checkDatePattern = async (mdate) => {
   // Allows for long months or short months ex: September vs Sep
   // Allows for time with or without brackets ex: [23:45] vs 23:45
 
-  // Anything with TBD in date
-  const tbd = /^.*(tbd).*$/i;
+  // Anything with TBD/TBA in date
+  const tbd = /^.*(tbd|tba).*$/i;
 
   // Anything with a time set
   const tentative = /^.*(\[?[0-9]{2}:[0-9]{2}\]?).*$/i;
@@ -97,7 +97,7 @@ const checkDatePattern = async (mdate) => {
 
   // Remove extra stuff humans might add
   // NOTE: Add to this when people add unexpected things to dates in the wiki
-  const cleaned = mdate.replace(/(~|early|mid|late|end|tbd)/gi, ' ').split('/')[0].trim();
+  const cleaned = mdate.replace(/(~|early|mid|late|end|tbd|tba)/gi, ' ').split('/')[0].trim();
   console.log(cleaned);
 
   // Set tentativeness
