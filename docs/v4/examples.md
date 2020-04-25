@@ -1,6 +1,4 @@
-# Query endpoint samples
-
-
+# Query examples
 
 ### Query between 2 dates
 
