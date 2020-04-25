@@ -33,7 +33,7 @@ By default the body is:
   - `offset` { Number } - Use `offset` or `page` to set skip position
   - `page` { Number }
   - `limit` { Number }
-
+  - `pagination` { Boolean } - If set to false, it will return all docs without adding limit condition. (Default: True)
 
 This is the default return structure:
 ```json
