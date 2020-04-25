@@ -176,7 +176,7 @@ const launchSchema = new mongoose.Schema({
       type: String,
       default: null,
     },
-    spaceflightnow: {
+    article: {
       type: String,
       default: null,
     },
@@ -185,7 +185,6 @@ const launchSchema = new mongoose.Schema({
       default: null,
     },
   },
-
 });
 
 launchSchema.plugin(mongoosePaginate);
