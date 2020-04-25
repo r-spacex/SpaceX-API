@@ -24,6 +24,8 @@ By default the body is:
 
 `query` accepts any valid MongoDB find() query, documented [here](https://docs.mongodb.com/manual/tutorial/query-documents/)
 
+See [examples](examples.md) for some common queries
+
 **Note:** The [$where](https://docs.mongodb.com/manual/reference/operator/query/where/) operator is not supported in `query`. [$expr](https://docs.mongodb.com/manual/reference/operator/query/expr/) should be used instead for complex query expressions
 
 `options` accepts any of the options documented [here](https://github.com/aravindnc/mongoose-paginate-v2#modelpaginatequery-options-callback), but here are some of the most common:
