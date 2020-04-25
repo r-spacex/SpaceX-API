@@ -15,4 +15,6 @@ LABEL maintainer="jakewmeyer@gmail.com"
 
 EXPOSE 5000
 
+RUN apk add --no-cache --upgrade bash
+
 ENTRYPOINT ["./start.sh"]

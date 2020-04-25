@@ -122,6 +122,11 @@ const payloadSchema = new mongoose.Schema({
   },
 });
 
+const index = {
+  name: 'text',
+};
+payloadSchema.index(index);
+
 payloadSchema.plugin(mongoosePaginate);
 payloadSchema.plugin(uniqueValidator);
 payloadSchema.plugin(idPlugin);
