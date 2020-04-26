@@ -102,6 +102,10 @@ const launchSchema = new mongoose.Schema({
       type: mongoose.ObjectId,
       default: null,
     },
+    flight: {
+      type: Number,
+      default: null,
+    },
     gridfins: {
       type: Boolean,
       default: null,
