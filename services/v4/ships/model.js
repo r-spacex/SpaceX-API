@@ -6,6 +6,7 @@ const idPlugin = require('mongoose-id');
 const shipSchema = new mongoose.Schema({
   name: {
     type: String,
+    unique: true,
     required: true,
   },
   legacy_id: {

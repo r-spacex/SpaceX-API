@@ -60,6 +60,7 @@ const launchSchema = new mongoose.Schema({
     type: Boolean,
     default: null,
   },
+  failures: [String],
   upcoming: {
     type: Boolean,
     required: true,
@@ -94,10 +95,12 @@ const launchSchema = new mongoose.Schema({
   payloads: [
     mongoose.ObjectId,
   ],
-  launchpad: [
-    mongoose.ObjectId,
-  ],
+  launchpad: {
+    type: mongoose.ObjectId,
+    default: null,
+  },
   cores: [{
+    _id: false,
     core: {
       type: mongoose.ObjectId,
       default: null,
