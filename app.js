@@ -3,6 +3,7 @@ const cors = require('koa2-cors');
 const helmet = require('koa-helmet');
 const Koa = require('koa');
 const logger = require('koa-pino-logger');
+const pino = require('pino');
 const bodyParser = require('koa-bodyparser');
 const mongoose = require('mongoose');
 const { responseTime, cache } = require('./middleware');
@@ -25,14 +26,13 @@ db.once('open', () => {
   app.emit('ready');
 });
 
+// disable console.errors for pino
+app.silent = true;
+
 app.use(bodyParser());
 
 // HTTP header security
 app.use(helmet());
-
-// Request logging
-app.silent = true; // disable console.errors
-app.use(logger());
 
 // Enable CORS for all routes
 app.use(cors({
@@ -45,9 +45,14 @@ app.use(cors({
 // Set header with API response time
 app.use(responseTime);
 
-// Disable Redis caching unless production
+// Only use Redis + minified logs in prodcution
 if (process.env.NODE_ENV === 'production') {
   app.use(cache.middleware());
+  app.use(logger());
+} else {
+  app.use(logger({
+    prettyPrint: true,
+  }));
 }
 
 // V4 routes

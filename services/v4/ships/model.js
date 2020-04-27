@@ -8,6 +8,10 @@ const shipSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  legacy_id: {
+    type: String,
+    default: null,
+  },
   model: {
     type: String,
     default: null,
