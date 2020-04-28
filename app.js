@@ -3,7 +3,6 @@ const cors = require('koa2-cors');
 const helmet = require('koa-helmet');
 const Koa = require('koa');
 const logger = require('koa-pino-logger');
-const pino = require('pino');
 const bodyParser = require('koa-bodyparser');
 const mongoose = require('mongoose');
 const { responseTime, cache } = require('./middleware');
