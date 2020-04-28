@@ -1,7 +1,6 @@
 
 const mongoose = require('mongoose');
 const mongoosePaginate = require('mongoose-paginate-v2');
-const uniqueValidator = require('mongoose-unique-validator');
 const idPlugin = require('mongoose-id');
 
 const launchSchema = new mongoose.Schema({
@@ -195,7 +194,6 @@ const launchSchema = new mongoose.Schema({
 });
 
 launchSchema.plugin(mongoosePaginate);
-launchSchema.plugin(uniqueValidator);
 launchSchema.plugin(idPlugin);
 
 const Launch = mongoose.model('Launch', launchSchema);

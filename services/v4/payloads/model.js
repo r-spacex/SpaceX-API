@@ -1,7 +1,6 @@
 
 const mongoose = require('mongoose');
 const mongoosePaginate = require('mongoose-paginate-v2');
-const uniqueValidator = require('mongoose-unique-validator');
 const idPlugin = require('mongoose-id');
 
 const payloadSchema = new mongoose.Schema({
@@ -128,7 +127,6 @@ const index = {
 payloadSchema.index(index);
 
 payloadSchema.plugin(mongoosePaginate);
-payloadSchema.plugin(uniqueValidator);
 payloadSchema.plugin(idPlugin);
 
 const Payload = mongoose.model('Payload', payloadSchema);

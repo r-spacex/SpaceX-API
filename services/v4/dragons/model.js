@@ -1,7 +1,6 @@
 
 const mongoose = require('mongoose');
 const mongoosePaginate = require('mongoose-paginate-v2');
-const uniqueValidator = require('mongoose-unique-validator');
 const idPlugin = require('mongoose-id');
 
 const dragonSchema = new mongoose.Schema({
@@ -151,7 +150,6 @@ const dragonSchema = new mongoose.Schema({
 });
 
 dragonSchema.plugin(mongoosePaginate);
-dragonSchema.plugin(uniqueValidator);
 dragonSchema.plugin(idPlugin);
 
 const Dragon = mongoose.model('Dragon', dragonSchema);
