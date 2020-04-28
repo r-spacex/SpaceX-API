@@ -2,9 +2,9 @@
 const cors = require('koa2-cors');
 const helmet = require('koa-helmet');
 const Koa = require('koa');
-const logger = require('koa-pino-logger');
 const bodyParser = require('koa-bodyparser');
 const mongoose = require('mongoose');
+const { requestLogger, logger } = require('./middleware/logger');
 const { responseTime, cache } = require('./middleware');
 const { v4 } = require('./services');
 
@@ -16,13 +16,21 @@ mongoose.connect(process.env.SPACEX_MONGO, {
   useUnifiedTopology: true,
   useCreateIndex: true,
 });
+
 const db = mongoose.connection;
+
 db.on('error', (err) => {
-  console.error(err);
+  logger.error(err);
 });
-db.once('open', () => {
-  console.log('Mongo ready');
+db.once('connected', () => {
+  logger.info('Mongo connected');
   app.emit('ready');
+});
+db.on('reconnected', () => {
+  logger.info('Mongo re-connected');
+});
+db.on('disconnected', () => {
+  logger.info('Mongo disconnected');
 });
 
 // disable console.errors for pino
@@ -44,14 +52,12 @@ app.use(cors({
 // Set header with API response time
 app.use(responseTime);
 
-// Only use Redis + minified logs in prodcution
+// Request logging
+app.use(requestLogger);
+
+// Only use Redis in production
 if (process.env.NODE_ENV === 'production') {
   app.use(cache.middleware());
-  app.use(logger());
-} else {
-  app.use(logger({
-    prettyPrint: true,
-  }));
 }
 
 // V4 routes

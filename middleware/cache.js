@@ -1,6 +1,7 @@
 
 const Redis = require('ioredis');
 const crypto = require('crypto');
+const { logger } = require('./logger');
 
 let redis;
 let redisAvailable = false;
@@ -17,9 +18,12 @@ redis.on('error', () => {
 redis.on('end', () => {
   redisAvailable = false;
 });
-redis.on('connect', () => {
+redis.on('ready', () => {
   redisAvailable = true;
-  console.log('Redis ready');
+  logger.info('Redis connected');
+});
+redis.on('reconnecting', () => {
+  logger.info('Redis re-connecting');
 });
 
 /**

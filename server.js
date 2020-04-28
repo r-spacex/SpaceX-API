@@ -1,6 +1,7 @@
 
 const http = require('http');
 const mongoose = require('mongoose');
+const { logger } = require('./middleware/logger');
 const app = require('./app');
 
 const PORT = process.env.PORT || 6673;
@@ -9,16 +10,16 @@ const SERVER = http.createServer(app.callback());
 // Gracefully close Mongo connection
 const gracefulShutdown = () => {
   mongoose.connection.close(false, () => {
-    console.log('Mongo closed');
+    logger.info('Mongo closed');
     SERVER.close(() => {
-      console.log('Shutting down...');
+      logger.info('Shutting down...');
     });
   });
 };
 
 // Server start
 SERVER.listen(PORT, '0.0.0.0', () => {
-  console.log(`Running on port: ${PORT}`);
+  logger.info(`Running on port: ${PORT}`);
 
   // Handle kill commands
   process.on('SIGTERM', gracefulShutdown);
