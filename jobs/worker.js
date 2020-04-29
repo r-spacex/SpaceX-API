@@ -1,7 +1,7 @@
 
 const { CronJob } = require('cron');
-const orbits = require('./orbits');
+const webcast = require('./webcast');
 
-const orbitsJob = new CronJob('0 * * * *', orbits);
+const webcastJob = new CronJob('*/10 * * * *', webcast);
 
-orbitsJob.start();
+webcastJob.start();

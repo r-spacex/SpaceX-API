@@ -5,7 +5,7 @@ const idPlugin = require('mongoose-id');
 
 const launchSchema = new mongoose.Schema({
   flight_number: {
-    type: String,
+    type: Number,
     unique: true,
     required: true,
   },
