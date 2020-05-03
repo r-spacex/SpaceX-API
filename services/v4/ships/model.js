@@ -88,6 +88,10 @@ const shipSchema = new mongoose.Schema({
     type: String,
     default: null,
   },
+  launches: [{
+    type: mongoose.ObjectId,
+    ref: 'Launch',
+  }],
 });
 
 shipSchema.plugin(mongoosePaginate);

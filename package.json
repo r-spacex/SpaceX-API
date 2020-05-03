@@ -6,6 +6,7 @@
   "scripts": {
     "test": "eslint . && jest --silent --verbose",
     "start": "node server.js",
+    "worker": "node jobs/worker.js",
     "lint": "eslint ."
   },
   "repository": {

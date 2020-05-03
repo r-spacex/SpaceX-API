@@ -91,6 +91,9 @@ const launchSchema = new mongoose.Schema({
   ships: [
     mongoose.ObjectId,
   ],
+  capsules: [
+    mongoose.ObjectId,
+  ],
   payloads: [
     mongoose.ObjectId,
   ],
