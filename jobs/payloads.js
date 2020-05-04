@@ -27,8 +27,8 @@ module.exports = async () => {
 
   await got.post('https://www.space-track.org/ajaxauth/login', {
     form: {
-      identity: process.env.LOGIN,
-      password: process.env.PASSWORD,
+      identity: process.env.SPACEX_TRACK_LOGIN,
+      password: process.env.SPACEX_TRACK_PASSWORD,
     },
     cookieJar,
   });
