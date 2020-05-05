@@ -118,6 +118,14 @@ const payloadSchema = new mongoose.Schema({
       type: String,
       default: null,
     },
+    water_landing: {
+      type: Boolean,
+      default: null,
+    },
+    land_landing: {
+      type: Boolean,
+      default: null,
+    },
   },
   launches: [{
     type: mongoose.ObjectId,
