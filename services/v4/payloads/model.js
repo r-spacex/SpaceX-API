@@ -127,10 +127,6 @@ const payloadSchema = new mongoose.Schema({
       default: null,
     },
   },
-  launches: [{
-    type: mongoose.ObjectId,
-    ref: 'Launch',
-  }],
 });
 
 const index = {
