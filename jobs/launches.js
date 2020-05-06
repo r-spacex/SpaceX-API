@@ -1,4 +1,5 @@
 
+const _ = require('lodash');
 const got = require('got');
 const { logger } = require('../middleware/logger');
 
@@ -210,22 +211,18 @@ module.exports = async () => {
   });
 
   const payloadLaunches = payloads.docs.map(async (payload) => {
-    const launchIds = launches.docs.filter((launch) => {
-      if (launch.payloads.includes(payload.id)) {
-        return true;
-      }
-      return false;
-    }).map((launch) => launch.id);
-
-    await got.patch(`${SPACEX_API}/payloads/${payload.id}`, {
-      json: {
-        launches: launchIds,
-      },
-      headers: {
-        'spacex-key': KEY,
-      },
-    });
-    results.payload = true;
+    const launchId = _.find(launches.docs, (launch) => launch.payloads.includes(payload.id));
+    if (launchId && launchId.id) {
+      await got.patch(`${SPACEX_API}/payloads/${payload.id}`, {
+        json: {
+          launch: launchId.id,
+        },
+        headers: {
+          'spacex-key': KEY,
+        },
+      });
+      results.payload = true;
+    }
   });
   await Promise.all(payloadLaunches);
 
