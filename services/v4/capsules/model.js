@@ -35,7 +35,7 @@ const capsuleSchema = new mongoose.Schema({
     type: mongoose.ObjectId,
     ref: 'Launch',
   }],
-});
+}, { autoCreate: true });
 
 capsuleSchema.plugin(mongoosePaginate);
 capsuleSchema.plugin(idPlugin);

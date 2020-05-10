@@ -92,7 +92,7 @@ const shipSchema = new mongoose.Schema({
     type: mongoose.ObjectId,
     ref: 'Launch',
   }],
-});
+}, { autoCreate: true });
 
 shipSchema.plugin(mongoosePaginate);
 shipSchema.plugin(idPlugin);

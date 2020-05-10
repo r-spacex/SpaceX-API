@@ -46,7 +46,7 @@ const coreSchema = new mongoose.Schema({
     type: mongoose.ObjectId,
     ref: 'Launch',
   }],
-});
+}, { autoCreate: true });
 
 coreSchema.plugin(mongoosePaginate);
 coreSchema.plugin(idPlugin);

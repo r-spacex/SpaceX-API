@@ -194,7 +194,7 @@ const launchSchema = new mongoose.Schema({
       default: null,
     },
   },
-});
+}, { autoCreate: true });
 
 launchSchema.plugin(mongoosePaginate);
 launchSchema.plugin(idPlugin);

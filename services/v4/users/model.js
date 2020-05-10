@@ -17,7 +17,7 @@ const userSchema = new mongoose.Schema({
     default: 'basic',
     enum: ['basic', 'admin'],
   }],
-});
+}, { autoCreate: true });
 
 userSchema.plugin(mongoosePaginate);
 userSchema.plugin(idPlugin);

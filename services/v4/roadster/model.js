@@ -79,7 +79,7 @@ const roadsterSchema = new mongoose.Schema({
   details: {
     type: String,
   },
-});
+}, { autoCreate: true });
 
 roadsterSchema.plugin(idPlugin);
 

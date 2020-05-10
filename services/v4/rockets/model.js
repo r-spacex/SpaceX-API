@@ -207,7 +207,7 @@ const rocketSchema = new mongoose.Schema({
   description: {
     type: String,
   },
-});
+}, { autoCreate: true });
 
 rocketSchema.plugin(mongoosePaginate);
 rocketSchema.plugin(idPlugin);

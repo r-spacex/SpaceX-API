@@ -127,7 +127,7 @@ const payloadSchema = new mongoose.Schema({
       default: null,
     },
   },
-});
+}, { autoCreate: true });
 
 const index = {
   name: 'text',

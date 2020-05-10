@@ -49,7 +49,7 @@ const launchpadSchema = new mongoose.Schema({
     type: mongoose.ObjectId,
     ref: 'Launch',
   }],
-});
+}, { autoCreate: true });
 
 launchpadSchema.plugin(mongoosePaginate);
 launchpadSchema.plugin(idPlugin);

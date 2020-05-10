@@ -147,7 +147,7 @@ const dragonSchema = new mongoose.Schema({
   description: {
     type: String,
   },
-});
+}, { autoCreate: true });
 
 dragonSchema.plugin(mongoosePaginate);
 dragonSchema.plugin(idPlugin);

@@ -67,7 +67,7 @@ const companySchema = new mongoose.Schema({
   summary: {
     type: String,
   },
-});
+}, { autoCreate: true });
 
 companySchema.plugin(idPlugin);
 

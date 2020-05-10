@@ -29,7 +29,7 @@ const crewSchema = new mongoose.Schema({
     type: mongoose.ObjectId,
     ref: 'Launch',
   }],
-});
+}, { autoCreate: true });
 
 crewSchema.plugin(mongoosePaginate);
 crewSchema.plugin(idPlugin);
