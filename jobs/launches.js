@@ -90,7 +90,7 @@ module.exports = async () => {
       return false;
     }).map((launch) => launch.id);
 
-    await got.patch(`${SPACEX_API}/crew/${core.id}`, {
+    await got.patch(`${SPACEX_API}/cores/${core.id}`, {
       json: {
         launches: launchIds,
       },
