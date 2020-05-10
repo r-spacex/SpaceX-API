@@ -69,7 +69,7 @@ Standard cache times are as follows:
 **dragons**, **rockets** - 24 hours
 
 Cache can be cleared with the following endpoint:
-* [Clear cache](cache/clear.md) : `DELETE /admin/cache` - Requires Auth
+* [Clear cache](cache/clear.md) : `DELETE /admin/cache` - Auth required
 
 ## Routes
 
@@ -186,3 +186,17 @@ Detailed info about ships in the SpaceX fleet
 * [Create a ship](ships/create.md) : `POST /v4/ships`
 * [Update a ship](ships/update.md) : `PATCH /v4/ships/:id`
 * [Delete a ship](ships/delete.md) : `DELETE /v4/ships/:id`
+
+### Company Info
+
+Detailed info about SpaceX as a company
+
+* [Get company info](company/get.md) : `GET /v4/company`
+* [Update company info](comapny/update.md) : `PATCH /v4/company/:id`
+
+### Roadster info
+
+Detailed info about Elon's Tesla roadster's current position
+
+* [Get roadster info](roadster/get.md) : `GET /v4/roadster`
+* [Update roadster info](roadster/update.md) : `PATCH /v4/roadster/:id`
