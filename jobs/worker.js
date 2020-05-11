@@ -12,7 +12,7 @@ const cores = require('./cores');
 const webcastJob = new CronJob('*/10 * * * *', webcast);
 
 // Every 10 minutes
-const launchesJob = new CronJob('* * * * *', launches);
+const launchesJob = new CronJob('*/10 * * * *', launches);
 
 // Every hour on :20
 const payloadsJob = new CronJob('20 * * * *', payloads);
@@ -27,7 +27,7 @@ const launchpadsJob = new CronJob('*/10 * * * *', launchpads);
 const capsulesJob = new CronJob('*/10 * * * *', capsules);
 
 // Every 10 minutes
-const coresJob = new CronJob('* * * * *', cores);
+const coresJob = new CronJob('*/10 * * * *', cores);
 
 webcastJob.start();
 launchesJob.start();
@@ -35,4 +35,4 @@ payloadsJob.start();
 landpadsJob.start();
 launchpadsJob.start();
 capsulesJob.start();
-// coresJob.start();
+coresJob.start();
