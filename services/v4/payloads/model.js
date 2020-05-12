@@ -19,6 +19,7 @@ const payloadSchema = new mongoose.Schema({
   },
   launch: {
     type: mongoose.ObjectId,
+    ref: 'Launch',
     default: null,
   },
   customers: [String],

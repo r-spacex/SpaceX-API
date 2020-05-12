@@ -53,6 +53,7 @@ const launchSchema = new mongoose.Schema({
   },
   rocket: {
     type: mongoose.ObjectId,
+    ref: 'Rocket',
     default: null,
   },
   success: {
@@ -81,30 +82,37 @@ const launchSchema = new mongoose.Schema({
       type: Boolean,
       default: null,
     },
-    ships: [
-      mongoose.ObjectId,
-    ],
+    ships: [{
+      type: mongoose.ObjectId,
+      ref: 'Ship',
+    }],
   },
-  crew: [
-    mongoose.ObjectId,
-  ],
-  ships: [
-    mongoose.ObjectId,
-  ],
-  capsules: [
-    mongoose.ObjectId,
-  ],
-  payloads: [
-    mongoose.ObjectId,
-  ],
+  crew: [{
+    type: mongoose.ObjectId,
+    ref: 'Crew',
+  }],
+  ships: [{
+    type: mongoose.ObjectId,
+    ref: 'Ship',
+  }],
+  capsules: [{
+    type: mongoose.ObjectId,
+    ref: 'Capsule',
+  }],
+  payloads: [{
+    type: mongoose.ObjectId,
+    ref: 'Payload',
+  }],
   launchpad: {
     type: mongoose.ObjectId,
+    ref: 'Launchpad',
     default: null,
   },
   cores: [{
     _id: false,
     core: {
       type: mongoose.ObjectId,
+      ref: 'Core',
       default: null,
     },
     flight: {
@@ -137,6 +145,7 @@ const launchSchema = new mongoose.Schema({
     },
     landpad: {
       type: mongoose.ObjectId,
+      ref: 'Landpad',
       default: null,
     },
   }],

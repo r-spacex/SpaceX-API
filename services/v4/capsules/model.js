@@ -14,7 +14,10 @@ const capsuleSchema = new mongoose.Schema({
     enum: ['unknown', 'active', 'retired', 'destroyed'],
     required: true,
   },
-  dragon: mongoose.ObjectId,
+  dragon: {
+    type: mongoose.ObjectId,
+    ref: 'Dragon',
+  },
   reuse_count: {
     type: Number,
     default: 0,
