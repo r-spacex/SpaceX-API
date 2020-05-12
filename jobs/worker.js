@@ -7,6 +7,7 @@ const landpads = require('./landpads');
 const launchpads = require('./launchpads');
 const capsules = require('./capsules');
 const cores = require('./cores');
+const roadster = require('./roadster');
 
 // Every 10 minutes
 const webcastJob = new CronJob('*/10 * * * *', webcast);
@@ -29,6 +30,9 @@ const capsulesJob = new CronJob('*/10 * * * *', capsules);
 // Every 10 minutes
 const coresJob = new CronJob('*/10 * * * *', cores);
 
+// Every 10 minutes
+const roadsterJob = new CronJob('*/10 * * * *', roadster);
+
 webcastJob.start();
 launchesJob.start();
 payloadsJob.start();
@@ -36,3 +40,4 @@ landpadsJob.start();
 launchpadsJob.start();
 capsulesJob.start();
 coresJob.start();
+roadsterJob.start();
