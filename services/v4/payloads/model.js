@@ -101,6 +101,7 @@ const payloadSchema = new mongoose.Schema({
   dragon: {
     capsule: {
       type: mongoose.ObjectId,
+      ref: 'Capsule',
       default: null,
     },
     mass_returned_kg: {
