@@ -9,7 +9,7 @@ const router = new Router({
 
 // Get roadster
 router.get('/', async (ctx) => {
-  ctx.state.cache = 86400;
+  ctx.state.cache = 300;
   try {
     const result = await Roadster.findOne({});
     ctx.status = 200;

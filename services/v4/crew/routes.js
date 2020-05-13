@@ -9,6 +9,7 @@ const router = new Router({
 
 // Get all crew
 router.get('/', async (ctx) => {
+  ctx.state.cache = 300;
   try {
     const result = await Crew.find({});
     ctx.status = 200;
@@ -20,6 +21,7 @@ router.get('/', async (ctx) => {
 
 // Get one crew member
 router.get('/:id', async (ctx) => {
+  ctx.state.cache = 300;
   try {
     const result = await Crew.findById(ctx.params.id);
     if (!result) {
@@ -34,6 +36,7 @@ router.get('/:id', async (ctx) => {
 
 // Query crew members
 router.post('/query', async (ctx) => {
+  ctx.state.cache = 300;
   const { query = {}, options = {} } = ctx.request.body;
   try {
     const result = await Crew.paginate(query, options);

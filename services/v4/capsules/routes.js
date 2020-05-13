@@ -9,7 +9,7 @@ const router = new Router({
 
 // Get all capsules
 router.get('/', async (ctx) => {
-  ctx.state.cache = 3600;
+  ctx.state.cache = 300;
   try {
     const result = await Capsule.find({});
     ctx.status = 200;
@@ -21,7 +21,7 @@ router.get('/', async (ctx) => {
 
 // Get one capsule
 router.get('/:id', async (ctx) => {
-  ctx.state.cache = 3600;
+  ctx.state.cache = 300;
   try {
     const result = await Capsule.findById(ctx.params.id);
     if (!result) {
@@ -36,7 +36,7 @@ router.get('/:id', async (ctx) => {
 
 // Query capsules
 router.post('/query', async (ctx) => {
-  ctx.state.cache = 3600;
+  ctx.state.cache = 300;
   const { query = {}, options = {} } = ctx.request.body;
   try {
     const result = await Capsule.paginate(query, options);

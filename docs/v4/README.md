@@ -62,9 +62,7 @@ Standard cache times are as follows:
 
 **launches** - 20 seconds
 
-**ships**, **payloads** - 5 minutes
-
-**capsules**, **cores**, **launchpads**, **landpads**, **crew** - 1 hour
+**capsules**, **cores**, **launchpads**, **landpads**, **crew**, **ships**, **payloads** - 5 minutes
 
 **dragons**, **rockets** - 24 hours
 
