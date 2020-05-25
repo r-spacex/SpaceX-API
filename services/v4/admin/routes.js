@@ -16,4 +16,9 @@ router.delete('/cache', auth('basic'), async (ctx) => {
   }
 });
 
+// Healthcheck
+router.get('/health', async (ctx) => {
+  ctx.status = 200;
+});
+
 module.exports = router;
