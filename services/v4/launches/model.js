@@ -6,7 +6,6 @@ const idPlugin = require('mongoose-id');
 const launchSchema = new mongoose.Schema({
   flight_number: {
     type: Number,
-    unique: true,
     required: true,
   },
   name: {
@@ -202,6 +201,10 @@ const launchSchema = new mongoose.Schema({
       type: String,
       default: null,
     },
+  },
+  auto_update: {
+    type: Boolean,
+    default: true,
   },
 }, { autoCreate: true });
 

@@ -80,6 +80,10 @@ const shipSchema = new mongoose.Schema({
     type: Number,
     default: null,
   },
+  last_ais_update: {
+    type: String,
+    default: null,
+  },
   link: {
     type: String,
     default: null,

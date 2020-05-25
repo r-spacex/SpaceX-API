@@ -25,6 +25,10 @@ const launchpadSchema = new mongoose.Schema({
     type: String,
     default: null,
   },
+  timezone: {
+    type: String,
+    default: null,
+  },
   latitude: {
     type: Number,
     default: null,
