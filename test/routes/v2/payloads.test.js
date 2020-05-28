@@ -25,12 +25,6 @@ test('It should return all Dragon 1.0 payloads', async () => {
   expect(response.body.length).toBe(5);
 });
 
-test('It should return 5 Satellite payloads in decending order', async () => {
-  const response = await request.get('/v2/payloads?payload_type=Satellite&order=desc&limit=5');
-  expect(response.statusCode).toBe(200);
-  expect(response.body.length).toBe(5);
-});
-
 //------------------------------------------------------------
 //                     One Payload Test
 //------------------------------------------------------------
