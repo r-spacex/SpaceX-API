@@ -84,6 +84,9 @@ const checkDatePattern = async (mdate) => {
   // 2020 Nov 4 [14:10]
   const hour = /^\s*[0-9]{4}\s*([a-z]{3}|[a-z]{3,9})\s*[0-9]{1,2}\s*(\[?\s*[0-9]{2}:[0-9]{2}\s*\]?)\s*$/i;
 
+  // 2020 Nov 4 [14:10]
+  const second = /^\s*[0-9]{4}\s*([a-z]{3}|[a-z]{3,9})\s*[0-9]{1,2}\s*(\[?\s*[0-9]{2}:[0-9]{2}:[0-9]{2}\s*\]?)\s*$/i;
+
   const result = {
     mdate,
   };
@@ -129,6 +132,8 @@ const checkDatePattern = async (mdate) => {
   } else if (day.test(cleaned)) {
     result.precision = 'day';
   } else if (hour.test(cleaned)) {
+    result.precision = 'hour';
+  } else if (second.test(cleaned)) {
     result.precision = 'hour';
   } else {
     // Send notification
