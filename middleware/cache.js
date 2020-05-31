@@ -84,7 +84,7 @@ module.exports.middleware = async (ctx, next) => {
         }
         await redis.set(key, responseBody, 'EX', ttl);
       } catch (e) {
-        console.log('Failed to set cache');
+        console.log(`Failed to set cache: ${e.message}`);
       }
     }
   }
