@@ -11,23 +11,9 @@ const HEALTHCHECK = process.env.CAPSULES_HEALTHCHECK;
  * @return {Promise<void>}
  */
 module.exports = async () => {
-  const capsules = await got.post(`${SPACEX_API}/capsules/query`, {
-    json: {
-      options: {
-        pagination: false,
-      },
-    },
-    resolveBodyOnly: true,
-    responseType: 'json',
-  });
-
-  const updates = capsules.docs.map(async (capsule) => {
-    const waterLandings = await got.post(`${SPACEX_API}/payloads/query`, {
+  try {
+    const capsules = await got.post(`${SPACEX_API}/capsules/query`, {
       json: {
-        query: {
-          'dragon.capsule': capsule.id,
-          'dragon.water_landing': true,
-        },
         options: {
           pagination: false,
         },
@@ -36,37 +22,55 @@ module.exports = async () => {
       responseType: 'json',
     });
 
-    const landLandings = await got.post(`${SPACEX_API}/payloads/query`, {
-      json: {
-        query: {
-          'dragon.capsule': capsule.id,
-          'dragon.land_landing': true,
+    const updates = capsules.docs.map(async (capsule) => {
+      const waterLandings = await got.post(`${SPACEX_API}/payloads/query`, {
+        json: {
+          query: {
+            'dragon.capsule': capsule.id,
+            'dragon.water_landing': true,
+          },
+          options: {
+            pagination: false,
+          },
         },
-        options: {
-          pagination: false,
+        resolveBodyOnly: true,
+        responseType: 'json',
+      });
+
+      const landLandings = await got.post(`${SPACEX_API}/payloads/query`, {
+        json: {
+          query: {
+            'dragon.capsule': capsule.id,
+            'dragon.land_landing': true,
+          },
+          options: {
+            pagination: false,
+          },
         },
-      },
-      resolveBodyOnly: true,
-      responseType: 'json',
+        resolveBodyOnly: true,
+        responseType: 'json',
+      });
+
+      await got.patch(`${SPACEX_API}/capsules/${capsule.id}`, {
+        json: {
+          reuse_count: capsule.launches.length,
+          water_landings: waterLandings.totalDocs,
+          land_landings: landLandings.totalDocs,
+        },
+        headers: {
+          'spacex-key': KEY,
+        },
+      });
     });
 
-    await got.patch(`${SPACEX_API}/capsules/${capsule.id}`, {
-      json: {
-        reuse_count: capsule.launches.length,
-        water_landings: waterLandings.totalDocs,
-        land_landings: landLandings.totalDocs,
-      },
-      headers: {
-        'spacex-key': KEY,
-      },
-    });
-  });
+    await Promise.all(updates);
 
-  await Promise.all(updates);
+    logger.info('Capsules updated');
 
-  logger.info('Capsules updated');
-
-  if (HEALTHCHECK) {
-    await got(HEALTHCHECK);
+    if (HEALTHCHECK) {
+      await got(HEALTHCHECK);
+    }
+  } catch (error) {
+    console.log(error);
   }
 };

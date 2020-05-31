@@ -11,23 +11,9 @@ const HEALTHCHECK = process.env.LAUNCHPADS_HEALTHCHECK;
  * @return {Promise<void>}
  */
 module.exports = async () => {
-  const launchpads = await got.post(`${SPACEX_API}/launchpads/query`, {
-    json: {
-      options: {
-        pagination: false,
-      },
-    },
-    resolveBodyOnly: true,
-    responseType: 'json',
-  });
-
-  const updates = launchpads.docs.map(async (launchpad) => {
-    const attempts = await got.post(`${SPACEX_API}/launches/query`, {
+  try {
+    const launchpads = await got.post(`${SPACEX_API}/launchpads/query`, {
       json: {
-        query: {
-          launchpad: launchpad.id,
-          upcoming: false,
-        },
         options: {
           pagination: false,
         },
@@ -36,37 +22,55 @@ module.exports = async () => {
       responseType: 'json',
     });
 
-    const successes = await got.post(`${SPACEX_API}/launches/query`, {
-      json: {
-        query: {
-          launchpad: launchpad.id,
-          upcoming: false,
-          success: true,
+    const updates = launchpads.docs.map(async (launchpad) => {
+      const attempts = await got.post(`${SPACEX_API}/launches/query`, {
+        json: {
+          query: {
+            launchpad: launchpad.id,
+            upcoming: false,
+          },
+          options: {
+            pagination: false,
+          },
         },
-        options: {
-          pagination: false,
+        resolveBodyOnly: true,
+        responseType: 'json',
+      });
+
+      const successes = await got.post(`${SPACEX_API}/launches/query`, {
+        json: {
+          query: {
+            launchpad: launchpad.id,
+            upcoming: false,
+            success: true,
+          },
+          options: {
+            pagination: false,
+          },
         },
-      },
-      resolveBodyOnly: true,
-      responseType: 'json',
+        resolveBodyOnly: true,
+        responseType: 'json',
+      });
+
+      await got.patch(`${SPACEX_API}/launchpads/${launchpad.id}`, {
+        json: {
+          launch_attempts: attempts.totalDocs,
+          launch_successes: successes.totalDocs,
+        },
+        headers: {
+          'spacex-key': KEY,
+        },
+      });
     });
 
-    await got.patch(`${SPACEX_API}/launchpads/${launchpad.id}`, {
-      json: {
-        launch_attempts: attempts.totalDocs,
-        launch_successes: successes.totalDocs,
-      },
-      headers: {
-        'spacex-key': KEY,
-      },
-    });
-  });
+    await Promise.all(updates);
 
-  await Promise.all(updates);
+    logger.info('Launchpads updated');
 
-  logger.info('Launchpads updated');
-
-  if (HEALTHCHECK) {
-    await got(HEALTHCHECK);
+    if (HEALTHCHECK) {
+      await got(HEALTHCHECK);
+    }
+  } catch (error) {
+    console.log(error);
   }
 };

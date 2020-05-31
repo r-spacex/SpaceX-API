@@ -11,29 +11,9 @@ const HEALTHCHECK = process.env.LANDPADS_HEALTHCHECK;
  * @return {Promise<void>}
  */
 module.exports = async () => {
-  const landpads = await got.post(`${SPACEX_API}/landpads/query`, {
-    json: {
-      options: {
-        pagination: false,
-      },
-    },
-    resolveBodyOnly: true,
-    responseType: 'json',
-  });
-
-  const updates = landpads.docs.map(async (landpad) => {
-    const attempts = await got.post(`${SPACEX_API}/launches/query`, {
+  try {
+    const landpads = await got.post(`${SPACEX_API}/landpads/query`, {
       json: {
-        query: {
-          cores: {
-            $elemMatch: {
-              landpad: landpad.id,
-              landing_attempt: true,
-            },
-          },
-          upcoming: false,
-          success: true,
-        },
         options: {
           pagination: false,
         },
@@ -42,43 +22,67 @@ module.exports = async () => {
       responseType: 'json',
     });
 
-    const successes = await got.post(`${SPACEX_API}/launches/query`, {
-      json: {
-        query: {
-          cores: {
-            $elemMatch: {
-              landpad: landpad.id,
-              landing_attempt: true,
-              landing_success: true,
+    const updates = landpads.docs.map(async (landpad) => {
+      const attempts = await got.post(`${SPACEX_API}/launches/query`, {
+        json: {
+          query: {
+            cores: {
+              $elemMatch: {
+                landpad: landpad.id,
+                landing_attempt: true,
+              },
             },
+            upcoming: false,
+            success: true,
           },
-          upcoming: false,
-          success: true,
+          options: {
+            pagination: false,
+          },
         },
-        options: {
-          pagination: false,
+        resolveBodyOnly: true,
+        responseType: 'json',
+      });
+
+      const successes = await got.post(`${SPACEX_API}/launches/query`, {
+        json: {
+          query: {
+            cores: {
+              $elemMatch: {
+                landpad: landpad.id,
+                landing_attempt: true,
+                landing_success: true,
+              },
+            },
+            upcoming: false,
+            success: true,
+          },
+          options: {
+            pagination: false,
+          },
         },
-      },
-      resolveBodyOnly: true,
-      responseType: 'json',
+        resolveBodyOnly: true,
+        responseType: 'json',
+      });
+
+      await got.patch(`${SPACEX_API}/landpads/${landpad.id}`, {
+        json: {
+          landing_attempts: attempts.totalDocs,
+          landing_successes: successes.totalDocs,
+        },
+        headers: {
+          'spacex-key': KEY,
+        },
+      });
     });
 
-    await got.patch(`${SPACEX_API}/landpads/${landpad.id}`, {
-      json: {
-        landing_attempts: attempts.totalDocs,
-        landing_successes: successes.totalDocs,
-      },
-      headers: {
-        'spacex-key': KEY,
-      },
-    });
-  });
+    await Promise.all(updates);
 
-  await Promise.all(updates);
+    logger.info('Landpads updated');
 
-  logger.info('Landpads updated');
-
-  if (HEALTHCHECK) {
-    await got(HEALTHCHECK);
+    if (HEALTHCHECK) {
+      await got(HEALTHCHECK);
+    }
+  } catch (error) {
+    console.log(error);
   }
 };

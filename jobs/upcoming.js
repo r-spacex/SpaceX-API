@@ -241,11 +241,11 @@ module.exports = async () => {
         }
       }
     }
+
+    if (HEALTHCHECK) {
+      await got(HEALTHCHECK);
+    }
   } catch (error) {
     console.log(error);
-  }
-
-  if (HEALTHCHECK) {
-    await got(HEALTHCHECK);
   }
 };
