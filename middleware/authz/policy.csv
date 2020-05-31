@@ -1,0 +1,104 @@
+p, root, /*, *
+
+p, create:capsule, /v4/capsules, POST
+p, update:capsule, /v4/capsules/:id, PUT
+p, delete:capsule, /v4/capsules/:id, DELETE
+
+p, create:cores, /v4/cores, POST
+p, update:cores, /v4/cores/:id, PUT
+p, delete:cores, /v4/cores/:id, DELETE
+
+p, create:crew, /v4/crew, POST
+p, update:crew, /v4/crew/:id, PUT
+p, delete:crew, /v4/crew/:id, DELETE
+
+p, create:dragons, /v4/dragons, POST
+p, update:dragons, /v4/dragons/:id, PUT
+p, delete:dragons, /v4/dragons/:id, DELETE
+
+p, create:landpads, /v4/landpads, POST
+p, update:landpads, /v4/landpads/:id, PUT
+p, delete:landpads, /v4/landpads/:id, DELETE
+
+p, create:launches, /v4/launches, POST
+p, update:launches, /v4/launches/:id, PUT
+p, delete:launches, /v4/launches/:id, DELETE
+
+p, create:launchpads, /v4/launchpads, POST
+p, update:launchpads, /v4/launchpads/:id, PUT
+p, delete:launchpads, /v4/launchpads/:id, DELETE
+
+p, create:payloads, /v4/payloads, POST
+p, update:payloads, /v4/payloads/:id, PUT
+p, delete:payloads, /v4/payloads/:id, DELETE
+
+p, create:rockets, /v4/rockets, POST
+p, update:rockets, /v4/rockets/:id, PUT
+p, delete:rockets, /v4/rockets/:id, DELETE
+
+p, create:ships, /v4/ships, POST
+p, update:ships, /v4/ships/:id, PUT
+p, delete:ships, /v4/ships/:id, DELETE
+
+p, update:company, /v4/company/:id, PUT
+
+p, update:roadster, /v4/roadster/:id, PUT
+
+p, get:user, /v4/users, GET
+p, get-one:user, /v4/users/:id, GET
+p, query:user, /v4/users/query, POST
+p, create:user, /v4/users, POST
+p, update:user, /v4/users/:id, PUT
+p, delete:user, /v4/users/:id, DELETE
+
+p, clear-cache, /v4/admin/cache, DELETE
+
+g, superuser, root
+
+g, create, create:capsule
+g, update, update:capsule
+g, delete, delete:capsule
+
+g, create, create:cores
+g, update, update:cores
+g, delete, delete:cores
+
+g, create, create:crew
+g, update, update:crew
+g, delete, delete:crew
+
+g, create, create:dragons
+g, update, update:dragons
+g, delete, delete:dragons
+
+g, create, create:landpads
+g, update, update:landpads
+g, delete, delete:landpads
+
+g, create, create:launches
+g, update, update:launches
+g, delete, delete:launches
+
+g, create, create:launchpads
+g, update, update:launchpads
+g, delete, delete:launchpads
+
+g, create, create:payloads
+g, update, update:payloads
+g, delete, delete:payloads
+
+g, create, create:rockets
+g, update, update:rockets
+g, delete, delete:rockets
+
+g, create, create:ships
+g, update, update:ships
+g, delete, delete:ships
+
+g, update, update:company
+
+g, update, update:roadster
+
+g, user, create
+g, user, update
+g, user, delete

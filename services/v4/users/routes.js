@@ -1,14 +1,14 @@
 
 const Router = require('koa-router');
 const User = require('./model');
-const { auth } = require('../../../middleware');
+const { auth, authz } = require('../../../middleware');
 
 const router = new Router({
   prefix: '/users',
 });
 
 // Get all users
-router.get('/', auth('admin'), async (ctx) => {
+router.get('/', auth, authz, async (ctx) => {
   try {
     const result = await User.find({});
     ctx.status = 200;
@@ -19,7 +19,7 @@ router.get('/', auth('admin'), async (ctx) => {
 });
 
 // Get one user
-router.get('/:id', auth('admin'), async (ctx) => {
+router.get('/:id', auth, authz, async (ctx) => {
   try {
     const result = await User.findById(ctx.params.id);
     if (!result) {
@@ -33,7 +33,7 @@ router.get('/:id', auth('admin'), async (ctx) => {
 });
 
 // Query users
-router.post('/query', auth('admin'), async (ctx) => {
+router.post('/query', auth, authz, async (ctx) => {
   const { query = {}, options = {} } = ctx.request.body;
   try {
     const result = await User.paginate(query, options);
@@ -45,7 +45,7 @@ router.post('/query', auth('admin'), async (ctx) => {
 });
 
 // Create a user
-router.post('/', auth('admin'), async (ctx) => {
+router.post('/', auth, authz, async (ctx) => {
   try {
     const user = new User(ctx.request.body);
     await user.save();
@@ -56,7 +56,7 @@ router.post('/', auth('admin'), async (ctx) => {
 });
 
 // Update a user
-router.patch('/:id', auth('admin'), async (ctx) => {
+router.patch('/:id', auth, authz, async (ctx) => {
   try {
     await User.findByIdAndUpdate(ctx.params.id, ctx.request.body, {
       runValidators: true,
@@ -68,7 +68,7 @@ router.patch('/:id', auth('admin'), async (ctx) => {
 });
 
 // Delete a user
-router.delete('/:id', auth('admin'), async (ctx) => {
+router.delete('/:id', auth, authz, async (ctx) => {
   try {
     await User.findByIdAndDelete(ctx.params.id);
     ctx.status = 200;

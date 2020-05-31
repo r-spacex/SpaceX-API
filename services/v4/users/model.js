@@ -12,11 +12,11 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  role: [{
+  role: {
     type: String,
-    default: 'basic',
-    enum: ['basic', 'admin'],
-  }],
+    required: true,
+    enum: ['superuser', 'user', 'create', 'update', 'delete'],
+  },
 }, { autoCreate: true });
 
 userSchema.plugin(mongoosePaginate);

@@ -1,7 +1,7 @@
 
 const Router = require('koa-router');
 const Crew = require('./model');
-const { auth } = require('../../../middleware');
+const { auth, authz } = require('../../../middleware');
 
 const router = new Router({
   prefix: '/crew',
@@ -48,7 +48,7 @@ router.post('/query', async (ctx) => {
 });
 
 // Create crew member
-router.post('/', auth('basic'), async (ctx) => {
+router.post('/', auth, authz, async (ctx) => {
   try {
     const crew = new Crew(ctx.request.body);
     await crew.save();
@@ -59,7 +59,7 @@ router.post('/', auth('basic'), async (ctx) => {
 });
 
 // Update crew member
-router.patch('/:id', auth('basic'), async (ctx) => {
+router.patch('/:id', auth, authz, async (ctx) => {
   try {
     await Crew.findByIdAndUpdate(ctx.params.id, ctx.request.body, { runValidators: true });
     ctx.status = 200;
@@ -69,7 +69,7 @@ router.patch('/:id', auth('basic'), async (ctx) => {
 });
 
 // Delete crew member
-router.delete('/:id', auth('basic'), async (ctx) => {
+router.delete('/:id', auth, authz, async (ctx) => {
   try {
     await Crew.findByIdAndDelete(ctx.params.id);
     ctx.status = 200;

@@ -1,7 +1,7 @@
 
 const Router = require('koa-router');
 const Core = require('./model');
-const { auth } = require('../../../middleware');
+const { auth, authz } = require('../../../middleware');
 
 const router = new Router({
   prefix: '/cores',
@@ -48,7 +48,7 @@ router.post('/query', async (ctx) => {
 });
 
 // Create core
-router.post('/', auth('basic'), async (ctx) => {
+router.post('/', auth, authz, async (ctx) => {
   try {
     const core = new Core(ctx.request.body);
     await core.save();
@@ -59,7 +59,7 @@ router.post('/', auth('basic'), async (ctx) => {
 });
 
 // Update core
-router.patch('/:id', auth('basic'), async (ctx) => {
+router.patch('/:id', auth, authz, async (ctx) => {
   try {
     await Core.findByIdAndUpdate(ctx.params.id, ctx.request.body, { runValidators: true });
     ctx.status = 200;
@@ -69,7 +69,7 @@ router.patch('/:id', auth('basic'), async (ctx) => {
 });
 
 // Delete core
-router.delete('/:id', auth('basic'), async (ctx) => {
+router.delete('/:id', auth, authz, async (ctx) => {
   try {
     await Core.findByIdAndDelete(ctx.params.id);
     ctx.status = 200;

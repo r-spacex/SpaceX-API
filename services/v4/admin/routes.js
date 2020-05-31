@@ -1,13 +1,13 @@
 
 const Router = require('koa-router');
-const { auth, cache } = require('../../../middleware');
+const { auth, authz, cache } = require('../../../middleware');
 
 const router = new Router({
   prefix: '/admin',
 });
 
 // Clear redis cache
-router.delete('/cache', auth('basic'), async (ctx) => {
+router.delete('/cache', auth, authz, async (ctx) => {
   try {
     await cache.redis.flushall();
     ctx.status = 200;

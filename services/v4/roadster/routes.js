@@ -1,7 +1,7 @@
 
 const Router = require('koa-router');
 const Roadster = require('./model');
-const { auth } = require('../../../middleware');
+const { auth, authz } = require('../../../middleware');
 
 const router = new Router({
   prefix: '/roadster',
@@ -20,7 +20,7 @@ router.get('/', async (ctx) => {
 });
 
 // Update roadster
-router.patch('/:id', auth('basic'), async (ctx) => {
+router.patch('/:id', auth, authz, async (ctx) => {
   try {
     await Roadster.findByIdAndUpdate(ctx.params.id, ctx.request.body, { runValidators: true });
     ctx.status = 200;

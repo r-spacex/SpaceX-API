@@ -1,7 +1,7 @@
 
 const Router = require('koa-router');
 const Rocket = require('./model');
-const { auth } = require('../../../middleware');
+const { auth, authz } = require('../../../middleware');
 
 const router = new Router({
   prefix: '/rockets',
@@ -48,7 +48,7 @@ router.post('/query', async (ctx) => {
 });
 
 // Create a rocket
-router.post('/', auth('basic'), async (ctx) => {
+router.post('/', auth, authz, async (ctx) => {
   try {
     const rocket = new Rocket(ctx.request.body);
     await rocket.save();
@@ -59,7 +59,7 @@ router.post('/', auth('basic'), async (ctx) => {
 });
 
 // Update a rocket
-router.patch('/:id', auth('basic'), async (ctx) => {
+router.patch('/:id', auth, authz, async (ctx) => {
   try {
     await Rocket.findByIdAndUpdate(ctx.params.id, ctx.request.body, { runValidators: true });
     ctx.status = 200;
@@ -69,7 +69,7 @@ router.patch('/:id', auth('basic'), async (ctx) => {
 });
 
 // Delete a rocket
-router.delete('/:id', auth('basic'), async (ctx) => {
+router.delete('/:id', auth, authz, async (ctx) => {
   try {
     await Rocket.findByIdAndDelete(ctx.params.id);
     ctx.status = 200;

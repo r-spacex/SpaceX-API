@@ -1,7 +1,7 @@
 
 const Router = require('koa-router');
 const Payload = require('./model');
-const { auth } = require('../../../middleware');
+const { auth, authz } = require('../../../middleware');
 
 const router = new Router({
   prefix: '/payloads',
@@ -48,7 +48,7 @@ router.post('/query', async (ctx) => {
 });
 
 // Create a payload
-router.post('/', auth('basic'), async (ctx) => {
+router.post('/', auth, authz, async (ctx) => {
   try {
     const payload = new Payload(ctx.request.body);
     await payload.save();
@@ -59,7 +59,7 @@ router.post('/', auth('basic'), async (ctx) => {
 });
 
 // Update a payload
-router.patch('/:id', auth('basic'), async (ctx) => {
+router.patch('/:id', auth, authz, async (ctx) => {
   try {
     await Payload.findByIdAndUpdate(ctx.params.id, ctx.request.body, {
       runValidators: true,
@@ -71,7 +71,7 @@ router.patch('/:id', auth('basic'), async (ctx) => {
 });
 
 // Delete a payload
-router.delete('/:id', auth('basic'), async (ctx) => {
+router.delete('/:id', auth, authz, async (ctx) => {
   try {
     await Payload.findByIdAndDelete(ctx.params.id);
     ctx.status = 200;

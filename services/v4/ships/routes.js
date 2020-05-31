@@ -1,7 +1,7 @@
 
 const Router = require('koa-router');
 const Ship = require('./model');
-const { auth } = require('../../../middleware');
+const { auth, authz } = require('../../../middleware');
 
 const router = new Router({
   prefix: '/ships',
@@ -48,7 +48,7 @@ router.post('/query', async (ctx) => {
 });
 
 // Create a ship
-router.post('/', auth('basic'), async (ctx) => {
+router.post('/', auth, authz, async (ctx) => {
   try {
     const ship = new Ship(ctx.request.body);
     await ship.save();
@@ -59,7 +59,7 @@ router.post('/', auth('basic'), async (ctx) => {
 });
 
 // Update a ship
-router.patch('/:id', auth('basic'), async (ctx) => {
+router.patch('/:id', auth, authz, async (ctx) => {
   try {
     await Ship.findByIdAndUpdate(ctx.params.id, ctx.request.body, { runValidators: true });
     ctx.status = 200;
@@ -69,7 +69,7 @@ router.patch('/:id', auth('basic'), async (ctx) => {
 });
 
 // Delete a ship
-router.delete('/:id', auth('basic'), async (ctx) => {
+router.delete('/:id', auth, authz, async (ctx) => {
   try {
     await Ship.findByIdAndDelete(ctx.params.id);
     ctx.status = 200;

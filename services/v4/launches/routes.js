@@ -1,7 +1,7 @@
 
 const Router = require('koa-router');
 const Launch = require('./model');
-const { auth } = require('../../../middleware');
+const { auth, authz } = require('../../../middleware');
 
 const router = new Router({
   prefix: '/launches',
@@ -124,7 +124,7 @@ router.post('/query', async (ctx) => {
 });
 
 // Create a launch
-router.post('/', auth('basic'), async (ctx) => {
+router.post('/', auth, authz, async (ctx) => {
   try {
     const launch = new Launch(ctx.request.body);
     await launch.save();
@@ -135,7 +135,7 @@ router.post('/', auth('basic'), async (ctx) => {
 });
 
 // Update a launch
-router.patch('/:id', auth('basic'), async (ctx) => {
+router.patch('/:id', auth, authz, async (ctx) => {
   try {
     await Launch.findByIdAndUpdate(ctx.params.id, ctx.request.body, {
       runValidators: true,
@@ -147,7 +147,7 @@ router.patch('/:id', auth('basic'), async (ctx) => {
 });
 
 // Delete a launch
-router.delete('/:id', auth('basic'), async (ctx) => {
+router.delete('/:id', auth, authz, async (ctx) => {
   try {
     await Launch.findByIdAndDelete(ctx.params.id);
     ctx.status = 200;
