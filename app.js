@@ -57,7 +57,7 @@ app.use(requestLogger);
 
 // Only use Redis in production
 if (process.env.NODE_ENV === 'production') {
-  app.use(cache.middleware());
+  app.use(cache.middleware);
 }
 
 // V4 routes
