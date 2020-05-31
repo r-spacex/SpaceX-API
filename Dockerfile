@@ -18,6 +18,10 @@ EXPOSE 6673
 RUN apk add --no-cache --upgrade bash
 RUN apk --update add curl
 
+# Run as an unprivileged user.
+RUN addgroup -S spacex && adduser -S -G spacex spacex 
+USER spacex
+
 ENTRYPOINT ["./start.sh"]
 
 HEALTHCHECK --interval=10s --timeout=3s \
