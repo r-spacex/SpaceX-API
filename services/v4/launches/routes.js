@@ -13,6 +13,7 @@ const router = new Router({
 
 // Get past launches
 router.get('/past', async (ctx) => {
+  ctx.state.cache = 20;
   try {
     const result = await Launch.find({
       upcoming: false,
@@ -30,6 +31,7 @@ router.get('/past', async (ctx) => {
 
 // Get upcoming launches
 router.get('/upcoming', async (ctx) => {
+  ctx.state.cache = 20;
   try {
     const result = await Launch.find({
       upcoming: true,
@@ -47,6 +49,7 @@ router.get('/upcoming', async (ctx) => {
 
 // Get latest launch
 router.get('/latest', async (ctx) => {
+  ctx.state.cache = 20;
   try {
     const result = await Launch.findOne({
       upcoming: false,
@@ -64,6 +67,7 @@ router.get('/latest', async (ctx) => {
 
 // Get next launch
 router.get('/next', async (ctx) => {
+  ctx.state.cache = 20;
   try {
     const result = await Launch.findOne({
       upcoming: true,
