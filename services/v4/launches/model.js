@@ -208,6 +208,12 @@ const launchSchema = new mongoose.Schema({
   },
 }, { autoCreate: true });
 
+const index = {
+  name: 'text',
+  details: 'text',
+};
+launchSchema.index(index);
+
 launchSchema.plugin(mongoosePaginate);
 launchSchema.plugin(idPlugin);
 
