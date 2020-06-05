@@ -16,7 +16,7 @@
 <br/>
 </h3>
 
-# Usage
+## Usage
 
 ```http
 GET https://api.spacexdata.com/v3/launches/latest
