@@ -2,7 +2,8 @@
   "plugins": [
     "security",
     "mongodb",
-    "jest"
+    "jest",
+    "no-secrets"
   ],
   "env": {
     "node": true,
@@ -19,6 +20,7 @@
     "impliedStrict": true
   },
   "rules": {
-    "no-console": 0
+    "no-console": 0,
+    "no-secrets/no-secrets":"error"
   }
 }

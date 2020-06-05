@@ -55,6 +55,7 @@
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-jest": "^23.13.2",
     "eslint-plugin-mongodb": "^1.0.0",
+    "eslint-plugin-no-secrets": "^0.6.8",
     "eslint-plugin-security": "^1.4.0",
     "jest": "^26.0.1",
     "pino-pretty": "^4.0.0"
