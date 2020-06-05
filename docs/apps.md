@@ -4,7 +4,8 @@
 
 |App|Type|Creator(s)|Repo|More|
 |:---|:---|:---|:---|:---|
-| [whenisthenextspacexlaunch.com](https://whenisthenextspacexlaunch.com) | Website | [Warwick Ward](https://warwick.io) | [GitHub](https://github.com/warwickofthegh/whenisthenextspacexlaunch.com) | |
+| [SpaceX and Mars](https://www.spacexandmars.com/) | Website | [Jiacheng Zhang](https://github.com/jiachengzhang1) | [GitHub](https://github.com/jiachengzhang1/spacex-and-mars) | |
+| [When is the next SpaceX launch](https://whenisthenextspacexlaunch.com) | Website | [Warwick Ward](https://warwick.io) | [GitHub](https://github.com/warwickofthegh/whenisthenextspacexlaunch.com) | |
 | [SpaceX Mission Watch](https://spacexmissionwatch.com) | Website | Quent McCoy | N/A | [QMDD](https://quentmccoy.com) |
 | [SpaceX Stats](http://spacexstats.xyz) | Website | Luke Davia | [GitHub](https://github.com/r-spacex/spacexstats-react) |
 | [SpaceX Data.Info](http://spacexdata.info) | Website | [Charles Omer](https://www.charlesomer.co.uk) | N/A | [Zyndex](https://www.zyndex.co.uk) |
