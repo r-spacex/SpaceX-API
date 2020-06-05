@@ -12,7 +12,7 @@
 <h3 align="center">Open Source REST API for rocket, core, capsule, pad, and launch data</h3>
 
 <h3 align="center">
-<a href="docs/v4/README.md">V4 Docs(WIP)</a> - <a href="https://docs.spacexdata.com">V3 Docs</a> - <a href="docs/clients.md">Clients</a> - <a href="docs/apps.md">Apps</a> - <a href="https://status.spacexdata.com">Status</a>
+<a href="docs/v4/README.md">V4 Docs (WIP)</a> - <a href="https://docs.spacexdata.com">V3 Docs</a> - <a href="docs/clients.md">Clients</a> - <a href="docs/apps.md">Apps</a> - <a href="https://status.spacexdata.com">Status</a>
 <br/>
 </h3>
 
