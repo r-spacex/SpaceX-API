@@ -1,28 +1,28 @@
 
 FROM node:14-alpine
 
-WORKDIR /app
+LABEL maintainer="jakewmeyer@gmail.com"
 
-COPY package.json package-lock.json ./
+HEALTHCHECK --interval=10s --timeout=3s \
+  CMD curl --silent --fail http://localhost:6673/v4/admin/health || exit 1
+
+RUN apk add --no-cache --upgrade bash curl
+
+ENV NODE_ENV=production
+
+EXPOSE 6673
+
+# Run as an unprivileged user.
+RUN addgroup -S spacex && adduser -S -G spacex spacex 
+RUN mkdir /app && chown spacex /app
+USER spacex
+
+WORKDIR /app
+ENTRYPOINT ["/app/start.sh"]
+
+COPY package.json package-lock.json /app/
 
 RUN npm install --production
 
 COPY . .
 
-ENV NODE_ENV=production
-
-LABEL maintainer="jakewmeyer@gmail.com"
-
-EXPOSE 6673
-
-RUN apk add --no-cache --upgrade bash
-RUN apk --update add curl
-
-# Run as an unprivileged user.
-RUN addgroup -S spacex && adduser -S -G spacex spacex 
-USER spacex
-
-ENTRYPOINT ["./start.sh"]
-
-HEALTHCHECK --interval=10s --timeout=3s \
-  CMD curl --silent --fail http://localhost:6673/v4/admin/health || exit 1
