@@ -24,7 +24,6 @@
 | [SpaceX Universe](https://play.google.com/store/apps/details?id=com.aastudio.spacexuniverse) | Android App | [Oleksii Chernov](https://github.com/chert12) | [Github](https://github.com/chert12/SpaceX-Universe) | |
 | [SpaceXFollower](https://github.com/OMIsie11/SpaceXFollower) | Android App | [Oskar Misiewicz @OMIsie11](https://omisie11.github.io) | [Github](https://github.com/OMIsie11/SpaceXFollower) | |
 | [Launchpad](https://github.com/skyffx/Launchpad/releases) | Windows App | [Wojciech Piekielniak](https://github.com/skyffx/) | [Github](https://github.com/skyffx/Launchpad) |
-| [Space Bot](https://mezgoodle.github.io/space-bot/) | Telegram bot | [Maxim Zavalniuk](https://github.com/mezgoodle) | [GitHub](https://github.com/mezgoodle/space-bot) |
 | [InElonWeTrust](https://github.com/Tearth/InElonWeTrust) | Discord bot | [Tearth](https://github.com/Tearth) | [GitHub](https://github.com/Tearth/InElonWeTrust) |
 | [SpaceX-Launch-Bot](https://github.com/r-spacex/SpaceX-Launch-Bot) | Discord bot | [Simon](https://github.com/psidex) | [Github](https://github.com/r-spacex/SpaceX-Launch-Bot) | |
 | [Space Launch Now](https://spacelaunchnow.me/) | API/Website/Apps | [Caleb Jones](https://github.com/ItsCalebJones) | [Github](https://github.com/ItsCalebJones/SpaceLaunchNow-Server) | |
