@@ -1,5 +1,9 @@
 # r/SpaceX API Docs
 
+## Disclaimer
+
+*We are not affiliated, associated, authorized, endorsed by, or in any way officially connected with Space Exploration Technologies Inc (SpaceX), or any of its subsidiaries or its affiliates. The names SpaceX as well as related names, marks, emblems and images are registered trademarks of their respective owners.*
+
 ## Base URL
 
 `https://api.spacexdata.com/v4`
