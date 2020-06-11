@@ -50,9 +50,15 @@ module.exports = async () => {
     }
 
     const wikiRow = wiki.split('\n').filter((v) => v !== '');
-    const wikiDates = wikiRow.filter((_, index) => index % 8 === 0);
-    const wikiPayloads = wikiRow.filter((_, index) => (index + 3) % 8 === 0);
-    const wikiLaunchpads = wikiRow.filter((_, index) => (index + 6) % 8 === 0);
+
+    const allWikiDates = wikiRow.filter((_, index) => index % 8 === 0);
+    const wikiDates = allWikiDates.slice(0, 30);
+
+    const allWikiPayloads = wikiRow.filter((_, index) => (index + 3) % 8 === 0);
+    const wikiPayloads = allWikiPayloads.slice(0, 30);
+
+    const allWikiLaunchpads = wikiRow.filter((_, index) => (index + 6) % 8 === 0);
+    const wikiLaunchpads = allWikiLaunchpads.slice(0, 30);
 
     // Set base flight number to automatically reorder launches on the wiki
     // If the most recent past launch is still on the wiki, don't offset the flight number
