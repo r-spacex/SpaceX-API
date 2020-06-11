@@ -26,13 +26,16 @@ const getData = async () => {
   const manifestRow = manifest.split('\n').filter((v) => v !== '');
 
   // Filter to collect manifest dates
-  const manifestDates = manifestRow.filter((_, index) => index % 8 === 0);
+  const allManifestDates = manifestRow.filter((_, index) => index % 8 === 0);
+  const manifestDates = allManifestDates.slice(0, 30);
 
   // Filter to collect payload names
-  const manifestPayloads = manifestRow.filter((_, index) => (index + 3) % 8 === 0);
+  const allManifestPayloads = manifestRow.filter((_, index) => (index + 3) % 8 === 0);
+  const manifestPayloads = allManifestPayloads.slice(0, 30);
 
   // Filter to collect launchpad names
-  const manifestLaunchpads = manifestRow.filter((_, index) => (index + 6) % 8 === 0);
+  const allManifestLaunchpads = manifestRow.filter((_, index) => (index + 6) % 8 === 0);
+  const manifestLaunchpads = allManifestLaunchpads.slice(0, 30);
 
   return { manifestDates, manifestPayloads, manifestLaunchpads };
 };
