@@ -1,6 +1,6 @@
 
 const { CronJob } = require('cron');
-const webcast = require('./webcast');
+// const webcast = require('./webcast');
 const launches = require('./launches');
 const payloads = require('./payloads');
 const landpads = require('./landpads');
@@ -11,7 +11,7 @@ const roadster = require('./roadster');
 const upcoming = require('./upcoming');
 
 // Every 10 minutes
-const webcastJob = new CronJob('*/10 * * * *', webcast);
+// const webcastJob = new CronJob('*/10 * * * *', webcast);
 
 // Every 10 minutes
 const launchesJob = new CronJob('*/10 * * * *', launches);
