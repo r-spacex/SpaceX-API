@@ -1,30 +1,35 @@
 # Get one capsule
 
+**Method** : `GET`
+
 **URL** : `/capsules/:id`
 
 **URL Parameters** : `id=[string]` where `id` is the ID of the capsule
 
-**Method** : `GET`
-
-**Auth required** : NO
+**Auth required** : `False`
 
 ## Success Response
 
-**Condition** : If capsule exists
-
 **Code** : `200 OK`
 
-**Content example**
+**Content example** :
 
 ```json
 {
-
+    "reuse_count": 1,
+    "water_landings": 1,
+    "land_landings": 0,
+    "last_update": "Reentered after three weeks in orbit",
+    "launches": [
+        "5eb87cdeffd86e000604b330"
+    ],
+    "serial": "C101",
+    "status": "retired",
+    "id": "5e9e2c5bf35918ed873b2664"
 }
 ```
 
 ## Error Responses
-
-**Condition** : If Capsule does not exist with `id`.
 
 **Code** : `404 NOT FOUND`
 

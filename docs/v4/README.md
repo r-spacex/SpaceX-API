@@ -28,7 +28,7 @@ By default the body is:
 
 `query` accepts any valid MongoDB find() query, documented [here](https://docs.mongodb.com/manual/tutorial/query-documents/)
 
-See [examples](examples.md) for some common queries
+See [query](queries.md) guide for more details and some common queries.
 
 **Note:** The [$where](https://docs.mongodb.com/manual/reference/operator/query/where/) operator is not supported in `query`. [$expr](https://docs.mongodb.com/manual/reference/operator/query/expr/) should be used instead for complex query expressions
 
@@ -75,7 +75,7 @@ Cache can be cleared with the following endpoint:
 
 ## Routes
 
-### Capsules
+### Capsules - [Schema](capsules/schema.md)
 
 Detailed info for serialized dragon capsules
 
@@ -93,9 +93,9 @@ Detailed info for serialized first stage cores
 * [Get all cores](cores/get.md) : `GET /cores`
 * [Get one core](cores/one.md) : `GET /v4/cores/:id`
 * [Query cores](cores/query.md) : `POST /cores/query`
-* 🔒 [Create a core](cores/create.md) : `POST /cores` - 🔒
-* 🔒 [Update a core](cores/update.md) : `PATCH /cores/:id` - 🔒
-* 🔒 [Delete a core](cores/delete.md) : `DELETE /cores/:id` - 🔒
+* 🔒 [Create a core](cores/create.md) : `POST /cores`
+* 🔒 [Update a core](cores/update.md) : `PATCH /cores/:id`
+* 🔒 [Delete a core](cores/delete.md) : `DELETE /cores/:id`
 
 ### Crew
 
