@@ -89,7 +89,7 @@ Detailed info for serialized dragon capsules
 - 🔒 [Update a capsule](capsules/update.md) : `PATCH /capsules/:id`
 - 🔒 [Delete a capsule](capsules/delete.md) : `DELETE /capsules/:id`
 
-### Company Info
+### Company Info - [Schema](company/schema.md)
 
 Detailed info about SpaceX as a company
 
