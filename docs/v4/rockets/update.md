@@ -1,10 +1,10 @@
-# Update a core
+# Update a rocket
 
 **Method** : `PATCH`
 
-**URL** : `https://api.spacexdata.com/v4/cores/:id`
+**URL** : `https://api.spacexdata.com/v4/rockets/:id`
 
-**URL Parameters** : `id=[string]` where `id` is the ID of the capsule
+**URL Parameters** : `id=[string]` where `id` is the ID of the rocket
 
 **Auth required** : `True`
 
@@ -12,7 +12,9 @@
 
 ```json
 {
-  "status": "expended",
+  "flickr_images": [
+    "https://farm5.staticflickr.com/4599/38583829295_581f34dd84_b.jpg"
+  ]
 }
 ```
 

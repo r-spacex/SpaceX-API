@@ -1,8 +1,8 @@
-# Query cores
+# Query ships
 
 **Method** : `POST`
 
-**URL** : `https://api.spacexdata.com/v4/cores/query`
+**URL** : `https://api.spacexdata.com/v4/ships/query`
 
 **Auth required** : `False`
 
@@ -25,37 +25,53 @@ See [query](../queries) guide for more details on building queries and paginatin
 
 ```json
 {
-    "docs": [
-      {
-        "block": 5,
-        "reuse_count": 3,
-        "rtls_attempts": 1,
-        "rtls_landings": 1,
-        "asds_attempts": 2,
-        "asds_landings": 2,
-        "last_update": "Missed the droneship and made successful water landing; apparently scuttled at sea afterward. ",
-        "launches": [
-            "5eb87d2effd86e000604b377",
-            "5eb87d36ffd86e000604b37b",
-            "5eb87d3bffd86e000604b37f",
-            "5eb87d41ffd86e000604b383"
-        ],
-        "serial": "B1056",
-        "status": "lost",
-        "id": "5e9e28a7f3591809313b2660"
-      },
-      ...
-    ],
-    "totalDocs": 65,
-    "offset": 0,
-    "limit": 10,
-    "totalPages": 7,
-    "page": 1,
-    "pagingCounter": 1,
-    "hasPrevPage": false,
-    "hasNextPage": true,
-    "prevPage": null,
-    "nextPage": 2
+  "docs": [
+    {
+      "legacy_id": "GOPURSUIT",
+      "model": null,
+      "type": "Cargo",
+      "roles": [
+        "Support Ship",
+        "Fairing Recovery"
+      ],
+      "imo": 9458884,
+      "mmsi": 367191410,
+      "abs": 1201189,
+      "class": 7174230,
+      "mass_kg": 502999,
+      "mass_lbs": 1108925,
+      "year_built": 2007,
+      "home_port": "Port Canaveral",
+      "status": "",
+      "speed_kn": null,
+      "course_deg": null,
+      "latitude": null,
+      "longitude": null,
+      "last_ais_update": null,
+      "link": "https://www.marinetraffic.com/en/ais/details/ships/shipid:439594/mmsi:367191410/imo:9458884/vessel:GO_PURSUIT",
+      "image": "https://i.imgur.com/5w1ZWre.jpg",
+      "launches": [
+        "5eb87d18ffd86e000604b365",
+        "5eb87d19ffd86e000604b366",
+        "5eb87d1bffd86e000604b368",
+        "5eb87d1effd86e000604b36a"
+      ],
+      "name": "GO Pursuit",
+      "active": false,
+      "id": "5ea6ed2e080df4000697c90a"
+    },
+    ...
+  ],
+  "totalDocs": 22,
+  "offset": 0,
+  "limit": 10,
+  "totalPages": 3,
+  "page": 1,
+  "pagingCounter": 1,
+  "hasPrevPage": false,
+  "hasNextPage": true,
+  "prevPage": null,
+  "nextPage": 2
 }
 ```
 

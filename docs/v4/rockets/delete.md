@@ -1,10 +1,10 @@
-# Delete a core
+# Delete a rocket
 
 **Method** : `DELETE`
 
-**URL** : `https://api.spacexdata.com/v4/cores/:id`
+**URL** : `https://api.spacexdata.com/v4/rockets/:id`
 
-**URL Parameters** : `id=[string]` where `id` is the ID of the core
+**URL Parameters** : `id=[string]` where `id` is the ID of the rocket
 
 **Auth required** : `True`
 
