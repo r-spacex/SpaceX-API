@@ -1,8 +1,8 @@
-# Update a core
+# Update company info
 
 **Method** : `PATCH`
 
-**URL** : `/cores/:id`
+**URL** : `/company/:id`
 
 **URL Parameters** : `id=[string]` where `id` is the ID of the capsule
 
@@ -12,7 +12,7 @@
 
 ```json
 {
-  "status": "expended",
+  "employees": 8000
 }
 ```
 

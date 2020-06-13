@@ -1,6 +1,6 @@
 # Update a capsule
 
-**Method** : `PUT`
+**Method** : `PATCH`
 
 **URL** : `/capsules/:id`
 
