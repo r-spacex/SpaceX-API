@@ -4,7 +4,7 @@ const Koa = require('koa');
 const bodyParser = require('koa-bodyparser');
 const mongoose = require('mongoose');
 const { requestLogger, logger } = require('./middleware/logger');
-const { responseTime, cache } = require('./middleware');
+const { responseTime, cache, errors } = require('./middleware');
 const { v4 } = require('./services');
 
 const app = new Koa();
@@ -34,6 +34,9 @@ db.on('disconnected', () => {
 
 // disable console.errors for pino
 app.silent = true;
+
+// Error handler
+app.use(errors);
 
 app.use(bodyParser());
 
