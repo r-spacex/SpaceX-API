@@ -78,6 +78,8 @@ Cache can be cleared with the following endpoint:
 
 ## Routes
 
+🔒 = Requires Auth
+
 ### Capsules - [Schema](capsules/schema.md)
 
 Detailed info for serialized dragon capsules
