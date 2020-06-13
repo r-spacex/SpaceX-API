@@ -89,7 +89,14 @@ Detailed info for serialized dragon capsules
 - 🔒 [Update a capsule](capsules/update.md) : `PATCH /capsules/:id`
 - 🔒 [Delete a capsule](capsules/delete.md) : `DELETE /capsules/:id`
 
-### Cores
+### Company Info
+
+Detailed info about SpaceX as a company
+
+- [Get company info](company/all.md) : `GET /company`
+- 🔒 [Update company info](comapny/update.md) : `PATCH /company/:id`
+
+### Cores - [Schema](cores/schema.md)
 
 Detailed info for serialized first stage cores
 
@@ -170,6 +177,13 @@ Detailed info about launch payloads
 - 🔒 [Update a payload](payloads/update.md) : `PATCH /payloads/:id`
 - 🔒 [Delete a payload](payloads/delete.md) : `DELETE /payloads/:id`
 
+### Roadster info
+
+Detailed info about Elon's Tesla roadster's current position
+
+- [Get roadster info](roadster/all.md) : `GET /roadster`
+- 🔒 [Update roadster info](roadster/update.md) : `PATCH /roadster/:id`
+
 ### Rockets
 
 Detailed info about rocket versions
@@ -191,17 +205,3 @@ Detailed info about ships in the SpaceX fleet
 - 🔒 [Create a ship](ships/create.md) : `POST /ships`
 - 🔒 [Update a ship](ships/update.md) : `PATCH /ships/:id`
 - 🔒 [Delete a ship](ships/delete.md) : `DELETE /ships/:id`
-
-### Company Info
-
-Detailed info about SpaceX as a company
-
-- [Get company info](company/all.md) : `GET /company`
-- 🔒 [Update company info](comapny/update.md) : `PATCH /company/:id`
-
-### Roadster info
-
-Detailed info about Elon's Tesla roadster's current position
-
-- [Get roadster info](roadster/all.md) : `GET /roadster`
-- 🔒 [Update roadster info](roadster/update.md) : `PATCH /roadster/:id`
