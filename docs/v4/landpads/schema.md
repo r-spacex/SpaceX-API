@@ -1,0 +1,5 @@
+# Landing Pad Schema
+
+```json
+
+```
