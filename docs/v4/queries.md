@@ -6,12 +6,12 @@ Dates need to be ISO 8601 friendly for these operators to work properly
 
 ```json
 {
-	"query": {
-		"date_utc": {
-			"$gte": "2017-06-22T00:00:00.000Z",
-			"$lte": "2017-06-25T00:00:00.000Z"
-		}
-	}
+  "query": {
+  "date_utc": {
+   "$gte": "2017-06-22T00:00:00.000Z",
+   "$lte": "2017-06-25T00:00:00.000Z"
+  }
+ }
 }
 ```
 
@@ -23,11 +23,11 @@ See the mongo [reference](https://docs.mongodb.com/manual/reference/operator/que
 
 ```json
 {
-	"query": {
-		"$text": {
-			"$search": "crs"
-		}
-	}
+ "query": {
+    "$text": {
+      "$search": "crs"
+    }
+  }
 }
 ```
 
@@ -48,7 +48,7 @@ Note: Full text search using `$text` will search all text index fields in a docu
 ```json
 {
 	"query": {
-		"date_utc": {
+  "date_utc": {
 			"$gte": "2017-06-22T00:00:00.000Z",
 			"$lte": "2017-06-25T00:00:00.000Z"
 		},
