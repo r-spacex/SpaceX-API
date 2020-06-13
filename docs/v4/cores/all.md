@@ -2,7 +2,7 @@
 
 **Method** : `GET`
 
-**URL** : `/cores`
+**URL** : `https://api.spacexdata.com/v4/cores`
 
 **Auth required** : `False`
 

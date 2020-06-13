@@ -1,8 +1,8 @@
-# Query capsules
+# Query crew members
 
 **Method** : `POST`
 
-**URL** : `https://api.spacexdata.com/v4/capsules/query`
+**URL** : `https://api.spacexdata.com/v4/crew/query`
 
 **Auth required** : `False`
 
@@ -27,29 +27,28 @@ See [query](../queries) guide for more details on building queries and paginatin
 {
     "docs": [
         {
-            "reuse_count": 1,
-            "water_landings": 1,
-            "land_landings": 0,
-            "last_update": "Reentered after three weeks in orbit",
+            "name": "Robert Behnken",
+            "agency": "NASA",
+            "image": "https://imgur.com/0smMgMH.png",
+            "wikipedia": "https://en.wikipedia.org/wiki/Robert_L._Behnken",
             "launches": [
-                "5eb87cdeffd86e000604b330"
+                "5eb87d46ffd86e000604b388"
             ],
-            "serial": "C101",
-            "status": "retired",
-            "id": "5e9e2c5bf35918ed873b2664"
+            "status": "active",
+            "id": "5ebf1a6e23a9a60006e03a7a"
         },
         ...
     ],
-    "totalDocs": 19,
+    "totalDocs": 2,
     "offset": 0,
     "limit": 10,
-    "totalPages": 2,
+    "totalPages": 1,
     "page": 1,
     "pagingCounter": 1,
     "hasPrevPage": false,
-    "hasNextPage": true,
+    "hasNextPage": false,
     "prevPage": null,
-    "nextPage": 2
+    "nextPage": null
 }
 ```
 

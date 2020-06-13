@@ -1,20 +1,12 @@
-# Update company info
+# Delete a crew member
 
-**Method** : `PATCH`
+**Method** : `DELETE`
 
-**URL** : `https://api.spacexdata.com/v4/company/:id`
+**URL** : `https://api.spacexdata.com/v4/crew/:id`
 
-**URL Parameters** : `id=[string]` where `id` is the ID of the company
+**URL Parameters** : `id=[string]` where `id` is the ID of the crew member
 
 **Auth required** : `True`
-
-**Body** :
-
-```json
-{
-  "employees": 8000
-}
-```
 
 ## Success Response
 

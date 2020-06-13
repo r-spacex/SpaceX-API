@@ -2,7 +2,7 @@
 
 **Method** : `POST`
 
-**URL** : `/capsules`
+**URL** : `https://api.spacexdata.com/v4/capsules`
 
 **Auth required** : `True`
 

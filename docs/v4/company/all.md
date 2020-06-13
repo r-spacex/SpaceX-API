@@ -2,7 +2,7 @@
 
 **Method** : `GET`
 
-**URL** : `/company`
+**URL** : `https://api.spacexdata.com/v4/company`
 
 **Auth required** : `False`
 

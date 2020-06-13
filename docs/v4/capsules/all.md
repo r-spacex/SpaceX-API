@@ -2,7 +2,7 @@
 
 **Method** : `GET`
 
-**URL** : `/capsules`
+**URL** : `https://api.spacexdata.com/v4/capsules`
 
 **Auth required** : `False`
 

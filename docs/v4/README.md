@@ -107,7 +107,7 @@ Detailed info for serialized first stage cores
 - 🔒 [Update a core](cores/update.md) : `PATCH /cores/:id`
 - 🔒 [Delete a core](cores/delete.md) : `DELETE /cores/:id`
 
-### Crew
+### Crew - [Schema](crew/schema.md)
 
 Detailed info on dragon crew members
 
@@ -118,7 +118,7 @@ Detailed info on dragon crew members
 - 🔒 [Update a crew member](crew/update.md) : `PATCH /crew/:id`
 - 🔒 [Delete a crew member](crew/delete.md) : `DELETE /crew/:id`
 
-### Dragons
+### Dragons - [Schema](dragons/schema.md)
 
 Detailed info about dragon capsule versions
 
@@ -129,7 +129,7 @@ Detailed info about dragon capsule versions
 - 🔒 [Update a dragon](dragons/update.md) : `PATCH /dragons/:id`
 - 🔒 [Delete a dragon](dragons/delete.md) : `DELETE /dragons/:id`
 
-### Landpads
+### Landpads - [Schema](landpads/schema.md)
 
 Detailed info about landing pads and ships
 
@@ -140,7 +140,7 @@ Detailed info about landing pads and ships
 - 🔒 [Update a landpad](landpads/update.md) : `PATCH /landpads/:id`
 - 🔒 [Delete a landpad](landpads/delete.md) : `DELETE /landpads/:id`
 
-### Launches
+### Launches - [Schema](launches/schema.md)
 
 Detailed info about launches
 
@@ -155,7 +155,7 @@ Detailed info about launches
 - 🔒 [Update a launch](launches/update.md) : `PATCH /launches/:id`
 - 🔒 [Delete a launch](launches/delete.md) : `DELETE /launches/:id`
 
-### Launchpads
+### Launchpads - [Schema](launchpads/schema.md)
 
 Detailed info about launchpads
 
@@ -166,7 +166,7 @@ Detailed info about launchpads
 - 🔒 [Update a launchpad](launchpads/update.md) : `PATCH /launchpads/:id`
 - 🔒 [Delete a launchpad](launchpads/delete.md) : `DELETE /launchpads/:id`
 
-### Payloads
+### Payloads - [Schema](payloads/schema.md)
 
 Detailed info about launch payloads
 
@@ -177,14 +177,14 @@ Detailed info about launch payloads
 - 🔒 [Update a payload](payloads/update.md) : `PATCH /payloads/:id`
 - 🔒 [Delete a payload](payloads/delete.md) : `DELETE /payloads/:id`
 
-### Roadster info
+### Roadster info - [Schema](roadster/schema.md)
 
 Detailed info about Elon's Tesla roadster's current position
 
 - [Get roadster info](roadster/all.md) : `GET /roadster`
 - 🔒 [Update roadster info](roadster/update.md) : `PATCH /roadster/:id`
 
-### Rockets
+### Rockets - [Schema](rockets/schema.md)
 
 Detailed info about rocket versions
 
@@ -195,7 +195,7 @@ Detailed info about rocket versions
 - 🔒 [Update a rocket](rockets/update.md) : `PATCH /rockets/:id`
 - 🔒 [Delete a rocket](rockets/delete.md) : `DELETE /rockets/:id`
 
-### Ships
+### Ships - [Schema](ships/schema.md)
 
 Detailed info about ships in the SpaceX fleet
 

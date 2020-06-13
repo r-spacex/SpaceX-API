@@ -2,7 +2,7 @@
 
 **Method** : `PATCH`
 
-**URL** : `/cores/:id`
+**URL** : `https://api.spacexdata.com/v4/cores/:id`
 
 **URL Parameters** : `id=[string]` where `id` is the ID of the capsule
 

@@ -2,7 +2,7 @@
 
 **Method** : `POST`
 
-**URL** : `/cores`
+**URL** : `https://api.spacexdata.com/v4/cores`
 
 **Auth required** : `True`
 

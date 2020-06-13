@@ -2,7 +2,7 @@
 
 **Method** : `POST`
 
-**URL** : `/cores/query`
+**URL** : `https://api.spacexdata.com/v4/cores/query`
 
 **Auth required** : `False`
 

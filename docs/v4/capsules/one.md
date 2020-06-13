@@ -2,7 +2,7 @@
 
 **Method** : `GET`
 
-**URL** : `/capsules/:id`
+**URL** : `https://api.spacexdata.com/v4/capsules/:id`
 
 **URL Parameters** : `id=[string]` where `id` is the ID of the capsule
 

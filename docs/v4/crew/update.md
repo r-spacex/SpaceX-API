@@ -1,10 +1,10 @@
-# Update company info
+# Update a crew member
 
 **Method** : `PATCH`
 
-**URL** : `https://api.spacexdata.com/v4/company/:id`
+**URL** : `https://api.spacexdata.com/v4/crew/:id`
 
-**URL Parameters** : `id=[string]` where `id` is the ID of the company
+**URL Parameters** : `id=[string]` where `id` is the ID of the crew member
 
 **Auth required** : `True`
 
@@ -12,7 +12,7 @@
 
 ```json
 {
-  "employees": 8000
+  "agency": "NASA",
 }
 ```
 
