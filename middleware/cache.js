@@ -1,4 +1,3 @@
-
 const Redis = require('ioredis');
 const crypto = require('crypto');
 const { logger } = require('./logger');

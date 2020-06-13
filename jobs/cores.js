@@ -1,4 +1,3 @@
-
 const got = require('got');
 const cheerio = require('cheerio');
 const { logger } = require('../middleware/logger');
@@ -27,7 +26,6 @@ module.exports = async () => {
     const result = await got(REDDIT_CORES);
     const $ = cheerio.load(result.body);
 
-
     const active = $('body > div.content > div > div > table:nth-child(14) > tbody').text();
     const activeRow = active.split('\n').filter((v) => v !== '');
     const activeCores = activeRow.filter((value, index) => index % 7 === 0);
@@ -48,7 +46,6 @@ module.exports = async () => {
     });
     await Promise.all(activeUpdates);
     logger.info('Active cores updated');
-
 
     const unknown = $('div.md:nth-child(2) > table:nth-child(17) > tbody:nth-child(2)').text();
     const unknownRow = unknown.split('\n').filter((v) => v !== '');
@@ -71,7 +68,6 @@ module.exports = async () => {
     await Promise.all(unknownUpdates);
     logger.info('Unknown cores updated');
 
-
     const inactive = $('div.md:nth-child(2) > table:nth-child(20) > tbody:nth-child(2)').text();
     const inactiveRow = inactive.split('\n').filter((v) => v !== '');
     const inactiveCores = inactiveRow.filter((value, index) => index % 6 === 0);
@@ -92,7 +88,6 @@ module.exports = async () => {
     });
     await Promise.all(inactiveUpdates);
     logger.info('Inactive cores updated');
-
 
     const lost = $('div.md:nth-child(2) > table:nth-child(24) > tbody:nth-child(2)').text();
     const lostRow = lost.split('\n').filter((v) => v !== '');

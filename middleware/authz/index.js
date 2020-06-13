@@ -1,4 +1,3 @@
-
 const { newEnforcer } = require('casbin');
 
 /**

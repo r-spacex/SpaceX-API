@@ -1,4 +1,3 @@
-
 const _ = require('lodash');
 const got = require('got');
 const { logger } = require('../middleware/logger');
@@ -39,7 +38,6 @@ module.exports = async () => {
       ship: false,
     };
 
-
     // Update capsule launches
     const capsules = await got.post(`${SPACEX_API}/capsules/query`, {
       json: {
@@ -70,7 +68,6 @@ module.exports = async () => {
       results.capsule = true;
     });
     await Promise.all(capsuleLaunches);
-
 
     // Update core launches
     const cores = await got.post(`${SPACEX_API}/cores/query`, {
@@ -103,7 +100,6 @@ module.exports = async () => {
     });
     await Promise.all(coreLaunches);
 
-
     // Update crew launches
     const crewMembers = await got.post(`${SPACEX_API}/crew/query`, {
       json: {
@@ -134,7 +130,6 @@ module.exports = async () => {
       results.crew = true;
     });
     await Promise.all(crewLaunches);
-
 
     // Update landpad launches
     const landpads = await got.post(`${SPACEX_API}/landpads/query`, {
@@ -167,7 +162,6 @@ module.exports = async () => {
     });
     await Promise.all(landpadLaunches);
 
-
     // Update launchpad launches
     const launchpads = await got.post(`${SPACEX_API}/launchpads/query`, {
       json: {
@@ -199,7 +193,6 @@ module.exports = async () => {
     });
     await Promise.all(launchpadLaunches);
 
-
     // Update payload launches
     const payloads = await got.post(`${SPACEX_API}/payloads/query`, {
       json: {
@@ -226,7 +219,6 @@ module.exports = async () => {
       }
     });
     await Promise.all(payloadLaunches);
-
 
     // Update ship launches
     const ships = await got.post(`${SPACEX_API}/ships/query`, {

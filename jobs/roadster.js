@@ -1,4 +1,3 @@
-
 const got = require('got');
 const moment = require('moment-timezone');
 const shell = require('shelljs');

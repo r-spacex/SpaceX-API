@@ -1,4 +1,3 @@
-
 const Router = require('koa-router');
 const admin = require('./admin/routes');
 const capsules = require('./capsules/routes');

@@ -1,4 +1,3 @@
-
 const got = require('got');
 const { CookieJar } = require('tough-cookie');
 const { logger } = require('../middleware/logger');

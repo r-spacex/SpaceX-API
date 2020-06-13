@@ -1,4 +1,3 @@
-
 const got = require('got');
 const { logger } = require('../middleware/logger');
 
