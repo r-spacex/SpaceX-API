@@ -18,8 +18,7 @@
         "5eb87cdeffd86e000604b330"
     ],
     "serial": "C101",
-    "status": "retired",
-    "id": "5e9e2c5bf35918ed873b2664"
+    "status": "retired"
 }
 ```
 
