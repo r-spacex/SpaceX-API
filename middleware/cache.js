@@ -41,8 +41,8 @@ const hash = (str) => crypto.createHash('sha1').update(str).digest('hex');
  * @returns {void}
  */
 module.exports.middleware = async (ctx, next) => {
-  const { url } = ctx.request;
-  const key = `spacex-cache:${hash(url)}:${hash(JSON.stringify(ctx.request.body))}`;
+  const { url, method } = ctx.request;
+  const key = `spacex-cache:${hash(method)}:${hash(url)}:${hash(JSON.stringify(ctx.request.body))}`;
 
   if (!redisAvailable) {
     ctx.response.set('spacex-api-cache-online', 'false');
