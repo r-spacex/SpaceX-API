@@ -64,7 +64,7 @@ See [query](../queries) guide for more details on building queries and paginatin
         "wikipedia": "https://en.wikipedia.org/wiki/Koreasat_5A"
       },
       "static_fire_date_utc": "2017-10-26T16:00:00.000Z",
-      "static_fire_date_unix": "1509033600",
+      "static_fire_date_unix": 1509033600,
       "tdb": false,
       "net": false,
       "window": 8640,
@@ -87,7 +87,7 @@ See [query](../queries) guide for more details on building queries and paginatin
       "flight_number": 50,
       "name": "KoreaSat 5A",
       "date_utc": "2017-10-30T19:34:00.000Z",
-      "date_unix": "1509392040",
+      "date_unix": 1509392040,
       "date_local": "2017-10-30T15:34:00-04:00",
       "date_precision": "hour",
       "upcoming": false,

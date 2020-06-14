@@ -42,7 +42,7 @@
             "wikipedia": "https://en.wikipedia.org/wiki/SpaceX_CRS-20"
         },
         "static_fire_date_utc": "2020-03-01T10:20:00.000Z",
-        "static_fire_date_unix": "1583058000",
+        "static_fire_date_unix": 1583058000,
         "tdb": false,
         "net": false,
         "window": 0,
@@ -63,7 +63,7 @@
         "flight_number": 91,
         "name": "CRS-20",
         "date_utc": "2020-03-07T04:50:31.000Z",
-        "date_unix": "1583556631",
+        "date_unix": 1583556631,
         "date_local": "2020-03-06T23:50:31-05:00",
         "date_precision": "hour",
         "upcoming": false,

@@ -16,7 +16,7 @@
     "required": true
   },
   "date_unix": {
-    "type": "String",
+    "type": "Number",
     "required": true
   },
   "date_local": {
@@ -40,7 +40,7 @@
     "default": null
   },
   "static_fire_date_unix": {
-    "type": "String",
+    "type": "Number",
     "default": null
   },
   "tdb": {
