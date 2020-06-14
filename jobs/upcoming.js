@@ -35,8 +35,15 @@ module.exports = async () => {
     });
 
     // Past launches needed to set new flight number order
-    const upcoming = rawLaunches.docs.filter((doc) => doc.upcoming === true);
-    const past = rawLaunches.docs.filter((doc) => doc.upcoming === false);
+    const [upcoming, past] = rawLaunches.docs.reduce((curr, acc) => {
+      if (curr.upcoming) {
+        acc[0].push(curr);
+      } else {
+        acc[1].push(curr);
+      }
+
+      return acc;
+    }, [[], []]);
 
     // Grab subreddit wiki
     const rawWiki = await got(REDDIT_WIKI, {
@@ -107,11 +114,7 @@ module.exports = async () => {
             let wikiDate = wikiDates[parseInt(wikiIndex, 10)];
 
             // Check if date contains TBD
-            if (tbdPattern.test(wikiDate)) {
-              tbd = true;
-            } else {
-              tbd = false;
-            }
+            tbd = tbdPattern.test(wikiDate);
 
             // Remove extra stuff humans might add
             // NOTE: Add to this when people add unexpected things to dates in the wiki
