@@ -14,51 +14,11 @@ Authentication via api key is required for all destructive routes. This includes
 
 Authenticate by passing the header `spacex-key` with your api key. Protected routes return `401` without a valid key.
 
-## Pagination + Querying
+## Pagination + Custom Queries
 
-All `/query` routes support pagination parameters via [mongoose-paginate](https://github.com/aravindnc/mongoose-paginate-v2).
+All `/query` routes support pagination, custom queries, and other output controls.
 
-By default the body is:
-
-```json
-{
-  "query": {},
-  "options": {},
-}
-```
-
-`query` accepts any valid MongoDB find() query, documented [here](https://docs.mongodb.com/manual/tutorial/query-documents/)
-
-See [query](queries.md) guide for more details and some common queries.
-
-**Note:** The [$where](https://docs.mongodb.com/manual/reference/operator/query/where/) operator is not supported in `query`. [$expr](https://docs.mongodb.com/manual/reference/operator/query/expr/) should be used instead for complex query expressions
-
-`options` accepts any of the options documented [here](https://github.com/aravindnc/mongoose-paginate-v2#modelpaginatequery-options-callback), but here are some of the most common:
-
-- `select` { Object | String } - Fields to return (by default returns all fields). [Documentation](http://mongoosejs.com/docs/api.html#query_Query-select)
-- `sort` { Object | String } - Sort order. [Documentation](http://mongoosejs.com/docs/api.html#query_Query-sort)
-- `offset` { Number } - Use `offset` or `page` to set skip position
-- `page` { Number }
-- `limit` { Number }
-- `pagination` { Boolean } - If set to false, it will return all docs without adding limit condition. (Default: True)
-
-This is the default return structure:
-
-```json
-{
-    "docs": [],
-    "totalDocs": 0,
-    "offset": 0,
-    "limit": 10,
-    "totalPages": 1,
-    "page": 1,
-    "pagingCounter": 1,
-    "hasPrevPage": false,
-    "hasNextPage": false,
-    "prevPage": null,
-    "nextPage": null
-}
-```
+See the [pagination + query](queries.md) guide for more details and examples.
 
 ## Caching
 
