@@ -147,10 +147,10 @@ module.exports = async () => {
             flightNumbers.push(baseFlightNumber + wikiIndex);
 
             // Wiki launchpad matchers
-            const slc40Pattern = /^.*SLC-40.*LC-39A|BC?.*$/i;
-            const lc39aPattern = /^.*LC-39A.*SLC-40|BC?.*$/i;
-            const slc4ePattern = /^.*SLC-4E.*$/i;
-            const bcPattern = /^.*BC.*SLC-40|LC-39A?.*$/i;
+            const slc40Pattern = /^SLC-40.*$/i;
+            const lc39aPattern = /^LC-39A.*$/i;
+            const slc4ePattern = /^SLC-4E.*$/i;
+            const bcPattern = /^BC.*$/i;
 
             // Calculate launch site depending on wiki manifest
             let launchpadId;
