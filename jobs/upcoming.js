@@ -146,11 +146,17 @@ module.exports = async () => {
             // Add flight numbers to array to check for duplicates
             flightNumbers.push(baseFlightNumber + wikiIndex);
 
+            // Wiki launchpad matchers
+            const slc40Pattern = /^.*SLC-40.*LC-39A|BC?.*$/i;
+            const lc39aPattern = /^.*LC-39A.*SLC-40|BC?.*$/i;
+            const slc4ePattern = /^.*SLC-4E.*$/i;
+            const bcPattern = /^.*BC.*SLC-40|LC-39A?.*$/i;
+
             // Calculate launch site depending on wiki manifest
             let launchpadId;
             let timezone;
             const launchpad = wikiLaunchpads[parseInt(wikiIndex, 10)];
-            if (launchpad === 'SLC-40' || launchpad === 'SLC-40 / LC-39A' || launchpad === 'SLC-40 / BC' || launchpad === 'SLC-40, LC-39A') {
+            if (slc40Pattern.test(launchpad)) {
               const launchpads = await got.post(`${SPACEX_API}/launchpads/query`, {
                 json: {
                   query: {
@@ -165,7 +171,7 @@ module.exports = async () => {
               });
               launchpadId = launchpads.docs[0].id;
               timezone = launchpads.docs[0].timezone;
-            } else if (launchpad === 'LC-39A' || launchpad === 'LC-39A / BC' || launchpad === 'LC-39A / SLC-40') {
+            } else if (lc39aPattern.test(launchpad)) {
               const launchpads = await got.post(`${SPACEX_API}/launchpads/query`, {
                 json: {
                   query: {
@@ -180,7 +186,7 @@ module.exports = async () => {
               });
               launchpadId = launchpads.docs[0].id;
               timezone = launchpads.docs[0].timezone;
-            } else if (launchpad === 'SLC-4E') {
+            } else if (slc4ePattern.test(launchpad)) {
               const launchpads = await got.post(`${SPACEX_API}/launchpads/query`, {
                 json: {
                   query: {
@@ -195,7 +201,7 @@ module.exports = async () => {
               });
               launchpadId = launchpads.docs[0].id;
               timezone = launchpads.docs[0].timezone;
-            } else if (launchpad === 'BC' || launchpad === 'BC / LC-39A' || launchpad === 'BC / SLC-40') {
+            } else if (bcPattern.test(launchpad)) {
               const launchpads = await got.post(`${SPACEX_API}/launchpads/query`, {
                 json: {
                   query: {
