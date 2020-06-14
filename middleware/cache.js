@@ -1,5 +1,5 @@
 const Redis = require('ioredis');
-const crypto = require('crypto');
+const blake3 = require('blake3');
 const { logger } = require('./logger');
 
 let redis;
@@ -26,12 +26,12 @@ redis.on('reconnecting', () => {
 });
 
 /**
- * Hash func for redis keys
+ * BLAKE3 hash func for redis keys
  *
  * @param   {String}    str    String to hash
  * @returns {String}  Hashed result
  */
-const hash = (str) => crypto.createHash('sha1').update(str).digest('hex');
+const hash = (str) => blake3.createHash().update(str).digest('hex');
 
 /**
  * Redis cache middleware
@@ -42,7 +42,7 @@ const hash = (str) => crypto.createHash('sha1').update(str).digest('hex');
  */
 module.exports.middleware = async (ctx, next) => {
   const { url, method } = ctx.request;
-  const key = `spacex-cache:${hash(method)}:${hash(url)}:${hash(JSON.stringify(ctx.request.body))}`;
+  const key = `spacex-cache:${hash(`${method}${url}${JSON.stringify(ctx.request.body)}`)}`;
 
   if (!redisAvailable) {
     ctx.response.set('spacex-api-cache-online', 'false');
