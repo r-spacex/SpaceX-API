@@ -4,7 +4,7 @@ const shell = require('shelljs');
 const { logger } = require('../middleware/logger');
 
 const SPACEX_API = 'https://stage.spacexdata.com/v4';
-const { KEY, HEALTHCHECK } = process.env;
+const { KEY, HEALTHCHECK } = process.env.KEY;
 
 // Using date range so Horizons doesn't give us the default 10 day data
 const today = moment().format('YYYY-MMM-DD HH:mm:ss');
@@ -84,7 +84,7 @@ module.exports = async () => {
   try {
     const params = {
       resolveBodyOnly: true,
-    }
+    };
 
     const [orbitParams, earthDist, marsDist] = Promise.all([
       got(ORBIT_URL, params),
