@@ -41,7 +41,7 @@ This is the default return structure for paginated results:
 }
 ```
 
-By default, UUID's are used to reference documents in another collection. For example, the launches endpoint has an array of UUID's named `payloads` that references a payload in the payloads endpoint.
+By default, UUID's are used to reference documents in another collection. For example, the `launches` endpoint has an array of UUID's named `payloads` that references a payload in the payloads endpoint.
 
 ```json
 {
@@ -51,7 +51,7 @@ By default, UUID's are used to reference documents in another collection. For ex
 }
 ```
 
-This allows us to populate or replace the UUID with the payload that it references. In this example, to populate payloads with the corresponding document, the body would look like the following:
+This allows us to populate or replace the UUID with the payload that it references. In this example, to populate `payloads` with the corresponding document, the body would look like the following:
 
 ```json
 {
@@ -120,7 +120,7 @@ Which gives the following results:
 }
 ```
 
-Populate also allows you to select specific fields to return. For example, if you were only interested in the payload name, you could use the following:
+Populate also allows you to select specific fields to return. For example, if you were only interested in the payload `name`, you could use the following:
 
 ```json
 {
