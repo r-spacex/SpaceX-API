@@ -35,15 +35,8 @@ module.exports = async () => {
     });
 
     // Past launches needed to set new flight number order
-    const [upcoming, past] = rawLaunches.docs.reduce((curr, acc) => {
-      if (curr.upcoming) {
-        acc[0].push(curr);
-      } else {
-        acc[1].push(curr);
-      }
-
-      return acc;
-    }, [[], []]);
+    const upcoming = rawLaunches.docs.filter((doc) => doc.upcoming === true);
+    const past = rawLaunches.docs.filter((doc) => doc.upcoming === false);
 
     // Grab subreddit wiki
     const rawWiki = await got(REDDIT_WIKI, {

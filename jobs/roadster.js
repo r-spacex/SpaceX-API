@@ -4,7 +4,8 @@ const shell = require('shelljs');
 const { logger } = require('../middleware/logger');
 
 const SPACEX_API = 'https://stage.spacexdata.com/v4';
-const { KEY, HEALTHCHECK } = process.env.KEY;
+const KEY = process.env.SPACEX_KEY;
+const HEALTHCHECK = process.env.ROADSTER_HEALTHCHECK;
 
 // Using date range so Horizons doesn't give us the default 10 day data
 const today = moment().format('YYYY-MMM-DD HH:mm:ss');
