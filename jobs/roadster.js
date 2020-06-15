@@ -87,7 +87,7 @@ module.exports = async () => {
       resolveBodyOnly: true,
     };
 
-    const [orbitParams, earthDist, marsDist] = Promise.all([
+    const [orbitParams, earthDist, marsDist] = await Promise.all([
       got(ORBIT_URL, params),
       got(EARTH_DIST_URL, params),
       got(MARS_DIST_URL, params),
