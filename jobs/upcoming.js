@@ -102,16 +102,11 @@ module.exports = async () => {
             // 2020 Nov 4 [14:10]
             const hourPattern = /^\s*[0-9]{4}\s*([a-z]{3}|[a-z]{3,9})\s*[0-9]{1,2}\s*(\[?\s*[0-9]{2}:[0-9]{2}\s*\]?)\s*$/i;
 
-            let tbd;
             let precision;
             let wikiDate = wikiDates[parseInt(wikiIndex, 10)];
 
             // Check if date contains TBD
-            if (tbdPattern.test(wikiDate)) {
-              tbd = true;
-            } else {
-              tbd = false;
-            }
+            const tbd = tbdPattern.test(wikiDate);
 
             // Remove extra stuff humans might add
             // NOTE: Add to this when people add unexpected things to dates in the wiki
