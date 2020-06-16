@@ -37,7 +37,7 @@ const launchSchema = new mongoose.Schema({
     type: Number,
     default: null,
   },
-  tdb: {
+  tbd: {
     type: Boolean,
     default: false,
   },
