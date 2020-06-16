@@ -13,5 +13,5 @@ jobs:
         with:
           node-version: "14.x"
       - run: npm install
-      - run: nmp run check-dependencies
+      - run: npm run check-dependencies
       - run: npm test
