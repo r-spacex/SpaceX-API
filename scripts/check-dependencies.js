@@ -6,7 +6,7 @@ const npmCheck = require('npm-check');
   const unusedPackages = packages.filter(({ unused }) => unused);
 
   if (unusedPackages.length) {
-    const unedPackagesAsString = unusedPackages.map(({ moduleName }) => moduleName).join(',');
-    throw new Error(`There are unused dependencies : ${unedPackagesAsString}`);
+    const unusedPackagesAsString = unusedPackages.map(({ moduleName }) => moduleName).join(',');
+    throw new Error(`There are unused dependencies : ${unusedPackagesAsString}`);
   }
 })();
