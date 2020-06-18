@@ -4,11 +4,12 @@ FROM node:14-alpine
 LABEL maintainer="jakewmeyer@gmail.com"
 
 HEALTHCHECK --interval=10s --timeout=3s \
-  CMD curl --silent --fail http://localhost:6673/v4/admin/health || exit 1
+  CMD ./scripts/healthcheck.js
 
-RUN apk add --no-cache --upgrade bash curl
+RUN apk add --no-cache --upgrade bash
 
 ENV NODE_ENV=production
+ENV HEALTH_URL=http://localhost:6673/v4/admin/health
 
 EXPOSE 6673
 
