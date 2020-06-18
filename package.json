@@ -7,7 +7,8 @@
     "test": "eslint . && jest --silent --verbose",
     "start": "node server.js",
     "worker": "node jobs/worker.js",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "check-dependencies": "node scripts/check-dependencies.js"
   },
   "repository": {
     "type": "git",
@@ -59,7 +60,8 @@
     "eslint-plugin-no-secrets": "^0.6.8",
     "eslint-plugin-security": "^1.4.0",
     "jest": "^26.0.1",
-    "pino-pretty": "^4.0.0"
+    "pino-pretty": "^4.0.0",
+    "npm-check": "^5.9.2"
   },
   "jest": {
     "testEnvironment": "node"
