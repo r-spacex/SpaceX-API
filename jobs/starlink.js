@@ -32,10 +32,6 @@ module.exports = async () => {
 
     const starlinkSats = data.filter((sat) => /starlink/i.test(sat.OBJECT_NAME));
 
-    starlinkSats.forEach((sat) => {
-      console.log(sat.OBJECT_NAME);
-    });
-
     const updates = starlinkSats.map(async (sat) => {
       await got.patch(`${SPACEX_API}/starlink/${sat.NORAD_CAT_ID}`, {
         json: {
