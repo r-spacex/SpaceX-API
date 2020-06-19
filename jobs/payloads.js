@@ -2,7 +2,7 @@ const got = require('got');
 const { CookieJar } = require('tough-cookie');
 const { logger } = require('../middleware/logger');
 
-const SPACEX_API = 'https://stage.spacexdata.com/v4';
+const SPACEX_API = 'https://api.spacexdata.com/v4';
 const KEY = process.env.SPACEX_KEY;
 const HEALTHCHECK = process.env.PAYLOADS_HEALTHCHECK;
 

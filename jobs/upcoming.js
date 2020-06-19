@@ -7,7 +7,7 @@ const moment = require('moment-timezone');
 const { logger } = require('../middleware/logger');
 
 const REDDIT_WIKI = 'https://old.reddit.com/r/spacex/wiki/launches/manifest';
-const SPACEX_API = 'https://stage.spacexdata.com/v4';
+const SPACEX_API = 'https://api.spacexdata.com/v4';
 const KEY = process.env.SPACEX_KEY;
 const HEALTHCHECK = process.env.UPCOMING_HEALTHCHECK;
 

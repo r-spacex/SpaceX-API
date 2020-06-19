@@ -3,7 +3,7 @@ const cheerio = require('cheerio');
 const { logger } = require('../middleware/logger');
 
 const REDDIT_CORES = 'https://old.reddit.com/r/spacex/wiki/cores';
-const SPACEX_API = 'https://stage.spacexdata.com/v4';
+const SPACEX_API = 'https://api.spacexdata.com/v4';
 const KEY = process.env.SPACEX_KEY;
 const HEALTHCHECK = process.env.CORES_HEALTHCHECK;
 

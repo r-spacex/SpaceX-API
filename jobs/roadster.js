@@ -3,7 +3,7 @@ const moment = require('moment-timezone');
 const shell = require('shelljs');
 const { logger } = require('../middleware/logger');
 
-const SPACEX_API = 'https://stage.spacexdata.com/v4';
+const SPACEX_API = 'https://api.spacexdata.com/v4';
 const KEY = process.env.SPACEX_KEY;
 const HEALTHCHECK = process.env.ROADSTER_HEALTHCHECK;
 
