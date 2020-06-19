@@ -7,7 +7,7 @@ const KEY = process.env.SPACEX_KEY;
 const HEALTHCHECK = process.env.STARLINK_HEALTHCHECK;
 
 /**
- * Update payload orbit params
+ * Update Starlink orbits
  * @return {Promise<void>}
  */
 module.exports = async () => {
@@ -23,9 +23,10 @@ module.exports = async () => {
     });
 
     // eslint-disable-next-line no-secrets/no-secrets
-    const data = await got('https://www.space-track.org/basicspacedata/query/class/gp/EPOCH/%3Enow-30/orderby/NORAD_CAT_ID%20asc/emptyresult/show', {
+    const data = await got('https://www.space-track.org/basicspacedata/query/class/gp/EPOCH/%3Enow-30/orderby/NORAD_CAT_ID', {
       resolveBodyOnly: true,
       responseType: 'json',
+      timeout: 480000, // 8 minutes
       cookieJar,
     });
 

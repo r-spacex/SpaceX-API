@@ -8,7 +8,7 @@ const capsules = require('./capsules');
 const cores = require('./cores');
 const roadster = require('./roadster');
 const upcoming = require('./upcoming');
-// const starlink = require('./starlink');
+const starlink = require('./starlink');
 
 // Every 10 minutes
 // const webcastJob = new CronJob('*/10 * * * *', webcast);
@@ -37,8 +37,8 @@ const roadsterJob = new CronJob('*/10 * * * *', roadster);
 // Every 10 minutes
 const upcomingJob = new CronJob('*/10 * * * *', upcoming);
 
-// Every hour on :20
-// const starlinkJob = new CronJob('55 * * * *', starlink);
+// Every hour on :55
+const starlinkJob = new CronJob('55 * * * *', starlink);
 
 // webcastJob.start();
 launchesJob.start();
@@ -49,4 +49,4 @@ capsulesJob.start();
 coresJob.start();
 roadsterJob.start();
 upcomingJob.start();
-// starlinkJob.start();
+starlinkJob.start();
