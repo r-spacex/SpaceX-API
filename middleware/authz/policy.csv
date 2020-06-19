@@ -44,6 +44,10 @@ p, update:company, /v4/company/:id, PUT
 
 p, update:roadster, /v4/roadster/:id, PUT
 
+p, create:starlink, /v4/starlink, POST
+p, update:starlink, /v4/starlink/:norad_id, PUT
+p, delete:starlink, /v4/starlink/:id, DELETE
+
 p, get:user, /v4/users, GET
 p, get-one:user, /v4/users/:id, GET
 p, query:user, /v4/users/query, POST
@@ -98,6 +102,10 @@ g, delete, delete:ships
 g, update, update:company
 
 g, update, update:roadster
+
+g, create, create:starlink
+g, update, update:starlink
+g, delete, delete:starlink
 
 g, user, create
 g, user, update
