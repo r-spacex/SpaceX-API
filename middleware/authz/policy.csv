@@ -1,58 +1,58 @@
 p, root, /*, *
 
 p, create:capsule, /v4/capsules, POST
-p, update:capsule, /v4/capsules/:id, PUT
+p, update:capsule, /v4/capsules/:id, PATCH
 p, delete:capsule, /v4/capsules/:id, DELETE
 
 p, create:cores, /v4/cores, POST
-p, update:cores, /v4/cores/:id, PUT
+p, update:cores, /v4/cores/:id, PATCH
 p, delete:cores, /v4/cores/:id, DELETE
 
 p, create:crew, /v4/crew, POST
-p, update:crew, /v4/crew/:id, PUT
+p, update:crew, /v4/crew/:id, PATCH
 p, delete:crew, /v4/crew/:id, DELETE
 
 p, create:dragons, /v4/dragons, POST
-p, update:dragons, /v4/dragons/:id, PUT
+p, update:dragons, /v4/dragons/:id, PATCH
 p, delete:dragons, /v4/dragons/:id, DELETE
 
 p, create:landpads, /v4/landpads, POST
-p, update:landpads, /v4/landpads/:id, PUT
+p, update:landpads, /v4/landpads/:id, PATCH
 p, delete:landpads, /v4/landpads/:id, DELETE
 
 p, create:launches, /v4/launches, POST
-p, update:launches, /v4/launches/:id, PUT
+p, update:launches, /v4/launches/:id, PATCH
 p, delete:launches, /v4/launches/:id, DELETE
 
 p, create:launchpads, /v4/launchpads, POST
-p, update:launchpads, /v4/launchpads/:id, PUT
+p, update:launchpads, /v4/launchpads/:id, PATCH
 p, delete:launchpads, /v4/launchpads/:id, DELETE
 
 p, create:payloads, /v4/payloads, POST
-p, update:payloads, /v4/payloads/:id, PUT
+p, update:payloads, /v4/payloads/:id, PATCH
 p, delete:payloads, /v4/payloads/:id, DELETE
 
 p, create:rockets, /v4/rockets, POST
-p, update:rockets, /v4/rockets/:id, PUT
+p, update:rockets, /v4/rockets/:id, PATCH
 p, delete:rockets, /v4/rockets/:id, DELETE
 
 p, create:ships, /v4/ships, POST
-p, update:ships, /v4/ships/:id, PUT
+p, update:ships, /v4/ships/:id, PATCH
 p, delete:ships, /v4/ships/:id, DELETE
 
-p, update:company, /v4/company/:id, PUT
+p, update:company, /v4/company/:id, PATCH
 
-p, update:roadster, /v4/roadster/:id, PUT
+p, update:roadster, /v4/roadster/:id, PATCH
 
 p, create:starlink, /v4/starlink, POST
-p, update:starlink, /v4/starlink/:norad_id, PUT
+p, update:starlink, /v4/starlink/:norad_id, PATCH
 p, delete:starlink, /v4/starlink/:id, DELETE
 
 p, get:user, /v4/users, GET
 p, get-one:user, /v4/users/:id, GET
 p, query:user, /v4/users/query, POST
 p, create:user, /v4/users, POST
-p, update:user, /v4/users/:id, PUT
+p, update:user, /v4/users/:id, PATCH
 p, delete:user, /v4/users/:id, DELETE
 
 p, clear-cache, /v4/admin/cache, DELETE
