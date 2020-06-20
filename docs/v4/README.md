@@ -167,3 +167,14 @@ Detailed info about ships in the SpaceX fleet
 - 🔒 [Create a ship](ships/create.md) : `POST /ships`
 - 🔒 [Update a ship](ships/update.md) : `PATCH /ships/:id`
 - 🔒 [Delete a ship](ships/delete.md) : `DELETE /ships/:id`
+
+### Starlink - [Schema](starlink/schema.md)
+
+Detailed info about Starlink satellites and orbits
+
+- [Get all Starlink sats](starlink/all.md) : `GET /starlink`
+- [Get one Starlink sat](starlink/one.md) : `GET /starlink/:id`
+- [Query Starlink sats](starlink/query.md) : `POST /starlink/query`
+- 🔒 [Create a Starlink sat](starlink/create.md) : `POST /starlink`
+- 🔒 [Update a Starlink sat](starlink/update.md) : `PATCH /starlink/:id`
+- 🔒 [Delete a Starlink sat](starlink/delete.md) : `DELETE /starlink/:id`
