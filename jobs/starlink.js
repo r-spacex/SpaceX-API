@@ -124,10 +124,7 @@ module.exports = async () => {
         headers: {
           'spacex-key': KEY,
         },
-        throwHttpErrors: false,
       });
-      console.log(response.statusCode);
-      console.log(response.body);
     });
 
     await Promise.all(updates);
