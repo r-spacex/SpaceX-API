@@ -73,6 +73,7 @@ module.exports = async () => {
         responseType: 'json',
       });
 
+      console.log(`${SPACEX_API}/starlink/${sat.NORAD_CAT_ID}`);
       await got.patch(`${SPACEX_API}/starlink/${sat.NORAD_CAT_ID}`, {
         json: {
           version: starlinkVersion(launches.docs[0].date_utc) || null,
