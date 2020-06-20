@@ -86,7 +86,7 @@ const starlinkSchema = new mongoose.Schema({
       default: null,
     },
     CLASSIFICATION_TYPE: {
-      type: Number,
+      type: String,
       default: null,
     },
     NORAD_CAT_ID: {
