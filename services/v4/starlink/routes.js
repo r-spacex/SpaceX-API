@@ -60,7 +60,7 @@ router.post('/', auth, authz, async (ctx) => {
 // Update a Starlink satellite
 router.patch('/:norad_id', auth, authz, async (ctx) => {
   try {
-    await Starlink.findOneAndUpdate({ NORAD_CAT_ID: ctx.params.norad_id }, ctx.request.body, {
+    await Starlink.findOneAndUpdate({ 'spaceTrack.NORAD_CAT_ID': ctx.params.norad_id }, ctx.request.body, {
       runValidators: true,
       setDefaultsOnInsert: true,
       upsert: true,
