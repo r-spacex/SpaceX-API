@@ -172,6 +172,10 @@ Detailed info about ships in the SpaceX fleet
 
 Detailed info about Starlink satellites and orbits
 
+Includes raw orbit data from [Space Track](https://www.space-track.org/auth/login), updated hourly.
+
+Space Track data adheres to the standard for [Orbit Data Messages](https://public.ccsds.org/pubs/502x0b2c1.pdf)
+
 - [Get all Starlink sats](starlink/all.md) : `GET /starlink`
 - [Get one Starlink sat](starlink/one.md) : `GET /starlink/:id`
 - [Query Starlink sats](starlink/query.md) : `POST /starlink/query`
