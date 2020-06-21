@@ -37,8 +37,8 @@ const roadsterJob = new CronJob('*/10 * * * *', roadster);
 // Every 10 minutes
 const upcomingJob = new CronJob('*/10 * * * *', upcoming);
 
-// Every hour on :40
-const starlinkJob = new CronJob('40 * * * *', starlink);
+// Every hour on :35
+const starlinkJob = new CronJob('35 * * * *', starlink);
 
 // webcastJob.start();
 launchesJob.start();
