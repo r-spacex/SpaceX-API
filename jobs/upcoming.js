@@ -73,7 +73,7 @@ module.exports = async () => {
     // Compare each mission name against entire list of wiki payloads, and fuzzy match the
     // mission name against the wiki payload name. The partial match must be 100%, to avoid
     // conflicts like SSO-A and SSO-B, where a really close match would produce wrong results.
-    for await (const [launchesIndex, launch] of upcoming.entries()) {
+    for await (const [, launch] of upcoming.entries()) {
       // Allow users to pause auto updates from wiki, while still preserving
       // flight reordering feature
       if (!launch.auto_update) {
@@ -144,7 +144,7 @@ module.exports = async () => {
           }
 
           // Add flight numbers to array to check for duplicates
-          flightNumbers.push(baseFlightNumber + launchesIndex);
+          flightNumbers.push(baseFlightNumber + wikiIndex);
 
           // Wiki launchpad matchers
           const slc40Pattern = /^SLC-40.*$/i;
@@ -227,7 +227,7 @@ module.exports = async () => {
           const localTime = time.tz(timezone).format();
 
           const rawUpdate = {
-            flight_number: (baseFlightNumber + launchesIndex),
+            flight_number: (baseFlightNumber + wikiIndex),
             date_unix: zone.unix(),
             date_utc: zone.toISOString(),
             date_local: localTime,
