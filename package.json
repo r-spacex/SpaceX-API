@@ -37,7 +37,7 @@
     "fuzzball": "^1.3.0",
     "got": "^11.3.0",
     "ioredis": "^4.17.3",
-    "koa": "^2.12.1",
+    "koa": "^2.13.0",
     "koa-bodyparser": "^4.3.0",
     "koa-helmet": "^5.2.0",
     "koa-pino-logger": "^3.0.0",
