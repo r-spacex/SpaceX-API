@@ -63,7 +63,7 @@ Detailed info about SpaceX as a company
 Detailed info for serialized first stage cores
 
 - [Get all cores](cores/all.md) : `GET /cores`
-- [Get one core](cores/one.md) : `GET /v4/cores/:id`
+- [Get one core](cores/one.md) : `GET /cores/:id`
 - [Query cores](cores/query.md) : `POST /cores/query`
 - 🔒 [Create a core](cores/create.md) : `POST /cores`
 - 🔒 [Update a core](cores/update.md) : `PATCH /cores/:id`
