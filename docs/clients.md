@@ -25,3 +25,4 @@
 | SpaceX | R | Johannes Friedrich | [GitHub](https://github.com/JohannesFriedrich/SpaceX) |
 | SpaceXAPI-Swift | Swift | Sami Sharafeddine | [GitHub](https://github.com/devsamsh/SpaceXAPI-Swift) |
 | SpaceX History | Javascript | Bedirhan Karadoğan | [Website](https://spacex-history.com/) |
+| SpaceX-Async-Wrapper | Python | Ryu JuHeon | [GitHub](https://github.com/SaidBySolo/SpaceX-Async-Wrapper)
