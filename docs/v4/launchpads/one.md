@@ -2,7 +2,7 @@
 
 **Method** : `GET`
 
-**URL** : `https://api.spacexdata.com/v4/cores/:id`
+**URL** : `https://api.spacexdata.com/v4/launchpads/:id`
 
 **URL Parameters** : `id=[string]` where `id` is the ID of the launchpad
 
