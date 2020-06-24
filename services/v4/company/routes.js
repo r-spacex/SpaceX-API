@@ -1,14 +1,13 @@
 const Router = require('koa-router');
 const Company = require('./model');
-const { auth, authz } = require('../../../middleware');
+const { auth, authz, cache } = require('../../../middleware');
 
 const router = new Router({
   prefix: '/company',
 });
 
 // Get company info
-router.get('/', async (ctx) => {
-  ctx.state.cache = 86400;
+router.get('/', cache(86400), async (ctx) => {
   try {
     const result = await Company.findOne({});
     ctx.status = 200;

@@ -4,7 +4,7 @@ const Koa = require('koa');
 const bodyParser = require('koa-bodyparser');
 const mongoose = require('mongoose');
 const { requestLogger, logger } = require('./middleware/logger');
-const { responseTime, cache, errors } = require('./middleware');
+const { responseTime, errors } = require('./middleware');
 const { v4 } = require('./services');
 
 const app = new Koa();
@@ -56,11 +56,6 @@ app.use(responseTime);
 
 // Request logging
 app.use(requestLogger);
-
-// Only use Redis in production
-if (process.env.NODE_ENV === 'production') {
-  app.use(cache.middleware);
-}
 
 // V4 routes
 app.use(v4.routes());

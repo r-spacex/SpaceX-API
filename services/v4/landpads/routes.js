@@ -1,14 +1,13 @@
 const Router = require('koa-router');
 const Landpad = require('./model');
-const { auth, authz } = require('../../../middleware');
+const { auth, authz, cache } = require('../../../middleware');
 
 const router = new Router({
   prefix: '/landpads',
 });
 
 // Get all landpads
-router.get('/', async (ctx) => {
-  ctx.state.cache = 300;
+router.get('/', cache(300), async (ctx) => {
   try {
     const result = await Landpad.find({});
     ctx.status = 200;
@@ -19,8 +18,7 @@ router.get('/', async (ctx) => {
 });
 
 // Get one landpad
-router.get('/:id', async (ctx) => {
-  ctx.state.cache = 300;
+router.get('/:id', cache(300), async (ctx) => {
   try {
     const result = await Landpad.findById(ctx.params.id);
     if (!result) {
@@ -34,8 +32,7 @@ router.get('/:id', async (ctx) => {
 });
 
 // Query landpads
-router.post('/query', async (ctx) => {
-  ctx.state.cache = 300;
+router.post('/query', cache(300), async (ctx) => {
   const { query = {}, options = {} } = ctx.request.body;
   try {
     const result = await Landpad.paginate(query, options);

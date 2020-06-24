@@ -1,14 +1,13 @@
 const Router = require('koa-router');
 const Starlink = require('./model');
-const { auth, authz } = require('../../../middleware');
+const { auth, authz, cache } = require('../../../middleware');
 
 const router = new Router({
   prefix: '/starlink',
 });
 
 // Get all Starlink satellites
-router.get('/', async (ctx) => {
-  ctx.state.cache = 300;
+router.get('/', cache(3600), async (ctx) => {
   try {
     const result = await Starlink.find({});
     ctx.status = 200;
@@ -19,8 +18,7 @@ router.get('/', async (ctx) => {
 });
 
 // Get one Starlink satellite
-router.get('/:id', async (ctx) => {
-  ctx.state.cache = 300;
+router.get('/:id', cache(3600), async (ctx) => {
   try {
     const result = await Starlink.findById(ctx.params.id);
     if (!result) {
@@ -34,8 +32,7 @@ router.get('/:id', async (ctx) => {
 });
 
 // Query Starlink satellites
-router.post('/query', async (ctx) => {
-  ctx.state.cache = 300;
+router.post('/query', cache(3600), async (ctx) => {
   const { query = {}, options = {} } = ctx.request.body;
   try {
     const result = await Starlink.paginate(query, options);

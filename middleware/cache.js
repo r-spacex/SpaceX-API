@@ -21,9 +21,6 @@ redis.on('ready', () => {
   redisAvailable = true;
   logger.info('Redis connected');
 });
-redis.on('reconnecting', () => {
-  logger.info('Redis re-connecting');
-});
 
 /**
  * BLAKE3 hash func for redis keys
@@ -36,13 +33,14 @@ const hash = (str) => blake3.createHash().update(str).digest('hex');
 /**
  * Redis cache middleware
  *
- * @param   {Object}    ctx       Koa context
- * @param   {function}  next      Koa next function
+ * @param   {Number}    ttl       Cache TTL in seconds
  * @returns {void}
  */
-module.exports.middleware = async (ctx, next) => {
-  const { url, method } = ctx.request;
-  const key = `spacex-cache:${hash(`${method}${url}${JSON.stringify(ctx.request.body)}`)}`;
+module.exports = (ttl) => async (ctx, next) => {
+  if (process.env.NODE_ENV !== 'production') {
+    await next();
+    return;
+  }
 
   if (!redisAvailable) {
     ctx.response.set('spacex-api-cache-online', 'false');
@@ -50,6 +48,15 @@ module.exports.middleware = async (ctx, next) => {
     return;
   }
   ctx.response.set('spacex-api-cache-online', 'true');
+
+  const { url, method } = ctx.request;
+  const key = `spacex-cache:${hash(`${method}${url}${JSON.stringify(ctx.request.body)}`)}`;
+
+  if (ttl) {
+    ctx.response.set('Cache-Control', `max-age=${ttl}`);
+  } else {
+    ctx.response.set('Cache-Control', 'no-store');
+  }
 
   // Try and get cache
   if (ctx.request.method !== 'GET' || ctx.request.method !== 'POST') {
@@ -71,23 +78,23 @@ module.exports.middleware = async (ctx, next) => {
     }
     await next();
 
-    const ttl = ctx.state.cache;
     const responseBody = JSON.stringify(ctx.response.body);
     ctx.response.set('spacex-api-cache', 'MISS');
 
     // Set cache
-    if (ctx.state.cache) {
-      try {
-        if ((ctx.response.status !== 200) || !responseBody) {
-          return;
-        }
-        await redis.set(key, responseBody, 'EX', ttl);
-      } catch (e) {
-        console.log(`Failed to set cache: ${e.message}`);
+    try {
+      if ((ctx.response.status !== 200) || !responseBody) {
+        return;
       }
+      await redis.set(key, responseBody, 'EX', ttl);
+    } catch (e) {
+      console.log(`Failed to set cache: ${e.message}`);
     }
   }
 };
 
 // Share redis connection
-module.exports.redis = redis;
+Object.defineProperty(module.exports, 'redis', {
+  value: redis,
+  writable: false,
+});

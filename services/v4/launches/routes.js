@@ -1,6 +1,6 @@
 const Router = require('koa-router');
 const Launch = require('./model');
-const { auth, authz } = require('../../../middleware');
+const { auth, authz, cache } = require('../../../middleware');
 
 const router = new Router({
   prefix: '/launches',
@@ -11,8 +11,7 @@ const router = new Router({
 //
 
 // Get past launches
-router.get('/past', async (ctx) => {
-  ctx.state.cache = 20;
+router.get('/past', cache(20), async (ctx) => {
   try {
     const result = await Launch.find({
       upcoming: false,
@@ -29,8 +28,7 @@ router.get('/past', async (ctx) => {
 });
 
 // Get upcoming launches
-router.get('/upcoming', async (ctx) => {
-  ctx.state.cache = 20;
+router.get('/upcoming', cache(20), async (ctx) => {
   try {
     const result = await Launch.find({
       upcoming: true,
@@ -47,8 +45,7 @@ router.get('/upcoming', async (ctx) => {
 });
 
 // Get latest launch
-router.get('/latest', async (ctx) => {
-  ctx.state.cache = 20;
+router.get('/latest', cache(20), async (ctx) => {
   try {
     const result = await Launch.findOne({
       upcoming: false,
@@ -65,8 +62,7 @@ router.get('/latest', async (ctx) => {
 });
 
 // Get next launch
-router.get('/next', async (ctx) => {
-  ctx.state.cache = 20;
+router.get('/next', cache(20), async (ctx) => {
   try {
     const result = await Launch.findOne({
       upcoming: true,
@@ -87,8 +83,7 @@ router.get('/next', async (ctx) => {
 //
 
 // Get all launches
-router.get('/', async (ctx) => {
-  ctx.state.cache = 20;
+router.get('/', cache(20), async (ctx) => {
   try {
     const result = await Launch.find({});
     ctx.status = 200;
@@ -99,8 +94,7 @@ router.get('/', async (ctx) => {
 });
 
 // Get one launch
-router.get('/:id', async (ctx) => {
-  ctx.state.cache = 20;
+router.get('/:id', cache(20), async (ctx) => {
   try {
     const result = await Launch.findById(ctx.params.id);
     if (!result) {
@@ -114,8 +108,7 @@ router.get('/:id', async (ctx) => {
 });
 
 // Query launches
-router.post('/query', async (ctx) => {
-  ctx.state.cache = 20;
+router.post('/query', cache(20), async (ctx) => {
   const { query = {}, options = {} } = ctx.request.body;
   try {
     const result = await Launch.paginate(query, options);

@@ -1,14 +1,13 @@
 const Router = require('koa-router');
 const Dragon = require('./model');
-const { auth, authz } = require('../../../middleware');
+const { auth, authz, cache } = require('../../../middleware');
 
 const router = new Router({
   prefix: '/dragons',
 });
 
 // Get all dragons
-router.get('/', async (ctx) => {
-  ctx.state.cache = 86400;
+router.get('/', cache(86400), async (ctx) => {
   try {
     const result = await Dragon.find({}, null, { sort: { name: 'asc' } });
     ctx.status = 200;
@@ -19,8 +18,7 @@ router.get('/', async (ctx) => {
 });
 
 // Get one dragon
-router.get('/:id', async (ctx) => {
-  ctx.state.cache = 86400;
+router.get('/:id', cache(86400), async (ctx) => {
   try {
     const result = await Dragon.findById(ctx.params.id);
     if (!result) {
@@ -34,8 +32,7 @@ router.get('/:id', async (ctx) => {
 });
 
 // Query dragons
-router.post('/query', async (ctx) => {
-  ctx.state.cache = 86400;
+router.post('/query', cache(86400), async (ctx) => {
   const { query = {}, options = {} } = ctx.request.body;
   try {
     const result = await Dragon.paginate(query, options);

@@ -1,14 +1,13 @@
 const Router = require('koa-router');
 const Rocket = require('./model');
-const { auth, authz } = require('../../../middleware');
+const { auth, authz, cache } = require('../../../middleware');
 
 const router = new Router({
   prefix: '/rockets',
 });
 
 // Get all rockets
-router.get('/', async (ctx) => {
-  ctx.state.cache = 86400;
+router.get('/', cache(86400), async (ctx) => {
   try {
     const result = await Rocket.find({}, null, { sort: { first_flight: 'asc' } });
     ctx.status = 200;
@@ -19,8 +18,7 @@ router.get('/', async (ctx) => {
 });
 
 // Get one rocket
-router.get('/:id', async (ctx) => {
-  ctx.state.cache = 86400;
+router.get('/:id', cache(86400), async (ctx) => {
   try {
     const result = await Rocket.findById(ctx.params.id);
     if (!result) {
@@ -34,8 +32,7 @@ router.get('/:id', async (ctx) => {
 });
 
 // Query rocket
-router.post('/query', async (ctx) => {
-  ctx.state.cache = 86400;
+router.post('/query', cache(300), async (ctx) => {
   const { query = {}, options = {} } = ctx.request.body;
   try {
     const result = await Rocket.paginate(query, options);
