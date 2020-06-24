@@ -9,7 +9,7 @@ const getData = async () => {
   const $ = cheerio.load(result);
 
   // Gives us all manifest table rows in a single array
-  const manifest = $('body > div.content > div > div > table:nth-child(7) > tbody').text();
+  const manifest = $('body > div.content > div > div > table:nth-child(8) > tbody').text();
   if (!manifest) {
     console.log('Broken wiki selector');
     const send = gmail({
