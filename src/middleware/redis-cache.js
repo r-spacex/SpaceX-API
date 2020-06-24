@@ -181,6 +181,12 @@ module.exports = (opts = {}) => {
       }
     }
 
+    if (routeExpire) {
+      ctx.response.set('Cache-Control', `max-age=${routeExpire}`);
+    } else {
+      ctx.response.set('Cache-Control', 'no-store');
+    }
+
     // Check redis status
     if (!redisAvailable || !match || (passParam && ctx.request.query[passParam])) {
       await next();
