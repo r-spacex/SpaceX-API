@@ -26,16 +26,18 @@ const getData = async () => {
   const manifestRow = manifest.split('\n').filter((v) => v !== '');
 
   // Filter to collect manifest dates
-  const allManifestDates = manifestRow.filter((_, index) => index % 8 === 0);
-  const manifestDates = allManifestDates.slice(0, 30);
+  const allManifestDates = manifestRow.filter((_, index) => index % 7 === 0);
+  const manifestDates = allManifestDates.slice(0, 30).map((date) => date.replace(/~|\[[0-9]{1,2}\]/gi, '')
+    .replace(/(~|early|mid|late|end|tbd|tba)/gi, ' ')
+    .split('/')[0].trim());
 
   // Filter to collect payload names
-  const allManifestPayloads = manifestRow.filter((_, index) => (index + 3) % 8 === 0);
-  const manifestPayloads = allManifestPayloads.slice(0, 30);
+  const allManifestPayloads = manifestRow.filter((_, index) => (index + 2) % 7 === 0);
+  const manifestPayloads = allManifestPayloads.slice(0, 30).map((payload) => payload.replace(/\[[0-9]{1,2}\]/gi, ''));
 
   // Filter to collect launchpad names
-  const allManifestLaunchpads = manifestRow.filter((_, index) => (index + 6) % 8 === 0);
-  const manifestLaunchpads = allManifestLaunchpads.slice(0, 30);
+  const allManifestLaunchpads = manifestRow.filter((_, index) => (index + 5) % 7 === 0);
+  const manifestLaunchpads = allManifestLaunchpads.slice(0, 30).map((launchpad) => launchpad.replace(/\[[0-9]{1,2}\]/gi, ''));
 
   return { manifestDates, manifestPayloads, manifestLaunchpads };
 };
@@ -84,6 +86,9 @@ const checkDatePattern = async (mdate) => {
   // 2020 Nov 4
   const day = /^\s*[0-9]{4}\s*([a-z]{3}|[a-z]{3,9})\s*[0-9]{1,2}\s*$/i;
 
+  // 2020 Nov [14:10]
+  const vagueHour = /^\s*[0-9]{4}\s*([a-z]{3}|[a-z]{3,9})\s*(\[?\s*[0-9]{2}:[0-9]{2}\s*\]?)\s*$/i;
+
   // 2020 Nov 4 [14:10]
   const hour = /^\s*[0-9]{4}\s*([a-z]{3}|[a-z]{3,9})\s*[0-9]{1,2}\s*(\[?\s*[0-9]{2}:[0-9]{2}\s*\]?)\s*$/i;
 
@@ -103,7 +108,7 @@ const checkDatePattern = async (mdate) => {
 
   // Remove extra stuff humans might add
   // NOTE: Add to this when people add unexpected things to dates in the wiki
-  const cleaned = mdate.replace(/(~|early|mid|late|end|tbd|tba)/gi, ' ').split('/')[0].trim();
+  const cleaned = mdate;
   console.log(cleaned);
 
   // Set tentativeness
@@ -134,6 +139,8 @@ const checkDatePattern = async (mdate) => {
     result.precision = 'month';
   } else if (day.test(cleaned)) {
     result.precision = 'day';
+  } else if (vagueHour.test(cleaned)) {
+    result.precision = 'month';
   } else if (hour.test(cleaned)) {
     result.precision = 'hour';
   } else if (second.test(cleaned)) {
