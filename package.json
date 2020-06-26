@@ -41,6 +41,8 @@
     "gmail-send": "^1.8.10",
     "ioredis": "^4.14.1",
     "koa": "^2.11.0",
+    "koa-conditional-get": "^2.0.0",
+    "koa-etag": "^3.0.0",
     "koa-helmet": "^5.2.0",
     "koa-is-json": "^1.0.0",
     "koa-json-mask": "^1.0.0",

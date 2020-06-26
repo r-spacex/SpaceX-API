@@ -1,4 +1,6 @@
 
+const conditional = require('koa-conditional-get');
+const etag = require('koa-etag');
 const cors = require('koa2-cors');
 const helmet = require('koa-helmet');
 const Koa = require('koa');
@@ -73,6 +75,10 @@ if (process.env.NODE_ENV !== 'test') {
 
 // Error Handler
 app.use(errorHandler());
+
+app.use(conditional());
+
+app.use(etag());
 
 // Enable CORS for all routes
 app.use(cors({
