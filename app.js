@@ -1,3 +1,5 @@
+const conditional = require('koa-conditional-get');
+const etag = require('koa-etag');
 const cors = require('koa2-cors');
 const helmet = require('koa-helmet');
 const Koa = require('koa');
@@ -37,6 +39,10 @@ app.silent = true;
 
 // Error handler
 app.use(errors);
+
+app.use(conditional());
+
+app.use(etag());
 
 app.use(bodyParser());
 
