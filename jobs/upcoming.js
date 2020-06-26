@@ -52,14 +52,16 @@ module.exports = async () => {
 
     const wikiRow = wiki.split('\n').filter((v) => v !== '');
 
-    const allWikiDates = wikiRow.filter((_, index) => index % 8 === 0);
-    const wikiDates = allWikiDates.slice(0, 30);
+    const allWikiDates = wikiRow.filter((_, index) => index % 7 === 0);
+    const wikiDates = allWikiDates.slice(0, 30).map((date) => date.replace(/~|\[[0-9]{1,2}\]/gi, '')
+      .replace(/(~|early|mid|late|end|tbd|tba)/gi, ' ')
+      .split('/')[0].trim());
 
-    const allWikiPayloads = wikiRow.filter((_, index) => (index + 3) % 8 === 0);
-    const wikiPayloads = allWikiPayloads.slice(0, 30);
+    const allWikiPayloads = wikiRow.filter((_, index) => (index + 2) % 7 === 0);
+    const wikiPayloads = allWikiPayloads.slice(0, 30).map((payload) => payload.replace(/\[[0-9]{1,2}\]/gi, ''));
 
-    const allWikiLaunchpads = wikiRow.filter((_, index) => (index + 6) % 8 === 0);
-    const wikiLaunchpads = allWikiLaunchpads.slice(0, 30);
+    const allWikiLaunchpads = wikiRow.filter((_, index) => (index + 5) % 7 === 0);
+    const wikiLaunchpads = allWikiLaunchpads.slice(0, 30).map((launchpad) => launchpad.replace(/\[[0-9]{1,2}\]/gi, ''));
 
     // Set base flight number to automatically reorder launches on the wiki
     // If the most recent past launch is still on the wiki, don't offset the flight number
@@ -104,6 +106,9 @@ module.exports = async () => {
           // 2020 Nov 4
           const dayPattern = /^\s*[0-9]{4}\s*([a-z]{3}|[a-z]{3,9})\s*[0-9]{1,2}\s*$/i;
 
+          // 2020 Nov [14:10]
+          const vagueHourPattern = /^\s*[0-9]{4}\s*([a-z]{3}|[a-z]{3,9})\s*(\[?\s*[0-9]{2}:[0-9]{2}\s*\]?)\s*$/i;
+
           // 2020 Nov 4 [14:10]
           const hourPattern = /^\s*[0-9]{4}\s*([a-z]{3}|[a-z]{3,9})\s*[0-9]{1,2}\s*(\[?\s*[0-9]{2}:[0-9]{2}\s*\]?)\s*$/i;
 
@@ -115,7 +120,7 @@ module.exports = async () => {
 
           // Remove extra stuff humans might add
           // NOTE: Add to this when people add unexpected things to dates in the wiki
-          const cleanedwikiDate = wikiDate.replace(/(~|early|mid|late|end|tbd|tba)/gi, ' ').split('/')[0].trim();
+          const cleanedwikiDate = wikiDate;
 
           // Set date precision
           if (cleanedwikiDate.includes('Q')) {
@@ -137,6 +142,8 @@ module.exports = async () => {
             precision = 'month';
           } else if (dayPattern.test(cleanedwikiDate)) {
             precision = 'day';
+          } else if (vagueHourPattern.test(cleanedwikiDate)) {
+            precision = 'month';
           } else if (hourPattern.test(cleanedwikiDate)) {
             precision = 'hour';
           } else {
