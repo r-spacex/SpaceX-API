@@ -1,5 +1,4 @@
 const { CronJob } = require('cron');
-// const webcast = require('./webcast');
 const launches = require('./launches');
 const payloads = require('./payloads');
 const landpads = require('./landpads');
@@ -9,15 +8,10 @@ const cores = require('./cores');
 const roadster = require('./roadster');
 const upcoming = require('./upcoming');
 const starlink = require('./starlink');
-
-// Every 10 minutes
-// const webcastJob = new CronJob('*/10 * * * *', webcast);
+const webcast = require('./webcast');
 
 // Every 10 minutes
 const launchesJob = new CronJob('*/10 * * * *', launches);
-
-// Every hour on :20
-const payloadsJob = new CronJob('20 * * * *', payloads);
 
 // Every 10 minutes
 const landpadsJob = new CronJob('*/10 * * * *', landpads);
@@ -37,10 +31,15 @@ const roadsterJob = new CronJob('*/10 * * * *', roadster);
 // Every 10 minutes
 const upcomingJob = new CronJob('*/10 * * * *', upcoming);
 
+// Every hour on :25
+const payloadsJob = new CronJob('25 * * * *', payloads);
+
 // Every hour on :35
 const starlinkJob = new CronJob('35 * * * *', starlink);
 
-// webcastJob.start();
+// Every hour on :45
+const webcastJob = new CronJob('45 * * * *', webcast);
+
 launchesJob.start();
 payloadsJob.start();
 landpadsJob.start();
@@ -50,3 +49,4 @@ coresJob.start();
 roadsterJob.start();
 upcomingJob.start();
 starlinkJob.start();
+webcastJob.start();
