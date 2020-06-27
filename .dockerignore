@@ -9,3 +9,4 @@ coverage
 LICENSE
 .eslintrc
 .gitignore
+.nvmrc
