@@ -75,7 +75,7 @@ module.exports = async () => {
       });
 
       let position;
-      if (sat.spaceTrack.DECAYED !== 1) {
+      if (sat.DECAYED !== 1) {
         const tle = [sat.TLE_LINE1, sat.TLE_LINE2];
         position = await getSatelliteInfo(tle);
       }
