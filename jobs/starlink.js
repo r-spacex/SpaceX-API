@@ -74,17 +74,20 @@ module.exports = async () => {
         responseType: 'json',
       });
 
-      const tle = [`${sat.TLE_LINE1}`, `${sat.TLE_LINE2}`];
-      const position = await getSatelliteInfo(tle);
+      let position;
+      if (sat.spaceTrack.DECAYED !== 1) {
+        const tle = [sat.TLE_LINE1, sat.TLE_LINE2];
+        position = await getSatelliteInfo(tle);
+      }
 
       await got.patch(`${SPACEX_API}/starlink/${sat.NORAD_CAT_ID}`, {
         json: {
           version: starlinkVersion(launches.docs[0].date_utc) || null,
           launch: launches.docs[0].id || null,
-          longitude: position.lng,
-          latitude: position.lat,
-          height_km: position.height,
-          velocity_kms: position.velocity_kms,
+          longitude: position.lng || null,
+          latitude: position.lat || null,
+          height_km: position.height || null,
+          velocity_kms: position.velocity_kms || null,
           spaceTrack: {
             CCSDS_OMM_VERS: sat.CCSDS_OMM_VERS,
             COMMENT: sat.COMMENT,
