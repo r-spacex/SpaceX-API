@@ -75,6 +75,7 @@ module.exports = async () => {
       });
 
       let position;
+      console.log(sat);
       if (sat.DECAYED !== 1) {
         const tle = [sat.TLE_LINE1, sat.TLE_LINE2];
         position = await getSatelliteInfo(tle);
