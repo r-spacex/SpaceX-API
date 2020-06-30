@@ -74,7 +74,7 @@ module.exports = async () => {
         responseType: 'json',
       });
 
-      const tle = [sat.TLE_LINE1, sat.TLE_LINE2];
+      const tle = [`${sat.TLE_LINE1}`, `${sat.TLE_LINE2}`];
       const position = await getSatelliteInfo(tle);
 
       await got.patch(`${SPACEX_API}/starlink/${sat.NORAD_CAT_ID}`, {
