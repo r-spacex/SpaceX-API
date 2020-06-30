@@ -12,6 +12,22 @@ const starlinkSchema = new mongoose.Schema({
     ref: 'Launch',
     default: null,
   },
+  longitude: {
+    type: Number,
+    default: null,
+  },
+  latitude: {
+    type: Number,
+    default: null,
+  },
+  height_km: {
+    type: Number,
+    default: null,
+  },
+  velocity_kms: {
+    type: Number,
+    default: null,
+  },
   spaceTrack: {
     CCSDS_OMM_VERS: {
       type: String,

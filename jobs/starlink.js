@@ -2,6 +2,7 @@ const got = require('got');
 const { CookieJar } = require('tough-cookie');
 const Moment = require('moment-timezone');
 const MomentRange = require('moment-range');
+const { getSatelliteInfo } = require('tle.js/dist/tlejs.cjs');
 const { logger } = require('../middleware/logger');
 
 const SPACEX_API = 'https://api.spacexdata.com/v4';
@@ -73,10 +74,17 @@ module.exports = async () => {
         responseType: 'json',
       });
 
+      const tle = [sat.TLE_LINE1, sat.TLE_LINE2];
+      const position = await getSatelliteInfo(tle);
+
       await got.patch(`${SPACEX_API}/starlink/${sat.NORAD_CAT_ID}`, {
         json: {
           version: starlinkVersion(launches.docs[0].date_utc) || null,
           launch: launches.docs[0].id || null,
+          longitude: position.lng,
+          latitude: position.lat,
+          height_km: position.height,
+          velocity_kms: position.velocity_kms,
           spaceTrack: {
             CCSDS_OMM_VERS: sat.CCSDS_OMM_VERS,
             COMMENT: sat.COMMENT,
