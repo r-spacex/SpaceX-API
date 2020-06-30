@@ -87,7 +87,7 @@ module.exports = async () => {
           longitude: position.lng || null,
           latitude: position.lat || null,
           height_km: position.height || null,
-          velocity_kms: position.velocity_kms || null,
+          velocity_kms: position.velocity || null,
           spaceTrack: {
             CCSDS_OMM_VERS: sat.CCSDS_OMM_VERS,
             COMMENT: sat.COMMENT,
