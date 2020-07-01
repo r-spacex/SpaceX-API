@@ -53,15 +53,15 @@ module.exports = async () => {
     const wikiRow = wiki.split('\n').filter((v) => v !== '');
 
     const allWikiDates = wikiRow.filter((_, index) => index % 7 === 0);
-    const wikiDates = allWikiDates.slice(0, 30).map((date) => date.replace(/~|\[[0-9]{1,2}\]/gi, '')
+    const wikiDates = allWikiDates.slice(0, 30).map((date) => date.replace(/~|\[[0-9]{1,3}\]/gi, '')
       .replace(/(~|early|mid|late|end|tbd|tba)/gi, ' ')
       .split('/')[0].trim());
 
     const allWikiPayloads = wikiRow.filter((_, index) => (index + 2) % 7 === 0);
-    const wikiPayloads = allWikiPayloads.slice(0, 30).map((payload) => payload.replace(/\[[0-9]{1,2}\]/gi, ''));
+    const wikiPayloads = allWikiPayloads.slice(0, 30).map((payload) => payload.replace(/\[[0-9]{1,3}\]/gi, ''));
 
     const allWikiLaunchpads = wikiRow.filter((_, index) => (index + 5) % 7 === 0);
-    const wikiLaunchpads = allWikiLaunchpads.slice(0, 30).map((launchpad) => launchpad.replace(/\[[0-9]{1,2}\]/gi, ''));
+    const wikiLaunchpads = allWikiLaunchpads.slice(0, 30).map((launchpad) => launchpad.replace(/\[[0-9]{1,3}\]/gi, ''));
 
     // Set base flight number to automatically reorder launches on the wiki
     // If the most recent past launch is still on the wiki, don't offset the flight number
@@ -248,14 +248,14 @@ module.exports = async () => {
             ...rawUpdate,
           });
 
-          await got.patch(`${SPACEX_API}/launches/${launch.id}`, {
-            json: {
-              ...rawUpdate,
-            },
-            headers: {
-              'spacex-key': KEY,
-            },
-          });
+          // await got.patch(`${SPACEX_API}/launches/${launch.id}`, {
+          //   json: {
+          //     ...rawUpdate,
+          //   },
+          //   headers: {
+          //     'spacex-key': KEY,
+          //   },
+          // });
         }
       }
     }
