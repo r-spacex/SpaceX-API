@@ -27,17 +27,17 @@ const getData = async () => {
 
   // Filter to collect manifest dates
   const allManifestDates = manifestRow.filter((_, index) => index % 7 === 0);
-  const manifestDates = allManifestDates.slice(0, 30).map((date) => date.replace(/~|\[[0-9]{1,2}\]/gi, '')
+  const manifestDates = allManifestDates.slice(0, 30).map((date) => date.replace(/~|\[[0-9]{1,3}\]/gi, '')
     .replace(/(~|early|mid|late|end|tbd|tba)/gi, ' ')
     .split('/')[0].trim());
 
   // Filter to collect payload names
   const allManifestPayloads = manifestRow.filter((_, index) => (index + 2) % 7 === 0);
-  const manifestPayloads = allManifestPayloads.slice(0, 30).map((payload) => payload.replace(/\[[0-9]{1,2}\]/gi, ''));
+  const manifestPayloads = allManifestPayloads.slice(0, 30).map((payload) => payload.replace(/\[[0-9]{1,3}\]/gi, ''));
 
   // Filter to collect launchpad names
   const allManifestLaunchpads = manifestRow.filter((_, index) => (index + 5) % 7 === 0);
-  const manifestLaunchpads = allManifestLaunchpads.slice(0, 30).map((launchpad) => launchpad.replace(/\[[0-9]{1,2}\]/gi, ''));
+  const manifestLaunchpads = allManifestLaunchpads.slice(0, 30).map((launchpad) => launchpad.replace(/\[[0-9]{1,3}\]/gi, ''));
 
   return { manifestDates, manifestPayloads, manifestLaunchpads };
 };
