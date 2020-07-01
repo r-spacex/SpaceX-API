@@ -55,7 +55,7 @@ module.exports = async () => {
     const starlinkSats = data.filter((sat) => /starlink|tintin/i.test(sat.OBJECT_NAME));
 
     const updates = starlinkSats.map(async (sat) => {
-      const date = moment(sat.LAUNCH_DATE, 'YYYY-MM-DD');
+      const date = moment.utc(sat.LAUNCH_DATE, 'YYYY-MM-DD');
       const range = date.range('day');
 
       const launches = await got.post(`${SPACEX_API}/launches/query`, {
@@ -75,8 +75,7 @@ module.exports = async () => {
       });
 
       let position;
-      console.log(sat);
-      if (sat.DECAYED !== 1) {
+      if (parseInt(sat.DECAYED, 10) !== 1) {
         const tle = [sat.TLE_LINE1, sat.TLE_LINE2];
         position = await getSatelliteInfo(tle);
       }
@@ -85,10 +84,10 @@ module.exports = async () => {
         json: {
           version: starlinkVersion(launches.docs[0].date_utc) || null,
           launch: launches.docs[0].id || null,
-          longitude: position.lng || null,
-          latitude: position.lat || null,
-          height_km: position.height || null,
-          velocity_kms: position.velocity || null,
+          longitude: position?.lng || null,
+          latitude: position?.lat || null,
+          height_km: position?.height || null,
+          velocity_kms: position?.velocity || null,
           spaceTrack: {
             CCSDS_OMM_VERS: sat.CCSDS_OMM_VERS,
             COMMENT: sat.COMMENT,
