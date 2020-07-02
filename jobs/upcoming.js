@@ -44,7 +44,7 @@ module.exports = async () => {
       resolveBodyOnly: true,
     });
     const $ = cheerio.load(rawWiki);
-    const wiki = $('body > div.content > div > div > table:nth-child(10) > tbody').text();
+    const wiki = $('body > div.content > div > div > table:nth-child(11) > tbody').text();
 
     if (!wiki) {
       throw new Error(`Broken wiki selector: ${wiki}`);
