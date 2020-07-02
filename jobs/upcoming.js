@@ -248,14 +248,14 @@ module.exports = async () => {
             ...rawUpdate,
           });
 
-          // await got.patch(`${SPACEX_API}/launches/${launch.id}`, {
-          //   json: {
-          //     ...rawUpdate,
-          //   },
-          //   headers: {
-          //     'spacex-key': KEY,
-          //   },
-          // });
+          await got.patch(`${SPACEX_API}/launches/${launch.id}`, {
+            json: {
+              ...rawUpdate,
+            },
+            headers: {
+              'spacex-key': KEY,
+            },
+          });
         }
       }
     }
