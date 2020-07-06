@@ -60,7 +60,7 @@
     "eslint": "^7.4.0",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-import": "^2.22.0",
-    "eslint-plugin-jest": "^23.17.1",
+    "eslint-plugin-jest": "^23.18.0",
     "eslint-plugin-mongodb": "^1.0.0",
     "eslint-plugin-no-secrets": "^0.6.8",
     "eslint-plugin-security": "^1.4.0",
