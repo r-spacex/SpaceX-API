@@ -121,7 +121,9 @@ GET https://api.spacexdata.com/v4/launches/latest
 
 ## Sponsors
 
-[![Studio 3T](https://imgur.com/ZuHz5Fk.png)](https://studio3t.com/)
+### [Studio 3T](https://studio3t.com/)
+
+[![Studio 3T](https://imgur.com/DbJSfAo.png)](https://studio3t.com/)
 
 ## FAQ's
 
