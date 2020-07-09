@@ -13,7 +13,7 @@
 | [SpaceX Wiki](https://www.spacexwiki.com/) | Website | [Chris Stielper](https://github.com/cstielper) | [GitHub](https://github.com/cstielper/react-spacex-wiki) |
 | [X-Watch](https://x-watch.xyz/) | Website | [Matt Mills](https://github.com/mattmillsxyz) | [GitHub](https://github.com/mattmillsxyz/x-watch) |
 | [SpaceXLaunches.com](https://spacexlaunches.com) | Website | [louisjc](https://github.com/louisjc/) | [GitHub](https://github.com/louisjc/spacexlaunches.com) |
-| [SpaceFax](https://spacefax.xyz) | Website | [Jimmy Hendrie](https://github.com/jimmyboix) | [GitHub](https://github.com/jimmyboix/SpaceFax) | |
+| [SpaceFax](https://spacefax1.web.app) | Website | [James Hendrie](https://github.com/jimmyboix) | [GitHub](https://github.com/jimmyboix/SpaceFax) | |
 | [Deploy to Space](https://spacex-fs.deployto.space/) | Website | [Yannick Durden](https://github.com/YannickDurden) | | |
 | [SpaceX Track](https://www.spacextrack.com/) | Website | [Joe Dineen](https://github.com/jdineen21) | [GitHub](https://github.com/jdineen21/space_django) | [Portfolio](https://www.jdineen.co.uk) |
 | [SpaceX Guide Site](https://spacex-guide.weebly.com) | Website | Jared-Base | | [Mission Control Page](https://spacex-guide.weebly.com/mission-control.html) |
