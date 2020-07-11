@@ -13,7 +13,8 @@ const landpadSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    default: null,
+    enum: ['active', 'inactive', 'unknown', 'retired', 'lost', 'under construction'],
+    required: true,
   },
   type: {
     type: String,
