@@ -72,6 +72,10 @@ See [query](../queries) guide for more details on building queries and paginatin
         },
         "version": "v0.9",
         "launch": "5eb87d30ffd86e000604b378",
+        "longitude": 10.551678198548517,
+        "latitude": 8.26018124742001,
+        "height_km": 434.5577668080887,
+		"velocity_kms": 7.653046786650296,
         "id": "5eed770f096e59000698560d"
       },
       ...
