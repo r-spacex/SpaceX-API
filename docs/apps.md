@@ -25,6 +25,7 @@
 | [SpaceX GO!](https://play.google.com/store/apps/details?id=com.chechu.cherry) | Android App | [Chechu](https://github.com/jesusrp98) | [GitHub](https://github.com/jesusrp98/spacex-go) |
 | [SpaceX Universe](https://play.google.com/store/apps/details?id=com.aastudio.spacexuniverse) | Android App | [Oleksii Chernov](https://github.com/chert12) | [Github](https://github.com/chert12/SpaceX-Universe) | |
 | [SpaceXFollower](https://github.com/OMIsie11/SpaceXFollower) | Android App | [Oskar Misiewicz @OMIsie11](https://omisie11.github.io) | [Github](https://github.com/OMIsie11/SpaceXFollower) | |
+| [Spacexopedia](https://play.google.com/store/apps/details?id=com.thealphamerc.flutter_spacexopedia) | Android App | [Sonu Sharma](https://github.com/TheAlphamerc) | [GitHub](https://github.com/TheAlphamerc/flutter_spacexopedia) | |
 | [Launchpad](https://github.com/skyffx/Launchpad/releases) | Windows App | [Wojciech Piekielniak](https://github.com/skyffx/) | [Github](https://github.com/skyffx/Launchpad) |
 | [InElonWeTrust](https://github.com/Tearth/InElonWeTrust) | Discord bot | [Tearth](https://github.com/Tearth) | [GitHub](https://github.com/Tearth/InElonWeTrust) |
 | [SpaceX-Launch-Bot](https://github.com/r-spacex/SpaceX-Launch-Bot) | Discord bot | [Simon](https://github.com/psidex) | [Github](https://github.com/r-spacex/SpaceX-Launch-Bot) | |
