@@ -56,6 +56,7 @@ module.exports = async () => {
     const wikiDates = allWikiDates.slice(0, 30).map((date) => date.replace(/~|\[[0-9]{1,3}\]/gi, '')
       .replace(/(~|early|mid|late|end|tbd|tba)/gi, ' ')
       .split('/')[0].trim());
+    const rawWikiDates = allWikiDates.slice(0, 30);
 
     const allWikiPayloads = wikiRow.filter((_, index) => (index + 2) % 7 === 0);
     const wikiPayloads = allWikiPayloads.slice(0, 30).map((payload) => payload.replace(/\[[0-9]{1,3}\]/gi, ''));
@@ -114,9 +115,10 @@ module.exports = async () => {
 
           let precision;
           let wikiDate = wikiDates[parseInt(wikiIndex, 10)];
+          const rawWikiDate = rawWikiDates[parseInt(wikiIndex, 10)];
 
           // Check if date contains TBD
-          const tbd = tbdPattern.test(wikiDate);
+          const tbd = tbdPattern.test(rawWikiDate);
 
           // Remove extra stuff humans might add
           // NOTE: Add to this when people add unexpected things to dates in the wiki
