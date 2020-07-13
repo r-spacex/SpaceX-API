@@ -94,7 +94,12 @@ const withinSensitiveTreshold = (time) => {
     lastWikiRevisions.push(launch.last_wiki_revision);
   });
 
-  const { manifestDates, manifestPayloads, manifestLaunchpads } = await wikiManifest.getData();
+  const {
+    manifestDates,
+    rawManifestDates,
+    manifestPayloads,
+    manifestLaunchpads,
+  } = await wikiManifest.getData();
 
   // Set base flight number to automatically reorder launches on the manifest
   // If the most recent past launch is still on the wiki, don't offset the flight number
@@ -119,7 +124,9 @@ const withinSensitiveTreshold = (time) => {
         }
         // Check and see if dates match a certain pattern depending on the length of the
         // date given. This sets the amount of precision needed for the date.
-        const dateResult = await wikiManifest.checkDatePattern(manifestDates[manifestIndex]);
+        const manifestDate = manifestDates[parseInt(manifestIndex, 10)];
+        const rawManifestDate = rawManifestDates[parseInt(manifestIndex, 10)];
+        const dateResult = await wikiManifest.checkDatePattern(manifestDate, rawManifestDate);
         const { tbd, isTentative } = dateResult;
         precision[manifestIndex] = dateResult.precision;
 

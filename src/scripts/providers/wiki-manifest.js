@@ -30,6 +30,7 @@ const getData = async () => {
   const manifestDates = allManifestDates.slice(0, 30).map((date) => date.replace(/~|\[[0-9]{1,3}\]/gi, '')
     .replace(/(~|early|mid|late|end|tbd|tba)/gi, ' ')
     .split('/')[0].trim());
+  const rawManifestDates = allManifestDates.slice(0, 30);
 
   // Filter to collect payload names
   const allManifestPayloads = manifestRow.filter((_, index) => (index + 2) % 7 === 0);
@@ -39,7 +40,12 @@ const getData = async () => {
   const allManifestLaunchpads = manifestRow.filter((_, index) => (index + 5) % 7 === 0);
   const manifestLaunchpads = allManifestLaunchpads.slice(0, 30).map((launchpad) => launchpad.replace(/\[[0-9]{1,3}\]/gi, ''));
 
-  return { manifestDates, manifestPayloads, manifestLaunchpads };
+  return {
+    manifestDates,
+    rawManifestDates,
+    manifestPayloads,
+    manifestLaunchpads,
+  };
 };
 
 const calculateLaunchSite = (launchpad) => {
@@ -66,7 +72,7 @@ const calculateLaunchSite = (launchpad) => {
   return { siteId, siteName, siteNameLong };
 };
 
-const checkDatePattern = async (mdate) => {
+const checkDatePattern = async (mdate, rawManifestDate) => {
   // RegEx expressions for matching dates in the wiki manifest
   // Allows for long months or short months ex: September vs Sep
   // Allows for time with or without brackets ex: [23:45] vs 23:45
@@ -100,7 +106,7 @@ const checkDatePattern = async (mdate) => {
   };
 
   // Check if date contains TBD
-  if (tbd.test(mdate)) {
+  if (tbd.test(rawManifestDate)) {
     result.tbd = true;
   } else {
     result.tbd = false;
