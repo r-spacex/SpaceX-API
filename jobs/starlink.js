@@ -77,7 +77,11 @@ module.exports = async () => {
       let position;
       if (parseInt(sat.DECAYED, 10) !== 1) {
         const tle = [sat.TLE_LINE1, sat.TLE_LINE2];
-        position = await getSatelliteInfo(tle);
+        try {
+          position = await getSatelliteInfo(tle);
+        } catch (error) {
+          console.log(error);
+        }
       }
 
       await got.patch(`${SPACEX_API}/starlink/${sat.NORAD_CAT_ID}`, {
