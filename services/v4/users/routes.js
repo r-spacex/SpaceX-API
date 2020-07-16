@@ -19,16 +19,12 @@ router.get('/', auth, authz, async (ctx) => {
 
 // Get one user
 router.get('/:id', auth, authz, async (ctx) => {
-  try {
-    const result = await User.findById(ctx.params.id);
-    if (!result) {
-      ctx.throw(404);
-    }
-    ctx.status = 200;
-    ctx.body = result;
-  } catch (error) {
-    ctx.throw(400, error.message);
+  const result = await User.findById(ctx.params.id);
+  if (!result) {
+    ctx.throw(404);
   }
+  ctx.status = 200;
+  ctx.body = result;
 });
 
 // Query users

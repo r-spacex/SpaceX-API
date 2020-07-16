@@ -19,16 +19,12 @@ router.get('/', cache(300), async (ctx) => {
 
 // Get one core
 router.get('/:id', cache(300), async (ctx) => {
-  try {
-    const result = await Core.findById(ctx.params.id);
-    if (!result) {
-      ctx.throw(404);
-    }
-    ctx.status = 200;
-    ctx.body = result;
-  } catch (error) {
-    ctx.throw(400, error.message);
+  const result = await Core.findById(ctx.params.id);
+  if (!result) {
+    ctx.throw(404);
   }
+  ctx.status = 200;
+  ctx.body = result;
 });
 
 // Query cores

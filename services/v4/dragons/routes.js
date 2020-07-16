@@ -19,16 +19,12 @@ router.get('/', cache(86400), async (ctx) => {
 
 // Get one dragon
 router.get('/:id', cache(86400), async (ctx) => {
-  try {
-    const result = await Dragon.findById(ctx.params.id);
-    if (!result) {
-      ctx.throw(404);
-    }
-    ctx.status = 200;
-    ctx.body = result;
-  } catch (error) {
-    ctx.throw(400, error.message);
+  const result = await Dragon.findById(ctx.params.id);
+  if (!result) {
+    ctx.throw(404);
   }
+  ctx.status = 200;
+  ctx.body = result;
 });
 
 // Query dragons

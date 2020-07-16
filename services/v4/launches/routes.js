@@ -95,16 +95,12 @@ router.get('/', cache(20), async (ctx) => {
 
 // Get one launch
 router.get('/:id', cache(20), async (ctx) => {
-  try {
-    const result = await Launch.findById(ctx.params.id);
-    if (!result) {
-      ctx.throw(404);
-    }
-    ctx.status = 200;
-    ctx.body = result;
-  } catch (error) {
-    ctx.throw(400, error.message);
+  const result = await Launch.findById(ctx.params.id);
+  if (!result) {
+    ctx.throw(404);
   }
+  ctx.status = 200;
+  ctx.body = result;
 });
 
 // Query launches

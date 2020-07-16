@@ -19,16 +19,12 @@ router.get('/', cache(3600), async (ctx) => {
 
 // Get one Starlink satellite
 router.get('/:id', cache(3600), async (ctx) => {
-  try {
-    const result = await Starlink.findById(ctx.params.id);
-    if (!result) {
-      ctx.throw(404);
-    }
-    ctx.status = 200;
-    ctx.body = result;
-  } catch (error) {
-    ctx.throw(400, error.message);
+  const result = await Starlink.findById(ctx.params.id);
+  if (!result) {
+    ctx.throw(404);
   }
+  ctx.status = 200;
+  ctx.body = result;
 });
 
 // Query Starlink satellites
