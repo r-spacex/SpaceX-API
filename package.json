@@ -65,7 +65,7 @@
     "eslint-plugin-no-secrets": "^0.6.8",
     "eslint-plugin-security": "^1.4.0",
     "jest": "^26.1.0",
-    "pino-pretty": "^4.0.2",
+    "pino-pretty": "^4.0.3",
     "npm-check": "^5.9.2"
   },
   "jest": {
