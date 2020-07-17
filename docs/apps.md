@@ -18,6 +18,7 @@
 | [SpaceX Track](https://www.spacextrack.com/) | Website | [Joe Dineen](https://github.com/jdineen21) | [GitHub](https://github.com/jdineen21/space_django) | [Portfolio](https://www.jdineen.co.uk) |
 | [SpaceX Guide Site](https://spacex-guide.weebly.com) | Website | Jared-Base | | [Mission Control Page](https://spacex-guide.weebly.com/mission-control.html) |
 | [SpaceX info Site](https://infospacex.vercel.app/) | Website | [Tigran Mkrtchyan](https://github.com/mkrtchyan98) | [Github](https://github.com/mkrtchyan98/SpaceInfo) |
+| [SpX](https://apps.apple.com/gb/app/spx/id1511355787) | iOS App | [Russell Warwick](https://github.com/waruss321) | |
 | [XLaunch](https://apps.apple.com/us/app/xlaunch/id1502939751) | iOS App | [Travis Stanifer](https://github.com/stanifert) |  |
 | [SpaceXPedia](https://itunes.apple.com/app/spacexpedia/id1434177600?mt=8) | iOS App | [Philip Engberg](https://github.com/philipengberg) | [GitHub](https://github.com/philipengberg/SpaceXPedia) |
 | [SpaceX Companion](https://play.google.com/store/apps/details?id=nl.studionoorderlicht.spacex) | Android App | [Jeroen Boumans](https://github.com/jeroenboumans) | Not open sourced yet | [Website](https://spacexcompanion.app)
