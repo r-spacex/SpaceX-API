@@ -6,7 +6,7 @@
 |:---|:---|:---|:---|:---|
 | SpaceX-GraphQL | TypeScript | Jordan Owens | [GitHub](https://github.com/jor-dan/SpaceX-GraphQL) | v3 |
 | spacex-graphql-api | GraphQL | Emerson Laurentino | [GitHub](https://github.com/emersonlaurentino/spacex-qraphql-api) | v2 |
-| Oddity | .NET  | Tearth | [GitHub](https://github.com/Tearth/Oddity) | v3 |
+| Oddity | .NET  | Tearth | [GitHub](https://github.com/Tearth/Oddity) | v4 |
 | SpaceX-API-Wrapper | Node.js | Thomas Smyth | [GitHub](https://github.com/Thomas-Smyth/SpaceX-API-Wrapper) | v3 |
 | spacex-api | TypeScript / Node.js | Tomasz Borowski | [GitHub](https://github.com/tbprojects/spacex-api), [NPM](https://www.npmjs.com/package/spacex-api) | v3 |
 | SpaceX | PowerShell | François-Xavier Cat | [GitHub](https://github.com/lazywinadmin/SpaceX) | v3 |
