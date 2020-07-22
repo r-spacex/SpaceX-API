@@ -86,6 +86,9 @@ const checkDatePattern = async (mdate, rawManifestDate) => {
   // 2020
   const year = /^\s*[0-9]{4}\s*$/i;
 
+  // 2020 [14:10]
+  const yearHourPattern = /^\s*[0-9]{4}\s*(\[?\s*[0-9]{2}:[0-9]{2}\s*\]?)\s*$/i;
+
   // 2020 Nov
   const month = /^\s*[0-9]{4}\s*([a-z]{3}|[a-z]{3,9})\s*$/i;
 
@@ -140,6 +143,8 @@ const checkDatePattern = async (mdate, rawManifestDate) => {
     result.mdate = mdate.replace('H2', '3');
     result.precision = 'half';
   } else if (year.test(cleaned)) {
+    result.precision = 'year';
+  } else if (yearHourPattern.test(cleaned)) {
     result.precision = 'year';
   } else if (month.test(cleaned)) {
     result.precision = 'month';
