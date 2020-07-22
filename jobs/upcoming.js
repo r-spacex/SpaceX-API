@@ -101,6 +101,9 @@ module.exports = async () => {
           // 2020
           const yearPattern = /^\s*[0-9]{4}\s*$/i;
 
+          // 2020 [14:10]
+          const yearHourPattern = /^\s*[0-9]{4}\s*(\[?\s*[0-9]{2}:[0-9]{2}\s*\]?)\s*$/i;
+
           // 2020 Nov
           const monthPattern = /^\s*[0-9]{4}\s*([a-z]{3}|[a-z]{3,9})\s*$/i;
 
@@ -139,6 +142,8 @@ module.exports = async () => {
             wikiDate = wikiDate.replace('H2', '3');
             precision = 'half';
           } else if (yearPattern.test(cleanedwikiDate)) {
+            precision = 'year';
+          } else if (yearHourPattern.test(cleanedwikiDate)) {
             precision = 'year';
           } else if (monthPattern.test(cleanedwikiDate)) {
             precision = 'month';
