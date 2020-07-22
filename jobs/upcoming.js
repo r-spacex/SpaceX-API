@@ -54,7 +54,7 @@ module.exports = async () => {
 
     const allWikiDates = wikiRow.filter((_, index) => index % 7 === 0);
     const wikiDates = allWikiDates.slice(0, 30).map((date) => date.replace(/~|\[[0-9]{1,3}\]/gi, '')
-      .replace(/(~|early|mid|late|end|tbd|tba)/gi, ' ')
+      .replace(/(~|early|mid|late|end|tbd|tba|net)/gi, ' ')
       .split('/')[0].trim());
     const rawWikiDates = allWikiDates.slice(0, 30);
 
@@ -95,6 +95,9 @@ module.exports = async () => {
           // Allows for long months or short months ex: September vs Sep
           // Allows for time with or without brackets ex: [23:45] vs 23:45
 
+          // Anything with NET in date
+          const netPattern = /^.*(net).*$/i;
+
           // Anything with TBD/TBA in date
           const tbdPattern = /^.*(tbd|tba).*$/i;
 
@@ -119,6 +122,9 @@ module.exports = async () => {
           let precision;
           let wikiDate = wikiDates[parseInt(wikiIndex, 10)];
           const rawWikiDate = rawWikiDates[parseInt(wikiIndex, 10)];
+
+          // Check if date is NET
+          const net = netPattern.test(rawWikiDate);
 
           // Check if date contains TBD
           const tbd = tbdPattern.test(rawWikiDate);
@@ -235,8 +241,8 @@ module.exports = async () => {
           }
 
           // Clean wiki date, set timezone
-          const parsedDate = `${wikiDates[parseInt(wikiIndex, 10)].replace(/(-|\[|\]|~|early|mid|late|end)/gi, ' ').split('/')[0].trim()} +0000`;
-          const time = moment(parsedDate, ['YYYY MMM D HH:mm Z', 'YYYY MMM D Z', 'YYYY MMM Z', 'YYYY Q Z', 'YYYY Z']);
+          const parsedDate = `${wikiDates[parseInt(wikiIndex, 10)].replace(/(-|\[|\]|~|early|mid|late|end|net)/gi, ' ').split('/')[0].trim()} +0000`;
+          const time = moment(parsedDate, ['YYYY MMM D HH:mm Z', 'YYYY MMM D Z', 'YYYY MMM HH:mm Z', 'YYYY MMM Z', 'YYYY Q Z', 'YYYY HH:mm Z', 'YYYY Z']);
           const zone = moment.tz(time, 'UTC');
           const localTime = time.tz(timezone).format();
 
@@ -248,6 +254,7 @@ module.exports = async () => {
             date_precision: precision,
             launchpad: launchpadId,
             tbd,
+            net,
           };
 
           logger.info({
