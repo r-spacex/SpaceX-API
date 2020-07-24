@@ -53,8 +53,11 @@ module.exports = async () => {
     const wikiRow = wiki.split('\n').filter((v) => v !== '');
 
     const allWikiDates = wikiRow.filter((_, index) => index % 7 === 0);
-    const wikiDates = allWikiDates.slice(0, 30).map((date) => date.replace(/~|\[[0-9]{1,3}\]/gi, '')
-      .replace(/(~|early|mid|late|end|tbd|tba|net)/gi, ' ')
+    const wikiDates = allWikiDates.slice(0, 30).map((date) => date
+      // eslint-disable-next-line security/detect-unsafe-regex
+      .replace(/(?<=\[[0-9]{2}:[0-9]{2}\])(\[[0-9]{1,3}\]|\[[0-9]{1,3}|[0-9]{1,3}\])*/gi, '')
+      .replace(/~|\[[0-9]{1,3}\]/gi, '')
+      .replace(/(early|mid|late|end|tbd|tba|net)/gi, ' ')
       .split('/')[0].trim());
     const rawWikiDates = allWikiDates.slice(0, 30);
 
@@ -241,8 +244,8 @@ module.exports = async () => {
           }
 
           // Clean wiki date, set timezone
-          const parsedDate = `${wikiDates[parseInt(wikiIndex, 10)].replace(/(-|\[|\]|~|early|mid|late|end|net)/gi, ' ').split('/')[0].trim()} +0000`;
-          const time = moment(parsedDate, ['YYYY MMM D HH:mm Z', 'YYYY MMM D Z', 'YYYY MMM HH:mm Z', 'YYYY MMM Z', 'YYYY Q Z', 'YYYY HH:mm Z', 'YYYY Z']);
+          const parsedDate = `${wikiDates[parseInt(wikiIndex, 10)].replace(/(-|\[|\]|~|early|mid|late|end|net)/gi, ' ').split('/')[0].trim()}`;
+          const time = moment(parsedDate, ['YYYY MMM HH:mm', 'YYYY MMM D HH:mm', 'YYYY MMM D', 'YYYY MMM', 'YYYY HH:mm', 'YYYY Q', 'YYYY']);
           const zone = moment.tz(time, 'UTC');
           const localTime = time.tz(timezone).format();
 
