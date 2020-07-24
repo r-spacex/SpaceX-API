@@ -27,7 +27,10 @@ const getData = async () => {
 
   // Filter to collect manifest dates
   const allManifestDates = manifestRow.filter((_, index) => index % 7 === 0);
-  const manifestDates = allManifestDates.slice(0, 30).map((date) => date.replace(/~|\[[0-9]{1,3}\]/gi, '')
+  const manifestDates = allManifestDates.slice(0, 30).map((date) => date
+    // eslint-disable-next-line security/detect-unsafe-regex
+    .replace(/(?<=\[[0-9]{2}:[0-9]{2}\])(\[[0-9]{1,3}\]|\[[0-9]{1,3}|[0-9]{1,3}\])*/gi, '')
+    .replace(/~|\[[0-9]{1,3}\]/gi, '')
     .replace(/(~|early|mid|late|end|tbd|tba)/gi, ' ')
     .split('/')[0].trim());
   const rawManifestDates = allManifestDates.slice(0, 30);
