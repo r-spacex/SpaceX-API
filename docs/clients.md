@@ -11,6 +11,7 @@ NOTE: Clients are grouped by API version(s) supported
 | Oddity | .NET  | Tearth | [GitHub](https://github.com/Tearth/Oddity) |
 | SpaceX-Async-Wrapper | Python | Ryu JuHeon | [GitHub](https://github.com/SaidBySolo/SpaceX-Async-Wrapper) |
 | KSBSpacexKit | Swift | SaiBalaji22 | [GitHub](https://github.com/SaiBalaji22/KSBSpacexKit) |
+| Marsy | C++ | AzuxDario | [GitHub](https://github.com/AzuxDario/Marsy) |
 
 ### V3, V2, V1 (Deprecated)
 
