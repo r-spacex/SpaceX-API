@@ -4,11 +4,11 @@
   "description": "Open Source REST API for data about SpaceX",
   "main": "server.js",
   "scripts": {
-    "test": "eslint . && jest --silent --verbose",
+    "test": "npm run lint && npm run check-dependencies && jest --silent --verbose",
     "start": "node server.js",
     "worker": "node jobs/worker.js",
     "lint": "eslint .",
-    "check-dependencies": "node scripts/check-dependencies.js"
+    "check-dependencies": "npx depcheck --ignores=\"pino-pretty\""
   },
   "repository": {
     "type": "git",
@@ -30,8 +30,7 @@
   "homepage": "https://github.com/r-spacex/SpaceX-API",
   "dependencies": {
     "blake3": "^2.1.4",
-    "casbin": "^5.0.7",
-    "casbin-mongodb-adapter": "^1.1.11",
+    "casbin": "^5.0.6",
     "cheerio": "^1.0.0-rc.3",
     "cron": "^1.8.2",
     "fuzzball": "^1.3.0",
@@ -64,9 +63,8 @@
     "eslint-plugin-mongodb": "^1.0.0",
     "eslint-plugin-no-secrets": "^0.6.8",
     "eslint-plugin-security": "^1.4.0",
-    "jest": "^26.2.2",
-    "pino-pretty": "^4.1.0",
-    "npm-check": "^5.9.2"
+    "jest": "^26.1.0",
+    "pino-pretty": "^4.1.0"
   },
   "jest": {
     "testEnvironment": "node"
