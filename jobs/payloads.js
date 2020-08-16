@@ -34,7 +34,7 @@ module.exports = async () => {
     });
 
     // eslint-disable-next-line no-secrets/no-secrets
-    const data = await got('https://www.space-track.org/basicspacedata/query/class/tle_latest/ORDINAL/1/orderby/NORAD_CAT_ID/epoch/>now-30/format/json', {
+    const data = await got('https://www.space-track.org/basicspacedata/query/class/tle_latest/ORDINAL/1/orderby/NORAD_CAT_ID/epoch/>now-45/format/json', {
       resolveBodyOnly: true,
       responseType: 'json',
       cookieJar,
