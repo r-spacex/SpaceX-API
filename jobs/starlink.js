@@ -16,6 +16,9 @@ const moment = MomentRange.extendMoment(Moment);
  * @return {String}
  */
 const starlinkVersion = (date) => {
+  if (!date) {
+    return null;
+  }
   const parsedDate = moment(date);
   let version = null;
   if (parsedDate.isAfter('2019-11-11')) {
@@ -86,8 +89,8 @@ module.exports = async () => {
 
       await got.patch(`${SPACEX_API}/starlink/${sat.NORAD_CAT_ID}`, {
         json: {
-          version: starlinkVersion(launches.docs[0].date_utc) || null,
-          launch: launches.docs[0].id || null,
+          version: starlinkVersion(launches?.docs[0]?.date_utc || null),
+          launch: launches?.docs[0]?.id || null,
           longitude: position?.lng || null,
           latitude: position?.lat || null,
           height_km: position?.height || null,
