@@ -64,7 +64,7 @@
     "eslint-plugin-no-secrets": "^0.6.8",
     "eslint-plugin-security": "^1.4.0",
     "jest": "^26.4.2",
-    "pino-pretty": "^4.2.0"
+    "pino-pretty": "^4.2.1"
   },
   "jest": {
     "testEnvironment": "node"
