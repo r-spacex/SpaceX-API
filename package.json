@@ -39,7 +39,7 @@
     "koa": "^2.13.0",
     "koa-bodyparser": "^4.3.0",
     "koa-conditional-get": "^3.0.0",
-    "koa-etag": "^3.0.0",
+    "koa-etag": "^4.0.0",
     "koa-helmet": "^5.2.0",
     "koa-pino-logger": "^3.0.0",
     "koa-router": "^9.4.0",
