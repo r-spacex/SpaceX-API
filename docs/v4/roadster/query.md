@@ -1,8 +1,8 @@
-# Query payloads
+# Query roadster
 
 **Method** : `POST`
 
-**URL** : `https://api.spacexdata.com/v4/payloads/query`
+**URL** : `https://api.spacexdata.com/v4/roadster/query`
 
 **Auth required** : `False`
 
@@ -29,51 +29,38 @@
 
 ```json
 {
-  "dragon": {
-    "capsule": null,
-    "mass_returned_kg": null,
-    "mass_returned_lbs": null,
-    "flight_time_sec": null,
-    "manifest": null,
-    "water_landing": null,
-    "land_landing": null
-  },
-  "name": "Tintin A & B",
-  "type": "Satellite",
-  "reused": false,
-  "launch": "5eb87d14ffd86e000604b361",
-  "customers": [
-    "SpaceX"
-  ],
-  "norad_ids": [
-    43216,
-    43217
-  ],
-  "nationalities": [
-    "United States"
-  ],
-  "manufacturers": [
-    "SpaceX"
-  ],
-  "mass_kg": 800,
-  "mass_lbs": 1763.7,
-  "orbit": "SSO",
-  "reference_system": "geocentric",
-  "regime": "low-earth",
-  "longitude": null,
-  "semi_major_axis_km": 6737.42,
-  "eccentricity": 0.0012995,
-  "periapsis_km": 350.53,
-  "apoapsis_km": 368.04,
-  "inclination_deg": 97.4444,
-  "period_min": 91.727,
-  "lifespan_years": 1,
-  "epoch": "2020-06-13T13:46:31.000Z",
-  "mean_motion": 15.69864906,
-  "raan": 176.6734,
-  "arg_of_pericenter": 174.2326,
-  "mean_anomaly": 185.9087,
-  "id": "5eb0e4c6b6c3bb0006eeb21e"
+    "flickr_images": [
+        "https://farm5.staticflickr.com/4615/40143096241_11128929df_b.jpg",
+        "https://farm5.staticflickr.com/4702/40110298232_91b32d0cc0_b.jpg",
+        "https://farm5.staticflickr.com/4676/40110297852_5e794b3258_b.jpg",
+        "https://farm5.staticflickr.com/4745/40110304192_6e3e9a7a1b_b.jpg"
+    ],
+    "name": "Elon Musk's Tesla Roadster",
+    "launch_date_utc": "2018-02-06T20:45:00.000Z",
+    "launch_date_unix": 1517949900,
+    "launch_mass_kg": 1350,
+    "launch_mass_lbs": 2976,
+    "norad_id": 43205,
+    "epoch_jd": 2459014.345891204,
+    "orbit_type": "heliocentric",
+    "apoapsis_au": 1.663950009802517,
+    "periapsis_au": 0.9859657216725529,
+    "semi_major_axis_au": 196.2991348009594,
+    "eccentricity": 0.2558512635239784,
+    "inclination": 1.077499248052439,
+    "longitude": 317.0839961949045,
+    "periapsis_arg": 177.5240278992875,
+    "period_days": 557.059427465354,
+    "speed_kph": 72209.97792,
+    "speed_mph": 44869.18619012833,
+    "earth_distance_km": 220606726.83228922,
+    "earth_distance_mi": 137078622.45850638,
+    "mars_distance_km": 89348334.47067611,
+    "mars_distance_mi": 55518463.93837848,
+    "wikipedia": "https://en.wikipedia.org/wiki/Elon_Musk%27s_Tesla_Roadster",
+    "video": "https://youtu.be/wbSwFU6tY1c",
+    "details": "Elon Musk's Tesla Roadster is an electric sports car that served as the dummy payload for the February 2018 Falcon Heavy test flight and is now an artificial satellite of the Sun. Starman, a mannequin dressed in a spacesuit, occupies the driver's seat. The car and rocket are products of Tesla and SpaceX. This 2008-model Roadster was previously used by Musk for commuting, and is the only consumer car sent into space.",
+    "id": "5eb75f0842fea42237d7f3f4"
 }
 ```
 
