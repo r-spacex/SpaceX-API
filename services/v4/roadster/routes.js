@@ -17,6 +17,18 @@ router.get('/', cache(300), async (ctx) => {
   }
 });
 
+// Query roadster
+router.post('/query', cache(300), async (ctx) => {
+  const { query = {}, options = { select: '' } } = ctx.request.body;
+  try {
+    const result = await Roadster.findOne(query).select(options.select).exec();
+    ctx.status = 200;
+    ctx.body = result;
+  } catch (error) {
+    ctx.throw(400, error.message);
+  }
+});
+
 // Update roadster
 router.patch('/:id', auth, authz, async (ctx) => {
   try {

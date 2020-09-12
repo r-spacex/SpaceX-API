@@ -164,6 +164,7 @@ Detailed info about launch payloads
 Detailed info about Elon's Tesla roadster's current position
 
 * [Get roadster info](roadster/get.md) : `GET /roadster`
+* [Query roadster info](roadster/query.md) : `POST /roadster/query`
 * 🔒 [Update roadster info](roadster/update.md) : `PATCH /roadster/:id`
 
 ### Rockets - [Schema](rockets/schema.md)
