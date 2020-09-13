@@ -52,6 +52,10 @@ const launchpadSchema = new mongoose.Schema({
     type: mongoose.ObjectId,
     ref: 'Launch',
   }],
+  details: {
+    type: String,
+    default: null,
+  },
 }, { autoCreate: true });
 
 launchpadSchema.plugin(mongoosePaginate);
