@@ -58,7 +58,20 @@ const launchSchema = new mongoose.Schema({
     type: Boolean,
     default: null,
   },
-  failures: [String],
+  failures: [
+    {
+      _id: false,
+      time: {
+        type: Number,
+      },
+      altitude: {
+        type: Number,
+      },
+      reason: {
+        type: String,
+      },
+    },
+  ],
   upcoming: {
     type: Boolean,
     required: true,

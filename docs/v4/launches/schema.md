@@ -64,7 +64,17 @@
     "default": null
   },
   "failures": [
-    "String"
+    {
+      "time": {
+        "type": "Number",
+      },
+      "altitude": {
+        "type": "Number",
+      },
+      "reason": {
+        "type": "String",
+      },
+    },
   ],
   "upcoming": {
     "type": "Boolean",
