@@ -29,6 +29,9 @@ module.exports = async () => {
     const active = $('body > div.content > div > div > table:nth-child(15) > tbody').text();
     const activeRow = active.split('\n').filter((v) => v !== '');
     const activeCores = activeRow.filter((value, index) => index % 7 === 0);
+    if (!activeCores.length) {
+      throw new Error('No active cores found');
+    }
     const activeStatus = activeRow.filter((value, index) => (index + 1) % 7 === 0);
     const activeUpdates = activeCores.map(async (coreSerial, index) => {
       const coreId = cores.docs.find((core) => core.serial === coreSerial);
@@ -51,6 +54,9 @@ module.exports = async () => {
     const unknown = $('body > div.content > div > div > table:nth-child(18) > tbody').text();
     const unknownRow = unknown.split('\n').filter((v) => v !== '');
     const unknownCores = unknownRow.filter((value, index) => index % 6 === 0);
+    if (!unknownCores.length) {
+      throw new Error('No unknown cores found');
+    }
     const unknownStatus = unknownRow.filter((value, index) => (index + 1) % 6 === 0).map((x) => x.replace(/\[source\]/gi, ''));
     const unknownUpdates = unknownCores.map(async (coreSerial, index) => {
       const coreId = cores.docs.find((core) => core.serial === coreSerial);
@@ -72,6 +78,9 @@ module.exports = async () => {
     const inactive = $('body > div.content > div > div > table:nth-child(21) > tbody').text();
     const inactiveRow = inactive.split('\n').filter((v) => v !== '');
     const inactiveCores = inactiveRow.filter((value, index) => index % 6 === 0);
+    if (!inactiveCores.length) {
+      throw new Error('No inactive cores found');
+    }
     const inactiveStatus = inactiveRow.filter((value, index) => (index + 1) % 6 === 0).map((x) => x.replace(/\[source\]/gi, ''));
     const inactiveUpdates = inactiveCores.map(async (coreSerial, index) => {
       const coreId = cores.docs.find((core) => core.serial === coreSerial);
@@ -93,6 +102,9 @@ module.exports = async () => {
     const lost = $('body > div.content > div > div > table:nth-child(25) > tbody').text();
     const lostRow = lost.split('\n').filter((v) => v !== '');
     const lostCores = lostRow.filter((value, index) => index % 7 === 0);
+    if (!lostCores.length) {
+      throw new Error('No lost cores found');
+    }
     const lostStatus = lostRow.filter((value, index) => (index + 1) % 7 === 0).map((x) => x.replace(/\[source\]/gi, ''));
     const lostUpdates = lostCores.map(async (coreSerial, index) => {
       const coreId = cores.docs.find((core) => core.serial === coreSerial);
