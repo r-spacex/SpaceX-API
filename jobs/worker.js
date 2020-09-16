@@ -23,7 +23,7 @@ const launchpadsJob = new CronJob('*/10 * * * *', launchpads);
 const capsulesJob = new CronJob('*/10 * * * *', capsules);
 
 // Every 10 minutes
-const coresJob = new CronJob('*/10 * * * *', cores);
+const coresJob = new CronJob('* * * * *', cores);
 
 // Every 10 minutes
 const roadsterJob = new CronJob('*/10 * * * *', roadster);
@@ -40,13 +40,13 @@ const starlinkJob = new CronJob('35 * * * *', starlink);
 // Every hour on :45
 const webcastJob = new CronJob('45 * * * *', webcast);
 
-launchesJob.start();
-payloadsJob.start();
-landpadsJob.start();
-launchpadsJob.start();
-capsulesJob.start();
+// launchesJob.start();
+// payloadsJob.start();
+// landpadsJob.start();
+// launchpadsJob.start();
+// capsulesJob.start();
 coresJob.start();
-roadsterJob.start();
-upcomingJob.start();
-starlinkJob.start();
-webcastJob.start();
+// roadsterJob.start();
+// upcomingJob.start();
+// starlinkJob.start();
+// webcastJob.start();
