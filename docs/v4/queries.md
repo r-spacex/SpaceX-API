@@ -41,7 +41,7 @@ This is the default return structure for paginated results:
 }
 ```
 
-By default, UUID's are used to reference documents in another collection. For example, the `launches` endpoint has an array of UUID's named `payloads` that references a payload in the payloads endpoint.
+By default, UUID's are used to reference documents in another collection. For example, the [launches](launches/query.md) endpoint has an array of UUID's named `payloads` that references a payload in the [payloads](payloads/query.md) endpoint.
 
 ```json
 {
@@ -51,7 +51,7 @@ By default, UUID's are used to reference documents in another collection. For ex
 }
 ```
 
-This allows us to populate or replace the UUID with the payload that it references. In this example, to populate `payloads` with the corresponding document, the body would look like the following:
+This allows us to populate or replace the UUID with the payload that it references. In this example, to populate `payloads` with the corresponding document, we would send a `POST` request to `https://api.spacexdata.com/v4/launches/query` with the following body:
 
 ```json
 {
@@ -64,10 +64,11 @@ This allows us to populate or replace the UUID with the payload that it referenc
 }
 ```
 
-Which gives the following results:
+Which returns the linked payload object in place of the UUID:
 
 ```json
 {
+  ...
   "payloads": [
     {
       "dragon": {
@@ -117,6 +118,7 @@ Which gives the following results:
       "id": "5eb0e4c6b6c3bb0006eeb21e"
     }
   ]
+  ...
 }
 ```
 
@@ -178,10 +180,10 @@ Dates need to be ISO 8601 friendly for these operators to work properly
 ```json
 {
   "query": {
-  "date_utc": {
-   "$gte": "2017-06-22T00:00:00.000Z",
-   "$lte": "2017-06-25T00:00:00.000Z"
-  }
+    "date_utc": {
+      "$gte": "2017-06-22T00:00:00.000Z",
+      "$lte": "2017-06-25T00:00:00.000Z"
+    }
  }
 }
 ```
