@@ -48,6 +48,10 @@ p, create:starlink, /v4/starlink, POST
 p, update:starlink, /v4/starlink/:norad_id, PATCH
 p, delete:starlink, /v4/starlink/:id, DELETE
 
+p, create:history, /v4/history, POST
+p, update:history, /v4/history/:id, PATCH
+p, delete:history, /v4/history/:id, DELETE
+
 p, get:user, /v4/users, GET
 p, get-one:user, /v4/users/:id, GET
 p, query:user, /v4/users/query, POST
@@ -106,6 +110,10 @@ g, update, update:roadster
 g, create, create:starlink
 g, update, update:starlink
 g, delete, delete:starlink
+
+g, create, create:history
+g, update, update:history
+g, delete, delete:history
 
 g, user, create
 g, user, update

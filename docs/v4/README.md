@@ -203,3 +203,14 @@ Space Track data adheres to the standard for [Orbit Data Messages](https://publi
 * 🔒 [Create a Starlink sat](starlink/create.md) : `POST /starlink`
 * 🔒 [Update a Starlink sat](starlink/update.md) : `PATCH /starlink/:id`
 * 🔒 [Delete a Starlink sat](starlink/delete.md) : `DELETE /starlink/:id`
+
+### History - [Schema](history/schema.md)
+
+Detailed info on SpaceX historical events
+
+* [Get all historical events](history/all.md) : `GET /history`
+* [Get one historical event](history/one.md) : `GET /history/:id`
+* [Query historical events](history/query.md) : `POST /history/query`
+* 🔒 [Create a historical event](history/create.md) : `POST /history`
+* 🔒 [Update a historical event](history/update.md) : `PATCH /history/:id`
+* 🔒 [Delete a historical event](history/delete.md) : `DELETE /history/:id`
