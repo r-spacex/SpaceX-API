@@ -14,7 +14,7 @@
   },
   "type": {
     "type": "String",
-    "enum": ["Dragon 1.0", "Dragon 2.0"],
+    "enum": ["Dragon 1.0", "Dragon 1.1", "Dragon 2.0"],
     "required": true,
   },
   "dragon": {
