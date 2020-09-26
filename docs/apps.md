@@ -4,6 +4,7 @@
 
 |App|Type|Creator(s)|Repo|More|
 |:---|:---|:---|:---|:---|
+| [Rocket Downrange](https://rocketdownrange.com) | Website | [Cavan Lemasters](https://github.com/TheKicker) | [GitHub](https://github.com/TheKicker/rocket-downrange) | |
 | [SpaceX-Launches](https://spacex.prutkowski.tech/) | Website | [Piotr Rutkowski](https://github.com/PiotrRut) | [GitHub](https://github.com/PiotrRut/SpaceX-Launches) | |
 | [SpaceX and Mars](https://www.spacexandmars.com/) | Website | [Jiacheng Zhang](https://github.com/jiachengzhang1) | [GitHub](https://github.com/jiachengzhang1/spacex-and-mars) | |
 | [When is the next SpaceX launch](https://whenisthenextspacexlaunch.com) | Website | [Warwick Ward](https://warwick.io) | [GitHub](https://github.com/warwickofthegh/whenisthenextspacexlaunch.com) | |
