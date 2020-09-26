@@ -12,6 +12,11 @@
     "enum": ["unknown", "active", "retired", "destroyed"],
     "required": true,
   },
+  "type": {
+    "type": "String",
+    "enum": ["Dragon 1.0", "Dragon 2.0"],
+    "required": true,
+  },
   "dragon": {
     "type": "UUID",
   },

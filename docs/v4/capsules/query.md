@@ -36,6 +36,7 @@ See [query](../queries.md) guide for more details on building queries and pagina
             ],
             "serial": "C101",
             "status": "retired",
+            "type": "Dragon 1.0",
             "id": "5e9e2c5bf35918ed873b2664"
         },
         ...

@@ -18,7 +18,8 @@
         "5eb87cdeffd86e000604b330"
     ],
     "serial": "C101",
-    "status": "retired"
+    "status": "retired",
+    "type": "Dragon 1.0"
 }
 ```
 

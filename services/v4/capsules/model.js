@@ -13,6 +13,11 @@ const capsuleSchema = new mongoose.Schema({
     enum: ['unknown', 'active', 'retired', 'destroyed'],
     required: true,
   },
+  type: {
+    type: String,
+    enum: ['Dragon 1.0', 'Dragon 2.0'],
+    required: true,
+  },
   dragon: {
     type: mongoose.ObjectId,
     ref: 'Dragon',
