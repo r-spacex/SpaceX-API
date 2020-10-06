@@ -50,7 +50,7 @@
     "mongoose": "^5.10.7",
     "mongoose-id": "^0.1.3",
     "mongoose-paginate-v2": "^1.3.9",
-    "pino": "^6.6.1",
+    "pino": "^6.7.0",
     "shelljs": "^0.8.4",
     "tle.js": "^4.2.5",
     "tough-cookie": "^4.0.0"
