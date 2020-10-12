@@ -177,72 +177,33 @@ module.exports = async () => {
           const bcPattern = /^BC.*$/i;
 
           // Calculate launch site depending on wiki manifest
-          let launchpadId;
-          let timezone;
           const launchpad = wikiLaunchpads[parseInt(wikiIndex, 10)];
+          let queryName;
           if (slc40Pattern.test(launchpad)) {
-            const launchpads = await got.post(`${SPACEX_API}/launchpads/query`, {
-              json: {
-                query: {
-                  name: 'CCAFS SLC 40',
-                },
-                options: {
-                  limit: 1,
-                },
-              },
-              resolveBodyOnly: true,
-              responseType: 'json',
-            });
-            launchpadId = launchpads.docs[0].id;
-            timezone = launchpads.docs[0].timezone;
+            queryName = 'CCAFS SLC 40';
           } else if (lc39aPattern.test(launchpad)) {
-            const launchpads = await got.post(`${SPACEX_API}/launchpads/query`, {
-              json: {
-                query: {
-                  name: 'KSC LC 39A',
-                },
-                options: {
-                  limit: 1,
-                },
-              },
-              resolveBodyOnly: true,
-              responseType: 'json',
-            });
-            launchpadId = launchpads.docs[0].id;
-            timezone = launchpads.docs[0].timezone;
+            queryName = 'KSC LC 39A';
           } else if (slc4ePattern.test(launchpad)) {
-            const launchpads = await got.post(`${SPACEX_API}/launchpads/query`, {
-              json: {
-                query: {
-                  name: 'VAFB SLC 4E',
-                },
-                options: {
-                  limit: 1,
-                },
-              },
-              resolveBodyOnly: true,
-              responseType: 'json',
-            });
-            launchpadId = launchpads.docs[0].id;
-            timezone = launchpads.docs[0].timezone;
+            queryName = 'VAFB SLC 4E';
           } else if (bcPattern.test(launchpad)) {
-            const launchpads = await got.post(`${SPACEX_API}/launchpads/query`, {
-              json: {
-                query: {
-                  name: 'STLS',
-                },
-                options: {
-                  limit: 1,
-                },
-              },
-              resolveBodyOnly: true,
-              responseType: 'json',
-            });
-            launchpadId = launchpads.docs[0].id;
-            timezone = launchpads.docs[0].timezone;
+            queryName = 'STLS';
           } else {
             throw new Error(`No launchpad match: ${launchpad}`);
           }
+          const launchpads = await got.post(`${SPACEX_API}/launchpads/query`, {
+            json: {
+              query: {
+                name: queryName,
+              },
+              options: {
+                limit: 1,
+              },
+            },
+            resolveBodyOnly: true,
+            responseType: 'json',
+          });
+          const launchpadId = launchpads.docs[0].id;
+          const { timezone } = launchpads.docs[0];
 
           // Clean wiki date, set timezone
           const parsedDate = `${wikiDates[parseInt(wikiIndex, 10)].replace(/(-|\[|\]|~|early|mid|late|end|net)/gi, ' ').split('/')[0].trim()}`;
