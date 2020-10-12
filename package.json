@@ -63,7 +63,7 @@
     "eslint-plugin-mongodb": "^1.0.0",
     "eslint-plugin-no-secrets": "^0.6.8",
     "eslint-plugin-security": "^1.4.0",
-    "jest": "^26.5.2",
+    "jest": "^26.5.3",
     "pino-pretty": "^4.3.0"
   },
   "jest": {
