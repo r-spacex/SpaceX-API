@@ -1,6 +1,5 @@
 const got = require('got');
 const moment = require('moment-timezone');
-const shell = require('shelljs');
 const { logger } = require('../middleware/logger');
 
 const SPACEX_API = 'https://api.spacexdata.com/v4';
@@ -72,8 +71,6 @@ REF_SYSTEM= 'J2000'&
 CSV_FORMAT= 'NO'&
 OBJ_DATA= 'YES'&
 QUANTITIES= '19,20,22'`;
-
-shell.config.silent = true;
 
 /**
  * This script gathers tesla roadster orbital data from JPL Horizons,
@@ -151,21 +148,21 @@ module.exports = async () => {
     soeReg.exec(earthDist);
     const earthSoe = RegExp.$1;
     const strippedEarth = earthSoe.replace(/(\r\n\t|\n|\r\t)/gm, '');
-    const earthResult = shell.exec(`echo ${strippedEarth}`).exec('awk \'NR==1{print $5}\'');
-    const earthDistanceKm = (parseFloat(earthResult.stdout.trim()) * 149598073);
+    const earthResult = strippedEarth.split(/\s+/)[5];
+    const earthDistanceKm = (parseFloat(earthResult.trim()) * 149598073);
     const earthDistanceMi = earthDistanceKm * 0.621371;
 
     // Read SOE of mars distance + calculate distance in miles and kilometers
     soeReg.exec(marsDist);
     const marsSoe = RegExp.$1;
     const strippedMars = marsSoe.replace(/(\r\n\t|\n|\r\t)/gm, '');
-    const marsResult = shell.exec(`echo ${strippedMars}`).exec('awk \'NR==1{print $5}\'');
-    const marsDistanceKm = (parseFloat(marsResult.stdout.trim()) * 149598073);
+    const marsResult = strippedMars.split(/\s+/)[5];
+    const marsDistanceKm = (parseFloat(marsResult.trim()) * 149598073);
     const marsDistanceMi = marsDistanceKm * 0.621371;
 
     // Read SOE of orbital speed in KM/s + calculate kph and mph
-    const speedResult = shell.exec(`echo ${strippedMars}`).exec('awk \'NR==1{print $7}\'');
-    const orbitalSpeedKph = (parseFloat(speedResult.stdout.trim()) * 60.0 * 60.0);
+    const speedResult = strippedMars.split(/\s+/)[5];
+    const orbitalSpeedKph = (parseFloat(speedResult.trim()) * 60.0 * 60.0);
     const orbitalSpeedMph = orbitalSpeedKph * 0.621371;
 
     const roadster = await got(`${SPACEX_API}/roadster`, {
