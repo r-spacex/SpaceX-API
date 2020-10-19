@@ -1,4 +1,4 @@
-p, root, /*, *
+p, root, /*, .*
 
 p, all:capsule, (/v4/capsules|/v4/capsules/*), (POST|PATCH|DELETE)
 p, create:capsule, /v4/capsules, POST
