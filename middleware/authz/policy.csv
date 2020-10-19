@@ -1,57 +1,66 @@
 p, root, /*, *
 
+p, all:capsule, (/v4/capsules|/v4/capsules/*), (POST|PATCH|DELETE)
 p, create:capsule, /v4/capsules, POST
 p, update:capsule, /v4/capsules/:id, PATCH
 p, delete:capsule, /v4/capsules/:id, DELETE
 
+p, all:cores, (/v4/cores|/v4/cores/*), (POST|PATCH|DELETE)
 p, create:cores, /v4/cores, POST
 p, update:cores, /v4/cores/:id, PATCH
 p, delete:cores, /v4/cores/:id, DELETE
 
+p, all:crew, (/v4/crew|/v4/crew/*), (POST|PATCH|DELETE)
 p, create:crew, /v4/crew, POST
 p, update:crew, /v4/crew/:id, PATCH
 p, delete:crew, /v4/crew/:id, DELETE
 
+p, all:dragons, (/v4/dragons|/v4/dragons/*), (POST|PATCH|DELETE)
 p, create:dragons, /v4/dragons, POST
 p, update:dragons, /v4/dragons/:id, PATCH
 p, delete:dragons, /v4/dragons/:id, DELETE
 
+p, all:landpads, (/v4/landpads|/v4/landpads/*), (POST|PATCH|DELETE)
 p, create:landpads, /v4/landpads, POST
 p, update:landpads, /v4/landpads/:id, PATCH
 p, delete:landpads, /v4/landpads/:id, DELETE
 
+p, all:launches, (/v4/launches|/v4/launches/*), (POST|PATCH|DELETE)
 p, create:launches, /v4/launches, POST
 p, update:launches, /v4/launches/:id, PATCH
 p, delete:launches, /v4/launches/:id, DELETE
 
+p, all:launchpads, (/v4/launchpads|/v4/launchpads/*), (POST|PATCH|DELETE)
 p, create:launchpads, /v4/launchpads, POST
 p, update:launchpads, /v4/launchpads/:id, PATCH
 p, delete:launchpads, /v4/launchpads/:id, DELETE
 
+p, all:payloads, (/v4/payloads|/v4/payloads/*), (POST|PATCH|DELETE)
 p, create:payloads, /v4/payloads, POST
 p, update:payloads, /v4/payloads/:id, PATCH
 p, delete:payloads, /v4/payloads/:id, DELETE
 
+p, all:rockets, (/v4/rockets|/v4/rockets/*), (POST|PATCH|DELETE)
 p, create:rockets, /v4/rockets, POST
 p, update:rockets, /v4/rockets/:id, PATCH
 p, delete:rockets, /v4/rockets/:id, DELETE
 
+p, all:ships, (/v4/ships|/v4/ships/*), (POST|PATCH|DELETE)
 p, create:ships, /v4/ships, POST
 p, update:ships, /v4/ships/:id, PATCH
 p, delete:ships, /v4/ships/:id, DELETE
 
-p, update:company, /v4/company/:id, PATCH
-
-p, update:roadster, /v4/roadster/:id, PATCH
-
+p, all:starlink, (/v4/starlink|/v4/starlink/*), (POST|PATCH|DELETE)
 p, create:starlink, /v4/starlink, POST
 p, update:starlink, /v4/starlink/:norad_id, PATCH
 p, delete:starlink, /v4/starlink/:id, DELETE
 
+p, all:history, (/v4/history|/v4/history/*), (POST|PATCH|DELETE)
 p, create:history, /v4/history, POST
 p, update:history, /v4/history/:id, PATCH
 p, delete:history, /v4/history/:id, DELETE
 
+p, all:user, (/v4/users|/v4/users/*), (POST|PATCH|DELETE)
 p, get:user, /v4/users, GET
 p, get-one:user, /v4/users/:id, GET
 p, query:user, /v4/users/query, POST
@@ -59,62 +68,10 @@ p, create:user, /v4/users, POST
 p, update:user, /v4/users/:id, PATCH
 p, delete:user, /v4/users/:id, DELETE
 
+p, update:company, /v4/company/:id, PATCH
+
+p, update:roadster, /v4/roadster/:id, PATCH
+
 p, clear-cache, /v4/admin/cache, DELETE
 
 g, superuser, root
-
-g, create, create:capsule
-g, update, update:capsule
-g, delete, delete:capsule
-
-g, create, create:cores
-g, update, update:cores
-g, delete, delete:cores
-
-g, create, create:crew
-g, update, update:crew
-g, delete, delete:crew
-
-g, create, create:dragons
-g, update, update:dragons
-g, delete, delete:dragons
-
-g, create, create:landpads
-g, update, update:landpads
-g, delete, delete:landpads
-
-g, create, create:launches
-g, update, update:launches
-g, delete, delete:launches
-
-g, create, create:launchpads
-g, update, update:launchpads
-g, delete, delete:launchpads
-
-g, create, create:payloads
-g, update, update:payloads
-g, delete, delete:payloads
-
-g, create, create:rockets
-g, update, update:rockets
-g, delete, delete:rockets
-
-g, create, create:ships
-g, update, update:ships
-g, delete, delete:ships
-
-g, update, update:company
-
-g, update, update:roadster
-
-g, create, create:starlink
-g, update, update:starlink
-g, delete, delete:starlink
-
-g, create, create:history
-g, update, update:history
-g, delete, delete:history
-
-g, user, create
-g, user, update
-g, user, delete

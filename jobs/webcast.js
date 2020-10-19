@@ -48,6 +48,35 @@ module.exports = async () => {
       // Fuzzy check video title to make sure it's at least related to the launch
       const ratio = fuzz.ratio(youtubeTitle, missionName);
       if (ratio >= 50) {
+        const pastLaunches = await got.post(`${SPACEX_API}/launches/query`, {
+          json: {
+            query: {
+              upcoming: false,
+            },
+            options: {
+              sort: {
+                flight_number: 'desc',
+              },
+              limit: 1,
+            },
+          },
+          resolveBodyOnly: true,
+          responseType: 'json',
+        });
+        const pastYoutubeId = pastLaunches.docs[0].links.youtube_id;
+        if (youtubeId === pastYoutubeId) {
+          logger.info('Past youtube id matches, skipping...');
+          await got.patch(`${SPACEX_API}/launches/${launchId}`, {
+            json: {
+              'links.webcast': null,
+              'links.youtube_id': null,
+            },
+            headers: {
+              'spacex-key': SPACEX_KEY,
+            },
+          });
+          return;
+        }
         await got.patch(`${SPACEX_API}/launches/${launchId}`, {
           json: {
             'links.webcast': `${YOUTUBE_PREFIX}/${youtubeId}`,
