@@ -64,35 +64,25 @@ module.exports = async () => {
           responseType: 'json',
         });
         const pastYoutubeId = pastLaunches.docs[0].links.youtube_id;
-        if (youtubeId === pastYoutubeId) {
-          logger.info('Past youtube id matches, skipping...');
+        if (youtubeId !== pastYoutubeId) {
           await got.patch(`${SPACEX_API}/launches/${launchId}`, {
             json: {
-              'links.webcast': null,
-              'links.youtube_id': null,
+              'links.webcast': `${YOUTUBE_PREFIX}/${youtubeId}`,
+              'links.youtube_id': youtubeId,
             },
             headers: {
               'spacex-key': SPACEX_KEY,
             },
           });
-          return;
+          logger.info({
+            rawMission: youtubeTitle,
+            apiMission: missionName,
+            url: `${YOUTUBE_PREFIX}/${youtubeId}`,
+            matchRatio: ratio,
+            match: true,
+          });
         }
-        await got.patch(`${SPACEX_API}/launches/${launchId}`, {
-          json: {
-            'links.webcast': `${YOUTUBE_PREFIX}/${youtubeId}`,
-            'links.youtube_id': youtubeId,
-          },
-          headers: {
-            'spacex-key': SPACEX_KEY,
-          },
-        });
-        logger.info({
-          rawMission: youtubeTitle,
-          apiMission: missionName,
-          url: `${YOUTUBE_PREFIX}/${youtubeId}`,
-          matchRatio: ratio,
-          match: true,
-        });
+        logger.info('Past youtube id matches, skipping...');
       } else {
         logger.info({
           rawMission: youtubeTitle,
