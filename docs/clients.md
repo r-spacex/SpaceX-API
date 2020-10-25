@@ -12,6 +12,7 @@ NOTE: Clients are grouped by API version(s) supported
 | SpaceX-Async-Wrapper | Python | Ryu JuHeon | [GitHub](https://github.com/SaidBySolo/SpaceX-Async-Wrapper) |
 | KSBSpacexKit | Swift | SaiBalaji K| [GitHub](https://github.com/SaiBalaji22/KSBSpacexKit) |
 | Marsy | C++ | AzuxDario | [GitHub](https://github.com/AzuxDario/Marsy) |
+| Spacex-api.js | Node.js | AkiaCode | [Github](https://github.com/AkiaCode/spacex-api.js) |
 
 ### V3, V2, V1 (Deprecated)
 
