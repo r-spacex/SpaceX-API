@@ -131,7 +131,7 @@ module.exports = async () => {
             LAUNCH_DATE: sat.LAUNCH_DATE,
             SITE: sat.SITE,
             DECAY_DATE: sat.DECAY_DATE,
-            DECAYED: sat.DECAYED,
+            DECAYED: !!(sat.DECAY_DATE),
             FILE: sat.FILE,
             GP_ID: sat.GP_ID,
             TLE_LINE0: sat.TLE_LINE0,
