@@ -9,11 +9,22 @@ on:
     # Publish `v1.2.3` tags as releases.
     tags:
       - v*
+  pull_request:
 
 env:
   IMAGE_NAME: spacex-api
 
 jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "14.x"
+      - run: npm install
+      - run: npm run check-dependencies
+      - run: npm test
 
   # Push image to GitHub Packages.
   # See also https://docs.docker.com/docker-hub/builds/
