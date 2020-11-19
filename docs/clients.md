@@ -13,6 +13,7 @@ NOTE: Clients are grouped by API version(s) supported
 | KSBSpacexKit | Swift | SaiBalaji K| [GitHub](https://github.com/SaiBalaji22/KSBSpacexKit) |
 | Marsy | C++ | AzuxDario | [GitHub](https://github.com/AzuxDario/Marsy) |
 | Spacex-api.js | Node.js | AkiaCode | [Github](https://github.com/AkiaCode/spacex-api.js) |
+| spacex_api | Dart | Ahsanz024 | [Github](https://github.com/ahsanz024/spacex_api) |
 
 ### V3, V2, V1 (Deprecated)
 
