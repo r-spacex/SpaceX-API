@@ -12,6 +12,7 @@ const gracefulShutdown = () => {
     logger.info('Mongo closed');
     SERVER.close(() => {
       logger.info('Shutting down...');
+      process.exit();
     });
   });
 };

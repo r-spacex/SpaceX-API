@@ -36,7 +36,6 @@ module.exports = async () => {
     const activeUpdates = activeCores.map(async (coreSerial, index) => {
       const coreId = cores.docs.find((core) => core.serial === coreSerial);
       if (coreId && coreId.id) {
-        console.log(activeStatus[parseInt(index, 10)]);
         await got.patch(`${SPACEX_API}/cores/${coreId.id}`, {
           json: {
             last_update: activeStatus[parseInt(index, 10)],

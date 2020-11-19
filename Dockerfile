@@ -1,5 +1,5 @@
 
-FROM node:14-alpine
+FROM node:15-alpine
 
 LABEL maintainer="jakewmeyer@gmail.com"
 

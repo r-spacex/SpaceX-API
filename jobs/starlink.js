@@ -78,7 +78,7 @@ module.exports = async () => {
       });
 
       let position;
-      if (parseInt(sat.DECAYED, 10) !== 1) {
+      if (!(sat.DECAY_DATE)) {
         const tle = [sat.TLE_LINE1, sat.TLE_LINE2];
         try {
           position = await getSatelliteInfo(tle);

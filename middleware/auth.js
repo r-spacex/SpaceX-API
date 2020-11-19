@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const db = mongoose.connection.useDb('auth');
+const db = mongoose.connection.useDb('auth', { useCache: true });
 
 /**
  * Authentication middleware
