@@ -9,7 +9,7 @@ module.exports = async (ctx, next) => {
   const key = ctx.request.headers['spacex-key'];
   if (key) {
     const user = await db.collection('users').findOne({ key });
-    if (user && user.key === key) {
+    if (user?.key === key) {
       ctx.state.role = user.role;
       await next();
       return;

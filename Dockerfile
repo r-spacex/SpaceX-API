@@ -1,5 +1,5 @@
 
-FROM node:14-alpine
+FROM node:15-alpine
 
 LABEL maintainer="jakewmeyer@gmail.com"
 
@@ -21,8 +21,8 @@ USER spacex
 WORKDIR /app
 ENTRYPOINT ["/app/start.sh"]
 
-COPY package.json package-lock.json /app/
+COPY --chown=spacex:spacex package.json package-lock.json /app/
 
 RUN npm install --production
 
-COPY . .
+COPY --chown=spacex:spacex . .

@@ -83,7 +83,7 @@ module.exports = async () => {
     const inactiveStatus = inactiveRow.filter((value, index) => (index + 1) % 6 === 0).map((x) => x.replace(/\[source\]/gi, ''));
     const inactiveUpdates = inactiveCores.map(async (coreSerial, index) => {
       const coreId = cores.docs.find((core) => core.serial === coreSerial);
-      if (coreId && coreId.id) {
+      if (coreId?.id) {
         await got.patch(`${SPACEX_API}/cores/${coreId.id}`, {
           json: {
             last_update: inactiveStatus[parseInt(index, 10)],
@@ -107,7 +107,7 @@ module.exports = async () => {
     const lostStatus = lostRow.filter((value, index) => (index + 1) % 7 === 0).map((x) => x.replace(/\[source\]/gi, ''));
     const lostUpdates = lostCores.map(async (coreSerial, index) => {
       const coreId = cores.docs.find((core) => core.serial === coreSerial);
-      if (coreId && coreId.id) {
+      if (coreId?.id) {
         let status;
         if (lostStatus[parseInt(index, 10)].match(/expended/i)) {
           status = 'expended';
@@ -129,7 +129,7 @@ module.exports = async () => {
     logger.info('Lost cores updated');
 
     const reuseUpdates = cores.docs.map(async (core) => {
-      if (core && core.id) {
+      if (core?.id) {
         const rtlsAttempts = await got.post(`${SPACEX_API}/launches/query`, {
           json: {
             query: {

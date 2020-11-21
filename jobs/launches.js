@@ -206,7 +206,7 @@ module.exports = async () => {
 
     const payloadLaunches = payloads.docs.map(async (payload) => {
       const launchId = _.find(launches.docs, (launch) => launch.payloads.includes(payload.id));
-      if (launchId && launchId.id) {
+      if (launchId?.id) {
         await got.patch(`${SPACEX_API}/payloads/${payload.id}`, {
           json: {
             launch: launchId.id,

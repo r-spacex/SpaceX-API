@@ -3,12 +3,12 @@
   "env": {
     "node": true,
     "jest": true,
-    "mongo": true
+    "mongo": true,
+    "es2021": true
   },
   "extends": ["plugin:security/recommended", "airbnb-base"],
   "parserOptions": {
-    "sourceType": "module",
-    "ecmaVersion": 2020,
+    "ecmaVersion": 2021,
     "impliedStrict": true
   },
   "rules": {
