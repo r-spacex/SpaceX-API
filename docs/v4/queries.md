@@ -204,6 +204,22 @@ See the mongo [reference](https://docs.mongodb.com/manual/reference/operator/que
 }
 ```
 
+### Next Upcoming Launch
+
+```json
+{
+   "query":{
+      "upcoming":true
+   },
+   "options":{
+      "limit":1,
+      "sort":{
+         "flight_number":"asc"
+      }
+   }
+}
+```
+
 ### Complex Query
 
 ```json
