@@ -47,7 +47,7 @@
     "lodash": "^4.17.20",
     "moment-range": "^4.0.2",
     "moment-timezone": "^0.5.32",
-    "mongoose": "^5.11.2",
+    "mongoose": "^5.11.4",
     "mongoose-id": "^0.1.3",
     "mongoose-paginate-v2": "^1.3.11",
     "pino": "^6.7.0",
