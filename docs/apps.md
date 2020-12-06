@@ -31,7 +31,7 @@
 | [Spacexopedia](https://play.google.com/store/apps/details?id=com.thealphamerc.flutter_spacexopedia) | Android App | [Sonu Sharma](https://github.com/TheAlphamerc) | [GitHub](https://github.com/TheAlphamerc/flutter_spacexopedia) | |
 | [Launchpad](https://github.com/skyffx/Launchpad/releases) | Windows App | [Wojciech Piekielniak](https://github.com/skyffx/) | [Github](https://github.com/skyffx/Launchpad) |
 | [InElonWeTrust](https://github.com/Tearth/InElonWeTrust) | Discord bot | [Tearth](https://github.com/Tearth) | [GitHub](https://github.com/Tearth/InElonWeTrust) |
-| [SpaceX-Launch-Bot](https://github.com/r-spacex/SpaceX-Launch-Bot) | Discord bot | [Simon](https://github.com/psidex) | [Github](https://github.com/r-spacex/SpaceX-Launch-Bot) | |
+| [SpaceX-Launch-Bot](https://github.com/SpaceXLaunchBot/SpaceXLaunchBot) | Discord bot | [Simon](https://github.com/psidex) | [Github](https://github.com/SpaceXLaunchBot/SpaceXLaunchBot) | |
 | [Space Launch Now](https://spacelaunchnow.me/) | API/Website/Apps | [Caleb Jones](https://github.com/ItsCalebJones) | [Github](https://github.com/ItsCalebJones/SpaceLaunchNow-Server) | |
 | [AV-SpaceX DB](https://av-spacex.surge.sh/) | API/Website | [Aswin Varghese](http://aswinvarghese.com) | [Github]() | |
 | SpaceX Info | Alexa Skill | Andrew Shapton | [Github](https://github.com/alshapton/Space-X-Info-Alexa.git) | Invoke with "Alexa Open SpaceX Info" |
