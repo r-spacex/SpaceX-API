@@ -116,7 +116,7 @@ router.post('/query', cache(20), async (ctx) => {
 });
 
 // Create a launch
-router.post('/', auth, authz, async (ctx) => {
+router.post('/', auth, authz('launch:create'), async (ctx) => {
   try {
     const launch = new Launch(ctx.request.body);
     await launch.save();
@@ -127,7 +127,7 @@ router.post('/', auth, authz, async (ctx) => {
 });
 
 // Update a launch
-router.patch('/:id', auth, authz, async (ctx) => {
+router.patch('/:id', auth, authz('launch:update'), async (ctx) => {
   try {
     await Launch.findByIdAndUpdate(ctx.params.id, ctx.request.body, {
       runValidators: true,
@@ -139,7 +139,7 @@ router.patch('/:id', auth, authz, async (ctx) => {
 });
 
 // Delete a launch
-router.delete('/:id', auth, authz, async (ctx) => {
+router.delete('/:id', auth, authz('launch:delete'), async (ctx) => {
   try {
     await Launch.findByIdAndDelete(ctx.params.id);
     ctx.status = 200;

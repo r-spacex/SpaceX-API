@@ -40,7 +40,7 @@ router.post('/query', cache(300), async (ctx) => {
 });
 
 // Create capsule
-router.post('/', auth, authz, async (ctx) => {
+router.post('/', auth, authz('capsule:create'), async (ctx) => {
   try {
     const capsule = new Capsule(ctx.request.body);
     await capsule.save();
@@ -51,7 +51,7 @@ router.post('/', auth, authz, async (ctx) => {
 });
 
 // Update capsule
-router.patch('/:id', auth, authz, async (ctx) => {
+router.patch('/:id', auth, authz('capsule:update'), async (ctx) => {
   try {
     await Capsule.findByIdAndUpdate(ctx.params.id, ctx.request.body, { runValidators: true });
     ctx.status = 200;
@@ -61,7 +61,7 @@ router.patch('/:id', auth, authz, async (ctx) => {
 });
 
 // Delete capsule
-router.delete('/:id', auth, authz, async (ctx) => {
+router.delete('/:id', auth, authz('capsule:delete'), async (ctx) => {
   try {
     await Capsule.findByIdAndDelete(ctx.params.id);
     ctx.status = 200;

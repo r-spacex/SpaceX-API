@@ -40,7 +40,7 @@ router.post('/query', cache(300), async (ctx) => {
 });
 
 // Create a rocket
-router.post('/', auth, authz, async (ctx) => {
+router.post('/', auth, authz('rocket:create'), async (ctx) => {
   try {
     const rocket = new Rocket(ctx.request.body);
     await rocket.save();
@@ -51,7 +51,7 @@ router.post('/', auth, authz, async (ctx) => {
 });
 
 // Update a rocket
-router.patch('/:id', auth, authz, async (ctx) => {
+router.patch('/:id', auth, authz('rocket:update'), async (ctx) => {
   try {
     await Rocket.findByIdAndUpdate(ctx.params.id, ctx.request.body, { runValidators: true });
     ctx.status = 200;
@@ -61,7 +61,7 @@ router.patch('/:id', auth, authz, async (ctx) => {
 });
 
 // Delete a rocket
-router.delete('/:id', auth, authz, async (ctx) => {
+router.delete('/:id', auth, authz('rocket:delete'), async (ctx) => {
   try {
     await Rocket.findByIdAndDelete(ctx.params.id);
     ctx.status = 200;

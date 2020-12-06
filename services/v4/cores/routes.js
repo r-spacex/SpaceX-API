@@ -40,7 +40,7 @@ router.post('/query', cache(300), async (ctx) => {
 });
 
 // Create core
-router.post('/', auth, authz, async (ctx) => {
+router.post('/', auth, authz('core:create'), async (ctx) => {
   try {
     const core = new Core(ctx.request.body);
     await core.save();
@@ -51,7 +51,7 @@ router.post('/', auth, authz, async (ctx) => {
 });
 
 // Update core
-router.patch('/:id', auth, authz, async (ctx) => {
+router.patch('/:id', auth, authz('core:update'), async (ctx) => {
   try {
     await Core.findByIdAndUpdate(ctx.params.id, ctx.request.body, { runValidators: true });
     ctx.status = 200;
@@ -61,7 +61,7 @@ router.patch('/:id', auth, authz, async (ctx) => {
 });
 
 // Delete core
-router.delete('/:id', auth, authz, async (ctx) => {
+router.delete('/:id', auth, authz('core:delete'), async (ctx) => {
   try {
     await Core.findByIdAndDelete(ctx.params.id);
     ctx.status = 200;

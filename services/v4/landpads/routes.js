@@ -40,7 +40,7 @@ router.post('/query', cache(300), async (ctx) => {
 });
 
 // Create a landpad
-router.post('/', auth, authz, async (ctx) => {
+router.post('/', auth, authz('landpad:create'), async (ctx) => {
   try {
     const landpad = new Landpad(ctx.request.body);
     await landpad.save();
@@ -51,7 +51,7 @@ router.post('/', auth, authz, async (ctx) => {
 });
 
 // Update a landpad
-router.patch('/:id', auth, authz, async (ctx) => {
+router.patch('/:id', auth, authz('landpad:update'), async (ctx) => {
   try {
     await Landpad.findByIdAndUpdate(ctx.params.id, ctx.request.body, { runValidators: true });
     ctx.status = 200;
@@ -61,7 +61,7 @@ router.patch('/:id', auth, authz, async (ctx) => {
 });
 
 // Delete landpad
-router.delete('/:id', auth, authz, async (ctx) => {
+router.delete('/:id', auth, authz('landpad:delete'), async (ctx) => {
   try {
     await Landpad.findByIdAndDelete(ctx.params.id);
     ctx.status = 200;

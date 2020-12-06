@@ -10,7 +10,7 @@ module.exports = async (ctx, next) => {
   if (key) {
     const user = await db.collection('users').findOne({ key });
     if (user?.key === key) {
-      ctx.state.role = user.role;
+      ctx.state.roles = user.roles;
       await next();
       return;
     }

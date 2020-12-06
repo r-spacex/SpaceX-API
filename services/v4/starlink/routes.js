@@ -40,7 +40,7 @@ router.post('/query', cache(3600), async (ctx) => {
 });
 
 // Create a Starlink satellite
-router.post('/', auth, authz, async (ctx) => {
+router.post('/', auth, authz('starlink:create'), async (ctx) => {
   try {
     const ship = new Starlink(ctx.request.body);
     await ship.save();
@@ -51,7 +51,7 @@ router.post('/', auth, authz, async (ctx) => {
 });
 
 // Update a Starlink satellite
-router.patch('/:norad_id', auth, authz, async (ctx) => {
+router.patch('/:norad_id', auth, authz('starlink:update'), async (ctx) => {
   try {
     await Starlink.findOneAndUpdate({ 'spaceTrack.NORAD_CAT_ID': ctx.params.norad_id }, ctx.request.body, {
       runValidators: true,
@@ -65,7 +65,7 @@ router.patch('/:norad_id', auth, authz, async (ctx) => {
 });
 
 // Delete a Starlink satellite
-router.delete('/:id', auth, authz, async (ctx) => {
+router.delete('/:id', auth, authz('starlink:delete'), async (ctx) => {
   try {
     await Starlink.findByIdAndDelete(ctx.params.id);
     ctx.status = 200;

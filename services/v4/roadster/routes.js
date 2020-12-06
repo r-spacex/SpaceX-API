@@ -30,7 +30,7 @@ router.post('/query', cache(300), async (ctx) => {
 });
 
 // Update roadster
-router.patch('/:id', auth, authz, async (ctx) => {
+router.patch('/:id', auth, authz('roadster:update'), async (ctx) => {
   try {
     await Roadster.findByIdAndUpdate(ctx.params.id, ctx.request.body, { runValidators: true });
     ctx.status = 200;

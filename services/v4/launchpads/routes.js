@@ -40,7 +40,7 @@ router.post('/query', cache(300), async (ctx) => {
 });
 
 // Create a launchpad
-router.post('/', auth, authz, async (ctx) => {
+router.post('/', auth, authz('launchpad:create'), async (ctx) => {
   try {
     const launchpad = new Launchpad(ctx.request.body);
     await launchpad.save();
@@ -51,7 +51,7 @@ router.post('/', auth, authz, async (ctx) => {
 });
 
 // Update a launchpad
-router.patch('/:id', auth, authz, async (ctx) => {
+router.patch('/:id', auth, authz('launchpad:update'), async (ctx) => {
   try {
     await Launchpad.findByIdAndUpdate(ctx.params.id, ctx.request.body, { runValidators: true });
     ctx.status = 200;
@@ -61,7 +61,7 @@ router.patch('/:id', auth, authz, async (ctx) => {
 });
 
 // Delete a launchpad
-router.delete('/:id', auth, authz, async (ctx) => {
+router.delete('/:id', auth, authz('launchpad:delete'), async (ctx) => {
   try {
     await Launchpad.findByIdAndDelete(ctx.params.id);
     ctx.status = 200;

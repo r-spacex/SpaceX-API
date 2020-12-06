@@ -40,7 +40,7 @@ router.post('/query', cache(300), async (ctx) => {
 });
 
 // Create a history event
-router.post('/', auth, authz, async (ctx) => {
+router.post('/', auth, authz('history:create'), async (ctx) => {
   try {
     const history = new History(ctx.request.body);
     await history.save();
@@ -51,7 +51,7 @@ router.post('/', auth, authz, async (ctx) => {
 });
 
 // Update a history event
-router.patch('/:id', auth, authz, async (ctx) => {
+router.patch('/:id', auth, authz('history:update'), async (ctx) => {
   try {
     await History.findByIdAndUpdate(ctx.params.id, ctx.request.body, { runValidators: true });
     ctx.status = 200;
@@ -61,7 +61,7 @@ router.patch('/:id', auth, authz, async (ctx) => {
 });
 
 // Delete history event
-router.delete('/:id', auth, authz, async (ctx) => {
+router.delete('/:id', auth, authz('history:delete'), async (ctx) => {
   try {
     await History.findByIdAndDelete(ctx.params.id);
     ctx.status = 200;

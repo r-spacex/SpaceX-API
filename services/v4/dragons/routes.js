@@ -40,7 +40,7 @@ router.post('/query', cache(86400), async (ctx) => {
 });
 
 // Create a dragon
-router.post('/', auth, authz, async (ctx) => {
+router.post('/', auth, authz('dragon:create'), async (ctx) => {
   try {
     const dragon = new Dragon(ctx.request.body);
     await dragon.save();
@@ -51,7 +51,7 @@ router.post('/', auth, authz, async (ctx) => {
 });
 
 // Update a dragon
-router.patch('/:id', auth, authz, async (ctx) => {
+router.patch('/:id', auth, authz('dragon:update'), async (ctx) => {
   try {
     await Dragon.findByIdAndUpdate(ctx.params.id, ctx.request.body, { runValidators: true });
     ctx.status = 200;
@@ -61,7 +61,7 @@ router.patch('/:id', auth, authz, async (ctx) => {
 });
 
 // Delete dragon
-router.delete('/:id', auth, authz, async (ctx) => {
+router.delete('/:id', auth, authz('dragon:delete'), async (ctx) => {
   try {
     await Dragon.findByIdAndDelete(ctx.params.id);
     ctx.status = 200;

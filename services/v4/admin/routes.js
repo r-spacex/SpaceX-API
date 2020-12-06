@@ -6,7 +6,7 @@ const router = new Router({
 });
 
 // Clear redis cache
-router.delete('/cache', auth, authz, async (ctx) => {
+router.delete('/cache', auth, authz('cache:clear'), async (ctx) => {
   try {
     await cache.redis.flushall();
     ctx.status = 200;

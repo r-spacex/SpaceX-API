@@ -18,7 +18,7 @@ router.get('/', cache(86400), async (ctx) => {
 });
 
 // Update company info
-router.patch('/:id', auth, authz, async (ctx) => {
+router.patch('/:id', auth, authz('company:update'), async (ctx) => {
   try {
     await Company.findByIdAndUpdate(ctx.params.id, ctx.request.body, { runValidators: true });
     ctx.status = 200;

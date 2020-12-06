@@ -40,7 +40,7 @@ router.post('/query', cache(300), async (ctx) => {
 });
 
 // Create a payload
-router.post('/', auth, authz, async (ctx) => {
+router.post('/', auth, authz('payload:create'), async (ctx) => {
   try {
     const payload = new Payload(ctx.request.body);
     await payload.save();
@@ -51,7 +51,7 @@ router.post('/', auth, authz, async (ctx) => {
 });
 
 // Update a payload
-router.patch('/:id', auth, authz, async (ctx) => {
+router.patch('/:id', auth, authz('payload:update'), async (ctx) => {
   try {
     await Payload.findByIdAndUpdate(ctx.params.id, ctx.request.body, {
       runValidators: true,
@@ -63,7 +63,7 @@ router.patch('/:id', auth, authz, async (ctx) => {
 });
 
 // Delete a payload
-router.delete('/:id', auth, authz, async (ctx) => {
+router.delete('/:id', auth, authz('payload:delete'), async (ctx) => {
   try {
     await Payload.findByIdAndDelete(ctx.params.id);
     ctx.status = 200;

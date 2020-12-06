@@ -40,7 +40,7 @@ router.post('/query', cache(300), async (ctx) => {
 });
 
 // Create a ship
-router.post('/', auth, authz, async (ctx) => {
+router.post('/', auth, authz('ship:create'), async (ctx) => {
   try {
     const ship = new Ship(ctx.request.body);
     await ship.save();
@@ -51,7 +51,7 @@ router.post('/', auth, authz, async (ctx) => {
 });
 
 // Update a ship
-router.patch('/:id', auth, authz, async (ctx) => {
+router.patch('/:id', auth, authz('ship:update'), async (ctx) => {
   try {
     await Ship.findByIdAndUpdate(ctx.params.id, ctx.request.body, { runValidators: true });
     ctx.status = 200;
@@ -61,7 +61,7 @@ router.patch('/:id', auth, authz, async (ctx) => {
 });
 
 // Delete a ship
-router.delete('/:id', auth, authz, async (ctx) => {
+router.delete('/:id', auth, authz('ship:delete'), async (ctx) => {
   try {
     await Ship.findByIdAndDelete(ctx.params.id);
     ctx.status = 200;

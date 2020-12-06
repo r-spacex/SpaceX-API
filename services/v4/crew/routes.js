@@ -40,7 +40,7 @@ router.post('/query', cache(300), async (ctx) => {
 });
 
 // Create crew member
-router.post('/', auth, authz, async (ctx) => {
+router.post('/', auth, authz('crew:create'), async (ctx) => {
   try {
     const crew = new Crew(ctx.request.body);
     await crew.save();
@@ -51,7 +51,7 @@ router.post('/', auth, authz, async (ctx) => {
 });
 
 // Update crew member
-router.patch('/:id', auth, authz, async (ctx) => {
+router.patch('/:id', auth, authz('crew:update'), async (ctx) => {
   try {
     await Crew.findByIdAndUpdate(ctx.params.id, ctx.request.body, { runValidators: true });
     ctx.status = 200;
@@ -61,7 +61,7 @@ router.patch('/:id', auth, authz, async (ctx) => {
 });
 
 // Delete crew member
-router.delete('/:id', auth, authz, async (ctx) => {
+router.delete('/:id', auth, authz('crew:delete'), async (ctx) => {
   try {
     await Crew.findByIdAndDelete(ctx.params.id);
     ctx.status = 200;
