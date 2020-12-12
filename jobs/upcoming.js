@@ -179,7 +179,7 @@ module.exports = async () => {
           const launchpad = wikiLaunchpads[parseInt(wikiIndex, 10)];
           let queryName;
           if (slc40Pattern.test(launchpad)) {
-            queryName = 'CCAFS SLC 40';
+            queryName = 'CCSFS SLC 40';
           } else if (lc39aPattern.test(launchpad)) {
             queryName = 'KSC LC 39A';
           } else if (slc4ePattern.test(launchpad)) {
