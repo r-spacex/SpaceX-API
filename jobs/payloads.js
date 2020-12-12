@@ -30,7 +30,7 @@ module.exports = async () => {
           password: process.env.SPACEX_TRACK_PASSWORD,
         },
         cookieJar,
-      })
+      }),
     ]);
 
     // eslint-disable-next-line no-secrets/no-secrets

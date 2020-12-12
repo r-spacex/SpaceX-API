@@ -50,7 +50,7 @@ module.exports = async () => {
           resolveBodyOnly: true,
           responseType: 'json',
         }),
-      ])
+      ]);
 
       await got.patch(`${SPACEX_API}/launchpads/${launchpad.id}`, {
         json: {

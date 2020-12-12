@@ -215,7 +215,6 @@ module.exports = async () => {
           throwHttpErrors: false,
         }),
       ]);
-      
       await got.patch(`${SPACEX_API}/cores/${core.id}`, {
         json: {
           reuse_count: (core.launches.length > 0) ? core.launches.length - 1 : 0,
