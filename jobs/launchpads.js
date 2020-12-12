@@ -22,34 +22,35 @@ module.exports = async () => {
     });
 
     const updates = launchpads.docs.map(async (launchpad) => {
-      const attempts = await got.post(`${SPACEX_API}/launches/query`, {
-        json: {
-          query: {
-            launchpad: launchpad.id,
-            upcoming: false,
+      const [attempts, successes] = await Promise.all([
+        got.post(`${SPACEX_API}/launches/query`, {
+          json: {
+            query: {
+              launchpad: launchpad.id,
+              upcoming: false,
+            },
+            options: {
+              pagination: false,
+            },
           },
-          options: {
-            pagination: false,
+          resolveBodyOnly: true,
+          responseType: 'json',
+        }),
+        got.post(`${SPACEX_API}/launches/query`, {
+          json: {
+            query: {
+              launchpad: launchpad.id,
+              upcoming: false,
+              success: true,
+            },
+            options: {
+              pagination: false,
+            },
           },
-        },
-        resolveBodyOnly: true,
-        responseType: 'json',
-      });
-
-      const successes = await got.post(`${SPACEX_API}/launches/query`, {
-        json: {
-          query: {
-            launchpad: launchpad.id,
-            upcoming: false,
-            success: true,
-          },
-          options: {
-            pagination: false,
-          },
-        },
-        resolveBodyOnly: true,
-        responseType: 'json',
-      });
+          resolveBodyOnly: true,
+          responseType: 'json',
+        }),
+      ])
 
       await got.patch(`${SPACEX_API}/launchpads/${launchpad.id}`, {
         json: {

@@ -12,26 +12,26 @@ const HEALTHCHECK = process.env.PAYLOADS_HEALTHCHECK;
  */
 module.exports = async () => {
   try {
-    const payloads = await got.post(`${SPACEX_API}/payloads/query`, {
-      json: {
-        query: {},
-        options: {
-          pagination: false,
-        },
-      },
-      resolveBodyOnly: true,
-      responseType: 'json',
-    });
-
     const cookieJar = new CookieJar();
-
-    await got.post('https://www.space-track.org/ajaxauth/login', {
-      form: {
-        identity: process.env.SPACEX_TRACK_LOGIN,
-        password: process.env.SPACEX_TRACK_PASSWORD,
-      },
-      cookieJar,
-    });
+    const [payloads] = await Promise.all([
+      got.post(`${SPACEX_API}/payloads/query`, {
+        json: {
+          query: {},
+          options: {
+            pagination: false,
+          },
+        },
+        resolveBodyOnly: true,
+        responseType: 'json',
+      }),
+      got.post('https://www.space-track.org/ajaxauth/login', {
+        form: {
+          identity: process.env.SPACEX_TRACK_LOGIN,
+          password: process.env.SPACEX_TRACK_PASSWORD,
+        },
+        cookieJar,
+      })
+    ]);
 
     // eslint-disable-next-line no-secrets/no-secrets
     const data = await got('https://www.space-track.org/basicspacedata/query/class/tle_latest/ORDINAL/1/orderby/NORAD_CAT_ID/epoch/>now-45/format/json', {
