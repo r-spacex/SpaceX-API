@@ -130,7 +130,7 @@ module.exports = async () => {
 
     const reuseUpdates = cores.docs.map(async (core) => {
       if (!core?.id) return;
-      const [rtlsAttempts, rtlsLandings, asdsAttempts, asdsLandings] = Promise.all([
+      const [rtlsAttempts, rtlsLandings, asdsAttempts, asdsLandings] = await Promise.all([
         got.post(`${SPACEX_API}/launches/query`, {
           json: {
             query: {
