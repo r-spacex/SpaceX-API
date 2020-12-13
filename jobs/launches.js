@@ -50,12 +50,9 @@ module.exports = async () => {
     });
 
     const capsuleLaunches = capsules.docs.map(async (capsule) => {
-      const launchIds = launches.docs.filter((launch) => {
-        if (launch.capsules.includes(capsule.id)) {
-          return true;
-        }
-        return false;
-      }).map((launch) => launch.id);
+      const launchIds = launches.docs
+        .filter((launch) => launch.capsules.includes(capsule.id))
+        .map(({ id }) => id);
 
       await got.patch(`${SPACEX_API}/capsules/${capsule.id}`, {
         json: {
@@ -81,12 +78,9 @@ module.exports = async () => {
     });
 
     const coreLaunches = cores.docs.map(async (core) => {
-      const launchIds = launches.docs.filter((launch) => {
-        if (launch.cores.filter((c) => c.core === core.id).length > 0) {
-          return true;
-        }
-        return false;
-      }).map((launch) => launch.id);
+      const launchIds = launches.docs
+        .filter((launch) => launch.cores.find((c) => c.core === core.id))
+        .map(({ id }) => id);
 
       await got.patch(`${SPACEX_API}/cores/${core.id}`, {
         json: {
@@ -112,12 +106,9 @@ module.exports = async () => {
     });
 
     const crewLaunches = crewMembers.docs.map(async (crew) => {
-      const launchIds = launches.docs.filter((launch) => {
-        if (launch.crew.includes(crew.id)) {
-          return true;
-        }
-        return false;
-      }).map((launch) => launch.id);
+      const launchIds = launches.docs
+        .filter((launch) => launch.crew.includes(crew.id))
+        .map(({ id }) => id);
 
       await got.patch(`${SPACEX_API}/crew/${crew.id}`, {
         json: {
@@ -143,12 +134,9 @@ module.exports = async () => {
     });
 
     const landpadLaunches = landpads.docs.map(async (landpad) => {
-      const launchIds = launches.docs.filter((launch) => {
-        if (launch.cores.filter((c) => c.landpad === landpad.id).length > 0) {
-          return true;
-        }
-        return false;
-      }).map((launch) => launch.id);
+      const launchIds = launches.docs
+        .filter((launch) => launch.cores.find((c) => c.landpad === landpad.id))
+        .map(({ id }) => id);
 
       await got.patch(`${SPACEX_API}/landpads/${landpad.id}`, {
         json: {
@@ -174,12 +162,9 @@ module.exports = async () => {
     });
 
     const launchpadLaunches = launchpads.docs.map(async (launchpad) => {
-      const launchIds = launches.docs.filter((launch) => {
-        if (launch.launchpad === launchpad.id) {
-          return true;
-        }
-        return false;
-      }).map((launch) => launch.id);
+      const launchIds = launches.docs
+        .filter((launch) => launch.launchpad === launchpad.id)
+        .map(({ id }) => id);
 
       await got.patch(`${SPACEX_API}/launchpads/${launchpad.id}`, {
         json: {
@@ -232,12 +217,9 @@ module.exports = async () => {
     });
 
     const shipLaunches = ships.docs.map(async (ship) => {
-      const launchIds = launches.docs.filter((launch) => {
-        if (launch.ships.includes(ship.id)) {
-          return true;
-        }
-        return false;
-      }).map((launch) => launch.id);
+      const launchIds = launches.docs
+        .filter((launch) => launch.ships.includes(ship.id))
+        .map(({ id }) => id);
 
       await got.patch(`${SPACEX_API}/ships/${ship.id}`, {
         json: {

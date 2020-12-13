@@ -129,8 +129,9 @@ module.exports = async () => {
     logger.info('Lost cores updated');
 
     const reuseUpdates = cores.docs.map(async (core) => {
-      if (core?.id) {
-        const rtlsAttempts = await got.post(`${SPACEX_API}/launches/query`, {
+      if (!core?.id) return;
+      const [rtlsAttempts, rtlsLandings, asdsAttempts, asdsLandings] = Promise.all([
+        got.post(`${SPACEX_API}/launches/query`, {
           json: {
             query: {
               upcoming: false,
@@ -149,9 +150,8 @@ module.exports = async () => {
           resolveBodyOnly: true,
           responseType: 'json',
           throwHttpErrors: false,
-        });
-
-        const rtlsLandings = await got.post(`${SPACEX_API}/launches/query`, {
+        }),
+        got.post(`${SPACEX_API}/launches/query`, {
           json: {
             query: {
               upcoming: false,
@@ -171,9 +171,8 @@ module.exports = async () => {
           resolveBodyOnly: true,
           responseType: 'json',
           throwHttpErrors: false,
-        });
-
-        const asdsAttempts = await got.post(`${SPACEX_API}/launches/query`, {
+        }),
+        got.post(`${SPACEX_API}/launches/query`, {
           json: {
             query: {
               upcoming: false,
@@ -193,9 +192,8 @@ module.exports = async () => {
           resolveBodyOnly: true,
           responseType: 'json',
           throwHttpErrors: false,
-        });
-
-        const asdsLandings = await got.post(`${SPACEX_API}/launches/query`, {
+        }),
+        got.post(`${SPACEX_API}/launches/query`, {
           json: {
             query: {
               upcoming: false,
@@ -215,22 +213,22 @@ module.exports = async () => {
           resolveBodyOnly: true,
           responseType: 'json',
           throwHttpErrors: false,
-        });
-
-        await got.patch(`${SPACEX_API}/cores/${core.id}`, {
-          json: {
-            reuse_count: (core.launches.length > 0) ? core.launches.length - 1 : 0,
-            rtls_attempts: rtlsAttempts.totalDocs,
-            rtls_landings: rtlsLandings.totalDocs,
-            asds_attempts: asdsAttempts.totalDocs,
-            asds_landings: asdsLandings.totalDocs,
-          },
-          headers: {
-            'spacex-key': KEY,
-          },
-        });
-      }
+        }),
+      ]);
+      await got.patch(`${SPACEX_API}/cores/${core.id}`, {
+        json: {
+          reuse_count: (core.launches.length > 0) ? core.launches.length - 1 : 0,
+          rtls_attempts: rtlsAttempts.totalDocs,
+          rtls_landings: rtlsLandings.totalDocs,
+          asds_attempts: asdsAttempts.totalDocs,
+          asds_landings: asdsLandings.totalDocs,
+        },
+        headers: {
+          'spacex-key': KEY,
+        },
+      });
     });
+
     await Promise.all(reuseUpdates);
     logger.info('Core reuse updated');
 

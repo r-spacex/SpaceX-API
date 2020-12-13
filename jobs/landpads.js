@@ -22,46 +22,47 @@ module.exports = async () => {
     });
 
     const updates = landpads.docs.map(async (landpad) => {
-      const attempts = await got.post(`${SPACEX_API}/launches/query`, {
-        json: {
-          query: {
-            cores: {
-              $elemMatch: {
-                landpad: landpad.id,
-                landing_attempt: true,
+      const [attempts, successes] = await Promise.all([
+        got.post(`${SPACEX_API}/launches/query`, {
+          json: {
+            query: {
+              cores: {
+                $elemMatch: {
+                  landpad: landpad.id,
+                  landing_attempt: true,
+                },
               },
+              upcoming: false,
+              success: true,
             },
-            upcoming: false,
-            success: true,
+            options: {
+              pagination: false,
+            },
           },
-          options: {
-            pagination: false,
-          },
-        },
-        resolveBodyOnly: true,
-        responseType: 'json',
-      });
-
-      const successes = await got.post(`${SPACEX_API}/launches/query`, {
-        json: {
-          query: {
-            cores: {
-              $elemMatch: {
-                landpad: landpad.id,
-                landing_attempt: true,
-                landing_success: true,
+          resolveBodyOnly: true,
+          responseType: 'json',
+        }),
+        got.post(`${SPACEX_API}/launches/query`, {
+          json: {
+            query: {
+              cores: {
+                $elemMatch: {
+                  landpad: landpad.id,
+                  landing_attempt: true,
+                  landing_success: true,
+                },
               },
+              upcoming: false,
+              success: true,
             },
-            upcoming: false,
-            success: true,
+            options: {
+              pagination: false,
+            },
           },
-          options: {
-            pagination: false,
-          },
-        },
-        resolveBodyOnly: true,
-        responseType: 'json',
-      });
+          resolveBodyOnly: true,
+          responseType: 'json',
+        }),
+      ]);
 
       await got.patch(`${SPACEX_API}/landpads/${landpad.id}`, {
         json: {
