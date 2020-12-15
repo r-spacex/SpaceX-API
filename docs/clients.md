@@ -9,7 +9,7 @@ NOTE: Clients are grouped by API version(s) supported
 |Name|Lang|Creator(s)|Repo|
 |:---|:---|:---|:---|
 | Oddity | .NET  | Tearth | [GitHub](https://github.com/Tearth/Oddity) |
-| SpaceX-Async-Wrapper | Python | Ryu JuHeon | [GitHub](https://github.com/SaidBySolo/SpaceX-Async-Wrapper) |
+| SpaceXPy | Python | Ryu JuHeon | [GitHub](https://github.com/SaidBySolo/SpaceXPy) |
 | KSBSpacexKit | Swift | SaiBalaji K| [GitHub](https://github.com/SaiBalaji22/KSBSpacexKit) |
 | Marsy | C++ | AzuxDario | [GitHub](https://github.com/AzuxDario/Marsy) |
 | Spacex-api.js | Node.js | AkiaCode | [Github](https://github.com/AkiaCode/spacex-api.js) |
