@@ -75,6 +75,6 @@ module.exports = async () => {
       await got(HEALTHCHECK);
     }
   } catch (error) {
-    console.log(error);
+    console.log(`Payloads Error: ${error.message}`);
   }
 };

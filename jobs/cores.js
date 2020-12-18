@@ -236,6 +236,6 @@ module.exports = async () => {
       await got(HEALTHCHECK);
     }
   } catch (error) {
-    console.log(error);
+    console.log(`Cores Error: ${error.message}`);
   }
 };

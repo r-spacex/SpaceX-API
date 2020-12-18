@@ -71,6 +71,6 @@ module.exports = async () => {
       await got(HEALTHCHECK);
     }
   } catch (error) {
-    console.log(error);
+    console.log(`Launchpads Error: ${error.message}`);
   }
 };

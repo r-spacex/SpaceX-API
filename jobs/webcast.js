@@ -102,6 +102,6 @@ module.exports = async () => {
       await got(WEBCAST_HEALTHCHECK);
     }
   } catch (error) {
-    console.log(error);
+    console.log(`Webcast Error: ${error.message}`);
   }
 };
