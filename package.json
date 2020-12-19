@@ -34,7 +34,7 @@
     "cron": "^1.8.2",
     "fuzzball": "^1.3.0",
     "got": "^11.8.1",
-    "ioredis": "^4.19.2",
+    "ioredis": "^4.19.4",
     "koa": "^2.13.0",
     "koa-bodyparser": "^4.3.0",
     "koa-conditional-get": "^3.0.0",
