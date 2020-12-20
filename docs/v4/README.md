@@ -159,6 +159,17 @@ Detailed info about launch payloads
 * 🔒 [Update a payload](payloads/update.md) : `PATCH /payloads/:id`
 * 🔒 [Delete a payload](payloads/delete.md) : `DELETE /payloads/:id`
 
+### Fairings - [Schema](fairings/schema.md)
+
+Detailed info on SpaceX fairings
+
+* [Get all fairings](fairings/all.md) : `GET /fairings`
+* [Get one fairing](fairings/one.md) : `GET /fairings/:id`
+* [Query fairings](fairings/query.md) : `POST /fairings/query`
+* 🔒 [Create a fairing](fairings/create.md) : `POST /fairings`
+* 🔒 [Update a fairing](fairings/update.md) : `PATCH /fairings/:id`
+* 🔒 [Delete a fairing](fairings/delete.md) : `DELETE /fairings/:id`
+
 ### Roadster info - [Schema](roadster/schema.md)
 
 Detailed info about Elon's Tesla roadster's current position

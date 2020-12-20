@@ -15,6 +15,7 @@ const company = require('./company/routes');
 const roadster = require('./roadster/routes');
 const starlink = require('./starlink/routes');
 const history = require('./history/routes');
+const fairings = require('./fairings/routes');
 
 const v4 = new Router({
   prefix: '/v4',
@@ -36,5 +37,6 @@ v4.use(company.routes());
 v4.use(roadster.routes());
 v4.use(starlink.routes());
 v4.use(history.routes());
+v4.use(fairings.routes());
 
 module.exports = v4;
