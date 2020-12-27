@@ -23,6 +23,7 @@
 | [XLaunch](https://apps.apple.com/us/app/xlaunch/id1502939751) | iOS App | [Travis Stanifer](https://github.com/stanifert) |  |
 | [SpaceXPedia](https://itunes.apple.com/app/spacexpedia/id1434177600?mt=8) | iOS App | [Philip Engberg](https://github.com/philipengberg) | [GitHub](https://github.com/philipengberg/SpaceXPedia) |
 | [SpaceDash](https://apps.apple.com/in/app/space-dash/id1527766640) | iOS App | [Pushpinder Pal Singh](https://github.com/pushpinderpalsingh) | [GitHub](https://github.com/pushpinderpalsingh/SpaceDash) |
+| [Space Xploration](https://apps.apple.com/app/space-xploration/id1530580909) | iOS App | [Bartolome Estelrich](https://github.com/BEstelrich) | | |
 | [SpaceX Companion](https://play.google.com/store/apps/details?id=nl.studionoorderlicht.spacex) | Android App | [Jeroen Boumans](https://github.com/jeroenboumans) | Not open sourced yet | [Website](https://spacexcompanion.app)
 | [SpaceXLaunches](https://play.google.com/store/apps/details?id=com.danielscholte.spacexlaunches) | Android App | [Daniël Scholte](https://github.com/linuxfreak23) | Closed source |
 | [SpaceX GO!](https://play.google.com/store/apps/details?id=com.chechu.cherry) | Android App | [Chechu](https://github.com/jesusrp98) | [GitHub](https://github.com/jesusrp98/spacex-go) |
