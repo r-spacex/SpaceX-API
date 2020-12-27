@@ -128,8 +128,8 @@ Detailed info about launches
 
 * [Get past launches](launches/past.md) : `GET /launches/past`
 * [Get upcoming launches](launches/upcoming.md) : `GET /launches/upcoming`
-* [Get latest launches](launches/latest.md) : `GET /launches/latest`
-* [Get next launches](launches/next.md) : `GET /launches/next`
+* [Get latest launch](launches/latest.md) : `GET /launches/latest`
+* [Get next launch](launches/next.md) : `GET /launches/next`
 * [Get all launches](launches/all.md) : `GET /launches`
 * [Get one launch](launches/one.md) : `GET /launches/:id`
 * [Query launches](launches/query.md) : `POST /launches/query`
