@@ -20,6 +20,7 @@
 | [SpaceX Guide Site](https://spacex-guide.weebly.com) | Website | Jared-Base | | [Mission Control Page](https://spacex-guide.weebly.com/mission-control.html) |
 | [SpaceX info Site](https://infospacex.vercel.app/) | Website | [Tigran Mkrtchyan](https://github.com/mkrtchyan98) | [Github](https://github.com/mkrtchyan98/SpaceInfo) |
 | [spacexdash](https://spacexdash.github.io/x) | Website | [spacexdash](https://github.com/spacexdash) | [Github](https://github.com/spacexdash/x/tree/master) | Easy searching of SpaceX data |
+| [x-info](https://x-info.eu) | Website | [Patryk Wojcieszak](https://github.com/PatrykWojcieszak) | [GitHub](https://github.com/PatrykWojcieszak/X-Info) | |
 | [SpX](https://apps.apple.com/gb/app/spx/id1511355787) | iOS App | [Russell Warwick](https://github.com/waruss321) | |
 | [XLaunch](https://apps.apple.com/us/app/xlaunch/id1502939751) | iOS App | [Travis Stanifer](https://github.com/stanifert) |  |
 | [SpaceXPedia](https://itunes.apple.com/app/spacexpedia/id1434177600?mt=8) | iOS App | [Philip Engberg](https://github.com/philipengberg) | [GitHub](https://github.com/philipengberg/SpaceXPedia) |
