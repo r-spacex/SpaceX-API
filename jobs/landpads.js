@@ -1,7 +1,7 @@
 const got = require('got');
 const { logger } = require('../middleware/logger');
 
-const SPACEX_API = 'https://api.spacexdata.com/v4';
+const API = process.env.SPACEX_API;
 const KEY = process.env.SPACEX_KEY;
 const HEALTHCHECK = process.env.LANDPADS_HEALTHCHECK;
 
@@ -11,7 +11,7 @@ const HEALTHCHECK = process.env.LANDPADS_HEALTHCHECK;
  */
 module.exports = async () => {
   try {
-    const landpads = await got.post(`${SPACEX_API}/landpads/query`, {
+    const landpads = await got.post(`${API}/landpads/query`, {
       json: {
         options: {
           pagination: false,
@@ -23,7 +23,7 @@ module.exports = async () => {
 
     const updates = landpads.docs.map(async (landpad) => {
       const [attempts, successes] = await Promise.all([
-        got.post(`${SPACEX_API}/launches/query`, {
+        got.post(`${API}/launches/query`, {
           json: {
             query: {
               cores: {
@@ -42,7 +42,7 @@ module.exports = async () => {
           resolveBodyOnly: true,
           responseType: 'json',
         }),
-        got.post(`${SPACEX_API}/launches/query`, {
+        got.post(`${API}/launches/query`, {
           json: {
             query: {
               cores: {
@@ -64,7 +64,7 @@ module.exports = async () => {
         }),
       ]);
 
-      await got.patch(`${SPACEX_API}/landpads/${landpad.id}`, {
+      await got.patch(`${API}/landpads/${landpad.id}`, {
         json: {
           landing_attempts: attempts.totalDocs,
           landing_successes: successes.totalDocs,

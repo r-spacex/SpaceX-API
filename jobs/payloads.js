@@ -2,7 +2,7 @@ const got = require('got');
 const { CookieJar } = require('tough-cookie');
 const { logger } = require('../middleware/logger');
 
-const SPACEX_API = 'https://api.spacexdata.com/v4';
+const API = process.env.SPACEX_API;
 const KEY = process.env.SPACEX_KEY;
 const HEALTHCHECK = process.env.PAYLOADS_HEALTHCHECK;
 
@@ -14,7 +14,7 @@ module.exports = async () => {
   try {
     const cookieJar = new CookieJar();
     const [payloads] = await Promise.all([
-      got.post(`${SPACEX_API}/payloads/query`, {
+      got.post(`${API}/payloads/query`, {
         json: {
           query: {},
           options: {
@@ -44,7 +44,7 @@ module.exports = async () => {
       const noradId = payload.norad_ids.shift() || null;
       const specificOrbit = data.find((sat) => parseInt(sat.NORAD_CAT_ID, 10) === noradId);
       if (specificOrbit) {
-        await got.patch(`${SPACEX_API}/payloads/${payload.id}`, {
+        await got.patch(`${API}/payloads/${payload.id}`, {
           json: {
             epoch: new Date(Date.parse(specificOrbit.EPOCH)).toISOString(),
             mean_motion: parseFloat(specificOrbit.MEAN_MOTION),

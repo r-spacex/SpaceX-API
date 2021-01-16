@@ -5,7 +5,7 @@ const MomentRange = require('moment-range');
 const { getSatelliteInfo } = require('tle.js/dist/tlejs.cjs');
 const { logger } = require('../middleware/logger');
 
-const SPACEX_API = 'https://api.spacexdata.com/v4';
+const API = process.env.SPACEX_API;
 const KEY = process.env.SPACEX_KEY;
 const HEALTHCHECK = process.env.STARLINK_HEALTHCHECK;
 const moment = MomentRange.extendMoment(Moment);
@@ -61,7 +61,7 @@ module.exports = async () => {
       const date = moment.utc(sat.LAUNCH_DATE, 'YYYY-MM-DD');
       const range = date.range('day');
 
-      const launches = await got.post(`${SPACEX_API}/launches/query`, {
+      const launches = await got.post(`${API}/launches/query`, {
         json: {
           query: {
             date_utc: {
@@ -87,7 +87,7 @@ module.exports = async () => {
         }
       }
 
-      await got.patch(`${SPACEX_API}/starlink/${sat.NORAD_CAT_ID}`, {
+      await got.patch(`${API}/starlink/${sat.NORAD_CAT_ID}`, {
         json: {
           version: starlinkVersion(launches?.docs[0]?.date_utc || null),
           launch: launches?.docs[0]?.id || null,

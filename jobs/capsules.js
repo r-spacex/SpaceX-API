@@ -1,7 +1,7 @@
 const got = require('got');
 const { logger } = require('../middleware/logger');
 
-const SPACEX_API = 'https://api.spacexdata.com/v4';
+const API = process.env.SPACEX_API;
 const KEY = process.env.SPACEX_KEY;
 const HEALTHCHECK = process.env.CAPSULES_HEALTHCHECK;
 
@@ -11,7 +11,7 @@ const HEALTHCHECK = process.env.CAPSULES_HEALTHCHECK;
  */
 module.exports = async () => {
   try {
-    const capsules = await got.post(`${SPACEX_API}/capsules/query`, {
+    const capsules = await got.post(`${API}/capsules/query`, {
       json: {
         options: {
           pagination: false,
@@ -22,7 +22,7 @@ module.exports = async () => {
     });
 
     const updates = capsules.docs.map(async (capsule) => {
-      const waterLandings = await got.post(`${SPACEX_API}/payloads/query`, {
+      const waterLandings = await got.post(`${API}/payloads/query`, {
         json: {
           query: {
             'dragon.capsule': capsule.id,
@@ -36,7 +36,7 @@ module.exports = async () => {
         responseType: 'json',
       });
 
-      const landLandings = await got.post(`${SPACEX_API}/payloads/query`, {
+      const landLandings = await got.post(`${API}/payloads/query`, {
         json: {
           query: {
             'dragon.capsule': capsule.id,
@@ -50,7 +50,7 @@ module.exports = async () => {
         responseType: 'json',
       });
 
-      await got.patch(`${SPACEX_API}/capsules/${capsule.id}`, {
+      await got.patch(`${API}/capsules/${capsule.id}`, {
         json: {
           reuse_count: capsule.launches.length,
           water_landings: waterLandings.totalDocs,

@@ -8,7 +8,7 @@ const moment = require('moment-timezone');
 const { logger } = require('../middleware/logger');
 
 const REDDIT_WIKI = 'https://old.reddit.com/r/spacex/wiki/launches/manifest';
-const SPACEX_API = 'https://api.spacexdata.com/v4';
+const API = process.env.SPACEX_API;
 const KEY = process.env.SPACEX_KEY;
 const HEALTHCHECK = process.env.UPCOMING_HEALTHCHECK;
 
@@ -22,7 +22,7 @@ const HEALTHCHECK = process.env.UPCOMING_HEALTHCHECK;
 module.exports = async () => {
   try {
     const flightNumbers = [];
-    const rawLaunches = await got.post(`${SPACEX_API}/launches/query`, {
+    const rawLaunches = await got.post(`${API}/launches/query`, {
       json: {
         options: {
           pagination: false,
@@ -189,7 +189,7 @@ module.exports = async () => {
           } else {
             throw new Error(`No launchpad match: ${launchpad}`);
           }
-          const launchpads = await got.post(`${SPACEX_API}/launchpads/query`, {
+          const launchpads = await got.post(`${API}/launchpads/query`, {
             json: {
               query: {
                 name: queryName,
@@ -226,7 +226,7 @@ module.exports = async () => {
             ...rawUpdate,
           });
 
-          await got.patch(`${SPACEX_API}/launches/${launch.id}`, {
+          await got.patch(`${API}/launches/${launch.id}`, {
             json: {
               ...rawUpdate,
             },

@@ -5,10 +5,12 @@ const devOpts = {
   prettyPrint: true,
 };
 
+const env = process.env.NODE_ENV;
+
 let requestLog;
 let logger;
 
-if (process.env.NODE_ENV === 'production') {
+if (env === 'production' || env === 'stage') {
   requestLog = koaPino();
   logger = pino();
 } else {

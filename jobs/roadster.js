@@ -2,7 +2,7 @@ const got = require('got');
 const moment = require('moment-timezone');
 const { logger } = require('../middleware/logger');
 
-const SPACEX_API = 'https://api.spacexdata.com/v4';
+const API = process.env.SPACEX_API;
 const KEY = process.env.SPACEX_KEY;
 const HEALTHCHECK = process.env.ROADSTER_HEALTHCHECK;
 
@@ -165,12 +165,12 @@ module.exports = async () => {
     const orbitalSpeedKph = (parseFloat(speedResult.trim()) * 60.0 * 60.0);
     const orbitalSpeedMph = orbitalSpeedKph * 0.621371;
 
-    const roadster = await got(`${SPACEX_API}/roadster`, {
+    const roadster = await got(`${API}/roadster`, {
       resolveBodyOnly: true,
       responseType: 'json',
     });
 
-    await got.patch(`${SPACEX_API}/roadster/${roadster.id}`, {
+    await got.patch(`${API}/roadster/${roadster.id}`, {
       json: {
         epoch_jd: epoch,
         apoapsis_au: aad,

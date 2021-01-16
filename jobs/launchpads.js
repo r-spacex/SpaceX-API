@@ -1,7 +1,7 @@
 const got = require('got');
 const { logger } = require('../middleware/logger');
 
-const SPACEX_API = 'https://api.spacexdata.com/v4';
+const API = process.env.SPACEX_API;
 const KEY = process.env.SPACEX_KEY;
 const HEALTHCHECK = process.env.LAUNCHPADS_HEALTHCHECK;
 
@@ -11,7 +11,7 @@ const HEALTHCHECK = process.env.LAUNCHPADS_HEALTHCHECK;
  */
 module.exports = async () => {
   try {
-    const launchpads = await got.post(`${SPACEX_API}/launchpads/query`, {
+    const launchpads = await got.post(`${API}/launchpads/query`, {
       json: {
         options: {
           pagination: false,
@@ -23,7 +23,7 @@ module.exports = async () => {
 
     const updates = launchpads.docs.map(async (launchpad) => {
       const [attempts, successes] = await Promise.all([
-        got.post(`${SPACEX_API}/launches/query`, {
+        got.post(`${API}/launches/query`, {
           json: {
             query: {
               launchpad: launchpad.id,
@@ -36,7 +36,7 @@ module.exports = async () => {
           resolveBodyOnly: true,
           responseType: 'json',
         }),
-        got.post(`${SPACEX_API}/launches/query`, {
+        got.post(`${API}/launches/query`, {
           json: {
             query: {
               launchpad: launchpad.id,
@@ -52,7 +52,7 @@ module.exports = async () => {
         }),
       ]);
 
-      await got.patch(`${SPACEX_API}/launchpads/${launchpad.id}`, {
+      await got.patch(`${API}/launchpads/${launchpad.id}`, {
         json: {
           launch_attempts: attempts.totalDocs,
           launch_successes: successes.totalDocs,

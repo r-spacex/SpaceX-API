@@ -3,7 +3,7 @@ const cheerio = require('cheerio');
 const { logger } = require('../middleware/logger');
 
 const REDDIT_CORES = 'https://old.reddit.com/r/spacex/wiki/cores';
-const SPACEX_API = 'https://api.spacexdata.com/v4';
+const API = process.env.SPACEX_API;
 const KEY = process.env.SPACEX_KEY;
 const HEALTHCHECK = process.env.CORES_HEALTHCHECK;
 
@@ -13,7 +13,7 @@ const HEALTHCHECK = process.env.CORES_HEALTHCHECK;
  */
 module.exports = async () => {
   try {
-    const cores = await got.post(`${SPACEX_API}/cores/query`, {
+    const cores = await got.post(`${API}/cores/query`, {
       json: {
         options: {
           pagination: false,
@@ -36,7 +36,7 @@ module.exports = async () => {
     const activeUpdates = activeCores.map(async (coreSerial, index) => {
       const coreId = cores.docs.find((core) => core.serial === coreSerial);
       if (coreId && coreId.id) {
-        await got.patch(`${SPACEX_API}/cores/${coreId.id}`, {
+        await got.patch(`${API}/cores/${coreId.id}`, {
           json: {
             last_update: activeStatus[parseInt(index, 10)],
             status: 'active',
@@ -60,7 +60,7 @@ module.exports = async () => {
     const unknownUpdates = unknownCores.map(async (coreSerial, index) => {
       const coreId = cores.docs.find((core) => core.serial === coreSerial);
       if (coreId && coreId.id) {
-        await got.patch(`${SPACEX_API}/cores/${coreId.id}`, {
+        await got.patch(`${API}/cores/${coreId.id}`, {
           json: {
             last_update: unknownStatus[parseInt(index, 10)],
             status: 'unknown',
@@ -84,7 +84,7 @@ module.exports = async () => {
     const inactiveUpdates = inactiveCores.map(async (coreSerial, index) => {
       const coreId = cores.docs.find((core) => core.serial === coreSerial);
       if (coreId?.id) {
-        await got.patch(`${SPACEX_API}/cores/${coreId.id}`, {
+        await got.patch(`${API}/cores/${coreId.id}`, {
           json: {
             last_update: inactiveStatus[parseInt(index, 10)],
             status: 'inactive',
@@ -114,7 +114,7 @@ module.exports = async () => {
         } else {
           status = 'lost';
         }
-        await got.patch(`${SPACEX_API}/cores/${coreId.id}`, {
+        await got.patch(`${API}/cores/${coreId.id}`, {
           json: {
             last_update: lostStatus[parseInt(index, 10)],
             status,
@@ -131,7 +131,7 @@ module.exports = async () => {
     const reuseUpdates = cores.docs.map(async (core) => {
       if (!core?.id) return;
       const [rtlsAttempts, rtlsLandings, asdsAttempts, asdsLandings] = await Promise.all([
-        got.post(`${SPACEX_API}/launches/query`, {
+        got.post(`${API}/launches/query`, {
           json: {
             query: {
               upcoming: false,
@@ -151,7 +151,7 @@ module.exports = async () => {
           responseType: 'json',
           throwHttpErrors: false,
         }),
-        got.post(`${SPACEX_API}/launches/query`, {
+        got.post(`${API}/launches/query`, {
           json: {
             query: {
               upcoming: false,
@@ -172,7 +172,7 @@ module.exports = async () => {
           responseType: 'json',
           throwHttpErrors: false,
         }),
-        got.post(`${SPACEX_API}/launches/query`, {
+        got.post(`${API}/launches/query`, {
           json: {
             query: {
               upcoming: false,
@@ -193,7 +193,7 @@ module.exports = async () => {
           responseType: 'json',
           throwHttpErrors: false,
         }),
-        got.post(`${SPACEX_API}/launches/query`, {
+        got.post(`${API}/launches/query`, {
           json: {
             query: {
               upcoming: false,
@@ -215,7 +215,7 @@ module.exports = async () => {
           throwHttpErrors: false,
         }),
       ]);
-      await got.patch(`${SPACEX_API}/cores/${core.id}`, {
+      await got.patch(`${API}/cores/${core.id}`, {
         json: {
           reuse_count: (core.launches.length > 0) ? core.launches.length - 1 : 0,
           rtls_attempts: rtlsAttempts.totalDocs,

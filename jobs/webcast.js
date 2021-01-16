@@ -3,7 +3,7 @@ const fuzz = require('fuzzball');
 const { logger } = require('../middleware/logger');
 
 const YOUTUBE_PREFIX = 'https://youtu.be';
-const SPACEX_API = 'https://api.spacexdata.com/v4';
+const API = process.env.SPACEX_API;
 const CHANNEL_ID = 'UCtI0Hodo5o5dUb67FeUjDeA';
 const {
   SPACEX_KEY,
@@ -25,7 +25,7 @@ module.exports = async () => {
     });
 
     if (upcomingStreams?.items?.length === 1) {
-      const launches = await got.post(`${SPACEX_API}/launches/query`, {
+      const launches = await got.post(`${API}/launches/query`, {
         json: {
           query: {
             upcoming: true,
@@ -48,7 +48,7 @@ module.exports = async () => {
       // Fuzzy check video title to make sure it's at least related to the launch
       const ratio = fuzz.ratio(youtubeTitle, missionName);
       if (ratio >= 50) {
-        const pastLaunches = await got.post(`${SPACEX_API}/launches/query`, {
+        const pastLaunches = await got.post(`${API}/launches/query`, {
           json: {
             query: {
               upcoming: false,
@@ -65,7 +65,7 @@ module.exports = async () => {
         });
         const pastYoutubeId = pastLaunches.docs[0].links.youtube_id;
         if (youtubeId !== pastYoutubeId) {
-          await got.patch(`${SPACEX_API}/launches/${launchId}`, {
+          await got.patch(`${API}/launches/${launchId}`, {
             json: {
               'links.webcast': `${YOUTUBE_PREFIX}/${youtubeId}`,
               'links.youtube_id': youtubeId,
