@@ -218,6 +218,10 @@ const launchSchema = new mongoose.Schema({
     type: Boolean,
     default: true,
   },
+  launch_library_id: {
+    type: String,
+    default: null,
+  },
 }, { autoCreate: true });
 
 const index = {
