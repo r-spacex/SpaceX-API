@@ -20,7 +20,7 @@ Open Source REST API for rocket, core, capsule, pad, and launch data
 </h4>
 
 <h3 align="center">
-<a href="docs/v4/README.md">V4 Docs (Latest)</a> - <a href="https://docs.spacexdata.com">V3 Docs (Deprecated)</a> - <a href="docs/clients.md">Clients</a> - <a href="docs/apps.md">Apps</a> - <a href="https://status.spacexdata.com">Status</a> - <a href="https://backups.spacexdata.com">Database</a>
+<a href="docs/v4/README.md">V4 Docs</a> - <a href="docs/clients.md">Clients</a> - <a href="docs/apps.md">Apps</a> - <a href="https://status.spacexdata.com">Status</a> - <a href="https://backups.spacexdata.com">Database Dumps</a>
 <br/>
 </h3>
 

@@ -4,7 +4,7 @@ FROM node:15-alpine
 LABEL maintainer="jakewmeyer@gmail.com"
 
 HEALTHCHECK --interval=10s --timeout=3s \
-  CMD ./scripts/healthcheck.js
+  CMD ./lib/utils/healthcheck.js
 
 RUN apk add --no-cache --upgrade bash
 

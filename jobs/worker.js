@@ -37,8 +37,8 @@ const payloadsJob = new CronJob('25 * * * *', payloads);
 // Every hour on :35
 const starlinkJob = new CronJob('35 * * * *', starlink);
 
-// Every hour on :45
-const webcastJob = new CronJob('45 * * * *', webcast);
+// Every 5 minutes
+const webcastJob = new CronJob('*/5 * * * *', webcast);
 
 launchesJob.start();
 payloadsJob.start();
