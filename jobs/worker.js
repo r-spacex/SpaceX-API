@@ -1,4 +1,5 @@
 const { CronJob } = require('cron');
+const { logger } = require('../middleware/logger');
 const launches = require('./launches');
 const payloads = require('./payloads');
 const landpads = require('./landpads');
@@ -9,6 +10,7 @@ const roadster = require('./roadster');
 const upcoming = require('./upcoming');
 const starlink = require('./starlink');
 const webcast = require('./webcast');
+const launchLibrary = require('./launch-library');
 
 // Every 10 minutes
 const launchesJob = new CronJob('*/10 * * * *', launches);
@@ -40,13 +42,26 @@ const starlinkJob = new CronJob('35 * * * *', starlink);
 // Every 5 minutes
 const webcastJob = new CronJob('*/5 * * * *', webcast);
 
-launchesJob.start();
-payloadsJob.start();
-landpadsJob.start();
-launchpadsJob.start();
-capsulesJob.start();
-coresJob.start();
-roadsterJob.start();
-upcomingJob.start();
-starlinkJob.start();
-webcastJob.start();
+// Every hour on :45
+const launchLibraryJob = new CronJob('45 * * * *', launchLibrary);
+
+try {
+  launchesJob.start();
+  payloadsJob.start();
+  landpadsJob.start();
+  launchpadsJob.start();
+  capsulesJob.start();
+  coresJob.start();
+  roadsterJob.start();
+  upcomingJob.start();
+  starlinkJob.start();
+  webcastJob.start();
+  launchLibraryJob.start();
+} catch (error) {
+  const formatted = {
+    name: 'worker',
+    error: error.message,
+    stack: error.stack,
+  };
+  logger.error(formatted);
+}
