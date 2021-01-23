@@ -119,6 +119,30 @@ GET https://api.spacexdata.com/v4/launches/latest
 }
 ```
 
+## Cron Job Status
+
+<p align="left">
+<img src="https://healthchecks.io/badge/a99e6369-9795-417e-9a1c-31ea91/zDDqPvw1-2/Capsules.svg">
+<br/>
+<img src="https://healthchecks.io/badge/a99e6369-9795-417e-9a1c-31ea91/iJIWcg9u-2/Cores.svg">
+<br/>
+<img src="https://healthchecks.io/badge/a99e6369-9795-417e-9a1c-31ea91/soA1Z2t1-2/Landpads.svg">
+<br/>
+<img src="https://healthchecks.io/badge/a99e6369-9795-417e-9a1c-31ea91/tc7aK4Iw-2/Launchpads.svg">
+<br/>
+<img src="https://healthchecks.io/badge/a99e6369-9795-417e-9a1c-31ea91/uB7PIyUo-2/Past-Launches.svg">
+<br/>
+<img src="https://healthchecks.io/badge/a99e6369-9795-417e-9a1c-31ea91/bQw1ZrmZ-2/Payloads.svg">
+<br/>
+<img src="https://healthchecks.io/badge/a99e6369-9795-417e-9a1c-31ea91/HhIoHcF6-2/Roadster.svg">
+<br/>
+<img src="https://healthchecks.io/badge/a99e6369-9795-417e-9a1c-31ea91/wPz7gFQJ-2/Starlink.svg">
+<br/>
+<img src="https://healthchecks.io/badge/a99e6369-9795-417e-9a1c-31ea91/3L5HxZKX-2/Upcoming-Launches.svg">
+<br/>
+<img src="https://healthchecks.io/badge/a99e6369-9795-417e-9a1c-31ea91/YvnZYkED-2/Webcast.svg">
+</p>
+
 ## Sponsors
 
 ### [Studio 3T](https://studio3t.com/)
