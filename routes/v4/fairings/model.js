@@ -10,7 +10,7 @@ const fairingSchema = new mongoose.Schema({
   },
   version: {
     type: String,
-    enum: ['1.0', '2.0', '2.1'],
+    enum: ['1.0', '2.0', '2.5'],
     required: true,
   },
   status: {
