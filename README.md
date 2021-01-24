@@ -141,6 +141,8 @@ GET https://api.spacexdata.com/v4/launches/latest
 <img src="https://healthchecks.io/badge/a99e6369-9795-417e-9a1c-31ea91/3L5HxZKX-2/Upcoming-Launches.svg">
 <br/>
 <img src="https://healthchecks.io/badge/a99e6369-9795-417e-9a1c-31ea91/YvnZYkED-2/Webcast.svg">
+<br/>
+<img src="https://healthchecks.io/badge/a99e6369-9795-417e-9a1c-31ea91/_Z-lNpev-2/launch-library-v2.svg">
 </p>
 
 ## Sponsors
