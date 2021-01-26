@@ -154,4 +154,4 @@ GET https://api.spacexdata.com/v4/launches/latest
 ## FAQ's
 
 * If you have any questions or corrections, please open an issue and we'll get it merged ASAP
-* For any other questions or concerns, just shoot me an email
+* For any other questions or concerns, just shoot me an email.
