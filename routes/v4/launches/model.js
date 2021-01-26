@@ -80,16 +80,34 @@ const launchSchema = new mongoose.Schema({
     type: String,
     default: null,
   },
-  fairings: {
+  fairings: [{
+    _id: false,
+    fairing: {
+      type: mongoose.ObjectId,
+      ref: 'Fairing',
+      default: null,
+    },
+    flight: {
+      type: Number,
+      default: null,
+    },
     reused: {
       type: Boolean,
       default: null,
     },
-    recovery_attempt: {
+    net_attempt: {
       type: Boolean,
       default: null,
     },
-    recovered: {
+    net_landing: {
+      type: Boolean,
+      default: null,
+    },
+    water_attempt: {
+      type: Boolean,
+      default: null,
+    },
+    water_landing: {
       type: Boolean,
       default: null,
     },
@@ -97,7 +115,7 @@ const launchSchema = new mongoose.Schema({
       type: mongoose.ObjectId,
       ref: 'Ship',
     }],
-  },
+  }],
   crew: [{
     type: mongoose.ObjectId,
     ref: 'Crew',

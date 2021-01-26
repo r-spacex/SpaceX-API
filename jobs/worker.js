@@ -11,6 +11,7 @@ const upcoming = require('./upcoming');
 const starlink = require('./starlink');
 const webcast = require('./webcast');
 const launchLibrary = require('./launch-library');
+const fairings = require('./fairings');
 
 // Every 10 minutes
 const launchesJob = new CronJob('*/10 * * * *', launches);
@@ -45,6 +46,9 @@ const webcastJob = new CronJob('*/5 * * * *', webcast);
 // Every hour on :45
 const launchLibraryJob = new CronJob('45 * * * *', launchLibrary);
 
+// Every 10 minutes
+const fairingsJob = new CronJob('*/10 * * * *', fairings);
+
 try {
   launchesJob.start();
   payloadsJob.start();
@@ -57,6 +61,7 @@ try {
   starlinkJob.start();
   webcastJob.start();
   launchLibraryJob.start();
+  fairingsJob.start();
 } catch (error) {
   const formatted = {
     name: 'worker',

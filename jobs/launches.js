@@ -233,6 +233,34 @@ module.exports = async () => {
     });
     await Promise.all(shipLaunches);
 
+    // Update fairing launches
+    const fairings = await got.post(`${API}/fairings/query`, {
+      json: {
+        options: {
+          pagination: false,
+        },
+      },
+      resolveBodyOnly: true,
+      responseType: 'json',
+    });
+
+    const fairingLaunches = fairings.docs.map(async (fairing) => {
+      const launchIds = launches.docs
+        .filter((launch) => launch.fairings.find((f) => f.fairing === fairing.id))
+        .map(({ id }) => id);
+
+      await got.patch(`${API}/fairings/${fairing.id}`, {
+        json: {
+          launches: launchIds,
+        },
+        headers: {
+          'spacex-key': KEY,
+        },
+      });
+      results.fairing = true;
+    });
+    await Promise.all(fairingLaunches);
+
     logger.info(results);
 
     if (HEALTHCHECK) {
