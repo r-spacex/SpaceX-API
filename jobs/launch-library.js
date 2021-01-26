@@ -24,7 +24,6 @@ module.exports = async () => {
       json: {
         query: {
           upcoming: true,
-          launch_library_id: null,
         },
         options: {
           sort: {
