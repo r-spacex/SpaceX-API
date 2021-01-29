@@ -3,7 +3,7 @@
 <h1 align="center">SpaceX REST API</h1>
 
 <h3 align="center">
-Open Source REST API for rocket, core, capsule, pad, and launch data
+Open Source REST API for launch, rocket, core, capsule, starlink, launchpad, and landing pad data.
 </h3>
 
 <p align="center">
@@ -20,7 +20,7 @@ Open Source REST API for rocket, core, capsule, pad, and launch data
 </h4>
 
 <h3 align="center">
-<a href="docs/v4/README.md">V4 Docs</a> - <a href="docs/clients.md">Clients</a> - <a href="docs/apps.md">Apps</a> - <a href="https://status.spacexdata.com">Status</a> - <a href="https://backups.spacexdata.com">Database Dumps</a>
+<a href="docs/v4/README.md">Docs</a> - <a href="docs/clients.md">API Clients</a> - <a href="docs/apps.md">Apps</a> - <a href="https://status.spacexdata.com">Status</a> - <a href="https://backups.spacexdata.com">Database Dumps</a>
 <br/>
 </h3>
 
