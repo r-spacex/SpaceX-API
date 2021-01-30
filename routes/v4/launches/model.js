@@ -111,6 +111,10 @@ const launchSchema = new mongoose.Schema({
       type: Boolean,
       default: null,
     },
+    recovered: {
+      type: Boolean,
+      default: null,
+    },
     ships: [{
       type: mongoose.ObjectId,
       ref: 'Ship',
