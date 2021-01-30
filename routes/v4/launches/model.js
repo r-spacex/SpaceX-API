@@ -118,7 +118,7 @@ const launchSchema = new mongoose.Schema({
   }],
   crew: [{
     _id: false,
-    crew: {
+    crew_id: {
       type: mongoose.ObjectId,
       ref: 'Crew',
     },
