@@ -246,7 +246,12 @@ module.exports = async () => {
 
     const fairingLaunches = fairings.docs.map(async (fairing) => {
       const launchIds = launches.docs
-        .filter((launch) => launch.fairings.find((f) => f.fairing === fairing.id))
+        .filter((launch) => {
+          if (launch.fairings && launch.fairings.length) {
+            return launch.fairings.find((f) => f.fairing === fairing.id);
+          }
+          return false;
+        })
         .map(({ id }) => id);
 
       await got.patch(`${API}/fairings/${fairing.id}`, {
