@@ -9,6 +9,7 @@ const mask = require('koa-json-mask');
 const mongoose = require('mongoose');
 const json = require('./middleware/json');
 const responseTime = require('./middleware/response-time');
+const deprecated = require('./middleware/deprecated');
 const count = require('./middleware/count');
 const cache = require('./middleware/redis-cache');
 const errorHandler = require('./middleware/error-handler');
@@ -95,6 +96,9 @@ if (process.env.NODE_ENV === 'production') {
 
 // Set header with total objects returned
 app.use(count());
+
+// Add deprecation headers
+app.use(deprecated());
 
 // Allow pretty print via pretty=true querystring
 // Pretty printed json will NOT be cached
