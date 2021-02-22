@@ -43,7 +43,7 @@
     "koa-pino-logger": "^3.0.0",
     "koa-router": "^10.0.0",
     "koa2-cors": "^2.0.6",
-    "lodash": "^4.17.20",
+    "lodash": "^4.17.21",
     "moment-range": "^4.0.2",
     "moment-timezone": "^0.5.33",
     "mongoose": "^5.11.17",
