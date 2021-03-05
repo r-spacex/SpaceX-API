@@ -57,8 +57,10 @@ module.exports = async () => {
       // eslint-disable-next-line security/detect-unsafe-regex
       .replace(/(?<=\[[0-9]{2}:[0-9]{2}\])(\[[0-9]{1,3}\]|\[[0-9]{1,3}|[0-9]{1,3}\])*/gi, '')
       .replace(/~|(\[|\[\[)[0-9]{1,3}\]/gi, '')
+      .replace(/~|(\[|\])/gi, '')
       .replace(/(early|mid|late|end|tbd|tba|net)/gi, ' ')
       .split('/')[0].trim());
+    console.log(wikiDates);
     const rawWikiDates = allWikiDates.slice(0, 30);
 
     const allWikiPayloads = wikiRow.filter((_, index) => (index + 2) % 7 === 0);

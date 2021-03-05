@@ -31,7 +31,7 @@ const coresJob = new CronJob('*/10 * * * *', cores);
 const roadsterJob = new CronJob('*/10 * * * *', roadster);
 
 // Every 10 minutes
-const upcomingJob = new CronJob('*/10 * * * *', upcoming);
+const upcomingJob = new CronJob('* * * * *', upcoming);
 
 // Every hour on :25
 const payloadsJob = new CronJob('25 * * * *', payloads);
@@ -46,17 +46,17 @@ const webcastJob = new CronJob('*/5 * * * *', webcast);
 const launchLibraryJob = new CronJob('45 * * * *', launchLibrary);
 
 try {
-  launchesJob.start();
-  payloadsJob.start();
-  landpadsJob.start();
-  launchpadsJob.start();
-  capsulesJob.start();
-  coresJob.start();
-  roadsterJob.start();
+  // launchesJob.start();
+  // payloadsJob.start();
+  // landpadsJob.start();
+  // launchpadsJob.start();
+  // capsulesJob.start();
+  // coresJob.start();
+  // roadsterJob.start();
   upcomingJob.start();
-  starlinkJob.start();
-  webcastJob.start();
-  launchLibraryJob.start();
+  // starlinkJob.start();
+  // webcastJob.start();
+  // launchLibraryJob.start();
 } catch (error) {
   const formatted = {
     name: 'worker',
