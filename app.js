@@ -11,7 +11,6 @@ const { v4 } = require('./routes');
 
 const app = new Koa();
 
-// Added by Rakin
 function enableCorsForAllRoutes() {
   app.use(cors({
     origin: '*',
@@ -59,7 +58,6 @@ app.use(bodyParser());
 // HTTP header security
 app.use(helmet());
 
-// Enable CORS for all routes
 enableCorsForAllRoutes();
 
 // Set header with API response time

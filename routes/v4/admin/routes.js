@@ -5,7 +5,6 @@ const router = new Router({
   prefix: '/admin',
 });
 
-// Added by Rakin
 function clearRedisCache() {
   router.delete('/cache', auth, authz('cache:clear'), async (ctx) => {
     try {
@@ -17,7 +16,6 @@ function clearRedisCache() {
   });
 }
 
-// Added by Rakin
 function checkHealth() {
   router.get('/health', async (ctx) => {
     ctx.status = 200;
