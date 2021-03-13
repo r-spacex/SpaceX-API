@@ -6,8 +6,7 @@ const app = require('./app');
 const PORT = process.env.PORT || 6673;
 const SERVER = http.createServer(app.callback());
 
-// Gracefully close Mongo connection
-const gracefulShutdown = () => {
+const closeMongoConnection = () => {
   mongoose.connection.close(false, () => {
     logger.info('Mongo closed');
     SERVER.close(() => {
@@ -17,16 +16,19 @@ const gracefulShutdown = () => {
   });
 };
 
-// Server start
-SERVER.listen(PORT, '0.0.0.0', () => {
-  logger.info(`Running on port: ${PORT}`);
+function startServer() {
+  SERVER.listen(PORT, '0.0.0.0', () => {
+    logger.info(`Running on port: ${PORT}`);
 
-  // Handle kill commands
-  process.on('SIGTERM', gracefulShutdown);
+    // Handle kill commands
+    process.on('SIGTERM', closeMongoConnection);
 
-  // Prevent dirty exit on code-fault crashes:
-  process.on('uncaughtException', gracefulShutdown);
+    // Prevent dirty exit on code-fault crashes:
+    process.on('uncaughtException', closeMongoConnection);
 
-  // Prevent promise rejection exits
-  process.on('unhandledRejection', gracefulShutdown);
-});
+    // Prevent promise rejection exits
+    process.on('unhandledRejection', closeMongoConnection);
+  });
+}
+
+startServer();

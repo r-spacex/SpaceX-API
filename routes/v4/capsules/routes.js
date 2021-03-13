@@ -6,16 +6,17 @@ const router = new Router({
   prefix: '/capsules',
 });
 
-// Get all capsules
-router.get('/', cache(300), async (ctx) => {
-  try {
-    const result = await Capsule.find({});
-    ctx.status = 200;
-    ctx.body = result;
-  } catch (error) {
-    ctx.throw(400, error.message);
-  }
-});
+function getAllCapsules() {
+  router.get('/', cache(300), async (ctx) => {
+    try {
+      const result = await Capsule.find({});
+      ctx.status = 200;
+      ctx.body = result;
+    } catch (error) {
+      ctx.throw(400, error.message);
+    }
+  });
+}
 
 // Get one capsule
 router.get('/:id', cache(300), async (ctx) => {

@@ -11,6 +11,16 @@ const { v4 } = require('./routes');
 
 const app = new Koa();
 
+// Added by Rakin
+function enableCorsForAllRoutes() {
+  app.use(cors({
+    origin: '*',
+    allowMethods: ['GET', 'POST', 'PATCH', 'DELETE'],
+    allowHeaders: ['Content-Type', 'Accept'],
+    exposeHeaders: ['spacex-api-cache', 'spacex-api-response-time'],
+  }));
+}
+
 mongoose.connect(process.env.SPACEX_MONGO, {
   useFindAndModify: false,
   useNewUrlParser: true,
@@ -50,12 +60,7 @@ app.use(bodyParser());
 app.use(helmet());
 
 // Enable CORS for all routes
-app.use(cors({
-  origin: '*',
-  allowMethods: ['GET', 'POST', 'PATCH', 'DELETE'],
-  allowHeaders: ['Content-Type', 'Accept'],
-  exposeHeaders: ['spacex-api-cache', 'spacex-api-response-time'],
-}));
+enableCorsForAllRoutes();
 
 // Set header with API response time
 app.use(responseTime);
