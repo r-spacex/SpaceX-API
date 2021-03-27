@@ -1,5 +1,5 @@
 const Router = require('koa-router');
-const Fairing = require('./model');
+const Fairing = require('../../../models/fairing');
 const { auth, authz, cache } = require('../../../middleware');
 
 const router = new Router({

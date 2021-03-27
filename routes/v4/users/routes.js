@@ -1,5 +1,5 @@
 const Router = require('koa-router');
-const User = require('./model');
+const User = require('../../../models/user');
 const { auth, authz } = require('../../../middleware');
 
 const router = new Router({

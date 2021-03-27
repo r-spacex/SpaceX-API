@@ -1,5 +1,5 @@
 const Router = require('koa-router');
-const Landpad = require('./model');
+const Landpad = require('../../../models/landpad');
 const { auth, authz, cache } = require('../../../middleware');
 
 const router = new Router({

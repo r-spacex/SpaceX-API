@@ -1,5 +1,5 @@
 const Router = require('koa-router');
-const Starlink = require('./model');
+const Starlink = require('../../../models/starlink');
 const { auth, authz, cache } = require('../../../middleware');
 
 const router = new Router({
