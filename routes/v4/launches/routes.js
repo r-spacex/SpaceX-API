@@ -1,6 +1,7 @@
 const Router = require('koa-router');
 const Launch = require('../../../models/launch');
 const { auth, authz, cache } = require('../../../middleware');
+const formatV4 = require('./_format-v4');
 
 const router = new Router({
   prefix: '/launches',
@@ -21,7 +22,7 @@ router.get('/past', cache(20), async (ctx) => {
       },
     });
     ctx.status = 200;
-    ctx.body = result;
+    ctx.body = await formatV4(result);
   } catch (error) {
     ctx.throw(400, error.message);
   }
@@ -38,7 +39,7 @@ router.get('/upcoming', cache(20), async (ctx) => {
       },
     });
     ctx.status = 200;
-    ctx.body = result;
+    ctx.body = await formatV4(result);
   } catch (error) {
     ctx.throw(400, error.message);
   }
@@ -55,7 +56,7 @@ router.get('/latest', cache(20), async (ctx) => {
       },
     });
     ctx.status = 200;
-    ctx.body = result;
+    ctx.body = await formatV4(result);
   } catch (error) {
     ctx.throw(400, error.message);
   }
@@ -72,7 +73,7 @@ router.get('/next', cache(20), async (ctx) => {
       },
     });
     ctx.status = 200;
-    ctx.body = result;
+    ctx.body = await formatV4(result);
   } catch (error) {
     ctx.throw(400, error.message);
   }
@@ -87,7 +88,7 @@ router.get('/', cache(20), async (ctx) => {
   try {
     const result = await Launch.find({});
     ctx.status = 200;
-    ctx.body = result;
+    ctx.body = await formatV4(result);
   } catch (error) {
     ctx.throw(400, error.message);
   }
@@ -100,7 +101,7 @@ router.get('/:id', cache(20), async (ctx) => {
     ctx.throw(404);
   }
   ctx.status = 200;
-  ctx.body = result;
+  ctx.body = await formatV4(result);
 });
 
 // Query launches
@@ -109,7 +110,7 @@ router.post('/query', cache(20), async (ctx) => {
   try {
     const result = await Launch.paginate(query, options);
     ctx.status = 200;
-    ctx.body = result;
+    ctx.body = await formatV4(result);
   } catch (error) {
     ctx.throw(400, error.message);
   }
