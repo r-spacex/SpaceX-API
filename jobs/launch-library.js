@@ -48,23 +48,25 @@ module.exports = async () => {
       });
       if (llLaunches.statusCode === 200 && llLaunches.body.results.length) {
         const upcomingLaunch = upcomingLaunches.docs[0];
-        const choices = llLaunches.body.results.map((result) => result.name.split(' | ')[1]);
-        const results = fuzz.extract(upcomingLaunch.name, choices);
-        if (results.length) {
-          const launchLibraryId = llLaunches.body.results[results[0][2]].id;
-          await got.patch(`${API}/launches/${upcomingLaunch.id}`, {
-            json: {
-              launch_library_id: launchLibraryId,
-            },
-            headers: {
-              'spacex-key': SPACEX_KEY,
-            },
-          });
-          [[, log.ratio]] = results;
-          log.spacexdataName = upcomingLaunch.name;
-          [[log.llName]] = results;
-          log.launch_library_id = launchLibraryId;
-          log.updated = true;
+        if (!upcomingLaunch?.launch_library_id) {
+          const choices = llLaunches.body.results.map((result) => result.name.split(' | ')[1]);
+          const results = fuzz.extract(upcomingLaunch.name, choices);
+          if (results.length) {
+            const launchLibraryId = llLaunches.body.results[results[0][2]].id;
+            await got.patch(`${API}/launches/${upcomingLaunch.id}`, {
+              json: {
+                launch_library_id: launchLibraryId,
+              },
+              headers: {
+                'spacex-key': SPACEX_KEY,
+              },
+            });
+            [[, log.ratio]] = results;
+            log.spacexdataName = upcomingLaunch.name;
+            [[log.llName]] = results;
+            log.launch_library_id = launchLibraryId;
+            log.updated = true;
+          }
         }
       }
     }
