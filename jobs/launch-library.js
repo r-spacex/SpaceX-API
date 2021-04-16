@@ -1,5 +1,5 @@
 const got = require('got');
-const fuzz = require('fuzzball');
+const moment = require('moment-timezone');
 const { fail, success } = require('../lib/healthchecks');
 const { logger } = require('../middleware/logger');
 
@@ -48,26 +48,27 @@ module.exports = async () => {
       });
       if (llLaunches.statusCode === 200 && llLaunches.body.results.length) {
         const upcomingLaunch = upcomingLaunches.docs[0];
-        if (!upcomingLaunch?.launch_library_id) {
-          const choices = llLaunches.body.results.map((result) => result.name.split(' | ')[1]);
-          const results = fuzz.extract(upcomingLaunch.name, choices);
-          if (results.length) {
-            const launchLibraryId = llLaunches.body.results[results[0][2]].id;
-            await got.patch(`${API}/launches/${upcomingLaunch.id}`, {
-              json: {
-                launch_library_id: launchLibraryId,
-              },
-              headers: {
-                'spacex-key': SPACEX_KEY,
-              },
-            });
-            [[, log.ratio]] = results;
-            log.spacexdataName = upcomingLaunch.name;
-            [[log.llName]] = results;
-            log.launch_library_id = launchLibraryId;
-            log.updated = true;
-          }
-        }
+        const dates = llLaunches.body.results.map((result) => ({
+          llDate: result.net,
+          llId: result.id,
+        }));
+        const diffs = dates.map((date) => ({
+          diff: moment(upcomingLaunch.date_utc).diff(moment(date.llDate)),
+          llId: date.llId,
+        }));
+        // Sort the date diffs by closeness to zero
+        const close = diffs.reduce((a, b) => (Math.abs(b.diff - 0) < Math.abs(a.diff - 0) ? b : a));
+        await got.patch(`${API}/launches/${upcomingLaunch.id}`, {
+          json: {
+            launch_library_id: close.llId,
+          },
+          headers: {
+            'spacex-key': SPACEX_KEY,
+          },
+        });
+        log.spacexdataName = upcomingLaunch.name;
+        log.launch_library_id = close.llId;
+        log.updated = true;
       }
     }
     await success(LAUNCH_LIBRARY_HEALTHCHECK, log);
