@@ -1,10 +1,10 @@
-# Update a core
+# Update a landpad
 
 **Method** : `PATCH`
 
-**URL** : `https://api.spacexdata.com/v4/cores/:id`
+**URL** : `https://api.spacexdata.com/v4/landpads/:id`
 
-**URL Parameters** : `id=[string]` where `id` is the ID of the capsule
+**URL Parameters** : `id=[string]` where `id` is the ID of the landpad
 
 **Auth required** : `True`
 
