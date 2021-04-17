@@ -36,6 +36,7 @@ module.exports = async () => {
       launchpad: false,
       payload: false,
       ship: false,
+      rockets: false,
     };
 
     // Update capsule launches
@@ -232,6 +233,37 @@ module.exports = async () => {
       results.ship = true;
     });
     await Promise.all(shipLaunches);
+
+    // Update rocket success percentage
+    const rockets = await got.post(`${API}/rockets/query`, {
+      json: {
+        options: {
+          pagination: false,
+        },
+      },
+      resolveBodyOnly: true,
+      responseType: 'json',
+    });
+
+    const rocketSuccess = rockets.docs.map(async (rocket) => {
+      const successes = launches?.docs
+        .filter((l) => (l.rocket === rocket.id) && (l.success === true))?.length ?? 0;
+      const attempts = launches?.docs
+        .filter((l) => l.rocket === rocket.id)?.length ?? 0;
+      if (attempts > 0) {
+        const successRate = parseInt(Math.round((successes / attempts) * 100), 10);
+        await got.patch(`${API}/rockets/${rocket.id}`, {
+          json: {
+            success_rate_pct: successRate,
+          },
+          headers: {
+            'spacex-key': KEY,
+          },
+        });
+      }
+      results.rockets = true;
+    });
+    await Promise.all(rocketSuccess);
 
     logger.info(results);
 
