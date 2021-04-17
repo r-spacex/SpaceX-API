@@ -68,7 +68,7 @@ module.exports = async () => {
       const index = capsuleIds.findIndex((id) => id === capsule.serial);
       await got.patch(`${API}/capsules/${capsule.id}`, {
         json: {
-          reuse_count: capsule.launches.length,
+          reuse_count: (capsule.launches.length > 0) ? capsule.launches.length - 1 : 0,
           water_landings: waterLandings.totalDocs,
           land_landings: landLandings.totalDocs,
           last_update: capsuleStatus[parseInt(index, 10)],
