@@ -49,7 +49,7 @@
     "mongoose": "^5.12.4",
     "mongoose-id": "^0.1.3",
     "mongoose-paginate-v2": "^1.3.17",
-    "pino": "^6.11.2",
+    "pino": "^6.11.3",
     "rss-parser": "^3.12.0",
     "tle.js": "^4.2.9",
     "tough-cookie": "^4.0.0"
