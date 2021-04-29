@@ -137,6 +137,7 @@ module.exports = async () => {
             TLE_LINE0: sat.TLE_LINE0,
             TLE_LINE1: sat.TLE_LINE1,
             TLE_LINE2: sat.TLE_LINE2,
+            TLE_LINE3: sat.TLE_LINE3,
           },
         },
         headers: {
