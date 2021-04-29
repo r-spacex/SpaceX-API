@@ -1,8 +1,16 @@
 version: 2
 updates:
-  - package-ecosystem: "npm"
-    directory: "/"
-    schedule:
-      interval: "daily"
-    assignees:
-      - "jakewmeyer"
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: weekly
+    day: saturday
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: eslint
+    versions:
+    - 7.21.0
+    - 7.24.0
+  - dependency-name: eslint-plugin-no-secrets
+    versions:
+    - 0.8.9
