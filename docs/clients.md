@@ -15,6 +15,7 @@ NOTE: Clients are grouped by API version(s) supported
 | Spacex-api.js | Node.js | AkiaCode | [Github](https://github.com/AkiaCode/spacex-api.js) |
 | spacex_api | Dart | Ahsanz024 | [Github](https://github.com/ahsanz024/spacex_api) |
 | spacex_api | Ruby | Victor Perez | [Github](https://github.com/victorperez/spacex-api-ruby) |
+| xploration-graphql | TypeScript | Kartik Kumar Gujarati | [Github](https://github.com/Kartikkumargujarati/xploration-graphql) |
 
 ### V3, V2, V1 (Deprecated)
 
