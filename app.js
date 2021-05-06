@@ -16,6 +16,7 @@ mongoose.connect(process.env.SPACEX_MONGO, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
+  poolSize: 200,
 });
 
 const db = mongoose.connection;
