@@ -5,7 +5,7 @@ const helmet = require('koa-helmet');
 const Koa = require('koa');
 const bodyParser = require('koa-bodyparser');
 const mongoose = require('mongoose');
-const { requestLogger, logger } = require('./middleware/logger');
+const { logger } = require('./middleware/logger');
 const { responseTime, errors } = require('./middleware');
 const { v4 } = require('./routes');
 
