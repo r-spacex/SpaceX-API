@@ -64,7 +64,7 @@ app.use(cors({
 app.use(responseTime);
 
 // Request logging
-app.use(requestLogger);
+// app.use(requestLogger);
 
 // V4 routes
 app.use(v4.routes());
