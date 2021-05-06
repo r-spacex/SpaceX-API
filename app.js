@@ -19,6 +19,8 @@ mongoose.connect(process.env.SPACEX_MONGO, {
   poolSize: 200,
 });
 
+mongoose.set('bufferCommands', false);
+
 const db = mongoose.connection;
 
 db.on('error', (err) => {

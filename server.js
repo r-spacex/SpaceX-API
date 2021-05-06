@@ -18,15 +18,17 @@ const gracefulShutdown = () => {
 };
 
 // Server start
-SERVER.listen(PORT, '0.0.0.0', () => {
-  logger.info(`Running on port: ${PORT}`);
+app.on('ready', () => {
+  SERVER.listen(PORT, '0.0.0.0', () => {
+    logger.info(`Running on port: ${PORT}`);
 
-  // Handle kill commands
-  process.on('SIGTERM', gracefulShutdown);
+    // Handle kill commands
+    process.on('SIGTERM', gracefulShutdown);
 
-  // Prevent dirty exit on code-fault crashes:
-  process.on('uncaughtException', gracefulShutdown);
+    // Prevent dirty exit on code-fault crashes:
+    process.on('uncaughtException', gracefulShutdown);
 
-  // Prevent promise rejection exits
-  process.on('unhandledRejection', gracefulShutdown);
+    // Prevent promise rejection exits
+    process.on('unhandledRejection', gracefulShutdown);
+  });
 });
