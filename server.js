@@ -7,7 +7,8 @@ const PORT = process.env.PORT || 6673;
 const SERVER = http.createServer(app.callback());
 
 // Gracefully close Mongo connection
-const gracefulShutdown = () => {
+const gracefulShutdown = (msg) => {
+  logger.info(`Shutdown initiated: ${msg}`);
   mongoose.connection.close(false, () => {
     logger.info('Mongo closed');
     SERVER.close(() => {
@@ -25,10 +26,13 @@ app.on('ready', () => {
     // Handle kill commands
     process.on('SIGTERM', gracefulShutdown);
 
-    // Prevent dirty exit on code-fault crashes:
+    // Handle interrupts
+    process.on('SIGINT', gracefulShutdown);
+
+    // Prevent dirty exit on uncaught exceptions:
     process.on('uncaughtException', gracefulShutdown);
 
-    // Prevent promise rejection exits
+    // Prevent dirty exit on unhandled promise rejection
     process.on('unhandledRejection', gracefulShutdown);
   });
 });
