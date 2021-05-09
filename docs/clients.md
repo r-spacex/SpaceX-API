@@ -1,6 +1,6 @@
 # List of known API clients / wrappers
 
-> _Do you, or do you know of some client/wrapper, that makes use of this community maintained service? If so, please [create an issue](https://github.com/r-spacex/SpaceX-API/issues/new) or [submit a PR](https://github.com/r-spacex/SpaceX-API/blob/master/CONTRIBUTING.md) with additions to this list. Thanks_
+> _Do you, or do you know of some client/wrapper, that makes use of this community maintained service? If so, please [create an issue](https://github.com/r-spacex/SpaceX-API/issues/new) or [submit a PR](https://github.com/r-spacex/SpaceX-API/pulls) with additions to this list. Thanks_
 
 NOTE: Clients are grouped by API version(s) supported
 
