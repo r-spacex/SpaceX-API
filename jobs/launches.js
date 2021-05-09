@@ -1,6 +1,6 @@
 const _ = require('lodash');
 const got = require('got');
-const { logger } = require('../middleware/logger');
+const { logger } = require('./middleware/logger');
 
 const API = process.env.SPACEX_API;
 const KEY = process.env.SPACEX_KEY;
