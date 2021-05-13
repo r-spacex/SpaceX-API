@@ -47,3 +47,4 @@
 | [SpaceX Missions](https://spacex-missions.netlify.app) | Website | [Bruno Porcel](https://github.com/bporcel) | [GitHub](https://github.com/bporcel/Space-X) |
 | [Launch Tracker - SpaceX](https://play.google.com/store/apps/details?id=com.bvdwalt.spacex_flights) | Android App | [Bennie van der Walt](https://github.com/bvdwalt) | [GitHub](https://github.com/bvdwalt/Launch-Tracker-SpaceX)
 | [SpaceX Dashboard](https://tdunn891.github.io/spacex-dashboard/) | Website | [Thomas Dunn](https://github.com/tdunn891) | [GitHub](https://github.com/tdunn891/spacex-dashboard) | |
+| [SpaceX Launches](https://spacexlaunches.github.io/) | Website | [l3ycle](https://github.com/l3ycle) | [GitHub](https://github.com/spacexlaunches/spacexlaunches.github.io/) |  |
