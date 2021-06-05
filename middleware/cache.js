@@ -58,38 +58,41 @@ module.exports = (ttl) => async (ctx, next) => {
     ctx.response.set('Cache-Control', 'no-store');
   }
 
-  // Try and get cache
-  if (ctx.request.method !== 'GET' || ctx.request.method !== 'POST') {
-    let cached;
-    try {
-      cached = await redis.get(key);
-      if (cached) {
-        ctx.response.status = 200;
-        ctx.response.set('spacex-api-cache', 'HIT');
-        ctx.response.type = 'application/json';
-        ctx.response.body = cached;
-        cached = true;
-      }
-    } catch (e) {
-      cached = false;
-    }
+  // Only allow cache on whitelist methods
+  if (!['GET', 'POST'].includes(ctx.request.method)) {
+    await next();
+    return;
+  }
+
+  let cached;
+  try {
+    cached = await redis.get(key);
     if (cached) {
+      ctx.response.status = 200;
+      ctx.response.set('spacex-api-cache', 'HIT');
+      ctx.response.type = 'application/json';
+      ctx.response.body = cached;
+      cached = true;
+    }
+  } catch (e) {
+    cached = false;
+  }
+  if (cached) {
+    return;
+  }
+  await next();
+
+  const responseBody = JSON.stringify(ctx.response.body);
+  ctx.response.set('spacex-api-cache', 'MISS');
+
+  // Set cache
+  try {
+    if ((ctx.response.status !== 200) || !responseBody) {
       return;
     }
-    await next();
-
-    const responseBody = JSON.stringify(ctx.response.body);
-    ctx.response.set('spacex-api-cache', 'MISS');
-
-    // Set cache
-    try {
-      if ((ctx.response.status !== 200) || !responseBody) {
-        return;
-      }
-      await redis.set(key, responseBody, 'EX', ttl);
-    } catch (e) {
-      console.log(`Failed to set cache: ${e.message}`);
-    }
+    await redis.set(key, responseBody, 'EX', ttl);
+  } catch (e) {
+    console.log(`Failed to set cache: ${e.message}`);
   }
 };
 
