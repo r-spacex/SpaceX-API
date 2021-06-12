@@ -30,7 +30,7 @@
   "homepage": "https://github.com/r-spacex/SpaceX-API",
   "dependencies": {
     "blake3": "^2.1.4",
-    "cheerio": "^1.0.0-rc.9",
+    "cheerio": "^1.0.0-rc.10",
     "cron": "^1.8.2",
     "fuzzball": "^1.4.0",
     "got": "^11.8.2",
