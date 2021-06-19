@@ -57,7 +57,6 @@ const landpadSchema = new mongoose.Schema({
     ref: 'Launch',
   }],
   images: {
-    small: [String],
     large: [String],
   },
 }, { autoCreate: true });

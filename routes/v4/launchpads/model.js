@@ -57,7 +57,6 @@ const launchpadSchema = new mongoose.Schema({
     default: null,
   },
   images: {
-    small: [String],
     large: [String],
   },
 }, { autoCreate: true });
