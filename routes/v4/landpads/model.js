@@ -56,6 +56,10 @@ const landpadSchema = new mongoose.Schema({
     type: mongoose.ObjectId,
     ref: 'Launch',
   }],
+  images: {
+    small: [String],
+    large: [String],
+  },
 }, { autoCreate: true });
 
 landpadSchema.plugin(mongoosePaginate);

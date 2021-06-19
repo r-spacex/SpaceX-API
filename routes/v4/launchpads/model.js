@@ -56,6 +56,10 @@ const launchpadSchema = new mongoose.Schema({
     type: String,
     default: null,
   },
+  images: {
+    small: [String],
+    large: [String],
+  },
 }, { autoCreate: true });
 
 launchpadSchema.plugin(mongoosePaginate);
