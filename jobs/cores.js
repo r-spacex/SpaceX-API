@@ -26,19 +26,29 @@ module.exports = async () => {
     const result = await got(REDDIT_CORES);
     const $ = cheerio.load(result.body);
 
-    const active = $('body > div.content > div > div > table:nth-child(15) > tbody').text();
-    const activeRow = active.split('\n').filter((v) => v !== '');
-    const activeCores = activeRow.filter((value, index) => index % 7 === 0);
-    if (!activeCores.length) {
+    // Active Cores Table
+    const scrapedActive = [];
+    $('div.md:nth-child(2) > table:nth-child(15) > tbody:nth-child(2) > tr').each((index, element) => {
+      if (index === 0) return true;
+      const tds = $(element).find('td');
+      const coreSerial = $(tds[0]).text() || null;
+      const coreStatus = $(tds[5]).text().replace(/\[source\]/gi, '').trim() || null;
+      if (!coreSerial && !coreStatus) return true;
+      const tableRow = {
+        coreSerial,
+        coreStatus,
+      };
+      return scrapedActive.push(tableRow);
+    });
+    if (!scrapedActive.length) {
       throw new Error('No active cores found');
     }
-    const activeStatus = activeRow.filter((value, index) => (index + 1) % 7 === 0);
-    const activeUpdates = activeCores.map(async (coreSerial, index) => {
-      const coreId = cores.docs.find((core) => core.serial === coreSerial);
-      if (coreId && coreId.id) {
+    const activeUpdates = scrapedActive.map(async (row) => {
+      const coreId = cores.docs.find((core) => core.serial === row.coreSerial);
+      if (coreId?.id) {
         await got.patch(`${API}/cores/${coreId.id}`, {
           json: {
-            last_update: activeStatus[parseInt(index, 10)],
+            last_update: row.coreStatus,
             status: 'active',
           },
           headers: {
