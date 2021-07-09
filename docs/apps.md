@@ -46,7 +46,7 @@
 | [SpaceX - Launch Tracker](https://play.google.com/store/apps/details?id=uk.co.zac_h.spacex) | Android App | [Zac Hadjineophytou](https://github.com/zacdevil10) | [GitHub](https://github.com/zacdevil10/spacex-launch-tracker) |
 | [Space Bot](https://t.me/spacex_mezgoodle_bot) | Telegram Bot | [Maxim Zavalniuk](https://github.com/mezgoodle) | [GitHub](https://github.com/mezgoodle/space-bot) |
 | [SpaceX Launch Data](http://spacexlaunchdata.com) | Website | [Sam Girshovich](https://github.com/samg11) | [GitHub](https://github.com/samg11/SpaceX-Launch-Data) |
-| [SpaceX Times](https://www.amazon.com/gp/product/B092ZF58HX/ref=mas_pm_spacex_times) | Android App | [Alex Maryin](https://github.com/alexmaryin) | [GitHub](https://github.com/alexmaryin/spacextimes) |
+| [SpaceX Times](https://play.google.com/store/apps/details?id=ru.alexmaryin.spacextimes_rx) | Android App | [Alex Maryin](https://github.com/alexmaryin) | [GitHub](https://github.com/alexmaryin/spacextimes) |
 | [SpaceX Missions](https://spacex-missions.netlify.app) | Website | [Bruno Porcel](https://github.com/bporcel) | [GitHub](https://github.com/bporcel/Space-X) |
 | [Launch Tracker - SpaceX](https://play.google.com/store/apps/details?id=com.bvdwalt.spacex_flights) | Android App | [Bennie van der Walt](https://github.com/bvdwalt) | [GitHub](https://github.com/bvdwalt/Launch-Tracker-SpaceX)
 | [SpaceX Dashboard](https://tdunn891.github.io/spacex-dashboard/) | Website | [Thomas Dunn](https://github.com/tdunn891) | [GitHub](https://github.com/tdunn891/spacex-dashboard) | |
