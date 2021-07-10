@@ -7,7 +7,7 @@ const bodyParser = require('koa-bodyparser');
 const mongoose = require('mongoose');
 const { logger } = require('./middleware/logger');
 const { responseTime, errors } = require('./middleware');
-const { v4 } = require('./routes');
+const routes = require('./routes');
 
 const app = new Koa();
 
@@ -66,7 +66,7 @@ app.use(responseTime);
 // Request logging
 // app.use(requestLogger);
 
-// V4 routes
-app.use(v4.routes());
+// Register routes
+app.use(routes());
 
 module.exports = app;

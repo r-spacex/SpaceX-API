@@ -1,0 +1,15 @@
+module.exports.Capsule = require('./capsules');
+module.exports.Company = require('./company');
+module.exports.Core = require('./cores');
+module.exports.Crew = require('./crew');
+module.exports.Dragon = require('./dragons');
+module.exports.History = require('./history');
+module.exports.Landpad = require('./landpads');
+module.exports.Launch = require('./launches');
+module.exports.Launchpad = require('./launchpads');
+module.exports.Payload = require('./payloads');
+module.exports.Roadster = require('./roadster');
+module.exports.Rocket = require('./rockets');
+module.exports.Ship = require('./ships');
+module.exports.Starlink = require('./starlink');
+module.exports.User = require('./starlink');
