@@ -62,9 +62,9 @@ Cache can be cleared with the following endpoint:
 
 ## Routes
 
-### [Capsules](capsules)
+### [Capsules](capsules) - Detailed info for serialized dragon capsules
 
-### [Company Info](company)
+### [Company Info](company) - Detailed info about SpaceX as a company
 
 ### [Cores](cores) - Detailed info for serialized first stage cores
 
