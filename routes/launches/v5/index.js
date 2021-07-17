@@ -1,10 +1,9 @@
 const Router = require('koa-router');
 const { Launch } = require('../../../models');
 const { auth, authz, cache } = require('../../../middleware');
-const transformResponse = require('./_transform-response');
 
 const router = new Router({
-  prefix: '/v4/launches',
+  prefix: '/(v5|latest)/launches',
 });
 
 //
@@ -22,7 +21,7 @@ router.get('/past', cache(20), async (ctx) => {
       },
     });
     ctx.status = 200;
-    ctx.body = await transformResponse(result);
+    ctx.body = result;
   } catch (error) {
     ctx.throw(400, error.message);
   }
@@ -39,7 +38,7 @@ router.get('/upcoming', cache(20), async (ctx) => {
       },
     });
     ctx.status = 200;
-    ctx.body = await transformResponse(result);
+    ctx.body = result;
   } catch (error) {
     ctx.throw(400, error.message);
   }
@@ -56,7 +55,7 @@ router.get('/latest', cache(20), async (ctx) => {
       },
     });
     ctx.status = 200;
-    ctx.body = await transformResponse(result);
+    ctx.body = result;
   } catch (error) {
     ctx.throw(400, error.message);
   }
@@ -73,7 +72,7 @@ router.get('/next', cache(20), async (ctx) => {
       },
     });
     ctx.status = 200;
-    ctx.body = await transformResponse(result);
+    ctx.body = result;
   } catch (error) {
     ctx.throw(400, error.message);
   }
@@ -88,7 +87,7 @@ router.get('/', cache(20), async (ctx) => {
   try {
     const result = await Launch.find({});
     ctx.status = 200;
-    ctx.body = await transformResponse(result);
+    ctx.body = result;
   } catch (error) {
     ctx.throw(400, error.message);
   }
@@ -101,7 +100,7 @@ router.get('/:id', cache(20), async (ctx) => {
     ctx.throw(404);
   }
   ctx.status = 200;
-  ctx.body = await transformResponse(result);
+  ctx.body = result;
 });
 
 // Query launches
@@ -110,7 +109,7 @@ router.post('/query', cache(20), async (ctx) => {
   try {
     const result = await Launch.paginate(query, options);
     ctx.status = 200;
-    ctx.body = await transformResponse(result);
+    ctx.body = result;
   } catch (error) {
     ctx.throw(400, error.message);
   }

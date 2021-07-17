@@ -99,8 +99,16 @@ const launchSchema = new mongoose.Schema({
     }],
   },
   crew: [{
-    type: mongoose.ObjectId,
-    ref: 'Crew',
+    _id: false,
+    crew: {
+      type: mongoose.ObjectId,
+      ref: 'Crew',
+      default: null,
+    },
+    role: {
+      type: String,
+      default: null,
+    },
   }],
   ships: [{
     type: mongoose.ObjectId,
