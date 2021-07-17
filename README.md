@@ -20,7 +20,7 @@ Open Source REST API for launch, rocket, core, capsule, starlink, launchpad, and
 </h4>
 
 <h3 align="center">
-<a href="docs/v4/README.md">Docs</a> - <a href="docs/clients.md">API Clients</a> - <a href="docs/apps.md">Apps</a> - <a href="https://status.spacexdata.com">Status</a> - <a href="https://backups.spacexdata.com">Database Dumps</a>
+<a href="docs/README.md">Docs</a> - <a href="docs/clients.md">API Clients</a> - <a href="docs/apps.md">Apps</a> - <a href="https://status.spacexdata.com">Status</a> - <a href="https://backups.spacexdata.com">Database Dumps</a>
 <br/>
 </h3>
 
