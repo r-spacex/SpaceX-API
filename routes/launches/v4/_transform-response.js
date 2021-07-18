@@ -1,10 +1,15 @@
 /* eslint-disable no-underscore-dangle */
-const buildCrew = (launch) => launch.crew.map((crew) => {
-  if (crew?.crew) {
-    return crew?.crew;
+const buildCrew = (launch) => {
+  if (launch?.crew) {
+    launch.crew.map((crew) => {
+      if (crew?.crew) {
+        return crew?.crew;
+      }
+      return crew;
+    });
   }
-  return crew;
-});
+  return launch;
+};
 
 module.exports = async (payload) => {
   if (Array.isArray(payload)) {
