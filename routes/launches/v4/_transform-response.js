@@ -1,28 +1,42 @@
 /* eslint-disable no-underscore-dangle */
 const buildCrew = (launch) => {
-  if (launch?.crew) {
-    launch.crew.map((crew) => {
-      if (crew?.crew) {
-        return crew?.crew;
-      }
-      return crew;
-    });
+  if (Array.isArray(launch?.crew) && launch.crew.length === 0) {
+    return [];
   }
-  return launch;
+  return launch.crew.map((crew) => {
+    if (crew?.crew) {
+      return crew?.crew;
+    }
+    return crew;
+  });
 };
 
 module.exports = async (payload) => {
   if (Array.isArray(payload)) {
-    return payload.map((launch) => ({
-      ...launch.toObject(),
-      crew: buildCrew(launch.toObject()),
-    }));
+    return payload.map((launch) => {
+      if (Array.isArray(launch?.crew)) {
+        return {
+          ...launch.toObject(),
+          crew: buildCrew(launch.toObject()),
+        };
+      }
+      return {
+        ...launch.toObject(),
+      };
+    });
   }
   if (Array.isArray(payload?.docs)) {
-    const docs = payload.docs.map((launch) => ({
-      ...launch.toObject(),
-      crew: buildCrew(launch.toObject()),
-    }));
+    const docs = payload.docs.map((launch) => {
+      if (Array.isArray(launch?.crew)) {
+        return {
+          ...launch.toObject(),
+          crew: buildCrew(launch.toObject()),
+        };
+      }
+      return {
+        ...launch.toObject(),
+      };
+    });
     return {
       ...payload,
       docs,
