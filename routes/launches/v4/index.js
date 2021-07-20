@@ -2,6 +2,7 @@ const Router = require('koa-router');
 const { Launch } = require('../../../models');
 const { auth, authz, cache } = require('../../../middleware');
 const transformResponse = require('./_transform-response');
+const transformQuery = require('./_transform-query');
 
 const router = new Router({
   prefix: '/v4/launches',
@@ -106,7 +107,7 @@ router.get('/:id', cache(20), async (ctx) => {
 
 // Query launches
 router.post('/query', cache(20), async (ctx) => {
-  const { query = {}, options = {} } = ctx.request.body;
+  const { query = {}, options = {} } = await transformQuery(ctx.request.body);
   try {
     const result = await Launch.paginate(query, options);
     ctx.status = 200;
