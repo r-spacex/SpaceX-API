@@ -16,6 +16,7 @@ NOTE: Clients are grouped by API version(s) supported
 | spacex_api | Dart | Ahsanz024 | [Github](https://github.com/ahsanz024/spacex_api) |
 | spacex_api | Ruby | Victor Perez | [Github](https://github.com/victorperez/spacex-api-ruby) |
 | xploration-graphql | TypeScript | Kartik Kumar Gujarati | [Github](https://github.com/Kartikkumargujarati/xploration-graphql) |
+| spacex-graphql-gateway | TypeScript | Kevin Hermawan | [Github](https://github.com/kevinstd/spacex-graphql-gateway) |
 
 ### V3, V2, V1 (Deprecated)
 
