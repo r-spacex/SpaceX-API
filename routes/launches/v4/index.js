@@ -87,7 +87,11 @@ router.get('/next', cache(20), async (ctx) => {
 // Get all launches
 router.get('/', cache(20), async (ctx) => {
   try {
-    const result = await Launch.find({});
+    const result = await Launch.find({}, null, {
+      sort: {
+        flight_number: 'asc',
+      },
+    });
     ctx.status = 200;
     ctx.body = await transformResponse(result);
   } catch (error) {
