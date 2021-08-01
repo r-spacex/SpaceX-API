@@ -4,6 +4,7 @@
 
 |App|Type|Creator(s)|Repo|More|
 |:---|:---|:---|:---|:---|
+| [SpaceXtale](https://tsensei.github.io/spaceXtale/) | Website | [tsensei](https://github.com/tsensei/) | [GitHub](https://github.com/tsensei/spaceXtale) | React app with spaceX-api |
 | [Rocket Downrange](https://rocketdownrange.com) | Website | [Cavan Lemasters](https://github.com/TheKicker) | [GitHub](https://github.com/TheKicker/rocket-downrange) | |
 | [SpaceX-Dashboard🚀](https://thespacexdashboard.netlify.app/) | Website | [Sanjay Rajesh](https://github.com/sanjayrjs16) | [GitHub](https://github.com/sanjayrjs16/spaceX-dashboard-react)||
 | [SpaceX-Launches](https://spacex.prutkowski.tech/) | Website | [Piotr Rutkowski](https://github.com/PiotrRut) | [GitHub](https://github.com/PiotrRut/SpaceX-Launches) | |
