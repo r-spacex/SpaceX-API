@@ -2,6 +2,7 @@
 FROM node:16-alpine
 
 LABEL maintainer="jakewmeyer@gmail.com"
+LABEL autoheal="true"
 
 HEALTHCHECK --interval=10s --timeout=3s \
   CMD ./lib/utils/healthcheck.js
