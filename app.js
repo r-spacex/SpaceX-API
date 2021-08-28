@@ -12,14 +12,8 @@ const routes = require('./routes');
 const app = new Koa();
 
 mongoose.connect(process.env.SPACEX_MONGO, {
-  useFindAndModify: false,
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true,
-  poolSize: 200,
+  bufferCommands: false,
 });
-
-mongoose.set('bufferCommands', false);
 
 const db = mongoose.connection;
 
