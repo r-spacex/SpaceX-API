@@ -110,7 +110,7 @@ module.exports = async () => {
           const yearPattern = /^\s*[0-9]{4}\s*$/i;
 
           // 2020 [14:10]
-          const yearHourPattern = /^\s*[0-9]{4}\s*(\[?\s*[0-9]{2}:[0-9]{2}\s*\]?)\s*$/i;
+          const yearHourPattern = /^\s*[0-9]{4}\s*(\[?\s*([0-9]{2}|[0-9]{1}):[0-9]{2}\s*\]?)\s*$/i;
 
           // 2020 Nov
           const monthPattern = /^\s*[0-9]{4}\s*([a-z]{3}|[a-z]{3,9})\s*$/i;
@@ -119,10 +119,10 @@ module.exports = async () => {
           const dayPattern = /^\s*[0-9]{4}\s*([a-z]{3}|[a-z]{3,9})\s*[0-9]{1,2}\s*$/i;
 
           // 2020 Nov [14:10]
-          const vagueHourPattern = /^\s*[0-9]{4}\s*([a-z]{3}|[a-z]{3,9})\s*(\[?\s*[0-9]{2}:[0-9]{2}\s*\]?)\s*$/i;
+          const vagueHourPattern = /^\s*[0-9]{4}\s*([a-z]{3}|[a-z]{3,9})\s*(\[?\s*([0-9]{2}|[0-9]{1}):[0-9]{2}\s*\]?)\s*$/i;
 
           // 2020 Nov 4 [14:10]
-          const hourPattern = /^\s*[0-9]{4}\s*([a-z]{3}|[a-z]{3,9})\s*[0-9]{1,2}\s*(\[?\s*[0-9]{2}:[0-9]{2}\s*\]?)\s*$/i;
+          const hourPattern = /^\s*[0-9]{4}\s*([a-z]{3}|[a-z]{3,9})\s*[0-9]{1,2}\s*(\[?\s*([0-9]{2}|[0-9]{1}):[0-9]{2}\s*\]?)\s*$/i;
 
           let precision;
           let wikiDate = wikiDates[parseInt(wikiIndex, 10)];
