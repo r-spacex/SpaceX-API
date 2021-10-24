@@ -35,7 +35,7 @@
     "fuzzball": "^2.0.2",
     "got": "^11.8.2",
     "ioredis": "^4.28.0",
-    "koa": "^2.13.3",
+    "koa": "^2.13.4",
     "koa-bodyparser": "^4.3.0",
     "koa-conditional-get": "^3.0.0",
     "koa-etag": "^4.0.0",
