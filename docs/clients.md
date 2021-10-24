@@ -17,6 +17,7 @@ NOTE: Clients are grouped by API version(s) supported
 | spacex_api | Ruby | Victor Perez | [Github](https://github.com/victorperez/spacex-api-ruby) |
 | xploration-graphql | TypeScript | Kartik Kumar Gujarati | [Github](https://github.com/Kartikkumargujarati/xploration-graphql) |
 | spacex-graphql-gateway | TypeScript | Kevin Hermawan | [Github](https://github.com/kevinstd/spacex-graphql-gateway) |
+| r/SpaceX (Independent Publisher) | [Power Platform](https://docs.microsoft.com/en-us/connectors/rspacexip/) | Troy Taylor | [Github](https://github.com/troystaylor/PowerPlatformConnectors/tree/r/SpaceX/independent-publisher-connectors/rSpaceX) |
 
 ### V3, V2, V1 (Deprecated)
 
