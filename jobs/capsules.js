@@ -26,15 +26,24 @@ module.exports = async () => {
     const result = await got(REDDIT_CAPSULES);
     const $ = cheerio.load(result.body);
 
-    const v1Capsules = $('body > div.content > div > div > table:nth-child(8) > tbody').text();
-    const v2Capsules = $('body > div.content > div > div > table:nth-child(10) > tbody').text();
-    const caps = v1Capsules.concat(v2Capsules);
-    const capsuleRow = caps.split('\n').filter((v) => v !== '');
-    const capsuleIds = capsuleRow.filter((value, index) => index % 7 === 0);
-    if (!capsuleIds.length) {
-      throw new Error('No capsules found');
+    const v1Capsules = $('div.md:nth-child(2) > table:nth-child(8) > tbody:nth-child(2)').text();
+    const v1CapsuleRow = v1Capsules.split('\n').filter((v) => v !== '');
+    const v1CapsuleIds = v1CapsuleRow.filter((value, index) => index % 7 === 0);
+    if (!v1CapsuleIds.length) {
+      throw new Error('No v1 capsules found');
     }
-    const capsuleStatus = capsuleRow.filter((value, index) => (index + 1) % 7 === 0).map((x) => x.replace(/\[source\]/gi, ''));
+    const v1CapsuleStatus = v1CapsuleRow.filter((value, index) => (index + 1) % 7 === 0).map((x) => x.replace(/\[source\]/gi, ''));
+
+    const v2Capsules = $('div.md:nth-child(2) > table:nth-child(10) > tbody:nth-child(2)').text();
+    const v2CapsuleRow = v2Capsules.split('\n').filter((v) => v !== '');
+    const v2CapsuleIds = v2CapsuleRow.filter((value, index) => index % 8 === 0).map((x) => x.split(',')[0]);
+    if (!v2CapsuleIds.length) {
+      throw new Error('No v2 capsules found');
+    }
+    const v2CapsuleStatus = v2CapsuleRow.filter((value, index) => (index + 1) % 8 === 0).map((x) => x.replace(/\[source\]/gi, ''));
+
+    const capsuleIds = [...v1CapsuleIds, ...v2CapsuleIds];
+    const capsuleStatus = [...v1CapsuleStatus, ...v2CapsuleStatus];
 
     const updates = capsules.docs.map(async (capsule) => {
       const waterLandings = await got.post(`${API}/payloads/query`, {
