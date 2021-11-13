@@ -1,12 +1,12 @@
 {
-  "plugins": ["security", "mongodb", "jest", "no-secrets"],
+  "plugins": ["mongodb", "jest", "no-secrets"],
   "env": {
     "node": true,
     "jest": true,
     "mongo": true,
     "es2021": true
   },
-  "extends": ["plugin:security/recommended", "airbnb-base"],
+  "extends": ["airbnb-base"],
   "parserOptions": {
     "ecmaVersion": 2021,
     "impliedStrict": true

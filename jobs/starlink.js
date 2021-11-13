@@ -12,12 +12,17 @@ const moment = MomentRange.extendMoment(Moment);
 
 /**
  * Generate Starlink version from date
- * @param {Date} date
+ * @param {Date}    date   Launch date UTC
+ * @param {String}  name   Mission name
  * @return {String}
  */
-const starlinkVersion = (date) => {
-  if (!date) {
+const starlinkVersion = (date, name) => {
+  if (!date || !name) {
     return null;
+  }
+  const missionNameVersion = name.match(/(?<version>v\d{1,3}.\d{1,3})/i)?.groups?.version;
+  if (missionNameVersion) {
+    return missionNameVersion;
   }
   const parsedDate = moment(date);
   let version = null;
@@ -89,7 +94,10 @@ module.exports = async () => {
 
       await got.patch(`${API}/starlink/${sat.NORAD_CAT_ID}`, {
         json: {
-          version: starlinkVersion(launches?.docs[0]?.date_utc || null),
+          version: starlinkVersion(
+            launches?.docs[0]?.date_utc || null,
+            launches?.docs[0]?.name || null,
+          ),
           launch: launches?.docs[0]?.id || null,
           longitude: position?.lng || null,
           latitude: position?.lat || null,
