@@ -1,5 +1,5 @@
 
-FROM node:16-alpine
+FROM node:17-alpine
 
 LABEL maintainer="jakewmeyer@gmail.com"
 LABEL autoheal="true"

@@ -2,7 +2,9 @@ const koaPino = require('koa-pino-logger');
 const pino = require('pino');
 
 const devOpts = {
-  prettyPrint: true,
+  transport: {
+    target: 'pino-pretty',
+  },
 };
 
 const env = process.env.NODE_ENV;
