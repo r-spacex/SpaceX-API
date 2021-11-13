@@ -54,7 +54,6 @@ module.exports = async () => {
 
     const allWikiDates = wikiRow.filter((_, index) => index % 7 === 0);
     const wikiDates = allWikiDates.slice(0, 30).map((date) => date
-      // eslint-disable-next-line security/detect-unsafe-regex
       .replace(/(?<=\[[0-9]{2}:[0-9]{2}\])(\[[0-9]{1,3}\]|\[[0-9]{1,3}|[0-9]{1,3}\])*/gi, '')
       .replace(/~|(\[|\[\[)[0-9]{1,3}\]/gi, '')
       .replace(/~|(\[|\])/gi, '')

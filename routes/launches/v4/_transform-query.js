@@ -15,7 +15,6 @@ module.exports = async (query) => {
       query.options.populate.forEach((item, index) => {
         if (_.isObject(query.options.populate)) {
           // Index is not user specified
-          // eslint-disable-next-line security/detect-object-injection
           transformed.options.populate[index].path = transformed.options.populate?.[index]?.path?.replace('crew', 'crew.crew');
         }
       });
