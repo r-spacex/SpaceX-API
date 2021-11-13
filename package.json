@@ -58,7 +58,7 @@
     "eslint": "^8.1.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.25.3",
-    "eslint-plugin-jest": "^25.2.2",
+    "eslint-plugin-jest": "^25.2.4",
     "eslint-plugin-mongodb": "^1.0.0",
     "eslint-plugin-no-secrets": "^0.8.9",
     "eslint-plugin-security": "^1.4.0",
