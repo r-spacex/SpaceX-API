@@ -11,6 +11,7 @@ const HEALTHCHECK = process.env.ROADSTER_HEALTHCHECK;
  * This script gathers tesla roadster orbital data from JPL Horizons,
  * parses the output with various regular expressions, and updates
  * the data accordingly.
+ * See https://ssd-api.jpl.nasa.gov/doc/horizons.html for more information
  * @return {Promise<void>}
  */
 module.exports = async () => {
