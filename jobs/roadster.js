@@ -1,3 +1,4 @@
+/* eslint-disable no-secrets/no-secrets */
 const got = require('got');
 const moment = require('moment-timezone');
 const { logger } = require('../middleware/logger');
@@ -6,72 +7,6 @@ const API = process.env.SPACEX_API;
 const KEY = process.env.SPACEX_KEY;
 const HEALTHCHECK = process.env.ROADSTER_HEALTHCHECK;
 
-// Using date range so Horizons doesn't give us the default 10 day data
-const today = moment().format('YYYY-MMM-DD HH:mm:ss');
-const tomorrow = moment().add(1, 'day').format('YYYY-MMM-DD HH:mm:ss');
-
-const ORBIT_URL = `https://ssd.jpl.nasa.gov/horizons_batch.cgi?batch=1&
-COMMAND= '-143205'&
-CENTER= '500@10'&
-MAKE_EPHEM= 'YES'&
-TABLE_TYPE= 'ELEMENTS'&
-START_TIME= '${today}'&
-STOP_TIME= '${tomorrow}'&
-STEP_SIZE= '1 d'&
-OUT_UNITS= 'AU-D'&
-REF_PLANE= 'ECLIPTIC'&
-REF_SYSTEM= 'J2000'&
-TP_TYPE= 'ABSOLUTE'&
-ELEM_LABELS= 'YES'&
-CSV_FORMAT= 'NO'&
-OBJ_DATA= 'YES'`;
-
-const EARTH_DIST_URL = `https://ssd.jpl.nasa.gov/horizons_batch.cgi?batch=1&
-COMMAND= '-143205'&
-CENTER= '500@399'&
-MAKE_EPHEM= 'YES'&
-TABLE_TYPE= 'OBSERVER'&
-START_TIME= '${today}'&
-STOP_TIME= '${tomorrow}'&
-STEP_SIZE= '1 d'&
-CAL_FORMAT= 'CAL'&
-TIME_DIGITS= 'MINUTES'&
-ANG_FORMAT= 'HMS'&
-OUT_UNITS= 'KM-S'&
-RANGE_UNITS= 'AU'&
-APPARENT= 'AIRLESS'&
-SUPPRESS_RANGE_RATE= 'NO'&
-SKIP_DAYLT= 'NO'&
-EXTRA_PREC= 'NO'&
-R_T_S_ONLY= 'NO'&
-REF_SYSTEM= 'J2000'&
-CSV_FORMAT= 'NO'&
-OBJ_DATA= 'YES'&
-QUANTITIES= '19,20'`;
-
-const MARS_DIST_URL = `https://ssd.jpl.nasa.gov/horizons_batch.cgi?batch=1&
-COMMAND= '-143205'&
-CENTER= '500@499'&
-MAKE_EPHEM= 'YES'&
-TABLE_TYPE= 'OBSERVER'&
-START_TIME= '${today}'&
-STOP_TIME= '${tomorrow}'&
-STEP_SIZE= '1 d'&
-CAL_FORMAT= 'CAL'&
-TIME_DIGITS= 'MINUTES'&
-ANG_FORMAT= 'HMS'&
-OUT_UNITS= 'KM-S'&
-RANGE_UNITS= 'AU'&
-APPARENT= 'AIRLESS'&
-SUPPRESS_RANGE_RATE= 'NO'&
-SKIP_DAYLT= 'NO'&
-EXTRA_PREC= 'NO'&
-R_T_S_ONLY= 'NO'&
-REF_SYSTEM= 'J2000'&
-CSV_FORMAT= 'NO'&
-OBJ_DATA= 'YES'&
-QUANTITIES= '19,20,22'`;
-
 /**
  * This script gathers tesla roadster orbital data from JPL Horizons,
  * parses the output with various regular expressions, and updates
@@ -79,6 +14,14 @@ QUANTITIES= '19,20,22'`;
  * @return {Promise<void>}
  */
 module.exports = async () => {
+  // Using date range so Horizons doesn't give us the default 10 day data
+  const today = moment().format('YYYY-MMM-DD HH:mm:ss');
+  const tomorrow = moment().add(1, 'day').format('YYYY-MMM-DD HH:mm:ss');
+
+  const ORBIT_URL = `https://ssd.jpl.nasa.gov/api/horizons.api?format=text&COMMAND='-143205'&CENTER='500@10'&EPHEM_TYPE='ELEMENTS'&START_TIME='${today}'&STOP_TIME='${tomorrow}'&STEP_SIZE='1 d'&OUT_UNITS='AU-D'&REF_PLANE='ECLIPTIC'&REF_SYSTEM='J2000'&TP_TYPE='ABSOLUTE'&ELEM_LABELS='YES'&CSV_FORMAT='NO'`;
+  const EARTH_DIST_URL = `https://ssd.jpl.nasa.gov/api/horizons.api?format=text&COMMAND='-143205'&CENTER='500@399'&START_TIME='${today}'&STOP_TIME='${tomorrow}'&STEP_SIZE='1 d'&CAL_FORMAT='CAL'&TIME_DIGITS='MINUTES'&ANG_FORMAT='HMS'&OUT_UNITS='KM-S'&RANGE_UNITS='AU'&APPARENT='AIRLESS'&SUPPRESS_RANGE_RATE='NO'&SKIP_DAYLT='NO'&EXTRA_PREC='NO'&R_T_S_ONLY='NO'&REF_SYSTEM='J2000'&CSV_FORMAT='NO'&QUANTITIES='19,20'`;
+  const MARS_DIST_URL = `https://ssd.jpl.nasa.gov/api/horizons.api?format=text&COMMAND='-143205'&CENTER='500@499'&START_TIME='${today}'&STOP_TIME='${tomorrow}'&STEP_SIZE='1 d'&CAL_FORMAT='CAL'&TIME_DIGITS='MINUTES'&ANG_FORMAT='HMS'&OUT_UNITS='KM-S'&RANGE_UNITS='AU'&APPARENT='AIRLESS'&SUPPRESS_RANGE_RATE='NO'&SKIP_DAYLT='NO'&EXTRA_PREC='NO'&R_T_S_ONLY='NO'&REF_SYSTEM='J2000'&CSV_FORMAT='NO'&QUANTITIES='19,20,22'`;
+
   try {
     const params = {
       resolveBodyOnly: true,
