@@ -90,6 +90,6 @@ Cache can be cleared with the following endpoint:
 
 Includes raw orbit data from [Space Track](https://www.space-track.org/auth/login), updated hourly.
 
-Space Track data adheres to the standard for [Orbit Data Messages](https://public.ccsds.org/pubs/502x0b2c1.pdf)
+Space Track data adheres to the standard for [Orbit Data Messages](https://public.ccsds.org/Pubs/502x0b2c1e2.pdf)
 
 ### [History](history) - Detailed info on SpaceX historical events
