@@ -148,6 +148,11 @@ const dragonSchema = new mongoose.Schema({
   },
 }, { autoCreate: true });
 
+const index = {
+  name: 'text',
+};
+dragonSchema.index(index);
+
 dragonSchema.plugin(mongoosePaginate);
 dragonSchema.plugin(idPlugin);
 

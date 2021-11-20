@@ -97,6 +97,11 @@ const shipSchema = new mongoose.Schema({
   }],
 }, { autoCreate: true });
 
+const index = {
+  name: 'text',
+};
+shipSchema.index(index);
+
 shipSchema.plugin(mongoosePaginate);
 shipSchema.plugin(idPlugin);
 

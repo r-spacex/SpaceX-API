@@ -30,6 +30,11 @@ const crewSchema = new mongoose.Schema({
   }],
 }, { autoCreate: true });
 
+const index = {
+  name: 'text',
+};
+crewSchema.index(index);
+
 crewSchema.plugin(mongoosePaginate);
 crewSchema.plugin(idPlugin);
 

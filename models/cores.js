@@ -47,6 +47,12 @@ const coreSchema = new mongoose.Schema({
   }],
 }, { autoCreate: true });
 
+const index = {
+  serial: 'text',
+  last_update: 'text',
+};
+coreSchema.index(index);
+
 coreSchema.plugin(mongoosePaginate);
 coreSchema.plugin(idPlugin);
 

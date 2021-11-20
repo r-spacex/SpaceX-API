@@ -61,6 +61,13 @@ const launchpadSchema = new mongoose.Schema({
   },
 }, { autoCreate: true });
 
+const index = {
+  name: 'text',
+  full_name: 'text',
+  details: 'text',
+};
+launchpadSchema.index(index);
+
 launchpadSchema.plugin(mongoosePaginate);
 launchpadSchema.plugin(idPlugin);
 

@@ -208,6 +208,11 @@ const rocketSchema = new mongoose.Schema({
   },
 }, { autoCreate: true });
 
+const index = {
+  name: 'text',
+};
+rocketSchema.index(index);
+
 rocketSchema.plugin(mongoosePaginate);
 rocketSchema.plugin(idPlugin);
 

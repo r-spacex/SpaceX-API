@@ -27,6 +27,12 @@ const historySchema = new mongoose.Schema({
   },
 }, { autoCreate: true });
 
+const index = {
+  title: 'text',
+  details: 'text',
+};
+historySchema.index(index);
+
 historySchema.plugin(mongoosePaginate);
 historySchema.plugin(idPlugin);
 

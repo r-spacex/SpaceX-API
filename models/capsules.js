@@ -44,6 +44,12 @@ const capsuleSchema = new mongoose.Schema({
   }],
 }, { autoCreate: true });
 
+const index = {
+  serial: 'text',
+  last_update: 'text',
+};
+capsuleSchema.index(index);
+
 capsuleSchema.plugin(mongoosePaginate);
 capsuleSchema.plugin(idPlugin);
 

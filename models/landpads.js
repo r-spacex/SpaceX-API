@@ -61,6 +61,13 @@ const landpadSchema = new mongoose.Schema({
   },
 }, { autoCreate: true });
 
+const index = {
+  name: 'text',
+  full_name: 'text',
+  details: 'text',
+};
+landpadSchema.index(index);
+
 landpadSchema.plugin(mongoosePaginate);
 landpadSchema.plugin(idPlugin);
 
