@@ -8,6 +8,7 @@ const mongoose = require('mongoose');
 const { logger } = require('./middleware/logger');
 const { responseTime, errors } = require('./middleware');
 const routes = require('./routes');
+require('dotenv').config();
 
 const app = new Koa();
 

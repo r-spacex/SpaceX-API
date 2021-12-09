@@ -1,7 +1,6 @@
 {
   "name": "spacex-api",
   "version": "4.0.0",
-  "description": "Open Source REST API for data about SpaceX",
   "main": "server.js",
   "scripts": {
     "test": "npm run lint && npm run check-dependencies && jest --silent --verbose",
@@ -10,28 +9,11 @@
     "lint": "eslint .",
     "check-dependencies": "npx depcheck --ignores=\"pino-pretty\""
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/r-spacex/SpaceX-API"
-  },
-  "keywords": [
-    "spacex",
-    "space",
-    "rocket",
-    "rest-api",
-    "mongodb",
-    "koa"
-  ],
-  "author": "Jake Meyer <jakewmeyer@gmail.com>",
-  "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/r-spacex/SpaceX-API/issues"
-  },
-  "homepage": "https://github.com/r-spacex/SpaceX-API",
   "dependencies": {
     "blake3": "^2.1.7",
     "cheerio": "^1.0.0-rc.10",
     "cron": "^1.8.2",
+    "dotenv": "^10.0.0",
     "fuzzball": "^2.1.2",
     "got": "^11.8.3",
     "ioredis": "^4.28.2",

@@ -6,6 +6,8 @@ const app = require('./app');
 const PORT = process.env.PORT || 6673;
 const SERVER = http.createServer(app.callback());
 
+require('dotenv').config();
+
 // Gracefully close Mongo connection
 const gracefulShutdown = (msg) => {
   logger.info(`Shutdown initiated: ${msg}`);

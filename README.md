@@ -1,5 +1,3 @@
-<p align="center"><img src="https://live.staticflickr.com/65535/49185149122_37f5c52e43_k.jpg"></p>
-
 <h1 align="center">SpaceX REST API</h1>
 
 <h3 align="center">
@@ -144,14 +142,3 @@ GET https://api.spacexdata.com/v4/launches/latest
 <br/>
 <img src="https://healthchecks.io/badge/a99e6369-9795-417e-9a1c-31ea91/_Z-lNpev-2/launch-library-v2.svg">
 </p>
-
-## Sponsors
-
-### [Studio 3T](https://studio3t.com/)
-
-[![Studio 3T](https://imgur.com/DbJSfAo.png)](https://studio3t.com/)
-
-## FAQ's
-
-* If you have any questions or corrections, please open an issue and we'll get it merged ASAP
-* For any other questions or concerns, just shoot me an email.
