@@ -4,6 +4,7 @@
 
 |App|Type|Creator(s)|Repo|More|
 |:---|:---|:---|:---|:---|
+| [SpaceX Live Info 🔴️](https://spacex-live.netlify.app/) | Website | [Pawel Pisulski](https://github.com/pislagz) | [GitHub](https://github.com/pislagz/spacex-live) | built with React & Redux |
 | [SpaceXtale](https://tsensei.github.io/spaceXtale/) | Website | [tsensei](https://github.com/tsensei/) | [GitHub](https://github.com/tsensei/spaceXtale) | React app with spaceX-api |
 | [Rocket Downrange](https://rocketdownrange.com) | Website | [Cavan Lemasters](https://github.com/TheKicker) | [GitHub](https://github.com/TheKicker/rocket-downrange) | |
 | [SpaceX-Dashboard🚀](https://thespacexdashboard.netlify.app/) | Website | [Sanjay Rajesh](https://github.com/sanjayrjs16) | [GitHub](https://github.com/sanjayrjs16/spaceX-dashboard-react)||
