@@ -1,1 +1,1 @@
-export default [await import('./v4/index.js')];
+export default [import('./v4/index.js')];

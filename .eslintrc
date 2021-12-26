@@ -1,20 +1,27 @@
 {
-  "plugins": ["mongodb", "jest", "no-secrets"],
+  "plugins": ["mongodb", "jest"],
   "env": {
     "node": true,
     "jest": true,
-    "mongo": true,
-    "es2021": true
+    "mongo": true
   },
-  "extends": ["airbnb-base", "plugin:import/recommended" ,"plugin:prettier/recommended"],
+  "extends": [
+    "airbnb-base",
+    "plugin:prettier/recommended"
+  ],
   "parserOptions": {
     "ecmaVersion": 2021
   },
   "rules": {
     "no-console": 0,
-    "no-secrets/no-secrets": "error"
-  },
-  "prettier/prettier": ["error", {}, {
-    "usePrettierrc": false
-  }]
+    "prettier/prettier": [
+      "error",
+      {},
+      {
+        "usePrettierrc": true
+      }
+    ],
+    "import/no-unresolved": 0,
+    "import/extensions": [0, "ignorePackages"]
+  }
 }

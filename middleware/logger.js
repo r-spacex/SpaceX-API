@@ -20,4 +20,7 @@ if (env === 'production' || env === 'stage') {
   logger = pino(devOpts);
 }
 
-export { requestLog as requestLogger, logger };
+const exportedLogger = logger;
+const exportedRequestLogger = requestLog;
+
+export { exportedRequestLogger as requestLogger, exportedLogger as logger };

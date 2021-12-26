@@ -13,7 +13,7 @@
     "worker": "node jobs/worker.js",
     "lint": "eslint .",
     "format": "prettier --write **/*.js",
-    "check-dependencies": "npx depcheck --ignores=\"pino-pretty\""
+    "check-dependencies": "npx depcheck --ignores=\"pino-pretty\",\"@jest/types\""
   },
   "repository": {
     "type": "git",
@@ -60,13 +60,13 @@
     "tough-cookie": "^4.0.0"
   },
   "devDependencies": {
+    "@jest/types": "^27.4.2",
     "eslint": "^8.5.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-jest": "^25.3.0",
     "eslint-plugin-mongodb": "^1.0.0",
-    "eslint-plugin-no-secrets": "^0.8.9",
     "eslint-plugin-prettier": "^4.0.0",
     "jest": "^27.4.5",
     "pino-pretty": "^7.3.0"

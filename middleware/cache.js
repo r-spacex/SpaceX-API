@@ -2,14 +2,14 @@ import Redis from 'ioredis';
 import blake3 from 'blake3';
 import { logger } from './logger.js';
 
-let redis;
 let redisAvailable = false;
-
+let redis;
 if (process.env.SPACEX_REDIS) {
   redis = new Redis(process.env.SPACEX_REDIS);
 } else {
   redis = new Redis();
 }
+const exportedRedis = redis;
 
 redis.on('error', () => {
   redisAvailable = false;
@@ -98,4 +98,4 @@ const middleware = (ttl) => async (ctx, next) => {
   }
 };
 
-export { middleware as default, redis };
+export { middleware, exportedRedis };

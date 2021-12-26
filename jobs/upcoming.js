@@ -1,3 +1,5 @@
+/* eslint-disable no-continue */
+/* eslint-disable no-restricted-syntax */
 import got from 'got';
 import cheerio from 'cheerio';
 import fuzz from 'fuzzball';

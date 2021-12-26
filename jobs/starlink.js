@@ -5,7 +5,6 @@ import MomentRange from 'moment-range';
 import { getSatelliteInfo } from 'tle.js';
 import { logger } from '../middleware/logger';
 
-
 const API = process.env.SPACEX_API;
 const KEY = process.env.SPACEX_KEY;
 const HEALTHCHECK = process.env.STARLINK_HEALTHCHECK;
@@ -54,7 +53,6 @@ export default async () => {
       cookieJar,
     });
 
-    // eslint-disable-next-line no-secrets/no-secrets
     const data = await got(
       'https://www.space-track.org/basicspacedata/query/class/gp/OBJECT_NAME/~~STARLINK,~~TINTIN/orderby/NORAD_CAT_ID',
       {
