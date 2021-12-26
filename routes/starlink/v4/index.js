@@ -1,6 +1,6 @@
-const Router = require('koa-router');
-const { Starlink } = require('../../../models');
-const { auth, authz, cache } = require('../../../middleware');
+import Router from 'koa-router';
+import { Starlink } from '../../../models/index.js';
+import { auth, authz, cache } from '../../../middleware/index.js';
 
 const router = new Router({
   prefix: '/(v4|latest)/starlink',
@@ -53,11 +53,15 @@ router.post('/', auth, authz('starlink:create'), async (ctx) => {
 // Update a Starlink satellite
 router.patch('/:norad_id', auth, authz('starlink:update'), async (ctx) => {
   try {
-    await Starlink.findOneAndUpdate({ 'spaceTrack.NORAD_CAT_ID': ctx.params.norad_id }, ctx.request.body, {
-      runValidators: true,
-      setDefaultsOnInsert: true,
-      upsert: true,
-    });
+    await Starlink.findOneAndUpdate(
+      { 'spaceTrack.NORAD_CAT_ID': ctx.params.norad_id },
+      ctx.request.body,
+      {
+        runValidators: true,
+        setDefaultsOnInsert: true,
+        upsert: true,
+      }
+    );
     ctx.status = 200;
   } catch (error) {
     ctx.throw(400, error.message);
@@ -74,4 +78,4 @@ router.delete('/:id', auth, authz('starlink:delete'), async (ctx) => {
   }
 });
 
-module.exports = router;
+export default router;

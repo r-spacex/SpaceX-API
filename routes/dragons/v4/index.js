@@ -1,6 +1,6 @@
-const Router = require('koa-router');
-const { Dragon } = require('../../../models');
-const { auth, authz, cache } = require('../../../middleware');
+import Router from 'koa-router';
+import { Dragon } from '../../../models/index.js';
+import { auth, authz, cache } from '../../../middleware/index.js';
 
 const router = new Router({
   prefix: '/(v4|latest)/dragons',
@@ -53,7 +53,9 @@ router.post('/', auth, authz('dragon:create'), async (ctx) => {
 // Update a dragon
 router.patch('/:id', auth, authz('dragon:update'), async (ctx) => {
   try {
-    await Dragon.findByIdAndUpdate(ctx.params.id, ctx.request.body, { runValidators: true });
+    await Dragon.findByIdAndUpdate(ctx.params.id, ctx.request.body, {
+      runValidators: true,
+    });
     ctx.status = 200;
   } catch (error) {
     ctx.throw(400, error.message);
@@ -70,4 +72,4 @@ router.delete('/:id', auth, authz('dragon:delete'), async (ctx) => {
   }
 });
 
-module.exports = router;
+export default router;

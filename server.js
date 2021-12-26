@@ -1,7 +1,7 @@
-const http = require('http');
-const mongoose = require('mongoose');
-const { logger } = require('./middleware/logger');
-const app = require('./app');
+import http from 'http';
+import mongoose from 'mongoose';
+import { logger } from './middleware/logger.js';
+import app from './app.js';
 
 const PORT = process.env.PORT || 6673;
 const SERVER = http.createServer(app.callback());

@@ -76,10 +76,7 @@ GET https://api.spacexdata.com/v4/launches/latest
   "success": true,
   "failures": [],
   "details": "SpaceX will launch the second demonstration mission of its Crew Dragon vehicle as part of NASA's Commercial Crew Transportation Capability Program (CCtCap), carrying two NASA astronauts to the International Space Station. Barring unexpected developments, this mission will be the first crewed flight to launch from the United States since the end of the Space Shuttle program in 2011. DM-2 demonstrates the Falcon 9 and Crew Dragon's ability to safely transport crew to the space station and back to Earth and it is the last major milestone for certification of Crew Dragon. Initially the mission duration was planned to be no longer than two weeks, however NASA has been considering an extension to as much as six weeks or three months. The astronauts have been undergoing additional training for the possible longer mission.",
-  "crew": [
-    "5ebf1b7323a9a60006e03a7b",
-    "5ebf1a6e23a9a60006e03a7a"
-  ],
+  "crew": ["5ebf1b7323a9a60006e03a7b", "5ebf1a6e23a9a60006e03a7a"],
   "ships": [
     "5ea6ed30080df4000697c913",
     "5ea6ed2f080df4000697c90b",
@@ -87,12 +84,8 @@ GET https://api.spacexdata.com/v4/launches/latest
     "5ea6ed2e080df4000697c909",
     "5ea6ed2f080df4000697c90d"
   ],
-  "capsules": [
-    "5e9e2c5df359188aba3b2676"
-  ],
-  "payloads": [
-    "5eb0e4d1b6c3bb0006eeb257"
-  ],
+  "capsules": ["5e9e2c5df359188aba3b2676"],
+  "payloads": ["5eb0e4d1b6c3bb0006eeb257"],
   "launchpad": "5e9e4502f509094188566f88",
   "auto_update": true,
   "flight_number": 94,
@@ -153,5 +146,5 @@ GET https://api.spacexdata.com/v4/launches/latest
 
 ## FAQ's
 
-* If you have any questions or corrections, please open an issue and we'll get it merged ASAP
-* For any other questions or concerns, just shoot me an email.
+- If you have any questions or corrections, please open an issue and we'll get it merged ASAP
+- For any other questions or concerns, just shoot me an email.

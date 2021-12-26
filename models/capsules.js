@@ -1,48 +1,53 @@
-const mongoose = require('mongoose');
-const mongoosePaginate = require('mongoose-paginate-v2');
-const idPlugin = require('mongoose-id');
+import mongoose from 'mongoose';
+import mongoosePaginate from 'mongoose-paginate-v2';
+import idPlugin from 'mongoose-id';
 
-const capsuleSchema = new mongoose.Schema({
-  serial: {
-    type: String,
-    required: true,
-    unique: true,
+const capsuleSchema = new mongoose.Schema(
+  {
+    serial: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    status: {
+      type: String,
+      enum: ['unknown', 'active', 'retired', 'destroyed'],
+      required: true,
+    },
+    type: {
+      type: String,
+      enum: ['Dragon 1.0', 'Dragon 1.1', 'Dragon 2.0'],
+      required: true,
+    },
+    dragon: {
+      type: mongoose.ObjectId,
+      ref: 'Dragon',
+    },
+    reuse_count: {
+      type: Number,
+      default: 0,
+    },
+    water_landings: {
+      type: Number,
+      default: 0,
+    },
+    land_landings: {
+      type: Number,
+      default: 0,
+    },
+    last_update: {
+      type: String,
+      default: null,
+    },
+    launches: [
+      {
+        type: mongoose.ObjectId,
+        ref: 'Launch',
+      },
+    ],
   },
-  status: {
-    type: String,
-    enum: ['unknown', 'active', 'retired', 'destroyed'],
-    required: true,
-  },
-  type: {
-    type: String,
-    enum: ['Dragon 1.0', 'Dragon 1.1', 'Dragon 2.0'],
-    required: true,
-  },
-  dragon: {
-    type: mongoose.ObjectId,
-    ref: 'Dragon',
-  },
-  reuse_count: {
-    type: Number,
-    default: 0,
-  },
-  water_landings: {
-    type: Number,
-    default: 0,
-  },
-  land_landings: {
-    type: Number,
-    default: 0,
-  },
-  last_update: {
-    type: String,
-    default: null,
-  },
-  launches: [{
-    type: mongoose.ObjectId,
-    ref: 'Launch',
-  }],
-}, { autoCreate: true });
+  { autoCreate: true }
+);
 
 const index = {
   serial: 'text',
@@ -55,4 +60,4 @@ capsuleSchema.plugin(idPlugin);
 
 const Capsule = mongoose.model('Capsule', capsuleSchema);
 
-module.exports = Capsule;
+export default Capsule;

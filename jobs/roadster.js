@@ -1,7 +1,6 @@
-/* eslint-disable no-secrets/no-secrets */
-const got = require('got');
-const moment = require('moment-timezone');
-const { logger } = require('../middleware/logger');
+import got from 'got';
+import moment from 'moment-timezone';
+import { logger } from '../middleware/logger';
 
 const API = process.env.SPACEX_API;
 const KEY = process.env.SPACEX_KEY;
@@ -14,7 +13,7 @@ const HEALTHCHECK = process.env.ROADSTER_HEALTHCHECK;
  * See https://ssd-api.jpl.nasa.gov/doc/horizons.html for more information
  * @return {Promise<void>}
  */
-module.exports = async () => {
+export default async () => {
   // Using date range so Horizons doesn't give us the default 10 day data
   const today = moment().format('YYYY-MMM-DD HH:mm:ss');
   const tomorrow = moment().add(1, 'day').format('YYYY-MMM-DD HH:mm:ss');
@@ -93,7 +92,7 @@ module.exports = async () => {
     const earthSoe = RegExp.$1;
     const strippedEarth = earthSoe.replace(/(\r\n\t|\n|\r\t)/gm, '');
     const earthResult = strippedEarth.split(/\s+/)[5];
-    const earthDistanceKm = (parseFloat(earthResult.trim()) * 149598073);
+    const earthDistanceKm = parseFloat(earthResult.trim()) * 149598073;
     const earthDistanceMi = earthDistanceKm * 0.621371;
 
     // Read SOE of mars distance + calculate distance in miles and kilometers
@@ -101,12 +100,12 @@ module.exports = async () => {
     const marsSoe = RegExp.$1;
     const strippedMars = marsSoe.replace(/(\r\n\t|\n|\r\t)/gm, '');
     const marsResult = strippedMars.split(/\s+/)[5];
-    const marsDistanceKm = (parseFloat(marsResult.trim()) * 149598073);
+    const marsDistanceKm = parseFloat(marsResult.trim()) * 149598073;
     const marsDistanceMi = marsDistanceKm * 0.621371;
 
     // Read SOE of orbital speed in KM/s + calculate kph and mph
     const speedResult = strippedMars.split(/\s+/)[5];
-    const orbitalSpeedKph = (parseFloat(speedResult.trim()) * 60.0 * 60.0);
+    const orbitalSpeedKph = parseFloat(speedResult.trim()) * 60.0 * 60.0;
     const orbitalSpeedMph = orbitalSpeedKph * 0.621371;
 
     const roadster = await got(`${API}/roadster`, {

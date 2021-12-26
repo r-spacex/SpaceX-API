@@ -1,5 +1,5 @@
-const koaPino = require('koa-pino-logger');
-const pino = require('pino');
+import koaPino from 'koa-pino-logger';
+import pino from 'pino';
 
 const devOpts = {
   transport: {
@@ -20,5 +20,4 @@ if (env === 'production' || env === 'stage') {
   logger = pino(devOpts);
 }
 
-module.exports.requestLogger = requestLog;
-module.exports.logger = logger;
+export { requestLog as requestLogger, logger };

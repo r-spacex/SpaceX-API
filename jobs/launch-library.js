@@ -1,20 +1,16 @@
-const got = require('got');
-const moment = require('moment-timezone');
-const { fail, success } = require('../lib/healthchecks');
-const { logger } = require('../middleware/logger');
+import got from 'got';
+import moment from 'moment-timezone';
+import { logger } from '../middleware/logger';
+import { fail, success } from '../lib/healthchecks';
 
-const {
-  SPACEX_KEY,
-  LAUNCH_LIBRARY_HEALTHCHECK,
-  SPACEX_API: API,
-} = process.env;
+const { SPACEX_KEY, LAUNCH_LIBRARY_HEALTHCHECK, SPACEX_API: API } = process.env;
 const LAUNCH_LIBRARY_API = 'https://ll.thespacedevs.com/2.1.0/launch/upcoming';
 
 /**
  * Attach Launch Library v2 launch id's to upcoming launches
  * @return {Promise<void>}
  */
-module.exports = async () => {
+export default async () => {
   try {
     const log = {
       name: 'launch-library',
@@ -57,7 +53,9 @@ module.exports = async () => {
           llId: date.llId,
         }));
         // Sort the date diffs by closeness to zero
-        const close = diffs.reduce((a, b) => (Math.abs(b.diff - 0) < Math.abs(a.diff - 0) ? b : a));
+        const close = diffs.reduce((a, b) =>
+          Math.abs(b.diff - 0) < Math.abs(a.diff - 0) ? b : a
+        );
         await got.patch(`${API}/launches/${upcomingLaunch.id}`, {
           json: {
             launch_library_id: close.llId,

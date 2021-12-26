@@ -1,6 +1,6 @@
-const Router = require('koa-router');
-const { Company } = require('../../../models');
-const { auth, authz, cache } = require('../../../middleware');
+import Router from 'koa-router';
+import { Company } from '../../../models/index.js';
+import { auth, authz, cache } from '../../../middleware/index.js';
 
 const router = new Router({
   prefix: '/(v4|latest)/company',
@@ -20,11 +20,13 @@ router.get('/', cache(86400), async (ctx) => {
 // Update company info
 router.patch('/:id', auth, authz('company:update'), async (ctx) => {
   try {
-    await Company.findByIdAndUpdate(ctx.params.id, ctx.request.body, { runValidators: true });
+    await Company.findByIdAndUpdate(ctx.params.id, ctx.request.body, {
+      runValidators: true,
+    });
     ctx.status = 200;
   } catch (error) {
     ctx.throw(400, error.message);
   }
 });
 
-module.exports = router;
+export default router;

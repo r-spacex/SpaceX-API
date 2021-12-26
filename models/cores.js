@@ -1,51 +1,56 @@
-const mongoose = require('mongoose');
-const mongoosePaginate = require('mongoose-paginate-v2');
-const idPlugin = require('mongoose-id');
+import mongoose from 'mongoose';
+import mongoosePaginate from 'mongoose-paginate-v2';
+import idPlugin from 'mongoose-id';
 
-const coreSchema = new mongoose.Schema({
-  serial: {
-    type: String,
-    unique: true,
-    required: true,
+const coreSchema = new mongoose.Schema(
+  {
+    serial: {
+      type: String,
+      unique: true,
+      required: true,
+    },
+    block: {
+      type: Number,
+      default: null,
+    },
+    status: {
+      type: String,
+      enum: ['active', 'inactive', 'unknown', 'expended', 'lost', 'retired'],
+      required: true,
+    },
+    reuse_count: {
+      type: Number,
+      default: 0,
+    },
+    rtls_attempts: {
+      type: Number,
+      default: 0,
+    },
+    rtls_landings: {
+      type: Number,
+      default: 0,
+    },
+    asds_attempts: {
+      type: Number,
+      default: 0,
+    },
+    asds_landings: {
+      type: Number,
+      default: 0,
+    },
+    last_update: {
+      type: String,
+      default: null,
+    },
+    launches: [
+      {
+        type: mongoose.ObjectId,
+        ref: 'Launch',
+      },
+    ],
   },
-  block: {
-    type: Number,
-    default: null,
-  },
-  status: {
-    type: String,
-    enum: ['active', 'inactive', 'unknown', 'expended', 'lost', 'retired'],
-    required: true,
-  },
-  reuse_count: {
-    type: Number,
-    default: 0,
-  },
-  rtls_attempts: {
-    type: Number,
-    default: 0,
-  },
-  rtls_landings: {
-    type: Number,
-    default: 0,
-  },
-  asds_attempts: {
-    type: Number,
-    default: 0,
-  },
-  asds_landings: {
-    type: Number,
-    default: 0,
-  },
-  last_update: {
-    type: String,
-    default: null,
-  },
-  launches: [{
-    type: mongoose.ObjectId,
-    ref: 'Launch',
-  }],
-}, { autoCreate: true });
+  { autoCreate: true }
+);
 
 const index = {
   serial: 'text',
@@ -58,4 +63,4 @@ coreSchema.plugin(idPlugin);
 
 const Core = mongoose.model('Core', coreSchema);
 
-module.exports = Core;
+export default Core;

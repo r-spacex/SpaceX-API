@@ -57,9 +57,7 @@
     }
   },
   "payload_weights": {
-    "type": [
-      "Object"
-    ]
+    "type": ["Object"]
   },
   "first_stage": {
     "reusable": {
@@ -195,9 +193,7 @@
     }
   },
   "flickr_images": {
-    "type": [
-      "String"
-    ]
+    "type": ["String"]
   },
   "wikipedia": {
     "type": "String"

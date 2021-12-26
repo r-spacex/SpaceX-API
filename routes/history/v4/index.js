@@ -1,6 +1,6 @@
-const Router = require('koa-router');
-const { History } = require('../../../models');
-const { auth, authz, cache } = require('../../../middleware');
+import Router from 'koa-router';
+import { History } from '../../../models/index.js';
+import { auth, authz, cache } from '../../../middleware/index.js';
 
 const router = new Router({
   prefix: '/(v4|latest)/history',
@@ -53,7 +53,9 @@ router.post('/', auth, authz('history:create'), async (ctx) => {
 // Update a history event
 router.patch('/:id', auth, authz('history:update'), async (ctx) => {
   try {
-    await History.findByIdAndUpdate(ctx.params.id, ctx.request.body, { runValidators: true });
+    await History.findByIdAndUpdate(ctx.params.id, ctx.request.body, {
+      runValidators: true,
+    });
     ctx.status = 200;
   } catch (error) {
     ctx.throw(400, error.message);
@@ -70,4 +72,4 @@ router.delete('/:id', auth, authz('history:delete'), async (ctx) => {
   }
 });
 
-module.exports = router;
+export default router;

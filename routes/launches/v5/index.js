@@ -1,6 +1,6 @@
-const Router = require('koa-router');
-const { Launch } = require('../../../models');
-const { auth, authz, cache } = require('../../../middleware');
+import Router from 'koa-router';
+import { Launch } from '../../../models/index.js';
+import { auth, authz, cache } from '../../../middleware/index.js';
 
 const router = new Router({
   prefix: '/(v5|latest)/launches',
@@ -13,13 +13,17 @@ const router = new Router({
 // Get past launches
 router.get('/past', cache(20), async (ctx) => {
   try {
-    const result = await Launch.find({
-      upcoming: false,
-    }, null, {
-      sort: {
-        flight_number: 'asc',
+    const result = await Launch.find(
+      {
+        upcoming: false,
       },
-    });
+      null,
+      {
+        sort: {
+          flight_number: 'asc',
+        },
+      }
+    );
     ctx.status = 200;
     ctx.body = result;
   } catch (error) {
@@ -30,13 +34,17 @@ router.get('/past', cache(20), async (ctx) => {
 // Get upcoming launches
 router.get('/upcoming', cache(20), async (ctx) => {
   try {
-    const result = await Launch.find({
-      upcoming: true,
-    }, null, {
-      sort: {
-        flight_number: 'asc',
+    const result = await Launch.find(
+      {
+        upcoming: true,
       },
-    });
+      null,
+      {
+        sort: {
+          flight_number: 'asc',
+        },
+      }
+    );
     ctx.status = 200;
     ctx.body = result;
   } catch (error) {
@@ -47,13 +55,17 @@ router.get('/upcoming', cache(20), async (ctx) => {
 // Get latest launch
 router.get('/latest', cache(20), async (ctx) => {
   try {
-    const result = await Launch.findOne({
-      upcoming: false,
-    }, null, {
-      sort: {
-        flight_number: 'desc',
+    const result = await Launch.findOne(
+      {
+        upcoming: false,
       },
-    });
+      null,
+      {
+        sort: {
+          flight_number: 'desc',
+        },
+      }
+    );
     ctx.status = 200;
     ctx.body = result;
   } catch (error) {
@@ -64,13 +76,17 @@ router.get('/latest', cache(20), async (ctx) => {
 // Get next launch
 router.get('/next', cache(20), async (ctx) => {
   try {
-    const result = await Launch.findOne({
-      upcoming: true,
-    }, null, {
-      sort: {
-        flight_number: 'asc',
+    const result = await Launch.findOne(
+      {
+        upcoming: true,
       },
-    });
+      null,
+      {
+        sort: {
+          flight_number: 'asc',
+        },
+      }
+    );
     ctx.status = 200;
     ctx.body = result;
   } catch (error) {
@@ -152,4 +168,4 @@ router.delete('/:id', auth, authz('launch:delete'), async (ctx) => {
   }
 });
 
-module.exports = router;
+export default router;

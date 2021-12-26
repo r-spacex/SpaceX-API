@@ -1,22 +1,18 @@
-const got = require('got');
-const fuzz = require('fuzzball');
-const Parser = require('rss-parser');
-const { fail, success } = require('../lib/healthchecks');
-const { logger } = require('../middleware/logger');
+import got from 'got';
+import fuzz from 'fuzzball';
+import Parser from 'rss-parser';
+import { fail, success } from '../lib/healthchecks';
+import { logger } from '../middleware/logger';
 
 const YOUTUBE_PREFIX = 'https://youtu.be';
 const CHANNEL_ID = 'UCtI0Hodo5o5dUb67FeUjDeA';
-const {
-  SPACEX_KEY,
-  WEBCAST_HEALTHCHECK,
-  SPACEX_API: API,
-} = process.env;
+const { SPACEX_KEY, WEBCAST_HEALTHCHECK, SPACEX_API: API } = process.env;
 
 /**
  * Check for new SpaceX webcast links
  * @return {Promise<void>}
  */
-module.exports = async () => {
+export default async () => {
   try {
     let updated = false;
     let match = false;

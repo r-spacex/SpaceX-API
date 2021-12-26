@@ -4,25 +4,25 @@
 {
   "title": {
     "type": "String",
-    "default": null,
+    "default": null
   },
   "event_date_utc": {
     "type": "String",
-    "default": null,
+    "default": null
   },
   "event_date_unix": {
     "type": "Number",
-    "default": null,
+    "default": null
   },
   "details": {
     "type": "String",
-    "default": null,
+    "default": null
   },
   "links": {
     "article": {
       "type": "String",
-      "default": null,
-    },
-  },
+      "default": null
+    }
+  }
 }
 ```

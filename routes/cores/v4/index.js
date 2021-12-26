@@ -1,6 +1,6 @@
-const Router = require('koa-router');
-const { Core } = require('../../../models');
-const { auth, authz, cache } = require('../../../middleware');
+import Router from 'koa-router';
+import { Core } from '../../../models/index.js';
+import { auth, authz, cache } from '../../../middleware/index.js';
 
 const router = new Router({
   prefix: '/(v4|latest)/cores',
@@ -53,7 +53,9 @@ router.post('/', auth, authz('core:create'), async (ctx) => {
 // Update core
 router.patch('/:id', auth, authz('core:update'), async (ctx) => {
   try {
-    await Core.findByIdAndUpdate(ctx.params.id, ctx.request.body, { runValidators: true });
+    await Core.findByIdAndUpdate(ctx.params.id, ctx.request.body, {
+      runValidators: true,
+    });
     ctx.status = 200;
   } catch (error) {
     ctx.throw(400, error.message);
@@ -70,4 +72,4 @@ router.delete('/:id', auth, authz('core:delete'), async (ctx) => {
   }
 });
 
-module.exports = router;
+export default router;

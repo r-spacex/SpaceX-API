@@ -5,39 +5,41 @@
   "serial": {
     "type": "String",
     "required": true,
-    "unique": true,
+    "unique": true
   },
   "status": {
     "type": "String",
     "enum": ["unknown", "active", "retired", "destroyed"],
-    "required": true,
+    "required": true
   },
   "type": {
     "type": "String",
     "enum": ["Dragon 1.0", "Dragon 1.1", "Dragon 2.0"],
-    "required": true,
+    "required": true
   },
   "dragon": {
-    "type": "UUID",
+    "type": "UUID"
   },
   "reuse_count": {
     "type": "Number",
-    "default": 0,
+    "default": 0
   },
   "water_landings": {
     "type": "Number",
-    "default": 0,
+    "default": 0
   },
   "land_landings": {
     "type": "Number",
-    "default": 0,
+    "default": 0
   },
   "last_update": {
     "type": "String",
-    "default": null,
+    "default": null
   },
-  "launches": [{
-    "type": "UUID",
-  }],
+  "launches": [
+    {
+      "type": "UUID"
+    }
+  ]
 }
 ```

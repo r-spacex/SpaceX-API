@@ -6,19 +6,15 @@
     "mongo": true,
     "es2021": true
   },
-  "extends": ["airbnb-base"],
+  "extends": ["airbnb-base", "plugin:import/recommended" ,"plugin:prettier/recommended"],
   "parserOptions": {
-    "ecmaVersion": 2021,
-    "impliedStrict": true
+    "ecmaVersion": 2021
   },
   "rules": {
     "no-console": 0,
-    "no-secrets/no-secrets": "error",
-    "import/no-extraneous-dependencies": [
-      "error",
-      {
-        "devDependencies": ["test/*.test.js", "scripts/*.js"]
-      }
-    ]
-  }
+    "no-secrets/no-secrets": "error"
+  },
+  "prettier/prettier": ["error", {}, {
+    "usePrettierrc": false
+  }]
 }

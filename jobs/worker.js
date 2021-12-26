@@ -1,16 +1,16 @@
-const { CronJob } = require('cron');
-const { logger } = require('../middleware/logger');
-const launches = require('./launches');
-const payloads = require('./payloads');
-const landpads = require('./landpads');
-const launchpads = require('./launchpads');
-const capsules = require('./capsules');
-const cores = require('./cores');
-const roadster = require('./roadster');
-const upcoming = require('./upcoming');
-const starlink = require('./starlink');
-const webcast = require('./webcast');
-const launchLibrary = require('./launch-library');
+import { CronJob } from 'cron';
+import { logger } from '../middleware/logger';
+import launches from './launches';
+import payloads from './payloads';
+import landpads from './landpads';
+import launchpads from './launchpads';
+import capsules from './capsules';
+import cores from './cores';
+import roadster from './roadster';
+import upcoming from './upcoming';
+import starlink from './starlink';
+import webcast from './webcast';
+import launchLibrary from './launch-library';
 
 // Every 10 minutes
 const launchesJob = new CronJob('*/10 * * * *', launches);
@@ -60,8 +60,8 @@ try {
 } catch (error) {
   const formatted = {
     name: 'worker',
-    error: error.message,
-    stack: error.stack,
+    error: error?.message,
+    stack: error?.stack,
   };
   logger.error(formatted);
 }

@@ -31,9 +31,7 @@ See [query](../queries.md) guide for more details on building queries and pagina
         "reused": false,
         "recovery_attempt": true,
         "recovered": false,
-        "ships": [
-          "5ea6ed2e080df4000697c908"
-        ]
+        "ships": ["5ea6ed2e080df4000697c908"]
       },
       "links": {
         "patch": {
@@ -79,9 +77,7 @@ See [query](../queries.md) guide for more details on building queries and pagina
         "5ea6ed30080df4000697c913"
       ],
       "capsules": [],
-      "payloads": [
-        "5eb0e4c5b6c3bb0006eeb217"
-      ],
+      "payloads": ["5eb0e4c5b6c3bb0006eeb217"],
       "launchpad": "5e9e4502f509094188566f88",
       "auto_update": true,
       "flight_number": 50,

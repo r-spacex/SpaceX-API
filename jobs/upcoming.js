@@ -1,11 +1,8 @@
-/* eslint-disable no-continue */
-/* eslint-disable no-restricted-syntax */
-
-const got = require('got');
-const cheerio = require('cheerio');
-const fuzz = require('fuzzball');
-const moment = require('moment-timezone');
-const { logger } = require('../middleware/logger');
+import got from 'got';
+import cheerio from 'cheerio';
+import fuzz from 'fuzzball';
+import moment from 'moment-timezone';
+import { logger } from '../middleware/logger';
 
 const REDDIT_WIKI = 'https://old.reddit.com/r/spacex/wiki/launches/manifest';
 const API = process.env.SPACEX_API;
@@ -19,7 +16,7 @@ const HEALTHCHECK = process.env.UPCOMING_HEALTHCHECK;
  * id of the launch. It also corrects the flight number order based on the launch wiki order.
  * @return {Promise<void>}
  */
-module.exports = async () => {
+export default async () => {
   try {
     const flightNumbers = [];
     const rawLaunches = await got.post(`${API}/launches/query`, {
@@ -44,7 +41,9 @@ module.exports = async () => {
       resolveBodyOnly: true,
     });
     const $ = cheerio.load(rawWiki);
-    const wiki = $('body > div.content > div > div > table:nth-child(7) > tbody').text();
+    const wiki = $(
+      'body > div.content > div > div > table:nth-child(7) > tbody'
+    ).text();
 
     if (!wiki) {
       throw new Error(`Broken wiki selector: ${wiki}`);
@@ -53,25 +52,39 @@ module.exports = async () => {
     const wikiRow = wiki.split('\n').filter((v) => v !== '');
 
     const allWikiDates = wikiRow.filter((_, index) => index % 7 === 0);
-    const wikiDates = allWikiDates.slice(0, 30).map((date) => date
-      .replace(/(?<=\[[0-9]{2}:[0-9]{2}\])(\[[0-9]{1,3}\]|\[[0-9]{1,3}|[0-9]{1,3}\])*/gi, '')
-      .replace(/~|(\[|\[\[)[0-9]{1,3}\]/gi, '')
-      .replace(/~|(\[|\])/gi, '')
-      .replace(/(early|mid|late|end|tbd|tba|net)/gi, ' ')
-      .replace(/-[0-9]{2}:[0-9]{2}/gi, ' ')
-      .split('/')[0].trim());
+    const wikiDates = allWikiDates.slice(0, 30).map((date) =>
+      date
+        .replace(
+          /(?<=\[[0-9]{2}:[0-9]{2}\])(\[[0-9]{1,3}\]|\[[0-9]{1,3}|[0-9]{1,3}\])*/gi,
+          ''
+        )
+        .replace(/~|(\[|\[\[)[0-9]{1,3}\]/gi, '')
+        .replace(/~|(\[|\])/gi, '')
+        .replace(/(early|mid|late|end|tbd|tba|net)/gi, ' ')
+        .replace(/-[0-9]{2}:[0-9]{2}/gi, ' ')
+        .split('/')[0]
+        .trim()
+    );
     const rawWikiDates = allWikiDates.slice(0, 30);
 
     const allWikiPayloads = wikiRow.filter((_, index) => (index + 2) % 7 === 0);
-    const wikiPayloads = allWikiPayloads.slice(0, 30).map((payload) => payload.replace(/\[[0-9]{1,3}\]/gi, ''));
+    const wikiPayloads = allWikiPayloads
+      .slice(0, 30)
+      .map((payload) => payload.replace(/\[[0-9]{1,3}\]/gi, ''));
 
-    const allWikiLaunchpads = wikiRow.filter((_, index) => (index + 5) % 7 === 0);
-    const wikiLaunchpads = allWikiLaunchpads.slice(0, 30).map((launchpad) => launchpad.replace(/\[[0-9]{1,3}\]/gi, ''));
+    const allWikiLaunchpads = wikiRow.filter(
+      (_, index) => (index + 5) % 7 === 0
+    );
+    const wikiLaunchpads = allWikiLaunchpads
+      .slice(0, 30)
+      .map((launchpad) => launchpad.replace(/\[[0-9]{1,3}\]/gi, ''));
 
     // Set base flight number to automatically reorder launches on the wiki
     // If the most recent past launch is still on the wiki, don't offset the flight number
     let baseFlightNumber;
-    if (fuzz.partial_ratio(past[past.length - 1].name, wikiPayloads[0]) === 100) {
+    if (
+      fuzz.partial_ratio(past[past.length - 1].name, wikiPayloads[0]) === 100
+    ) {
       baseFlightNumber = past[past.length - 1].flight_number;
     } else {
       baseFlightNumber = past[past.length - 1].flight_number + 1;
@@ -90,7 +103,10 @@ module.exports = async () => {
         if (fuzz.partial_ratio(launch.name, wikiPayload) === 100) {
           // Special check for starlink / smallsat launches, because Starlink 2 and Starlink 23
           // both pass the partial ratio check, so they are checked strictly below
-          if (/starlink/i.test(launch.name) && fuzz.ratio(launch.name, wikiPayload) !== 100) {
+          if (
+            /starlink/i.test(launch.name) &&
+            fuzz.ratio(launch.name, wikiPayload) !== 100
+          ) {
             continue;
           }
 
@@ -109,19 +125,23 @@ module.exports = async () => {
           const yearPattern = /^\s*[0-9]{4}\s*$/i;
 
           // 2020 [14:10]
-          const yearHourPattern = /^\s*[0-9]{4}\s*(\[?\s*([0-9]{2}|[0-9]{1}):[0-9]{2}\s*\]?)\s*$/i;
+          const yearHourPattern =
+            /^\s*[0-9]{4}\s*(\[?\s*([0-9]{2}|[0-9]{1}):[0-9]{2}\s*\]?)\s*$/i;
 
           // 2020 Nov
           const monthPattern = /^\s*[0-9]{4}\s*([a-z]{3}|[a-z]{3,9})\s*$/i;
 
           // 2020 Nov 4
-          const dayPattern = /^\s*[0-9]{4}\s*([a-z]{3}|[a-z]{3,9})\s*[0-9]{1,2}\s*$/i;
+          const dayPattern =
+            /^\s*[0-9]{4}\s*([a-z]{3}|[a-z]{3,9})\s*[0-9]{1,2}\s*$/i;
 
           // 2020 Nov [14:10]
-          const vagueHourPattern = /^\s*[0-9]{4}\s*([a-z]{3}|[a-z]{3,9})\s*(\[?\s*([0-9]{2}|[0-9]{1}):[0-9]{2}\s*\]?)\s*$/i;
+          const vagueHourPattern =
+            /^\s*[0-9]{4}\s*([a-z]{3}|[a-z]{3,9})\s*(\[?\s*([0-9]{2}|[0-9]{1}):[0-9]{2}\s*\]?)\s*$/i;
 
           // 2020 Nov 4 [14:10]
-          const hourPattern = /^\s*[0-9]{4}\s*([a-z]{3}|[a-z]{3,9})\s*[0-9]{1,2}\s*(\[?\s*([0-9]{2}|[0-9]{1}):[0-9]{2}\s*\]?)\s*$/i;
+          const hourPattern =
+            /^\s*[0-9]{4}\s*([a-z]{3}|[a-z]{3,9})\s*[0-9]{1,2}\s*(\[?\s*([0-9]{2}|[0-9]{1}):[0-9]{2}\s*\]?)\s*$/i;
 
           let precision;
           let wikiDate = wikiDates[parseInt(wikiIndex, 10)];
@@ -206,13 +226,24 @@ module.exports = async () => {
           const { timezone } = launchpads.docs[0];
 
           // Clean wiki date, set timezone
-          const parsedDate = `${wikiDates[parseInt(wikiIndex, 10)].replace(/(-|\[|\]|~|early|mid|late|end|net)/gi, ' ').split('/')[0].trim()}`;
-          const time = moment(parsedDate, ['YYYY MMM HH:mm', 'YYYY MMM D HH:mm', 'YYYY MMM D', 'YYYY MMM', 'YYYY HH:mm', 'YYYY Q', 'YYYY']);
+          const parsedDate = `${wikiDates[parseInt(wikiIndex, 10)]
+            .replace(/(-|\[|\]|~|early|mid|late|end|net)/gi, ' ')
+            .split('/')[0]
+            .trim()}`;
+          const time = moment(parsedDate, [
+            'YYYY MMM HH:mm',
+            'YYYY MMM D HH:mm',
+            'YYYY MMM D',
+            'YYYY MMM',
+            'YYYY HH:mm',
+            'YYYY Q',
+            'YYYY',
+          ]);
           const zone = moment.tz(time, 'UTC');
           const localTime = time.tz(timezone).format();
 
           const rawUpdate = {
-            flight_number: (baseFlightNumber + wikiIndex),
+            flight_number: baseFlightNumber + wikiIndex,
             date_unix: zone.unix(),
             date_utc: zone.toISOString(),
             date_local: localTime,

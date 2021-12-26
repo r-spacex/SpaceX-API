@@ -1,13 +1,13 @@
-const conditional = require('koa-conditional-get');
-const etag = require('koa-etag');
-const cors = require('koa2-cors');
-const helmet = require('koa-helmet');
-const Koa = require('koa');
-const bodyParser = require('koa-bodyparser');
-const mongoose = require('mongoose');
-const { logger } = require('./middleware/logger');
-const { responseTime, errors } = require('./middleware');
-const routes = require('./routes');
+import conditional from 'koa-conditional-get';
+import etag from 'koa-etag';
+import cors from 'koa2-cors';
+import helmet from 'koa-helmet';
+import Koa from 'koa';
+import bodyParser from 'koa-bodyparser';
+import mongoose from 'mongoose';
+import { logger } from './middleware/logger.js';
+import { responseTime, errors } from './middleware/index.js';
+import routes from './routes/index.js';
 
 const app = new Koa();
 
@@ -47,12 +47,14 @@ app.use(bodyParser());
 app.use(helmet());
 
 // Enable CORS for all routes
-app.use(cors({
-  origin: '*',
-  allowMethods: ['GET', 'POST', 'PATCH', 'DELETE'],
-  allowHeaders: ['Content-Type', 'Accept'],
-  exposeHeaders: ['spacex-api-cache', 'spacex-api-response-time'],
-}));
+app.use(
+  cors({
+    origin: '*',
+    allowMethods: ['GET', 'POST', 'PATCH', 'DELETE'],
+    allowHeaders: ['Content-Type', 'Accept'],
+    exposeHeaders: ['spacex-api-cache', 'spacex-api-response-time'],
+  })
+);
 
 // Set header with API response time
 app.use(responseTime);
@@ -63,4 +65,4 @@ app.use(responseTime);
 // Register routes
 app.use(routes());
 
-module.exports = app;
+export default app;

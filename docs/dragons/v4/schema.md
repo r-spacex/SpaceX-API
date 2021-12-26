@@ -135,9 +135,7 @@
     }
   },
   "flickr_images": {
-    "type": [
-      "String"
-    ]
+    "type": ["String"]
   },
   "wikipedia": {
     "type": "String"

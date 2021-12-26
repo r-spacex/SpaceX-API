@@ -7,7 +7,7 @@ The default body for `/query` routes is:
 ```json
 {
   "query": {},
-  "options": {},
+  "options": {}
 }
 ```
 
@@ -27,17 +27,17 @@ This is the default return structure for paginated results:
 
 ```json
 {
-    "docs": [],
-    "totalDocs": 0,
-    "offset": 0,
-    "limit": 10,
-    "totalPages": 1,
-    "page": 1,
-    "pagingCounter": 1,
-    "hasPrevPage": false,
-    "hasNextPage": false,
-    "prevPage": null,
-    "nextPage": null
+  "docs": [],
+  "totalDocs": 0,
+  "offset": 0,
+  "limit": 10,
+  "totalPages": 1,
+  "page": 1,
+  "pagingCounter": 1,
+  "hasPrevPage": false,
+  "hasNextPage": false,
+  "prevPage": null,
+  "nextPage": null
 }
 ```
 
@@ -45,9 +45,7 @@ By default, UUID's are used to reference documents in another collection. For ex
 
 ```json
 {
-  "payloads": [
-    "5eb0e4c6b6c3bb0006eeb21e"
-  ]
+  "payloads": ["5eb0e4c6b6c3bb0006eeb21e"]
 }
 ```
 
@@ -57,10 +55,8 @@ This allows us to populate or replace the UUID with the payload that it referenc
 {
   "query": {},
   "options": {
-    "populate": [
-      "payloads"
-    ]
-  },
+    "populate": ["payloads"]
+  }
 }
 ```
 
@@ -159,10 +155,10 @@ Populate can also be nested inside another populate to recursively fill fields. 
   "options": {
     "populate": [
       {
-        "path":"payloads",
+        "path": "payloads",
         "populate": [
           {
-            "path":"launch"
+            "path": "launch"
           }
         ]
       }
@@ -184,7 +180,7 @@ Dates need to be ISO 8601 friendly for these operators to work properly
       "$gte": "2017-06-22T00:00:00.000Z",
       "$lte": "2017-06-25T00:00:00.000Z"
     }
- }
+  }
 }
 ```
 
@@ -196,7 +192,7 @@ See the mongo [reference](https://docs.mongodb.com/manual/reference/operator/que
 
 ```json
 {
- "query": {
+  "query": {
     "$text": {
       "$search": "crs"
     }
@@ -208,15 +204,15 @@ See the mongo [reference](https://docs.mongodb.com/manual/reference/operator/que
 
 ```json
 {
-   "query":{
-      "upcoming":true
-   },
-   "options":{
-      "limit":1,
-      "sort":{
-         "flight_number":"asc"
-      }
-   }
+  "query": {
+    "upcoming": true
+  },
+  "options": {
+    "limit": 1,
+    "sort": {
+      "flight_number": "asc"
+    }
+  }
 }
 ```
 
@@ -240,10 +236,7 @@ See the mongo [reference](https://docs.mongodb.com/manual/reference/operator/que
       }
     ],
     "date_precision": {
-      "$in": [
-        "month",
-        "day"
-      ]
+      "$in": ["month", "day"]
     }
   },
   "options": {

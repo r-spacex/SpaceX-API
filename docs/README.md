@@ -4,7 +4,7 @@
 
 ## Disclaimer
 
-*We are not affiliated, associated, authorized, endorsed by, or in any way officially connected with Space Exploration Technologies Corp (SpaceX), or any of its subsidiaries or its affiliates. The names SpaceX as well as related names, marks, emblems and images are registered trademarks of their respective owners.*
+_We are not affiliated, associated, authorized, endorsed by, or in any way officially connected with Space Exploration Technologies Corp (SpaceX), or any of its subsidiaries or its affiliates. The names SpaceX as well as related names, marks, emblems and images are registered trademarks of their respective owners._
 
 ## Base URL
 
@@ -28,21 +28,21 @@ See the [pagination + query](queries.md) guide for more details and examples.
 
 ## Launch date FAQ's
 
-* **Why does the date appear wrong?** - This is usually due to the way we store and display partial dates in the api. For example, a launch scheduled for `2020 July` would be represented as `2020-07-01T00:00:00.000Z`. In this case, the field `date_precision` would be set as `month`, meaning the date is only valid to the `month` level, or `2020-07`
+- **Why does the date appear wrong?** - This is usually due to the way we store and display partial dates in the api. For example, a launch scheduled for `2020 July` would be represented as `2020-07-01T00:00:00.000Z`. In this case, the field `date_precision` would be set as `month`, meaning the date is only valid to the `month` level, or `2020-07`
 
 ## Launch date field explanations
 
-* `date_utc` -  UTC launch date/time in ISO 8601 format
+- `date_utc` - UTC launch date/time in ISO 8601 format
 
-* `date_unix` - UTC launch date/time as a UNIX timestamp in seconds
+- `date_unix` - UTC launch date/time as a UNIX timestamp in seconds
 
-* `date_local` -  Local launch time with time zone offset in ISO 8601 format
+- `date_local` - Local launch time with time zone offset in ISO 8601 format
 
-* `date_precision` - Gives the date precision for partial dates. Valid values are `quarter`, `half`, `year`, `month`, `day`, `hour`.
+- `date_precision` - Gives the date precision for partial dates. Valid values are `quarter`, `half`, `year`, `month`, `day`, `hour`.
 
-* `tbd` - Set as true if date is `To be determined`
+- `tbd` - Set as true if date is `To be determined`
 
-* `net` - Set as true if the date is `No earlier than`
+- `net` - Set as true if the date is `No earlier than`
 
 ## Caching
 
@@ -58,7 +58,7 @@ Standard cache times are as follows:
 
 Cache can be cleared with the following endpoint:
 
-* 🔒 [Clear cache](cache/clear.md) : `DELETE /admin/cache`
+- 🔒 [Clear cache](cache/clear.md) : `DELETE /admin/cache`
 
 ## Routes
 

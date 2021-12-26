@@ -1,6 +1,6 @@
-const Redis = require('ioredis');
-const blake3 = require('blake3');
-const { logger } = require('./logger');
+import Redis from 'ioredis';
+import blake3 from 'blake3';
+import { logger } from './logger.js';
 
 let redis;
 let redisAvailable = false;
@@ -36,7 +36,7 @@ const hash = (str) => blake3.createHash().update(str).digest('hex');
  * @param   {Number}    ttl       Cache TTL in seconds
  * @returns {void}
  */
-module.exports = (ttl) => async (ctx, next) => {
+const middleware = (ttl) => async (ctx, next) => {
   if (process.env.NODE_ENV !== 'production') {
     await next();
     return;
@@ -50,7 +50,9 @@ module.exports = (ttl) => async (ctx, next) => {
   ctx.response.set('spacex-api-cache-online', 'true');
 
   const { url, method } = ctx.request;
-  const key = `spacex-cache:${hash(`${method}${url}${JSON.stringify(ctx.request.body)}`)}`;
+  const key = `spacex-cache:${hash(
+    `${method}${url}${JSON.stringify(ctx.request.body)}`
+  )}`;
 
   if (ttl) {
     ctx.response.set('Cache-Control', `max-age=${ttl}`);
@@ -87,7 +89,7 @@ module.exports = (ttl) => async (ctx, next) => {
 
   // Set cache
   try {
-    if ((ctx.response.status !== 200) || !responseBody) {
+    if (ctx.response.status !== 200 || !responseBody) {
       return;
     }
     await redis.set(key, responseBody, 'EX', ttl);
@@ -96,8 +98,4 @@ module.exports = (ttl) => async (ctx, next) => {
   }
 };
 
-// Share redis connection
-Object.defineProperty(module.exports, 'redis', {
-  value: redis,
-  writable: false,
-});
+export { middleware as default, redis };

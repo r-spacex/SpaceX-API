@@ -1,6 +1,6 @@
-const Router = require('koa-router');
-const { Crew } = require('../../../models');
-const { auth, authz, cache } = require('../../../middleware');
+import Router from 'koa-router';
+import { Crew } from '../../../models/index.js';
+import { auth, authz, cache } from '../../../middleware/index.js';
 
 const router = new Router({
   prefix: '/(v4|latest)/crew',
@@ -53,7 +53,9 @@ router.post('/', auth, authz('crew:create'), async (ctx) => {
 // Update crew member
 router.patch('/:id', auth, authz('crew:update'), async (ctx) => {
   try {
-    await Crew.findByIdAndUpdate(ctx.params.id, ctx.request.body, { runValidators: true });
+    await Crew.findByIdAndUpdate(ctx.params.id, ctx.request.body, {
+      runValidators: true,
+    });
     ctx.status = 200;
   } catch (error) {
     ctx.throw(400, error.message);
@@ -70,4 +72,4 @@ router.delete('/:id', auth, authz('crew:delete'), async (ctx) => {
   }
 });
 
-module.exports = router;
+export default router;

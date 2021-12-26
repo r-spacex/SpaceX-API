@@ -68,9 +68,7 @@
   "mars_distance_mi": {
     "type": "Number"
   },
-  "flickr_images": [
-    "String"
-  ],
+  "flickr_images": ["String"],
   "wikipedia": {
     "type": "String"
   },

@@ -23,8 +23,10 @@
     "type": "String",
     "default": null
   },
-  "launches": [{
+  "launches": [
+    {
       "type": "UUID"
-  }]
+    }
+  ]
 }
 ```

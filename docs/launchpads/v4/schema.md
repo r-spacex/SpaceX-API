@@ -50,11 +50,7 @@
     "type": "Number",
     "default": 0
   },
-  "rockets": [
-    "UUID"
-  ],
-  "launches": [
-    "UUID"
-  ]
+  "rockets": ["UUID"],
+  "launches": ["UUID"]
 }
 ```

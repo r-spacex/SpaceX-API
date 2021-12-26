@@ -1,6 +1,6 @@
-const _ = require('lodash');
-const got = require('got');
-const { logger } = require('../middleware/logger');
+import _ from 'lodash';
+import got from 'got';
+import { logger } from '../middleware/logger';
 
 const API = process.env.SPACEX_API;
 const KEY = process.env.SPACEX_KEY;
@@ -10,7 +10,7 @@ const HEALTHCHECK = process.env.LAUNCHES_HEALTHCHECK;
  * Update launch arrays
  * @return {Promise<void>}
  */
-module.exports = async () => {
+export default async () => {
   try {
     const launches = await got.post(`${API}/launches/query`, {
       json: {
@@ -191,7 +191,9 @@ module.exports = async () => {
     });
 
     const payloadLaunches = payloads.docs.map(async (payload) => {
-      const launchId = _.find(launches.docs, (launch) => launch.payloads.includes(payload.id));
+      const launchId = _.find(launches.docs, (launch) =>
+        launch.payloads.includes(payload.id)
+      );
       if (launchId?.id) {
         await got.patch(`${API}/payloads/${payload.id}`, {
           json: {
@@ -246,12 +248,17 @@ module.exports = async () => {
     });
 
     const rocketSuccess = rockets.docs.map(async (rocket) => {
-      const successes = launches?.docs
-        .filter((l) => (l.rocket === rocket.id) && (l.success === true))?.length ?? 0;
-      const attempts = launches?.docs
-        .filter((l) => l.rocket === rocket.id)?.length ?? 0;
+      const successes =
+        launches?.docs.filter(
+          (l) => l.rocket === rocket.id && l.success === true
+        )?.length ?? 0;
+      const attempts =
+        launches?.docs.filter((l) => l.rocket === rocket.id)?.length ?? 0;
       if (attempts > 0) {
-        const successRate = parseInt(Math.round((successes / attempts) * 100), 10);
+        const successRate = parseInt(
+          Math.round((successes / attempts) * 100),
+          10
+        );
         await got.patch(`${API}/rockets/${rocket.id}`, {
           json: {
             success_rate_pct: successRate,

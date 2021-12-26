@@ -19,9 +19,7 @@
     "type": "String",
     "default": null
   },
-  "roles": [
-    "String"
-  ],
+  "roles": ["String"],
   "active": {
     "type": "Boolean",
     "required": true

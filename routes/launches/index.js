@@ -1,6 +1,1 @@
-/* eslint-disable global-require */
-
-module.exports = [
-  require('./v4'),
-  require('./v5'),
-];
+export default [await import('./v4/index.js'), await import('./v5/index.js')];

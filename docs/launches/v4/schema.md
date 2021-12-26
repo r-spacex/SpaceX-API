@@ -26,14 +26,7 @@
   "date_precision": {
     "type": "String",
     "required": true,
-    "enum": [
-      "half",
-      "quarter",
-      "year",
-      "month",
-      "day",
-      "hour"
-    ]
+    "enum": ["half", "quarter", "year", "month", "day", "hour"]
   },
   "static_fire_date_utc": {
     "type": "String",
@@ -66,15 +59,15 @@
   "failures": [
     {
       "time": {
-        "type": "Number",
+        "type": "Number"
       },
       "altitude": {
-        "type": "Number",
+        "type": "Number"
       },
       "reason": {
-        "type": "String",
-      },
-    },
+        "type": "String"
+      }
+    }
   ],
   "upcoming": {
     "type": "Boolean",
@@ -97,22 +90,12 @@
       "type": "Boolean",
       "default": null
     },
-    "ships": [
-      "UUID"
-    ]
+    "ships": ["UUID"]
   },
-  "crew": [
-    "UUID"
-  ],
-  "ships": [
-    "UUID"
-  ],
-  "capsules": [
-    "UUID"
-  ],
-  "payloads": [
-    "UUID"
-  ],
+  "crew": ["UUID"],
+  "ships": ["UUID"],
+  "capsules": ["UUID"],
+  "payloads": ["UUID"],
   "launchpad": {
     "type": "UUID",
     "default": null
@@ -187,12 +170,8 @@
       }
     },
     "flickr": {
-      "small": [
-        "String"
-      ],
-      "original": [
-        "String"
-      ]
+      "small": ["String"],
+      "original": ["String"]
     },
     "presskit": {
       "type": "String",

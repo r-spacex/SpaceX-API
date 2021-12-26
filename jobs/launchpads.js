@@ -1,5 +1,5 @@
-const got = require('got');
-const { logger } = require('../middleware/logger');
+import got from 'got';
+import { logger } from '../middleware/logger';
 
 const API = process.env.SPACEX_API;
 const KEY = process.env.SPACEX_KEY;
@@ -9,7 +9,7 @@ const HEALTHCHECK = process.env.LAUNCHPADS_HEALTHCHECK;
  * Update launchpad attempts/successes
  * @return {Promise<void>}
  */
-module.exports = async () => {
+export default async () => {
   try {
     const launchpads = await got.post(`${API}/launchpads/query`, {
       json: {

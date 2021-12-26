@@ -1,6 +1,6 @@
-const Router = require('koa-router');
-const { Roadster } = require('../../../models');
-const { auth, authz, cache } = require('../../../middleware');
+import Router from 'koa-router';
+import { Roadster } from '../../../models/index.js';
+import { auth, authz, cache } from '../../../middleware/index.js';
 
 const router = new Router({
   prefix: '/(v4|latest)/roadster',
@@ -32,11 +32,13 @@ router.post('/query', cache(300), async (ctx) => {
 // Update roadster
 router.patch('/:id', auth, authz('roadster:update'), async (ctx) => {
   try {
-    await Roadster.findByIdAndUpdate(ctx.params.id, ctx.request.body, { runValidators: true });
+    await Roadster.findByIdAndUpdate(ctx.params.id, ctx.request.body, {
+      runValidators: true,
+    });
     ctx.status = 200;
   } catch (error) {
     ctx.throw(400, error.message);
   }
 });
 
-module.exports = router;
+export default router;

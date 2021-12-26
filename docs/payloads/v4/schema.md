@@ -19,18 +19,10 @@
     "type": "UUID",
     "default": null
   },
-  "customers": [
-    "String"
-  ],
-  "norad_ids": [
-    "Number"
-  ],
-  "nationalities": [
-    "String"
-  ],
-  "manufacturers": [
-    "String"
-  ],
+  "customers": ["String"],
+  "norad_ids": ["Number"],
+  "nationalities": ["String"],
+  "manufacturers": ["String"],
   "mass_kg": {
     "type": "Number",
     "default": null

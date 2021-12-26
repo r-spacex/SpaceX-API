@@ -1,6 +1,6 @@
-const Router = require('koa-router');
-const { Rocket } = require('../../../models');
-const { auth, authz, cache } = require('../../../middleware');
+import Router from 'koa-router';
+import { Rocket } from '../../../models/index.js';
+import { auth, authz, cache } from '../../../middleware/index.js';
 
 const router = new Router({
   prefix: '/(v4|latest)/rockets',
@@ -9,7 +9,9 @@ const router = new Router({
 // Get all rockets
 router.get('/', cache(86400), async (ctx) => {
   try {
-    const result = await Rocket.find({}, null, { sort: { first_flight: 'asc' } });
+    const result = await Rocket.find({}, null, {
+      sort: { first_flight: 'asc' },
+    });
     ctx.status = 200;
     ctx.body = result;
   } catch (error) {
@@ -53,7 +55,9 @@ router.post('/', auth, authz('rocket:create'), async (ctx) => {
 // Update a rocket
 router.patch('/:id', auth, authz('rocket:update'), async (ctx) => {
   try {
-    await Rocket.findByIdAndUpdate(ctx.params.id, ctx.request.body, { runValidators: true });
+    await Rocket.findByIdAndUpdate(ctx.params.id, ctx.request.body, {
+      runValidators: true,
+    });
     ctx.status = 200;
   } catch (error) {
     ctx.throw(400, error.message);
@@ -70,4 +74,4 @@ router.delete('/:id', auth, authz('rocket:delete'), async (ctx) => {
   }
 });
 
-module.exports = router;
+export default router;
