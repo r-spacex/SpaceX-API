@@ -21,11 +21,16 @@ const FOLDERS = [
 const ROUTER = new Router();
 
 // Register all routes + all versions
-export default () => {
-  FOLDERS.forEach((routeFolder) => {
-    routeFolder?.default?.forEach((version) => {
-      ROUTER.use(version?.default?.routes());
-    });
-  });
+export default async (ctx, next) => {
+  await Promise.all(
+    FOLDERS.map(async (folder) => {
+      const { default: versions } = await folder;
+      versions.map(async (version) => {
+        const { default: routes } = version;
+        ROUTER.use(routes.routes());
+      });
+    })
+  );
+  console.log(ROUTER);
   return ROUTER.routes();
 };
