@@ -40,7 +40,7 @@
     "koa-conditional-get": "^3.0.0",
     "koa-etag": "^4.0.0",
     "koa-helmet": "^6.1.0",
-    "koa-pino-logger": "^3.0.0",
+    "koa-pino-logger": "^4.0.0",
     "koa-router": "^10.1.1",
     "koa2-cors": "^2.0.6",
     "lodash": "^4.17.21",
