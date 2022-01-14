@@ -2,7 +2,7 @@ const got = require('got');
 const { CookieJar } = require('tough-cookie');
 const Moment = require('moment-timezone');
 const MomentRange = require('moment-range');
-const { getSatelliteInfo } = require('tle.js/dist/tlejs.cjs');
+const { getSatelliteInfo } = require('tle.js');
 const { logger } = require('../middleware/logger');
 
 const API = process.env.SPACEX_API;
