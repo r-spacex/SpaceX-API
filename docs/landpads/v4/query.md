@@ -8,7 +8,7 @@
 
 **Body** :
 
-See [query](../queries.md) guide for more details on building queries and paginating results.
+See [query](../../queries.md) guide for more details on building queries and paginating results.
 
 ```json
 {
