@@ -28,7 +28,7 @@ module.exports = async () => {
 
     // Active Cores Table
     const scrapedActive = [];
-    $('div.md:nth-child(2) > table:nth-child(15) > tbody:nth-child(2) > tr').each((index, element) => {
+    $('div.md:nth-child(2) > table:nth-child(13) > tbody:nth-child(2) > tr').each((index, element) => {
       if (index === 0) return true;
       const tds = $(element).find('td');
       const coreSerial = $(tds[0]).text() || null;
@@ -59,32 +59,7 @@ module.exports = async () => {
     });
     await Promise.all(activeUpdates);
     logger.info('Active cores updated');
-
-    const unknown = $('body > div.content > div > div > table:nth-child(18) > tbody').text();
-    const unknownRow = unknown.split('\n').filter((v) => v !== '');
-    const unknownCores = unknownRow.filter((value, index) => index % 6 === 0);
-    if (!unknownCores.length) {
-      throw new Error('No unknown cores found');
-    }
-    const unknownStatus = unknownRow.filter((value, index) => (index + 1) % 6 === 0).map((x) => x.replace(/\[source\]/gi, ''));
-    const unknownUpdates = unknownCores.map(async (coreSerial, index) => {
-      const coreId = cores.docs.find((core) => core.serial === coreSerial);
-      if (coreId && coreId.id) {
-        await got.patch(`${API}/cores/${coreId.id}`, {
-          json: {
-            last_update: unknownStatus[parseInt(index, 10)],
-            status: 'unknown',
-          },
-          headers: {
-            'spacex-key': KEY,
-          },
-        });
-      }
-    });
-    await Promise.all(unknownUpdates);
-    logger.info('Unknown cores updated');
-
-    const inactive = $('body > div.content > div > div > table:nth-child(21) > tbody').text();
+    const inactive = $('div.md:nth-child(2) > table:nth-child(16) > tbody:nth-child(2)').text();
     const inactiveRow = inactive.split('\n').filter((v) => v !== '');
     const inactiveCores = inactiveRow.filter((value, index) => index % 6 === 0);
     if (!inactiveCores.length) {
@@ -108,7 +83,7 @@ module.exports = async () => {
     await Promise.all(inactiveUpdates);
     logger.info('Inactive cores updated');
 
-    const lost = $('body > div.content > div > div > table:nth-child(25) > tbody').text();
+    const lost = $('div.md:nth-child(2) > table:nth-child(20) > tbody:nth-child(2)').text();
     const lostRow = lost.split('\n').filter((v) => v !== '');
     const lostCores = lostRow.filter((value, index) => index % 7 === 0);
     if (!lostCores.length) {
