@@ -5,6 +5,8 @@
 |App|Type|Creator(s)|Repo|More|
 |:---|:---|:---|:---|:---|
 | [SpaceX](http://spacex.elc0mpa.me/#/) | Website | [elC0mpa](https://github.com/elC0mpa) | [GitHub](https://github.com/elC0mpa/spacex) | built with Vue3 & Composition API |
+| [SpaceX History](https://spacex-history.netlify.app) | Website | [Bedirhan Karadoğan](https://github.com/bedirhankaradogan) | [GitHub](https://github.com/bedirhankaradogan/spacex-history) | built with React |
+| [🚀 SpaceX CLI](https://www.npmjs.com/package/@orhanemree/spacex-cli) | CLI Tool | [Orhan Emre Dikicigil](https://github.com/orhanemree) | [GitHub](https://github.com/orhanemree/spacex-cli) | built with Node |
 | [SpaceX Live Info 🔴️](https://spacex-live.netlify.app/) | Website | [Pawel Pisulski](https://github.com/pislagz) | [GitHub](https://github.com/pislagz/spacex-live) | built with React & Redux |
 | [SpaceXtale](https://tsensei.github.io/spaceXtale/) | Website | [tsensei](https://github.com/tsensei/) | [GitHub](https://github.com/tsensei/spaceXtale) | React app with spaceX-api |
 | [Rocket Downrange](https://rocketdownrange.com) | Website | [Cavan Lemasters](https://github.com/TheKicker) | [GitHub](https://github.com/TheKicker/rocket-downrange) | |
