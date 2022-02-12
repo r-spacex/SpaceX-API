@@ -51,7 +51,7 @@
     "mongoose-paginate-v2": "^1.6.2",
     "pino": "^7.6.5",
     "rss-parser": "^3.12.0",
-    "tle.js": "^4.5.3",
+    "tle.js": "^4.7.0",
     "tough-cookie": "^4.0.0"
   },
   "devDependencies": {
