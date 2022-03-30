@@ -175,9 +175,11 @@ module.exports = async () => {
           const lc39aPattern = /^LC-39A.*$/i;
           const slc4ePattern = /^SLC-4E.*$/i;
           const bcPattern = /^BC.*$/i;
+          const unknownPattern = /^\?.*$/i;
 
           // Calculate launch site depending on wiki manifest
           const launchpad = wikiLaunchpads[parseInt(wikiIndex, 10)];
+          console.log(launchpad);
           let queryName;
           if (slc40Pattern.test(launchpad)) {
             queryName = 'CCSFS SLC 40';
@@ -187,6 +189,8 @@ module.exports = async () => {
             queryName = 'VAFB SLC 4E';
           } else if (bcPattern.test(launchpad)) {
             queryName = 'STLS';
+          } else if (unknownPattern.test(launchpad)) {
+            queryName = 'CCSFS SLC 40';
           } else {
             throw new Error(`No launchpad match: ${launchpad}`);
           }
