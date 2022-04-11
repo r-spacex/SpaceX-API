@@ -55,6 +55,7 @@ module.exports = async () => {
     const allWikiDates = wikiRow.filter((_, index) => index % 7 === 0);
     const wikiDates = allWikiDates.slice(0, 30).map((date) => date
       .replace(/(?<=\[[0-9]{2}:[0-9]{2}\])(\[[0-9]{1,3}\]|\[[0-9]{1,3}|[0-9]{1,3}\])*/gi, '')
+      .replace(/(?<=\s*[0-9]{4}\s*([a-z]{3}|[a-z]{3,9})\s*)([0-9]{1,3}\])*/gi, '')
       .replace(/~|(\[|\[\[)[0-9]{1,3}\]/gi, '')
       .replace(/~|(\[|\])/gi, '')
       .replace(/(early|mid|late|end|tbd|tba|net)/gi, ' ')
