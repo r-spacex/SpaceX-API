@@ -124,6 +124,9 @@ module.exports = async () => {
           // 2020 Nov 4 [14:10]
           const hourPattern = /^\s*[0-9]{4}\s*([a-z]{3}|[a-z]{3,9})\s*[0-9]{1,2}\s*(\[?\s*([0-9]{2}|[0-9]{1}):[0-9]{2}\s*\]?)\s*$/i;
 
+          // 2020 Nov 4 [14:10:50]
+          const secondPattern = /^\s*[0-9]{4}\s*([a-z]{3}|[a-z]{3,9})\s*[0-9]{1,2}\s*(\[?\s*([0-9]{2}|[0-9]{1}):[0-9]{2}:[0-9]{2}\s*\]?)\s*$/i;
+
           let precision;
           let wikiDate = wikiDates[parseInt(wikiIndex, 10)];
           const rawWikiDate = rawWikiDates[parseInt(wikiIndex, 10)];
@@ -163,6 +166,8 @@ module.exports = async () => {
           } else if (vagueHourPattern.test(cleanedwikiDate)) {
             precision = 'month';
           } else if (hourPattern.test(cleanedwikiDate)) {
+            precision = 'hour';
+          } else if (secondPattern.test(cleanedwikiDate)) {
             precision = 'hour';
           } else {
             throw new Error(`No date match: ${cleanedwikiDate}`);
@@ -212,7 +217,7 @@ module.exports = async () => {
 
           // Clean wiki date, set timezone
           const parsedDate = `${wikiDates[parseInt(wikiIndex, 10)].replace(/(-|\[|\]|~|early|mid|late|end|net)/gi, ' ').split('/')[0].trim()}`;
-          const time = moment(parsedDate, ['YYYY MMM HH:mm', 'YYYY MMM D HH:mm', 'YYYY MMM D', 'YYYY MMM', 'YYYY HH:mm', 'YYYY Q', 'YYYY']);
+          const time = moment(parsedDate, ['YYYY MMM HH:mm:ss', 'YYYY MMM HH:mm', 'YYYY MMM D HH:mm', 'YYYY MMM D', 'YYYY MMM', 'YYYY HH:mm', 'YYYY Q', 'YYYY']);
           const zone = moment.tz(time, 'UTC');
           const localTime = time.tz(timezone).format();
 
