@@ -13,6 +13,7 @@ const app = new Koa();
 
 mongoose.connect(process.env.SPACEX_MONGO, {
   bufferCommands: false,
+  family: 4,
 });
 
 const db = mongoose.connection;
