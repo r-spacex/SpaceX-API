@@ -59,4 +59,5 @@
 | [SpaceX-Launches](https://amazing-austin-1853eb.netlify.app) 🚀 | Website | [Atamyrat Abdyrahmanov](https://github.com/aaabdyrahmanov) | [GitHub](https://github.com/aaabdyrahmanov/SpaceX-Launches) |  |
 | [SpaceX history timeline](https://www.orbitaterrestre.com/la-storia-di-spaceX-in-timeline-component) | Website | [Vincenzo](https://github.com/vincenzomarcovecchio) | [GitHub](https://github.com/aaabdyrahmanov/SpaceX-Launches) |  |
 | [Elon Musk Tracker](https://play.google.com/store/apps/details?id=com.ingenuity.elonmusktracker) | Android/iOS App | [Aman Trifi](https://github.com/TrifiAmanallah) | Closed source |  |
+| [SpaceX Data](https://spacexdata.pages.dev/) | Website | [Chien Tran](https://github.com/chientrm) | Closed source | Built with SvelteKit, deployed with Cloudflare Pages |
 | [SpaceX Portal](https://spacex-portal.vercel.app) | Website | [Daniel Yasakov](https://github.com/ne-danik) | [GitHub](https://github.com/ne-danik/spacex-portal) | built with React |
