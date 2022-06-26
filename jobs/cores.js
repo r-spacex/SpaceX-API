@@ -1,5 +1,5 @@
 import got from 'got';
-import cheerio from 'cheerio';
+import { load } from 'cheerio';
 import { logger } from '../middleware/index.js';
 
 const REDDIT_CORES = 'https://old.reddit.com/r/spacex/wiki/cores';
@@ -24,7 +24,7 @@ export default async () => {
     });
 
     const result = await got(REDDIT_CORES);
-    const $ = cheerio.load(result.body);
+    const $ = load(result.body);
 
     // Active Cores Table
     const scrapedActive = [];

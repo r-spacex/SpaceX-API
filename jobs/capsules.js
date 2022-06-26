@@ -1,5 +1,5 @@
 import got from 'got';
-import cheerio from 'cheerio';
+import { load } from 'cheerio';
 import { logger } from '../middleware/index.js';
 
 const API = process.env.SPACEX_API;
@@ -24,7 +24,7 @@ export default async () => {
     });
 
     const result = await got(REDDIT_CAPSULES);
-    const $ = cheerio.load(result.body);
+    const $ = load(result.body);
 
     const v1Capsules = $('div.md:nth-child(2) > table:nth-child(8) > tbody:nth-child(2)').text();
     const v1CapsuleRow = v1Capsules.split('\n').filter((v) => v !== '');

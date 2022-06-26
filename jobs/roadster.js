@@ -1,4 +1,3 @@
-/* eslint-disable no-secrets/no-secrets */
 import got from 'got';
 import moment from 'moment-timezone';
 import { logger } from '../middleware/index.js';

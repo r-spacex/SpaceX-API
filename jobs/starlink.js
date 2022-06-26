@@ -52,7 +52,6 @@ export default async () => {
       cookieJar,
     });
 
-    // eslint-disable-next-line no-secrets/no-secrets
     const data = await got('https://www.space-track.org/basicspacedata/query/class/gp/OBJECT_NAME/~~STARLINK,~~TINTIN/orderby/NORAD_CAT_ID', {
       resolveBodyOnly: true,
       responseType: 'json',

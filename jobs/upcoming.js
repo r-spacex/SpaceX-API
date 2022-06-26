@@ -2,7 +2,7 @@
 /* eslint-disable no-restricted-syntax */
 
 import got from 'got';
-import cheerio from 'cheerio';
+import { load } from 'cheerio';
 import * as fuzz from 'fuzzball';
 import moment from 'moment-timezone';
 import { logger } from '../middleware/index.js';
@@ -43,7 +43,7 @@ export default async () => {
     const rawWiki = await got(REDDIT_WIKI, {
       resolveBodyOnly: true,
     });
-    const $ = cheerio.load(rawWiki);
+    const $ = load(rawWiki);
     const wiki = $('body > div.content > div > div > table:nth-child(7) > tbody').text();
 
     if (!wiki) {

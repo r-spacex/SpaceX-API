@@ -1,7 +1,7 @@
 import http from 'http';
 import mongoose from 'mongoose';
 import logger from './middleware/logger.js';
-import { DEFAULT_PORT } from './lib/constants.js'
+import { DEFAULT_PORT } from './lib/constants.js';
 import app from './app.js';
 
 const PORT = process.env.PORT ?? DEFAULT_PORT;
