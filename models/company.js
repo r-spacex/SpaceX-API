@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const idPlugin = require('mongoose-id');
+import mongoose from 'mongoose';
+import idPlugin from 'mongoose-id';
 
 const companySchema = new mongoose.Schema({
   name: {
@@ -72,4 +72,4 @@ companySchema.plugin(idPlugin);
 
 const Company = mongoose.model('Company', companySchema);
 
-module.exports = Company;
+export default Company;

@@ -5,7 +5,7 @@
  * @param   {Function}  next  Next middleware
  * @returns {Promise}
  */
-module.exports = async (ctx, next) => {
+export default async (ctx, next) => {
   const start = Date.now();
   await next();
   const ms = Date.now() - start;

@@ -1,4 +1,4 @@
-const _ = require('lodash');
+import _ from 'lodash';
 
 /**
  * Transform V4 query into V5 query
@@ -7,7 +7,7 @@ const _ = require('lodash');
  * @param   {function}  next      Koa next function
  * @returns {void}
  */
-module.exports = async (query) => {
+export default async (query) => {
   const transformed = query;
 
   if (query?.options?.populate) {

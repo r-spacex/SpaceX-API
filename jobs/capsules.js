@@ -1,6 +1,6 @@
-const got = require('got');
-const cheerio = require('cheerio');
-const { logger } = require('../middleware/logger');
+import got from 'got';
+import cheerio from 'cheerio';
+import { logger } from '../middleware/index.js';
 
 const API = process.env.SPACEX_API;
 const KEY = process.env.SPACEX_KEY;
@@ -11,7 +11,7 @@ const REDDIT_CAPSULES = 'https://old.reddit.com/r/spacex/wiki/capsules';
  * Update capsule landings/reuse count
  * @return {Promise<void>}
  */
-module.exports = async () => {
+export default async () => {
   try {
     const capsules = await got.post(`${API}/capsules/query`, {
       json: {

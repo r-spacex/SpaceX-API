@@ -1,7 +1,7 @@
-const got = require('got');
-const moment = require('moment-timezone');
-const { fail, success } = require('../lib/healthchecks');
-const { logger } = require('../middleware/logger');
+import got from 'got';
+import moment from 'moment-timezone';
+import { fail, success } from '../lib/healthchecks/index.js';
+import { logger } from '../middleware/index.js';
 
 const {
   SPACEX_KEY,
@@ -14,7 +14,7 @@ const LAUNCH_LIBRARY_API = 'https://ll.thespacedevs.com/2.1.0/launch/upcoming';
  * Attach Launch Library v2 launch id's to upcoming launches
  * @return {Promise<void>}
  */
-module.exports = async () => {
+export default async () => {
   try {
     const log = {
       name: 'launch-library',

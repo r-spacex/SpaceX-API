@@ -1,6 +1,6 @@
-const Router = require('koa-router');
-const { Company } = require('../../../models');
-const { auth, authz, cache } = require('../../../middleware');
+import Router from 'koa-router';
+import { Company } from '../../../models/index.js';
+import { auth, authz, cache } from '../../../middleware/index.js';
 
 const router = new Router({
   prefix: '/(v4|latest)/company',
@@ -27,4 +27,4 @@ router.patch('/:id', auth, authz('company:update'), async (ctx) => {
   }
 });
 
-module.exports = router;
+export default router;

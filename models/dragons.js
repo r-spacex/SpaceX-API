@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
-const mongoosePaginate = require('mongoose-paginate-v2');
-const idPlugin = require('mongoose-id');
+import mongoose from 'mongoose';
+import mongoosePaginate from 'mongoose-paginate-v2';
+import idPlugin from 'mongoose-id';
 
 const dragonSchema = new mongoose.Schema({
   name: {
@@ -158,4 +158,4 @@ dragonSchema.plugin(idPlugin);
 
 const Dragon = mongoose.model('Dragon', dragonSchema);
 
-module.exports = Dragon;
+export default Dragon;

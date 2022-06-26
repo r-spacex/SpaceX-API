@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
-const mongoosePaginate = require('mongoose-paginate-v2');
-const idPlugin = require('mongoose-id');
+import mongoose from 'mongoose';
+import mongoosePaginate from 'mongoose-paginate-v2';
+import idPlugin from 'mongoose-id';
 
 const capsuleSchema = new mongoose.Schema({
   serial: {
@@ -55,4 +55,4 @@ capsuleSchema.plugin(idPlugin);
 
 const Capsule = mongoose.model('Capsule', capsuleSchema);
 
-module.exports = Capsule;
+export default Capsule;

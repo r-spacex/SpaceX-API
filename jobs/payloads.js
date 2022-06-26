@@ -1,6 +1,6 @@
-const got = require('got');
-const { CookieJar } = require('tough-cookie');
-const { logger } = require('../middleware/logger');
+import got from 'got';
+import { CookieJar } from 'tough-cookie';
+import { logger } from '../middleware/index.js';
 
 const API = process.env.SPACEX_API;
 const KEY = process.env.SPACEX_KEY;
@@ -10,7 +10,7 @@ const HEALTHCHECK = process.env.PAYLOADS_HEALTHCHECK;
  * Update payload orbit params
  * @return {Promise<void>}
  */
-module.exports = async () => {
+export default async () => {
   try {
     const cookieJar = new CookieJar();
     const [payloads] = await Promise.all([

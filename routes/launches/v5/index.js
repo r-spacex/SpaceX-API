@@ -1,6 +1,6 @@
-const Router = require('koa-router');
-const { Launch } = require('../../../models');
-const { auth, authz, cache } = require('../../../middleware');
+import Router from 'koa-router';
+import { Launch } from '../../../models/index.js';
+import { auth, authz, cache } from '../../../middleware/index.js';
 
 const router = new Router({
   prefix: '/(v5|latest)/launches',
@@ -152,4 +152,4 @@ router.delete('/:id', auth, authz('launch:delete'), async (ctx) => {
   }
 });
 
-module.exports = router;
+export default router;

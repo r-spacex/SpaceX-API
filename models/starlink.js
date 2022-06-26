@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
-const mongoosePaginate = require('mongoose-paginate-v2');
-const idPlugin = require('mongoose-id');
+import mongoose from 'mongoose';
+import mongoosePaginate from 'mongoose-paginate-v2';
+import idPlugin from 'mongoose-id';
 
 const starlinkSchema = new mongoose.Schema({
   version: {
@@ -201,4 +201,4 @@ starlinkSchema.plugin(idPlugin);
 
 const Starlink = mongoose.model('Starlink', starlinkSchema);
 
-module.exports = Starlink;
+export default Starlink;

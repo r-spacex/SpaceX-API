@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
-const mongoosePaginate = require('mongoose-paginate-v2');
-const idPlugin = require('mongoose-id');
+import mongoose from 'mongoose';
+import mongoosePaginate from 'mongoose-paginate-v2';
+import idPlugin from 'mongoose-id';
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -23,4 +23,4 @@ userSchema.plugin(idPlugin);
 
 const User = mongoose.model('User', userSchema);
 
-module.exports = User;
+export default User;

@@ -1,5 +1,5 @@
-const got = require('got');
-const { logger } = require('../middleware/logger');
+import got from 'got';
+import { logger } from '../middleware/index.js';
 
 const API = process.env.SPACEX_API;
 const KEY = process.env.SPACEX_KEY;
@@ -9,7 +9,7 @@ const HEALTHCHECK = process.env.LANDPADS_HEALTHCHECK;
  * Update landpad attempts/successes
  * @return {Promise<void>}
  */
-module.exports = async () => {
+export default async () => {
   try {
     const landpads = await got.post(`${API}/landpads/query`, {
       json: {

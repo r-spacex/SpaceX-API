@@ -1,9 +1,6 @@
-/**
- * Export middleware
- */
-module.exports.auth = require('./auth');
-module.exports.authz = require('./authz');
-module.exports.cache = require('./cache');
-module.exports.errors = require('./errors');
-module.exports.responseTime = require('./response-time');
-module.exports.logger = require('./logger');
+export { default as auth } from './auth.js';
+export { default as authz } from './authz.js';
+export { default as cache } from './cache.js';
+export { default as errors } from './errors.js';
+export { default as responseTime } from './response-time.js';
+export { default as logger } from './logger.js';

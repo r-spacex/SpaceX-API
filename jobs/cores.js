@@ -1,6 +1,6 @@
-const got = require('got');
-const cheerio = require('cheerio');
-const { logger } = require('../middleware/logger');
+import got from 'got';
+import cheerio from 'cheerio';
+import { logger } from '../middleware/index.js';
 
 const REDDIT_CORES = 'https://old.reddit.com/r/spacex/wiki/cores';
 const API = process.env.SPACEX_API;
@@ -11,7 +11,7 @@ const HEALTHCHECK = process.env.CORES_HEALTHCHECK;
  * Update cores
  * @return {Promise<void>}
  */
-module.exports = async () => {
+export default async () => {
   try {
     const cores = await got.post(`${API}/cores/query`, {
       json: {

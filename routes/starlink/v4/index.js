@@ -1,6 +1,6 @@
-const Router = require('koa-router');
-const { Starlink } = require('../../../models');
-const { auth, authz, cache } = require('../../../middleware');
+import Router from 'koa-router';
+import { Starlink } from '../../../models/index.js';
+import { auth, authz, cache } from '../../../middleware/index.js';
 
 const router = new Router({
   prefix: '/(v4|latest)/starlink',
@@ -74,4 +74,4 @@ router.delete('/:id', auth, authz('starlink:delete'), async (ctx) => {
   }
 });
 
-module.exports = router;
+export default router;

@@ -1,6 +1,6 @@
-const _ = require('lodash');
-const got = require('got');
-const { logger } = require('../middleware/logger');
+import _ from 'lodash';
+import got from 'got';
+import { logger } from '../middleware/index.js';
 
 const API = process.env.SPACEX_API;
 const KEY = process.env.SPACEX_KEY;
@@ -10,7 +10,7 @@ const HEALTHCHECK = process.env.LAUNCHES_HEALTHCHECK;
  * Update launch arrays
  * @return {Promise<void>}
  */
-module.exports = async () => {
+export default async () => {
   try {
     const launches = await got.post(`${API}/launches/query`, {
       json: {

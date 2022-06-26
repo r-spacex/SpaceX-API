@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
-const mongoosePaginate = require('mongoose-paginate-v2');
-const idPlugin = require('mongoose-id');
+import mongoose from 'mongoose';
+import mongoosePaginate from 'mongoose-paginate-v2';
+import idPlugin from 'mongoose-id';
 
 const crewSchema = new mongoose.Schema({
   name: {
@@ -40,4 +40,4 @@ crewSchema.plugin(idPlugin);
 
 const Crew = mongoose.model('Crew', crewSchema);
 
-module.exports = Crew;
+export default Crew;

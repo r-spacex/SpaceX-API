@@ -11,7 +11,7 @@ const buildCrew = (launch) => {
   });
 };
 
-module.exports = async (payload) => {
+export default async (payload) => {
   if (Array.isArray(payload)) {
     return payload.map((launch) => {
       if (Array.isArray(launch?.crew)) {
