@@ -20,20 +20,18 @@ const gracefulShutdown = (msg) => {
 };
 
 // Server start
-app.on('ready', () => {
-  SERVER.listen(PORT, '0.0.0.0', () => {
-    logger.info(`Running on port: ${PORT}`);
+SERVER.listen(PORT, '0.0.0.0', () => {
+  logger.info(`Running on port: ${PORT}`);
 
-    // Handle kill commands
-    process.on('SIGTERM', gracefulShutdown);
+  // Handle kill commands
+  process.on('SIGTERM', gracefulShutdown);
 
-    // Handle interrupts
-    process.on('SIGINT', gracefulShutdown);
+  // Handle interrupts
+  process.on('SIGINT', gracefulShutdown);
 
-    // Prevent dirty exit on uncaught exceptions:
-    process.on('uncaughtException', gracefulShutdown);
+  // Prevent dirty exit on uncaught exceptions:
+  process.on('uncaughtException', gracefulShutdown);
 
-    // Prevent dirty exit on unhandled promise rejection
-    process.on('unhandledRejection', gracefulShutdown);
-  });
+  // Prevent dirty exit on unhandled promise rejection
+  process.on('unhandledRejection', gracefulShutdown);
 });
