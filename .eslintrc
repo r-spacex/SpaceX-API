@@ -6,10 +6,7 @@
     "mongo": true,
     "es2021": true
   },
-  "extends": [
-    "airbnb-base",
-    "plugin:import/recommended"
-  ],
+  "extends": ["airbnb-base", "plugin:import/recommended"],
   "parserOptions": {
     "ecmaVersion": "latest",
     "impliedStrict": true,
@@ -24,6 +21,6 @@
         "devDependencies": ["test/*.test.js", "scripts/*.js"]
       }
     ],
-    "import/extensions": ["always"]
+    "import/extensions": ["error", "always"]
   }
 }
