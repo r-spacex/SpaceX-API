@@ -10,3 +10,4 @@ LICENSE
 .eslintrc
 .gitignore
 .nvmrc
+.env
