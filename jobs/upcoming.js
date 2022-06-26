@@ -1,11 +1,11 @@
 /* eslint-disable no-continue */
 /* eslint-disable no-restricted-syntax */
 
-const got = require('got');
-const cheerio = require('cheerio');
-const fuzz = require('fuzzball');
-const moment = require('moment-timezone');
-const { logger } = require('../middleware/logger');
+import got from 'got';
+import { load } from 'cheerio';
+import * as fuzz from 'fuzzball';
+import moment from 'moment-timezone';
+import { logger } from '../middleware/index.js';
 
 const REDDIT_WIKI = 'https://old.reddit.com/r/spacex/wiki/launches/manifest';
 const API = process.env.SPACEX_API;
@@ -19,7 +19,7 @@ const HEALTHCHECK = process.env.UPCOMING_HEALTHCHECK;
  * id of the launch. It also corrects the flight number order based on the launch wiki order.
  * @return {Promise<void>}
  */
-module.exports = async () => {
+export default async () => {
   try {
     const flightNumbers = [];
     const rawLaunches = await got.post(`${API}/launches/query`, {
@@ -43,7 +43,7 @@ module.exports = async () => {
     const rawWiki = await got(REDDIT_WIKI, {
       resolveBodyOnly: true,
     });
-    const $ = cheerio.load(rawWiki);
+    const $ = load(rawWiki);
     const wiki = $('body > div.content > div > div > table:nth-child(7) > tbody').text();
 
     if (!wiki) {

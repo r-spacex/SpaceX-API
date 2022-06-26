@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
-const mongoosePaginate = require('mongoose-paginate-v2');
-const idPlugin = require('mongoose-id');
+import mongoose from 'mongoose';
+import mongoosePaginate from 'mongoose-paginate-v2';
+import idPlugin from 'mongoose-id';
 
 const shipSchema = new mongoose.Schema({
   name: {
@@ -107,4 +107,4 @@ shipSchema.plugin(idPlugin);
 
 const Ship = mongoose.model('Ship', shipSchema);
 
-module.exports = Ship;
+export default Ship;

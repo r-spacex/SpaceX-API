@@ -1,5 +1,5 @@
-const Router = require('koa-router');
-const { auth, authz, cache } = require('../../../middleware');
+import Router from 'koa-router';
+import { auth, authz, cache } from '../../../middleware/index.js';
 
 const router = new Router({
   prefix: '/(v4|latest)/admin',
@@ -20,4 +20,4 @@ router.get('/health', async (ctx) => {
   ctx.status = 200;
 });
 
-module.exports = router;
+export default router;

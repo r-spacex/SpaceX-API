@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const idPlugin = require('mongoose-id');
+import mongoose from 'mongoose';
+import idPlugin from 'mongoose-id';
 
 const roadsterSchema = new mongoose.Schema({
   name: {
@@ -84,4 +84,4 @@ roadsterSchema.plugin(idPlugin);
 
 const Roadster = mongoose.model('Roadster', roadsterSchema);
 
-module.exports = Roadster;
+export default Roadster;

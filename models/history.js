@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
-const mongoosePaginate = require('mongoose-paginate-v2');
-const idPlugin = require('mongoose-id');
+import mongoose from 'mongoose';
+import mongoosePaginate from 'mongoose-paginate-v2';
+import idPlugin from 'mongoose-id';
 
 const historySchema = new mongoose.Schema({
   title: {
@@ -38,4 +38,4 @@ historySchema.plugin(idPlugin);
 
 const History = mongoose.model('History', historySchema);
 
-module.exports = History;
+export default History;

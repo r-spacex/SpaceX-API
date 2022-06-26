@@ -1,7 +1,6 @@
-/* eslint-disable no-secrets/no-secrets */
-const got = require('got');
-const moment = require('moment-timezone');
-const { logger } = require('../middleware/logger');
+import got from 'got';
+import moment from 'moment-timezone';
+import { logger } from '../middleware/index.js';
 
 const API = process.env.SPACEX_API;
 const KEY = process.env.SPACEX_KEY;
@@ -14,7 +13,7 @@ const HEALTHCHECK = process.env.ROADSTER_HEALTHCHECK;
  * See https://ssd-api.jpl.nasa.gov/doc/horizons.html for more information
  * @return {Promise<void>}
  */
-module.exports = async () => {
+export default async () => {
   // Using date range so Horizons doesn't give us the default 10 day data
   const today = moment().format('YYYY-MMM-DD HH:mm:ss');
   const tomorrow = moment().add(1, 'day').format('YYYY-MMM-DD HH:mm:ss');

@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
-const mongoosePaginate = require('mongoose-paginate-v2');
-const idPlugin = require('mongoose-id');
+import mongoose from 'mongoose';
+import mongoosePaginate from 'mongoose-paginate-v2';
+import idPlugin from 'mongoose-id';
 
 const coreSchema = new mongoose.Schema({
   serial: {
@@ -58,4 +58,4 @@ coreSchema.plugin(idPlugin);
 
 const Core = mongoose.model('Core', coreSchema);
 
-module.exports = Core;
+export default Core;

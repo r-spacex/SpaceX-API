@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
-const mongoosePaginate = require('mongoose-paginate-v2');
-const idPlugin = require('mongoose-id');
+import mongoose from 'mongoose';
+import mongoosePaginate from 'mongoose-paginate-v2';
+import idPlugin from 'mongoose-id';
 
 const landpadSchema = new mongoose.Schema({
   name: {
@@ -73,4 +73,4 @@ landpadSchema.plugin(idPlugin);
 
 const Landpad = mongoose.model('Landpad', landpadSchema);
 
-module.exports = Landpad;
+export default Landpad;

@@ -1,8 +1,8 @@
-const Router = require('koa-router');
-const { Launch } = require('../../../models');
-const { auth, authz, cache } = require('../../../middleware');
-const transformResponse = require('./_transform-response');
-const transformQuery = require('./_transform-query');
+import Router from 'koa-router';
+import { Launch } from '../../../models/index.js';
+import { auth, authz, cache } from '../../../middleware/index.js';
+import transformResponse from './_transform-response.js';
+import transformQuery from './_transform-query.js';
 
 const router = new Router({
   prefix: '/v4/launches',
@@ -154,4 +154,4 @@ router.delete('/:id', auth, authz('launch:delete'), async (ctx) => {
   }
 });
 
-module.exports = router;
+export default router;

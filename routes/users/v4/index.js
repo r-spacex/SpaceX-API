@@ -1,6 +1,6 @@
-const Router = require('koa-router');
-const { User } = require('../../../models');
-const { auth, authz } = require('../../../middleware');
+import Router from 'koa-router';
+import { User } from '../../../models/index.js';
+import { auth, authz } from '../../../middleware/index.js';
 
 const router = new Router({
   prefix: '/(v4|latest)/users',
@@ -72,4 +72,4 @@ router.delete('/:id', auth, authz('user:delete'), async (ctx) => {
   }
 });
 
-module.exports = router;
+export default router;

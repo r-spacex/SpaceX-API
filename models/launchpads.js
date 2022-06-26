@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
-const mongoosePaginate = require('mongoose-paginate-v2');
-const idPlugin = require('mongoose-id');
+import mongoose from 'mongoose';
+import mongoosePaginate from 'mongoose-paginate-v2';
+import idPlugin from 'mongoose-id';
 
 const launchpadSchema = new mongoose.Schema({
   name: {
@@ -73,4 +73,4 @@ launchpadSchema.plugin(idPlugin);
 
 const Launchpad = mongoose.model('Launchpad', launchpadSchema);
 
-module.exports = Launchpad;
+export default Launchpad;

@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
-const mongoosePaginate = require('mongoose-paginate-v2');
-const idPlugin = require('mongoose-id');
+import mongoose from 'mongoose';
+import mongoosePaginate from 'mongoose-paginate-v2';
+import idPlugin from 'mongoose-id';
 
 const launchSchema = new mongoose.Schema({
   flight_number: {
@@ -243,4 +243,4 @@ launchSchema.plugin(idPlugin);
 
 const Launch = mongoose.model('Launch', launchSchema);
 
-module.exports = Launch;
+export default Launch;

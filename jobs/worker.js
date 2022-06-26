@@ -1,16 +1,16 @@
-const { CronJob } = require('cron');
-const { logger } = require('../middleware/logger');
-const launches = require('./launches');
-const payloads = require('./payloads');
-const landpads = require('./landpads');
-const launchpads = require('./launchpads');
-const capsules = require('./capsules');
-const cores = require('./cores');
-const roadster = require('./roadster');
-const upcoming = require('./upcoming');
-const starlink = require('./starlink');
-const webcast = require('./webcast');
-const launchLibrary = require('./launch-library');
+import { CronJob } from 'cron';
+import { logger } from '../middleware/index.js';
+import launches from './launches.js';
+import payloads from './payloads.js';
+import landpads from './landpads.js';
+import launchpads from './launchpads.js';
+import capsules from './capsules.js';
+import cores from './cores.js';
+import roadster from './roadster.js';
+import upcoming from './upcoming.js';
+import starlink from './starlink.js';
+import webcast from './webcast.js';
+import launchLibrary from './launch-library.js';
 
 // Every 10 minutes
 const launchesJob = new CronJob('*/10 * * * *', launches);

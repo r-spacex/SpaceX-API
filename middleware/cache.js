@@ -1,15 +1,9 @@
-const Redis = require('ioredis');
-const blake3 = require('blake3');
-const { logger } = require('./logger');
+import Redis from 'ioredis';
+import blake3 from 'blake3';
+import logger from './logger.js';
 
-let redis;
+const redis = (process.env.SPACEX_REDIS) ? new Redis(process.env.SPACEX_REDIS) : new Redis();
 let redisAvailable = false;
-
-if (process.env.SPACEX_REDIS) {
-  redis = new Redis(process.env.SPACEX_REDIS);
-} else {
-  redis = new Redis();
-}
 
 redis.on('error', () => {
   redisAvailable = false;
@@ -36,7 +30,7 @@ const hash = (str) => blake3.createHash().update(str).digest('hex');
  * @param   {Number}    ttl       Cache TTL in seconds
  * @returns {void}
  */
-module.exports = (ttl) => async (ctx, next) => {
+export default (ttl) => async (ctx, next) => {
   if (process.env.NODE_ENV !== 'production') {
     await next();
     return;
@@ -96,8 +90,6 @@ module.exports = (ttl) => async (ctx, next) => {
   }
 };
 
-// Share redis connection
-Object.defineProperty(module.exports, 'redis', {
-  value: redis,
-  writable: false,
-});
+export {
+  redis,
+};

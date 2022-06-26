@@ -1,9 +1,9 @@
-const got = require('got');
-const { CookieJar } = require('tough-cookie');
-const Moment = require('moment-timezone');
-const MomentRange = require('moment-range');
-const { getSatelliteInfo } = require('tle.js');
-const { logger } = require('../middleware/logger');
+import got from 'got';
+import { CookieJar } from 'tough-cookie';
+import Moment from 'moment-timezone';
+import MomentRange from 'moment-range';
+import { getSatelliteInfo } from 'tle.js';
+import { logger } from '../middleware/index.js';
 
 const API = process.env.SPACEX_API;
 const KEY = process.env.SPACEX_KEY;
@@ -40,7 +40,7 @@ const starlinkVersion = (date, name) => {
  * Update Starlink orbits
  * @return {Promise<void>}
  */
-module.exports = async () => {
+export default async () => {
   try {
     const cookieJar = new CookieJar();
 
@@ -52,7 +52,6 @@ module.exports = async () => {
       cookieJar,
     });
 
-    // eslint-disable-next-line no-secrets/no-secrets
     const data = await got('https://www.space-track.org/basicspacedata/query/class/gp/OBJECT_NAME/~~STARLINK,~~TINTIN/orderby/NORAD_CAT_ID', {
       resolveBodyOnly: true,
       responseType: 'json',

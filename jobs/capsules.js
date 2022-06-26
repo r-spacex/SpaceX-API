@@ -1,6 +1,6 @@
-const got = require('got');
-const cheerio = require('cheerio');
-const { logger } = require('../middleware/logger');
+import got from 'got';
+import { load } from 'cheerio';
+import { logger } from '../middleware/index.js';
 
 const API = process.env.SPACEX_API;
 const KEY = process.env.SPACEX_KEY;
@@ -11,7 +11,7 @@ const REDDIT_CAPSULES = 'https://old.reddit.com/r/spacex/wiki/capsules';
  * Update capsule landings/reuse count
  * @return {Promise<void>}
  */
-module.exports = async () => {
+export default async () => {
   try {
     const capsules = await got.post(`${API}/capsules/query`, {
       json: {
@@ -24,7 +24,7 @@ module.exports = async () => {
     });
 
     const result = await got(REDDIT_CAPSULES);
-    const $ = cheerio.load(result.body);
+    const $ = load(result.body);
 
     const v1Capsules = $('div.md:nth-child(2) > table:nth-child(8) > tbody:nth-child(2)').text();
     const v1CapsuleRow = v1Capsules.split('\n').filter((v) => v !== '');

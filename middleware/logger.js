@@ -1,24 +1,17 @@
-const koaPino = require('koa-pino-logger');
-const pino = require('pino');
+import koaPino from 'koa-pino-logger';
+import pino from 'pino';
 
-const devOpts = {
+const opts = {
   transport: {
     target: 'pino-pretty',
   },
 };
 
 const env = process.env.NODE_ENV;
+const isLocal = (env !== 'production' || env !== 'stage');
+const requestLog = isLocal ? koaPino(opts) : koaPino();
 
-let requestLog;
-let logger;
-
-if (env === 'production' || env === 'stage') {
-  requestLog = koaPino();
-  logger = pino();
-} else {
-  requestLog = koaPino(devOpts);
-  logger = pino(devOpts);
-}
-
-module.exports.requestLogger = requestLog;
-module.exports.logger = logger;
+export default isLocal ? pino(opts) : pino();
+export {
+  requestLog as requestLogger,
+};

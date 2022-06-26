@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
-const mongoosePaginate = require('mongoose-paginate-v2');
-const idPlugin = require('mongoose-id');
+import mongoose from 'mongoose';
+import mongoosePaginate from 'mongoose-paginate-v2';
+import idPlugin from 'mongoose-id';
 
 const payloadSchema = new mongoose.Schema({
   name: {
@@ -140,4 +140,4 @@ payloadSchema.plugin(idPlugin);
 
 const Payload = mongoose.model('Payload', payloadSchema);
 
-module.exports = Payload;
+export default Payload;
