@@ -1,4 +1,5 @@
 import { CronJob } from 'cron';
+import dotenv from 'dotenv';
 import { logger } from '../middleware/index.js';
 import launches from './launches.js';
 import payloads from './payloads.js';
@@ -11,6 +12,9 @@ import upcoming from './upcoming.js';
 import starlink from './starlink.js';
 import webcast from './webcast.js';
 import launchLibrary from './launch-library.js';
+
+// Env init
+dotenv.config();
 
 // Every 10 minutes
 const launchesJob = new CronJob('*/10 * * * *', launches);

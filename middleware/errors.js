@@ -12,7 +12,7 @@ export default async (ctx, next) => {
     if (err?.kind === 'ObjectId') {
       err.status = 404;
     } else {
-      ctx.status = err.status || 500;
+      ctx.status = err.status ?? 500;
       ctx.body = err.message;
     }
   }

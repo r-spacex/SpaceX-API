@@ -1,12 +1,16 @@
 import conditional from 'koa-conditional-get';
 import etag from 'koa-etag';
 import cors from 'koa2-cors';
+import dotenv from 'dotenv';
 import helmet from 'koa-helmet';
 import Koa from 'koa';
 import bodyParser from 'koa-bodyparser';
 import mongoose from 'mongoose';
 import { responseTime, errors, logger } from './middleware/index.js';
 import routes from './routes/index.js';
+
+// Env init
+dotenv.config();
 
 const app = new Koa();
 

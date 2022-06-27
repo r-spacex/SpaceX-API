@@ -53,13 +53,14 @@ export default async () => {
     });
 
     const data = await got('https://www.space-track.org/basicspacedata/query/class/gp/OBJECT_NAME/~~STARLINK,~~TINTIN/orderby/NORAD_CAT_ID', {
-      resolveBodyOnly: true,
       responseType: 'json',
-      timeout: 480000, // 8 minutes
+      timeout: {
+        request: 480000, // 8 minutes
+      },
       cookieJar,
     });
 
-    const starlinkSats = data.filter((sat) => /starlink|tintin/i.test(sat.OBJECT_NAME));
+    const starlinkSats = data.body.filter((sat) => /starlink|tintin/i.test(sat.OBJECT_NAME));
 
     const updates = starlinkSats.map(async (sat) => {
       const date = moment.utc(sat.LAUNCH_DATE, 'YYYY-MM-DD');
@@ -94,14 +95,14 @@ export default async () => {
       await got.patch(`${API}/starlink/${sat.NORAD_CAT_ID}`, {
         json: {
           version: starlinkVersion(
-            launches?.docs[0]?.date_utc || null,
-            launches?.docs[0]?.name || null,
+            launches?.docs[0]?.date_utc ?? null,
+            launches?.docs[0]?.name ?? null,
           ),
-          launch: launches?.docs[0]?.id || null,
-          longitude: position?.lng || null,
-          latitude: position?.lat || null,
-          height_km: position?.height || null,
-          velocity_kms: position?.velocity || null,
+          launch: launches?.docs[0]?.id ?? null,
+          longitude: position?.lng ?? null,
+          latitude: position?.lat ?? null,
+          height_km: position?.height ?? null,
+          velocity_kms: position?.velocity ?? null,
           spaceTrack: {
             CCSDS_OMM_VERS: sat.CCSDS_OMM_VERS,
             COMMENT: sat.COMMENT,
@@ -162,6 +163,7 @@ export default async () => {
       await got(HEALTHCHECK);
     }
   } catch (error) {
+    console.error(error);
     console.log(`Starlink Error: ${error.message}`);
   }
 };

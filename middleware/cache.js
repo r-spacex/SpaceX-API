@@ -81,7 +81,7 @@ export default (ttl) => async (ctx, next) => {
 
   // Set cache
   try {
-    if ((ctx.response.status !== 200) || !responseBody) {
+    if ((ctx?.response?.status !== 200) || !responseBody) {
       return;
     }
     await redis.set(key, responseBody, 'EX', ttl);

@@ -40,7 +40,7 @@ export default async () => {
     });
 
     const updates = payloads.docs.map(async (payload) => {
-      const noradId = payload.norad_ids.shift() || null;
+      const noradId = payload.norad_ids.shift() ?? null;
       const specificOrbit = data.find((sat) => parseInt(sat.NORAD_CAT_ID, 10) === noradId);
       if (specificOrbit) {
         await got.patch(`${API}/payloads/${payload.id}`, {
