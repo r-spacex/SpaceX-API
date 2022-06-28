@@ -13,7 +13,7 @@ export default async (query) => {
   if (query?.options?.populate) {
     if (Array.isArray(query.options.populate)) {
       query.options.populate.forEach((item, index) => {
-        if (_.isObject(query.options.populate)) {
+        if (_.isObject(item)) {
           // Index is not user specified
           transformed.options.populate[index].path = transformed.options.populate?.[index]?.path?.replace('crew', 'crew.crew');
         }
