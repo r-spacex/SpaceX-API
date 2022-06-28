@@ -49,7 +49,8 @@ export default async () => {
     const missionName = launches.docs[0].name;
 
     const ratio = fuzz.ratio(rssTitle, missionName);
-    if (ratio >= 50) {
+    // Prevent matching on mission control audio videos
+    if (!rssTitle.includes('audio') && ratio >= 50) {
       match = true;
       const pastLaunches = await got.post(`${API}/launches/query`, {
         json: {
