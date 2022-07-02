@@ -8,7 +8,7 @@ const {
   LAUNCH_LIBRARY_HEALTHCHECK,
   SPACEX_API: API,
 } = process.env;
-const LAUNCH_LIBRARY_API = 'https://ll.thespacedevs.com/2.1.0/launch/upcoming';
+const LAUNCH_LIBRARY_API = 'https://ll.thespacedevs.com/2.2.0/launch/upcoming';
 
 /**
  * Attach Launch Library v2 launch id's to upcoming launches
