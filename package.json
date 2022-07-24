@@ -36,7 +36,7 @@
     "dotenv": "^16.0.1",
     "fuzzball": "^2.1.2",
     "got": "^12.1.0",
-    "ioredis": "^5.1.0",
+    "ioredis": "^5.2.2",
     "koa": "^2.13.4",
     "koa-bodyparser": "^4.3.0",
     "koa-conditional-get": "^3.0.0",
