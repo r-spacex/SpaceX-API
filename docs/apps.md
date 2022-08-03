@@ -4,6 +4,7 @@
 
 |App|Type|Creator(s)|Repo|More|
 |:---|:---|:---|:---|:---|
+| [SpaceX Launches](https://spacex-launchesx.netlify.app/) | Website | [ArtisticLogicMK](https://github.com/artisticLogicMK) | [GitHub](https://github.com/artisticLogicMK/SpaceX-Launches) | Built with Vuejs3, Tailwindcss |
 | [2Space](https://play.google.com/store/apps/details?id=abandonedstudio.app.tospace) | Android App | [Pawel Kremienowski](https://github.com/riddick-boss) | [GitHub](https://github.com/riddick-boss/2Space) | |
 | [SpaceX](http://spacex.elc0mpa.me/#/) | Website | [elC0mpa](https://github.com/elC0mpa) | [GitHub](https://github.com/elC0mpa/spacex) | built with Vue3 & Composition API |
 | [SpaceX History](https://spacex-history.netlify.app) | Website | [Bedirhan Karadoğan](https://github.com/bedirhankaradogan) | [GitHub](https://github.com/bedirhankaradogan/spacex-history) | built with React |
