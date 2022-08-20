@@ -69,5 +69,8 @@
   },
   "jest": {
     "testEnvironment": "node"
+  },
+  "volta": {
+    "node": "18.7.0"
   }
 }
