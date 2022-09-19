@@ -60,6 +60,7 @@ export default async () => {
       .replace(/~|(\[|\])/gi, '')
       .replace(/(early|mid|late|end|tbd|tba|net)/gi, ' ')
       .replace(/-[0-9]{2}:[0-9]{2}/gi, ' ')
+      .replace(/(\(|\)|\?)/gi, ' ') // Removes (?) from dates
       .split('/')[0].trim());
     const rawWikiDates = allWikiDates.slice(0, 30);
 
