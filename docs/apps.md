@@ -63,3 +63,4 @@
 | [Elon Musk Tracker](https://play.google.com/store/apps/details?id=com.ingenuity.elonmusktracker) | Android/iOS App | [Aman Trifi](https://github.com/TrifiAmanallah) | Closed source |  |
 | [SpaceX Data](https://spacexdata.pages.dev/) | Website | [Chien Tran](https://github.com/chientrm) | Closed source | Built with SvelteKit, deployed with Cloudflare Pages |
 | [SpaceX Portal](https://spacex-portal.vercel.app) | Website | [Daniel Yasakov](https://github.com/ne-danik) | [GitHub](https://github.com/ne-danik/spacex-portal) | built with React |
+| [SpaceX Launches App](https://spacex-launchesx.netlify.app) | Website | [MK](https://github.com/artisticLogicMK) | [GitHub](https://github.com/artisticLogicMK/SpaceX-Launches) | built with Vue, JS, TailwindCSS |
