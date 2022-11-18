@@ -41,7 +41,7 @@ This is the default return structure for paginated results:
 }
 ```
 
-By default, UUID's are used to reference documents in another collection. For example, the [launches](launches/query.md) endpoint has an array of UUID's named `payloads` that references a payload in the [payloads](payloads/query.md) endpoint.
+By default, UUID's are used to reference documents in another collection. For example, the [launches](launches/v4/query.md) endpoint has an array of UUID's named `payloads` that references a payload in the [payloads](payloads/v4/query.md) endpoint.
 
 ```json
 {
