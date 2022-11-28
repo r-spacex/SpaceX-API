@@ -60,6 +60,9 @@ Cache can be cleared with the following endpoint:
 
 * 🔒 [Clear cache](cache/clear.md) : `DELETE /admin/cache`
 
+## Tutorial Doc
+Below are links to the different routes for the API. They can be viewed with the project Postman via the link at the top of this document. For a tutorial on how to see the endpoints of the routes see: https://docs.google.com/document/d/11J6k1PjQf0a6OGPfUfb96S1NjlZZecrOWy6pwEK3gRg/edit?usp=sharing
+
 ## Routes
 
 ### [Capsules](capsules) - Detailed info for serialized dragon capsules
