@@ -62,7 +62,7 @@
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jest": "^26.8.7",
-    "jest": "^29.0.1"
+    "jest": "^29.4.2"
   },
   "engines": {
     "node": ">=14.16"
