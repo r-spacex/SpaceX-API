@@ -6,6 +6,12 @@
 Open Source REST API for launch, rocket, core, capsule, starlink, launchpad, and landing pad data.
 </h3>
 
+<h1 align="center">Deprecation warning</h1>
+
+<h3 align="center">
+This API is now deprecated and the data is currently not being updated. See <a href="https://github.com/r-spacex/SpaceX-API/issues/1243">here</a> for details.
+</h3>
+
 <p align="center">
 <a href="https://github.com/r-spacex/SpaceX-API/actions?query=workflow%3ATest"><img src="https://img.shields.io/github/workflow/status/r-spacex/SpaceX-API/Test?style=flat-square"></a>
 <a href="https://hub.docker.com/r/jakewmeyer/spacex-api/"><img src="https://img.shields.io/docker/pulls/jakewmeyer/spacex-api?style=flat-square"></a>
