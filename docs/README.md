@@ -1,4 +1,8 @@
-# r/SpaceX API Docs
+# Deprecation warning
+
+This API is now deprecated and the data is currently not being updated. See https://github.com/r-spacex/SpaceX-API/issues/1243
+
+# Deprecated r/SpaceX API Docs
 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/ed4ed700dcc55b2c1f1c)
 
