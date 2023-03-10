@@ -12,7 +12,7 @@
 
 ## Versioning
 
-Each route is individually versioned, see route list below for all avaliable versions. The API can also be pinned to the lastest version with `https://api.spacexdata.com/latest`, but only do this if you're cool with potential breaking changes.
+Each route is individually versioned, see route list below for all avaliable versions. The API can also be pinned to the lastest version with `https://api.spacexdata.com/v5/launches/latest`, but only do this if you're cool with potential breaking changes.
 
 ## Authentication
 
