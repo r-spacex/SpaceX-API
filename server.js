@@ -30,7 +30,10 @@ SERVER.listen(PORT, '0.0.0.0', () => {
   process.on('SIGINT', gracefulShutdown);
 
   // Prevent dirty exit on uncaught exceptions:
-  process.on('uncaughtException', gracefulShutdown);
+ process.on('uncaughtException', (err) => {
+  logger.error(`Uncaught Exception: ${err.message}`);
+  gracefulShutdown('Uncaught Exception');
+});
 
   // Prevent dirty exit on unhandled promise rejection
   process.on('unhandledRejection', gracefulShutdown);
