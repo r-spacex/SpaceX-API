@@ -10,6 +10,10 @@ import _ from 'lodash';
 export default async (query) => {
   const transformed = query;
 
+  if (query?.query?.id) {
+    transformed.query._id = query.query.id;
+  }
+
   if (query?.options?.populate) {
     if (Array.isArray(query.options.populate)) {
       query.options.populate.forEach((item, index) => {
