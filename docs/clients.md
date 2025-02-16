@@ -19,6 +19,7 @@ NOTE: Clients are grouped by API version(s) supported
 | spacex-graphql-gateway | TypeScript | Kevin Hermawan | [Github](https://github.com/kevinstd/spacex-graphql-gateway) |
 | r/SpaceX (Independent Publisher) | [Power Platform](https://docs.microsoft.com/en-us/connectors/rspacexip/) | Troy Taylor | [Github](https://github.com/troystaylor/PowerPlatformConnectors/tree/r/SpaceX/independent-publisher-connectors/rSpaceX) |
 | spacex-api | Java | Andrey Vasilyev | [Github](https://github.com/artfultom/spacex-api) |
+| spacex-kotlin-lib | Kotlin | Matěj Váňa | [Github](https://github.com/Acerik/spacex-kotlin-lib) |
 
 ### V3, V2, V1 (Deprecated)
 
